@@ -11,7 +11,7 @@
 
 <meta name="author" content="Brosius" />
 
-<meta name="date" content="2016-02-27" />
+<meta name="date" content="2016-02-28" />
 
 <title>A1 Loss Development Using Credibility</title>
 
@@ -111,18 +111,63 @@ $(document).ready(function () {
 
 <h1 class="title">A1 Loss Development Using Credibility</h1>
 <h4 class="author"><em>Brosius</em></h4>
-<h4 class="date"><em>February 27, 2016</em></h4>
+<h4 class="date"><em>February 28, 2016</em></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#synopsis">Synopsis</a></li>
+<li><a href="#traditional-methods-and-ls-assumptions">Traditional Methods and LS Assumptions</a></li>
 </ul>
 </div>
 
-<div id="synopsis" class="section level2">
-<h2>Synopsis</h2>
+<div id="traditional-methods-and-ls-assumptions" class="section level2">
+<h2>Traditional Methods and LS Assumptions</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="left">Formula</th>
+<th align="left">Restrictions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Least Squares</td>
+<td align="left"><span class="math inline">\(y = a + bx\)</span></td>
+<td align="left">No Restriction</td>
+</tr>
+<tr class="even">
+<td align="left">Chainladder</td>
+<td align="left"><span class="math inline">\(y = bx\)</span></td>
+<td align="left">a = 0</td>
+</tr>
+<tr class="odd">
+<td align="left">BF</td>
+<td align="left"><span class="math inline">\(y = a + x\)</span></td>
+<td align="left">b = 1</td>
+</tr>
+<tr class="even">
+<td align="left">ELR</td>
+<td align="left"><span class="math inline">\(y = a\)</span></td>
+<td align="left">b = 0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Least Square Formula</strong> <span style="color:red;background-color:yellow">Important</span></p>
+<ul>
+<li><p><span class="math inline">\(b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}\)</span></p></li>
+<li><p><span class="math inline">\(a = \bar{y} - b\bar{x}\)</span></p></li>
+</ul>
+<p><span style="color:red">Use Calculator</span></p>
+<p><strong>Caveat with Traditional Method</strong></p>
+<ul>
+<li><strong><em>Chainladder</em></strong>: Difficult to select LDF when vary from year to year</li>
+<li><strong><em>BF</em></strong>: Doesn’t work well with negative development</li>
+<li><strong>ELR</strong>*: Ignores actual experience</li>
+<li>Difficulty with parameter estimation when loss patterns are changing</li>
+<li></li>
+</ul>
 </div>
 
 

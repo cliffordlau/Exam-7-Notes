@@ -8,4 +8,28 @@ output:
     toc_depth: 4
 ---
 
-## Synopsis
+## Traditional Methods and LS Assumptions
+
+| Method        | Formula      | Restrictions   |
+| ------------- | ------------ | -------------- |
+| Least Squares | $y = a + bx$ | No Restriction |
+| Chainladder   | $y = bx$     | a = 0          |
+| BF            | $y = a + x$  | b = 1          |
+| ELR           | $y = a$      | b = 0          |
+
+**Least Square Formula** <span style="color:red;background-color:yellow">Important</span>
+
+* $b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$
+
+* $a = \bar{y} - b\bar{x}$
+
+<span style="color:red">Use Calculator</span>
+
+**Caveat with Traditional Method**
+
+* ***Chainladder***: Difficult to select LDF when vary from year to year
+* ***BF***: Doesn't work well with negative development
+* **ELR***: Ignores actual experience
+* Difficulty with parameter estimation when loss patterns are changing
+* 
+
