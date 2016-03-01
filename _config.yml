@@ -7,5 +7,5 @@ paginate: 10
 
 markdown: rdiscount
 permalink: pretty
-highlighter: pygments
+highlighter: rouge
 github: [Repository metadata]
