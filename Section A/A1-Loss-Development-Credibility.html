@@ -118,6 +118,12 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#traditional-methods-and-ls-assumptions">Traditional Methods and LS Assumptions</a></li>
+<li><a href="#least-squares-with-theoretical-distn-using-bayes">Least Squares with Theoretical Dist<sup>n</sup> Using Bayes</a></li>
+<li><a href="#bayesian-credibility">Bayesian Credibility</a><ul>
+<li><a href="#credibility-form-of-the-development-formula">Credibility Form of the Development Formula</a></li>
+<li><a href="#caseload-effect">Caseload Effect</a></li>
+<li><a href="#calculation">Calculation</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -154,7 +160,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p><strong>Least Square Formula</strong> <span style="color:red;background-color:yellow">Important</span></p>
+<p><strong>Least Squares Formula</strong> <span style="color:red;background-color:yellow">Important</span></p>
 <ul>
 <li><p><span class="math inline">\(b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}\)</span></p></li>
 <li><p><span class="math inline">\(a = \bar{y} - b\bar{x}\)</span></p></li>
@@ -166,8 +172,120 @@ $(document).ready(function () {
 <li><strong><em>BF</em></strong>: Doesn’t work well with negative development</li>
 <li><strong>ELR</strong>*: Ignores actual experience</li>
 <li>Difficulty with parameter estimation when loss patterns are changing</li>
-<li></li>
+<li>Variable book <span class="math inline">\(\Rightarrow\)</span> sampling error <span class="math inline">\(\Rightarrow\)</span> <em>b</em> that doesn’t reflect the true underlying characteristics</li>
 </ul>
+<p><strong>Caveat with Least Squares</strong></p>
+<ul>
+<li>Good when dist<sup>n</sup> is the same across multiple years</li>
+<li>Bad when systemic shift year to year e.g. inflation, legal environment (Tort reform)</li>
+</ul>
+</div>
+<div id="least-squares-with-theoretical-distn-using-bayes" class="section level2">
+<h2>Least Squares with Theoretical Dist<sup>n</sup> Using Bayes</h2>
+<p><strong>Poisson - Binomial</strong><br />
+<span class="math inline">\(Y =\)</span> (Ultimate) # of claims incurred each year <span class="math inline">\(\sim Poi(\mu)\)</span><br />
+<span class="math inline">\(X =\)</span> # of claims reported by year end <span class="math inline">\(\sim Bin(y,d)\)</span></p>
+<p>Unreported claims = <span class="math inline">\(R(x) = \mu(1-d)\)</span> <span style="color:red; background:yellow">Formula</span></p>
+<p>Simulation of Poi - Bin from paper shows that:</p>
+<ul>
+<li>LDF shows upward bias</li>
+<li>MSE of LDF is higher than MSE of LS</li>
+</ul>
+<p><strong>Negative Binomial - Binomial</strong><br />
+<span class="math inline">\(Y =\)</span> (Ultimate) # of claims incurred each year <span class="math inline">\(\sim NB(r, p)\)</span></p>
+<ul>
+<li><p><span class="math inline">\(Y =\)</span> # of failures until <span class="math inline">\(r\)</span> success with success probability = <span class="math inline">\(p\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{E[Y]} = \dfrac{r(1-p)}{p}\)</span></p></li>
+</ul>
+<p><span class="math inline">\(X =\)</span> # of claims reported by year end <span class="math inline">\(\sim Bin(y,d)\)</span></p>
+<p>Unreported claims = <span class="math inline">\(R(x) = \dfrac{s}{1-s}(x + r)\)</span> <span style="color:red; background:yellow">Formula</span></p>
+<ul>
+<li><span class="math inline">\(s = (1-d)(1-p)\)</span></li>
+</ul>
+</div>
+<div id="bayesian-credibility" class="section level2">
+<h2>Bayesian Credibility</h2>
+<p><span class="math inline">\(L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}\)</span></p>
+<ul>
+<li>Y = Ultimate Losses; X = Reported Losses</li>
+<li><span class="math inline">\(L(x)\)</span> = best linear estimator of Y|X = least square estimate</li>
+</ul>
+<table style="width:11%;">
+<colgroup>
+<col width="5%"></col>
+<col width="5%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Scenarios</th>
+<th align="left">Implications</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(x = \mathrm{E[X]}\)</span></td>
+<td align="left"><span class="math inline">\(L(X) = \mathrm{E[Y]}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}\)</span></td>
+<td align="left"><span class="math inline">\(L(X) \approx \mathrm{E[Y]}\)</span>; X, Y dont’ vary tightly together</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}\)</span></td>
+<td align="left"><span class="math inline">\(L(X) \approx x + \mathrm{E[Y - X]}\)</span>; BF Method</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}\)</span></td>
+<td align="left">Y is significantly influenced by X; Use LS <span style="color:red">I think</span></td>
+</tr>
+</tbody>
+</table>
+<div id="credibility-form-of-the-development-formula" class="section level3">
+<h3>Credibility Form of the Development Formula</h3>
+<p><span class="math inline">\(L(x) = Z \dfrac{x}{d} + (1-Z)\mathrm{E[Y]}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(Z = \dfrac{VHM}{VHM + EVPV} = \dfrac{\mathrm{Var_Y(E[X|Y])}}{\mathrm{Var_Y(E[X|Y])}+\mathrm{E_Y[Var(X|Y)]}}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(VHM = d^2 \sigma^2_Y\)</span></p></li>
+<li><p><span class="math inline">\(EVPV = \sigma^2_d[\sigma^2_Y + \mathrm{E[Y]}^2]\)</span></p></li>
+</ul></li>
+<li><p><span class="math inline">\(d =\)</span> % reported</p>
+<ul>
+<li><p><strong>Assumption</strong> same <span class="math inline">\(d\)</span> for any size of <span class="math inline">\(y\)</span>; Not necessarily true for large or small <span class="math inline">\(y\)</span></p></li>
+<li><p><span class="math inline">\(d \: {\perp\!\!\!\perp} \: X\)</span></p></li>
+<li><p><span class="math inline">\(D = \dfrac{X}{Y}\)</span></p></li>
+</ul></li>
+<li><p>Resutls sensitive to <span class="math inline">\(\mathrm{E[Y]}\)</span> and <span class="math inline">\(\mathrm{E[D]}\)</span> but not the <span class="math inline">\(\sigma\)</span></p></li>
+<li><p><span class="math inline">\(L(x) = Q(x)\)</span> when <span class="math inline">\(Q(x)\)</span> is linear</p></li>
+<li><p>Use this when underlying distribution not stable (historical not a good predictor); LS only works when the underlying dist<sup>n</sup> are stable</p></li>
+<li><p>Based on estimates of VHM and EVPV of the dist<sup>n</sup> instead</p></li>
+</ul>
+<p>Poi - Bin</p>
+<ul>
+<li><span class="math inline">\(L(x) = x + (1-d)\mathrm{E(Y)}\)</span></li>
+<li><span class="math inline">\(Z = d\)</span></li>
+<li>Same as BF</li>
+<li>BF is optimal when claim counts follow Poi - Bin</li>
+</ul>
+</div>
+<div id="caseload-effect" class="section level3">
+<h3>Caseload Effect</h3>
+<p>When <span class="math inline">\(D\)</span> and <span class="math inline">\(Y\)</span> not independent still works</p>
+<ul>
+<li>e.g. <span class="math inline">\(d\)</span> larger for small <span class="math inline">\(y\)</span> since small claims are settle faster</li>
+<li>Or the opposite whne large <span class="math inline">\(y\)</span> has as larger <span class="math inline">\(d\)</span>: For a property book when large weather event happens, report quicker</li>
+</ul>
+<p><span class="math inline">\(L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}\)</span></p>
+<p><strong>Assumption</strong>:<br />
+<span class="math inline">\(\mathrm{E[X|Y=y]} = dy + x_0\)</span>; <span class="math inline">\(x_0\)</span> is for the fixed salary</p>
+</div>
+<div id="calculation" class="section level3">
+<h3>Calculation</h3>
+<p>Normalize the losses by dividing with premium since LS assume constant distribution</p>
+<p>Calculates ATU, so needs the tail factor first and also start from the oldest period</p>
+<p>Recusively go backwards using the previous estimates</p>
+<p><span class="math inline">\(Z = \dfrac{b}{c}\)</span>; <span class="math inline">\(c\)</span> is the ATU</p>
+</div>
 </div>
 
 

@@ -17,7 +17,7 @@ output:
 | BF            | $y = a + x$  | b = 1          |
 | ELR           | $y = a$      | b = 0          |
 
-**Least Square Formula** <span style="color:red;background-color:yellow">Important</span>
+**Least Squares Formula** <span style="color:red;background-color:yellow">Important</span>
 
 * $b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$
 
@@ -31,5 +31,104 @@ output:
 * ***BF***: Doesn't work well with negative development
 * **ELR***: Ignores actual experience
 * Difficulty with parameter estimation when loss patterns are changing
-* 
+* Variable book $\Rightarrow$ sampling error $\Rightarrow$ *b* that doesn't reflect the true underlying characteristics
 
+**Caveat with Least Squares**
+
+* Good when dist^n^ is the same across multiple years
+* Bad when systemic shift year to year e.g. inflation, legal environment (Tort reform)
+
+## Least Squares with Theoretical Dist^n^ Using Bayes
+
+**Poisson - Binomial**  
+$Y =$ (Ultimate) # of claims incurred each year $\sim Poi(\mu)$  
+$X =$ # of claims reported by year end $\sim Bin(y,d)$
+
+Unreported claims = $R(x) = \mu(1-d)$ <span style="color:red; background:yellow">Formula</span>
+
+Simulation of Poi - Bin from paper shows that:
+
+* LDF shows upward bias
+* MSE of LDF is higher than MSE of LS
+
+**Negative Binomial - Binomial**  
+$Y =$ (Ultimate) # of claims incurred each year $\sim NB(r, p)$
+
+* $Y =$ # of failures until $r$ success with success probability = $p$
+
+* $\mathrm{E[Y]} = \dfrac{r(1-p)}{p}$
+
+$X =$ # of claims reported by year end $\sim Bin(y,d)$
+
+Unreported claims = $R(x) = \dfrac{s}{1-s}(x + r)$ <span style="color:red; background:yellow">Formula</span>
+
+* $s = (1-d)(1-p)$
+
+## Bayesian Credibility
+
+$L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
+
+* Y = Ultimate Losses; X = Reported Losses
+* $L(x)$ = best linear estimator of Y|X = least square estimate
+
+| Scenarios | Implications |
+| --- | --- |
+| $x = \mathrm{E[X]}$ | $L(X) = \mathrm{E[Y]}$ |
+| $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \approx \mathrm{E[Y]}$; X, Y dont' vary tightly together|
+| $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \mathrm{E[Y - X]}$; BF Method |
+| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | Y is significantly influenced by X; Use LS <span style="color:red">I think</span>|
+
+### Credibility Form of the Development Formula
+
+$L(x) = Z \dfrac{x}{d} + (1-Z)\mathrm{E[Y]}$
+
+* $Z = \dfrac{VHM}{VHM + EVPV} = \dfrac{\mathrm{Var_Y(E[X|Y])}}{\mathrm{Var_Y(E[X|Y])}+\mathrm{E_Y[Var(X|Y)]}}$
+
+    * $VHM = d^2 \sigma^2_Y$
+    
+    * $EVPV = \sigma^2_d[\sigma^2_Y + \mathrm{E[Y]}^2]$
+
+* $d =$ % reported
+
+    * **Assumption** same $d$ for any size of $y$; Not necessarily true for large or small $y$
+
+    * $d \: {\perp\!\!\!\perp} \: X$
+    
+    * $D = \dfrac{X}{Y}$
+    
+* Resutls sensitive to $\mathrm{E[Y]}$ and $\mathrm{E[D]}$ but not the $\sigma$
+
+* $L(x) = Q(x)$ when $Q(x)$ is linear
+
+* Use this when underlying distribution not stable (historical not a good predictor); LS only works when the underlying dist^n^ are stable
+
+* Based on estimates of VHM and EVPV of the dist^n^ instead
+
+Poi - Bin
+
+* $L(x) = x + (1-d)\mathrm{E(Y)}$
+* $Z = d$
+* Same as BF
+* BF is optimal when claim counts follow Poi - Bin
+
+### Caseload Effect
+
+When $D$ and $Y$ not independent still works
+
+* e.g. $d$ larger for small $y$ since small claims are settle faster
+* Or the opposite whne large $y$ has as larger $d$: For a property book when large weather event happens, report quicker
+
+$L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$
+
+**Assumption**:  
+$\mathrm{E[X|Y=y]} = dy + x_0$; $x_0$ is for the fixed salary
+
+### Calculation
+
+Normalize the losses by dividing with premium since LS assume constant distribution
+
+Calculates ATU, so needs the tail factor first and also start from the oldest period
+
+Recusively go backwards using the previous estimates
+
+$Z = \dfrac{b}{c}$; $c$ is the ATU
