@@ -11,7 +11,7 @@
 
 <meta name="author" content="Brosius" />
 
-<meta name="date" content="2016-02-28" />
+<meta name="date" content="2016-03-02" />
 
 <title>A1 Loss Development Using Credibility</title>
 
@@ -111,7 +111,7 @@ $(document).ready(function () {
 
 <h1 class="title">A1 Loss Development Using Credibility</h1>
 <h4 class="author"><em>Brosius</em></h4>
-<h4 class="date"><em>February 28, 2016</em></h4>
+<h4 class="date"><em>March 02, 2016</em></h4>
 
 </div>
 
@@ -124,6 +124,7 @@ $(document).ready(function () {
 <li><a href="#caseload-effect">Caseload Effect</a></li>
 <li><a href="#calculation">Calculation</a></li>
 </ul></li>
+<li><a href="#conclusions">Conclusions</a></li>
 </ul>
 </div>
 
@@ -281,11 +282,26 @@ $(document).ready(function () {
 </div>
 <div id="calculation" class="section level3">
 <h3>Calculation</h3>
-<p>Normalize the losses by dividing with premium since LS assume constant distribution</p>
+<p><strong>Normalize</strong> the losses by dividing with premium since LS assume constant distribution and also <strong><em>adjust for inflation</em></strong></p>
 <p>Calculates ATU, so needs the tail factor first and also start from the oldest period</p>
 <p>Recusively go backwards using the previous estimates</p>
 <p><span class="math inline">\(Z = \dfrac{b}{c}\)</span>; <span class="math inline">\(c\)</span> is the ATU</p>
+<p>Notes:</p>
+<ul>
+<li><p><span class="math inline">\(a\)</span> = Projected ultimate if no losses are reported</p></li>
+<li><p>AY matures <span class="math inline">\(\Rightarrow a \: \downarrow\)</span>; <span class="math inline">\(Z \uparrow\)</span>; <span class="math inline">\(c \downarrow\)</span></p></li>
+<li><p>If a &lt; 0 <span class="math inline">\(\Rightarrow\)</span> Use Chainladder to make a = 0</p></li>
+<li><p>If b &lt; 0 <span class="math inline">\(\Rightarrow\)</span> Use ELR</p></li>
+<li><p>If b = 0 <span class="math inline">\(Rightarrow\)</span> Same as BF</p></li>
+</ul>
 </div>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>LS is the best linear estimate of <span class="math inline">\(Q(x)\)</span>, the theoretical best estimate of the ultimate loss</p>
+<p>LS produce more reasonable results when year to year fluctuations are severe</p>
+<p>LS does not do well when the variations are due to underlying changes in the payment pattern (due to internal or external changes)</p>
+<p>Subject to sampling error when estimating parameters similar to other methods</p>
 </div>
 
 

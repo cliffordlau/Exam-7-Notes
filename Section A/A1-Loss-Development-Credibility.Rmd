@@ -74,7 +74,7 @@ $L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
 | Scenarios | Implications |
 | --- | --- |
 | $x = \mathrm{E[X]}$ | $L(X) = \mathrm{E[Y]}$ |
-| $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \approx \mathrm{E[Y]}$; X, Y dont' vary tightly together|
+| $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \approx \mathrm{E[Y]}$; X, Y don't' vary tightly together|
 | $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \mathrm{E[Y - X]}$; BF Method |
 | $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | Y is significantly influenced by X; Use LS <span style="color:red">I think</span>|
 
@@ -96,7 +96,7 @@ $L(x) = Z \dfrac{x}{d} + (1-Z)\mathrm{E[Y]}$
     
     * $D = \dfrac{X}{Y}$
     
-* Resutls sensitive to $\mathrm{E[Y]}$ and $\mathrm{E[D]}$ but not the $\sigma$
+* Results sensitive to $\mathrm{E[Y]}$ and $\mathrm{E[D]}$ but not the $\sigma$
 
 * $L(x) = Q(x)$ when $Q(x)$ is linear
 
@@ -116,7 +116,7 @@ Poi - Bin
 When $D$ and $Y$ not independent still works
 
 * e.g. $d$ larger for small $y$ since small claims are settle faster
-* Or the opposite whne large $y$ has as larger $d$: For a property book when large weather event happens, report quicker
+* Or the opposite when large $y$ has as larger $d$: For a property book when large weather event happens, report quicker
 
 $L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$
 
@@ -125,10 +125,32 @@ $\mathrm{E[X|Y=y]} = dy + x_0$; $x_0$ is for the fixed salary
 
 ### Calculation
 
-Normalize the losses by dividing with premium since LS assume constant distribution
+**Normalize** the losses by dividing with premium since LS assume constant distribution and also ***adjust for inflation***
 
 Calculates ATU, so needs the tail factor first and also start from the oldest period
 
-Recusively go backwards using the previous estimates
+Recursively go backwards using the previous estimates
 
 $Z = \dfrac{b}{c}$; $c$ is the ATU
+
+Notes:
+
+* $a$ = Projected ultimate if no losses are reported
+
+* AY matures $\Rightarrow a \: \downarrow$; $Z \uparrow$; $c \downarrow$
+
+* If a < 0 $\Rightarrow$ Use Chainladder to make a = 0
+
+* If b < 0 $\Rightarrow$ Use ELR
+
+* If b = 0 $Rightarrow$ Same as BF
+
+## Conclusions
+
+LS is the best linear estimate of $Q(x)$, the theoretical best estimate of the ultimate loss
+
+LS produce more reasonable results when year to year fluctuations are severe
+
+LS does not do well when the variations are due to underlying changes in the payment pattern (due to internal or external changes)
+
+Subject to sampling error when estimating parameters similar to other methods
