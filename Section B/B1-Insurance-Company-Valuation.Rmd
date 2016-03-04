@@ -1,0 +1,11 @@
+---
+title: "B1 P&C Insurance Company Valuation"
+author: "R. Goldfarb"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+
