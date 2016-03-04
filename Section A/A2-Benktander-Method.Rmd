@@ -1,0 +1,33 @@
+---
+title: "A2 Credible Claims Reserve: The Benktander Method"
+author: "T. Mack"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+## Benktander Method (GB)
+
+$R_{GB} = q_kU_{BF}$
+
+* $q_k = (1 - p_k)$ = % unpaid loss @ $k$
+
+* $U_{BF} = C_k + q_kU_0$
+
+* Recognizes actual emergence faster $\Rightarrow$ Less weight on the a-priori
+
+* Weight on $U_0$ is $q_k^2$
+
+$U_{GB} = (1-q_k)U_{CL} + q_kU_{BF}$
+
+MSE of Benkander is almost as small as the MSE of the optimal credibility in most cases
+
+$MSE(R_{GB}) < MSE(R_{BF})$
+
+* When $p_k \in [0, 2c^*]$; $c^*$ is the optimal credibility
+
+* Doesn't hold if $c^*$ is small and $p_k$ is large
+
+Theorem 3.1: As you iterate the Benktender many more times, the weight to $U_0$ approaches 0 and full credibility goes to the CL method
