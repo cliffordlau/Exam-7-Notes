@@ -11,7 +11,7 @@
 
 <meta name="author" content="G. Venter" />
 
-<meta name="date" content="2016-03-06" />
+<meta name="date" content="2016-03-10" />
 
 <title>A7 Testing the Assumptions of Age-to-Age Factors</title>
 
@@ -111,12 +111,332 @@ $(document).ready(function () {
 
 <h1 class="title">A7 Testing the Assumptions of Age-to-Age Factors</h1>
 <h4 class="author"><em>G. Venter</em></h4>
-<h4 class="date"><em>March 06, 2016</em></h4>
+<h4 class="date"><em>March 10, 2016</em></h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#definitions-and-assumptions">Definitions and Assumptions</a></li>
+<li><a href="#testable-implications-of-assumptions">6 Testable Implications of Assumptions</a></li>
+<li><a href="#implication-1">Implication 1</a></li>
+<li><a href="#implication-2">Implication 2</a><ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variance-assumptions">Variance Assumptions</a><ul>
+<li><a href="#bf">BF</a></li>
+<li><a href="#chainladder">Chainladder</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#implication-3-linearity">Implication 3: Linearity</a></li>
+<li><a href="#implication-4-stability">Implication 4: Stability</a></li>
+<li><a href="#implication-5-no-correlation-on-columns">Implication 5: No Correlation on Columns</a></li>
+<li><a href="#implication-6-no-high-of-low-diagonals">Implication 6: No High of Low Diagonals</a><ul>
+<li><a href="#diagonal-trend-as-inflation">Diagonal Trend as Inflation</a></li>
+</ul></li>
+</ul>
+</div>
 
-
+<div id="definitions-and-assumptions" class="section level2">
+<h2>Definitions and Assumptions</h2>
+<p><strong>Definitions</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Notations</th>
+<th align="left">Definitions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(w\)</span></td>
+<td align="left">AYs</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(d\)</span></td>
+<td align="left">Dev period; <span class="math inline">\(d=0\)</span> is age @ end of year 1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(c(w,d)\)</span></td>
+<td align="left">Cum losses for AY <span class="math inline">\(w\)</span> age <span class="math inline">\(d\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(q(w, d+1)\)</span></td>
+<td align="left">Inc losses for AY <span class="math inline">\(w\)</span> age <span class="math inline">\(d\)</span> to <span class="math inline">\(d+1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(f(d)\)</span></td>
+<td align="left">Col parameters; LDFs or % paid; applies to whole col</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(h(w)\)</span></td>
+<td align="left">Row parameters; Ult losses; applies to whole row</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mack’s assumptions</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\operatorname{E}[q(w,d+1) \mid \text{Data to } w+d] = f(d) \: c(w,d)\)</span></p>
+<ul>
+<li>Expected incremental development is <span class="math inline">\(propto\)</span> reported losses</li>
+</ul></li>
+<li><p><span class="math inline">\(c(w,d)\)</span> is <span class="math inline">\(\perp\!\!\!\perp\)</span> of <span class="math inline">\(c(v,g)\)</span> <span class="math inline">\(\forall\)</span> <span class="math inline">\(d,g,v,w\)</span> given <span class="math inline">\(v \neq w\)</span></p>
+<ul>
+<li>AY’s losses are <span class="math inline">\(\perp\!\!\!\perp\)</span> of other AYs’ losses</li>
+</ul></li>
+<li><p><span class="math inline">\(\operatorname{Var}[q(w,d) \mid \text{Data to } w+d] = a[d,c(w,d)]\)</span></p>
+<ul>
+<li><p>Variance of incremental losses is a function of reported losses and age</p></li>
+<li><p>Different <span class="math inline">\(a(\cdots)\)</span> change the <span class="math inline">\(\hat{f}\)</span> estimate</p></li>
+<li><p>Mack assumes <span class="math inline">\(\operatorname{Var}(q) = ac\)</span>, variance is <span class="math inline">\(\propto\)</span> cumulative losses</p>
+<ul>
+<li><p><span class="math inline">\(f = \dfrac{\sum_w c \frac{q}{c}}{\sum_w c}\)</span></p></li>
+<li><p>Volume weighted LDF - 1</p></li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+<div id="testable-implications-of-assumptions" class="section level2">
+<h2>6 Testable Implications of Assumptions</h2>
+<p>Compare different fit of the models based on adjusted <span class="math inline">\(SSE\)</span> (actual vs projected x 1st column)</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\dfrac{SSE}{(n-p^2)}\)</span></p></li>
+<li><p><span class="math inline">\(AIC \approx SSE \times e^{2p/n}\)</span></p>
+<ul>
+<li>Can be too permissive of over-parameterization for large data sets</li>
+</ul></li>
+<li><p><span class="math inline">\(BIC \approx SSE \times n^{p/n}\)</span></p></li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(n =\)</span> # of predicted data points <strong>EXCLUDING 1st column</strong></p></li>
+<li><p><span class="math inline">\(p =\)</span> # of parameters</p></li>
+<li><p><span class="math inline">\(SSE = \sum (A - E)^2\)</span></p>
+<ul>
+<li>Here you exclude the first column when calculating the difference</li>
+</ul></li>
+</ul>
+<hr />
+<p><strong>6 Testable Implications</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Statistical significance of <span class="math inline">\(f(d)\)</span></p></li>
+<li><p>Is there a better estimate for <span class="math inline">\(q\)</span> than <span class="math inline">\(f \times c\)</span></p></li>
+<li><p>Check residuals against <span class="math inline">\(c(w,d)\)</span></p></li>
+<li><p>Stability of <span class="math inline">\(f(d)\)</span> down the column</p></li>
+<li><p>No correlation among columns</p></li>
+<li><p>No particularly high or low diagonals</p></li>
+</ol>
+</div>
+<div id="implication-1" class="section level2">
+<h2>Implication 1</h2>
+<p>Check if the coefficient is <span class="math inline">\(&gt; 2 \times \sigma\)</span> for 95% sure they are <span class="math inline">\(\neq 0\)</span></p>
+<ul>
+<li>Can do <span class="math inline">\(1.65 \sigma\)</span> for 90% confidence</li>
+</ul>
+</div>
+<div id="implication-2" class="section level2">
+<h2>Implication 2</h2>
+<div id="parameters" class="section level3">
+<h3>Parameters</h3>
+<p>Alternative projection on a <span class="math inline">\(m \times m\)</span> triangle</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(\mathbf{q(w,d)}\)</span></th>
+<th align="left">Parameters</th>
+<th align="left">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(f(d) c(w,d) + g(d)\)</span></td>
+<td align="left"><span class="math inline">\(2m - 2\)</span></td>
+<td align="left">e.g. Least Squares</td>
+</tr>
+<tr class="even">
+<td align="left">Chainladder</td>
+<td align="left"><span class="math inline">\(m - 1\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(f(d)h(w)\)</span></td>
+<td align="left"><span class="math inline">\(2m-2\)</span></td>
+<td align="left">e.g. BF</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(f(d)h\)</span></td>
+<td align="left"><span class="math inline">\(m-1\)</span></td>
+<td align="left">e.g. Cape Cod</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>The -2 for the BF is due to f(0) and constant</p></li>
+<li><p>Can further reduce parameters by combining some row and column parameters</p></li>
+<li><p>If BF is better <span class="math inline">\(\Rightarrow\)</span> Loss emergence is more accurately represented as fluctuating around a proportion of expected ultimate losses rather than proportion of reported losses</p></li>
+<li><p>Cape Cod works when the loss ratio is stable</p></li>
+</ul>
+</div>
+<div id="variance-assumptions" class="section level3">
+<h3>Variance Assumptions</h3>
+<p>Error term: <span class="math inline">\(\varepsilon(w,d) = q(w,d) - f(d)h(w)\)</span></p>
+<p>Different variance assumption for <span class="math inline">\(\varepsilon\)</span> <span class="math inline">\(\Rightarrow\)</span> different parameters</p>
+<p><span class="math inline">\(\operatorname{Var}(\varepsilon) = f^p h^q\)</span></p>
+<ul>
+<li><p><span class="math inline">\(p\)</span> &amp; <span class="math inline">\(q\)</span> typically in (0,1,2)</p></li>
+<li><p>Weights will be <span class="math inline">\(\dfrac{1}{f^p h^q}\)</span></p></li>
+<li><p><span class="math inline">\(f(d)\)</span> = weighted average of <span class="math inline">\(\frac{q}{h}\)</span></p></li>
+<li><p><span class="math inline">\(h(w)\)</span> = weighted average of <span class="math inline">\(\frac{q}{f}\)</span></p></li>
+</ul>
+<div id="bf" class="section level4">
+<h4>BF</h4>
+<table style="width:22%;">
+<colgroup>
+<col width="5%"></col>
+<col width="5%"></col>
+<col width="5%"></col>
+<col width="5%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="left"><span class="math inline">\(\mathbf{\operatorname{Var}(q)}\)</span></th>
+<th align="left"><span class="math inline">\(\mathbf{f(d)}\)</span></th>
+<th align="left"><span class="math inline">\(\mathbf{h(w)}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BF w/ Constant Var</td>
+<td align="left"><span class="math inline">\(a(d); p=q=0\)</span></td>
+<td align="left"><span class="math inline">\(f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}\)</span></td>
+<td align="left"><span class="math inline">\(h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Cape Cod</td>
+<td align="left"><span class="math inline">\(a(d); p=q=0\)</span></td>
+<td align="left"><span class="math inline">\(f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}\)</span></td>
+<td align="left"><span class="math inline">\(h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">BF w/ Var <span class="math inline">\(\propto\)</span> <span class="math inline">\(fh\)</span></td>
+<td align="left"><span class="math inline">\(a(d)\:fh; p=q=1\)</span></td>
+<td align="left"><span class="math inline">\(f^2(d) = \dfrac{\sum_w h (\frac{q}{h})^2}{\sum_w h}\)</span></td>
+<td align="left"><span class="math inline">\(h^2(w) = \dfrac{\sum_d f (\frac{q}{f})^2}{\sum_d f}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><span class="math inline">\(f(d)\)</span> is % losses paid @ <span class="math inline">\(d\)</span></p>
+<ul>
+<li>Estimate by <span class="math inline">\(\frac{q}{h}\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(h(w)\)</span> is estimate of ultimate losses</p>
+<ul>
+<li>Estimate by <span class="math inline">\(\frac{q}{f}\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(f(d)\)</span> <span class="math inline">\(\sum \downarrow\)</span>; <span class="math inline">\(h(w)\)</span> <span class="math inline">\(\sum \rightarrow\)</span> (for the constant var BF)</p></li>
+<li><p>Need to seed on of them and iterate until convergence</p></li>
+<li><p>Use the above to estimate the parameters and then calculate the unpaid</p></li>
+<li><p>When combining parameters, don’t count the <span class="math inline">\(f(0)\)</span> and always subtract 1</p></li>
+</ul>
+</div>
+<div id="chainladder" class="section level4">
+<h4>Chainladder</h4>
+<p><span class="math inline">\(\operatorname{E}[q(w,d+1)] = f(d)c(w,d)\)</span></p>
+<ul>
+<li><p><span class="math inline">\(n = \sum_i+1^{m-1} i = \dfrac{m(m-1)}{2}\)</span> = predicted data point?</p></li>
+<li><p><span class="math inline">\(p=m-1\)</span> since we dont’ predict the first column</p></li>
+<li><p><span class="math inline">\(m =\)</span> dimension</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(\mathbf{\operatorname{Var}(q)}\)</span></th>
+<th align="left"><span class="math inline">\(\mathbf{f(d)}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(a(d) c\)</span></td>
+<td align="left"><span class="math inline">\(f(d) = \dfrac{\sum c \frac{q}{c}}{\sum c}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(a(d) c^2\)</span></td>
+<td align="left"><span class="math inline">\(f(d) = \dfrac{\sum 1 \frac{q}{c}}{\sum 1}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(a(d)\)</span></td>
+<td align="left"><span class="math inline">\(f(d) = \dfrac{\sum c^2 (\frac{q}{c})}{\sum c^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><span class="math inline">\(f(d)\)</span> LDF minus 1</p>
+<ul>
+<li>Estimate by <span class="math inline">\(\frac{q}{c}\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="implication-3-linearity" class="section level2">
+<h2>Implication 3: Linearity</h2>
+<p>The forecast incremental losses doesn’t have to be linear</p>
+<p>Test for linearity to make sure the residuals are not a sequence of positive then negative and vice versa</p>
+</div>
+<div id="implication-4-stability" class="section level2">
+<h2>Implication 4: Stability</h2>
+<p>Look at empirical LDFs <span class="math inline">\(f(d)\)</span> down a column</p>
+<ul>
+<li><p>Use the entire history if factors are stable</p></li>
+<li><p>Take more recent average if unstable or follow a trend</p></li>
+</ul>
+</div>
+<div id="implication-5-no-correlation-on-columns" class="section level2">
+<h2>Implication 5: No Correlation on Columns</h2>
+<p>Calculate Pearso correlation for every pair of columns with at least 3 LDFs</p>
+<ul>
+<li><p>This is a test on the LDFs</p></li>
+<li><p>Test with only 2 LDFs will either be 1 or -1</p></li>
+</ul>
+<p>Correlation <span class="math inline">\(r = \dfrac{\sum \tilde{x} \tilde{y}}{\sqrt{\sum \tilde{x}^2\sum \tilde{y}^2}}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\tilde{x} = x - \bar{x}\)</span></p></li>
+<li><p><span class="math inline">\(\tilde{y} = y - \bar{y}\)</span></p></li>
+</ul>
+<p>Test statistics: <span class="math inline">\(T = r \left[ \dfrac{n-2}{1-r^2} \right]^{1/2}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(T \sim t_{n-2}\)</span></p></li>
+<li><p>Look up the t-value from table for 90%</p></li>
+<li><p>If the absolute value of <span class="math inline">\(T &lt;\)</span> table value <span class="math inline">\(\Rightarrow\)</span> Not correlated</p></li>
+</ul>
+<p>Perform test for all columns (with 3 or more LDFs pair)</p>
+<ul>
+<li><p>Correlations within the triangle if more than <span class="math inline">\(0.1 m + \sqrt{m}\)</span> pairs are correlated</p></li>
+<li><p>m = # of pair tested</p></li>
+</ul>
+</div>
+<div id="implication-6-no-high-of-low-diagonals" class="section level2">
+<h2>Implication 6: No High of Low Diagonals</h2>
+<p>Run regression that includes a variable for each diagonal</p>
+<p>Each <span class="math inline">\(q(w,d)\)</span> is regressed against the cumulative losses at the prior period + dummy variable for which diagonal it is in</p>
+<ul>
+<li><p><span class="math inline">\(q(w,d) ~ c(w,d-1) + diagonal_{year}\)</span></p></li>
+<li><p>If diagonal significatly high or low <span class="math inline">\(\Rightarrow\)</span> Dummy variable should have a statistically significant coefficient</p></li>
+<li><p>Same criteria where it is significant if coefficient is double the <span class="math inline">\(\sigma\)</span></p></li>
+</ul>
+<p>Deficiceny of this method is that the diagonal effect is additive</p>
+<ul>
+<li><p>More likely to see multiplicative impact. e.g. from inflation</p></li>
+<li><p>This can be implement with a regression on the logarithm of the losses</p></li>
+</ul>
+<div id="diagonal-trend-as-inflation" class="section level3">
+<h3>Diagonal Trend as Inflation</h3>
+<p>Model <span class="math inline">\(q(w,d)\)</span> with a diagonal parameter <span class="math inline">\(w+d\)</span></p>
+<p><span class="math inline">\(\operatorname{E}[q(w,d)] = f(d)h(w)g(w+d)\)</span></p>
+<p>Model constant CY trend to reduce the parameters:</p>
+<p><span class="math inline">\(g(w+d) = (1+j)^{w+d}\)</span></p>
+</div>
+</div>
 
 
 
