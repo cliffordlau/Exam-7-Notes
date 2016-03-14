@@ -68,7 +68,7 @@ $\operatorname{Var}[q(w,d)] = \phi m_{wd}^z$
 
 ## Parameterize with GLM
 
-For a $3\times 3$ triange:
+For a $3\times 3$ triangle:
 
 **Log Actual incremental losses**
 
@@ -121,7 +121,7 @@ $\begin{array}{ccccc}
 
     * Defines the parameters used to estimate the losses
 
-* $A =$ parmeters
+* $A =$ parameters
 
     * Solve for $A$ by minimizing the difference^2^ (SSE) between $W$ and $Y$
     
@@ -139,7 +139,7 @@ GLM model = Chainladder w/ volume-weighted averages when:
 
 Benefits:
 
-* Replace GLM fitting with much simplier calculation
+* Replace GLM fitting with much simpler calculation
 * LDFs are easier to explain
 * Still works even when there are negative incremental values
 
@@ -218,7 +218,7 @@ $\phi^{EV} = \dfrac{\sum \left(r^{EV}_{wd}\right)^2}{n-p}$
 
 **Standarized Residuals**
 
-Pinheiro proposed to standarized residuals so they all have same variance
+Pinheiro proposed to standardized residuals so they all have same variance
 
 $\phi^H = \dfrac{\sum \left(r_{wd}^H \right)^2}{n}$
 
@@ -237,8 +237,8 @@ $\phi^H = \dfrac{\sum \left(r_{wd}^H \right)^2}{n}$
 
 **Use incurred loss triangle**
 
-* Convert utlimate from incurred to a payment stream based on paid analysis
-* Correlate the simluations from the 2 method so that if we have large payment @ an older age, the incurred should be large as well
+* Convert ultimate from incurred to a payment stream based on paid analysis
+* Correlate the simulations from the 2 method so that if we have large payment @ an older age, the incurred should be large as well
 
 **Use BF Ult for recent years**
 
@@ -284,7 +284,7 @@ How to deal with negative incremental values in the triangle
 
 * Only if the assumptions fit
 
-* Need to make use the absoluate value for the residual and resampling formula:
+* Need to make use the absolute value for the residual and re-sampling formula:
 
     * $r_{wd} = \dfrac{q(w,d)-m_{wd}}{\sqrt{abs(m_{wd})}}$
 
@@ -306,7 +306,7 @@ Column with negative mean can results in vary large LDFs, 4 options to deal with
 
 1) ***Remove the extreme iterations***
 
-* But beware of understaing the the likelihood of extreme outcomes
+* But beware of understating the the likelihood of extreme outcomes
 
 2) ***Recalibrate*** the Model
 
@@ -378,7 +378,7 @@ Remove extreme values that are not representative of the variability of the loss
 
 * Just remove the value and treat them as missing values or,
 
-* Exclude in LDFs but continue to use them when calculating residuals and use them for the resampling
+* Exclude in LDFs but continue to use them when calculating residuals and use them for the re-sampling
 
 ### Heteroskedasticity
 
@@ -386,7 +386,7 @@ Non constant variance
 
 **Stratified Sampling**
 
-Split the triangle into groups with similar variance and only sample residuals that are in ther group
+Split the triangle into groups with similar variance and only sample residuals that are in the group
 
 *Cons*: each group may not be that large
 
@@ -410,13 +410,13 @@ Accident years have different level of exposures
 
 **Partial First Development Period**
 
-Only want partial accient year
+Only want partial accident year
 
 No impact to residuals for bootstrap
 
 2 options:
 
-* Reduce the mean of the incremental cells by proration in the process variance step
+* Reduce the mean of the incremental cells by pro ration in the process variance step
 
 * Prorate after the process variance step
 
@@ -430,9 +430,9 @@ Latest diagonal is partial
     
 * GLM
 
-    * Adjust the exposure in the last diagonal to make them consistent with the rest of the triangle (probably means adjusting annualing the loss)
+    * Adjust the exposure in the last diagonal to make them consistent with the rest of the triangle (probably means adjusting annualizing the loss)
 
-Then prorate the losses simiar to the first scenario
+Then prorate the losses similar to the first scenario
 
 ### Exposure Adjustment
 
@@ -452,7 +452,7 @@ Judge the quality of the model
 
 1) Test Assumptions in model
 
-2) Gauge quality of modle fit
+2) Gauge quality of model fit
 
 3) Guide the adjustments of model parameters
 
@@ -480,7 +480,7 @@ Or use something that penalize number of parameters
 
 ### Outlier
 
-Remove true outliers but do not want to remove points that are realistics extreme scenarios
+Remove true outliers but do not want to remove points that are realistic extreme scenarios
 
 Use box & whisker plot
 
@@ -513,3 +513,100 @@ Read summarized output by AYs
 
 ## Using Multiple Models
 
+Use different methods (Paid/Inc'd Dev, BF, etc) by assigning weights by AYs
+
+Method 1:  
+In the process variance step of bootstrap, use the same underlying U(0,1) to draw from each model then weight the models by the %
+
+Method 2:  
+Run each model independently for each simulation (i.e. use different U(0,1)) then for each AY use the weights to randomly select one of the modeled results. Results will be a mixture of the various models
+
+Important to review the statistics in the above section for each output
+
+Fit the unpaid claim distribution to Normal, LogNormal, and Gamma. Then compare with the fit based on the actual residuals on various statistics <a name="pearson-res"></a><span style="color:red">Not sure what distribution this is talking about</span>
+
+### Other Model Outputs
+
+**Estimated Cash Flow Results**
+
+Since bootstrap generates simulation for each cell in the bottom half of the triangle we can use this to get cash flow forecasts by CY and the percentiles as well
+
+**Estimated Ultimate Loss Ratio Results**
+
+We can estimate the variability of ultimate loss ratio since we vary and simulate the whole "square"
+
+**Distribution Graphs**
+
+Draw a distribution of the simulated unpaid in a histogram
+
+Can also smooth the histogram with Kernel density function
+
+* For each point it takes a weighted average of the points around it; giving less weight to points further from it
+
+## Correlation
+
+Correlate the loss distribution over several LoB
+
+* Multivariate distribution requires the same underlying distribution which doesn't work here for ODP
+
+**Location Mapping**
+
+When sampling the residuals, sample from the same place in the triangle for all the lines we want to correlate
+
+Disadvantages:
+
+* Requires all LoB to have the same size triangle with no missing values or outliers
+
+* Cannot stress the correlations among the LoBs
+
+**Re-Sorting**
+
+Use Iman-Conover algorithms or Copulas
+
+Advantages:
+
+* Can accommodate different shapes and sizes
+
+* Can make different correlation assumptions
+
+* Can strengthen the correlation for extreme events (e.g. Copulas)
+
+Calculate correlation matrix using Spearman's Rank Order
+
+* Re-sorting based on the ranks of unpaid claims by AYs
+
+***
+
+Using residuals to correlate LoBs (Both location mapping  & re-sorting) are both liable to create correlations close to zero
+
+Reserve Risk:
+
+* Correlate total unpaid by correlating the incremental paid. May or may not be a reasonable approximation
+
+Pricing Risk:
+
+* Correlate loss ratios over time
+
+* Not as likely to be close to zero
+
+* Use different correlation assumption than for reserve risk
+
+## Miscellaneous
+
+**Model Testing**
+
+Based on testing from General Insurance Reserving Oversight Committee, the ODP Bootstrap with England & Verrall residual out perform the Mack model by forecasting the 99%-ile better
+
+* ODP losses only exceed 99%-ile ~3% of the time compare to Mack's 8-13%
+
+**Future Research**
+
+* Test ODP bootstrap on realistic data from CAS loss simulation model
+
+* Expand ODP bootstrap with Munich Chainladder, claim counts and severity
+
+* Research other risk analysis measures and use for ERM
+
+* Use for SII requirements
+
+* Research in correlation matrix (difficult to estimate)
