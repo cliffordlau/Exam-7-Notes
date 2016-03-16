@@ -1,0 +1,181 @@
+---
+title: "A4 A Model for Reserving Workers Compensation High Deductibles"
+author: "J. Siewert"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+## Intro
+
+WC high deductible reserving with occurrence and/or aggregate deductible
+
+## 1. Loss Ratio Method
+
+**Per Occurrence Expected XS loss**
+
+$P \cdot E \cdot \chi$
+
+* $P$ = Premium
+
+* $E$ = Expected ground up loss ratio
+
+* $\chi$ = Occurrence charge = % of losses above deductible
+
+**Expected Loss XS Aggregate**
+
+$P \cdot E \cdot (1-\chi) \cdot \varphi$
+
+* $\varphi$ = Aggregate charge = % of losses in deductible layer that exceed the aggregate
+
+***
+
+$\chi$ and $\varphi$ are from industry tables
+
+* Specific to the deductible, aggregate, and size of expected losses
+
+These are ultimate loss estimate
+
+**Advantages**
+
+* Useful when little data is available
+
+* Ties to pricing
+
+* Can include industry experience
+
+**Disadvantages**
+
+* Ignores actual emergence
+
+* May not properly reflect account characteristics
+
+## 2. Implied Development
+
+Ultimate excess loss = ultimate unlimited loss - ultimate limited loss
+
+* Need to make sure LDFs and development are consistent with the different layers
+
+* Adjust the deductible for inflation when selecting limited LDFs; Else it distorts the LDFs
+
+**Advantages**
+
+* Get estimate for early period with no losses
+
+* Limited factors are more stable
+
+**Disadvantage %>% s**
+
+* Weakness: Does not directly estimate the XS loss
+
+## 3. Direct Development
+
+Determine LDFs for XS layer with unlimited LDFs, limited LDFs and $\chi$
+
+$XSLDF_t^{L} = \dfrac{Ult_{XS}}{S_t^{XS}} = \dfrac{Ult \times \chi}{\frac{Ult}{LDF_t} - \frac{Ult\times(1-\chi)}{LDF_t^L}}$
+
+**Disadvantages**
+
+* LDFs large and volatile, not recommend this method
+
+## 4. Credibility Weighting Techniques / Bornhuetter-Ferguson
+
+Ultimate Loss: $L = Z\underbrace{(O_t \cdot XSLDF_t^{L})}_{\text{Inc'd to Date } \times \text{ XS LDF}} + (1 - Z)\underbrace{E}_{\text{Method 1}}$
+
+* $Z = \frac{1}{LDF_t^XS}$ then we have the BF method
+
+## 5. Development Method
+
+**Data**
+
+Group up WC claims level data
+
+Indemnity, medical and ALAE together
+
+Can split the data by account, injury, and state as a future step
+
+### Severity Trend
+
+Important to account for loss trend when capping losses; To apply different limits to the historical data by AYs or else there will be more and more losses piercing the limiting layer $\Rightarrow$ Distorting the LDFs
+
+1) Look at average severity of unlimited losses by AY and fit an exponential curve
+
+    * Can use different trend for different years
+    
+    * Can adjust for large losses as well
+    
+2) Cap the historical losses at lower amount to compensate for the loss trend by detrending the historical layer
+
+### Claim Count Development
+
+Split the development of claim count by focusing on ground up claims
+
+**Advantages**:
+
+* Most claims are reported not too deep in the tail even if the full severity in not yet known
+
+* If you only count claims once they pierce the deductible layer you have to deal with uncertain claim count development deep into the tail
+
+* If your claim counts depend on the limits, every time you update the severity trend assumptions the claim counts will change
+
+### Severity LDFs
+
+**Def^n^**
+
+$R_t^L = \dfrac{\text{Limited Sev @ t}}{\text{Unlimited Sev @ t}}$
+
+* Relativity starts close to 1.00, and drops over time before reaching the ultimate relativity
+
+* The losses limited at higher limits start with a very high relativity (close to 1.00), and take longer to come down
+
+$R^L = \dfrac{\text{Limited Sev @ Ult}}{\text{Unlimited Sev @ Ult}}$
+
+**Key Relationships**
+
+$LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}$
+
+* $\cdots = \dfrac{C \cdot S^L}{C_t \cdot S^L_t} = \dfrac{C \cdot S \cdot R^L}{C_t \cdot S_t \cdot R^L_t} = \dfrac{C \cdot S}{C_t \cdot S_t } \times \dfrac{R^L}{R^L_t} = \cdots$
+
+* $C$ is claim count and $S$ is severity
+
+$XSLDF_t^L = LDF_t \dfrac{(1-R^L)}{(1-R_t^L)}$
+
+$LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot XSLDF^L_t$
+
+* This formula doesn't require $R^L$
+
+**Incremental LDFs**
+
+$\dfrac{ILDF^L_t}{ILDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}$
+
+* Difference of limited and unlimited incremental LDFs is driven by the change in relativity
+
+$\dfrac{IXSLDF^L_t}{IXSLDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}$
+
+## 6. Distribution Model
+
+Model severity of losses @ each age with Weibull
+
+* Parameters different @ different ages; make sure they are consistent
+
+* This will maintain the relationships of the limited and unlimited over time
+
+* Can easily interpolate among limits and years
+
+* Mean of Weibull = $\theta \cdot \Gamma (1 + \frac{1}{\omega})$
+
+Can then use the distribution and then applies all the relationships discussed in 5
+
+## Aggregate Limits
+
+Use collective risk model with Poisson and Weibull to build out a table with excess loss for each deductible and aggregate
+
+Need 4 inputs: expected unlimited, age, deductible and aggregate limit
+
+The paper shows calculating the reserve as just the expected aggregate loss $\times$ % unreported
+
+* Doesn't take into account if the aggregate is about to be pieced of not
+
+Appendix discuss calculation with Table M
