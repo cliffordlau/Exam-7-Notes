@@ -32,7 +32,12 @@ Chainladder assumes 1) LDFs are the same for each row 2) Each AY has a parameter
 
 ### Loss Distribution
 
-![alt text](figures/Exam 7 Notes - 1.png)
+```{r fig.width=5, fig.height=5,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("figures/Exam 7 Notes - 1.png")
+ grid.raster(img)
+```
 
 <a name="loss-dist"></a>
 **Mean** losses for $q(w,d)$:
