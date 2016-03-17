@@ -9,3 +9,120 @@ output:
 ---
 
 ## Intro
+
+Uses Bayesian techniques to allow incorporation of expert opinion and also maintain the integrity of the prediction error
+
+* Take into account prior knowledge in setting reserves
+
+* Calculating prediction error using prior knowledge
+
+**Notation**
+
+$c_{ij}$ Incremental claims for AY $i$ and age $j$
+
+$D_{ij}$ Cumulative claims = $\sum_{k=1}^j c_{ij}$
+
+$\lambda_j$ Expected development from $D_{ij-1}$ to $D_{ij}$ $= \dfrac{p_j}{p_{j-1}}$
+
+$\hat{\lambda}_j$ Weighted average LDFs $= \dfrac{\sum_i D_{ij}}{\sum_i D_{ij-1}}$
+
+$x_i$ Expected ultimate losses for AY $i$
+
+$y_j$ Expected % reported in each period; $\sum y_i = 1$
+
+$p_j$ Expected reported to date $\sum_{k=1}^j y_k$
+
+***
+
+Incremental loss distribution:
+
+* $c_{ij} \sim ODP(x_i \cdot y_j, \varphi)$
+    
+    * $\sigma^2 = \varphi \cdot x_i \cdot y_i$
+
+* $c_{ij} \sim NB(\lambda_j D_{i, \: j-1}, \varphi \lambda_j (\lambda_j -1)D_{i, \: j-1})$
+
+* NB has the exact same results as the ODP so we can use them interchangeably
+
+Recall Mack method:
+
+* $\operatorname{E}[D_{ij}] = \lambda_i D_{ij-1}$
+
+* $\operatorname{Var}[D_{ij}] = \sigma^2 D_{ij-1}$
+
+## Model Specification
+
+Steps:
+
+1) Assign prior dist^n^ to the column parameters
+
+2) Incremental Loss $\sim NB$
+
+3) If vague priors (large variances) $\Rightarrow$ Bayesian chainladder
+
+4) If strong priors (small variances) $\Rightarrow$ We believe the prior means are appropriate
+
+## Bayesian Model for BF Method
+
+**Assumptions**:
+
+$c_{ij} \sim ODP(x_i \cdot y_j, \varphi)$
+
+$x_i \sim \Gamma(\alpha_i, \beta_i)$
+
+* $\operatorname{E}[x_i] = \dfrac{\alpha_i}{\beta_i} = M_i$
+    
+* $\operatorname{Var}[x_i] = \dfrac{\alpha_i}{\beta_i^2}$
+
+* Gamma because the numerical procedures work well (LogNormal is good too)
+
+Mean and variance of $x_i$ is selected from outside the model and back out the parameters
+
+* $\beta_i = \dfrac{\operatorname{E}[x_i]}{\operatorname{Var}[x_i]}$
+
+* $\alpha_i = \dfrac{(\operatorname{E}[x_i])^2}{\operatorname{Var}[x_i]}$
+
+**Model Results**:
+
+<span style="color:red;background:yellow">Memorize Formula</span>
+
+$\operatorname{E}[c_{ij}] = Z_{ij} \overbrace{[(\lambda_j - 1) \underbrace{D_{ij-1}}_{\text{Actual up to }j-1}]}^{\text{CL Results}} + (1- Z_{ij}) \overbrace{[(\lambda_j - 1) \underbrace{M_i p_{j-1}}_{\text{Expected up to }j-1}]}^{\text{BF Results}}$
+
+$Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}$
+
+* Large $\beta$ means small variance for the prior $\Rightarrow$ samller $Z_{ij$ $\Rightarrow$ less credibility on the actual loss
+
+* $\varphi$, which represents process variance also has impact on the credibility
+
+* Larger $p_{j-1}$ means more developed losses $\Rightarrow$ more credibility to actual losses
+
+Notes:
+
+* Benktander with different weights
+
+* This is applied to *incremental* loss in the triangle
+
+* $\varphi$ will be given
+
+## Column Parameters
+
+BF above uses stochastic row parameters and deterministic column parameters
+
+We can use stochastic process for both by first estimating the column parameters then the row parameters
+
+For columns, prior dist^n^ is gamma with wide variance
+
+$\operatorname{E}[c_{ij}] = (\gamma_i - 1) \sum \limits_{m=1}^{i-1} c_{m,j}$
+
+* $\sum \downarrow$
+
+* $\gamma_i$ is the new row parameters
+
+* Similar to LDFs but just looking at it at the different angle
+
+```{r fig.width=5, fig.height=5,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("figures/Exam 7 Notes - 2.png")
+ grid.raster(img)
+```
