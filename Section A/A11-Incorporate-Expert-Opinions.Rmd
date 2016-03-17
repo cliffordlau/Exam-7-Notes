@@ -90,7 +90,7 @@ $\operatorname{E}[c_{ij}] = Z_{ij} \overbrace{[(\lambda_j - 1) \underbrace{D_{ij
 
 $Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}$
 
-* Large $\beta$ means small variance for the prior $\Rightarrow$ samller $Z_{ij$ $\Rightarrow$ less credibility on the actual loss
+* Large $\beta$ means small variance for the prior $\Rightarrow$ smaller $Z_{ij$ $\Rightarrow$ less credibility on the actual loss
 
 * $\varphi$, which represents process variance also has impact on the credibility
 
@@ -118,6 +118,8 @@ $\operatorname{E}[c_{ij}] = (\gamma_i - 1) \sum \limits_{m=1}^{i-1} c_{m,j}$
 
 * $\gamma_i$ is the new row parameters
 
+    * This tells you the level of losses in the row relative to the rows above
+
 * Similar to LDFs but just looking at it at the different angle
 
 ```{r fig.width=5, fig.height=5,echo=FALSE}
@@ -126,3 +128,19 @@ library(grid)
 img <- readPNG("figures/Exam 7 Notes - 2.png")
  grid.raster(img)
 ```
+
+### Calculate $\gamma$
+
+Know how to calculate this pictorially
+
+$\gamma_1 = 1.000$ always
+
+First calculate LDFs and calculate % unpaid and a-priori for each AY
+
+* $U_i$ = a-priori ultimate based on LDF for AY $i$
+
+* $q_i$ = % unpaid for AY $i$
+
+![alt text](figures/Exam 7 Notes - 3.png)
+
+Note that in step 4 above if you don't need the individual cells you can just take the $U_3 q_3$
