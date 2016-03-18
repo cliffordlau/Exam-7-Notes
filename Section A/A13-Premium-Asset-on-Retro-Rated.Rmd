@@ -8,3 +8,17 @@ output:
     toc_depth: 4
 ---
 
+## Intro
+
+Premium Asset:  
+Asset supported by premium the insurer expect to collect from clients with retrospective policies as losses develops
+
+The method discussed here estimate premium asset over a whole book of business
+
+* Framework based on retro rating formula (requires knowledge of rating parameters for the entire book) and estimating parameters based on empirical data
+
+Retospective policies were popular in 1996:
+
+* Returns premium to insured for good experience
+
+* 
