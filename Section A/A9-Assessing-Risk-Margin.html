@@ -11,7 +11,7 @@
 
 <meta name="author" content="K. Marshall et al." />
 
-<meta name="date" content="2016-03-17" />
+<meta name="date" content="2016-03-18" />
 
 <title>A9 A Framework for Assessing Risk Margins</title>
 
@@ -111,12 +111,346 @@ $(document).ready(function () {
 
 <h1 class="title">A9 A Framework for Assessing Risk Margins</h1>
 <h4 class="author"><em>K. Marshall et al.</em></h4>
-<h4 class="date"><em>March 17, 2016</em></h4>
+<h4 class="date"><em>March 18, 2016</em></h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#three-sources-of-uncertainty">Three Sources of Uncertainty</a><ul>
+<li><a href="#independent-risk">Independent Risk</a><ul>
+<li><a href="#determining-the-cov-for-independetn-risk">Determining the CoV for Independetn Risk</a></li>
+</ul></li>
+<li><a href="#internal-systemic-risk">Internal Systemic Risk</a><ul>
+<li><a href="#determining-the-cov-for-internal-systemic-risk">Determining the CoV for Internal Systemic Risk</a></li>
+</ul></li>
+<li><a href="#external-systemic-risk">External Systemic Risk</a><ul>
+<li><a href="#determining-the-cov-for-external-systemic-risk">Determining the CoV for External Systemic Risk</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#correlation-aggregating-the-cov">Correlation (Aggregating the CoV)</a><ul>
+<li><a href="#independent-risk-cov-correlation">Independent Risk Cov Correlation</a></li>
+<li><a href="#internal-systemic-risk-correlation">Internal Systemic Risk Correlation</a></li>
+<li><a href="#external-systemic-risk-1">External Systemic Risk</a></li>
+</ul></li>
+<li><a href="#risk-margin">Risk Margin</a></li>
+<li><a href="#additional-analysis">Additional Analysis</a></li>
+<li><a href="#documentation-and-regularity">Documentation and Regularity</a></li>
+</ul>
+</div>
 
-
+<div id="intro" class="section level2">
+<h2>Intro</h2>
+<p>Estimate risk margin for unpaid losses and premium liabilities</p>
+<ul>
+<li><p>Risk margin = 75<sup>th</sup> percentile - mean (an Australian regulatory standard)</p></li>
+<li><p>Based on CoV</p></li>
+</ul>
+<p>Need framework because quantitative is not enough, need both quantitative and qualitative measures to examine the uncertainty</p>
+<ul>
+<li><p>Quantitative analysis requires lots of data</p></li>
+<li><p>Only captures historical risk</p></li>
+<li><p>Does not capture risk that did not have an episode (of systemic risk) in the experience period</p></li>
+</ul>
+<p>Portfolio for the analysis should be split into reasonably homogeneous groups</p>
+<ul>
+<li><p>Might combine or further split groups from what was used for liability valuation</p></li>
+<li><p>Balance the practical benefits from large groups vs insight gained from smaller groups</p></li>
+<li><p>Might want to further split if a LoB has a portion that has significantly more uncertainty than another part (e.g. HO CAT/non CAT)</p></li>
+</ul>
+</div>
+<div id="three-sources-of-uncertainty" class="section level2">
+<h2>Three Sources of Uncertainty</h2>
+<p><span class="math inline">\(\phi^2 = \underbrace{\phi_{indep}^2}_{\text{Independent Risk}} + \underbrace{\phi_{internal}^2}_{\text{Internal Systemic Risk}} + \underbrace{\phi_{external}^2}_{\text{External Systemic Risk}}\)</span></p>
+<ul>
+<li><span class="math inline">\(\phi =\)</span> CoV</li>
+</ul>
+<p>Systemic Risk:</p>
+<ul>
+<li><p>Risks that can vary across valuation classes</p></li>
+<li><p>Qualitative approaches is recommended for systemic risk</p></li>
+<li><p>Need to make assumptions about the correlation of the different risks</p></li>
+</ul>
+<p>Most quantitative methods are effective for <em>independent risk</em> and <em>past episodes</em> of external systemic risk. But not very effective with internal systemic risk and external systemic risk that has not yet occurred</p>
+<ul>
+<li><p>Good stochastic model will fit away past systemic episodes (e.g. high inflation) while we still want to hold a margin for the future</p></li>
+<li><p>Outcome dependent significantly on actual episodes of risk, not all potential ones (for systemic risk that was not fitted away)</p>
+<ul>
+<li>Need to judge if episodes in data are representative going forward</li>
+</ul></li>
+<li><p>Model is unlikely to pick up internal systemic risk from the actuarial valuation process</p></li>
+</ul>
+<div id="independent-risk" class="section level3">
+<h3>Independent Risk</h3>
+<p>Randomness inherent to the insurance process</p>
+<ul>
+<li><p>Parameter Risk: ability to select correct parameters and appropriate model</p></li>
+<li><p>Process Risk: randomness e.g. tossing a die</p></li>
+</ul>
+<p>Use stochastic modeling to analyze independent risk</p>
+<p>Focus on periods where episodes of systemic risk were non-existent or minimal so to reduce the impact of the historical external episodes and allow us to focus on the independent risk</p>
+<ul>
+<li>Supplement with internal and external bench marking</li>
+</ul>
+<div id="determining-the-cov-for-independetn-risk" class="section level4">
+<h4>Determining the CoV for Independetn Risk</h4>
+<p>Model the parameter and process risk together</p>
+<ul>
+<li>Mack, bootstrap, stochastic CL, GLM, Bayesian</li>
+</ul>
+<p>Ideally the model adequately model away the systemic risk so all that is left is the independent risk</p>
+<ul>
+<li>Residual should only have independent risk</li>
+</ul>
+<p>Complexity of the model should be commensurate with the importance of the total risk margin</p>
+<p>For small data set, difficult to model away the external systemic risk <span class="math inline">\(\Rightarrow\)</span> Use as starting point and then add a margin for external systemic risks not in data</p>
+<p>Models for outstanding claims liabilities:</p>
+<ul>
+<li>GLM and bootstrapping are particularly useful as they can isolate the independent risks; graphing residuals again AY, age, experience period can used to identify past systemic episodes</li>
+</ul>
+<p>Models for premium liabilities:</p>
+<ul>
+<li><p>GLM, bootstrap, Bayesian</p></li>
+<li><p>Can model frequency and severity CoV then combine</p>
+<ul>
+<li><p>Remove past systemic episodes from the frequency</p></li>
+<li><p>Adjust for inflation and seasonality for severity</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="internal-systemic-risk" class="section level3">
+<h3>Internal Systemic Risk</h3>
+<p>Uncertainty arising from the liability valuation process/actuarial valuation models. E.g. process the actuary goes through to estimate the liabilities</p>
+<p>This can be fro sources anywhere along the chain of valuation: Data record/collection/organization (e.g. not collecting the right data; not using the right data) <span class="math inline">\(\Rightarrow\)</span> Analysis, AJ <span class="math inline">\(\Rightarrow\)</span> reserve selection (e.g. management overrides actuary’s opinion)</p>
+<p>3 components of internal systemic risk:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Specification Error</strong>: From not perfectly modeling the insurance process because it’s too complicated or just don’t have the data</p></li>
+<li><p><strong>Parameter Selection Error</strong>: Trend is particularly difficult to measure</p></li>
+<li><p><strong>Data Error</strong>: Lack of data, lack of knowledge of the underlying pricing, u/w, and claim management process, inadequate knowledge of portfolio</p></li>
+</ol>
+<div id="determining-the-cov-for-internal-systemic-risk" class="section level4">
+<h4>Determining the CoV for Internal Systemic Risk</h4>
+<p>Use bench marking technique:<br />
+Need to define risk indicators, score them against best practice, map the scores to a CoV</p>
+<p><strong>Score Against Best Practice</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>For each valuation group, assign a score (1-5) for each risk indicator</p>
+<ul>
+<li><p>Specification Error: # of independent models; range of results from model; ability to detect trends</p></li>
+<li><p>Parameter Selection Error: Identify best predictors; stability of best predictors (or responsive to process change); Predictors used are close to best predictors</p></li>
+<li><p>Data Error: Knowledge of past processes affecting predictors; Extent, timeliness, consistency, and reliability of information from the business; data is reconciled and has quality control; freq and sev of past misestimation due to revision of data</p></li>
+</ul></li>
+<li><p>Assign weight for each risk indicator (can vary by valuation group)</p></li>
+<li><p>Average the scores using the selected weights</p></li>
+</ol>
+<p>We score the 3 components for each valuation group (OCL and PL) and then roll up the score and assign the average grade for each valuation group to a CoV</p>
+<p><strong>Calibrate Score to CoV</strong></p>
+<p>Significant amount of judgement supplement by quantitative analysis</p>
+<p>CoV should range from 5% to 20%</p>
+<p>Analysis of past model performance should aid in estimating the potential variability</p>
+<ul>
+<li><p>Hindsight Analysis: Compare valuation of liabilities at prior point in time to the current view, to gain insight into how a better model can reduce volatility</p></li>
+<li><p>Mechanical Hindsight: Mechanically do various ex post analysis, and see how prediction error can be reduced; e.g. do a detailed vs crude and see the difference</p></li>
+</ul>
+<p>Additional comments:</p>
+<ul>
+<li><p>Improvement from poor to fair is greater than from fair to good</p></li>
+<li><p>Longer tail line will have higher CoV due to difficulty in estimating the parameters</p></li>
+<li><p>Lager liability will have smaller CoV when all else being equal</p></li>
+<li><p>OCL and OL might not necessarily be on the same scale</p>
+<ul>
+<li><p>PL may have additional uncertainty as it’s for future business</p></li>
+<li><p>For short tail lines ELR might be sufficient for PL but might not be the best practice for OCL</p></li>
+<li><p>Can always just add a load on top if justified</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="external-systemic-risk" class="section level3">
+<h3>External Systemic Risk</h3>
+<p>Systemic risk that are not internal</p>
+<p>We don’t want to only consider actual episodes of systemic risk in the data set</p>
+<p><a name="risk-category"></a> List of risk categories to consider:</p>
+<ul>
+<li><p><strong>Economic and Social Risks</strong>: Inflation, social trends</p></li>
+<li><p><strong>Legislative, Political Risks, Claims Inflation Risks</strong>: Change in law, frequency of settlement vs suits to completion, loss trend (Long tail lines)</p></li>
+<li><p><strong>Claim Management Process Change Risk</strong>: Change in process of managing claims e.g. case reserve practice</p></li>
+<li><p><strong>Expense Risk</strong>: Cost of managing a run-off book</p></li>
+<li><p><strong>Event Risk</strong>: natural or man-made CAT (Premium liabilities for property)</p></li>
+<li><p><strong>Latent Claim Risk</strong>: Claim from source not currently considered to be covered</p></li>
+<li><p><strong>Recovery Risk</strong>: Recoveries from reinsurers or non-reinsurers</p></li>
+</ul>
+<p>A handful of these risk categories will dominate the uncertainty for that valuation group</p>
+<p>Useful to rank the risk categories in order of impact on the uncertainty of a valuation group</p>
+<p>Lots of the above should be something the valuation actuary already discussed with the business and with claims</p>
+<div id="determining-the-cov-for-external-systemic-risk" class="section level4">
+<h4>Determining the CoV for External Systemic Risk</h4>
+<p>Use bench marking technique similar to internal systemic risk</p>
+<p>Straight up select the CoV, rank the risk in order of importance to help with the selection</p>
+<p>Quantitative approach can provide in insight but we need to also consider possible future sources of external systemic risk</p>
+<p>Consider risk that affect u/w and risk selection, claims management, expense management, economic/legl environment</p>
+<ul>
+<li><p><strong>Economic and Social Risks</strong>:</p>
+<ul>
+<li><p>Inflation; unemployment; GDP growth; interest rates; driving patterns</p></li>
+<li><p>For inflation we are concern with the systemic shifts not just randomness (randomness is in the indepedent risk)</p></li>
+</ul></li>
+<li><p><strong>Legislative, Political Risks, Claims Inflation Risks</strong></p>
+<ul>
+<li><p>All grouped together since each catergory needs to be uncorrelated with each other</p></li>
+<li><p>Short tail lines: can impact premium if there are sudden shifts in law of inflation</p></li>
+<li><p>Long tail lines: Current or potential changes to law; medical technology costs; legal costs</p></li>
+</ul></li>
+<li><p><strong>Claim Management Process Change Risk</strong>:</p>
+<ul>
+<li><p>Reporting patterns; payment patterns; reopen rates</p></li>
+<li><p>More important to OCL, only impact PL when a change in process change the cost level of claims</p></li>
+</ul></li>
+<li><p><strong>Expense Risk</strong>:</p>
+<ul>
+<li><p>Claim handling expense and policy maintenance expense</p></li>
+<li><p>CoV should be small</p></li>
+</ul></li>
+<li><p><strong>Event Risk</strong>:</p>
+<ul>
+<li><p>Mostly premium risk</p></li>
+<li><p>Can model from experience, CAT modeling or input from reinsurers</p></li>
+</ul></li>
+<li><p><strong>Latent Claim Risk</strong>:</p>
+<ul>
+<li><p>Unlikely for most LoB but can be severe</p></li>
+<li><p>Due to low probability, likely not worth to commit substantial resources to estimate the risk</p></li>
+</ul></li>
+<li><p><strong>Recovery Risk</strong>:</p>
+<ul>
+<li><p>S&amp;S for non reinsurer</p></li>
+<li><p>Reinsurers, consider reinsurance contracts in place specifically for reinsurers where a large amount of premium is ceded</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="correlation-aggregating-the-cov" class="section level2">
+<h2>Correlation (Aggregating the CoV)</h2>
+<p><strong>Overall</strong></p>
+<p>Assumes the 3 main pieces are independent of each other</p>
+<p><span class="math inline">\(\phi = \sqrt{\phi_{indep}^2 + \phi_{internal}^2 + \phi_{external}^2}\)</span></p>
+<p>Quantitative method to measure correlation can be valuable, however:</p>
+<ul>
+<li><p>Complexity maybe outweigh the benefit</p></li>
+<li><p>Results heavily influenced by past correlations while future correlation may differ</p></li>
+<li><p>Difficult to separate past episodes of independent risk and systemic risk</p></li>
+<li><p>Internal systemic risk cannot be modeled using standard correlation modeling techniques</p></li>
+<li><p>Likely won’t aligned with our definitions of independent, internal/external systemic risks</p></li>
+</ul>
+<p>Practical guidance:</p>
+<ul>
+<li><p>Just bucket into 0%, 25%, 50%, 75%, 100%, any finer will likely lead to spurious accuracy</p></li>
+<li><p>Introduce dummy variables and see their impact in each risk/valuation group pair (inflation, unemployment, propensity to suit, freq of CAT, fraud)</p></li>
+</ul>
+<div id="independent-risk-cov-correlation" class="section level3">
+<h3>Independent Risk Cov Correlation</h3>
+<p>Assume independence across liabilities, where <span class="math inline">\(i\)</span> is the different valuation groups</p>
+<p><span class="math inline">\(\phi_{indep}^2 = \sum_i (\phi_i w_i)^2 = (\vec{\phi w})(\vec{\phi w})^T\)</span></p>
+<ul>
+<li><span class="math inline">\(w_i\)</span> can be just claims liabilities or total liabilities (including premium liabilities)</li>
+</ul>
+</div>
+<div id="internal-systemic-risk-correlation" class="section level3">
+<h3>Internal Systemic Risk Correlation</h3>
+<p><span class="math inline">\(\phi_{internal}^2 = (\vec{\phi w}) \times \Sigma \times (\vec{\phi w})^T\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\Sigma\)</span> is the correlation matrix</p></li>
+<li><p>Again the <span class="math inline">\(\vec{w}\)</span> is the % of total liabilities</p></li>
+</ul>
+</div>
+<div id="external-systemic-risk-1" class="section level3">
+<h3>External Systemic Risk</h3>
+<p>We measure the CoV for each <a href="#risk-category">risk category</a> for each valuation group</p>
+<p><span class="math inline">\(\Sigma_c\)</span> is the correlation matrix between valuation groups for each risk category <span class="math inline">\(c\)</span></p>
+<p>For a given risk category <span class="math inline">\(c\)</span>, the CoV is:</p>
+<ul>
+<li><span class="math inline">\(\phi_{external, c}^2 = (\vec{\phi_{c} w}) \times \Sigma_c \times (\vec{\phi_{c} w})^T\)</span></li>
+</ul>
+<p>Then assume independence between risk categories:</p>
+<ul>
+<li><p><span class="math inline">\(\phi_{external}^2 = \sum \limits_{c \in risk \: category} \phi_{external, c}^2\)</span></p></li>
+<li><p>Important to pick risk categories that are likely to be independent of each other</p></li>
+</ul>
+</div>
+</div>
+<div id="risk-margin" class="section level2">
+<h2>Risk Margin</h2>
+<p><span class="math inline">\(\text{Risk Margin} = \underbrace{\mu}_{\text{Expected Loss}} \times \underbrace{\phi }_{\text{CoV}} \times \underbrace{Z_{\alpha}}_{0.67\text{ for the }75^{th}\text{ percentile}}\)</span></p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span> %-ile = <span class="math inline">\(\mu(1+\phi Z_{\alpha})\)</span></li>
+</ul>
+</div>
+<div id="additional-analysis" class="section level2">
+<h2>Additional Analysis</h2>
+<p><strong>Sensitivity Testing</strong>: By varying the CoV and correlations</p>
+<p><strong>Scenario Testing</strong>: Consider what assumptions need to change in our mid point to eat up the risk margin</p>
+<p><strong>Internal Benchmarking</strong>: Compare CoVs within between OCL and PL and also with other valuation groups</p>
+<p><em>Independent risk</em>:</p>
+<ul>
+<li><p>Large liability will have smaller CoV due to law of large numbers</p></li>
+<li><p>Short tail line will have a small CoV as well due to less volatility</p></li>
+</ul>
+<p>Therefore:</p>
+<ul>
+<li><p>Outstanding Claims Liability: <span class="math inline">\(\phi_{short \: tail} &lt; \phi_{long \: tail} &lt; \phi_{long \: tail, \: small \: book}\)</span></p></li>
+<li><p>Premium Liability - Long Tail: OCL &gt; PL <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\phi_{OCL} &lt; \phi_{PL}\)</span></p>
+<ul>
+<li>Because there are many AYs of claims in the reserves</li>
+</ul></li>
+<li><p>Premium Liability - Short Tail: OCL &lt; PL <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\phi_{OCL} &gt; \phi_{PL}\)</span></p>
+<ul>
+<li><p>Because OCL is small</p></li>
+<li><p>LoB with significant event risk will have different risk profiles for the PL and OCL</p></li>
+</ul></li>
+</ul>
+<p><em>Internal Systemic</em>:</p>
+<ul>
+<li>If the methods to estimate liabilities is similar across valuation groups, we would expect the CoV to be similar for classes that have similar claim payment patterns</li>
+</ul>
+<p><em>External Systemic</em>:</p>
+<ul>
+<li>Main sources are higher for long tail lines; Event risk is higher for property; Liability for HO can also be significant</li>
+</ul>
+<p><strong>External Benchmarking</strong>: Compare selected CoV with external sources</p>
+<ul>
+<li><p>Such as APRA 2008</p></li>
+<li><p>Use just as a sanity check, not appropriate to simply take the risk margins from benchmarks</p></li>
+<li><p>Independent risk CoV depend on the size of liabilities <span class="math inline">\(\Rightarrow\)</span> Similar sized liability today would represent a small book due to inflation <span class="math inline">\(\Rightarrow\)</span> Adjust CoV upward</p></li>
+<li><p>Estimate PL with a scale up factor from OCL</p></li>
+</ul>
+<p><strong>Hindsight Analysis</strong>:</p>
+<ul>
+<li><p>Compare the actual results with expected</p></li>
+<li><p>Blend of all 3 risks</p></li>
+<li><p>Useful as a guide if the CoVs are reasonable</p></li>
+</ul>
+<p><strong>Mechanical Hindsight</strong>:</p>
+<ul>
+<li><p>Value the liabilities today using a mechanical method and repeat with information at older evaluation date</p></li>
+<li><p>Measure independent risk over stable periods</p></li>
+<li><p>By using multiple methods you can measure the internal systemic risk</p></li>
+<li><p>By measuring over long periods of time, you can measure risk from all sources</p></li>
+</ul>
+</div>
+<div id="documentation-and-regularity" class="section level2">
+<h2>Documentation and Regularity</h2>
+<p>Full study to support CoV should be done every 3 years</p>
+<p>Key assumptions should be examined in the interim:</p>
+<ul>
+<li><p>Emerging trends</p></li>
+<li><p>Emerging systemic risks</p></li>
+<li><p>Change in valuation methods</p></li>
+</ul>
+<p>Should consider applying the key steps to any new portfolio</p>
+</div>
 
 
 
