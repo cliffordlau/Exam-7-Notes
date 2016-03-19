@@ -1,0 +1,10 @@
+---
+title: "C1 ERA 1.1 - 1.3 Introduction"
+author: "Brehm, et al."
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
