@@ -9,3 +9,5 @@ markdown: rdiscount
 permalink: pretty
 highlighter: rouge
 github: [Repository metadata]
+
+gems: [jekyll-paginate]
