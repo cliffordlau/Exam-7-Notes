@@ -11,7 +11,7 @@
 
 <meta name="author" content="Brehm, et al." />
 
-<meta name="date" content="2016-03-19" />
+<meta name="date" content="2016-03-20" />
 
 <title>C1 ERA 1.1 - 1.3 Introduction</title>
 
@@ -111,12 +111,369 @@ $(document).ready(function () {
 
 <h1 class="title">C1 ERA 1.1 - 1.3 Introduction</h1>
 <h4 class="author"><em>Brehm, et al.</em></h4>
-<h4 class="date"><em>March 19, 2016</em></h4>
+<h4 class="date"><em>March 20, 2016</em></h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#historical-context">1.1 Historical Context</a></li>
+<li><a href="#overview-of-enterprise-risk-management">1.2 Overview of Enterprise Risk Management</a><ul>
+<li><a href="#erm-process">ERM Process</a><ul>
+<li><a href="#step-1-diagnose">Step 1) Diagnose</a></li>
+<li><a href="#step-2-analyze">Step 2) Analyze</a></li>
+<li><a href="#step-3-implement">Step 3) Implement</a></li>
+<li><a href="#step-4-monitor">Step 4) Monitor</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#enterprise-risk-modeling-overview">1.3 Enterprise Risk Modeling Overview</a><ul>
+<li><a href="#quality-of-models">Quality of Models</a></li>
+<li><a href="#key-elements-of-enterprise-risk-model">Key Elements of Enterprise Risk Model</a><ul>
+<li><a href="#underwriting-risk">Underwriting Risk</a></li>
+<li><a href="#reserving-risk">Reserving Risk</a></li>
+<li><a href="#asset-risk">Asset Risk</a></li>
+<li><a href="#dependencies-correlation">Dependencies (Correlation)</a></li>
+</ul></li>
+<li><a href="#setting-capital-requirements">Setting Capital Requirements</a><ul>
+<li><a href="#converting-probability-levels-to-financial-loss-amounts">Converting Probability Levels to Financial Loss Amounts</a></li>
+<li><a href="#risk-adjusted-performance">Risk Adjusted Performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
 
-
+<div id="historical-context" class="section level2">
+<h2>1.1 Historical Context</h2>
+<p>RBC (from 1990s) was the precursor to scenario testing and Dynamic Financial Analysis (DFA) but DFA didn’t pan out</p>
+<p>DFA requires support from many functions and was not widely used due to lack of natural champion</p>
+<p>ERM as of 2007:</p>
+<ul>
+<li><p>IAIS began development of an approach of rating insurer based on Basel II. See 2004 IAA document</p></li>
+<li><p>CA and AUS require use of internal risk models</p></li>
+<li><p>UK implemented Individual Capital Adequacy Standards (ICAS): A firm is required to undertake regular assessments of the amount and quality of capital which in their view is adequate for the size and nature of their business</p></li>
+<li><p>NAIC is moving towards a new audit paradigm: <strong>C</strong>apital adequacy, <strong>A</strong>sset quality, <strong>R</strong>eserves, <strong>R</strong>einsurance, <strong>M</strong>anagement, <strong>E</strong>arnings and <strong>L</strong>iquidity (<strong>CARRMEL</strong>)</p></li>
+<li><p>2005 S&amp;P stated that a firm’s EMR program will become a critical component in its rating methodology</p></li>
+</ul>
+<p>ERM needs an internal champion with quantitative skills, operational experience and political skills to work across organizational silos</p>
+</div>
+<div id="overview-of-enterprise-risk-management" class="section level2">
+<h2>1.2 Overview of Enterprise Risk Management</h2>
+<p><strong>Def<sup>n</sup></strong>:<br />
+ERM is the process of systematically and comprehensively identifying critical risk, quantifying their impacts and implementing integrated strategies to maximize enterprise value</p>
+<p>Key aspects of ERM</p>
+<ul>
+<li>ERM is:
+<ol style="list-style-type: decimal">
+<li>A <strong>process</strong>, not a one time analysis</li>
+<li><strong>Enterprise wide</strong> basis</li>
+<li>Focus on <strong>critical</strong> or <strong>material</strong> risk</li>
+</ol></li>
+<li>Risk:
+<ol start="4" style="list-style-type: decimal">
+<li>Has upside and downside, it’s when actual outcome <span class="math inline">\(\neq\)</span> expected</li>
+<li>Must be <strong>quantified</strong>; <strong>Dependencies</strong> must be evaluated and quantified</li>
+</ol></li>
+<li>Strategies:
+<ol start="6" style="list-style-type: decimal">
+<li>Are developed to <strong>Avoid</strong>, <strong>mitigate</strong>, or <strong>exploit</strong> risk factors</li>
+<li>Are evaluated as a <strong>tradeoff</strong> of <strong>risk and return</strong>, to maximize firm value</li>
+</ol></li>
+</ul>
+<p>4 categories of risk:</p>
+<ul>
+<li><strong>Insurance Hazard</strong>:
+<ul>
+<li>Unique to insurers that is intentionally taken on to make a profit</li>
+<li><em>In-force</em> exposures: <em>accumulation</em> (CAT); <em>underwriting</em> (non-CAT)</li>
+<li><em>Past</em> exposures (reserve)</li>
+</ul></li>
+<li><strong>Financial Risk</strong>:
+<ul>
+<li><em>Assets</em> of insurance company</li>
+<li>Insurers tend to have high <span class="math inline">\(\frac{Asset}{Equity}\)</span> ratio</li>
+</ul></li>
+<li><strong>Operational Risk</strong>:
+<ul>
+<li><em>Execution</em> risks of the company</li>
+<li>Not as responsive, amenable to quantitative modeling</li>
+</ul></li>
+<li><strong>Strategic Risk</strong>:
+<ul>
+<li>About <em>choices</em>, making the right or wrong or no strategic choices</li>
+<li>Not as responsive, amenable to quantitative modeling</li>
+</ul></li>
+</ul>
+<div id="erm-process" class="section level3">
+<h3>ERM Process</h3>
+<p>Diagnose <span class="math inline">\(\Rightarrow\)</span> Analyze <span class="math inline">\(\Rightarrow\)</span> Implement <span class="math inline">\(\Rightarrow\)</span> Monitor</p>
+<div id="step-1-diagnose" class="section level4">
+<h4>Step 1) Diagnose</h4>
+<p>High level risk assessment</p>
+<p>All risks are considered but start to develop <em>threshold</em> for risk that will be considered material of significant (Key aspect 3)</p>
+<ul>
+<li><strong>General Environment</strong>
+<ul>
+<li>Political uncertainties (democratic changes, war, revolution)</li>
+<li>Gov policy (fiscal, monetary changes, regulation)</li>
+<li>Marco econ (inflation, interest rates)</li>
+<li>Social (terrorism)</li>
+<li>Natural (CAT)</li>
+</ul></li>
+<li><strong>Industry</strong>
+<ul>
+<li>Input market (supply, quality)</li>
+<li>Product market (demand)</li>
+<li>Competitive uncertainties (new entrants, rivalry)</li>
+</ul></li>
+<li><strong>Firm Specific</strong>
+<ul>
+<li>Operating (labor, supply)</li>
+<li>Liability (products, employment)</li>
+<li>R&amp;D</li>
+<li>Credit</li>
+<li>Behavioral</li>
+</ul></li>
+</ul>
+</div>
+<div id="step-2-analyze" class="section level4">
+<h4>Step 2) Analyze</h4>
+<p><strong>Critical Risk</strong>:<br />
+Risk with potential to exceed the company’s threshold are modeled<br />
+Should be quantified with a probability dist<sup>n</sup> of outcomes</p>
+<p><strong>Correlations</strong> must be recognized<br />
+Selected measures must be consistent with management’s view toward risk</p>
+<p>Prioritize risk factors that contribute to adverse scenarios above the critical threshold</p>
+<p>Analyze risk identified in step 1 for materiality</p>
+</div>
+<div id="step-3-implement" class="section level4">
+<h4>Step 3) Implement</h4>
+<p>Focus on <em>managing</em> risks identified and analyzed as material</p>
+<p>5 potential actions to manage risk:</p>
+<ul>
+<li><strong>Avoidance</strong></li>
+<li><strong>Reduction</strong> in chance of <strong>occurrence</strong></li>
+<li><strong>Mitigate</strong> effect given occurrence</li>
+<li><strong>Eliminate</strong> or <strong>transfer</strong> of the consequences</li>
+<li><strong>Retention</strong></li>
+</ul>
+<p>Speculative risk factor may provide an opportunity to capitalize on the risk, rather than manage it away</p>
+<ul>
+<li>Perform a risk/return trade-off analysis</li>
+</ul>
+</div>
+<div id="step-4-monitor" class="section level4">
+<h4>Step 4) Monitor</h4>
+<p>Management need to monitor the process, compare to expectations</p>
+<p>Need to update plans and model as company or market or competitors change</p>
+<ul>
+<li>New risk to address</li>
+<li>New ways to control them</li>
+<li>New options for treating or transferring risk</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="enterprise-risk-modeling-overview" class="section level2">
+<h2>1.3 Enterprise Risk Modeling Overview</h2>
+<p>Goal: <strong>understand</strong> and <strong>quantify</strong> the relationships among the risks to the business that arise from: asset, liabilities and underwriting</p>
+<p>All are affected by <em>internal decisions</em> &amp; <em>external factors</em></p>
+<p>Modeling will help with management functions and strategic decisions:</p>
+<ul>
+<li>Planning growth</li>
+<li>Valuing companies for M&amp;A</li>
+<li>Determining capital need</li>
+<li>Setting reinsurance strategies</li>
+<li>Identifying sources of significant risk</li>
+<li>Managing asset mix</li>
+</ul>
+<div id="quality-of-models" class="section level3">
+<h3>Quality of Models</h3>
+<p>Good Model:</p>
+<ul>
+<li>Show risk and reward for a range of different strategies</li>
+<li>Recognizes its own imperfection</li>
+</ul>
+<p>Weak Model:</p>
+<ul>
+<li>Over(under)state risks <span class="math inline">\(\leadsto\)</span> Overly cautious (aggressive) choices</li>
+</ul>
+<p>Data quality will affect suitability of the model; require assumptions from the modeler</p>
+<p>Elements that differentiate model quality:</p>
+<ul>
+<li>Model reflects <strong>relative importance</strong> of various risks</li>
+<li>Model includes <strong>dependencies</strong></li>
+<li><em>Modelers</em> have a <strong>deep knowledge</strong> of the <strong>fundamentals</strong> of those risks</li>
+<li><em>Modelers</em> have a <strong>trusted relationship</strong> with senior management</li>
+<li>Take into account the uncertainty from other models (CAT, ESG, credit risk) that are used as inputs</li>
+<li>Operational risks have to be modeled in bulk using informed judgement as we might not be able to model them in a detailed fashion</li>
+</ul>
+</div>
+<div id="key-elements-of-enterprise-risk-model" class="section level3">
+<h3>Key Elements of Enterprise Risk Model</h3>
+<p>Underwriting Risk</p>
+<ul>
+<li>Loss Frequency and Severity Dist<sup>n</sup></li>
+<li>Pricing Risk</li>
+<li>Parameter Risk
+<ul>
+<li>Estimation Risk</li>
+<li>Projection Risk</li>
+<li>Event Risk</li>
+<li>Systematic Risk CAT Model Uncertainty</li>
+</ul></li>
+</ul>
+<p>Reserving Risk</p>
+<p>Asset Risk</p>
+<p>Dependencies (Correlation)</p>
+<hr />
+<div id="underwriting-risk" class="section level4">
+<h4>Underwriting Risk</h4>
+<p>Focus on day to day losses and CAT losses</p>
+<p><strong>Loss Frequency and Severity Distribution</strong></p>
+<p>Use statistical methods to:</p>
+<ul>
+<li>Estimate parameters</li>
+<li>Test quality of fit</li>
+<li>Understand uncertainties that remain</li>
+</ul>
+<p><strong>Pricing Risk</strong></p>
+<p>Risk from not charging the right price</p>
+<ul>
+<li><p>Deficiency may exist for many years for long tailed lines <span class="math inline">\(\Rightarrow\)</span> Accumulation of reserve deficit</p></li>
+<li><p>Model should include u/w cycle</p></li>
+</ul>
+<p><strong>Parameter Risk</strong></p>
+<p>Risk of parameters used being incorrect</p>
+<ul>
+<li>Estimation Risk:
+<ul>
+<li>Error in estimate since it’s based on available data</li>
+</ul></li>
+<li>Projection Risk:
+<ul>
+<li>Error on forecast of future value even we fit the historical data accurately</li>
+<li>Error on ultimate losses, future trends</li>
+<li>Unexpected change in external risk conditions (Linked to event risk)</li>
+</ul></li>
+<li>Event Risk:
+<ul>
+<li>Causal link between a large unpredictable event and losses to an insurer</li>
+<li>E.g. Asbestos where exposure existed unknown for many years comes to light</li>
+<li>New cause of loss emerges that was previously regarded as not covered (environmental, CD)</li>
+<li>Regulator or court expands coverage by barring important exclusions</li>
+<li>New entrant into market reduces rates</li>
+</ul></li>
+<li>Systematic Risk:
+<ul>
+<li>Risk operate simultaneously on a large # of policies, undiversifiable</li>
+<li>e.g. inflation</li>
+</ul></li>
+</ul>
+<p><strong>Catastrophe Modeling Uncertainty</strong></p>
+<p>Differences between commercial models and different versions of the same model</p>
+<p>Company not able to provide data required by the model</p>
+<p>Parameter risk and correlations</p>
+<hr />
+</div>
+<div id="reserving-risk" class="section level4">
+<h4>Reserving Risk</h4>
+<p>Adverse development can be significant specially for long tailed lines</p>
+<p><span class="math inline">\(\uparrow\)</span> reserve uncertainty <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\uparrow\)</span> capital requirement</p>
+<p>UPR should be part of u/w risk</p>
+<p>Likely the most important part of the model, including the uncertainty in the parameters</p>
+<p>Model should be able to be test for quality of fit measures</p>
+<hr />
+</div>
+<div id="asset-risk" class="section level4">
+<h4>Asset Risk</h4>
+<p>Focus on issues the specific market the company operates in</p>
+<p>Main asset classes: equities, fixed income, real estate</p>
+<ul>
+<li>FX and inflation are closely related to asset modeling as well</li>
+</ul>
+<p>Asset liability matching can offset insurance risk and investment risk</p>
+<ul>
+<li>Doesn’t work well for P&amp;C to match the short duration of liabilities</li>
+<li>P&amp;C liabilities are inflation sensitive as well</li>
+</ul>
+<p>Efficient Frontier: <span class="math inline">\(\sigma\)</span> vs <span class="math inline">\(\operatorname{E}[Return]\)</span></p>
+<ul>
+<li>See how it changes by modifying reinsurance structure or asset mix</li>
+</ul>
+<p>Bonds</p>
+<ul>
+<li>Model with arbitrage free models</li>
+<li>Should capture historical features of bond markets (high auto-correlations and dist<sup>n</sup> of yield spreads)</li>
+</ul>
+<p>Equities</p>
+<ul>
+<li>Correlations with bonds</li>
+<li>Geometric Brownian motion model with additional volatility is more realistic</li>
+</ul>
+<p>FX</p>
+<ul>
+<li>First model interest rates of the currencies then model the FX rates</li>
+</ul>
+<hr />
+</div>
+<div id="dependencies-correlation" class="section level4">
+<h4>Dependencies (Correlation)</h4>
+<p>Important to capture dependencies or else the model will be unrealistically stable</p>
+<p><strong>Sources of Dependencies</strong>:</p>
+<ul>
+<li>Macro econ conditions, affect many risks. Use ESG</li>
+<li>U/w cycle, loss trends and reserve development can impact across lines</li>
+<li>CAT and other extreme events like the 2008 financial crisis</li>
+<li>Difficult to quantify</li>
+</ul>
+<p>Use copulas to capture different forms of dependency</p>
+<ul>
+<li>Correlation is too simplistic and does not capture the dependencies in the tail</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="setting-capital-requirements" class="section level3">
+<h3>Setting Capital Requirements</h3>
+<p>P/h wants more capital <span class="math inline">\(\Leftrightarrow\)</span> S/h want higher return (less capital)</p>
+<p>Set capital to maximize insurer’s value <span class="math inline">\(\Rightarrow\)</span> Unifies the competing requirements of prudence and efficiency</p>
+<p>Approaches to set capital requirements:</p>
+<p><strong>1. Default Avoidance</strong>: Focused on the <strong>tail</strong> and protecting <strong>policyholders</strong></p>
+<p>Caveat:</p>
+<ul>
+<li>S/h will be hurt at much lower loss amount</li>
+<li>We have the least confidence in the tail of the model</li>
+</ul>
+<p><span class="math inline">\(\hookrightarrow\)</span> More feasible and relevant to focus on thresholds less extreme than default</p>
+<p><strong>2. Lower Threshold than Probability of Ruin</strong>:</p>
+<ul>
+<li>Probability of downgrade
+<ul>
+<li>Significant loss <span class="math inline">\(\leadsto\)</span> <span class="math inline">\(\downarrow\)</span> financial rating <span class="math inline">\(\leadsto\)</span> <span class="math inline">\(\downarrow\)</span> franchise value &gt; loss itself</li>
+</ul></li>
+<li>Sufficient capital to service renewals</li>
+<li>Survive and thrive after major CAT</li>
+</ul>
+<hr />
+<div id="converting-probability-levels-to-financial-loss-amounts" class="section level4">
+<h4>Converting Probability Levels to Financial Loss Amounts</h4>
+<ul>
+<li><p>Smallest amount of loss, <span class="math inline">\(\alpha \%\)</span> of the time <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(VaR_{100 - \alpha \%}\)</span></p></li>
+<li><p>Average loss, <span class="math inline">\(\alpha \%\)</span> of the time <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(TVaR_{100 - \alpha \%}\)</span></p></li>
+<li><p>1-in-<span class="math inline">\(x\)</span> years event loss no more than <span class="math inline">\(y \%\)</span> of capital <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\dfrac{100}{y} \times TVaR_{1 - \frac{1}{x}}\)</span></p></li>
+</ul>
+<p><strong>Important</strong>: Risk measures do not tell us how much capital to hold; They tell us for a given level of capital, what the risk to the company is</p>
+</div>
+<div id="risk-adjusted-performance" class="section level4">
+<h4>Risk Adjusted Performance</h4>
+<p>Allocate capital to business units <span class="math inline">\(\Rightarrow\)</span> Calculate the rate of return <span class="math inline">\(\dfrac{\text{Profit}}{\text{Capital}}\)</span> for that unit <span class="math inline">\(\Rightarrow\)</span> Compare RoR across BUs</p>
+<p>Can also allocate risk capital to investments <span class="math inline">\(\Rightarrow\)</span> Compare riskiness of investments and u/w</p>
+<ul>
+<li>Need to make sure risk measures are consistent</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 
