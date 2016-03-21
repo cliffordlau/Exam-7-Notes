@@ -1,0 +1,11 @@
+---
+title: "C2 ERA 2.4 Asset-Liability Management"
+author: "Brehm"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+## Introduction
