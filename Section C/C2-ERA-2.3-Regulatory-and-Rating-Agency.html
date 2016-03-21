@@ -118,11 +118,107 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
+<li><a href="#leverage-ratios">Leverage Ratios</a></li>
+<li><a href="#risk-based-capital-models">Risk-Based Capital Models</a><ul>
+<li><a href="#credit-risk">Credit Risk</a></li>
+<li><a href="#reserve-risk">Reserve Risk</a></li>
+<li><a href="#accumulation-risk">Accumulation Risk</a></li>
+</ul></li>
+<li><a href="#scenario-testing">Scenario Testing</a></li>
+<li><a href="#evaluating-capital-structure-strategies">Evaluating Capital Structure Strategies</a></li>
 </ul>
 </div>
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
+<p>Prior to 1990: Leverage Ratios</p>
+<p>After 1990: Risk Based Capital Model (RBC)</p>
+<p>Soon after RBC: Scenario Testing</p>
+<p>More recently: Stochastic Scenario Testing</p>
+</div>
+<div id="leverage-ratios" class="section level2">
+<h2>Leverage Ratios</h2>
+<p>In early 1970s in US if companies fail 4 of 12 IRIS tests will get regulatory scrutiny</p>
+<p>In US prior to the 1990s, 2 leverage ratio tests were used:</p>
+<ul>
+<li><p><span class="math inline">\(\dfrac{\text{Premium}}{\text{Surplus}} &lt; 3.0\)</span></p></li>
+<li><p><span class="math inline">\(\dfrac{\text{Reserves}}{\text{Surplus}} &lt; a\)</span> where <span class="math inline">\(a\)</span> is fixed</p></li>
+</ul>
+<p>In EU Solvency I are equivalent to the higher of <span class="math inline">\(\dfrac{\text{Premium}}{\text{Surplus}}\)</span> and <span class="math inline">\(\dfrac{\text{Incurred Claims}}{\text{Surplus}}\)</span></p>
+<p>And also net leverage <span class="math inline">\(\dfrac{\text{Premium} + \text{Reserves}}{\text{Surplus}}\)</span></p>
+<p>Does not distinguish between LoBs</p>
+</div>
+<div id="risk-based-capital-models" class="section level2">
+<h2>Risk-Based Capital Models</h2>
+<p>Factor models, include other risks: asset, credit, premium, reserve</p>
+<ul>
+<li><p>Factors vary with the quality and type of asset or LoB</p></li>
+<li><p>Factors applied to accounting values</p></li>
+</ul>
+<p>Used in UK, AUS, US, CA, JAP, AM Best and S&amp;P</p>
+<p>Models recognize accumulation risk (CATs) and multiple events instead of just occurrence amounts (most of them 1-in-100 or 1-in-250)</p>
+<p>AM Best has much higher factors than the rest:</p>
+<ul>
+<li><p>Rating agency focus on long term viability vs regulatory focus on one year survival</p></li>
+<li><p>Correlation adjustment reduces the combined risk charge especially when the factors are of similar size</p></li>
+</ul>
+<div id="credit-risk" class="section level3">
+<h3>Credit Risk</h3>
+<p>Largest component is reinsurance recoverable</p>
+<p>Many models vary the factors with the credit quality of the reinsurers</p>
+<p>AM Best increases credit charge for companies with high Reinsurance Recoverable / Surplus ratio</p>
+<p>UK: premium ceded to one reinsurer can not &gt; 20% of gross premium; Recoverable from an insurance group cannot &gt; 100% of surplus</p>
+</div>
+<div id="reserve-risk" class="section level3">
+<h3>Reserve Risk</h3>
+<p>Similar to premium factors, vary by LoB and applied to net reserves</p>
+<p>Japan: reserve levels are low as payments are made quickly, factor is applied to net loss payment</p>
+</div>
+<div id="accumulation-risk" class="section level3">
+<h3>Accumulation Risk</h3>
+<p>Some models have started to use accumulation risk but many do not use it yet</p>
+<p>Focus is on 1-in-100 or 1-in-250 events</p>
+</div>
+</div>
+<div id="scenario-testing" class="section level2">
+<h2>Scenario Testing</h2>
+<p>Some regulators require test of capital against scenarios</p>
+<ul>
+<li><p>Static scenarios in Canada (DCAT)</p></li>
+<li><p>Stochastic in UK and Australia with 99.5% of 1 year survival rate</p></li>
+<li><p>UK also have 3 years 98.5% and 5 year 97.5% survival</p></li>
+</ul>
+<p>Stochastic modeling requires:</p>
+<ul>
+<li>Forecasting financials for 1-5 years</li>
+<li>Probability dist<sup>n</sup> where they can be developed</li>
+<li>Dependencies among risks</li>
+<li>Reflection of Management Responses</li>
+</ul>
+</div>
+<div id="evaluating-capital-structure-strategies" class="section level2">
+<h2>Evaluating Capital Structure Strategies</h2>
+<p>2 options to meet capital requirements:</p>
+<p><strong>Purchase reinsurance</strong></p>
+<p>Impact:</p>
+<ul>
+<li><p>Premium <span class="math inline">\(\downarrow\)</span>; Capital Requirement <span class="math inline">\(\downarrow\)</span></p></li>
+<li><p>Reserves <span class="math inline">\(\downarrow\)</span>; Capital Requirement <span class="math inline">\(\downarrow\)</span></p></li>
+<li><p>Reinsurance Recoverable <span class="math inline">\(\uparrow\)</span>; Capital Requirement <span class="math inline">\(\uparrow\)</span></p>
+<ul>
+<li>Recoverables change is about 25% of the premium and loss reserve charge</li>
+</ul></li>
+</ul>
+<p>Change in premium or reserve charge have a larger impact then to the recoverable charge due to the <em>covariance adjustment</em></p>
+<ul>
+<li>Changes to small risk charges have a small impact on the total risk charge</li>
+</ul>
+<p>Annual cost: Ceded Premium <span class="math inline">\(\times\)</span> Profit Margin</p>
+<hr />
+<p><strong>Issue Surplus Notes</strong></p>
+<p>Annual cost: (Surplus note yield - Bond yields) <span class="math inline">\(\times\)</span> Face Value of Surplus Note</p>
+<p>However surplus note is a longer commitment as they can not be repaid for a certain time period</p>
+<p>Reinsurance might be cheaper and the company can exit quickly</p>
 </div>
 
 
