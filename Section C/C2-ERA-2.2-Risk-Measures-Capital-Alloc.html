@@ -9,9 +9,9 @@
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Brehm, et al." />
+<meta name="author" content="G. Venter" />
 
-<meta name="date" content="2016-03-20" />
+<meta name="date" content="2016-03-21" />
 
 <title>C2 ERA 2.2 Risk Measures and Capital Allocation</title>
 
@@ -110,19 +110,480 @@ $(document).ready(function () {
 
 
 <h1 class="title">C2 ERA 2.2 Risk Measures and Capital Allocation</h1>
-<h4 class="author"><em>Brehm, et al.</em></h4>
-<h4 class="date"><em>March 20, 2016</em></h4>
+<h4 class="author"><em>G. Venter</em></h4>
+<h4 class="date"><em>March 21, 2016</em></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
+<li><a href="#risk-measures">Risk Measures</a><ul>
+<li><a href="#moment-based-measures">Moment-Based Measures</a></li>
+<li><a href="#tail-based-measures-at-alpha-percentile">Tail-Based Measures at <span class="math inline">\(\alpha\)</span> Percentile</a></li>
+<li><a href="#probability-transforms">Probability Transforms</a></li>
+<li><a href="#generalized-moments">Generalized Moments</a></li>
+</ul></li>
+<li><a href="#required-capital">Required Capital</a></li>
+<li><a href="#capital-allocation">Capital Allocation</a><ul>
+<li><a href="#proportional-method">Proportional Method</a></li>
+<li><a href="#co-measures">Co-Measures</a></li>
+<li><a href="#having-a-marginal-method">Having a Marginal Method</a></li>
+<li><a href="#marginal-impact">Marginal Impact</a></li>
+<li><a href="#using-decomposition">Using Decomposition</a></li>
+</ul></li>
+<li><a href="#allocating-the-cost-of-capital">Allocating the Cost of Capital</a></li>
+<li><a href="#summary">Summary</a></li>
 </ul>
 </div>
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
+<p>VaR is too simplistic for insurance companies due to risk from reserves and u/w losses</p>
+<p>Advantages attributed to <strong>Economic Capital</strong></p>
+<ul>
+<li><strong>Unifying</strong> measure for all risks in an organization</li>
+<li>More <strong>meaningful</strong> than RBC or Capital Adequacy Ratios (Prem/Surplus, Res/Surplus)</li>
+<li>Forces firm to <strong>quantify</strong> risks it faces and combine them into a probability dist<sup>n</sup></li>
+<li>Provides a <strong>framework for setting acceptable risk levels</strong> for the company and its business units</li>
+</ul>
+<p>(One of the risk measure discuss in the paper will be econ capital (?) Not all are econ capital)</p>
+<p>Should consider multiple risk measures to see if the results are consistent</p>
+<ul>
+<li>Many other risk measures will also have the properties above</li>
+<li>Calling one of the risk measures economic capital is likely to confuse the process
+<ul>
+<li>(I guess econ capital is just a generic term?)</li>
+</ul></li>
+</ul>
+<p>Current modeling approaches are not able to accurately estimate losses deep in the tail like 1-in-3000 (99.97%) event</p>
+<ul>
+<li><p>Bond ratings are discusses at this level but the ratings are not tied to the probabilities; Probabilities were simply observed</p></li>
+<li><p>Issue can be circumvented by focusing on events that can lead to impairment of the company, not just insolvency</p></li>
+</ul>
+<p>Choosing probability level is an artificial exercise <span class="math inline">\(\because\)</span> There are no theoretical support to choose one level over another</p>
+<ul>
+<li>The company sometimes compare held capital to the loss dist<sup>n</sup> stating that it’s holding capital to cover a 1-in-x year event. But not the other way around like setting the capital based on it</li>
+</ul>
+<p>Company is better off expressing the capital under various risk measures</p>
+</div>
+<div id="risk-measures" class="section level2">
+<h2>Risk Measures</h2>
+<p>3 major class of risk measures * Moment-based (e.g. mean, variance) * Tail-based (VaR, TVaR) * Probability Transformation (WTVaR, Mean of Transformed dist<sup>n</sup>)</p>
+<p>Risk measure can measure losses (like from insurance) but mostly mean negative profit (including premium charged) here</p>
+<ul>
+<li><span class="math inline">\(Y =\)</span> Losses</li>
+<li><span class="math inline">\(\rho(Y) =\)</span> Risk Measure</li>
+</ul>
+<div id="moment-based-measures" class="section level3">
+<h3>Moment-Based Measures</h3>
+<p><span class="math inline">\(\operatorname{E}[Y^k]\)</span> is the k<sup>th</sup> moment of <span class="math inline">\(Y\)</span> which represent losses</p>
+<ul>
+<li>1<sup>st</sup> moment = Mean</li>
+<li>2<sup>nd</sup> central moment = Variance = <span class="math inline">\(\operatorname{E}[(Y-\operatorname{E}[Y])^2]\)</span>
+<ul>
+<li>S.d. is preferred as it has the same units as the loss</li>
+</ul></li>
+<li>3<sup>rd</sup> moment = Skewness</li>
+</ul>
+<p><span class="math inline">\(\operatorname{E}[Y e^{cY/\operatorname{E}[Y]}]\)</span> captures all the moment using taylor expansion</p>
+<ul>
+<li>Does not exist unless there is a maximum possible loss</li>
+</ul>
+</div>
+<div id="tail-based-measures-at-alpha-percentile" class="section level3">
+<h3>Tail-Based Measures at <span class="math inline">\(\alpha\)</span> Percentile</h3>
+<table>
+<colgroup>
+<col width="18%"></col>
+<col width="27%"></col>
+<col width="54%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Risk Measure</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(VaR\)</span></td>
+<td align="left">Value at Risk</td>
+<td align="left"><span class="math inline">\(\alpha\)</span><sup>th</sup> Percentile</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(TVaR\)</span></td>
+<td align="left">Tail Value at Risk</td>
+<td align="left">Avg loss above <span class="math inline">\(\alpha\)</span><sup>th</sup> percentile</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(XTVaR\)</span></td>
+<td align="left">XS Tail Value at Risk</td>
+<td align="left"><span class="math inline">\(TVaR - Mean\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(EPD\)</span></td>
+<td align="left">Expected Policyholder Deficit</td>
+<td align="left"><span class="math inline">\((TVaR - VaR) \cdot (1 - \alpha)\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Value of Default Put Option</td>
+<td align="left"></td>
+<td align="left">Market cost of insuring for losses over <span class="math inline">\(VaR_{\alpha}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(XTVaR\)</span> focuses on funding losses above the mean</li>
+<li><span class="math inline">\(EPD\)</span> = unconditional expected value of defaulted losses if Capital = <span class="math inline">\(VaR_{\alpha}\)</span>
+<ul>
+<li>If there was no risk premium required, this is the cost of insuring for losses over <span class="math inline">\(VaR_{\alpha}\)</span></li>
+</ul></li>
+<li>Value of default put is great than EPD, it includes an additional risk premium</li>
+</ul>
+</div>
+<div id="probability-transforms" class="section level3">
+<h3>Probability Transforms</h3>
+<p>To recognize that large losses are worse for the firm in more than a linear way (e.g. losses twice as big is &gt; twice as worst)</p>
+<p>Change the loss distribution function by putting more weight (add probability) to the worst losses</p>
+<ul>
+<li>e.g. Esscher transform <span class="math inline">\(f^*(y) = k \cdot e ^{y/c} \: f(y)\)</span>
+<ul>
+<li>Lower <span class="math inline">\(c\)</span> <span class="math inline">\(\Rightarrow\)</span> Higher losses from the transformed dist<sup>n</sup></li>
+<li>Can get non sensical results for <span class="math inline">\(c\)</span> that’s too low</li>
+</ul></li>
+<li><span class="math inline">\(EPD\)</span> on a transformed dist<sup>n</sup> can give us the value of the default put</li>
+</ul>
+<p>Comments</p>
+<ul>
+<li><p>Most asset pricing formulas like CAPM and Black-Scholes can be expressed as transformed means <span class="math inline">\(\therefore\)</span> transformed means are a promising risk measure for determining the market value of risk as it can also be the market value of the risk</p></li>
+<li><p>Complete market is where any risk can be sold, but we work in incomplete markets</p></li>
+<li><p>Theory of pricing in incomplete markets favors:</p>
+<ul>
+<li>Minimum Martingale Transform (MMT)</li>
+<li>Minimum Entropy Martingale Transform (MET)</li>
+<li>These give reasonable approximations of reinsurance prices</li>
+</ul></li>
+<li><p>Mean under then Wang transform closely approximates market prices for bonds and CAT bonds</p></li>
+<li><p><span class="math inline">\(WTVaT\)</span> is <span class="math inline">\(TVaR\)</span> on a transformed distribution</p></li>
+</ul>
+</div>
+<div id="generalized-moments" class="section level3">
+<h3>Generalized Moments</h3>
+<p>Include more than just <span class="math inline">\(\operatorname{E}[Y^k]\)</span></p>
+<p><span class="math inline">\(TVaR_{\alpha} = \operatorname{E} \left[ Y \cdot \left( Y &gt; F^{ -1}(\alpha) \right) \mid Y &gt; F^{ -1}(\alpha) \right]\)</span></p>
+<ul>
+<li><p><span class="math inline">\((Y &gt; b) = \begin{cases} 1 &amp; : Y &gt; b\\ 0 &amp; : \text{otherwise} \end{cases}\)</span></p></li>
+<li><p>Average of <span class="math inline">\(Y\)</span> when <span class="math inline">\(Y\)</span> &gt; than the <span class="math inline">\(\alpha^{th}\)</span> percentile: <span class="math inline">\(F^{ -1}(\alpha)\)</span></p></li>
+</ul>
+<p><strong>Spectral Measures</strong></p>
+<p><span class="math inline">\(\rho(Y) = \operatorname{E} \left[ Y \cdot \eta \left( F(Y) \right) \right]\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\eta \geq 0\)</span></p></li>
+<li><p>Multiply the loss by a non-negative scalar <span class="math inline">\(\eta(Y)\)</span> when taking the expectations</p></li>
+</ul>
+<p><strong>Blurred VaR</strong></p>
+<p><span class="math inline">\(\eta(p) = \operatorname{exp} \left \{ - \theta (p-\alpha)^2 \right \}\)</span></p>
+<ul>
+<li><p>Give more weight to losses near <span class="math inline">\(\alpha^{th}\)</span> percentile</p></li>
+<li><p>Still using the whole distribution</p></li>
+<li><p>$controls how quickly the weight drops of as we get further from <span class="math inline">\(\alpha\)</span></p></li>
+</ul>
+<hr />
+<p>Which risk measures to use</p>
+<ul>
+<li><p><span class="math inline">\(TVaR\)</span> at a low percentile is fine as it captures all risks above this level; Set at level where we begin to loss capital</p></li>
+<li><p>Try to get close to market value of risk</p>
+<ul>
+<li><span class="math inline">\(WTVaR\)</span> with the MET is promising, or</li>
+<li>Exponential moment <span class="math inline">\(\operatorname{E}[Y e^{cY/\operatorname{E}[Y]}]\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="required-capital" class="section level2">
+<h2>Required Capital</h2>
+<p>Capital a company should hold depends on <em>practical considerations</em>, not simply derived from a risk measure</p>
+<ul>
+<li>Risk measures should be used to measure the safety of the capital</li>
+</ul>
+<p>Considerations that drive capital requirements:</p>
+<ul>
+<li><p><strong>Customers</strong> reactions: Well capitalized insurer <span class="math inline">\(\Leftarrow\)</span> vs <span class="math inline">\(\Rightarrow\)</span> better price</p>
+<ul>
+<li><p><span class="math inline">\(\downarrow\)</span> rating <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\downdownarrows\)</span> of cumtomers since customers that want a higher level can quickly leave</p></li>
+<li><p><span class="math inline">\(\uparrow\)</span> rating <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\upharpoonleft\)</span> of growth since higher rating just provides an opportunity to compete with other insurers that already have the business</p></li>
+</ul></li>
+<li><p><strong>Keeping renewal business</strong>: Have enough capital so that in adverse scenario there is still enough capital to service renewals that is x% of the business</p></li>
+</ul>
+<hr />
+<p>Once capital level has been established, there are risk measures to compare it against</p>
+<p><span class="math inline">\(TVaR\)</span> is a better risk measure than <span class="math inline">\(VaR\)</span> for a given percentile since <span class="math inline">\(VaR\)</span> is just the smallest loss XS of a percentile, <span class="math inline">\(TVaR\)</span> is the average</p>
+</div>
+<div id="capital-allocation" class="section level2">
+<h2>Capital Allocation</h2>
+<p>Allocate the company risk measure to each BU for the following purposes:</p>
+<ul>
+<li><p>Measure the amount of risk each BU contributes</p></li>
+<li><p>Set capacity and policy limits for each BU</p></li>
+<li><p>Calculate risk-adjusted profitability e.g. $ or EVA = Profit - Cost of Capital</p></li>
+</ul>
+<hr />
+<p>Definition:</p>
+<p><span class="math inline">\(Y\)</span>: Losses of a company</p>
+<p><span class="math inline">\(X_j\)</span>: Losses for each BU, <span class="math inline">\(\sum_j X_j = Y\)</span></p>
+<p><span class="math inline">\(\rho(Y)\)</span>: Risk measure of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mapsto\)</span> a real number</p>
+<p><span class="math inline">\(r(X_j)\)</span>: Allocation of risk measure to the individual BUs</p>
+<ul>
+<li>Usually different from <span class="math inline">\(\rho(X_j)\)</span>, which is the risk measure applied to BU <span class="math inline">\(j\)</span></li>
+</ul>
+<div id="proportional-method" class="section level3">
+<h3>Proportional Method</h3>
+<p>Allocate risk measure in proportion to the risk measure applied to each unit</p>
+<p><span class="math inline">\(r(X_j) = \dfrac{\rho(X_j)}{\sum_i \rho(X_i)} \rho(Y)\)</span></p>
+<ul>
+<li><p><span class="math inline">\(TVaR\)</span>: <span class="math inline">\(r(X_j) = \operatorname{E}[X_j \mid F(Y) &gt; \alpha]\)</span>; Condition on when the <strong>firm</strong> has losses XS the <span class="math inline">\(\alpha^{th}\)</span> percentile</p></li>
+<li><p><span class="math inline">\(VaR\)</span>: <span class="math inline">\(r(X_j) = \operatorname{E}[X_j \mid F(Y) = \alpha]\)</span>; Condition on when the firm has losses at the <span class="math inline">\(\alpha^{th}\)</span> percentile</p>
+<ul>
+<li>Difficult to calculate because it is estimating a single point in the dist<sup>n</sup>, results from sims can be quite variable</li>
+</ul></li>
+<li><p>Typical you’re conditioning on the BU’s <span class="math inline">\(\alpha^{th}\)</span> percentile</p></li>
+</ul>
+<p>Not marginal if the condition is not on the firm’s <span class="math inline">\(\alpha\)</span></p>
+<ul>
+<li><p>Marginal allocation means as unit grows, it is charged with the additional capital it requires</p></li>
+<li><p>Not marginal means the individuals don’t sum to the total (?)</p></li>
+</ul>
+</div>
+<div id="co-measures" class="section level3">
+<h3>Co-Measures</h3>
+<p><span class="math inline">\(r(X_j) = \operatorname{E}[h(X_j) \cdot L(Y) \mid g(Y)]\)</span></p>
+<p>Given that:</p>
+<ul>
+<li><span class="math inline">\(\rho(Y) = \operatorname{E}[h(Y) \cdot L(Y) \mid g(Y)]\)</span></li>
+<li><span class="math inline">\(h(\cdot)\)</span> is additive: <span class="math inline">\(h(u+v) = h(u) + h(v)\)</span></li>
+</ul>
+<p><span class="math inline">\(\hookrightarrow\)</span> <span class="math inline">\(\rho(Y) = \sum_j r(X_j)\)</span></p>
+<ul>
+<li>This is a marginal allocation that sums to the total risk measure</li>
+</ul>
+<table style="width:67%;">
+<colgroup>
+<col width="18%"></col>
+<col width="9%"></col>
+<col width="9%"></col>
+<col width="13%"></col>
+<col width="15%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Risk Measure</th>
+<th align="left"><span class="math inline">\(h(Y)\)</span></th>
+<th align="left"><span class="math inline">\(L(Y)\)</span></th>
+<th align="left">Condition</th>
+<th align="left">Co-Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(TVaR\)</span></td>
+<td align="left"><span class="math inline">\(Y\)</span></td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(F(Y) &gt; \alpha\)</span></td>
+<td align="left"><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) &gt; \alpha]\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(VaR\)</span></td>
+<td align="left"><span class="math inline">\(Y\)</span></td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(F(Y) = \alpha\)</span></td>
+<td align="left"><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) = \alpha]\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Standard Deviation</td>
+<td align="left"><span class="math inline">\(Y - \operatorname{E}[Y]\)</span></td>
+<td align="left"><span class="math inline">\(\dfrac{Y - \operatorname{E}[Y]}{\sigma_Y}\)</span></td>
+<td align="left">none</td>
+<td align="left"><span class="math inline">\(\dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(XTVaR\)</span></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><span class="math inline">\(\operatorname{E}[X_j \mid Y &gt; b] - \operatorname{E}[X_j]\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Note for S.d.: <span class="math inline">\(\rho(X_j) = \dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y} = \operatorname{E} \left [ (X_j - \operatorname{E}[X_j]) \cdot \dfrac{Y - \operatorname{E}[Y]}{\sigma_Y} \right ]\)</span></p></li>
+<li><p>For <span class="math inline">\(XTVaR\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\rho(Y) = \operatorname{E}[Y - \operatorname{E}[Y ]\mid Y &gt; b]\)</span></p></li>
+<li><p>Note the condition is on loss amount <span class="math inline">\(Y\)</span> not the percentile</p></li>
+<li><p>Expected losses in unit <span class="math inline">\(j\)</span> when the company has a loss above <span class="math inline">\(b\)</span> less the expected losses in unit <span class="math inline">\(j\)</span></p></li>
+</ul></li>
+</ul>
+<p>At low threshold, unit with higher mean have higher allocation</p>
+<p>At higher threshold, unite with higher variance have higher allocation</p>
+</div>
+<div id="having-a-marginal-method" class="section level3">
+<h3>Having a Marginal Method</h3>
+<p><strong>Marginal Allocation</strong>:<br />
+Allocation is marginal if the change to the company’s risk measure from a small change in a single BU is attributed to that business unit</p>
+<ul>
+<li>Consistent with concept that price should be proportional to marginal cost</li>
+<li>Leads to suitable allocation</li>
+</ul>
+<hr />
+<p><strong>Scalable Risk Measures</strong>:<br />
+A small proportional change in the business change the risk measure by the same proportion</p>
+<ul>
+<li><p>Require that <span class="math inline">\(\rho(aY) = a \cdot \rho(Y)\)</span> <span class="math inline">\(\Rightarrow\)</span> Homogenous of degree 1</p></li>
+<li><p>Most measures in currency units have this property (e.g. S.D. TVaR) but not variance and probability of default</p></li>
+</ul>
+<p>Scalability gives us that risk measure is both <em>marginal</em> and <em>additive</em></p>
+<p>Proportional change can be achieve from proportional reinsurance and normal growth</p>
+<ul>
+<li>Except for companies that write large policies compared to their volume; Transformed risk measure might still work</li>
+</ul>
+<hr />
+<p><strong>Suitable Allocation</strong>:<br />
+Growing a unit that have above average profit/risk will increase the profit/risk for the company</p>
+<p>Given <span class="math inline">\(\dfrac{P_j}{r(X_j)} &gt; \dfrac{P}{\rho(Y)}\)</span></p>
+<p>Show <span class="math inline">\(\dfrac{P + \epsilon P_j}{\rho(Y + \epsilon X_j)} &gt; \dfrac{P}{\rho(Y)}\)</span></p>
+</div>
+<div id="marginal-impact" class="section level3">
+<h3>Marginal Impact</h3>
+<p>A risk measure can have many co-measures but only 1 will be marginal</p>
+<p>It is the one that is based on derivative of the firm risk measure w.r.t. growth in BU <span class="math inline">\(j\)</span></p>
+<p><span class="math inline">\(r(X_j) = \lim \limits_{\epsilon \rightarrow 0} \dfrac{\rho(Y + \epsilon X_j) - \rho(Y)}{\epsilon} = \dfrac{\partial \rho(Y)}{\partial X_j}\)</span></p>
+<ul>
+<li>Even under non-homogeneous growth, the risk measure is still decompositional (sum to the total) and is often close to marginal</li>
+</ul>
+<p><span class="math inline">\(XTVaR\)</span></p>
+<ul>
+<li><p>Scalable when done XS of a percentile <span class="math inline">\(\alpha\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) &gt; \alpha] - \operatorname{E}[X_j]\)</span></p></li>
+</ul>
+<p>Variance</p>
+<ul>
+<li><p><span class="math inline">\(r(X_j) = \operatorname{Cov}(X_j,Y)\)</span></p></li>
+<li><p>Not scalable, so not marginal</p></li>
+</ul>
+<p><span class="math inline">\(VaR\)</span></p>
+<ul>
+<li><span class="math inline">\(r(X_j) = \operatorname{E}[X_j \mid F(Y) = \alpha]\)</span></li>
+</ul>
+<p>Standard Deviation</p>
+<ul>
+<li><p>Spreading the s.d. <span class="math inline">\(\propto\)</span> mean is not marginal: <span class="math inline">\(r(X_j) = \dfrac{\operatorname{E}[X_j]}{\operatorname{E}[Y]} \cdot \sigma_Y\)</span></p></li>
+<li><p>This is marginal: <span class="math inline">\(r(X_j) = \dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}\)</span></p></li>
+</ul>
+<p>Exponential Moment</p>
+<ul>
+<li><p><span class="math inline">\(r(X_j) = r_1(X_j) + \dfrac{\operatorname{E}[X_j]}{\operatorname{E}[Y]} \cdot c \cdot \operatorname{E} \left [ Y \cdot e^{cY/\operatorname{E}[Y]} \cdot \left \{ \dfrac{X_j}{\operatorname{E}[X_j]} - \dfrac{Y}{\operatorname{E}[Y]} \right \} \right ]\)</span></p>
+<ul>
+<li><p>Without the curly bracket it is just allocating <span class="math inline">\(\propto\)</span> the mean</p></li>
+<li><p>Curly bracket (XS ratio factor) adjust for correlation, where BU that have large <span class="math inline">\(X_j\)</span> when Y is also large will have additional allocation; UBs that don’t contribute to large losses will be negative in the curly bracket, receive reduced allocation</p></li>
+</ul></li>
+</ul>
+<p>EPD</p>
+<ul>
+<li><p><span class="math inline">\(r(X_j) = (CoTVaR - CoVaR) \cdot (1-\alpha)\)</span></p></li>
+<li><p>Only works when XS of a percentile</p></li>
+</ul>
+<hr />
+<p>Table of Co-Measures</p>
+<table style="width:67%;">
+<colgroup>
+<col width="18%"></col>
+<col width="9%"></col>
+<col width="9%"></col>
+<col width="13%"></col>
+<col width="15%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Risk Measure</th>
+<th align="left"><span class="math inline">\(h(Y)\)</span></th>
+<th align="left"><span class="math inline">\(L(Y)\)</span></th>
+<th align="left">Condition</th>
+<th align="left">Co-Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(TVaR\)</span></td>
+<td align="left"><span class="math inline">\(Y\)</span></td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(F(Y) &gt; \alpha\)</span></td>
+<td align="left"><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) &gt; \alpha]\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(VaR\)</span></td>
+<td align="left"><span class="math inline">\(Y\)</span></td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(F(Y) = \alpha\)</span></td>
+<td align="left"><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) = \alpha]\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Standard Deviation</td>
+<td align="left"><span class="math inline">\(Y - \operatorname{E}[Y]\)</span></td>
+<td align="left"><span class="math inline">\(\dfrac{Y - \operatorname{E}[Y]}{\sigma_Y}\)</span></td>
+<td align="left">none</td>
+<td align="left"><span class="math inline">\(\dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(EPD\)</span></td>
+<td align="left"><span class="math inline">\(X - \operatorname{E}[X \mid F(Y) = \alpha]\)</span></td>
+<td align="left"><span class="math inline">\(1-\alpha\)</span></td>
+<td align="left"><span class="math inline">\(F(Y) &gt; \alpha\)</span></td>
+<td align="left"><span class="math inline">\((CoTVaR - CoVaR) \cdot (1-\alpha)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="using-decomposition" class="section level3">
+<h3>Using Decomposition</h3>
+<p>If the allocated risk measure <span class="math inline">\(r(X_j)\)</span> is a decomposition of the company risk measure <span class="math inline">\(\rho(Y)\)</span> then we can use the measure to measure risk-adjusted profitability of a BU</p>
+<p><span class="math inline">\(\dfrac{P_j}{r(X_j)}\)</span></p>
+<p>We also need <span class="math inline">\(r(X_j) \propto\)</span> [Market Value of Risk] for this to be an appropriate metric</p>
+<ul>
+<li>BU with higher ratio have more profit relative to the value of risk they are taking</li>
+</ul>
+<p>However, we don’t know how to determine the market value of risk <span class="math inline">\(\Rightarrow\)</span> Use several risk measures and hope that one is close and that the indicated strategic directions are consistent with each other</p>
+<ul>
+<li>Question on how to determine the market value of risk have not been settle yet, likely a risk measure on a transformed probability but we don’t know yet</li>
+</ul>
+</div>
+</div>
+<div id="allocating-the-cost-of-capital" class="section level2">
+<h2>Allocating the Cost of Capital</h2>
+<p>Compare profitability among the BU by allocate a cost of capital for each BU</p>
+<p>2 possible definitions for cost of capital <span class="math inline">\(C_j\)</span></p>
+<ul>
+<li><p>Option pricing: Value of the right to call upon the capital of the firm</p>
+<ul>
+<li>Difficult to value as the timing is not fixed in advanced</li>
+</ul></li>
+<li><p>Market value of a stop loss that attach at zero profits for the BU</p>
+<ul>
+<li><p>Could use the expected value of the stop loss on transformed probabilities</p></li>
+<li><p>MET is recommended</p></li>
+<li><p>Practical estimate: Mean + 30% of s.d. would apply a consistent risk load to the BU</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>Allocating capital, even using marginal decomposition is arbitrary and artificial</p>
+<ul>
+<li><p>Arbitrary because different risk measures give us different allocations and therefore different answers</p></li>
+<li><p>Artificial because the business unit has access to the entire capital of the firm, not just a portion of it</p></li>
+</ul>
+<p>Using a value added approach, by allocating cost of capital is more economically realistic</p>
 </div>
 
 
