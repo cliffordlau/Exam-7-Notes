@@ -1,6 +1,6 @@
 ---
 title: "C2 ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model"
-author: "Brehm, et al."
+author: "Don Mango"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
@@ -103,6 +103,7 @@ Corporate risk tolerance
 
 * How much risk a company is willing to take
 * How much fluctuation in annual results it is willing to bear
+* Needed in Steps 2 and 3 above
 
 Corporate risk tolerance is dependent on:
 
