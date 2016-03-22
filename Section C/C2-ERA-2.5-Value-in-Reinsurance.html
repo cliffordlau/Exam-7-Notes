@@ -118,13 +118,27 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#quantifying-stability-and-its-value">Quantifying Stability and Its Value</a><ul>
+<li><a href="#quantifying-stability-and-its-value">1. Quantifying Stability and Its Value</a><ul>
 <li><a href="#reinsurance-premium-and-expected-recoveries">Reinsurance Premium and Expected Recoveries</a></li>
 <li><a href="#amount-of-protection">Amount of Protection</a></li>
 <li><a href="#premium-less-expected-loss">Premium Less Expected Loss</a></li>
 <li><a href="#distribution-based">Distribution Based</a></li>
 <li><a href="#efficient-frontier-charts">Efficient Frontier Charts</a></li>
 </ul></li>
+<li><a href="#reinsurance-as-capital">2. Reinsurance as Capital</a><ul>
+<li><a href="#change-in-capital">Change in Capital</a><ul>
+<li><a href="#theoretical-models">Theoretical Models</a></li>
+<li><a href="#practical-models">Practical Models</a></li>
+</ul></li>
+<li><a href="#marginal-roe">Marginal ROE</a><ul>
+<li><a href="#xtvar">XTVaR</a></li>
+</ul></li>
+<li><a href="#reinsurance-capital-and-accumulation-risk">Reinsurance, Capital and Accumulation Risk</a><ul>
+<li><a href="#capital-consumed">Capital Consumed</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#reinsurance-and-market-value">3. Reinsurance and Market Value</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </div>
 
@@ -148,7 +162,7 @@ $(document).ready(function () {
 </ul>
 </div>
 <div id="quantifying-stability-and-its-value" class="section level2">
-<h2>Quantifying Stability and Its Value</h2>
+<h2>1. Quantifying Stability and Its Value</h2>
 <p>Measuring the value of reinsurance is more than calculating the expected cashflow from the reinsurance program</p>
 <p>Significant judgement is required to evaluate the cost-benefit tradeoff</p>
 <p>Metrics to measure and value stability:</p>
@@ -170,9 +184,12 @@ $(document).ready(function () {
 <h3>Reinsurance Premium and Expected Recoveries</h3>
 <p><strong>Metrics 1</strong>: Ratio = <span class="math inline">\(\dfrac{\operatorname{E}[Recovery]}{\text{Reinsurance Premium}}\)</span></p>
 <p><strong>Metrics 2</strong>: Net Cost of Reinsurance = <span class="math inline">\(\text{Reinsurance Premium} - \operatorname{E}[Recovery]\)</span></p>
+<ul>
+<li>On a PV basis?</li>
+</ul>
 <p>Notes:</p>
 <ul>
-<li><p><span class="math inline">\(\operatorname{E}[Recovery]\)</span> is net of reinstatment premiums, typically based on simulation results</p></li>
+<li><p><span class="math inline">\(\operatorname{E}[Recovery]\)</span> is net of reinstatement premiums, typically based on simulation results</p></li>
 <li><p>Should gauge how significant the net cost of reinsurance is by comparing to the firm’s expected earnings for the year</p></li>
 </ul>
 </div>
@@ -270,9 +287,176 @@ $(document).ready(function () {
 <p>Risk metrics:</p>
 <ul>
 <li>Probability of making plan</li>
-<li>Probability of: surplus &lt; 2 <span class="math inline">\(\times RBC\)</span>; surplus &lt; BCAR score supporting a target rating; Expected loss in a 10 year period, <span class="math inline">\(TVaR_{90%}\)</span>, exceeds a threshold level or surplus (<span class="math inline">\(TVaR_{90%}\)</span> should not exceed 20% of surplus); x% drop in quarterly EPS</li>
+<li>Probability of: surplus &lt; 2 <span class="math inline">\(\times RBC\)</span>; surplus &lt; BCAR score supporting a target rating; Expected loss in a 10 year period, <span class="math inline">\(TVaR_{90\%}\)</span>, exceeds a threshold level or surplus (<span class="math inline">\(TVaR_{90\%}\)</span> should not exceed 20% of surplus); x% drop in quarterly EPS</li>
 </ul>
 </div>
+</div>
+<div id="reinsurance-as-capital" class="section level2">
+<h2>2. Reinsurance as Capital</h2>
+<p>Capital is held to pay for claims when the premium is not sufficient to do so</p>
+<p>Highly variable results will require more capital<br />
+<span class="math inline">\(\Downarrow\)</span><br />
+Reinsurance reduce volatility of results <span class="math inline">\(\Rightarrow\)</span> reduce capital required<br />
+<span class="math inline">\(\Downarrow\)</span><br />
+Reinsurance can be thought of as borrowed capital</p>
+<hr />
+<p>Measure the amount of capital reduction that the insurer receives from the reinsurance program</p>
+<ul>
+<li>Compare the <strong>cost of capital reduction</strong> from reinsurance program</li>
+</ul>
+<p>Net Benefit = |<span class="math inline">\(\Delta\)</span>Cost of Capital| - |Net Cost of Reinsurance|</p>
+<ul>
+<li><p>Net benefit &gt; 0 then accept</p></li>
+<li><p>Net cost of reinsurance should still be <span class="math inline">\(\text{Reinsurance Premium} - \operatorname{E}[Recovery]\)</span> on a PV basis</p></li>
+<li><p>Alt formula: Net benefit = Net Cost of Reinsurance - <span class="math inline">\(\Delta\)</span>Cost of Capital</p></li>
+<li><p>Review other criteria when the dollar benefit is the same</p></li>
+</ul>
+<hr />
+<p>Compare return on equity</p>
+<ul>
+<li><p><span class="math inline">\(ROE = \dfrac{\text{Net Cost of Reinsurance}}{\Delta \text{Capital}}\)</span></p></li>
+<li><p>We want <span class="math inline">\(ROE\)</span> <strong>below</strong> the cost of capital here and that lower is better since we are reducing capital</p>
+<ul>
+<li>Think about it if you’re going from the plan interested to gross, if the <span class="math inline">\(ROE\)</span> is lower you don’t want to change so the current plan is better</li>
+</ul></li>
+</ul>
+<div id="change-in-capital" class="section level3">
+<h3>Change in Capital</h3>
+<p>2 different methods to determine this change</p>
+<div id="theoretical-models" class="section level4">
+<h4>Theoretical Models</h4>
+<p>A risk metric is selected as a proxy to represent the economic capital required e.g. <span class="math inline">\(VaR\)</span>, <span class="math inline">\(TVaR\)</span>, multiples of <span class="math inline">\(VaR\)</span>, <span class="math inline">\(XTVaR\)</span>, etc</p>
+<p>The risk metric is measured for each reinsurance program and the <span class="math inline">\(\Delta\)</span> in capital can be measured against a base (bare or current)</p>
+<p>Earnings = Net Premium - Expenses - risk metric</p>
+<p>We can then select the economic capital = earnings @ a certain risk metric (like <span class="math inline">\(TVaR\)</span>)</p>
+<p>ROE here is calculated as the <span class="math inline">\(\dfrac{\Delta \text{Expected Income}}{\Delta \text{Capital}}\)</span> <span style="color:red">Check this might be same</span>, again we want it to be low</p>
+</div>
+<div id="practical-models" class="section level4">
+<h4>Practical Models</h4>
+<p>Use capital requirements from rating agencies like BCAR, S&amp;P, CAR, RBC, ICAR, etc</p>
+<p>Typically use a multiple of a regulatory metric</p>
+<p>Reinsurance reduces the capital required due to lower net premium and net reserves with a slight offset from increase counterparty risk</p>
+<p>Easier to implement (no need to model loss dist<sup>n</sup> and correlation) but is not as accurate because the measurement of risk is based on proxies and not the actual risk itself</p>
+<ul>
+<li>e.g. stop loss only have small impact on premium but can have large impact on a risk (like the tail) that the method might not pick up</li>
+</ul>
+<p>Alternatively, model a year out and predict the probability of falling below certain thresholds <span class="math inline">\(\Rightarrow\)</span> Capital could be set so that the probability is lower</p>
+<ul>
+<li>But then we’ll have to model the I/S and reinsurance structure and everything</li>
+</ul>
+</div>
+</div>
+<div id="marginal-roe" class="section level3">
+<h3>Marginal ROE</h3>
+<p>Compare the marginal cost of reinsurance to the marginal capital to judge the value of reinsurance</p>
+<ol style="list-style-type: decimal">
+<li><p>Pick a risk metric as proxy for capital required</p></li>
+<li><p>Calculate marginal capital relative the current program</p></li>
+<li><p>Calculate <span class="math inline">\(\Delta\)</span> NPV Net Benefit = <span class="math inline">\(\Delta\)</span> NPV Ceded Loss - <span class="math inline">\(\Delta\)</span> NPV Ceded Premium</p></li>
+<li><p>Calculate <span class="math inline">\(ROE = \dfrac{\Delta \text{NPV Net Benefit}}{\text{Marginal Capital}}\)</span></p></li>
+<li><p>Calculate after tax <span class="math inline">\(ROE\)</span></p></li>
+</ol>
+<ul>
+<li><p>Compare the <span class="math inline">\(ROE\)</span> <span style="color:red">Not sure high or low we want</span></p></li>
+<li><p>Bare in mind that a high ROE is meaningless if the amount of capital you can invest is small</p></li>
+</ul>
+<div id="xtvar" class="section level4">
+<h4>XTVaR</h4>
+<p>Might be better to look at a multiple of XTVaR at a lower percentile</p>
+<ul>
+<li><p>XTVaR is the unfunded part of TVaR</p></li>
+<li><p>VaR is a single point and can be volatile at high percentiles</p></li>
+</ul>
+</div>
+</div>
+<div id="reinsurance-capital-and-accumulation-risk" class="section level3">
+<h3>Reinsurance, Capital and Accumulation Risk</h3>
+<p>So far we focused on a single AY or u/w year and did not account for the fact that losses maybe paid more than a year later or longer</p>
+<ul>
+<li><p>Capital calculated was static without regard to how long it takes to run it down as claims are paid</p></li>
+<li><p>Capital needs to be held until all claims are paid</p></li>
+</ul>
+<p>Look at “lifetime” amount of capital = capital for new business + capital to support all unpaid claims from prior years</p>
+<p>Reserves on prior AYs maybe based on business that is different from this year’s book</p>
+<p><span class="math inline">\(\hookrightarrow\)</span> Use “as-if” reserves for the capital calculation</p>
+<ul>
+<li><p>Calculate the reserves as if the company had been writing the same book the last several years and adjusted for inflation</p></li>
+<li><p>Important for long tailed lines where capital requirement for the accumulated o/s reserve can be much large than the requirement for new business</p></li>
+</ul>
+<p>When comparing reinsurance program, the reserves would be calculated under each reinsurance program</p>
+<ul>
+<li>Capital calculated for both new premium and the loss reserves is a surrogate for the PV of the capital required for the current book over its lifetime</li>
+</ul>
+<p>2 advantages for the “as-if” reserves</p>
+<ol style="list-style-type: decimal">
+<li><p>Measure the impact of accumulated risk caused by correlated factors</p>
+<ul>
+<li>Likely means correlated factors that can influence all those accident years e.g. inflation, change in law</li>
+</ul></li>
+<li><p>Reinsurance can be applied to the current AY and as-if reserves providing more valid measure of the accumulated risk and capital used over the full life of the AY</p></li>
+</ol>
+<p>When aggregating AYs, we get temporal risk (risk based on time) that affect all AYs at the same time e.g. severity trend and auto correlation of severity trend</p>
+<p>Including all AYs create a bigger spread of possible outcomes</p>
+<div id="capital-consumed" class="section level4">
+<h4>Capital Consumed</h4>
+<p>Plot PDF and CDF of capital consumed:</p>
+<ul>
+<li>Capital Consumed = - PV[Premium + Reserves - Losses - Expenses]</li>
+</ul>
+<p>When modeling XoL we need to model severity trend</p>
+<ul>
+<li><p>As it impacts all open claims</p></li>
+<li><p>Payment pattern is important as claims that are open longer will have more severity trend applied</p></li>
+</ul>
+<p>We can base the capital consumed on different risk metrics like VaR and TVaR</p>
+<p>ROE = Expected Profit / Capital Consumed</p>
+<p>We want to see increase in ROE <span style="color:red">Make sure understand why</span></p>
+<p><span style="color:red">Comment from notes that author is not sure about</span></p>
+</div>
+</div>
+</div>
+<div id="reinsurance-and-market-value" class="section level2">
+<h2>3. Reinsurance and Market Value</h2>
+<p>Goal of a firm is to increase market value of the firm</p>
+<ul>
+<li><p>Given different options, will choose the one that increase the value the most on risk-adjusted basis</p></li>
+<li><p>Don’t know how this can be done</p></li>
+</ul>
+<p>Current step: measure value of the stability that reinsurance provides by measuring the reduction in capital<br />
+<span class="math inline">\(\Downarrow\)</span><br />
+Next step: Measure the value of reinsurance by measuring the <span class="math inline">\(\Delta\)</span> in the value of the company</p>
+<ul>
+<li>Holy grail of cost benefit analysis</li>
+</ul>
+<p>Some conclusion from recent studies</p>
+<ul>
+<li><p>Insureds demand price discounts of 10-20 times the expected cost of an insurer default (EPD)</p></li>
+<li><p>1% decrease in capital <span class="math inline">\(\Rightarrow\)</span> 1% loss in pricing level</p></li>
+<li><p>1% increase in <span class="math inline">\(\sigma_{earnings\)</span> <span class="math inline">\(\Rightarrow\)</span> 0.33% decrease in pricing level</p></li>
+<li><p>Rating upgrades is worth 3% of business growth</p></li>
+<li><p>Rating downgrades can drop business by 5-20%</p></li>
+</ul>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<ul>
+<li><p>Use cost-benefit analysis to compare reinsurance programs</p>
+<ul>
+<li>Select metrics to determine the benefit of the reinsurance and compare to cost for each reinsurance programs</li>
+</ul></li>
+<li><p>Net cost of reinsurance = NPV of expected decrease in earnings from purchasing reinsurance = PV[Expected loss - Premium - Reinstatement + Commission]</p></li>
+<li><p>Combined ratio can be distorted due to expense ratio</p></li>
+<li><p>Stability is the simplest measure of benefit; but <span class="math inline">\(\sigma\)</span> can be misleading as they can be lowered by eliminating favorable results</p></li>
+<li><p>Useful to look at the differences of distributions from the reinsurance options</p></li>
+<li><p>Efficient frontier is useful</p></li>
+<li><p>If we can measure the increase of value of the firm that would be great</p>
+<ul>
+<li><p>Increased earnings from reduced financing costs</p></li>
+<li><p>Higher premium from better claims paying ratings</p></li>
+<li><p>Can’t do this right now so the substitute is to measure the reduction in capital requirements</p></li>
+</ul></li>
+<li><p>Value of reinsurance can be measures vs a cost of capital or ROE</p></li>
+</ul>
 </div>
 
 

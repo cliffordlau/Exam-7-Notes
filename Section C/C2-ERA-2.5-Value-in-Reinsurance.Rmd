@@ -26,7 +26,7 @@ $\hookrightarrow$ Will always show reinsurance is a bad deal especially after di
 * Make sense since reinsurers need to make a profit
 * Cases where it's "profitable" to the cedant, it'll either be repriced or the cedants results are really poor
 
-## Quantifying Stability and Its Value
+## 1. Quantifying Stability and Its Value
 
 Measuring the value of reinsurance is more than calculating the expected cashflow from the reinsurance program
 
@@ -56,9 +56,11 @@ Metrics to measure and value stability:
 
 **Metrics 2**: Net Cost of Reinsurance = $\text{Reinsurance Premium} - \operatorname{E}[Recovery]$
 
+* On a PV basis?
+
 Notes:
 
-* $\operatorname{E}[Recovery]$ is net of reinstatment premiums, typically based on simulation results
+* $\operatorname{E}[Recovery]$ is net of reinstatement premiums, typically based on simulation results
 
 * Should gauge how significant the net cost of reinsurance is by comparing to the firm's expected earnings for the year
 
@@ -165,4 +167,205 @@ Return metrics:
 Risk metrics:
 
 * Probability of making plan
-* Probability of: surplus < 2 $\times RBC$; surplus < BCAR score supporting a target rating; Expected loss in a 10 year period, $TVaR_{90%}$, exceeds a threshold level or surplus ($TVaR_{90%}$ should not exceed 20% of surplus); x% drop in quarterly EPS
+* Probability of: surplus < 2 $\times RBC$; surplus < BCAR score supporting a target rating; Expected loss in a 10 year period, $TVaR_{90\%}$, exceeds a threshold level or surplus ($TVaR_{90\%}$ should not exceed 20% of surplus); x% drop in quarterly EPS
+
+## 2. Reinsurance as Capital
+
+Capital is held to pay for claims when the premium is not sufficient to do so
+
+Highly variable results will require more capital  
+$\Downarrow$  
+Reinsurance reduce volatility of results $\Rightarrow$ reduce capital required  
+$\Downarrow$  
+Reinsurance can be thought of as borrowed capital
+
+***
+
+Measure the amount of capital reduction that the insurer receives from the reinsurance program
+
+* Compare the **cost of capital reduction** from reinsurance program
+
+Net Benefit = |$\Delta$Cost of Capital| - |Net Cost of Reinsurance|
+
+* Net benefit > 0 then accept
+
+* Net cost of reinsurance should still be $\text{Reinsurance Premium} - \operatorname{E}[Recovery]$ on a PV basis
+
+* Alt formula: Net benefit = Net Cost of Reinsurance - $\Delta$Cost of Capital
+
+* Review other criteria when the dollar benefit is the same
+
+***
+
+Compare return on equity
+
+* $ROE = \dfrac{\text{Net Cost of Reinsurance}}{\Delta \text{Capital}}$
+
+* We want $ROE$ **below** the cost of capital here and that lower is better since we are reducing capital
+
+    * Think about it if you're going from the plan interested to gross, if the $ROE$ is lower you don't want to change so the current plan is better
+    
+### Change in Capital
+
+2 different methods to determine this change
+
+#### Theoretical Models
+
+A risk metric is selected as a proxy to represent the economic capital required e.g. $VaR$, $TVaR$, multiples of $VaR$, $XTVaR$, etc
+
+The risk metric is measured for each reinsurance program and the $\Delta$ in capital can be measured against a base (bare or current)
+
+Earnings = Net Premium - Expenses - risk metric
+
+We can then select the economic capital = earnings @ a certain risk metric (like $TVaR$)
+
+ROE here is calculated as the $\dfrac{\Delta \text{Expected Income}}{\Delta \text{Capital}}$ <span style="color:red">Check this might be same</span>, again we want it to be low
+
+#### Practical Models
+
+Use capital requirements from rating agencies like BCAR, S&P, CAR, RBC, ICAR, etc
+
+Typically use a multiple of a regulatory metric
+
+Reinsurance reduces the capital required due to lower net premium and net reserves with a slight offset from increase counterparty risk
+
+Easier to implement (no need to model loss dist^n^ and correlation) but is not as accurate because the measurement of risk is based on proxies and not the actual risk itself
+
+* e.g. stop loss only have small impact on premium but can have large impact on a risk (like the tail) that the method might not pick up
+
+Alternatively, model a year out and predict the probability of falling below certain thresholds $\Rightarrow$ Capital could be set so that the probability is lower
+
+* But then we'll have to model the I/S and reinsurance structure and everything
+
+### Marginal ROE
+
+Compare the marginal cost of reinsurance to the marginal capital to judge the value of reinsurance
+
+1) Pick a risk metric as proxy for capital required
+
+2) Calculate marginal capital relative the current program
+
+3) Calculate $\Delta$ NPV Net Benefit = $\Delta$ NPV Ceded Loss - $\Delta$ NPV Ceded Premium
+
+4) Calculate $ROE = \dfrac{\Delta \text{NPV Net Benefit}}{\text{Marginal Capital}}$
+
+5) Calculate after tax $ROE$
+
+* Compare the $ROE$ <span style="color:red">Not sure high or low we want</span>
+
+* Bare in mind that a high ROE is meaningless if the amount of capital you can invest is small
+
+#### XTVaR
+
+Might be better to look at a multiple of XTVaR at a lower percentile
+
+* XTVaR is the unfunded part of TVaR
+
+* VaR is a single point and can be volatile at high percentiles
+
+### Reinsurance, Capital and Accumulation Risk
+
+So far we focused on a single AY or u/w year and did not account for the fact that losses maybe paid more than a year later or longer
+
+* Capital calculated was static without regard to how long it takes to run it down as claims are paid
+
+* Capital needs to be held until all claims are paid
+
+Look at "lifetime" amount of capital = capital for new business + capital to support all unpaid claims from prior years
+
+Reserves on prior AYs maybe based on business that is different from this year's book
+
+$\hookrightarrow$ Use "as-if" reserves for the capital calculation
+
+* Calculate the reserves as if the company had been writing the same book the last several years and adjusted for inflation
+
+* Important for long tailed lines where capital requirement for the accumulated o/s reserve can be much large than the requirement for new business
+
+When comparing reinsurance program, the reserves would be calculated under each reinsurance program
+
+* Capital calculated for both new premium and the loss reserves is a surrogate for the PV of the capital required for the current book over its lifetime
+
+2 advantages for the "as-if" reserves
+
+1) Measure the impact of accumulated risk caused by correlated factors
+
+    * Likely means correlated factors that can influence all those accident years e.g. inflation, change in law
+    
+2) Reinsurance can be applied to the current AY and as-if reserves providing more valid measure of the accumulated risk and capital used over the full life of the AY
+
+When aggregating AYs, we get temporal risk (risk based on time) that affect all AYs at the same time e.g. severity trend and auto correlation of severity trend
+
+Including all AYs create a bigger spread of possible outcomes
+
+#### Capital Consumed
+
+Plot PDF and CDF of capital consumed:
+
+* Capital Consumed = - PV[Premium + Reserves - Losses - Expenses]
+
+When modeling XoL we need to model severity trend
+
+* As it impacts all open claims
+
+* Payment pattern is important as claims that are open longer will have more severity trend applied
+
+We can base the capital consumed on different risk metrics like VaR and TVaR
+
+ROE = Expected Profit / Capital Consumed
+
+We want to see increase in ROE <span style="color:red">Make sure understand why</span>
+
+<span style="color:red">Comment from notes that author is not sure about</span>
+
+## 3. Reinsurance and Market Value
+
+Goal of a firm is to increase market value of the firm
+
+* Given different options, will choose the one that increase the value the most on risk-adjusted basis
+
+* Don't know how this can be done
+
+Current step: measure value of the stability that reinsurance provides by measuring the reduction in capital  
+$\Downarrow$  
+Next step: Measure the value of reinsurance by measuring the $\Delta$ in the value of the company
+
+* Holy grail of cost benefit analysis
+
+Some conclusion from recent studies
+
+* Insureds demand price discounts of 10-20 times the expected cost of an insurer default (EPD)
+
+* 1% decrease in capital $\Rightarrow$ 1% loss in pricing level
+
+* 1% increase in $\sigma_{earnings$ $\Rightarrow$ 0.33% decrease in pricing level
+
+* Rating upgrades is worth 3% of business growth
+
+* Rating downgrades can drop business by 5-20%
+
+## Conclusion
+
+* Use cost-benefit analysis to compare reinsurance programs
+
+    * Select metrics to determine the benefit of the reinsurance and compare to cost for each reinsurance programs
+    
+* Net cost of reinsurance = NPV of expected decrease in earnings from purchasing reinsurance = PV[Expected loss - Premium - Reinstatement + Commission]
+
+* Combined ratio can be distorted due to expense ratio
+
+* Stability is the simplest measure of benefit; but $\sigma$ can be misleading as they can be lowered by eliminating favorable results
+
+* Useful to look at the differences of distributions from the reinsurance options
+
+* Efficient frontier is useful
+
+* If we can measure the increase of value of the firm that would be great
+
+    * Increased earnings from reduced financing costs
+    
+    * Higher premium from better claims paying ratings
+    
+    * Can't do this right now so the substitute is to measure the reduction in capital requirements
+    
+* Value of reinsurance can be measures vs a cost of capital or ROE
+
