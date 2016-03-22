@@ -1,0 +1,168 @@
+---
+title: "C2 ERA 2.5 Measuring Value in Reinsurance"
+author: "Venter, Gluck, Brehm"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+## Introduction
+
+Value of reinsurance
+
+1) Provides stability
+2) Frees up capital
+3) Adds to the value of the firm
+
+Naive calculation: Sum(cash flow over contract length)
+
+* (-) Premium and reinstatement
+* (+) Ceding comm and reinsurance loss
+
+$\hookrightarrow$ Will always show reinsurance is a bad deal especially after discounting the cashflow
+
+* Make sense since reinsurers need to make a profit
+* Cases where it's "profitable" to the cedant, it'll either be repriced or the cedants results are really poor
+
+## Quantifying Stability and Its Value
+
+Measuring the value of reinsurance is more than calculating the expected cashflow from the reinsurance program
+
+Significant judgement is required to evaluate the cost-benefit tradeoff
+
+Metrics to measure and value stability:
+
+* Ratio and difference of $\text{Reinsurance Premium}$ and  $\operatorname{E}[Recovery]$
+
+* Expected loss under different programs
+
+* $Premium - \operatorname{E}[Loss]$ under different programs
+
+    * $\sigma$, percentiles, whole distribution
+    
+    * Space needle view,
+    
+* Distribution of other metrics
+
+    * cost benefit diagram, pre tax net income, combined ratio
+    
+* Efficient frontier charts
+
+### Reinsurance Premium and Expected Recoveries
+
+**Metrics 1**: Ratio = $\dfrac{\operatorname{E}[Recovery]}{\text{Reinsurance Premium}}$
+
+**Metrics 2**: Net Cost of Reinsurance = $\text{Reinsurance Premium} - \operatorname{E}[Recovery]$
+
+Notes:
+
+* $\operatorname{E}[Recovery]$ is net of reinstatment premiums, typically based on simulation results
+
+* Should gauge how significant the net cost of reinsurance is by comparing to the firm's expected earnings for the year
+
+### Amount of Protection
+
+**Metrics 3**: Compare *expected loss* $\forall$ programs
+
+Notes:
+
+* Losses and premium hereon are net of reinsurance
+
+### Premium Less Expected Loss
+
+**Metrics 4**: Compare $Premium - \operatorname{E}[Loss]$ $\forall$ programs
+
+* Does not include expenses or investment income
+
+**Metrics 5**: $\sigma_{Premium - \operatorname{E}[Loss]}$
+
+* ***Caveat***: Can be lowered by removing favorable outcomes
+
+**Metrics 6**: 1^st^ percentile (most favorable) $Premium - \operatorname{E}[Loss]$
+
+**Metrics 7**: Worst simulated outcome $Premium - \operatorname{E}[Loss]$
+
+* Might be too extreme to look at 1-in-25K (99.996%)
+
+Notes:
+
+* Here we are sticking to high percentile means bad, similar to how we used to look at loss, but flip it for looking at earnings
+
+### Distribution Based
+
+**Density** of $Premium - \operatorname{E}[Loss]$
+
+* Compare shapes for different programs
+
+* See if it's giving up the upside and like how does the tail look
+
+**CDF** of $Premium - \operatorname{E}[Loss]$
+
+* Pick a percentile and read it across the graph to find the value at that percentile for each curve
+
+* Look at the difference between different programs at each percentile
+
+***
+
+*Note on difference of distribution*:
+
+* Event that generate a given percentile is different across programs
+
+    * Reinsurance changes the order of the outcomes
+    
+* We are interested in the difference of the distributions
+
+    * NOT interested in the distribution of differences (as it doesn't make sense?)
+    
+* Goal here is the choose a reinsurance program and its associated distribution $\Rightarrow$ More useful to look at the dist^n^ themselves
+
+* Interested in the cost-benefit trade off, cost is the net cost of reinsurance and benefit is the protection against adverse deviation
+
+***
+
+**Space Needle View** on $Premium - \operatorname{E}[Loss]$
+
+* Shows different percentiles
+
+* Colored section is proportional to the probability that the result is in that range
+
+* Easy to compare each quantile across programs
+
+**Cost Benefit Diagram**
+
+* Cost of reinsurance (for each program) vs loss @ each percentile
+
+**Pre-Tax Net Income**
+
+* Include expenses and investment income
+
+* Look at value at each iterations of the sim (percentile)
+
+* Get a perspective on overall profitability e.g. probability of negative earnings
+
+**CDF** on Combined Ratio
+
+* **Caveat**: Can give distorted results when the net premium is reduced due to significant ceded premium
+
+    * Expense ratio will be higher due to lower net premium (denominator)
+    
+    * Can make results look worst for program that have big cession
+    
+### Efficient Frontier Charts
+
+Plot the risk metric vs return metric for different reinsurance structure options and at different percentile and then graph out the efficient frontier as well
+
+* Plot increasing risk to the right so it looks more familiar
+
+* Look for programs that are up and left along the efficient frontier with the lowest risk metric for a given return metric
+
+Return metrics:
+
+* Earnings
+
+Risk metrics:
+
+* Probability of making plan
+* Probability of: surplus < 2 $\times RBC$; surplus < BCAR score supporting a target rating; Expected loss in a 10 year period, $TVaR_{90%}$, exceeds a threshold level or surplus ($TVaR_{90%}$ should not exceed 20% of surplus); x% drop in quarterly EPS
