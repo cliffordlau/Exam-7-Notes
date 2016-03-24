@@ -5,6 +5,9 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
@@ -106,7 +109,7 @@ From a system performance perspective, company needs to be:
 * Downgrade impacts the first 2
 * Insolvent impacts the last 2
 
-#### Performance Improvement via Cycle Management
+#### Cycle Management
 
 Areas impact by implementing cycle management:
 
@@ -153,7 +156,7 @@ Owner/shareholders need to understand that some financial figures will be out of
 * Premium volume $\downarrow$
 * Overhead expense ratio to premium $\uparrow$
 
-### Additional Perspectives on Op Risk Management
+### Additional Perspectives {.tabset}
 
 #### Agency Theory Perespective
 
@@ -239,3 +242,92 @@ Steps for operational risk portfolio management:
 5) Estimate the impact of mitigation, process improvements, or risk transfer
 
     * Requires significant expert opinion as there are no significant amount of loss data both before and after
+    
+## 4.2 Strategic Risk
+
+### Intro Summary
+
+Strategy: Planning and the use of resources to achieve an organization's goals
+
+Strategic risk: Intentional risk taking to achieve an organization's goals
+
+Scenario planning is a key part of strategic risk management
+
+* Think through the possible scenarios the firm could find itself in and to plan responses to those scenarios
+
+* Advanced scenario planning incorporates several LoBs and indcludes dependencies among the LoBs
+
+* Further setp is agent based modeling where other parties reactions are also modeled
+
+### History and Definition
+
+**Strategy**
+
+Definition from Mango:
+
+* Science and art of planning
+* Using political, pyschological, and organizational resources
+* To achieve major organizational goals
+
+Definition from GIRO:
+
+* A strategy is a long term series of actions designed to take a company from its current state to its desired future state, and aim to provide a sustainable competitive advantage over other companies in the same market
+
+Strategy in NOT (from GIRO):
+
+* Business planning, strategy considers a wider breadth of issues such as the market, and where the company sits
+* Tactics, as these are short term
+
+***
+
+**Strategic Risk**
+
+Definition (unclear, but can be interpreted as):
+
+* Intentional risk taking
+* Unintentional risk as by-products of strategy planning or execution
+
+Definition from OCC (more like op risk):
+
+* Strategic risk is the risk to earnings or capital arising from averse business decisions or imporper implementation of those decisions. ... Its focus is on how plans, systems and implemenation affect the franchise value
+
+* Very similar to operation risk and not strategic risk
+
+### Research to Date {.tabset}
+
+#### Miller
+
+Strategic risk: unpredictability in corporate outcomes (effects)
+
+Strategic uncertainty: unpredictability of environmental and organizational variables that impact corporate performance (sources)
+
+* Our definition of risk is closer to Miller's definition of uncertainty
+
+#### Baird and Thomas
+
+Definition of risk too restrictive from an 1992 old paper:
+
+* Risk: A condition in which the consequences of a decision and the probabilities associated with the consequences are know entitie
+
+Baird and Thomas strategic risk definition (very broad):
+
+* Corporate strategic moves which cause returns to vary, which involve venturing into the unknown, which may result in corporate ruin, where outcomes and probabilities maybe only be partially known and where hard to define goals may not be met
+
+Elements of strategic risk:
+
+* Voluntariness of exposure (Choose risk because potential benefits are larger than consequences)
+* Controllability of consequences (outcomes can be contained)
+* Discounting in time (ability to delay consequences)
+* Discounting in space (ability to shift risks to competitors)
+* Knowledge of risky situation
+* Magnitude of impact
+* Group/individual factors (is the leader of the group in favor of risk acceptance)
+
+#### Slywotzky and Drzik
+
+Categorize strategic risk
+
+| Risk | Examples | Magnitude | Comments |
+| --- | --- | --- | --- |
+| Industry | Captial Intensive; Overcapacity; Commoditiztion | Very High | |
+| Technology | Shift; Patents; Obsolescence | Low | Pos
