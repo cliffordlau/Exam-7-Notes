@@ -245,11 +245,9 @@ Steps for operational risk portfolio management:
     
 ## 4.2 Strategic Risk
 
-### Intro Summary
+**Strategy**: Planning and the use of resources to achieve an organization's goals
 
-Strategy: Planning and the use of resources to achieve an organization's goals
-
-Strategic risk: Intentional risk taking to achieve an organization's goals
+**Strategic risk**: Intentional risk taking to achieve an organization's goals
 
 Scenario planning is a key part of strategic risk management
 
@@ -257,19 +255,19 @@ Scenario planning is a key part of strategic risk management
 
 * Advanced scenario planning incorporates several LoBs and indcludes dependencies among the LoBs
 
-* Further setp is agent based modeling where other parties reactions are also modeled
+* Further step is agent based modeling where other parties reactions are also modeled
 
 ### History and Definition
 
 **Strategy**
 
-Definition from Mango:
+*Definition* from Mango:
 
 * Science and art of planning
-* Using political, pyschological, and organizational resources
+* Using political, psychological, and organizational resources
 * To achieve major organizational goals
 
-Definition from GIRO:
+*Definition* from GIRO:
 
 * A strategy is a long term series of actions designed to take a company from its current state to its desired future state, and aim to provide a sustainable competitive advantage over other companies in the same market
 
@@ -289,7 +287,7 @@ Definition (unclear, but can be interpreted as):
 
 Definition from OCC (more like op risk):
 
-* Strategic risk is the risk to earnings or capital arising from averse business decisions or imporper implementation of those decisions. ... Its focus is on how plans, systems and implemenation affect the franchise value
+* Strategic risk is the risk to earnings or capital arising from averse business decisions or improper implementation of those decisions. ... Its focus is on how plans, systems and implementation affect the franchise value
 
 * Very similar to operation risk and not strategic risk
 
@@ -307,7 +305,7 @@ Strategic uncertainty: unpredictability of environmental and organizational vari
 
 Definition of risk too restrictive from an 1992 old paper:
 
-* Risk: A condition in which the consequences of a decision and the probabilities associated with the consequences are know entitie
+* Risk: A condition in which the consequences of a decision and the probabilities associated with the consequences are know entities
 
 Baird and Thomas strategic risk definition (very broad):
 
@@ -328,6 +326,107 @@ Elements of strategic risk:
 Categorize strategic risk
 
 | Risk | Examples | Magnitude | Comments |
-| --- | --- | --- | --- |
-| Industry | Captial Intensive; Overcapacity; Commoditiztion | Very High | |
-| Technology | Shift; Patents; Obsolescence | Low | Pos
+| ---------- | --------------------- | --- | ----------------------- |
+| Industry   | Capital Intensive; Overcapacity; Accommodation | Very High | |
+| Technology | Shift; Patents; Obsolescence | Low | Possibly innovation in dist^n^ |
+| Brand | Erosion; Collapse | Moderate | Reputation for fair claims handling |
+| Competitor | Global Rivals; Unique Competitors | Moderate | Predatory pricing from competitors |
+| Customer   | Priority Shift; Power; Concentration | Moderate | Bigger issue for large commercial insurance |
+| Project | Failure of R&D; IT; Business Development; M&A | High | Insurers has long history of failed mergers; Low investment in IT |
+| Stagnation | Flat or declining volume; Price declines | High | Highly correlated to the cycle; Companies will keep writing business to cover fixed expenses |
+
+#### Hertz and Thomas
+
+Risk Analysis: An input for the strategy development process, aiding strategy formulation, evaluation, choice and implementation
+
+* No distinction is drawn between strategic risk analysis and strategy formulation
+
+* Both are viewed as part of a iterative, adaptive and flexible policy dialogue process
+
+### Scenario Planning
+
+Effective strategic planning begins with scenario planning:
+
+* Limited # of scenarios: each tells a story of how elements may interact with each other under different conditions
+* Test for internal consistency and plausibility
+* Explore joint impact of several variables and change multiple variables at one time
+* Include subjective interpretation of factors that cannot be explicitly modeled
+* Attempts to capture the richness of range of possibilities $\Rightarrow$ Lead the makers to consider changes they might otherwise ignore
+
+Key Steps in Scenario Planning Process:
+
+1) Define **scope**: time frame, geography, market segment
+2) Identify major **stakeholders**: employees, owners, regulators, customers, competitors, suppliers
+3) Identify basic **trends**: their influence on organization
+4) Identify key **uncertainties**: leverage points of impact
+5) Construct **initial scenario** theme
+6) Check for **consistency** and **plausibility**: outcomes fit together?
+7) Develop **learning scenarios**: identify themes and naming scenarios
+8) Identify **research needs**: areas that need additional research
+9) Develop **quantitative models**: formalize some interactions in a quantitative model?
+10) Evolve toward **decision scenarios**: iterative process of reviewing scenarios with the goal of converging to test scenarios and generate new ideas
+
+#### Insurance Example
+
+Scenarios will be less detailed than a typical strategy or plan document
+
+Traditional unilateral planning approach:  
+Set planned premium and ELR based on current year LR, price trend, and loss trend
+
+* Caveat: Not thinking through the possibility of a possible price decrease, where they might want to reduce premium volume instead of the inflexibility of making the planned premium volume
+
+Scenario planning:  
+Allow u/w-ers to be flexible in their approach in the case prices are not as expected
+
+Must decide ahead of time:
+
+* Range of scenarios
+* Responses to those scenarios
+
+Plans must have enough detail to give them operational weight
+
+Advantages:
+
+* Thanks through responses beforehand and can agree on best response ahead of time
+* Saves time during a crisis
+* Operational inertia is reduced, flexibility is built into the system
+    
+### Advanced Scenario Planning & ERM
+
+**Model Expansion**
+
+* Expend into several LoBs
+* Internal consistency requires coordination
+* Need to model dependencies
+* Responses will be politically charged, as limited u/w capacity must be allocated across the company
+    * Better to do this during planning than in the heat of a market crisis
+
+**Stochastic Scenario Planning**
+
+Generate stochastically simulated scenarios that have responses based on a set of rules
+
+1) Need to define goals
+
+    * e.g. profit or premium level etc
+
+2) Need to have downside constraints
+
+    * e.g. capital loss of x% with y% probability
+
+3) Need to determine the estimate environmental variables that define the state of the world
+  
+    * e.g. size of market, price level, current market share, etc
+
+4) Define action rules that respond to environmental variables
+
+    * e.g. hold price, increase u/w capacity according to price adequacy levels
+    
+### Agent-Based Modeling
+
+Agents can be competitors, customers, regulators
+
+Program each agent to respond to the state of the market
+
+* Chase market share, focus on technical price, customer may reduce coverage if prices are high, etc
+
+Creates a complex system with emergent properties that describe the behavior of agents
