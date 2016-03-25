@@ -5,6 +5,9 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
@@ -25,17 +28,17 @@ However if we add systemic factor that impacts all claims (e.g. inflation), it d
 
 For small company there is a large amount of process risk so the overall variability does not increase very much
 
-## Projection Risk
+## Projection Risk {.tabset}
 
-**Simple Trend**
+Different ways to project trends
+
+### Simple Trend
 
 Forecast one trend historically and into the future
 
 Additional uncertainty due to estimate of ultimate losses is uncertain
 
-***
-
-**Severity Trend and Inflation**
+### Severity Trend and Inflation
 
 Claim severity $\neq$ general inflation
 
@@ -48,9 +51,7 @@ Claim severity $\neq$ general inflation
 
 For ERM where general inflation is modeled, severity trend should be dependent on the general inflation
 
-***
-
-**Trend as a Time Series**
+### Trend as a Time Series
 
 More realistic, allow for trends to change over time
 

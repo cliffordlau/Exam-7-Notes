@@ -5,6 +5,9 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
@@ -176,7 +179,7 @@ We'll use Kendall's $tau$ to measure correlation as it won't be affected by the 
 
 Note, don't have to memorize the formulas
 
-## Summary of Copulas
+## Summary of Copulas {.tabset}
 
 | Copula | Shape | Dependency | $\tau$ |
 | --- | --- | --- | --- |
@@ -387,7 +390,7 @@ Properties of the t-copula
 
 * T-copula also have some density in the other corners
 
-## Fitting Copulas to Data
+## Fitting Copulas to Data {.tabset}
 
 $J(z)$ and $\chi(z)$ are the empirical statistics we're interested in that are related to $\tau$ and $R$
 

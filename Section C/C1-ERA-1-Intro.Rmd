@@ -5,6 +5,9 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
@@ -28,7 +31,7 @@ ERM as of 2007:
 
 ERM needs an internal champion with quantitative skills, operational experience and political skills to work across organizational silos
 
-## 1.2 Overview of Enterprise Risk Management
+## 1.2 Overview of ERM
 
 **Def^n^**:  
 ERM is the process of systematically and comprehensively identifying critical risk, quantifying their impacts and implementing integrated strategies to maximize enterprise value
@@ -67,7 +70,7 @@ Key aspects of ERM
     * About *choices*, making the right or wrong or no strategic choices
     * Not as responsive, amenable to quantitative modeling
     
-### ERM Process
+### ERModel Process {.tabset}
 
 Diagnose $\Rightarrow$ Analyze $\Rightarrow$ Implement $\Rightarrow$ Monitor
 
@@ -133,7 +136,7 @@ Need to update plans and model as company or market or competitors change
 * New ways to control them
 * New options for treating or transferring risk
 
-## 1.3 Enterprise Risk Modeling Overview
+## 1.3 ERModel Overview
 
 Goal: **understand** and **quantify** the relationships among the risks to the business that arise from: asset, liabilities and underwriting
 
@@ -170,26 +173,20 @@ Elements that differentiate model quality:
 * Take into account the uncertainty from other models (CAT, ESG, credit risk) that are used as inputs
 * Operational risks have to be modeled in bulk using informed judgement as we might not be able to model them in a detailed fashion
 
-### Key Elements of Enterprise Risk Model
+### Key Elements of ERM {.tabset}
 
-Underwriting Risk
-
-* Loss Frequency and Severity Dist^n^
-* Pricing Risk
-* Parameter Risk
-    * Estimation Risk
-    * Projection Risk
-    * Event Risk
-    * Systematic Risk
-CAT Model Uncertainty
-
-Reserving Risk
-
-Asset Risk
-
-Dependencies (Correlation)
-
-***
+1. Underwriting Risk
+    * Loss Frequency and Severity Dist^n^
+    * Pricing Risk
+    * Parameter Risk
+        * Estimation Risk
+        * Projection Risk
+        * Event Risk
+        * Systematic Risk
+    * CAT Model Uncertainty
+2. Reserving Risk
+3. Asset Risk
+4. Dependencies (Correlation)
 
 #### Underwriting Risk
 
@@ -343,6 +340,8 @@ $\hookrightarrow$ More feasible and relevant to focus on thresholds less extreme
 * 1-in-$x$ years event loss no more than $y \%$ of capital $\Rightarrow$ $\dfrac{100}{y} \times TVaR_{1 - \frac{1}{x}}$
 
 **Important**: Risk measures do not tell us how much capital to hold; They tell us for a given level of capital, what the risk to the company is
+
+***
 
 #### Risk Adjusted Performance
 

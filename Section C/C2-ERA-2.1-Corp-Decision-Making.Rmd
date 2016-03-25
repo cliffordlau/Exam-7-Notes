@@ -5,6 +5,9 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
@@ -76,7 +79,7 @@ Risk managers and owners are both interested in preserving franchise value $\Rig
 * Market Value = Book Value + Franchise Value
 * Franchise Value = Value of future earnings growth
 
-## Decision Making with an Internal Risk Model
+## Decision Making with an IRM
 
 Focus on Element 5 below, 1-4 discussed else where
 
@@ -97,7 +100,7 @@ Focus on Element 5 below, 1-4 discussed else where
     
 4) Attribute cost to source
 
-### Element 5a - Corporate Risk Tolerance
+### 5a - Corporate Risk Tolerance
 
 Corporate risk tolerance
 
@@ -174,7 +177,7 @@ Firm must answer these questions:
 * How much reward are we willing to give up for a given reduction of risk and vice versa (Selection of utility curve)
 * Are the risk-reward trade offs available along the efficient frontier acceptable to us (Answer by the first 2 points)
 
-### Element 5b - Cost of Capital Allocated
+### 5b - Cost of Capital Allocated
 
 Still an open question
 
@@ -209,7 +212,9 @@ EVA = Economic Value Added = NPV - Cost of Capital
 
 EVA > 0 means BU is adding value
 
-### Element 5c - Cost-Benefit Analysis (CBA) for Mitigation
+### 5c - CBA for Mitigation
+
+Cost-benefit analysis (CBA)
 
 EVA
 
