@@ -237,7 +237,7 @@ Steps for operational risk portfolio management:
 
 3) Estimate the loss potential per exposure for each op risk
 
-4) (2) + (3) = loss dist^n^ for each BU
+4) Step 2 + 3 = loss dist^n^ for each BU
 
 5) Estimate the impact of mitigation, process improvements, or risk transfer
 
