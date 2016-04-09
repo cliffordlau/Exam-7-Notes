@@ -5,10 +5,76 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
-## Traditional Methods and LS Assumptions
+## Cliff's Summary
+
+Least Square
+
+* Least Square [Formula](#LS-formula)
+
+    * Know how to do them with calculator
+    
+    * Remember to adjust for exposure if needed
+
+* Theorectical dis^n^ formulas: [Poi-Bin](#poi-bin) and [NB-Bin](#nb-bin)
+
+* Know the [conclusions](#conclusions) on LS
+
+Method comparisons
+
+* [Pros and cons](#pros-cons) of each method
+
+* The different $a$ and $b$ for each methods
+
+[Bayesian](#bayesian-cred) Credibility
+
+* Know which method is best given the Cov and Var relationships
+
+* [Development Formula](#dev-formula):  
+Can use the credibility formula to get the LS results
+
+* [Case load effect](#case-load)
+
+Additional [considerations](#consid) for calculations
+
+### Types of Exam Questions
+
+**Concepts**
+
+* 1996 - #28: Poi-bin process 
+* 1996 - #50: When to use LS
+* 2000 - #2: Method assumptions
+* 2001 - #22: Which method is better given the Cov(X,Y) and Var(X) relationships
+* 2003 - #3: $a$ and $b$ for different methods
+* $\star$ 2006 - #4: Cov(X,Y) and Var(X) relationships (phrased a bit differently)
+* 2006 - #15 d: LS assumptions
+* 2007 - #42: Method assumptions
+* 2009 - #3 b: LS assumptions (LS not best given $b < 0$)
+
+**Full Calculations**
+
+* $\star$ [2000 - #41](#2000-41): LS, dev and ELR from triangle; Weight the 2 with $Z = \dfrac{b}{c}$ to get to LS
+* $\star$ [2001 - #31](#2001-30): Use VHM and EVPV for
+* 2002 - #21: LS, dev and ELR from triangle and weight for LS
+* 2008 - #9: LS, dev and ELR from triangle
+* $\star$ 2008 - #10a: VHM and EVPV calc
+    * Double check the $\sigma_y$ calc make sense
+
+**Simple Plug and Play**
+
+* 1998 - #19: BF with LS
+* $\star$ 2003 - #22: Dev and ELR, key is to adjust for exposure
+* 2005 - #12: LS calc by $a$ and $b$
+* 2006 - #5: LS calc by $a$ and $b$
+* 2006 - #15 a-c: Dev, BF, and cred
+* 2009 - #3 a: LS Calc
+
+## Method Assumptions
 
 | Method        | Formula      | Restrictions   |
 | ------------- | ------------ | -------------- |
@@ -17,7 +83,9 @@ output:
 | BF            | $y = a + x$  | b = 1          |
 | ELR           | $y = a$      | b = 0          |
 
-**Least Squares Formula** <span style="color:red;background-color:yellow">Important</span>
+<a name="LS-formula"></a>**Least Squares Formula**
+
+<span style="color:red; background:yellow">Memorize</span>
 
 * $b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$
 
@@ -25,7 +93,7 @@ output:
 
 <span style="color:red">Use Calculator</span>
 
-**Caveat with Traditional Method**
+<a name="pros-cons"></a>**Caveat with Traditional Method**
 
 * ***Chainladder***: Difficult to select LDF when vary from year to year
 * ***BF***: Doesn't work well with negative development
@@ -38,20 +106,20 @@ output:
 * Good when dist^n^ is the same across multiple years
 * Bad when systemic shift year to year e.g. inflation, legal environment (Tort reform)
 
-## Least Squares with Theoretical Dist^n^ Using Bayes
+## LS w/ Theoretical Dist^n^ Using Bayes
 
-**Poisson - Binomial**  
+<a name="poi-bin"></a>**Poisson - Binomial**  
 $Y =$ (Ultimate) # of claims incurred each year $\sim Poi(\mu)$  
 $X =$ # of claims reported by year end $\sim Bin(y,d)$
 
-Unreported claims = $R(x) = \mu(1-d)$ <span style="color:red; background:yellow">Formula</span>
+Unreported claims = $R(x) = \mu(1-d)$ <span style="color:red; background:yellow">Memorize</span>
 
 Simulation of Poi - Bin from paper shows that:
 
 * LDF shows upward bias
 * MSE of LDF is higher than MSE of LS
 
-**Negative Binomial - Binomial**  
+<a name="nb-bin"></a>**Negative Binomial - Binomial**  
 $Y =$ (Ultimate) # of claims incurred each year $\sim NB(r, p)$
 
 * $Y =$ # of failures until $r$ success with success probability = $p$
@@ -60,56 +128,71 @@ $Y =$ (Ultimate) # of claims incurred each year $\sim NB(r, p)$
 
 $X =$ # of claims reported by year end $\sim Bin(y,d)$
 
-Unreported claims = $R(x) = \dfrac{s}{1-s}(x + r)$ <span style="color:red; background:yellow">Formula</span>
+Unreported claims = $R(x) = \dfrac{s}{1-s}(x + r)$ <span style="color:red; background:yellow">Memorize</span>
 
 * $s = (1-d)(1-p)$
 
 ## Bayesian Credibility
 
-$L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
+<span style="color:red; background:yellow">Memorize</span>
+
+**Best linear estimator** of Y|X
+
+<a name="bayesian-cred"></a>$L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
 
 * Y = Ultimate Losses; X = Reported Losses
 * $L(x)$ = best linear estimator of Y|X = least square estimate
+* Use this when we don't know the distribution of the random variable
 
 | Scenarios | Implications |
-| --- | --- |
+| ------------------------ | ----------------------- |
 | $x = \mathrm{E[X]}$ | $L(X) = \mathrm{E[Y]}$ |
-| $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \approx \mathrm{E[Y]}$; X, Y don't' vary tightly together|
-| $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \mathrm{E[Y - X]}$; BF Method |
-| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | Y is significantly influenced by X; Use LS <span style="color:red">I think</span>|
+| $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \approx \mathrm{E[Y]}$; Use ELR Method; X, Y don't vary tightly together|
+| $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \mathrm{E[Y - X]}$; Use BF Method |
+| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | Y is significantly influenced by X; Use Dev Method|
 
-### Credibility Form of the Development Formula
+### Credibility Form of the Dev' Formula
 
-$L(x) = Z \dfrac{x}{d} + (1-Z)\mathrm{E[Y]}$
+<span style="color:red; background:yellow">Memorize</span>
+
+<a name="dev-formula"></a>$L(x) = Z \underbrace{\dfrac{x}{d}}_{\begin{array}{c} \text{Dev'}\\ \text{Method}\\ \end{array}} + (1-Z)\underbrace{\mathrm{E[Y]}}_{ELR}$
+
+* $L(x) = Q(x)$ when $Q(x)$ is linear
+
+**Method 1 for Z**
 
 * $Z = \dfrac{VHM}{VHM + EVPV} = \dfrac{\mathrm{Var_Y(E[X|Y])}}{\mathrm{Var_Y(E[X|Y])}+\mathrm{E_Y[Var(X|Y)]}}$
 
     * $VHM = d^2 \sigma^2_Y$
     
     * $EVPV = \sigma^2_d[\sigma^2_Y + \mathrm{E[Y]}^2]$
+    
+    * Use this when underlying distribution not stable (historical not a good predictor); LS only works when the underlying dist^n^ are stable
 
 * $d =$ % reported
 
-    * **Assumption** same $d$ for any size of $y$; Not necessarily true for large or small $y$
-
-    * $d \: {\perp\!\!\!\perp} \: X$
+    * $d \: {\perp\!\!\!\perp} \: X$: reporting speed does not vary with the volume of claims
     
     * $D = \dfrac{X}{Y}$
     
 * Results sensitive to $\mathrm{E[Y]}$ and $\mathrm{E[D]}$ but not the $\sigma$
 
-* $L(x) = Q(x)$ when $Q(x)$ is linear
-
-* Use this when underlying distribution not stable (historical not a good predictor); LS only works when the underlying dist^n^ are stable
-
 * Based on estimates of VHM and EVPV of the dist^n^ instead
 
-Poi - Bin
+**Method 2 for Z**
+
+* $Z = \dfrac{b}{c}$, where $c$ is the CDF and $b$ is from the LS
+
+    * This yield the LS results <span style="color:red">(always?)</span>
+
+    * Assume same $d$ for any size of $y$; Not necessarily true for large or small $y$
+
+#### Special Case: Poi - Bin
 
 * $L(x) = x + (1-d)\mathrm{E(Y)}$
 * $Z = d$
 * Same as BF
-* BF is optimal when claim counts follow Poi - Bin
+* **BF is optimal** when claim counts follow Poi - Bin
 
 ### Caseload Effect
 
@@ -118,12 +201,16 @@ When $D$ and $Y$ not independent still works
 * e.g. $d$ larger for small $y$ since small claims are settle faster
 * Or the opposite when large $y$ has as larger $d$: For a property book when large weather event happens, report quicker
 
-$L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$
+<span style="color:red; background:yellow">Memorize</span>
+
+<a name="case-load"></a>$L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$
 
 **Assumption**:  
 $\mathrm{E[X|Y=y]} = dy + x_0$; $x_0$ is for the fixed salary
 
-### Calculation
+### Calculation Considerations
+
+<a name="consid"></a>
 
 **Normalize** the losses by dividing with premium since LS assume constant distribution and also ***adjust for inflation***
 
@@ -147,10 +234,24 @@ Notes:
 
 ## Conclusions
 
+<a name="conclusions"></a>
+
 LS is the best linear estimate of $Q(x)$, the theoretical best estimate of the ultimate loss
 
 LS produce more reasonable results when year to year fluctuations are severe
 
 LS does not do well when the variations are due to underlying changes in the payment pattern (due to internal or external changes)
 
+* e.g. When there is a systematic shift in the business
+
 Subject to sampling error when estimating parameters similar to other methods
+
+## Past Exam Questions
+
+<a name="2000-41"></a>2000 - #41
+![alt text](questions/2000-41Q.png)
+![alt text](questions/2000-41A.png)
+
+<a name="2001-30"></a>2001 - #30
+![alt text](questions/2001-30Q.png)
+![alt text](questions/2001-30A.png)
