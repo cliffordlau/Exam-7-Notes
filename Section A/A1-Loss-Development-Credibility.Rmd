@@ -44,6 +44,8 @@ Additional [considerations](#consid) for calculations
 
 ### Types of Exam Questions
 
+<span style="color:red">Haven't done TIA practice questions</span>
+
 **Concepts**
 
 * 1996 - #28: Poi-bin process 
@@ -55,6 +57,7 @@ Additional [considerations](#consid) for calculations
 * 2006 - #15 d: LS assumptions
 * 2007 - #42: Method assumptions
 * 2009 - #3 b: LS assumptions (LS not best given $b < 0$)
+* 2014 #2: Know assumptions of methods for Dev (fitted line and residuals)
 
 **Full Calculations**
 
@@ -64,6 +67,10 @@ Additional [considerations](#consid) for calculations
 * 2008 - #9: LS, dev and ELR from triangle
 * $\star$ 2008 - #10a: VHM and EVPV calc
     * Double check the $\sigma_y$ calc make sense
+* $\star$ 2011 #1: a) LS w/ exposure adjustment b) Assess LS parameters resonability c) Draw the relationship of losses to date vs ultimate for the 3 methods
+* 2012 ‐ #1 b: Solving equations to back out numbers using BK and BF method
+* 2012 - #4: LS and know that LS gives the optimal linear weight based on $\dfrac{b}{c}$
+* 2014 #1: a) VHM and EVPV b) Why LS is not appropriate
 
 **Simple Plug and Play**
 
@@ -73,6 +80,7 @@ Additional [considerations](#consid) for calculations
 * 2006 - #5: LS calc by $a$ and $b$
 * 2006 - #15 a-c: Dev, BF, and cred
 * 2009 - #3 a: LS Calc
+* 2012 ‐ #1 a: Dev, BF, Benktander 
 
 ## Method Assumptions
 
