@@ -31,6 +31,8 @@ FCFE:
     
 * [Advantages](#fcfe-adv)
 
+* [FCFE vs FCFF](#FCFE-v-FCFF)
+
 AE:
 
 * $\begin{align} V_0 = BV_0 + \sum_{t=1} \frac{\overbrace{(ROE_t - k)BV_{t-1}}^{AE_t}}{(1+k)^t}\end{align}$
@@ -49,10 +51,13 @@ Relative multiples:
 
 ### Types of Exam Questions
 
+<span style="color:red">Haven't done TIA practice questions</span>
+
 **Concepts**
 
 * $\star$ 2011 - #12 a: higher $g$ should be matched with higher $\beta$ for being more risky
 * 2011 - #12 c: relationship between $g$ and $k$
+* 2015 #17 b-c: $\beta$ discussion
 
 **DDM**
 
@@ -62,15 +67,27 @@ Relative multiples:
 * 2009 #34
 * 2011 - #12 b: DDM calc (Get $r_f$ as t-bond less liquidity premium)
 * $\star$ [2012 #12](#2012-12): Full calc with DDM
+* 2014 #16: DDM calc
+* 2015 #17 a: DDM calc 
 
 **FCFE**
 
 * $\star$ [2009 #35](#2009-35): Full FCFE calc
+* $\star$ [2013 #11](#2013-11): Full FCFE calc with discussion
+    * [FCFE vs FCFF](#FCFE-v-FCFF)
+* 2014 #17: FCFE Calc; <span style="color:red">Not sure bout the reserve increase impact on required capital</span>
+* $\star$ 2015 #16: Discussion on DCF
 
 **AE**
 
 * $\star$ [2010 #31](#2010-31): Full AE calc
-* [2011 - #13](#2011-13): P:B value calc + discussion on assumption
+* [2011 - #13](#2011-13): Price to Book value calc + discussion on assumption
+* 2013 #12: Full AE Calc + discussion
+* 2015 #15: AE Calc + discussion
+
+**Relative Valuation**
+
+* $\star$ 2014 #15: Price to Book calc using all the ratios given by LoB
 
 ## Assumptions
 
@@ -117,9 +134,15 @@ One alternative way to account for the risky cash flow is to convert the cash fl
 
 * Can use industry $\beta$
 
+    * Mix of business needs to be similar to industry
+    
+    * Industry $\beta$ should be adjusted for differences in the industry leverage and company leverage
+
 * $\beta$ will be higher for firms with more leverage, riskier business units
 
     * Alternative is to use *all equity* $\beta$ to remove bias from leverage
+    
+    * Higher growth should have higher $\beta$
 
 * Insurance company has additional leverage from policyholder liabilities
 
@@ -169,7 +192,7 @@ When calculating $g$, calculate $ROE$ and $g$ for all years and make selection
 
 Firm with high expected growth tend to be riskier $\Rightarrow$ Higher discount rate
 
-* Forecast is more susceptilble to being wrong, so should be discount more?
+* Forecast is more susceptible to being wrong, so should be discount more?
 
 **DDM Assumptions**
 
@@ -188,9 +211,21 @@ $FCFE = NI + (Non \:Cash\:Charges) - \Delta Working \:Capital - \Delta Capital +
 
 * $g = ROE \times$ [Reinvestment Rate] $= ROE \times \dfrac{\Delta Capital}{NI}$
 
-We don't use the free cash flow to **firm** because there's additional leverage for p/h liabilities $\Rightarrow$ Not clear how to calculate cost of capital due to leverage from 2 different source
+    * Assume portion of FCF not paid out is invested at $k$
+
+**Free Cash Flow**
+
+* Cash flow available to pay out to the firm's source of capital (for FCFE this is only to equity) net of amounts required to be reinvested to the firm for growth
+
+* Weakness: require forecasting financial statements, use adjusted accounting measure, large terminal value
 
 Similar to DDM, calculate the $ROE$ and reinvestment rate for all years and make a pick
+
+<a name="FCFE-v-FCFF"></a>**FCFE vs FCFF**
+
+* We don't use the free cash flow to **firm** because there's additional leverage for p/h liabilities from reserves held
+* Not clear how to calculate cost of capital due to leverage from 2 different source and it complicates the calculation
+* Using FCFE removes the source of leverage
 
 <a name="fcfe-adv"></a>**Advantages over DDM**
 
@@ -214,11 +249,13 @@ Clean surplus assumption
 
 $V_0 = BV_0 + \begin{align}\sum_{t=1} \frac{AE_t}{(1+k)^t}\end{align}$
 
-* Assume AE will trend to zero overtime since it's difficult to maintain
-
 $AE_t = NI_t - k \cdot BV_{t-1} = (ROE_t - k)BV_{t-1}$ <span style="color:red;background-color:yellow">Important Formula</span>
 
 * Earnings (net income) XS of cost of capital
+
+* Assume AE will trend to zero overtime since it's difficult to maintain
+
+* AE is difficult to maintain as competitors will see the AE and move into the market
 
 <a name="ae-considerations"></a>**Parameters Considerations**
 
@@ -251,7 +288,9 @@ $g$
     
     * Dividends and CF are just consequence of value creation
 
-* Small terminal value
+* Small terminal value as it focus on any added value so less leverage
+
+* Directly using accounting measures so does not need to adjust into a cash flow measure
 
 ## Relative Multiples {.tabset}
 
@@ -347,3 +386,7 @@ Or compare multiples from diversified insurers
 <a name="2012-12"></a>2012 #12
 ![alt text](questions/2012-12Q.png)
 ![alt text](questions/2012-12A.png)
+
+<a name="2013-11"></a>2013 #11
+![alt text](questions/2013-11Q.png)
+![alt text](questions/2013-11A.png)
