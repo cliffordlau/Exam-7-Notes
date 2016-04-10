@@ -18,6 +18,8 @@ Know the GB method formula and properties
 
 ### Types of Exam Questions
 
+<span style="color:red">Haven't done TIA practice questions</span>
+
 **Concepts**
 
 * 2006 - #16 b c: GB method vs BF and dev
