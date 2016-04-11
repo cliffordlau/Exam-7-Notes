@@ -5,10 +5,22 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
-## Definitions and Assumptions
+## Cliff's Summary
+
+Know the 3 assumptions of chain ladder
+
+Know the 3 different weight and variance assumptions
+
+### Types of Exam Questions
+
+
+## Chain Ladder Assumptions
 
 **Definitions**
 
@@ -40,10 +52,10 @@ $f_k =$ LDF from $k$ to $k + 1$
 
     * If variance follows distribution x, then it implies the variance is $\propto$ loss
 
-## LDF Selections
+## LDF Selections Assumptions
 
 $\begin{align}
-  \hat{f_k} = \frac{\sum_j \frac{c_{j,k+1}}{c_{j,k}} \: w_{j,k}}{\sum_j w_{j,k}}
+  \hat{f_k} = \frac{\sum_j \overbrace{\frac{c_{j,k+1}}{c_{j,k}}}^{LDF_j} \: w_{j,k}}{\sum_j w_{j,k}}
   \end{align}$
 
 | Weight $w_{j,k}$ | Description | Variance | Residual |
@@ -52,11 +64,11 @@ $\begin{align}
 | $c_{j,k}$        | Weighted Average | $\alpha_k^2 \times \mathbf{c_{j,k}}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{j,k}}}}$ |
 | $c_{j,k}^2$      | Least Square | $\alpha_k^2 \times \mathbf{1}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{1}}}$ |
 
-Use different method for LDF selection based on variance assumption
+* Use different method for LDF selection based on variance assumption
 
-Variance and the weight always multiply to $c_{j,k}^2$
+* Variance and the weight always multiply to $c_{j,k}^2$
 
-## Means Squared Error
+## Mean Squared Error
 
 <span style="color:red;background-color:yellow">Important Formulas</span>
 
@@ -69,7 +81,7 @@ $\begin{align}
 * Standard error: $s.e. = \sqrt{MSE}$
 
 $\begin{align}
-  MSE(\hat{c}_{i,I}) = \hat{c}_{i,I}^2 \left \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f_k}^2} \left ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\right ) \right \}
+  MSE(\hat{c}_{i,I}) = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
 \end{align}$
 
 * The big $\sum$ sum over the remaining years till ultimate
@@ -123,7 +135,17 @@ $R_i \operatorname{exp}\left \{ -\dfrac{\sigma_i^2}{2} \pm \: Z_\alpha \sigma_i 
 
 * $\mu_i = \operatorname{ln}(\hat{R}_i) - \dfrac{\sigma_i^2}{2}$
 
-## Residuals
+## Chain Ladder Assumptions Test
+
+Look at various test on the Chain Ladder assumptions
+
+### Intercept
+
+Test for assumption (1)
+
+Plot the losses at adjacent ages to see if the line of best fit goes through the origin
+
+### Residuals
 
 Test for assumption (1)
 
@@ -141,7 +163,7 @@ For each age $k$, graph the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
 
 * Can also use to test assumption (3) on the other variance assumption by calculating the $\varepsilon$ differently
 
-## Calendar Year Test
+### Calendar Year Test
 
 Test for assumption (2)
 
@@ -175,7 +197,7 @@ Step 5) See if $Z$ is in the CI based on the the above
 
 * If the observed is outside the range $\Rightarrow$ There is calendar year effects, fail assumption (2)
 
-## Correlation of Adjacent LDFs
+### Correlation of Adjacent LDFs
 
 Test assumption (1) where expected only depends on most recent
 
@@ -219,6 +241,6 @@ Step 3) Compare $T$ with CI based on distribution
 
 * Do not reject the $H_0$ of uncorrelated LDFs if the $T$ is in the CI
 
-
-
 Venter has a method too
+
+## Past Exam Questions
