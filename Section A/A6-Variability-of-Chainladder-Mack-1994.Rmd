@@ -102,7 +102,7 @@ Test 4. [Adjacent LDF Correlation](#adjacent-ldf)
 * 2013 #3: Residuals test
 * 2013 #1: CY test and potential cause
 * $\star$ [2014 #4 a](#2014-4): Adjacent LDFs correlation test
-    * Has to use method from Feldlbum?
+    * Has to use method from Venter?
 * 2015 #3: Residuals test and plot, remember to label them
 * 2015 #4: CY Test
 
