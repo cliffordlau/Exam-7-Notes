@@ -5,8 +5,56 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
+
+## Cliff's Summary
+
+Standards used in this paper
+
+* The $n$ for this paper excludes the first column
+
+* Coefficient $> 2 \sigma$ is significant
+
+Know the adj SSE, AIC and BIC
+
+Know the 6 implications
+
+1) Statistical significance of $f(d)$
+
+2) Is there a better estimate for $q$ than $f \times c$
+
+    * [Number of parameters](#para-num)
+    
+    * [BF parameters](#bf-para)
+
+3) Check residuals against $c(w,d)$
+
+4) Stability of $f(d)$ down the column
+
+5) No correlation among columns
+
+    * Know the calculation for test
+
+6) No particularly high or low diagonals
+
+
+### Types of Exam Questions
+
+<span style="color:red">Haven't done TIA practice questions</span>
+
+**Concepts**
+
+* 2011 #4: Implication 1
+* 2012 #5: Mack assumptions
+
+**Implication Tests**
+
+* 2014 #4: Implication 5 correlation tests
+* 2015 #5: Implication 5 correlation tests
 
 ## Definitions and Assumptions
 
@@ -16,7 +64,7 @@ output:
 | --------- | ----------- |
 | $w$       | AYs         |
 | $d$       | Dev period; $d=0$ is age @ end of year 1  |
-| $c(w,d)$  | Cum losses for AY $w$ age $d$ |
+| $c(w,d)$  | Cumulative losses for AY $w$ age $d$ |
 | $q(w, d+1)$ | Inc losses for AY $w$ age $d$ to $d+1$ |
 | $f(d)$    | Col parameters; LDFs or % paid; applies to whole col |
 | $h(w)$    | Row parameters; Ult losses; applies to whole row |
@@ -25,7 +73,7 @@ output:
 
 1) $\operatorname{E}[q(w,d+1) \mid \text{Data to } w+d] = f(d) \: c(w,d)$
 
-    * Expected incremental development is $propto$ reported losses
+    * Expected incremental development is $\propto$ reported losses
 
 2) $c(w,d)$ is $\perp\!\!\!\perp$ of $c(v,g)$ $\forall$ $d,g,v,w$ given $v \neq w$
 
@@ -43,7 +91,7 @@ output:
         
         * Volume weighted LDF - 1
 
-## 6 Testable Implications of Assumptions
+## 6 Testable Implications
 
 Compare different fit of the models based on adjusted $SSE$ (actual vs projected x 1st column)
 
@@ -79,17 +127,19 @@ Compare different fit of the models based on adjusted $SSE$ (actual vs projected
 
 6) No particularly high or low diagonals
 
-## Implication 1
+## Implication 1: Significance of Factors
 
-Check if the coefficient is $> 2 \times \sigma$ for 95% sure they are $\neq 0$
+Check if the coefficient is $> 2 \sigma$ for 95% sure they are $\neq 0$
 
 * Can do $1.65 \sigma$ for 90% confidence
 
-## Implication 2
+## Implication 2: Superiority of Alternative Emergence Patterns
 
 ### Parameters
 
 Alternative projection on a $m \times m$ triangle
+
+<a name="para-num"></a>
 
 | $\mathbf{q(w,d)}$ | Parameters | Comments |
 | ------ | ---------- | --- |
@@ -98,7 +148,7 @@ Alternative projection on a $m \times m$ triangle
 | $f(d)h(w)$ | $2m-2$ | e.g. BF |
 | $f(d)h$ | $m-1$ | e.g. Cape Cod |
 
-* The -2 for the BF is due to f(0) and constant
+* The -2 for the BF is due to $f(0)$ and constant
 
 * Can further reduce parameters by combining some row and column parameters
 
@@ -108,7 +158,9 @@ Alternative projection on a $m \times m$ triangle
 
 ### Variance Assumptions
 
-Error term: $\varepsilon(w,d) = q(w,d) - f(d)h(w)$
+Minimize sum of squared error for the optimal parameters:
+
+* e.g. error term for BF: $\varepsilon(w,d) = q(w,d) - f(d)h(w)$
 
 Different variance assumption for $\varepsilon$ $\Rightarrow$ different parameters
 
@@ -116,7 +168,7 @@ $\operatorname{Var}(\varepsilon) = f^p h^q$
 
 * $p$ & $q$ typically in (0,1,2)
 
-* Weights will be $\dfrac{1}{f^p h^q}$
+* Weights will be $\dfrac{1}{f^p h^q}$ (inversely proportional to variance)
 
 * $f(d)$ = weighted average of $\frac{q}{h}$
 
@@ -124,11 +176,13 @@ $\operatorname{Var}(\varepsilon) = f^p h^q$
 
 #### BF
 
-| Method | $\mathbf{\operatorname{Var}(q)}$ | $\mathbf{f(d)}$ | $\mathbf{h(w)}$ |
-| --- | --- | --- | --- |
-| BF w/ Constant Var | $a(d); p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}$ |
+<a name="bf-para"></a>
+
+| Method | $\mathbf{\operatorname{Var}(q)}$ | $\mathbf{f(d)}$: Col Parameters | $\mathbf{h(w)}$: Row Parameters |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| BF (Constant Var, Least Square) | $a(d); p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}$ |
 | Cape Cod | $a(d); p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}$ |
-| BF w/ Var $\propto$ $fh$| $a(d)\:fh; p=q=1$ | $f^2(d) = \dfrac{\sum_w h (\frac{q}{h})^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f (\frac{q}{f})^2}{\sum_d f}$ |
+| BF (Var $\propto$ $fh$)| $a(d) \cdot f \cdot h; p=q=1$ | $f^2(d) = \dfrac{\sum_w h (\frac{q}{h})^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f (\frac{q}{f})^2}{\sum_d f}$ |
 
 * $f(d)$ is % losses paid @ $d$
 
@@ -140,7 +194,7 @@ $\operatorname{Var}(\varepsilon) = f^p h^q$
 
 * $f(d)$ $\sum \downarrow$; $h(w)$ $\sum \rightarrow$ (for the constant var BF)
 
-* Need to seed on of them and iterate until convergence
+* Need to seed one of them and iterate until convergence
 
 * Use the above to estimate the parameters and then calculate the unpaid
 
@@ -150,17 +204,17 @@ $\operatorname{Var}(\varepsilon) = f^p h^q$
 
 $\operatorname{E}[q(w,d+1)] = f(d)c(w,d)$
 
-* $n = \sum_i+1^{m-1} i = \dfrac{m(m-1)}{2}$ = predicted data point?
+* $n = \sum \limits_{i=1}^{m-1} i = \dfrac{m(m-1)}{2}$ = predicted data point?
 
 * $p=m-1$ since we dont' predict the first column
 
 * $m =$ dimension
 
 | $\mathbf{\operatorname{Var}(q)}$ | $\mathbf{f(d)}$ |
-| --- | --- |
-| $a(d) c$ | $f(d) = \dfrac{\sum c \frac{q}{c}}{\sum c}$ |
-| $a(d) c^2$ | $f(d) = \dfrac{\sum 1 \frac{q}{c}}{\sum 1}$ |
-| $a(d)$ | $f(d) = \dfrac{\sum c^2 (\frac{q}{c})}{\sum c^2}$ |
+| ---------------------------- | ---------------------------------- |
+| $a(d) c$      | $f(d) = \dfrac{\sum c \frac{q}{c}}{\sum c}$       |
+| $a(d) c^2$    | $f(d) = \dfrac{\sum 1 \frac{q}{c}}{\sum 1}$       |
+| $a(d)$        | $f(d) = \dfrac{\sum c^2 (\frac{q}{c})}{\sum c^2}$ |
 
 * $f(d)$ LDF minus 1
 
@@ -194,7 +248,7 @@ Correlation $r = \dfrac{\sum \tilde{x} \tilde{y}}{\sqrt{\sum \tilde{x}^2\sum \ti
 
 * $\tilde{y} = y - \bar{y}$
 
-Test statistics: $T = r \left[ \dfrac{n-2}{1-r^2} \right]^{1/2}$
+Test statistics: $T = r \sqrt{ \dfrac{n-2}{1-r^2} }$
 
 * $T \sim t_{n-2}$
 
@@ -235,3 +289,7 @@ $\operatorname{E}[q(w,d)] = f(d)h(w)g(w+d)$
 Model constant CY trend to reduce the parameters:
 
 $g(w+d) = (1+j)^{w+d}$
+
+## Past Exam Questions
+
+n/a
