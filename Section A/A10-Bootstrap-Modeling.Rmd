@@ -5,8 +5,66 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
+
+## Cliff's Summary
+
+Flow of the paper: Parametize $\rightarrow$ Bootstrap $\rightarrow$ Practical Issues $\rightarrow$ Correlations
+
+Remember this uses **incremental** triangles
+
+**Parametize**
+
+$m_{wd} = \operatorname{exp} \left [\alpha_w + \sum_j \beta_j \right]$
+
+$\operatorname{Var}[q(w,d)] = \phi m_{wd}^z$
+
+Parametize with GLM or Wtd average
+
+**Bootstrap**
+
+Create sample trianlge from mean and randomly sampled residuals $\Rightarrow$ Estimate parameters from sampled triangle $\Rightarrow$ Calculate mean and variance of the sampled triangle $\Rightarrow$ Draw losses from gamma
+
+Dispersion factor with [standard](#std-dispersion), [England & Verrall](#EV-dispersion), and [standardized](#standardized-dispersion)
+
+**Practical Issues**
+
+* Negative incremental values (fit and simulate)
+* Non-zero sum of residuals
+* N-year wtd average
+* Missing values
+* Outliers
+* Heteroskedasticity
+* Partial latest year exposure or partial diagonal
+* Expsoure adjustment
+* Parametric bootstrap
+
+**Diagnostics**
+
+**Other**
+
+* Multiple models
+* Model outputs
+* Correlations
+
+### Types of Exam Questions
+
+<span style="color:red">Haven't done TIA practice questions</span>
+
+**Practical Issues**
+
+* 2013 #7: negatvie values
+* 2014 #7: List 4 practical issues and solutions
+* 2015 #10: Heteroscedasticity, why important, adjustments description
+* 2015 #11: Negative values, outliers, exposure level
+
+**Diagnostics**
+
+* $\star$ 2014 #9: Evaluate the results given mean unpaid, s.e., CoV by AYs
 
 ## Introduction
 
@@ -44,7 +102,7 @@ img <- readPNG("figures/Exam 7 Notes - 1.png")
 
 $m_{wd} = \operatorname{exp} \left [\alpha_w + \sum_j \beta_j \right]$
 
-* $\alpha_i$ and $\beta_j$ are selected to minimize error between $ln(actual) - ln(forecast)$
+* $\alpha_i$ and $\beta_j$ are selected to minimize error between $\operatorname{ln}(actual) - \operatorname{ln}(forecast)$
 
 Equivalence for using Venter notation:
 
@@ -200,7 +258,7 @@ Once we have the mean and residuals in each cell, repeat below:
 ## Dispersion Factor
 <a name="dispersion"></a>
 
-**Standard**
+<a name="std-dispersion"></a>**Standard**
 
 $\phi = \dfrac{\sum r_{wd}^2}{n-p}$
 
@@ -210,7 +268,7 @@ $\phi = \dfrac{\sum r_{wd}^2}{n-p}$
 
     * $2m-1$: one for each row, one for each column minus first column
   
-**England & Verrall**
+<a name="EV-dispersion"></a>**England & Verrall**
 
 Degrees of freedom adjustments
 
@@ -221,7 +279,7 @@ $\phi^{EV} = \dfrac{\sum \left(r^{EV}_{wd}\right)^2}{n-p}$
     & = & r_{wd} &\times &\sqrt{\dfrac{n}{n-p}}\\
   \end{array}$
 
-**Standarized Residuals**
+<a name="standardized-dispersion"></a>**Standarized Residuals**
 
 Pinheiro proposed to standardized residuals so they all have same variance
 
@@ -311,21 +369,21 @@ Column with negative mean can results in vary large LDFs, 4 options to deal with
 
 1) ***Remove the extreme iterations***
 
-* But beware of understating the the likelihood of extreme outcomes
+    * But beware of understating the the likelihood of extreme outcomes
 
 2) ***Recalibrate*** the Model
 
-* Review data used and parameter selection (e.g. remove the first AY as it does not represent current behavior)
+    * Review data used and parameter selection (e.g. remove the first AY as it does not represent current behavior)
 
 3) ***Limit Incremental Losses Below 0***
 
-* Either in the original triangle, sampled or simulated loss (process var step); Replace with 0
+    * Either in the original triangle, sampled or simulated loss (process var step); Replace with 0
 
-* Can just do it in certain columns
+    * Can just do it in certain columns
 
-4) *Understand**
+4) **Understand**
 
-* Understand why this is happening. e.g. if due to S&S then you can just model them separately and then correlated them during simulation
+    * Understand why this is happening. e.g. if due to S&S then you can just model them separately and then correlated them during simulation
 
 ### Non-Zero Sum of Residuals
 
@@ -387,7 +445,7 @@ Remove extreme values that are not representative of the variability of the loss
 
 ### Heteroskedasticity
 
-Non constant variance
+Non constant variance (bootstrap assumes residuals are $iid$)
 
 **Stratified Sampling**
 
@@ -399,7 +457,7 @@ Split the triangle into groups with similar variance and only sample residuals t
 
 Group the residuals then calculate the $\sigma$ of the residuals in each group and scale up
 
-Hetero-adjustment factor = $h^t$ = the largest $\sigma$ $\div$ each group's $\sigma$
+Hetero-adjustment factor: $h^i$ = the largest $\sigma$ $\div$ each group's $\sigma$
 
 $r_{wd}^{i,H} = r_{wd} \times f_{wd}^H \times h^i$
 
@@ -451,7 +509,7 @@ Might not have enough data to sufficiently represent the tail
 
 Fit a distribution to the residual and sample from the distribution instead
 
-## Diagnostics
+## Diagnostics {.tabset}
 
 Judge the quality of the model
 
@@ -502,7 +560,11 @@ Test model with different sets of parameters
 
 Read summarized output by AYs
 
-* Mean, s.d., CoV, Min, Max, Median
+* Mean, s.e., CoV, Min, Max, Median
+
+* The all year s.e. should be greater than any individual year
+
+* The all year CoV should be less than the CoV for any individual year
 
 * CoV should be highest for older years due small mean unpaid
 
@@ -512,6 +574,8 @@ Read summarized output by AYs
     
 * Check min max for reasonability
 
+For the triangles:
+
 * Check incremental means as well in triangle form
 
 * Check s.d. of incremental values
@@ -520,10 +584,10 @@ Read summarized output by AYs
 
 Use different methods (Paid/Inc'd Dev, BF, etc) by assigning weights by AYs
 
-Method 1:  
+**Method 1**:  
 In the process variance step of bootstrap, use the same underlying U(0,1) to draw from each model then weight the models by the %
 
-Method 2:  
+**Method 2**:  
 Run each model independently for each simulation (i.e. use different U(0,1)) then for each AY use the weights to randomly select one of the modeled results. Results will be a mixture of the various models
 
 Important to review the statistics in the above section for each output
@@ -615,3 +679,5 @@ Based on testing from General Insurance Reserving Oversight Committee, the ODP B
 * Use for SII requirements
 
 * Research in correlation matrix (difficult to estimate)
+
+## Past Exam Questions
