@@ -5,8 +5,46 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
+
+## Cliff's Summary
+
+Memorize the CDF for [loglogistic](#Loglogistic) and [weibull](#Weibull)
+
+We use the **average age** of the period here
+
+Know how to calculate reserves given the $G(x)$ and for each of the 2 methods given:
+
+* Growth function distribution and parameter (might have to estimate)
+
+* LDF or Cape Cod
+
+* Data (e.g. paid to date for each AY)
+
+* Test for truncation by looking at age twice the triangle
+
+Other use of the model
+
+### Types of Exam Questions
+
+<span style="color:red">Haven't done TIA practice questions</span>
+
+**Reserve Calculation**
+
+* $\star$ [2011 #2](#2011-2): Cape Cod truncated and reserve CoV
+* 2012 #2: Cape Cod method and reserve CoV
+* $\star \star$ [2013 #3](#2013-3): LDF method with $\sigma^2$ calc
+* 2013 #10: Stanard-Buhlmann
+* 2014 #5: plug and play LDF and Cape Cod method with Benktander
+* [2015 #2](#2015-2): LDF Method and concept where if we switch to Cape Cod the CoV should go down as it incorporates additional information
+
+**Other**
+
+* 2012 #3: Residual plot from projection and assumptions
 
 ## Expected Loss Emergence
 
@@ -14,11 +52,9 @@ $x =$ **average age** of AY (e.g. 6mo for the most recent instead of 12mo) <span
 
 % paid to date growth function: $G(x \mid \omega, \theta)$ <span style="color:red; background-color:yellow">Memorize Formula</span>  
 
-<a name="Loglogistic"></a>
-* **Loglogistic**: $G(x \mid \omega, \theta) = \dfrac{x^{\omega}}{x^{\omega} + \theta^{\omega}}$
+* <a name="Loglogistic"></a>**Loglogistic**: $G(x \mid \omega, \theta) = \dfrac{x^{\omega}}{x^{\omega} + \theta^{\omega}}$
 
-<a name="Weibull"></a>
-* **Weibull**: $G(x \mid \omega, \theta) = 1- \operatorname{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}$
+* <a name="Weibull"></a>**Weibull**: $G(x \mid \omega, \theta) = 1- \operatorname{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}$
 
 * The curves move smoothly from 0 to 1
 
@@ -103,13 +139,13 @@ $C_i \sim ODP(\lambda_i, \sigma^2)$
 
 Potential issue with ODP is that some granularity is lost since reserves are estimated in multiple of $\sigma^2$. However $\sigma^2$ is generally small so little precision is lost
 
-***
+### MLE 
 
-**MLE** <span style="color:red; background-color:yellow">Not super testable</span>
+<span style="color:red; background-color:yellow">Not super testable</span>
 
 $l = \sum \limits_{i \in \Delta} c_i \operatorname{ln}(\mu_i) - \mu_i$ <span style="color:red; background-color:yellow">Memorize Formula</span>
 
-* Assume $\sigma^2$ is a known constant
+* $\sigma^2$ was assumed to be a known constant
 
 * Plug in $\mu_i$ for the different methods and then maximize $l$ by $\dfrac{\partial l}{\partial ELR} = 0$ or $\dfrac{\partial l}{\partial ULT_{AY}} = 0$
 
@@ -145,21 +181,21 @@ $\operatorname{Var}(\operatorname{E}[R]) = (\partial R)'\Sigma (\partial R)$
 
 1) Incremental losses $iid$
 
-* Test this looking at residual
+    * Can test this by looking at residuals
 
 2) $\dfrac{Variance}{Mean}$ scale parameter $\sigma^2$ is fixed and known
 
-* Technically this should be estimated with the other parameters but will makes things intractable
+    * Technically this should be estimated with the other parameters but will makes things intractable
 
 3) Variance estimates are based on the approximation to the Rao-Cramer lower bound
 
-* Variance based on information matrix $I$
-
-* $I$ is exact only when using linear functions
-
-* In our case this is simply a lower bound
-
-* We are using approximated parameters
+    * Variance based on information matrix $I$
+    
+    * $I$ is exact only when using linear functions
+    
+    * In our case this is simply a lower bound
+    
+    * We are using approximated parameters
 
 The above temper the volatility in the model, actual results can be more variable
 
@@ -177,7 +213,9 @@ Calculate $\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \m
 
 * n = all data points (not just the predicted like in Venter)
 
-* P = 2 + 10 AYs
+* p = 2 + 10 AYs
+
+* This is for **incremental** losses
 
 **Residual Review**
 
@@ -248,18 +286,7 @@ The Covariance matrix is smaller just $3 \times 3$
 
 Parameter variance is smaller than the LDF method since we have more information in the Cape Cod method (?)
 
-## How to do problems
-
-They need to give you the below:
-
-* Growth function distribution and parameter (might have to estimate)
-
-* LDF or Cape Cod
-
-* Data (e.g. paid to date for each AY)
-
-
-## Other Use of Model
+## Other Use of Model {.tabset}
 
 ### Variance of Prospective Losses
 
@@ -308,3 +335,17 @@ CV will be smaller since the tail with the most variability gets discounted the 
     * 1st and 2nd derivative are calculable
     
     * Others can be used as well
+    
+## Past Exam Questions
+
+<a name="2011-2"></a>
+![alt text](questions/2011-2Q.png)
+![alt text](questions/2011-2A.png)
+
+<a name="2013-3"></a>
+![alt text](questions/2013-3Q.png)
+![alt text](questions/2013-3A.png)
+
+<a name="2015-2"></a>
+![alt text](questions/2015-2Q.png)
+![alt text](questions/2015-2A.png)
