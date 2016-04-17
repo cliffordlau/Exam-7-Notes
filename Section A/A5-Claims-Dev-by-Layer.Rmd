@@ -5,10 +5,37 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
-## Intro
+## Cliff's Summary
+
+Know the process for setting up base triangle and then convert the base LDFs to any layer
+
+Main formulas to memorize:
+
+* $LEV(X; \Phi \sim Exp(\theta)) = \theta \: \left[ 1 - \operatorname{exp}\left\{-\left(\dfrac{x}{\theta}\right)\right\} \right]$
+
+* $\begin{align}
+  F_{ij}^X = F_{nj}^B \times \frac{LEV(X;\Phi_{i\infty})\div LEV(B;\Phi_{n\infty})}{LEV(X;\Phi_{ij}) \div LEV(B;\Phi_{nj})}
+ \end{align}$
+
+Know the assumptions used
+
+### Types of Exam Questions
+
+<span style="color:red">Haven't done TIA practice questions</span>
+
+**Setup Base Triangle**
+
+* 2013 #5: set up base triangle with trend and all
+
+    * Can start trend from bottom left cell
+
+## Introduction
 
 **2 Key Ideas**:
 
@@ -41,7 +68,9 @@ $LEV(X; \Phi_{ij})$: Limited expected value, average loss with dist^n^ $\Phi_{ij
 
 $F_{ij}^X$: LDF to ultimate for cell $ij$ with losses capped at $X$
 
-## Setup Base Layer Triangle for LDFs Selection
+### 1. Setup Base Layer Triangle
+
+Setup a consistent base layer triangle for LDFs selection
 
 **Step 1**: Setup the trend triangle: Trend = AY Trend $\times$ CY Trend
 
@@ -63,13 +92,13 @@ This applies the trend to cumulative loss which is problematic
 
 **Step 2**: Determine *unlimited* mean for each cell in triangle (Avg sev paid to date)
 
-i) Based on mean for the latest AY (bottom row)
-
-    * $C_{nj} \sim \Phi_{nj} = Exp(\theta_j)$
+i) Based on **mean** for the **latest AY** (bottom row)
 
     * $\operatorname{E}[C_{nj}] = \theta_j$
+
+    * $C_{nj} \sim \Phi_{nj} = Exp(\theta_j)$
     
-ii) Detrend back up from the bottom row to fill the whole square
+ii) **Detrend** back up from the bottom row to fill the whole square
 
     * Usually just need four points per the LDF conversion formula
 
@@ -91,7 +120,11 @@ $C_{ij}' = \underbrace{C_{ij}^L}_{\text{Cum paid @ L}} \times \underbrace{\dfrac
 
 **Step 5**: Select base layer LDFs
 
-## Convert LDFs at a Base Layer to LDFs at Any Other Layer
+### 2. Convert LDFs from Base Layer
+
+Convert LDFs from base layer to LDFs at any other layer
+
+At this step we should already have $F_{nj}^B$ selected from the base triangle created above
 
 <span style="color:red;background:yellow">Memorize Formula</span>
 
@@ -102,6 +135,8 @@ $\begin{align}
 * Without trend, you can basically just take the middle part as the LDFs
 
 * However, we trust the LDF from the analysis of losses limited to $B$ more and less so with the distribution function $\Phi$
+
+![alt text](figures/Exam 7 Notes - 13.png)
 
 ## LDFs for XS Layers
 
@@ -117,9 +152,9 @@ $\begin{align}
   F_{ij}^X = F_{nj}^B \times \frac{LEV(X;\Phi_{i\infty})\div LEV(B;\Phi_{ {\color{red}i} \infty})}{R_j{(X,B)}}
  \end{align}$
  
- * Note the $i$ in the second part of the numerator
+ * Note the $i$ in the second part of the numerator (I guess it's to be consistent with formula below)
  
- * $R_j(X,B) = \dfrac{LEV(X;\Phi_{ij})}{LEV(B;\Phi_{ij})}$
+ * $R_{j}(X,B) = \dfrac{LEV(X;\Phi_{ij})}{LEV(B;\Phi_{ij})}$
  
     * $j$ is on the diagonal (?)
     
@@ -141,11 +176,17 @@ $U_i \leq R_j(X,B) \leq U_i \cdot F_{ij}^{\infty} \leq 1$
 
 * $U_i = R_{i\infty}(X,B) = \dfrac{LEV(X;\Phi_{i\infty})}{LEV(B;\Phi_{i \infty})}$
 
-* We expect $U_i$ to #\downarrow$ for more recent AYs due to loss trend; Larger % of losses  pierce the lower layer
+* We expect $U_i$ to $\downarrow$ for more recent AYs due to loss trend; Larger % of losses  pierce the lower layer
 
-* $U_i$ increases as we move cross maturity (not sure how this works as these are ult...)
+* $U_i$ increases as we move cross maturity (<span style="color:red">not sure how this works as these are ult...</span>)
 
-Select a decay from 1.000 to the ratio at ultimate lower bound for the oldest maturity as the $R_j(X,B)$
+* $U_i$ is the ratio at ultimate of limited means; same as $R_{i \infty}$
+
+Example from text:
+
+* Select a decay from 1.000 and approaches $U_i$ as maturity increase
+
+* Overlay with empirical $R_j(X,B)$ along the diagonal
 
 Estimate doesn't work when:
 
@@ -153,30 +194,34 @@ Estimate doesn't work when:
 
 * XS layer develops more quickly than a working layer
 
-## Issues
+## Issues with Assumptions
 
-Three assumptions that are likely reasonable
+Three assumptions that are **likely reasonable**
 
-* Must select a basic limit $B$
+1) Must select a basic limit $B$
 
-* Needs an ultimate claim size model
+2) Needs an ultimate claim size model
 
     * Or use ILFs
     
     * Just have to accurate around the basic limit and policy limit since that's where we calculate expectations
     
-* Need to create a triangle of losses at basic limit and one cost level
+3) Need to create a triangle of losses at basic limit and one cost level
 
     * We do this in the step converting the base triangle
 
-Two assumptions that are more tenuous
+Two assumptions that are **more tenuous**
 
-* Requires robust claim size model at each age
+1) Requires robust claim size model at each age
 
     * Ultimately we need the ratio of limited losses at different layers right, not the absolute value
     
-* Trend
+2) Trend
 
     * Trend should be applied to the incremental losses
     
     * Not clear how to apply trend to reported losses (by day of reserve or payment?)
+    
+## Past Exam Questions
+
+n/a

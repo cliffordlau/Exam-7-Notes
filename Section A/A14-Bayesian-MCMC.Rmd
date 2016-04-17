@@ -17,7 +17,7 @@ Know how to read KS-test, $p-p$ plot and Freq vs Count plot
 
 Know the form of all the methods in the model
 
-## Types of Exam Questions
+### Types of Exam Questions
 
 n/a
 
