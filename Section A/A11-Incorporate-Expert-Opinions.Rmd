@@ -5,10 +5,41 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
-## Intro
+## Cliff's Summary
+
+Know how the model is defined with ODP and stochastic row parameters
+
+Know the Bayesian BF calculation and assumptions
+
+* $\operatorname{E}[c_{ij}] = Z_{ij} \overbrace{[(\lambda_j - 1) \underbrace{D_{ij-1}}_{\text{Actual up to }j-1}]}^{\text{CL Results}} + (1- Z_{ij}) \overbrace{[(\lambda_j - 1) \underbrace{M_i p_{j-1}}_{\text{Expected up to }j-1}]}^{\text{BF Results}}$
+
+* $Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}$
+
+Know the Stochastic column parameters calculation
+
+### Types of Exam Questions
+
+<span style="color:red">Haven't done TIA practice questions</span>
+
+**Concepts**
+
+* 2012 #8: Explain model as trade off between standard CL and BF
+* 2013 #9: Model specification stuff on variance of the prior, BF bayesian
+    * Bayesian vs Bootstrap: Provide expert opinion while maintaining the integrity of the variance estimates
+    * Bayesian vs Mack: Provides full distribution of unpaid losses and not just the first 2 moments
+* 2014 #10: Expert opinions in LDFs or row parameters; $\beta$ impact on the bayesian model
+
+**Full Calculation**
+
+* $\star$ [2012 #8](#2012-8): Bayesian model for BF method
+
+## Introduction
 
 Uses Bayesian techniques to allow incorporation of expert opinion and also maintain the integrity of the prediction error
 
@@ -16,31 +47,37 @@ Uses Bayesian techniques to allow incorporation of expert opinion and also maint
 
 * Calculating prediction error using prior knowledge
 
-**Notation**
+### Notation
+
+**Claims**
 
 $c_{ij}$ Incremental claims for AY $i$ and age $j$
 
 $D_{ij}$ Cumulative claims = $\sum_{k=1}^j c_{ij}$
 
-$\lambda_j$ Expected development from $D_{ij-1}$ to $D_{ij}$ $= \dfrac{p_j}{p_{j-1}}$
-
-$\hat{\lambda}_j$ Weighted average LDFs $= \dfrac{\sum_i D_{ij}}{\sum_i D_{ij-1}}$
+**Row Parameters**
 
 $x_i$ Expected ultimate losses for AY $i$
+
+**Column Parameters**
 
 $y_j$ Expected % reported in each period; $\sum y_i = 1$
 
 $p_j$ Expected reported to date $\sum_{k=1}^j y_k$
 
-***
+$\lambda_j$ Expected development from $D_{ij-1}$ to $D_{ij}$ ($= \dfrac{p_j}{p_{j-1}}$?)
 
-Incremental loss distribution:
+$\hat{\lambda}_j$ Weighted average LDFs $= \dfrac{\sum_i D_{ij}}{\sum_i D_{ij-1}}$
 
-* $c_{ij} \sim ODP(x_i \cdot y_j, \varphi)$
+### Incremental loss distribution
+
+$c_{ij} \sim ODP(x_i \cdot y_j, \varphi)$
     
-    * $\sigma^2 = \varphi \cdot x_i \cdot y_i$
+* $\mu = x_i \cdot y_i$
+    
+* $\sigma^2 = \varphi \cdot x_i \cdot y_i$
 
-* $c_{ij} \sim NB(\lambda_j D_{i, \: j-1}, \varphi \lambda_j (\lambda_j -1)D_{i, \: j-1})$
+$c_{ij} \sim NB(\lambda_j D_{i, \: j-1}, \varphi \lambda_j (\lambda_j -1)D_{i, \: j-1})$
 
 * NB has the exact same results as the ODP so we can use them interchangeably
 
@@ -56,11 +93,50 @@ Steps:
 
 1) Assign prior dist^n^ to the column parameters
 
-2) Incremental Loss $\sim NB$
+2) Incremental Loss $\sim NB$ (or ODP)
 
 3) If vague priors (large variances) $\Rightarrow$ Bayesian chainladder
 
+    * Prediction error will be similar to CL or slightly larger
 4) If strong priors (small variances) $\Rightarrow$ We believe the prior means are appropriate
+
+    * Prediction error will decrease
+    
+### Chain Ladder Intervention
+
+Adjust LDFs for a development period for the recent years only
+
+**Vauge Priors**
+
+Large variance $\Rightarrow$ Parameter based on data
+
+* Based on recent years average
+
+**Strong Priors**
+
+Small variance $\Rightarrow$ Prior mean has greater influence
+
+### Last 3 Diagonals for LDFs
+
+Use the last 3 diagonals for forecasting to account for CY effects or inflation etc
+
+Pick large variance so data drive the parameter selection
+
+### BF Intervention
+
+Intervention on the level of each row $x_i$ (a-priori)
+
+**Vauge Priors**
+
+Large variance, less strong prior information $\Rightarrow$ Results between BF and CL
+
+Lowers the prediction error but not as much
+
+**Strong Priors**
+
+Small variances, approximate the BF method
+
+Prediction error comes down due to low variance in the prior
 
 ## Bayesian Model for BF Method
 
@@ -90,7 +166,7 @@ $\operatorname{E}[c_{ij}] = Z_{ij} \overbrace{[(\lambda_j - 1) \underbrace{D_{ij
 
 $Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}$
 
-* Large $\beta$ means small variance for the prior $\Rightarrow$ smaller $Z_{ij$ $\Rightarrow$ less credibility on the actual loss
+* Large $\beta$ means small variance for the prior $\Rightarrow$ smaller $Z_{ij}$ $\Rightarrow$ less credibility on the actual loss
 
 * $\varphi$, which represents process variance also has impact on the credibility
 
@@ -104,7 +180,7 @@ Notes:
 
 * $\varphi$ will be given
 
-## Column Parameters
+## Stochastic Column Parameters
 
 BF above uses stochastic row parameters and deterministic column parameters
 
@@ -122,16 +198,13 @@ $\operatorname{E}[c_{ij}] = (\gamma_i - 1) \sum \limits_{m=1}^{i-1} c_{m,j}$
 
 * Similar to LDFs but just looking at it at the different angle
 
-```{r fig.width=5, fig.height=5,echo=FALSE}
-library(png)
-library(grid)
-img <- readPNG("figures/Exam 7 Notes - 2.png")
- grid.raster(img)
-```
+![alt text](figures/Exam 7 Notes - 2.png)
 
 ### Calculate $\gamma$
 
 Know how to calculate this pictorially
+
+Need to first use CL method to get ultimate loss and % unpaid by AY
 
 $\gamma_1 = 1.000$ always
 
@@ -144,3 +217,10 @@ First calculate LDFs and calculate % unpaid and a-priori for each AY
 ![alt text](figures/Exam 7 Notes - 3.png)
 
 Note that in step 4 above if you don't need the individual cells you can just take the $U_3 q_3$
+
+## Past Exam Questions
+
+<a name="2012-8"></a>
+![alt text](questions/2012-8Q1.png)
+![alt text](questions/2012-8Q2.png)
+![alt text](questions/2012-8A.png)
