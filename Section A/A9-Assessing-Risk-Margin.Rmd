@@ -5,10 +5,83 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
     toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
     toc_depth: 4
 ---
 
-## Intro
+## Cliff's Summary
+
+This had some pretty good past exam questions, need to know the qualitative items quite well
+
+Know why we need qualitative analysis
+
+**Independent**
+
+Parameter and process variance model with stochastic model
+
+**Internal Systemic**
+
+Know the [3 components](#int-sys-comp)
+
+Score against best practice and calibrate to CoV
+
+* Know how to score given actual examples as in past exam
+* Hindsight analysis
+
+**Extnernal Systemic**
+
+Know the different [risk categories](#risk-category)
+
+* And what lines they impact most
+
+Use benchmark similar to internal but select CoV directly
+
+**Correlation**
+
+Risk sources are independent of each other
+
+Independent: assume independence across lines, weight by liabilities
+
+Internal: base on correlation matrix $\Sigma$, again weighted by liabilities
+
+External: correlation between each valuation group and risk categories $\Rightarrow$ then roll up to the risk categories and assume they are independent of each other
+
+**Risk Margin**
+
+$\text{Risk Margin} = \underbrace{\mu}_{\text{Expected Loss}} \times \underbrace{\phi }_{\text{CoV}} \times \underbrace{Z_{\alpha}}_{0.67\text{ for the }75^{th}\text{ percentile}}$
+
+**Addiation analysis**
+
+Sensitivity, scenario testing
+
+[Internal benchmarking](#int-bench), important to know the relationships and consistency, been heavily tested in the past
+
+External benchmarking
+
+Hindsight and mechanical hindsight
+
+**Regularity of review**
+
+### Types of Exam Questions
+
+<span style="color:red">Haven't done TIA practice questions</span>
+
+**Concepts**
+
+* $\star$ [2013 #8 b f g h](#2013-8): Correlations, internal benchmarking
+* $\star$ [2014 #8](#2014-8): internal systemic risk 3 components; risk indicator for each LoB for each risk component; Score the risk indicators
+* $\star$ [2014 #11](#2014-11): External systemic risk and which lines impact the most
+* $\star$ [2015 #8](#2015-8): Internal source, external source
+* $\star$ [2015 #9](#2015-9): Internal benchmark
+
+**Calculations**
+
+* $\star$ [2013 #8 a c d e](#2013-8): Correlations, risk margins
+* 2015 #8 d: Independent CoV
+
+## Introduction
 
 Estimate risk margin for unpaid losses and premium liabilities
 
@@ -70,7 +143,7 @@ Focus on periods where episodes of systemic risk were non-existent or minimal so
 
 * Supplement with internal and external bench marking
 
-#### Determining the CoV for Independetn Risk
+#### CoV for Independent Risk
 
 Model the parameter and process risk together
 
@@ -104,7 +177,7 @@ Uncertainty arising from the liability valuation process/actuarial valuation mod
 
 This can be fro sources anywhere along the chain of valuation: Data record/collection/organization (e.g. not collecting the right data; not using the right data) $\Rightarrow$ Analysis, AJ $\Rightarrow$ reserve selection (e.g. management overrides actuary's opinion)
 
-3 components of internal systemic risk:
+<a name="int-sys-comp"></a>3 components of internal systemic risk:
 
 1) **Specification Error**: From not perfectly modeling the insurance process because it's too complicated or just don't have the data
 
@@ -112,10 +185,10 @@ This can be fro sources anywhere along the chain of valuation: Data record/colle
 
 3) **Data Error**: Lack of data, lack of knowledge of the underlying pricing, u/w, and claim management process, inadequate knowledge of portfolio
 
-#### Determining the CoV for Internal Systemic Risk
+#### CoV for Internal Systemic Risk
 
-Use bench marking technique:  
-Need to define risk indicators, score them against best practice, map the scores to a CoV
+Use **bench marking technique**:  
+Need to **define risk indicators**, score them against best practice, map the scores to a CoV
 
 **Score Against Best Practice**
 
@@ -137,13 +210,13 @@ We score the 3 components for each valuation group (OCL and PL) and then roll up
 
 Significant amount of judgement supplement by quantitative analysis
 
-CoV should range from 5% to 20%
+CoV $\in [5\%, 20\%]$
 
 Analysis of past model performance should aid in estimating the potential variability
 
-* Hindsight Analysis: Compare valuation of liabilities at prior point in time to the current view, to gain insight into how a better model can reduce volatility
+* **Hindsight Analysis**: Compare valuation of liabilities at prior point in time to the current view, to gain insight into how a better model can reduce volatility
 
-* Mechanical Hindsight: Mechanically do various ex post analysis, and see how prediction error can be reduced; e.g. do a detailed vs crude and see the difference
+* **Mechanical Hindsight**: Mechanically do various ex post analysis, and see how prediction error can be reduced; e.g. do a detailed vs crude and see the difference
 
 Additional comments:
 
@@ -190,7 +263,7 @@ Useful to rank the risk categories in order of impact on the uncertainty of a va
 
 Lots of the above should be something the valuation actuary already discussed with the business and with claims
 
-#### Determining the CoV for External Systemic Risk
+#### CoV for External Systemic Risk
 
 Use bench marking technique similar to internal systemic risk
 
@@ -314,7 +387,7 @@ $\text{Risk Margin} = \underbrace{\mu}_{\text{Expected Loss}} \times \underbrace
 
 **Scenario Testing**: Consider what assumptions need to change in our mid point to eat up the risk margin
 
-**Internal Benchmarking**: Compare CoVs within between OCL and PL and also with other valuation groups
+<a name="int-bench"></a>**Internal Benchmarking**: Compare CoVs within between OCL and PL and also with other valuation groups
 
 *Independent risk*: 
 
@@ -385,3 +458,29 @@ Key assumptions should be examined in the interim:
 * Change in valuation methods
 
 Should consider applying the key steps to any new portfolio
+
+## Past Exam Questions
+
+<a name="2013-8"></a>2013 #8
+![alt text](questions/2013-8Q1.png)
+![alt text](questions/2013-8Q2.png)
+![alt text](questions/2013-8A1.png)
+![alt text](questions/2013-8A2.png)
+
+<a name="2014-8"></a>2014 #8
+![alt text](questions/2014-8Q.png)
+![alt text](questions/2014-8A.png)
+
+<a name="2014-11"></a>2014 #11
+![alt text](questions/2014-11Q.png)
+![alt text](questions/2014-11A1.png)
+![alt text](questions/2014-11A2.png)
+
+<a name="2015-8"></a>2015 #8
+![alt text](questions/2015-8Q.png)
+![alt text](questions/2015-8A1.png)
+![alt text](questions/2015-8A2.png)
+
+<a name="2015-9"></a>2015 #9
+![alt text](questions/2015-9Q.png)
+![alt text](questions/2015-9A.png)
