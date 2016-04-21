@@ -3,7 +3,7 @@ description: "CAS Exam 7 Notes"
 
 baseurl: /Exam-7-2016-Notes
 
-paginate: 10
+paginate: 30
 
 markdown: rdiscount
 permalink: pretty
