@@ -11,6 +11,30 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+Know the risk measures
+
+* Moment based
+* Tail based ($VaR$, $TVaR$, $XTVaR$, $EPD$)
+* Probability transform
+* Generalized moments
+
+Capital a company should hold depends on *practical considerations*, not simply derived from a risk measure
+
+Allocation of risk measures
+
+* Proportional
+* [Co-measures](#co-measures)
+
+Allocation is [marginal](#marginal) if the change to the company’s risk measure from a small change in a single BU is attributed to that business unit
+
+* [Scalable](#scalable) risk measures
+* [Suitable](#suitable) alloaction
+* A risk measure can have many co-measures but [only 1](#only-marginal) will be marginal
+
+Can bypass the above if we can just allocate the cost of capital
+
 ## Introduction
 
 VaR is too simplistic for insurance companies due to risk from reserves and u/w losses
@@ -45,6 +69,7 @@ Company is better off expressing the capital under various risk measures
 ## Risk Measures
 
 3 major class of risk measures
+
 * Moment-based (e.g. mean, variance)
 * Tail-based (VaR, TVaR)
 * Probability Transformation (WTVaR, Mean of Transformed dist^n^)
@@ -80,7 +105,7 @@ $\operatorname{E}[Y e^{cY/\operatorname{E}[Y]}]$ captures all the moment using t
 * $XTVaR$ focuses on funding losses above the mean
 * $EPD$ = unconditional expected value of defaulted losses if Capital = $VaR_{\alpha}$
     * If there was no risk premium required, this is the cost of insuring for losses over $VaR_{\alpha}$
-* Value of default put is great than EPD, it includes an additional risk premium
+* Value of default put is great than EPD, it includes an additional risk premium (market cost of insuring for losses over $VaR_{\alpha}$)
 
 ### Probability Transforms
 
@@ -95,7 +120,8 @@ Change the loss distribution function by putting more weight (add probability) t
 
 Comments
 
-* Most asset pricing formulas like CAPM and Black-Scholes can be expressed as transformed means $\therefore$ transformed means are a promising risk measure for determining the market value of risk as it can also be the market value of the risk
+* Most asset pricing formulas like CAPM and Black-Scholes can be expressed as transformed means  
+$\therefore$ transformed means are a promising risk measure for determining the market value of risk as it can also be the market value of the risk
 
 * Complete market is where any risk can be sold, but we work in incomplete markets
 
@@ -107,7 +133,7 @@ Comments
     
 * Mean under then Wang transform closely approximates market prices for bonds and CAT bonds
 
-* $WTVaT$ is $TVaR$ on a transformed distribution
+* $WTVaR$ is $TVaR$ on a transformed distribution
 
 ### Generalized Moments
 
@@ -135,7 +161,7 @@ $\eta(p) = \operatorname{exp} \left \{ - \theta (p-\alpha)^2 \right \}$
 
 * Still using the whole distribution
 
-* $\theta controls how quickly the weight drops of as we get further from $\alpha$
+* $\theta$ controls how quickly the weight drops of as we get further from $\alpha$
 
 ***
 
@@ -164,9 +190,7 @@ Considerations that drive capital requirements:
 
 * **Keeping renewal business**: Have enough capital so that in adverse scenario there is still enough capital to service renewals that is x% of the business
 
-***
-
-Once capital level has been established, there are risk measures to compare it against
+Once capital level has been established, compare it against different risk measures
 
 $TVaR$ is a better risk measure than $VaR$ for a given percentile since $VaR$ is just the smallest loss XS of a percentile, $TVaR$ is the average
 
@@ -178,7 +202,7 @@ Allocate the company risk measure to each BU for the following purposes:
 
 * Set capacity and policy limits for each BU
 
-* Calculate risk-adjusted profitability e.g. $\dfrac{\text{Profit}}{\text{Allocated Capital}} or EVA = Profit - Cost of Capital
+* Calculate risk-adjusted profitability e.g. $\dfrac{\text{Profit}}{\text{Allocated Capital}}$ or EVA = Profit - Cost of Capital
 
 ***
 
@@ -227,6 +251,8 @@ $\hookrightarrow$ $\rho(Y) = \sum_j r(X_j)$
 
 * This is a marginal allocation that sums to the total risk measure
 
+<a name="co-measures"></a>
+
 | Risk Measure | $h(Y)$ | $L(Y)$ | Condition | Co-Measure |
 | ------------ | ------ | ------ | --------- | ---------- |
 | $TVaR$ | $Y$ | $1$ | $F(Y) > \alpha$ | $\operatorname{E}[X_j \mid F(Y) > \alpha]$ |
@@ -250,7 +276,7 @@ At higher threshold, unite with higher variance have higher allocation
 
 ### Having a Marginal Method
 
-**Marginal Allocation**:  
+<a name="marginal"></a> **Marginal Allocation**:  
 Allocation is marginal if the change to the company's risk measure from a small change in a single BU is attributed to that business unit
 
 * Consistent with concept that price should be proportional to marginal cost
@@ -258,7 +284,7 @@ Allocation is marginal if the change to the company's risk measure from a small 
 
 ***
 
-**Scalable Risk Measures**:  
+<a name="scalable"></a> **Scalable Risk Measures**:  
 A small proportional change in the business change the risk measure by the same proportion
 
 * Require that $\rho(aY) = a \cdot \rho(Y)$ $\Rightarrow$ Homogenous of degree 1
@@ -273,7 +299,7 @@ Proportional change can be achieve from proportional reinsurance and normal grow
 
 ***
 
-**Suitable Allocation**:  
+<a name="suitable"></a> **Suitable Allocation**:  
 Growing a unit that have above average profit/risk will increase the profit/risk for the company
 
 Given $\dfrac{P_j}{r(X_j)} > \dfrac{P}{\rho(Y)}$
@@ -281,6 +307,8 @@ Given $\dfrac{P_j}{r(X_j)} > \dfrac{P}{\rho(Y)}$
 Show $\dfrac{P + \epsilon P_j}{\rho(Y + \epsilon X_j)} > \dfrac{P}{\rho(Y)}$
 
 ### Marginal Impact
+
+<a name="only-marginal"></a>
 
 A risk measure can have many co-measures but only 1 will be marginal
 
@@ -331,7 +359,7 @@ EPD
 Table of Co-Measures
 
 | Risk Measure | $h(Y)$ | $L(Y)$ | Condition | Co-Measure |
-| ------------ | ------ | ------ | --------- | ---------- |
+| --------------- | ------ | ------ | --------- | ---------- |
 | $TVaR$ | $Y$ | $1$ | $F(Y) > \alpha$ | $\operatorname{E}[X_j \mid F(Y) > \alpha]$ |
 | $VaR$ | $Y$ | $1$ | $F(Y) = \alpha$ | $\operatorname{E}[X_j \mid F(Y) = \alpha]$ |
 | Standard Deviation | $Y - \operatorname{E}[Y]$ | $\dfrac{Y - \operatorname{E}[Y]}{\sigma_Y}$ | none | $\dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}$ |
