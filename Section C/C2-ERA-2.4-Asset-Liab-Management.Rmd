@@ -23,7 +23,10 @@ Optimal portfolio under 4 different scenarios
 
 * Going concern is most complicated as it includes cash flow coming in
 
-Additional considerations: tax, equities
+Additional considerations:
+
+* Tax: tax exempt bonds is preferred during profitable times
+* Equity: risky but useful to hedge inflation
 
 If we are not matching the duration, best to just invest in long bonds
 
