@@ -11,6 +11,36 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+Asset liability Management:
+
+* Looks at current assets and liabilities + flow from future premiums of a going concern company
+
+* Identify and exploit hedges of any sort (e.g. use equity as inflation hedge)
+
+Optimal portfolio under 4 different scenarios
+
+* Going concern is most complicated as it includes cash flow coming in
+
+Additional considerations: tax, equities
+
+If we are not matching the duration, best to just invest in long bonds
+
+9 steps of asset liability modeling
+
+1) Model Asset Classes, Liabilities, and Current Business Operations
+2) Define Risk Metrics
+3) Return Metrics
+4) Time Horizon
+5) Consider Relevant Constraints
+6) Simulation Model
+7) Efficient Frontier Graph
+8) Liabilities
+9) Review Results
+
+Areas for future research are correlations and reserve models
+
 ## Introduction
 
 Asset-Liability Management $\neq$ Matching
@@ -35,15 +65,11 @@ With that said, still consider u/w and other hedges like reinsurance on the liab
 * Long bond and stocks are risky
 * Use modern portfolio theory to find alternatives on the efficient frontier
 
-***
-
 **2) Known Liabilities and Known Cash Flows** (Fixed in Time and Amount)
 
 * Short duration $\Rightarrow$ Reinvestment risk
 * Long duration $\Rightarrow$ Interest rate risk
 * Risk and conclusions are different if liabilities are discounted at current rates (Such as using Economic balance sheet)
-
-***
 
 **3) Liabilities are Variable and Timing is Variable**
 
@@ -51,16 +77,12 @@ With that said, still consider u/w and other hedges like reinsurance on the liab
 * Requires model that incorporate asset and liability fluctuations
 * Inflation sensitive liabilities further complicates things
 
-***
-
 **4) Going Concern Company, with Cash Flow from Current Operations**
 
 * Can have positive or negative cash flow
     * If asset prices are too low, can pay claims from premium cash flows and use depreciated assets to support loss reserves
 * Need to model: premium, income, losses, cat losses, expenses
 * Need enterprise wide model with holistic view to handle the complexity
-
-***
 
 ### Additional Considerations
 
@@ -72,8 +94,6 @@ Investment strategy change in responses to u/w cycle
 * Unprofitable period: taxable bonds are better as the investment income is reduced by u/w losses
 * Assets is also reallocated to maximize income while avoiding Alternative Minimum Tax
 
-***
-
 **Equities**
 
 Generally considered risky and imply a potentially worst downside risk to capital
@@ -81,8 +101,6 @@ Generally considered risky and imply a potentially worst downside risk to capita
 However, they can be useful hedge against inflation
 
 Can be tested with an ERModel, but conclusions will be sensitive to input assumptions of the macroeconomic model
-
-***
 
 **VFIC 2002**
 
@@ -127,8 +145,6 @@ Results:
 * Liabilities: response to inflation/interest rate or economic variables like GDP growth
 * Business operations: premium, expense, response to u/w cycle and economic environment
 
-***
-
 **2) Define Risk Metrics**
 
 Using different accounting basis: Stat, GAAP, Economic
@@ -144,9 +160,7 @@ Using different accounting basis: Stat, GAAP, Economic
     * Probability of ruin or impairment
 * Time Frames
     * Typically 1-5 years
-
-***
-
+    
 **3) Return Metrics**
 
 Use consistent accounting basis as the risk metrics
@@ -154,27 +168,23 @@ Use consistent accounting basis as the risk metrics
 * Income based: Quarterly earnings
 * B/S based: RoE, Terminal value of equity at period end
 
-***
-
 **4) Time Horizon**
 
-* Single period is simpler
-* Multiperiod is more accurate
-    * More difficult
-    * Include serial correlations of variables:
-        * Interst rates
-        * Level of prices in market
-   
-***
-        
+Single period is simpler
+
+Multiperiod is more accurate
+
+* More difficult
+* Include serial correlations of variables:
+    * Interst rates
+    * Level of prices in market
+    
 **5) Consider Relevant Constraints**
 
 * Asset limits imposed by regulators
 * Cost of regulatory capital of asset class
 * RBC or BCAR capital scores
 * Company's own investment policy
-
-***
 
 **6) Simulation Model**
 
