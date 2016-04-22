@@ -11,6 +11,28 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+Talks about different ways regulator regulates company's capitla adequacy
+
+Leverage ratios were used in the early days
+
+In the 1990s RBC was introduced that combie
+
+* Credit
+* Reserve
+* Accumulation
+
+Scenario testing
+
+* Against scenarios from regulators
+* Can be stochastics
+
+2 options to meet capital requirements:
+
+* Purchase reinsurance
+* Issue surplus notes
+
 ## Introduction
 
 Prior to 1990: Leverage Ratios
@@ -39,11 +61,17 @@ Does not distinguish between LoBs
 
 ## Risk-Based Capital Models
 
-Factor models, include other risks: asset, credit, premium, reserve
+**Advantagtes**
+
+Combining several risk include asset, credit, premium, reserve
+
+Factor models: 
 
 * Factors vary with the quality and type of asset or LoB
 
 * Factors applied to accounting values
+
+***
 
 Used in UK, AUS, US, CA, JAP, AM Best and S&P
 
