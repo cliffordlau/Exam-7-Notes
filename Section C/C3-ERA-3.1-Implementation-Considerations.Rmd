@@ -11,6 +11,10 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+Just know the 4 sections and have an idea of what it covers
+
 ## Introduction
 
 Creation of internal risk model
@@ -45,7 +49,7 @@ Important to define responsibilities of those involved and scope of the project
     
 ## IRM Parameter Development
 
-Important input parameters to model:
+Important **input** parameters to model:
 
 * ELR
 * LR dist^n^
