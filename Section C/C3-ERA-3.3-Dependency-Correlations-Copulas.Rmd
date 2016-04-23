@@ -11,6 +11,64 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+**Correlation**
+
+[Pearson's](#pearson) correlation: Formula and its properties
+
+* Outliers will have disproportionate weight
+
+[Kendall's](#kendall) $\tau$: depends on the rank
+
+* Know the formula for discrete and continuous
+
+**Copulas**
+
+Know the limitation of joint distribution and [advantages](#copula-advantages) for using copulas
+
+Different joint distribution plots
+
+* Best method is to plot the percentile from each marginal distribution; each box should have the same number of points if independent
+
+How to use a copula and [Sklar's Theorem](#sklar)
+
+Joint density function express with copula: $h(x,y) = \underbrace{c \left( F(x), G(y) \right)}_{\text{Density of copula}} \cdot \underbrace{\left[f(x) \cdot g(y) \right]}_{\text{Joint dist if }\perp\!\!\!\perp}$
+
+| Copula | Shape | Dependency | $\tau$ |
+| ------ | ------ | ------ | ------ |
+| Frank's | Symmetric | Light tails | Complicated has an integral |
+| Gumbel | Asymmetric | More weight in the right. Higher tail than Frank | $1 - \dfrac{1}{a}$ |
+| HRT | Asymmetric | Less tail on the left but high on the right | $\dfrac{1}{2a + 1}$ |
+| Normal | Symmetric | Higher tail than Frank | $\dfrac{2\operatorname{arcsin}(a)}{\pi}$ |
+
+* There's also the partial perfect correlation copula
+
+Know how the simulation is done for each of the copula
+
+* [Frank](#sim-1), [Gumble](#sim-2), HRT is same as Frank, and [Normal](#sim-3)
+
+**Tail Concentration Functions**
+
+[Left tail](#left-tail) and [right tail](#right-tail) concentration function
+
+* Know what each copulat looks like
+
+**Methods for selecting Copulas**
+
+* Plot the percentile plot
+* Empirical tail concentration function
+
+**Multivariate Copulas**
+
+Normal and t-copula and their properties
+
+**Fitting copulas to data**
+
+Using the $J(z)$ and $\chi(z)$
+
+Graph the possible $J(z)$ with empirical $J(z)$ to see which fits best; Similarly for $\chi(z)$
+
 ## Introduction
 
 We need loss distribution for the whole group
@@ -21,6 +79,8 @@ We need loss distribution for the whole group
 Go through 4 copulas that are useful in practice and how to select them for a given dataset
 
 ## Pearson's Correlation
+
+<a name="pearson"></a>
 
 $\rho = \dfrac{\sum_i \tilde{y}_i \tilde{z}_i}{\sqrt{\sum_i \tilde{y}_i^2 \sum_i \tilde{z}_i^2}} = \dfrac{\operatorname{E}[YZ] - \operatorname{E}[Y] \cdot \operatorname{E}[Z]}{\sigma_{y} \cdot \sigma_{z}}$
 
@@ -38,7 +98,9 @@ Properties:
 
 * Monotone function that is not linear might change the Pearson correlation
 
-## Kendall's $\tau$
+## Kendall's Tau
+
+<a name="kendall"></a>
 
 Depends on the *order* not the *value* of the data
 
@@ -108,7 +170,7 @@ Modeling all business together is not feasible due to inconsistent of mix of bus
 
     * This gives us a clean picture as all the rectangles are the same size since the axis are now the percentile
     
-Advantages of using copula to describe dependency with percentiles
+<a name="copula-advantages"></a> Advantages of using copula to describe dependency with percentiles
 
 * It is independent of the underlying distributions
 
@@ -141,7 +203,7 @@ It is easier to work with percentiles, so instead of using $x$ & $y$, we'll use 
 
 ***
 
-**Sklar's Theorem**
+<a name="sklar"></a> **Sklar's Theorem**
 
 * For any joint dist^n^ $H(x,y)$ $\exists$ a function $C(u,v)$ such that $H(x,y) = C(F(x), G(y))$
 
@@ -175,14 +237,14 @@ $h(x,y) = \underbrace{c \left( F(x), G(y) \right)}_{\text{Density of copula}} \c
 
 Different copulas have different behavior w.r.t. where the dependencies are located
 
-We'll use Kendall's $tau$ to measure correlation as it won't be affected by the underlying distribution
+We'll use Kendall's $\tau$ to measure correlation as it won't be affected by the underlying distribution
 
 Note, don't have to memorize the formulas
 
-## Summary of Copulas {.tabset}
+## Summary of Copulas
 
 | Copula | Shape | Dependency | $\tau$ |
-| --- | --- | --- | --- |
+| ------ | ------ | ------ | ------ |
 | Frank's | Symmetric | Light tails | Complicated has an integral |
 | Gumbel | Asymmetric | More weight in the right. Higher tail than Frank | $1 - \dfrac{1}{a}$ |
 | HRT | Asymmetric | Less tail on the left but high on the right | $\dfrac{1}{2a + 1}$ |
@@ -198,7 +260,7 @@ $\tau$ for Frank is not closed form
 
 Conditional probability of $y$ is the derivative of the copula w.r.t. $u$
 
-**Simulation**
+<a name="sim-1"></a> **Simulation**
 
 Need the conditional distribution $P(Y \leq y \mid X = x)$
 
@@ -222,7 +284,7 @@ $\tau$  has a simple form $= 1 - \frac{1}{a}$
 
 $v$ can't be solve from $p=C_1(u,v)$ $\Rightarrow$ Need to simulate to some other ways
 
-**Simulation**
+<a name="sim-2"></a> **Simulation**
 
 1) Simulate 2 r.v.: $p,r \sim U[0,1]$
 
@@ -230,7 +292,7 @@ $v$ can't be solve from $p=C_1(u,v)$ $\Rightarrow$ Need to simulate to some othe
 
 3) Use $s$ we can get $(u,v) = \left( \operatorname{exp}\left[ \operatorname{ln}(s)r^{\frac{1}{a}} \right], \operatorname{exp}\left[ \operatorname{ln}(1-r)r^{\frac{1}{a}} \right] \right)$
 
-### Heavy Right Tail (HRT) Copula
+### Heavy Right Tail Copula
 
 Less correlation in the left tail but high in the right tail
 
@@ -266,7 +328,7 @@ The copula take $u$ and $v$ from any dist^n^ and converts them to standard norma
 
 Normal copula is simple to simulate from and also easy to generalizes to multiple dimensions
 
-**Simulation**
+<a name="sim-3"></a> **Simulation**
 
 Solve for $a$ with the $\tau$
 
@@ -278,7 +340,9 @@ Solve for $a$ with the $\tau$
 
 4) Convert $z$ to a percentile with the normal function to get $v$
 
-### Krep's Partial Perfect Correlation Copula
+### Partial Perfect Correlation Copula
+
+Krep's Partial Perfect Correlation Copula
 
 Sort of artificial, more useful for simulating evens then for description of actual outcomes
 
@@ -308,7 +372,7 @@ More concentrate at the top right, since if either $u$ or $v$ is large then the 
 
 Measure how much probability is concentrated in the tails
 
-**Left Tail Concentration Function**
+<a name="left-tail"></a> **Left Tail Concentration Function**
 
 $L(z) = P(U < z \mid V < z) = P(V < z \mid U < z)$
 
@@ -324,7 +388,7 @@ Independent copula: $L(z) = z$
 
 * See Graph (1)
 
-**Right Tail Concentration Function**
+<a name="right-tail"></a> **Right Tail Concentration Function**
 
 $R(z) = P(U > z \mid V > z) = P(V > z \mid U > z)$
 
