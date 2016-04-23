@@ -11,6 +11,45 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+### Op risk
+
+The risk of loss resulting from inadequate or failed internal process, people, and systems or from external events
+
+[Types](#op-risk-type) of operational risk 
+
+Underlying cause of insurer failure can be op risk even though if the surface cause is reserving or under pricing
+
+Plan loss ratio example hows how optimistic loss ratio propagates forward
+
+* 3 different reasons why the planned LR didn't work and only 1 of them is truely insurance risk
+
+[Cycle management](#cycle-mgmt)
+
+* [IP, u/w incentives, market overreaction, owner education](#4-CM)
+
+6 [Additional persepctives](#add-pers)
+
+### Strategic risk
+
+Various definition of strategic risk, no one clear definition, some overlaps with op risk
+
+Various research to date
+
+* Elements of strategic risk from Baird and Thomas
+* Category of strategic risk from slywotzky and drzik
+
+Scenario planning and the 10 [Steps](#scen-step)
+
+* Look at the insurance example and the [advantages](#scen-adv) of scneario planning
+
+Advance scenario planning
+
+* Expend to several LoBs with dependencies
+* Stochastic
+* Agent based modeling (competitors, customers, regulators)
+
 ## 4.1 Operational Risk
 
 Important cause of insurer insolvency $\Rightarrow$ Need to be aware and attempt to measure
@@ -20,7 +59,7 @@ The risk of loss resulting from inadequate or failed internal process, people, a
 
 * Include legal risk but exclude strategic and reputation risk
 
-**7 Types of Operational Risk Defined by Basel Committee**
+<a name="op-risk-type"></a> **7 Types of Operational Risk Defined by Basel Committee**
 
 1) Internal fraud
 2) External fraud
@@ -90,7 +129,7 @@ Three reasons why the planned LR did not work
     
 ### Insurer Op Risk: Cycle Management
 
-Cycle management:  
+<a name="cycle-mgmt"></a> **Cycle management**:  
 Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
 
 * Simply maintaining market share during soft markets increases the likelihood of impairment
@@ -106,10 +145,12 @@ Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
 From a system performance perspective, company needs to be:
 
 * Stable, available, reliable, and affordable
-* Downgrade impacts the first 2
-* Insolvent impacts the last 2
+* Downgrade impacts the first 2 (stability, availability)
+* Insolvent impacts the last 2 (reliability, affordability)
 
 #### Cycle Management
+
+<a name="4-CM"></a>
 
 Areas impact by implementing cycle management:
 
@@ -157,6 +198,8 @@ Owner/shareholders need to understand that some financial figures will be out of
 * Overhead expense ratio to premium $\uparrow$
 
 ### Additional Perspectives {.tabset}
+
+<a name="add-pers"></a>
 
 #### Agency Theory Perespective
 
@@ -353,7 +396,7 @@ Effective strategic planning begins with scenario planning:
 * Include subjective interpretation of factors that cannot be explicitly modeled
 * Attempts to capture the richness of range of possibilities $\Rightarrow$ Lead the makers to consider changes they might otherwise ignore
 
-Key Steps in Scenario Planning Process:
+<a name="for scenario planning"></a> Key Steps in Scenario Planning Process:
 
 1) Define **scope**: time frame, geography, market segment
 2) Identify major **stakeholders**: employees, owners, regulators, customers, competitors, suppliers
@@ -375,7 +418,7 @@ Set planned premium and ELR based on current year LR, price trend, and loss tren
 
 * Caveat: Not thinking through the possibility of a possible price decrease, where they might want to reduce premium volume instead of the inflexibility of making the planned premium volume
 
-Scenario planning:  
+**Scenario planning**:  
 Allow u/w-ers to be flexible in their approach in the case prices are not as expected
 
 Must decide ahead of time:
@@ -385,9 +428,9 @@ Must decide ahead of time:
 
 Plans must have enough detail to give them operational weight
 
-Advantages:
+<a name="scen-adv"></a> **Advantages**:
 
-* Thanks through responses beforehand and can agree on best response ahead of time
+* Thinks through responses beforehand and can agree on best response ahead of time
 * Saves time during a crisis
 * Operational inertia is reduced, flexibility is built into the system
     
