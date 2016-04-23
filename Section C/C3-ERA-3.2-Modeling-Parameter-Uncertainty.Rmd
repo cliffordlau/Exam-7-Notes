@@ -11,6 +11,30 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+Parameter risk is more important as the process risk is smaller
+
+Different ways to model the severity trend
+
+* Model the trend indepedently or adjust the general inflation then model the superimposed inflation
+* Model with AR(1)
+
+Estimation risk in selecting the parameters and the downstream impact
+
+* Use MLE working with negative log likelihood
+* Slope of the negative log likelihood determines our confidence in the selection
+
+Use HQIC to adjust the loglikelihood with a penalty for # of parameters
+
+* Also use a pool of distribution of reasonable parameters
+
+Form of the mdoel we use to do the modeling e.g. expected parameters vs pool of distribution of parameters
+
+Should focuse on the spread of potential outcomes instead of best estimate
+
+* Add flexibility and let the parameters reflect the uncertainty in the assumptions
+
 ## Introduction
 
 Parameter risk is key for large companies since process risk is reduced with a large book
