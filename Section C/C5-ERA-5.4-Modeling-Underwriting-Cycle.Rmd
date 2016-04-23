@@ -11,6 +11,34 @@ output:
     toc_depth: 4
 ---
 
+## Cliff's Summary
+
+[Characteristics](#uw-cycle) of underwriting cycle
+
+[4 stage](#4-stage) of insurance business
+
+* First stage is the classic cycle and the next 3 shows how things stablize and then eventually breakdown
+
+Various [theories](#cycle-theory) of underwriting cycle
+
+Approaches to modeling the cycle
+
+* Need to us combined ratio or someting as proxy for price
+* Calculate and forecast [predictor](#cycle-predictor) variables
+* Gather competitor intellgence
+
+Styles of modeling:
+
+* Soft, technical and behavioral
+
+Look at the different impact on [supply and demand](#s-and-d) under different scenarios
+
+[Gron](#gron) supply curve
+
+Captial flow under different profitability
+
+How different components interact
+
 ## Introduction
 
 Important to consider how the firm interacts with a competitive environment in an ERM framework
@@ -19,7 +47,7 @@ Price competition is inevitable due to: Low barriers of entry; lack of patent or
 
 Price is difficult to define since it depends on premium charged as well as limits, deductible, terms and conditions
 
-U/w cycle:
+<a name="uw-cycle"></a> **Underwriting cycle**:
 
 * Recurring increase and decrease of prices and profits
 
@@ -30,6 +58,8 @@ U/w cycle:
 * Capital plays an important role $\Rightarrow$ multiline insurers creates dependencies between LoBs' cycle
 
 ### 4 Stages Insurance Business {.tabset}
+
+<a name="4-stage"></a>
 
 Steward describes the evolution of insurance business, sometimes takes decades to play out
 
@@ -57,6 +87,8 @@ New type of competitors take business away
 Return to stage 1, new configuration of the market phase emerges
     
 ## Theories of the Cycle
+
+<a name"cycle-theory"></a>
 
 Different researches findings are contradictory
 
@@ -106,7 +138,7 @@ Use loss ratio or combined ratio etc as a proxy
 
 * Can include investment income
 
-**Predictor Variable**
+<a name="cycle-predictor"></a> **Predictor Variable**
 
 To calculate the current period criterion and also forecast the forward period criterion
 
@@ -206,17 +238,23 @@ Plotting the supply and demand curve on quantity vs price
 
 ![alt text](figures/Exam 7 Notes - 6.png)
 
+<a name="s-and-d"></a>
+
 **Supply**
 
-New competition or technology increases the quantity available at a given price $\Rightarrow$ Shifting curve $\searrow$
+New competition or technology increases the quantity available at a given price  
+$\hookrightarrow$ Shifting curve $\searrow$
 
-Higher capital requirement $\Rightarrow$ Shifting curve $\uparrow$
+Higher capital requirement  
+$\hookrightarrow$ Shifting curve $\uparrow$
 
 **Demand**
 
-Excess capital makes insurance more valuable $\Rightarrow$ Shifting curve $\nearrow$
+Excess capital makes insurance more valuable  
+$\hookrightarrow$ Shifting curve $\nearrow$
 
-Shock to capital $\Rightarrow$ Shifting curve $\swarrow$
+Shock to capital  
+$\hookrightarrow$ Shifting curve $\swarrow$
 
 Company demand curve will be flatter since customers can go to another company for small changes in price
 
@@ -230,7 +268,9 @@ Difficult to empirically estimate the curves because only the equilibrium is obs
 
 ***
 
-**Gron Supply Curve**
+<a name="gron"></a> **Gron Supply Curve**
+
+Plot 4 and 5 above
 
 The first flat section:
 
