@@ -219,8 +219,12 @@ div.tocify {
 <h3>A1 Least Square</h3>
 <p>Loss Development Using Credibility - Brosius</p>
 <p>Least square methods</p>
+<ul>
+<li>Need to know how to calculate <span class="math inline">\(b\)</span></li>
+</ul>
 <p>Theoretical Bayesian method and also estimating the Bayesian credibility with 2 methods for getting <span class="math inline">\(Z\)</span></p>
 <ul>
+<li>Can do <span class="math inline">\(Z = \dfrac{b}{c}\)</span> or the VHM EVPV formula</li>
 <li>Under certain relationships between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> supports different methods</li>
 <li>Some formulas to remember if we do the theoretical Bayes</li>
 </ul>
@@ -268,12 +272,152 @@ div.tocify {
 </tbody>
 </table>
 </div>
+<div id="a6-variability-in-cl-method" class="section level3">
+<h3>A6 Variability in CL Method</h3>
+<p>Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack (1994)</p>
+<p>Focus on cummulative losses</p>
+<p>Chain ladder <strong>assumptions</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\operatorname{E}\left [c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ] = c_{i,k} \: f_k\)</span></p></li>
+<li><p><span class="math inline">\(\left \{c_{i,1} \cdots c_{i,I} \right \} \: {\perp\!\!\!\perp} \: \left \{c_{j,1} \cdots c_{j,I} \right \}\)</span> for <span class="math inline">\(i \neq\ j\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}\)</span></p></li>
+</ol>
+<p>LDF weight and <strong>variance</strong> assumptions:</p>
+<p><span class="math inline">\(\begin{align}  \hat{f_k} = \frac{\sum_j \overbrace{\frac{c_{j,k+1}}{c_{j,k}}}^{LDF_j} \: w_{j,k}}{\sum_j w_{j,k}}  \end{align}\)</span></p>
+<table style="width:65%;">
+<colgroup>
+<col width="23%"></col>
+<col width="16%"></col>
+<col width="12%"></col>
+<col width="12%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Weight <span class="math inline">\(w_{j,k}\)</span></th>
+<th align="left">Description</th>
+<th align="left">Variance</th>
+<th align="left">Residual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Simple Average</td>
+<td align="left"><span class="math inline">\(\alpha_k^2 \times \mathbf{c_{j,k}^2}\)</span></td>
+<td align="left"><span class="math inline">\(\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{j,k}^2}}}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(c_{j,k}\)</span></td>
+<td align="left">Weighted Average</td>
+<td align="left"><span class="math inline">\(\alpha_k^2 \times \mathbf{c_{j,k}}\)</span></td>
+<td align="left"><span class="math inline">\(\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{j,k}}}}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(c_{j,k}^2\)</span></td>
+<td align="left">Least Square</td>
+<td align="left"><span class="math inline">\(\alpha_k^2 \times \mathbf{1}\)</span></td>
+<td align="left"><span class="math inline">\(\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{1}}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mean squared error</strong></p>
+<p><span class="math inline">\(\begin{align}  MSE(\hat{c}_{i,I}) = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \} \end{align}\)</span></p>
+<p><span class="math inline">\(\begin{align}  \hat{\alpha}_k^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2 \end{align}\)</span></p>
+<p>For the last one <span class="math inline">\(\alpha^2_{I-1}\)</span>:</p>
+<ul>
+<li>If the 3rd last one is lower, take that</li>
+<li>Else, you take the 2nd last times the ratio of the 2nd last to 3rd last</li>
+</ul>
+<p><strong>Confidence Interval</strong></p>
+<p>Normal: <span class="math inline">\(\hat{R}_i \pm Z_\alpha \: s.e.(\hat{R}_i)\)</span></p>
+<p>LogNormal: <span class="math inline">\(R_i \operatorname{exp}\left \{ -\dfrac{\sigma_i^2}{2} \pm \: Z_\alpha \sigma_i \right \}\)</span></p>
+<ul>
+<li><span class="math inline">\(\sigma_i^2 = \operatorname{ln} \left [ 1 + \left ( \dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} \right)^2 \right]\)</span></li>
+<li><span class="math inline">\(\mu_i = \operatorname{ln}(\hat{R}_i) - \dfrac{\sigma_i^2}{2}\)</span></li>
+</ul>
+<p><strong>Assumptions test</strong></p>
+<ul>
+<li>Intercepts plot</li>
+<li>Residuals plot</li>
+<li><a href="#a6-1">CY Test</a></li>
+<li><a href="#a6-2">Correlation on adjacent LDFs</a></li>
+</ul>
+</div>
 </div>
 <div id="section-b" class="section level2">
 <h2>Section B</h2>
+<div id="b1-valuation-methods" class="section level3">
+<h3>B1 Valuation Methods</h3>
+<p>B1 P&amp;C Insurance Company Valuation - R. Goldfarb</p>
+<p>The key methods are DDM, FCFE, and AE</p>
+<ul>
+<li><span class="math inline">\(V_0 = \dfrac{\mathrm{E}[Div_1]}{k - g}\)</span></li>
+<li><span class="math inline">\(FCFE = NI + (Non \:Cash\:Charges) - \Delta Working \:Capital - \Delta Capital + \Delta Debt\)</span></li>
+<li><span class="math inline">\(\begin{align} V_0 = BV_0 + \sum_{t=1} \frac{(ROE_t - k)BV_{t-1}}{(1+k)^t}\end{align}\)</span></li>
+</ul>
+<p>You can also look the P:Earning or P:Book multipes which have formulas that’s based on the DDM and AE method</p>
+<ul>
+<li>Watch out for some nuance on forward and trailing P:Earning</li>
+</ul>
+<p>Another important bit is to determine the growth rate, if it’s not given in a questions then you have to calculate <span class="math inline">\(g\)</span> over a couple years and select</p>
+</div>
 </div>
 <div id="section-c" class="section level2">
 <h2>Section C</h2>
+</div>
+<div id="formula-appendix" class="section level2">
+<h2>Formula Appendix</h2>
+<p><a name="a6-1"></a> <strong>Calendar Year Test</strong></p>
+<p>Step 1) Rank the LDFs in each column</p>
+<p>Step 2) Label them S and L and the median is discarded</p>
+<p>Step 3) For each diagonal with at least 2 elements, <span class="math inline">\(z = \operatorname{min}(\text{# of S}, \text{# of L})\)</span></p>
+<p>Step 4) Calculate <span class="math inline">\(\operatorname{E}[z_n]\)</span> and <span class="math inline">\(\operatorname{Var}(z_n)\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\operatorname{E}[z_n] = \dfrac{n}{2} - c_n\)</span></p>
+<ul>
+<li><p><span class="math inline">\(n =\)</span> # of elements in each diagonal <strong>excluding</strong> the throw away value</p></li>
+<li><p><span class="math inline">\(c_n = {n - 1 \choose m}\frac{n}{2^n}\)</span></p></li>
+<li><p><span class="math inline">\(m = \operatorname{floor}\left[ \dfrac{n-1}{2} \right]\)</span></p></li>
+</ul></li>
+<li><p><span class="math inline">\(\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[Z_n] - \operatorname{E}[z_n]^2\)</span></p></li>
+<li><p><span class="math inline">\(z \sim\)</span> Normal</p></li>
+</ul>
+<p>Step 5) See if <span class="math inline">\(Z\)</span> is in the CI based on the the above</p>
+<ul>
+<li><p><span class="math inline">\(Z = \sum_{diagonal} z\)</span></p></li>
+<li><p>Since <span class="math inline">\(Z \sim\)</span> Normal, can sum the mean and variance by assuming independence</p></li>
+<li><p>Test 95% CI: <span class="math inline">\(\operatorname{E}[Z] \pm 2 \times \sigma\)</span></p></li>
+</ul>
+<hr />
+<p><a name="a6-2"></a> <strong>Correlation of Adjacent LDFs</strong></p>
+<p>Use a relatively low threshold of 50%</p>
+<p>Step 1) Calculate Spearman’s correlation for each pair of adjacent LDFs</p>
+<ul>
+<li><p><span class="math inline">\(S = \sum \limits_{\in rows} \Big \{ [Rank \: Col \: i \: LDF] - [Rank \: Col \: j \: LDF] \Big \}^2\)</span></p></li>
+<li><p>Rank from low to high (i.e. lowest is 1)</p></li>
+<li><p><span class="math inline">\(T_k = 1 - \dfrac{S}{n(n^2-1)/6}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(n =\)</span> # of rows</p></li>
+<li><p>For a 10 x 10 triangle, <span class="math inline">\(k\)</span> is at most 7 because there’s only 9 LDFs so 8 pairs. And down to 7 because we don’t use the pair with only 1 row</p></li>
+</ul></li>
+</ul>
+<p>Step 2) Calculate <span class="math inline">\(T\)</span> for the whole triangle</p>
+<ul>
+<li><p><span class="math inline">\(T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(I =\)</span> size of triangle</p></li>
+<li><p><span class="math inline">\(k\)</span> starts at 2</p></li>
+<li><p>Formula gives more weight to <span class="math inline">\(T_k\)</span> with more data</p></li>
+</ul></li>
+</ul>
+<p>Step 3) Compare <span class="math inline">\(T\)</span> with CI based on distribution</p>
+<ul>
+<li><p><span class="math inline">\(\operatorname{E}[T] = 0\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{E}[T] \pm Z \sqrt{\operatorname{Var}(T)}\)</span></p></li>
+<li><p>Use <span class="math inline">\(Z = 0.67\)</span> for range of [25%, 75%]</p></li>
+<li><p>Do not reject the <span class="math inline">\(H_0\)</span> of uncorrelated LDFs if the <span class="math inline">\(T\)</span> is in the CI</p></li>
+</ul>
 </div>
 
 
