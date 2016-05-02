@@ -13,17 +13,45 @@ output:
 
 ## Section A
 
-### A1 Loss Development Using Credibility
+### A1 Least Square
 
-Brosius
+Loss Development Using Credibility - Brosius
 
 Least square methods
 
-### A2 Credible Claims Reserve: The Benktander Method
+* Need to know how to calculate $b$
 
-T. Mack (2000)
+Theoretical Bayesian method and also estimating the Bayesian credibility with 2 methods for getting $Z$
+
+* Can do $Z = \dfrac{b}{c}$ or the VHM EVPV formula
+* Under certain relationships between $X$ and $Y$ supports different methods
+* Some formulas to remember if we do the theoretical Bayes
+
+Discussion on the caseload effect where the development and ultimate is not independent
+
+### A2 Benktander
+
+Credible Claims Reserve: The Benktander Method - T. Mack (2000)
 
 Benktander Method
+
+### A3 Credible Claims Reserve
+
+Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann
+
+Method that is based on the incremental loss ratio triangles
+
+Weight between the analogous development and BF method
+
+$R_i^c = Z_iR_i^{ind} + (1-Z_i)R_i^{coll}$
+
+| $Z_i$ | Method |
+| --- | --- | --- |
+| 1     | Chainladder; Individual LR|
+| 0     | BF; Collective LR|
+| $p_i$ | Benktander |
+| $p_i \times ELR$ | Neuhaus |
+| $Z = \dfrac{p_i}{p_i + \sqrt{p_i}}$ | Optimal |
 
 ## Section B
 
