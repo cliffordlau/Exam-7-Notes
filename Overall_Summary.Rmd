@@ -1,0 +1,30 @@
+---
+title: "Exam 7 2016 Overall Summary"
+author: "Cliff Lau"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 4
+---
+
+## Section A
+
+### A1 Loss Development Using Credibility
+
+Brosius
+
+Least square methods
+
+### A2 Credible Claims Reserve: The Benktander Method
+
+T. Mack (2000)
+
+Benktander Method
+
+## Section B
+
+## Section C
