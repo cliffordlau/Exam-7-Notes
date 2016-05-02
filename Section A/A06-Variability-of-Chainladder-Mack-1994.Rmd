@@ -128,11 +128,15 @@ $f_k =$ LDF from $k$ to $k + 1$
     
     * $I =$ size of the triangle
     
+    * This assumption make our estimate unbiased
+    
 3) $\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
 
     * Variance of the incremental losses is $\propto$ losses reported to date
     
     * Proportion depends on the age of AY
+    
+    * $\hat{f}_k$ is selected to minimize the variance
     
 4) = (1) & (3) Variance is $\propto$ mean
 
