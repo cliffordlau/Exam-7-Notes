@@ -53,7 +53,23 @@ Dispersion factor with [standard](#std-dispersion), [England & Verrall](#EV-disp
 
 ### Types of Exam Questions
 
-<span style="color:red">Haven't done TIA practice questions</span>
+**Exercises**
+
+1. $\star$ Use simplied GLM and then back out the GLM parameters
+2. Reduce parameters
+3. Minimize square error for GLM
+4. Benefit of simplified GLM
+5. Residuals
+6. Dispersion
+7. Dispersion with hat matrix adj
+8. Simulate loss
+9. Setup GLM
+10. Negative values
+11. Simulat ngative
+12. Partial triangle
+13. Stratified
+14. Dealing with correlation
+15. Outliers
 
 **Practical Issues**
 
