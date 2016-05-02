@@ -105,6 +105,8 @@ Compare different fit of the models based on adjusted $SSE$ (actual vs projected
 
 * $n =$ # of predicted data points **EXCLUDING 1st column**
 
+    * Exclude because when we do reserving we don't predict anything from the first column
+
 * $p =$ # of parameters
 
 * $SSE = \sum (A - E)^2$
@@ -236,7 +238,7 @@ Look at empirical LDFs $f(d)$ down a column
 
 ## Implication 5: No Correlation on Columns
 
-Calculate Pearso correlation for every pair of columns with at least 3 LDFs
+Calculate Pearson correlation for every pair of columns with at least 3 LDFs
 
 * This is a test on the LDFs
 
