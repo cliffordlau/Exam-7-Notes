@@ -210,6 +210,8 @@ Formulas applies to total reserve as well
   * Need $MSE(\hat{R})$
   
   * Correlate the individual $\hat{R}_i$'s. Because we use the same LDFs to forecast the estimates
+  
+  * Can just use the square root rule to sum up the different AYs if we assume independence
 
 <a name="ci-normal"></a>**Normal**
 
