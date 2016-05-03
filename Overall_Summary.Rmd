@@ -74,9 +74,7 @@ Weight between direct development and expected loss ratio method
 5) Development Method
 
     * Severity needs to be trended
-    
     * Claim counts are developed separately ground up
-    
     * Severity LDF formulas, know them well to manipulate and know what formula requires what
     
         * $LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}$
@@ -90,6 +88,30 @@ Weight between direct development and expected loss ratio method
         * $\dfrac{IXSLDF^L_t}{IXSLDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}$
 
 6) Distribution Method
+
+### A5 Developement by Layer
+
+Claims Development by Layer - R. Sahasrabuddhe
+
+Know the process for setting up [base](#a5-1) triangle and then [convert](#a5-2) the base LDFs to any layer
+
+Main formulas to memorize:
+
+* For loss capping:  
+$LEV(X; \Phi \sim Exp(\theta)) = \theta \: \left[ 1 - \operatorname{exp}\left\{-\left(\dfrac{x}{\theta}\right)\right\} \right]$
+
+* For conversion:  
+$\begin{align}
+  F_{ij}^X = F_{nj}^B \times \frac{LEV(X;\Phi_{i\infty})\div LEV(B;\Phi_{n\infty})}{LEV(X;\Phi_{ij}) \div LEV(B;\Phi_{nj})}
+ \end{align}$
+
+We can do this for an XS layer as well
+
+If we don’t have the severity distribution by age, we can work with the severity at ultimate
+
+* $\begin{align}
+  F_{ij}^X = F_{nj}^B \times \frac{LEV(X;\Phi_{i\infty})\div LEV(B;\Phi_{ {\color{red}i} \infty})}{R_j{(X,B)}}
+ \end{align}$
 
 ### A6 Variability in CL Method
 
@@ -284,6 +306,60 @@ Other
 * Multiple models: 2 methods for simulation
 * Model outputs
 * Correlations: location mapping or re-sort
+
+### A11 Expert Opinions
+
+Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall
+
+Works with incremental data
+
+Model is defined with losses following ODP and stochastic row parameters that follows gamma as prior
+
+Bayesian BF calculation and assumptions
+
+* $\operatorname{E}[c_{ij}] = Z_{ij} \overbrace{[(\lambda_j - 1) \underbrace{D_{ij-1}}_{\text{Actual up to }j-1}]}^{\text{CL Results}} + (1- Z_{ij}) \overbrace{[(\lambda_j - 1) \underbrace{M_i p_{j-1}}_{\text{Expected up to }j-1}]}^{\text{BF Results}}$
+
+* $Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}$
+
+* $c_{ij} \sim ODP(x_i \cdot y_j, \varphi)$
+
+* $x_i \sim \Gamma(\alpha_i, \beta_i)$
+
+* $\operatorname{E}[x_i] = \dfrac{\alpha_i}{\beta_i} = M_i$
+    
+* $\operatorname{Var}[x_i] = \dfrac{\alpha_i}{\beta_i^2}$
+
+Stochastic column parameters calculation
+
+* $\operatorname{E}[c_{ij}] = (\gamma_i - 1) \sum \limits_{m=1}^{i-1} c_{m,j}$
+
+* [Calculate](#a11-1) $\gamma$ pictorially
+
+Using vauge or strong priors for model specification
+
+### A11 Reinsurance Reserving
+
+Reinsurance Loss Reserving - Patrik
+
+Problems of reinsurance reserving:
+
+1. Longer report lag of claims
+2. Persistent Upward Development of Most Claim Reserves
+3. Reporting Pattern Differ Greatly
+4. Industry Statistics Not Useful
+5. Reports Received Lack Important Information
+6. Data Coding and IT System Problems
+7. Reserve to Surplus Ratio is Higher for Reinsurer
+
+6 Components of reinsurance reserve
+
+1. Case reserve reported by cedent
+2. Additional case reserve from reinsurer
+3. IBNER
+4. Pure IBNR
+5. Discount for future investment income
+6. Risk Load
+
 
 ### A14 Bayesian MCMC
 
@@ -666,7 +742,7 @@ Reject $H_0$ if $D > \dfrac{136}{\sqrt{n}}\%$ @5% confidence level
 
 ***
 
-<a name="a14-4"></a>
+<a name="a14-4"></a> **Skewed Normal**
 
 Skewed Normal:  
 $X = \mu + (\omega \cdot Z) \cdot \delta + (\omega \cdot \varepsilon) \cdot \sqrt{1 - \delta^2}$
@@ -685,3 +761,68 @@ $X \sim Normal(Z,\delta)$
 * $Z \sim Lognormal(\mu,\sigma)$
 
 * Mixed $ln - n$ Distribution
+
+***
+
+<a name="a5-1"></a> **Base Triangle**
+
+Step 1:  
+Setup the trend triangle: Trend = AY Trend $\times$ CY Trend
+
+* The 1.000 typically starts at the top left corner but it doesn't have to
+
+Step 2:  
+Determine *unlimited* mean for each cell in triangle (Avg sev paid to date)
+
+i) Based on mean for the latest AY (bottom row)
+
+    * $\operatorname{E}[C_{nj}] = \theta_j$
+
+    * $C_{nj} \sim \Phi_{nj} = Exp(\theta_j)$
+    
+ii) Detrend back up from the bottom row to fill the whole square
+
+    * Usually just need four points per the LDF conversion formula
+
+Step 3:  
+Calculate LEV for each cell in triangle $L$ and the last row for $B$
+
+* $LEV(X; \Phi \sim Exp(\theta)) = \theta \: \left[ 1 - \operatorname{exp}\left\{-\left(\dfrac{x}{\theta}\right)\right\} \right]$
+
+* Use the "square" of mean $\theta$ calculated from Step 2
+
+Step 4:  
+Calculate the adjusted triangle
+
+* Convert triangle of actual losses by dividing it's LEV at layer $L$ then times it's LEV at layer $B$
+
+* $C_{ij}' = \underbrace{C_{ij}^L}_{\text{Cum paid @ L}} \times \underbrace{\dfrac{LEV(B;\Phi_{nj})}{LEV(L;\Phi_{ij})}}_{\text{ILF w/ on-level to }n}$
+
+Step 5:  
+Select base layer LDFs
+
+***
+
+<a name="a5-2"></a> **Convert LDFs**
+
+$\begin{align}
+  F_{ij}^X = F_{nj}^B \times \frac{LEV(X;\Phi_{i\infty})\div LEV(B;\Phi_{n\infty})}{LEV(X;\Phi_{ij}) \div LEV(B;\Phi_{nj})}
+ \end{align}$
+
+![alt text](Section A/figures/Exam 7 Notes - 13.png)
+
+***
+
+<a name="a11-1"></a> **$\gamma$ Calculation**
+
+$\gamma_1 = 1.000$ always
+
+First calculate LDFs and calculate % unpaid and a-priori for each AY
+
+* $U_i$ = a-priori ultimate based on LDF for AY $i$
+
+* $q_i$ = % unpaid for AY $i$
+
+![alt text](Section A/figures/Exam 7 Notes - 3.png)
+
+Note that in step 4 above if you don't need the individual cells you can just take the $U_3 q_3$
