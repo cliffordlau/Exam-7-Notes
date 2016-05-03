@@ -90,7 +90,7 @@
 
 <meta name="author" content="T. Mack" />
 
-<meta name="date" content="2016-04-15" />
+<meta name="date" content="2016-05-02" />
 
 <title>A6 Measuring the Variability of Chain Ladder Reserve Estimate</title>
 
@@ -287,7 +287,7 @@ div.tocify {
 
 <h1 class="title">A6 Measuring the Variability of Chain Ladder Reserve Estimate</h1>
 <h4 class="author"><em>T. Mack</em></h4>
-<h4 class="date"><em>April 15, 2016</em></h4>
+<h4 class="date"><em>May 02, 2016</em></h4>
 
 </div>
 
@@ -410,11 +410,13 @@ div.tocify {
 <ul>
 <li><p>Losses in each AYs are <span class="math inline">\({\perp\!\!\!\perp}\)</span> of the losses in other AYs</p></li>
 <li><p><span class="math inline">\(I =\)</span> size of the triangle</p></li>
+<li><p>This assumption make our estimate unbiased</p></li>
 </ul></li>
 <li><p><span class="math inline">\(\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}\)</span></p>
 <ul>
 <li><p>Variance of the incremental losses is <span class="math inline">\(\propto\)</span> losses reported to date</p></li>
 <li><p>Proportion depends on the age of AY</p></li>
+<li><p><span class="math inline">\(\hat{f}_k\)</span> is selected to minimize the variance</p></li>
 </ul></li>
 <li><p>= (1) &amp; (3) Variance is <span class="math inline">\(\propto\)</span> mean</p>
 <ul>
@@ -503,6 +505,7 @@ div.tocify {
 <ul>
 <li><p>Need <span class="math inline">\(MSE(\hat{R})\)</span></p></li>
 <li><p>Correlate the individual <span class="math inline">\(\hat{R}_i\)</span>’s. Because we use the same LDFs to forecast the estimates</p></li>
+<li><p>Can just use the square root rule to sum up the different AYs if we assume independence</p></li>
 </ul>
 <p><a name="ci-normal"></a><strong>Normal</strong></p>
 <p><span class="math inline">\(\hat{R}_i \pm Z_\alpha \: s.e.(\hat{R}_i)\)</span></p>
