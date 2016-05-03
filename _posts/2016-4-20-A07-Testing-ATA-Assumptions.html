@@ -15,7 +15,7 @@ layout: post
 
 <meta name="author" content="G. Venter" />
 
-<meta name="date" content="2016-04-14" />
+<meta name="date" content="2016-05-02" />
 
 <title>A7 Testing the Assumptions of Age-to-Age Factors</title>
 
@@ -212,7 +212,7 @@ div.tocify {
 
 <h1 class="title">A7 Testing the Assumptions of Age-to-Age Factors</h1>
 <h4 class="author"><em>G. Venter</em></h4>
-<h4 class="date"><em>April 14, 2016</em></h4>
+<h4 class="date"><em>May 02, 2016</em></h4>
 
 </div>
 
@@ -327,7 +327,10 @@ div.tocify {
 <li><p><span class="math inline">\(BIC \approx SSE \times n^{p/n}\)</span></p></li>
 </ol>
 <ul>
-<li><p><span class="math inline">\(n =\)</span> # of predicted data points <strong>EXCLUDING 1st column</strong></p></li>
+<li><p><span class="math inline">\(n =\)</span> # of predicted data points <strong>EXCLUDING 1st column</strong></p>
+<ul>
+<li>Exclude because when we do reserving we don’t predict anything from the first column</li>
+</ul></li>
 <li><p><span class="math inline">\(p =\)</span> # of parameters</p></li>
 <li><p><span class="math inline">\(SSE = \sum (A - E)^2\)</span></p>
 <ul>
@@ -518,7 +521,7 @@ div.tocify {
 </div>
 <div id="implication-5-no-correlation-on-columns" class="section level2">
 <h2>Implication 5: No Correlation on Columns</h2>
-<p>Calculate Pearso correlation for every pair of columns with at least 3 LDFs</p>
+<p>Calculate Pearson correlation for every pair of columns with at least 3 LDFs</p>
 <ul>
 <li><p>This is a test on the LDFs</p></li>
 <li><p>Test with only 2 LDFs will either be 1 or -1</p></li>

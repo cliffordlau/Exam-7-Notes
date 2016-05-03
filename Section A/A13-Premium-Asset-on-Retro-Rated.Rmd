@@ -60,7 +60,7 @@ Know the Teng Perkins [improvements](#tp-improvements) and [assumptions](#tp-ass
 * 2003 - #10: Feldblum comment on Teng Perkins: premium responsiveness decreases at higher LR for a book of business
 * 2007 - #36: Retro premium and reported losses relationship
 * $\star$ [2014 #12](#2014-12): incremental losses vs premium
-* $\star$ [2015 #4](#2015-4): PDLD ratio
+* $\star$ [2015 #14](#2015-14): PDLD ratio
 
 **Calculations**
 

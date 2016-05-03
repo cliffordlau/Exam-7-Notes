@@ -268,6 +268,65 @@ $\dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\
 
 * $\mu_i =$ expected incremental loss emergence
 
+### A9 Risk Margin
+
+A Framework for Assessing Risk Margins - K. Marshall et al
+
+Need framework because quantitative is not enough, need both quantitative and qualitative measures to examine the uncertainty
+
+* Quantitative analysis requires lots of data
+
+* Only captures historical risk
+
+* Does not capture risk that did not have an episode (of systemic risk) in the experience period
+
+**Independent**
+
+Parameter and process variance model with stochastic model
+
+**Internal Systemic**
+
+Know the [3 components](#a9-2)
+
+Score against best practice and calibrate to CoV
+
+* Know how to score given actual examples as in past exam
+* Hindsight analysis
+
+**Extnernal Systemic**
+
+Know the different [risk categories](#a9-3)
+
+* And what lines they impact most
+
+Use benchmark similar to internal but select CoV directly
+
+**Correlation**
+
+Risk sources are independent of each other
+
+Independent: assume independence across lines, weight by liabilities
+
+Internal: base on correlation matrix $\Sigma$, again weighted by liabilities
+
+External: correlation between each valuation group and risk categories $\Rightarrow$ then roll up to the risk categories and assume they are independent of each other
+
+**Risk Margin**
+
+$\text{Risk Margin} = \underbrace{\mu}_{\text{Expected Loss}} \times \underbrace{\phi }_{\text{CoV}} \times \underbrace{Z_{\alpha}}_{0.67\text{ for the }75^{th}\text{ percentile}}$
+
+Additional analysis
+
+* Sensitivity, scenario testing
+
+* [Internal benchmarking](#a9-1), important to know the relationships and consistency, been heavily tested in the past
+
+* External benchmarking
+
+* Hindsight and mechanical hindsight
+
+Regularity of review
+
 ### A10 Bootstrap
 
 Bootstrap Modeling: Beyond the Basics - Shapland Leong
@@ -337,7 +396,7 @@ Stochastic column parameters calculation
 
 Using vauge or strong priors for model specification
 
-### A11 Reinsurance Reserving
+### A12 Reinsurance Reserving
 
 Reinsurance Loss Reserving - Patrik
 
@@ -360,6 +419,78 @@ Problems of reinsurance reserving:
 5. Discount for future investment income
 6. Risk Load
 
+Reinsurance reservering procedure:
+
+* Partition $\Rightarrow$ Development Patterns $\Rightarrow$ Estimate $\Rightarrow$ Monitor and AvE
+
+* Partition priority
+
+* Considerations for short vs medium vs long tail lines
+
+* AvE
+
+Stanard Buhlmann
+
+* Must on-level the historical premium and adjust to be pure premium
+
+    * Remove commissions and brokerage and internal expenses (but might not worth the effort)
+
+    * Remove any suspected rate level differences
+
+* $ELR = \dfrac{\sum C_k}{\sum E_k p_k}$
+
+    * $C_k$: reported to date; $E_k$: Adj Prem; $p_k$: expected % reported to date
+
+* Estimate ELR using actual incurred loss
+
+* Sensitive to the accurary of the onlevel EP
+    
+Credibility IBNR Estimates
+
+* Weight the CL method with SB or BF
+
+* $R_k = Z \cdot R_{CL} + (1-Z) \cdot R_{SB}$
+
+* $Z_k = p_k \cdot CF$, $CF \in [0,1]$
+
+* $CF$ is the credibility factor, Benktander = 1, BF = 0\
+
+### A13 Premium Asset
+
+Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins
+
+Retro formula
+
+$\underbrace{P}_{\text{Premium}} = [\underbrace{BP}_{\text{Basic Premium}} + (\underbrace{CL}_{\text{Capped Losses}} \cdot \underbrace{LCF}_{\text{Loss Conversion Factor}})] \cdot \underbrace{TM}_{\text{Tax Multiplier}}$
+
+Use PDLD to get the premium development based on the loss developement
+
+Know what each term means like basic premium factor or charge
+
+Formula approach for PDLD
+
+$\begin{align}
+  PDLD_1 =\underbrace{\left(\frac{BP}{SP} \right)}_{\text{Basic Prem Factor}} \frac{TM}{ELR \cdot \%Loss_1} + \underbrace{\left( \frac{CL_1}{L_1}\right)}_{\text{Loss Capping Ratio}} \cdot LCF \cdot TM
+\end{align}$
+
+* To adjust for being too responsive: $\begin{align}
+  P_1 = \underbrace{\left( \frac{BP}{SP} \right) \frac{TM}{ELR \cdot \%Loss_1}}_{\text{Not }\propto\text{ Loss}_1} \times \operatorname{E}[L_1] + \underbrace{\left( \frac{CL_1}{L_1} \right) \cdot LCF \cdot TM}_{\propto \text{ Loss}_1} \times L_1
+\end{align}$
+
+* Subsequent PDLD: $\begin{array}{cccl}
+  PDLD_n &= &\dfrac{CL_n - CL_{n-1}}{L_n - L_{n-1}}&LCF \cdot TM \:\:\:\:\text{For }n>1\\
+  &= &\dfrac{\Delta CL}{\Delta L}&LCF \cdot TM\\
+\end{array}$
+
+Empirical approach for PDLD
+
+* Assume premium lags
+* Ratio selection
+* Cumulate PDLD based on a weighted average with expected % future report for each future periods
+* Know the practical application
+    * First adjustment period might cover more than one policy period
+
+Know the Teng Perkins improvements and assumptions
 
 ### A14 Bayesian MCMC
 
@@ -826,3 +957,75 @@ First calculate LDFs and calculate % unpaid and a-priori for each AY
 ![alt text](Section A/figures/Exam 7 Notes - 3.png)
 
 Note that in step 4 above if you don't need the individual cells you can just take the $U_3 q_3$
+
+***
+
+<a name="a9-1"></a> **Internal Benchmarking**: Compare CoVs within between OCL and PL and also with other valuation groups
+
+*Independent risk*: 
+
+* Large liability will have smaller CoV due to law of large numbers
+    
+* Short tail line will have a small CoV as well due to less volatility
+    
+Therefore:    
+    
+* Outstanding Claims Liability: $\phi_{short \: tail} < \phi_{long \: tail} < \phi_{long \: tail, \: small \: book}$
+
+* Premium Liability - Long Tail: OCL > PL $\Rightarrow$ $\phi_{OCL} < \phi_{PL}$
+
+    * Because there are many AYs of claims in the reserves
+    
+* Premium Liability - Short Tail: OCL < PL $\Rightarrow$ $\phi_{OCL} > \phi_{PL}$
+
+    * Because OCL is small
+    
+    * LoB with significant event risk will have different risk profiles for the PL and OCL
+    
+*Internal Systemic*: 
+
+* If the methods to estimate liabilities is similar across valuation groups, we would expect the CoV to be similar for classes that have similar claim payment patterns
+
+*External Systemic*:
+
+* Main sources are higher for long tail lines; Event risk is higher for property; Liability for HO can also be significant
+
+***
+
+<a name="a9-2"></a> 3 components of **internal systemic** risk:
+
+1) Specification Error:  
+From not perfectly modeling the insurance process because it's too complicated or just don't have the data
+
+2) Parameter Selection Error:  
+Trend is particularly difficult to measure
+
+3) Data Error:  
+Lack of data, lack of knowledge of the underlying pricing, u/w, and claim management process, inadequate knowledge of portfolio
+
+***
+
+<a name="a9-3"></a>
+
+**Risk categories** for external
+
+* Economic and Social Risks:  
+Inflation, social trends 
+
+* Legislative, Political Risks, Claims Inflation Risks:  
+Change in law, frequency of settlement vs suits to completion, loss trend (Long tail lines)
+
+* Claim Management Process Change Risk:  
+Change in process of managing claims e.g. case reserve practice
+
+* Expense Risk:  
+Cost of managing a run-off book
+
+* Event Risk:  
+natural or man-made CAT (Premium liabilities for property)
+
+* Latent Claim Risk:  
+Claim from source not currently considered to be covered
+
+* Recovery Risk:  
+Recoveries from reinsurers or non-reinsurers
