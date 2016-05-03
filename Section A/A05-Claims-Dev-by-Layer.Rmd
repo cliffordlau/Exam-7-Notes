@@ -13,7 +13,7 @@ output:
 
 ## Cliff's Summary
 
-Know the process for setting up base triangle and then convert the base LDFs to any layer
+Setup base triangle and then convert the base LDFs to any layer
 
 Main formulas to memorize:
 

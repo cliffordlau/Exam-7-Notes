@@ -200,7 +200,7 @@ $\operatorname{E}[c_{ij}] = (\gamma_i - 1) \sum \limits_{m=1}^{i-1} c_{m,j}$
 
 ![alt text](figures/Exam 7 Notes - 2.png)
 
-### Calculate $\gamma$
+### Calculate Gamma
 
 Know how to calculate this pictorially
 
