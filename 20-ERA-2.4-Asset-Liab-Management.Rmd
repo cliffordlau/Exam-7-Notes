@@ -1,0 +1,229 @@
+# C2 ERA 2.4 Asset-Liability Management - Brehm
+
+## Cliff's Summary
+
+Asset liability Management:
+
+* Looks at current assets and liabilities + flow from future premiums of a going concern company
+
+* Identify and exploit hedges of any sort (e.g. use equity as inflation hedge)
+
+Optimal portfolio under 4 different scenarios
+
+* Going concern is most complicated as it includes cash flow coming in
+
+Additional considerations:
+
+* Tax: tax exempt bonds is preferred during profitable times
+* Equity: risky but useful to hedge inflation
+
+If we are not matching the duration, best to just invest in long bonds
+
+9 steps of asset liability modeling
+
+1) Model Asset Classes, Liabilities, and Current Business Operations
+2) Define Risk Metrics
+3) Return Metrics
+4) Time Horizon
+5) Consider Relevant Constraints
+6) Simulation Model
+7) Efficient Frontier Graph
+8) Liabilities
+9) Review Results
+
+Areas for future research are correlations and reserve models
+
+## Introduction
+
+Asset-Liability Management $\neq$ Matching
+
+* **ALManagement**:
+
+    * Looks at current assets and liabilities + flow from future premiums of a going concern company
+
+    * Identify and exploit hedges of any sort (e.g. use equity as inflation hedge)
+
+* ALMatching: focus on hedging interest rate risk by matching duration or cashflow matching
+
+Insurance liabilities are less liquid than investments $\leadsto$ Focus mostly on investment
+
+With that said, still consider u/w and other hedges like reinsurance on the liabilities
+
+## Optimal Porfolio Under 4 Scenarios
+
+**1) Assets (No Liabilities) Porfolio**
+
+* Short term treasures: risk free and maintain value well
+* Long bond and stocks are risky
+* Use modern portfolio theory to find alternatives on the efficient frontier
+
+**2) Known Liabilities and Known Cash Flows** (Fixed in Time and Amount)
+
+* Short duration $\Rightarrow$ Reinvestment risk
+* Long duration $\Rightarrow$ Interest rate risk
+* Risk and conclusions are different if liabilities are discounted at current rates (Such as using Economic balance sheet)
+
+**3) Liabilities are Variable and Timing is Variable**
+
+* Precise matching is impossible
+* Requires model that incorporate asset and liability fluctuations
+* Inflation sensitive liabilities further complicates things
+
+**4) Going Concern Company, with Cash Flow from Current Operations**
+
+* Can have positive or negative cash flow
+    * If asset prices are too low, can pay claims from premium cash flows and use depreciated assets to support loss reserves
+* Need to model: premium, income, losses, cat losses, expenses
+* Need enterprise wide model with holistic view to handle the complexity
+
+### Additional Considerations
+
+**Taxes**
+
+Investment strategy change in responses to u/w cycle
+
+* Profitable period: tax exempt bonds are better
+* Unprofitable period: taxable bonds are better as the investment income is reduced by u/w losses
+* Assets is also reallocated to maximize income while avoiding Alternative Minimum Tax
+
+**Equities**
+
+Generally considered risky and imply a potentially worst downside risk to capital
+
+However, they can be useful hedge against inflation
+
+Can be tested with an ERModel, but conclusions will be sensitive to input assumptions of the macroeconomic model
+
+**VFIC 2002**
+
+Published by CAS on the optimality of duration matching assets & liabilities
+
+Simulation against:
+
+* Long tailed business vs short tailed business (w/ CAT)
+* Profitable vs unprofitable (Generate cash and consumes cash)
+* Growing vs shrinking companies
+
+Reviewed on both GAAP, Stat, Economic B/S basis and several risk measures from each accounting basis, findings:
+
+* Duration matching was *one of the* optimal strategies
+* Investment choice depends on:
+    * Risk metrics selected
+    * Return metrics (Venter used US GAAP pretax $\Delta$ in surplus)
+    * Risk tolerance or preference
+    
+Results:
+
+* Economic Balance Sheet:
+    * Assets are mark to market, liabilities are discounted at current rates
+    * Duration match results in low interest rate risk
+    * Longer duration is better if not matched:
+        * Long duration investments: $\uparrow$ interest rate risk $\uparrow$ returns
+        * Short duration investments: $\uparrow$ reinvestment rate risk and $\downarrow$ return
+    
+* Duration match is irrelevant for Stat and GAAP accounting as they are not responsive to interest rate movement
+
+* Adding cash flows from continuing operations complicates this analysis
+
+***
+
+## Asset-Liability Modeling Approach
+
+9 steps for enterprise-wide model for ALManagement
+
+**1) Model Asset Classes, Liabilities, and Current Business Operations**
+
+* Asset classes: interest rate model, stock price model, FX model
+* Liabilities: response to inflation/interest rate or economic variables like GDP growth
+* Business operations: premium, expense, response to u/w cycle and economic environment
+
+**2) Define Risk Metrics**
+
+Using different accounting basis: Stat, GAAP, Economic
+
+* Income based metrics
+    * $\sigma$ of income QtQ
+    * Probability of not meeting earning target
+    * $\Delta$ in surplus or equity
+* B/S based metrics
+    * Focus on level of surplus or equity of firm
+    * $\sigma$ and probability of not meeting target
+    * VaR, TVaR, WTVaR
+    * Probability of ruin or impairment
+* Time Frames
+    * Typically 1-5 years
+    
+**3) Return Metrics**
+
+Use consistent accounting basis as the risk metrics
+
+* Income based: Quarterly earnings
+* B/S based: RoE, Terminal value of equity at period end
+
+**4) Time Horizon**
+
+Single period is simpler
+
+Multiperiod is more accurate
+
+* More difficult
+* Include serial correlations of variables:
+    * Interst rates
+    * Level of prices in market
+    
+**5) Consider Relevant Constraints**
+
+* Asset limits imposed by regulators
+* Cost of regulatory capital of asset class
+* RBC or BCAR capital scores
+* Company's own investment policy
+
+**6) Simulation Model**
+
+Consider and varies:
+
+* U/w strategies
+* Reinsurance options
+* Investment strategies
+
+Risk and return metrics are calculated over these simulations
+
+**7) Efficient Frontier Graph**
+
+Construction from various portfolio options
+
+* Based on current portfolio, options with same return but less risk or higher return with same risk should be consider (in between current and the frontier is fine as well)
+
+**8) Liabilities**
+
+Liabilities can be modify in particular future loss reserves
+
+* $\Delta$ u/w strategies
+* Reinsurance
+    * Should analyze various reinsurance structure and compare results
+
+Important in multiperiod model
+
+**9) Review Results**
+
+* Identify situations that the preferred portfolio performed poorly
+* Develop hedging strategy for those situations
+* Review may highlight prevailing conditions that lead to substandard performance e.g. large CAT loss that forces liquidation of assets in soft market
+* Can establish monitoring mechanisms to identify the likelihood of such conditions and make adjustments when they are noticed
+
+## Future Research
+
+Correlations:
+
+* Between LoBs; asset & liabilities; over time (low most of the time and high in a crisis)
+* Can materially alter the optimal portfolio
+
+Models of unpaid losses are not explanatory model
+
+* Forecast mean and distribution but,
+* Do not predict loss payments based on economic variables (interest rates, inflation, GDP)
+* Sometimes inflation is hypothesized but rarely explicitly developed from the historic economic data
+* $\hookrightarrow$ Model is unable to use the results of ESG to make meaningful predictions
+    * Asset model do this better (equity, bond pricing)
+
+Alternative is to treat the correlation parameters and inflation sensitivity as random variables, then models can be created with parameter estimates

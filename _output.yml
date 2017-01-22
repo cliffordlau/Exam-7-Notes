@@ -1,0 +1,29 @@
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
+bookdown::gitbook:
+  split_by: section
+  css: css/style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">CAS Exam 7 Study Notes</a></li>
+      after: |
+        <li><a href="https://github.com/cliffordlau/Exam-7-2016-Notes">Proudly published with bookdown</a></li>
+      collapse: section
+    edit: https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/%s
+    sharing:
+      facebook: yes
+      google: no
+      twitter: no
+      weibo: no
+      instapper: no
+      vk: no
+      all: ['facebook', 'google', 'twitter', 'instapaper']
+    download: null
+    search: yes
+
