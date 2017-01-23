@@ -1,12 +1,12 @@
 # (PART) Estimation of Policy Liabilities {-}
 
-# Loss Development Using Credibility - Brosius
+# Loss Development Using Credibility - E. Brosius
 
 ***Least Square***
 
 * Least Square formula (\@ref(prp:least-sq))
 
-    * Know how to do them with calculator
+    * Know how to do them on the calculator
     
     * Remember to adjust for exposure if needed
 
@@ -55,6 +55,12 @@ $b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\
 
 $a = \bar{y} - b\bar{x}$
 
+Notes:
+
+* In the example here we are looking at the ATA development
+
+* This is effectively a credibility weighting system (giving more or less weight to the observed x as appropriate)
+
 ```
 
 ```{block, calc-note, type='rmdtip'}
@@ -65,36 +71,70 @@ Above caluclation can be done with the table features on TI-30XS
 
 * ***Chainladder***:
 
-    Difficult to select LDF when vary from year to year
+    Difficult to select LDF when they vary greatly from year to year
 
 * ***BF***:
 
     Doesn't work well with negative development
+    
 * ***ELR***:
 
     Ignores actual experience
     
 * Difficulty with parameter estimation when loss patterns are changing
 
-* Variable book $\Rightarrow$ sampling error $\Rightarrow$ *b* that doesn't reflect the true underlying characteristics
+    * When the **nature of loss experience** is changing the use of unadjusted data can lead to errors
 
-### Caveat with Least Squares {#LS-Caveat}
+* Variability within a stable book still have sampling error
+
+    $\Rightarrow$ *b* that doesn't reflect the true underlying characteristics
+
+### Least Squares Pros & Cons {#LS-Caveat}
+
+Pros
 
 * Good when dist^n^ is the same across multiple years
 
+* Good when there is little data and fluctuations in the year to year losses
+
+Cons
+
 * Bad when systemic shift year to year e.g. inflation, legal environment (Tort reform)
 
-## LS with Theoretical Distribution using Bayes
+## Best Estimate based on Bayes (with Theoretical Distribution)
 
 ```{proposition, poi-bin, name = "Poisson - Binomial"}
-
+Assume the loss reporting follows a theoretical distribution
 
 * $Y =$ (Ultimate) # of claims incurred each year $\sim Poi(\mu)$
 
 * $X =$ # of claims reported by year end $\sim Bin(y,d)$
 
+    * i.e. each claim have probability $d$ of being reported in the first year
+
+**Ultimate claims** = $Q(x) = x + \mu(1-d)$
+
 **Unreported claims** = $R(x) = \mu(1-d)$
 
+* (Expected # of claims) $\times$ (Expected % Unreported)
+    
+* Similar to the BF Method
+
+```
+
+```{proof}
+$Q(x)$ is the estimator of $Y$. It's the sum of all possible $y$'s $\times$ probability of the result being $y$ given $x$
+
+$\begin{align}
+  Q(x) &= \sum \limits_{y = x}^{\infty} y \Pr(Y = y \mid X = x) \\
+  Q(x) &= \sum \limits_{y = x}^{\infty} y \dfrac{\Pr(Y = y)\Pr(X = x \mid Y = y)}{\sum_i \Pr(Y = i) \Pr(X = x \mid Y = i)} \\
+\end{align}$
+
+And we get Ultimate claims = $Q(x) = x + \mu(1-d)$
+```
+
+
+```{remark}
 Simulation of Poi - Bin from paper shows that:
 
 * LDF shows upward bias
@@ -103,7 +143,7 @@ Simulation of Poi - Bin from paper shows that:
 ```
 
 ```{proposition, nb-bin, name = "Negative Binomial - Binomial"}
-
+Assume the loss reporting follows a theoretical distribution
 
 * $Y =$ (Ultimate) # of claims incurred each year $\sim NB(r, p)$
 
@@ -120,8 +160,10 @@ Simulation of Poi - Bin from paper shows that:
 
 ## Bayesian Credibility {#bay-cred}
 
+We can't use the Bayes theorem as in the previous section if we don't know the underlying distribution
+
 ```{proposition, bayes-ble}
-**Best linear estimator** of Y|X
+Estimate the ultimate losses using the **best linear estimator** of Y|X, $L(x)$
 
 $L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
 

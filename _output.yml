@@ -13,7 +13,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">CAS Exam 7 Study Notes</a></li>
       after: |
-        <li><a href="https://github.com/cliffordlau/Exam-7-2016-Notes">Proudly published with bookdown</a></li>
+        <li><a href="https://bookdown.org">Published with bookdown</a></li>
       collapse: section
     edit: https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/%s
     sharing:
