@@ -172,17 +172,35 @@ $L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
 * $L(x)$ = best linear estimator of Y|X = least square estimate
 
 * Use this when we don't know the distribution of the random variable
-
 ```
 
-Table: (\#tab:bayes-variance) Formula for a given method
+Table: (\#tab:bayes-variance) Intuitive interpretation of $L(x)$
 
-| Scenarios | Implications |
-| ------------------------ | ----------------------- |
-| $x = \mathrm{E[X]}$ | $L(X) = \mathrm{E[Y]}$ |
-| $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \approx \mathrm{E[Y]}$; Use ELR Method; X, Y don't vary tightly together|
-| $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \mathrm{E[Y - X]}$; Use BF Method |
-| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | Y is significantly influenced by X; Use Dev Method|
+| Scenarios | Implications | Interpretation |
+| --------------------------- | --------------------------- | --------------------------- |
+| $x = \mathrm{E[X]}$ | $L(X) = \mathrm{E[Y]}$ | Losses are coming in as expected, estimate of ultimate losses is unchanged | 
+| $\mathrm{Cov(X,Y)} \approx 0$  | $L(X) \cong \mathrm{E[Y]}$ | $X$ and $Y$ are only loosely related $\Rightarrow$ Use ELR Method |
+| $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \cong \mathrm{E[Y]}$ | $X$ and $Y$ don't vary together | 
+| $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \left[\mathrm{E}[Y] - \mathrm{E}[X] \right]$ | Same as BF Method |
+| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | $X$ and $Y$ move togther, $Y$ is significantly influenced by $X$ | Use Dev Method |
+
+```{proof}
+Show that $L(x)$ is the same as the least-square estimate
+
+$y = a + bx$
+
+Plug in $a$ and $b$ from proposition \@ref(prp:least-sq)
+
+We get:
+
+$\begin{align}
+  y &= (\bar{y} - b\bar{x}) + bx \\
+  &= \bar{y} + b \left(x - \bar{x}\right) \\
+  &= \left(x - \bar{x}\right) \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} + \bar{y} \\
+\end{align}$
+
+Which equals $L(x)$, $\therefore$ the least-square estimate is the best linear estimate of $Q(x)$
+```
 
 ### Credibility Form of the Dev' Formula {#cred-dev}
 
