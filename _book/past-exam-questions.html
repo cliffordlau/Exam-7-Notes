@@ -74,6 +74,7 @@
 <li class="chapter" data-level="1.1" data-path="method-assumptions.html"><a href="method-assumptions.html"><i class="fa fa-check"></i><b>1.1</b> Method Assumptions</a><ul>
 <li class="chapter" data-level="1.1.1" data-path="method-assumptions.html"><a href="method-assumptions.html#Trad-Caveat"><i class="fa fa-check"></i><b>1.1.1</b> Caveat with Traditional Method</a></li>
 <li class="chapter" data-level="1.1.2" data-path="method-assumptions.html"><a href="method-assumptions.html#LS-Caveat"><i class="fa fa-check"></i><b>1.1.2</b> Least Squares Pros &amp; Cons</a></li>
+<li class="chapter" data-level="1.1.3" data-path="method-assumptions.html"><a href="method-assumptions.html#consid"><i class="fa fa-check"></i><b>1.1.3</b> Practical Considerations for the Least Square Method</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html"><i class="fa fa-check"></i><b>1.2</b> Best Estimate based on Bayes (with Theoretical Distribution)</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html#comparing-loss-development-methods"><i class="fa fa-check"></i><b>1.2.1</b> Comparing Loss Development Methods</a></li>
@@ -82,7 +83,6 @@
 <li class="chapter" data-level="1.3.1" data-path="bay-cred.html"><a href="bay-cred.html#practical-application-ls-development"><i class="fa fa-check"></i><b>1.3.1</b> Practical Application (LS Development)</a></li>
 <li class="chapter" data-level="1.3.2" data-path="bay-cred.html"><a href="bay-cred.html#cred-dev"><i class="fa fa-check"></i><b>1.3.2</b> Credibility Form of the Dev’ Formula</a></li>
 <li class="chapter" data-level="1.3.3" data-path="bay-cred.html"><a href="bay-cred.html#case-load"><i class="fa fa-check"></i><b>1.3.3</b> Caseload Effect</a></li>
-<li class="chapter" data-level="1.3.4" data-path="bay-cred.html"><a href="bay-cred.html#consid"><i class="fa fa-check"></i><b>1.3.4</b> Practical Considerations</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>1.4</b> Conclusions</a></li>
 <li class="chapter" data-level="1.5" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>1.5</b> Past Exam Questions</a><ul>
@@ -147,41 +147,41 @@ Haven’t done TIA practice questions
 </div>
 <p><strong>Concepts</strong></p>
 <ul>
-<li>1996 - #28: Poi-bin process</li>
-<li>1996 - #50: When to use LS</li>
-<li>2000 - #2: Method assumptions</li>
-<li>2001 - #22: Which method is better given the Cov(X,Y) and Var(X) relationships</li>
-<li>2003 - #3: <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> for different methods</li>
-<li><span class="math inline">\(\star\)</span> 2006 - #4: Cov(X,Y) and Var(X) relationships (phrased a bit differently)</li>
-<li>2006 - #15 d: LS assumptions</li>
-<li>2007 - #42: Method assumptions</li>
-<li>2009 - #3 b: LS assumptions (LS not best given <span class="math inline">\(b &lt; 0\)</span>)</li>
-<li>2014 #2: Know assumptions of methods for Dev (fitted line and residuals)</li>
+<li><p>1996 - #28: Poi-bin process</p></li>
+<li><p>1996 - #50: When to use LS</p></li>
+<li><p>2000 - #2: Method assumptions</p></li>
+<li><p>2001 - #22: Which method is better given the Cov(X,Y) and Var(X) relationships</p></li>
+<li><p>2003 - #3: <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> for different methods</p></li>
+<li><p><span class="math inline">\(\star\)</span> 2006 - #4: Cov(X,Y) and Var(X) relationships (phrased a bit differently)</p></li>
+<li><p>2006 - #15 d: LS assumptions</p></li>
+<li><p>2007 - #42: Method assumptions</p></li>
+<li><p>2009 - #3 b: LS assumptions (LS not best given <span class="math inline">\(b &lt; 0\)</span>)</p></li>
+<li><p>2014 #2: Know assumptions of methods for Dev (fitted line and residuals)</p></li>
 </ul>
 <p><strong>Full Calculations</strong></p>
 <ul>
-<li><span class="math inline">\(\star\)</span> 2000 - #41(fig <a href="past-exam-questions.html#fig:2000-41">1.1</a>): LS, dev and ELR from triangle; Weight the 2 with <span class="math inline">\(Z = \dfrac{b}{c}\)</span> to get to LS</li>
-<li><span class="math inline">\(\star\)</span> 2001 - #31(fig <a href="past-exam-questions.html#fig:2001-30">1.2</a>): Use VHM and EVPV for</li>
-<li>2002 - #21: LS, dev and ELR from triangle and weight for LS</li>
-<li>2008 - #9: LS, dev and ELR from triangle</li>
-<li><span class="math inline">\(\star\)</span> 2008 - #10a: VHM and EVPV calc
+<li><p><span class="math inline">\(\star\)</span> 2000 - #41(fig <a href="past-exam-questions.html#fig:2000-41">1.1</a>): LS, dev and ELR from triangle; Weight the 2 with <span class="math inline">\(Z = \dfrac{b}{c}\)</span> to get to LS</p></li>
+<li><p><span class="math inline">\(\star\)</span> 2001 - #31(fig <a href="past-exam-questions.html#fig:2001-30">1.2</a>): Use VHM and EVPV for</p></li>
+<li><p>2002 - #21: LS, dev and ELR from triangle and weight for LS</p></li>
+<li><p>2008 - #9: LS, dev and ELR from triangle</p></li>
+<li><p><span class="math inline">\(\star\)</span> 2008 - #10a: VHM and EVPV calc</p>
 <ul>
 <li>Double check the <span class="math inline">\(\sigma_y\)</span> calc make sense</li>
 </ul></li>
-<li><span class="math inline">\(\star\)</span> 2011 #1: a) LS w/ exposure adjustment b) Assess LS parameters resonability c) Draw the relationship of losses to date vs ultimate for the 3 methods</li>
-<li>2012 ‐ #1 b: Solving equations to back out numbers using BK and BF method</li>
-<li>2012 - #4: LS and know that LS gives the optimal linear weight based on <span class="math inline">\(\dfrac{b}{c}\)</span></li>
-<li>2014 #1: a) VHM and EVPV b) Why LS is not appropriate</li>
+<li><p><span class="math inline">\(\star\)</span> 2011 #1: a) LS w/ exposure adjustment b) Assess LS parameters resonability c) Draw the relationship of losses to date vs ultimate for the 3 methods</p></li>
+<li><p>2012 ‐ #1 b: Solving equations to back out numbers using BK and BF method</p></li>
+<li><p>2012 - #4: LS and know that LS gives the optimal linear weight based on <span class="math inline">\(\dfrac{b}{c}\)</span></p></li>
+<li><p>2014 #1: a) VHM and EVPV b) Why LS is not appropriate</p></li>
 </ul>
 <p><strong>Simple Plug and Play</strong></p>
 <ul>
-<li>1998 - #19: BF with LS</li>
-<li><span class="math inline">\(\star\)</span> 2003 - #22: Dev and ELR, key is to adjust for exposure</li>
-<li>2005 - #12: LS calc by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
-<li>2006 - #5: LS calc by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
-<li>2006 - #15 a-c: Dev, BF, and cred</li>
-<li>2009 - #3 a: LS Calc</li>
-<li>2012 ‐ #1 a: Dev, BF, Benktander</li>
+<li><p>1998 - #19: BF with LS</p></li>
+<li><p><span class="math inline">\(\star\)</span> 2003 - #22: Dev and ELR, key is to adjust for exposure</p></li>
+<li><p>2005 - #12: LS calc by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></p></li>
+<li><p>2006 - #5: LS calc by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></p></li>
+<li><p>2006 - #15 a-c: Dev, BF, and cred</p></li>
+<li><p>2009 - #3 a: LS Calc</p></li>
+<li><p>2012 ‐ #1 a: Dev, BF, Benktander</p></li>
 </ul>
 <div id="question-highlights" class="section level3">
 <h3><span class="header-section-number">1.5.1</span> Question Highlights</h3>

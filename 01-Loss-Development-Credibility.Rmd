@@ -111,6 +111,28 @@ Cons
     
         * As the expected value increase $\propto$ exposure and the covariances increase $\propto$ squared exposure
 
+### Practical Considerations for the Least Square Method {#consid}
+
+**Normalize** the losses by dividing with premium since LS assume constant distribution and also ***adjust for inflation***
+
+Calculates ATU, so needs the tail factor first and also start from the oldest period
+
+Recursively go backwards using the previous estimates
+
+$Z = \dfrac{b}{c}$; $c$ is the ATU
+
+Notes on parameters:
+
+* $a$ = Projected ultimate if no losses are reported
+
+* AY matures $\Rightarrow a \: \downarrow$; $Z \uparrow$; $c \downarrow$
+
+* If a < 0 $\Rightarrow$ Use Chainladder to make a = 0
+
+* If b < 0 $\Rightarrow$ Use ELR
+
+* If b = 1 $\Rightarrow$ Same as BF
+
 ## Best Estimate based on Bayes (with Theoretical Distribution)
 
 ```{proposition, poi-bin, name = "Poisson - Binomial"}
@@ -203,7 +225,7 @@ Table: (\#tab:bayes-variance) Intuitive interpretation of $L(x)$
 
 ### Practical Application (LS Development)
 
-```{proposition, dev-form-1, name = "Development Formual 1"}
+```{proposition, dev-form-1, name = "Development Formula 1"}
 Estimate $\mathrm{E}[X]$, $\mathrm{Var}(X)$, and $\mathrm{Cov}(X,Y)$ from data (i.e. a series of past years) assuming a common $Y$ and $X$
 
 * This $L(x)$ here is the same as the least-square estimate as in \@ref(prp:least-sq)
@@ -249,7 +271,7 @@ Formula below requires addtional hypothesis (in paper appendix?)
 
 ***
 
-```{proposition, dev-form-2, name = "Development Formual 2"}
+```{proposition, dev-form-2, name = "Development Formula 2"}
 Suppose that there is a real number $d \neq 0$ such that $\mathrm{E}\left[X \mid Y = y \right] = dy$ for all $y$
 
 $L(x) = Z \underbrace{\dfrac{x}{d}}_{\begin{array}{c} \text{Dev'}\\ \text{Method}\\ \end{array}} + (1-Z)\underbrace{\mathrm{E[Y]}}_{ELR}$
@@ -300,10 +322,10 @@ We assumes the following
 * $d \: {\perp\!\!\!\!\perp} \: X$: reporting speed does not vary with the volume of claims
     
 * $D = \dfrac{X}{Y}$
+
+    * Here we typically assume the $\sigma_{\frac{X}{Y}}$ does not depend on $Y$
     
 * Results sensitive to $\mathrm{E[Y]}$ and $\mathrm{E[D]}$ but not the $\sigma$
-
-* Based on estimates of VHM and EVPV of the dist^n^ instead
 ```
 
 ```{remark}
@@ -378,40 +400,43 @@ Also note that since $Q(x)$ is still linear, $L(x) = Q(x)$
 
 ### Caseload Effect {#case-load}
 
-When $D$ and $Y$ not independent still works
+In proposition \@ref(prp:dev-form-2) we assumed the expected number of claims reported is $\propto$ number of claims incurred
 
-* e.g. $d$ larger for small $y$ since small claims are settle faster
+* Not necessarily true e.g. claim is more likely to be reported in a timely fashion when the caseload (case reserve) is low, and we expect the development ratio $\dfrac{\mathrm{E}[X \mid Y = y]}{y}$ to be not a constant decreasing function of $y$
 
-* Or the opposite when large $y$ has as larger $d$: For a property book when large weather event happens, report quicker
+When $D$ and $Y$ not independent the credibility-based development formula still works (i.e. constant development ratio is not essential for a credibility-based development formula)
 
-```{block2, type='rmdnote'}
+* e.g. $d$ larger for small $y$ since small claims are reported more timely, so settle faster
+
+* e.g. the opposite situation when large $y$ has as larger $d$: For a property book when large weather event happens, report quicker
+
+```{proposition, dev-form-3, name = "Development Formula 3"}
+Supposed there are real numbers $d \neq 0$ and $x_0$ such that $\mathrm{E}[X \mid Y= y] = dy + x_0$ for all $y$
+
 $L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$
 
-**Assumption**:  
-$\mathrm{E[X|Y=y]} = dy + x_0$; $x_0$ is for the fixed salary
+* $Z = \dfrac{VHM}{VHM + EVPV}$
 ```
 
-### Practical Considerations {#consid}
+```{remark}
+Assumptions:
 
-**Normalize** the losses by dividing with premium since LS assume constant distribution and also ***adjust for inflation***
+* $\mathrm{E[X|Y=y]} = dy + x_0$
 
-Calculates ATU, so needs the tail factor first and also start from the oldest period
+    * $x_0$ is for the fixed salary
+    
+    * $d \neq 0$
 
-Recursively go backwards using the previous estimates
+    * Development ratio $= d + \dfrac{x_0}{y}$
+    
+        Which does decrease as $y$ gets larger
+        
+    * This gives $\mathrm{E}[X \mid Y = 0] = x_0 > 0$
+    
+        Which is okay consider claims department in real life
 
-$Z = \dfrac{b}{c}$; $c$ is the ATU
-
-Notes:
-
-* $a$ = Projected ultimate if no losses are reported
-
-* AY matures $\Rightarrow a \: \downarrow$; $Z \uparrow$; $c \downarrow$
-
-* If a < 0 $\Rightarrow$ Use Chainladder to make a = 0
-
-* If b < 0 $\Rightarrow$ Use ELR
-
-* If b = 0 $\Rightarrow$ Same as BF
+* Impossible to determine $x_0$ and $d$ in practice but this shows that the least square methods still make sense when development ratio varies with caseload
+```
 
 ## Conclusions {#conclusions}
 
@@ -434,37 +459,61 @@ Haven't done TIA practice questions
 **Concepts**
 
 * 1996 - #28: Poi-bin process 
+
 * 1996 - #50: When to use LS
+
 * 2000 - #2: Method assumptions
+
 * 2001 - #22: Which method is better given the Cov(X,Y) and Var(X) relationships
+
 * 2003 - #3: $a$ and $b$ for different methods
+
 * $\star$ 2006 - #4: Cov(X,Y) and Var(X) relationships (phrased a bit differently)
+
 * 2006 - #15 d: LS assumptions
+
 * 2007 - #42: Method assumptions
+
 * 2009 - #3 b: LS assumptions (LS not best given $b < 0$)
+
 * 2014 #2: Know assumptions of methods for Dev (fitted line and residuals)
 
 **Full Calculations**
 
 * $\star$ 2000 - #41(fig \@ref(fig:2000-41)): LS, dev and ELR from triangle; Weight the 2 with $Z = \dfrac{b}{c}$ to get to LS
+
 * $\star$ 2001 - #31(fig \@ref(fig:2001-30)): Use VHM and EVPV for
+
 * 2002 - #21: LS, dev and ELR from triangle and weight for LS
+
 * 2008 - #9: LS, dev and ELR from triangle
+
 * $\star$ 2008 - #10a: VHM and EVPV calc
+
     * Double check the $\sigma_y$ calc make sense
+
 * $\star$ 2011 #1: a) LS w/ exposure adjustment b) Assess LS parameters resonability c) Draw the relationship of losses to date vs ultimate for the 3 methods
+
 * 2012 ‐ #1 b: Solving equations to back out numbers using BK and BF method
+
 * 2012 - #4: LS and know that LS gives the optimal linear weight based on $\dfrac{b}{c}$
+
 * 2014 #1: a) VHM and EVPV b) Why LS is not appropriate
 
 **Simple Plug and Play**
 
 * 1998 - #19: BF with LS
+
 * $\star$ 2003 - #22: Dev and ELR, key is to adjust for exposure
+
 * 2005 - #12: LS calc by $a$ and $b$
+
 * 2006 - #5: LS calc by $a$ and $b$
+
 * 2006 - #15 a-c: Dev, BF, and cred
+
 * 2009 - #3 a: LS Calc
+
 * 2012 ‐ #1 a: Dev, BF, Benktander 
 
 ### Question Highlights
