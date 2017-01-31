@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-01-23">
+<meta name="date" content="2017-01-31">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -75,11 +75,14 @@
 <li class="chapter" data-level="1.1.1" data-path="method-assumptions.html"><a href="method-assumptions.html#Trad-Caveat"><i class="fa fa-check"></i><b>1.1.1</b> Caveat with Traditional Method</a></li>
 <li class="chapter" data-level="1.1.2" data-path="method-assumptions.html"><a href="method-assumptions.html#LS-Caveat"><i class="fa fa-check"></i><b>1.1.2</b> Least Squares Pros &amp; Cons</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html"><i class="fa fa-check"></i><b>1.2</b> Best Estimate based on Bayes (with Theoretical Distribution)</a></li>
+<li class="chapter" data-level="1.2" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html"><i class="fa fa-check"></i><b>1.2</b> Best Estimate based on Bayes (with Theoretical Distribution)</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html#comparing-loss-development-methods"><i class="fa fa-check"></i><b>1.2.1</b> Comparing Loss Development Methods</a></li>
+</ul></li>
 <li class="chapter" data-level="1.3" data-path="bay-cred.html"><a href="bay-cred.html"><i class="fa fa-check"></i><b>1.3</b> Bayesian Credibility</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="bay-cred.html"><a href="bay-cred.html#cred-dev"><i class="fa fa-check"></i><b>1.3.1</b> Credibility Form of the Dev’ Formula</a></li>
-<li class="chapter" data-level="1.3.2" data-path="bay-cred.html"><a href="bay-cred.html#case-load"><i class="fa fa-check"></i><b>1.3.2</b> Caseload Effect</a></li>
-<li class="chapter" data-level="1.3.3" data-path="bay-cred.html"><a href="bay-cred.html#consid"><i class="fa fa-check"></i><b>1.3.3</b> Calculation Considerations</a></li>
+<li class="chapter" data-level="1.3.1" data-path="bay-cred.html"><a href="bay-cred.html#practical-application-ls-development"><i class="fa fa-check"></i><b>1.3.1</b> Practical Application (LS Development)</a></li>
+<li class="chapter" data-level="1.3.2" data-path="bay-cred.html"><a href="bay-cred.html#cred-dev"><i class="fa fa-check"></i><b>1.3.2</b> Credibility Form of the Dev’ Formula</a></li>
+<li class="chapter" data-level="1.3.3" data-path="bay-cred.html"><a href="bay-cred.html#case-load"><i class="fa fa-check"></i><b>1.3.3</b> Caseload Effect</a></li>
+<li class="chapter" data-level="1.3.4" data-path="bay-cred.html"><a href="bay-cred.html#consid"><i class="fa fa-check"></i><b>1.3.4</b> Practical Considerations</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>1.4</b> Conclusions</a></li>
 <li class="chapter" data-level="1.5" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>1.5</b> Past Exam Questions</a><ul>
@@ -163,15 +166,6 @@ And we get Ultimate claims = <span class="math inline">\(Q(x) = x + \mu(1-d)\)</
 </div>
 <p></p>
 
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> Simulation of Poi - Bin from paper shows that:</p>
-<ul>
-<li><p>LDF shows upward bias</p></li>
-<li>MSE of LDF is higher than MSE of LS
-</div>
-<p></p></li>
-</ul>
-
 <div class="proposition">
 <p><span id="prp:nb-bin" class="proposition"><strong>Proposition 1.3  (Negative Binomial - Binomial) </strong></span>Assume the loss reporting follows a theoretical distribution</p>
 <ul>
@@ -188,6 +182,15 @@ And we get Ultimate claims = <span class="math inline">\(Q(x) = x + \mu(1-d)\)</
 </div>
 </li>
 </ul>
+<div id="comparing-loss-development-methods" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Comparing Loss Development Methods</h3>
+<ol style="list-style-type: decimal">
+<li><p>Simulate loss based on one of the theortical distribution</p></li>
+<li><p>Apply the various loss development method and calculate their respective parameters (<span class="math inline">\(y = a + b x\)</span>)</p></li>
+<li><p>Compare the estimated parameters with the true parameters based on the underlying theortical distribution</p></li>
+<li><p>Also compare the MSE from different methods</p></li>
+</ol>
+</div>
 </div>
             </section>
 

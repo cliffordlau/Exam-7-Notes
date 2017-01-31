@@ -94,12 +94,22 @@ Above caluclation can be done with the table features on TI-30XS
 Pros
 
 * Good when dist^n^ is the same across multiple years
+  
+    * As we are assuming a common $Y$ and $X$ over the years
 
 * Good when there is little data and fluctuations in the year to year losses
+
+* Good when the randomness of the data is primarily driven by process variance
 
 Cons
 
 * Bad when systemic shift year to year e.g. inflation, legal environment (Tort reform)
+
+    * $\therefore$ best to adjust for inflation and putting all the years on a constant dollar basis before using the LS method
+    
+    * Also should adjust for exposure
+    
+        * As the expected value increase $\propto$ exposure and the covariances increase $\propto$ squared exposure
 
 ## Best Estimate based on Bayes (with Theoretical Distribution)
 
@@ -133,15 +143,6 @@ $\begin{align}
 And we get Ultimate claims = $Q(x) = x + \mu(1-d)$
 ```
 
-
-```{remark}
-Simulation of Poi - Bin from paper shows that:
-
-* LDF shows upward bias
-
-* MSE of LDF is higher than MSE of LS
-```
-
 ```{proposition, nb-bin, name = "Negative Binomial - Binomial"}
 Assume the loss reporting follows a theoretical distribution
 
@@ -158,6 +159,16 @@ Assume the loss reporting follows a theoretical distribution
 * $s = (1-d)(1-p)$
 ```
 
+### Comparing Loss Development Methods
+
+1. Simulate loss based on one of the theortical distribution
+
+2. Apply the various loss development method and calculate their respective parameters ($y = a + b x$)
+
+3. Compare the estimated parameters with the true parameters based on the underlying theortical distribution
+
+4. Also compare the MSE from different methods
+
 ## Bayesian Credibility {#bay-cred}
 
 We can't use the Bayes theorem as in the previous section if we don't know the underlying distribution
@@ -169,9 +180,15 @@ $L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
 
 * Y = Ultimate Losses; X = Reported Losses
 
-* $L(x)$ = best linear estimator of Y|X = least square estimate
-
 * Use this when we don't know the distribution of the random variable
+
+* $L(x) = Q(x)$ when $Q(x)$ is linear
+```
+
+```{remark}
+This is like the Bühlmann method, where $L$ is a linear function that minimizes $\mathrm{E}_X\left[\left(Q(X) - L(X)\right)^2\right]$
+
+If $L(x) = a + b x$ then we minimize $\mathrm{E}_X\left[\left(Q(X) - a - bX \right)^2\right]$
 ```
 
 Table: (\#tab:bayes-variance) Intuitive interpretation of $L(x)$
@@ -184,12 +201,16 @@ Table: (\#tab:bayes-variance) Intuitive interpretation of $L(x)$
 | $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \left[\mathrm{E}[Y] - \mathrm{E}[X] \right]$ | Same as BF Method |
 | $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | $X$ and $Y$ move togther, $Y$ is significantly influenced by $X$ | Use Dev Method |
 
+### Practical Application (LS Development)
+
+```{proposition, dev-form-1, name = "Development Formual 1"}
+Estimate $\mathrm{E}[X]$, $\mathrm{Var}(X)$, and $\mathrm{Cov}(X,Y)$ from data (i.e. a series of past years) assuming a common $Y$ and $X$
+
+* This $L(x)$ here is the same as the least-square estimate as in \@ref(prp:least-sq)
+```
+
 ```{proof}
-Show that $L(x)$ is the same as the least-square estimate
-
-$y = a + bx$
-
-Plug in $a$ and $b$ from proposition \@ref(prp:least-sq)
+Start with$y = a + bx$ and plug in $a$ and $b$ from proposition \@ref(prp:least-sq)
 
 We get:
 
@@ -199,53 +220,115 @@ $\begin{align}
   &= \left(x - \bar{x}\right) \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} + \bar{y} \\
 \end{align}$
 
-Which equals $L(x)$, $\therefore$ the least-square estimate is the best linear estimate of $Q(x)$
+Which equals $L(x)$ $\therefore$ the least-square estimate is the best linear estimate of $Q(x)$
+```
+
+```{remark}
+If not for sampling error, the least square method will give us the best linear approximation to the Bayesian estimate, regardless of the distributions of $X$ or $Y$
 ```
 
 ### Credibility Form of the Dev' Formula {#cred-dev}
 
-```{block2, type='rmdnote'}
-Formula is the credibility weighted average of the development and ELR method
+Alternative way to express $L(x)$, following Bühlmann credibility, we express $L(x)$ in terms of:
+
+* Expected Value of the Process Variance ($EVPV$)
+
+    $\mathrm{E}_Y\left[\mathrm{Var}(X \mid Y )\right]$
+
+* Variance of the Hypothetical Mean ($VHM$)
+
+    $\mathrm{Var}_Y(\mathrm{E}\left[X \mid Y \right])$
+
+* We can read $VHM$ as distrust in underwriters and EVPV distrust in the claims department
+
+* Use the method below when the least-square assumption fails
+
+    (i.e. Year to year changes in loss and loss distributions are small, or can be corrected for)
+
+Formula below requires addtional hypothesis (in paper appendix?)
+
+***
+
+```{proposition, dev-form-2, name = "Development Formual 2"}
+Suppose that there is a real number $d \neq 0$ such that $\mathrm{E}\left[X \mid Y = y \right] = dy$ for all $y$
 
 $L(x) = Z \underbrace{\dfrac{x}{d}}_{\begin{array}{c} \text{Dev'}\\ \text{Method}\\ \end{array}} + (1-Z)\underbrace{\mathrm{E[Y]}}_{ELR}$
 
-* $L(x) = Q(x)$ when $Q(x)$ is linear
+* Formula is the credibility weighting of the chainladder estimate and ELR estimate
+
+* If $EVPV = 0$ $\Rightarrow$ Full weight to the chainladder
+
+* If $VHM = 0$ $\Rightarrow$ Full weight to the $\mathrm{E}[Y]$
 ```
 
+```{proof}
+Start with the proposition \@ref(prp:bayes-ble) and we set $\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} = \dfrac{1}{d} \dfrac{VHM}{VHM + EVPV}$
 
-```{proposition, cred-dev-m1}
-Method 1 for Z
+$\begin{align}
+  L(x) &= (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]} \\
+  &= (x - \mathrm{E[X]}) \left \{ \dfrac{1}{d} \dfrac{VHM}{VHM + EVPV} \right \} + \mathrm{E[Y]} \\
+  &= (x - \mathrm{E[X]}) \left \{ \dfrac{1}{d} Z \right \} + \mathrm{E[Y]} \\
+  &= Z \dfrac{x}{d} - Z \dfrac{\mathrm{E}[X]}{d} + \mathrm{E}[Y] \\
+  &= Z \dfrac{x}{d} - Z \mathrm{E}[Y] + \mathrm{E}[Y] \\
+  &= Z \dfrac{x}{d} + (1 - Z) \mathrm{E}[Y] \\
+\end{align}$
+
+Which is what we have above in proposition \@ref(prp:dev-form-2)
+```
+
+***
+
+```{proposition, cred-dev-m1, name = "Method for Z"}
+Calculate Z to use with formula in proposition \@ref(prp:dev-form-2)
 
 $Z = \dfrac{VHM}{VHM + EVPV} = \dfrac{\mathrm{Var_Y(E[X|Y])}}{\mathrm{Var_Y(E[X|Y])}+\mathrm{E_Y[Var(X|Y)]}}$
 
 * $VHM = d^2 \sigma^2_Y$
     
 * $EVPV = \sigma^2_d[\sigma^2_Y + \mathrm{E[Y]}^2]$
-    
-* Use this when underlying distribution not stable (historical not a good predictor); LS only works when the underlying dist^n^ are stable
 
 * $d =$ % reported
+```
 
-Notes:
+```{remark}
+We use the above $Z$ when underlying distribution not stable (historical not a good predictor)
 
-* $d \: {\perp\!\!\!\perp} \: X$: reporting speed does not vary with the volume of claims
+* LS only works when the underlying dist^n^ are stable
+
+We assumes the following
+
+* $d \: {\perp\!\!\!\!\perp} \: X$: reporting speed does not vary with the volume of claims
     
 * $D = \dfrac{X}{Y}$
     
-Results sensitive to $\mathrm{E[Y]}$ and $\mathrm{E[D]}$ but not the $\sigma$
+* Results sensitive to $\mathrm{E[Y]}$ and $\mathrm{E[D]}$ but not the $\sigma$
 
-Based on estimates of VHM and EVPV of the dist^n^ instead
+* Based on estimates of VHM and EVPV of the dist^n^ instead
 ```
 
-```{proposition, cred-dev-m2}
-Method 2 for Z
+```{remark}
+Alternatively, $Z = \dfrac{b}{c}$, where $c$ is the CDF and $b$ is from the LS
 
-$Z = \dfrac{b}{c}$, where $c$ is the CDF and $b$ is from the LS
-
-* This yield the LS results <span style="color:red">(always?)</span>
+* This yield the LS results (Where we assume there's no change in the underlying year to year data)
 
 * Assume same $d$ for any size of $y$; Not necessarily true for large or small $y$
 ```
+
+```{proof}
+Start with $\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} = \dfrac{1}{d} \dfrac{VHM}{VHM + EVPV}$
+
+Based on \@ref(prp:cred-dev-m1) we have $Z = \dfrac{VHM}{VHM + EVPV}$
+
+And $b$ from \@ref(prp:least-sq) $\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$
+
+Then we have $b = \dfrac{1}{d} Z$
+
+Next, $\dfrac{1}{d} = \dfrac{1}{\text{% Reported}} = \text{Reported CDF} = c$
+
+Finally we have $Z = \dfrac{b}{c}$
+```
+
+***
 
 ```{proposition, spec-poi-bin, name = "Poisson-Binomial Special Case"}
 
@@ -257,6 +340,40 @@ $L(x) = x + (1-d)\mathrm{E(Y)}$
 * Same as BF
 
 * **BF is optimal** when claim counts follow Poi - Bin
+```
+
+```{proof}
+Start with $EVPV$ and $VHM$ under the Poisson-Binomial case as discussed in proposition \@ref(prp:poi-bin)
+
+$EVPV = \mathrm{E}[yd(1-d)] = \mu d(1-d)$
+
+$VHM = \mathrm{Var}(yd) = \mu d^2$
+
+Then $Z = \dfrac{\mu d^2}{\mu d^2 + \mu d(1-d)} = d$
+
+And we get what we have from proposition \@ref(prp:spec-poi-bin) $L(x) = x + (1-d)\mathrm{E(Y)}$
+```
+
+```{remark}
+Note that $L(x) = Q(x)$ (as in proposition \@ref(prp:poi-bin)) since $Q(x)$ is linear, so the best linear estimate = the bayesian estimate
+```
+
+***
+
+```{proposition spec-NB-bin, name = "Negative Bin-Binomial Special Case"}
+
+
+$L(x) = \dfrac{x}{d + p(1-d)} + \dfrac{\mu p (1-d)}{d + p(1-d)}$
+
+* $Z = \dfrac{d}{d + p(1-d)}$
+```
+
+```{remark}
+$VHM$ is larger here than in the Poi-Binomial case while the $EVPV$ is the same
+
+$\therefore$ $Z$ is larger $\Rightarrow$ Chainladder method gets more weight
+
+Also note that since $Q(x)$ is still linear, $L(x) = Q(x)$
 ```
 
 ### Caseload Effect {#case-load}
@@ -274,7 +391,7 @@ $L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$
 $\mathrm{E[X|Y=y]} = dy + x_0$; $x_0$ is for the fixed salary
 ```
 
-### Calculation Considerations {#consid}
+### Practical Considerations {#consid}
 
 **Normalize** the losses by dividing with premium since LS assume constant distribution and also ***adjust for inflation***
 

@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-01-23">
+<meta name="date" content="2017-01-31">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -75,11 +75,14 @@
 <li class="chapter" data-level="1.1.1" data-path="method-assumptions.html"><a href="method-assumptions.html#Trad-Caveat"><i class="fa fa-check"></i><b>1.1.1</b> Caveat with Traditional Method</a></li>
 <li class="chapter" data-level="1.1.2" data-path="method-assumptions.html"><a href="method-assumptions.html#LS-Caveat"><i class="fa fa-check"></i><b>1.1.2</b> Least Squares Pros &amp; Cons</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html"><i class="fa fa-check"></i><b>1.2</b> Best Estimate based on Bayes (with Theoretical Distribution)</a></li>
+<li class="chapter" data-level="1.2" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html"><i class="fa fa-check"></i><b>1.2</b> Best Estimate based on Bayes (with Theoretical Distribution)</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="best-estimate-based-on-bayes-with-theoretical-distribution.html"><a href="best-estimate-based-on-bayes-with-theoretical-distribution.html#comparing-loss-development-methods"><i class="fa fa-check"></i><b>1.2.1</b> Comparing Loss Development Methods</a></li>
+</ul></li>
 <li class="chapter" data-level="1.3" data-path="bay-cred.html"><a href="bay-cred.html"><i class="fa fa-check"></i><b>1.3</b> Bayesian Credibility</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="bay-cred.html"><a href="bay-cred.html#cred-dev"><i class="fa fa-check"></i><b>1.3.1</b> Credibility Form of the Dev’ Formula</a></li>
-<li class="chapter" data-level="1.3.2" data-path="bay-cred.html"><a href="bay-cred.html#case-load"><i class="fa fa-check"></i><b>1.3.2</b> Caseload Effect</a></li>
-<li class="chapter" data-level="1.3.3" data-path="bay-cred.html"><a href="bay-cred.html#consid"><i class="fa fa-check"></i><b>1.3.3</b> Calculation Considerations</a></li>
+<li class="chapter" data-level="1.3.1" data-path="bay-cred.html"><a href="bay-cred.html#practical-application-ls-development"><i class="fa fa-check"></i><b>1.3.1</b> Practical Application (LS Development)</a></li>
+<li class="chapter" data-level="1.3.2" data-path="bay-cred.html"><a href="bay-cred.html#cred-dev"><i class="fa fa-check"></i><b>1.3.2</b> Credibility Form of the Dev’ Formula</a></li>
+<li class="chapter" data-level="1.3.3" data-path="bay-cred.html"><a href="bay-cred.html#case-load"><i class="fa fa-check"></i><b>1.3.3</b> Caseload Effect</a></li>
+<li class="chapter" data-level="1.3.4" data-path="bay-cred.html"><a href="bay-cred.html#consid"><i class="fa fa-check"></i><b>1.3.4</b> Practical Considerations</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>1.4</b> Conclusions</a></li>
 <li class="chapter" data-level="1.5" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>1.5</b> Past Exam Questions</a><ul>
@@ -144,11 +147,17 @@
 <p><span class="math inline">\(L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}\)</span></p>
 <ul>
 <li><p>Y = Ultimate Losses; X = Reported Losses</p></li>
-<li><p><span class="math inline">\(L(x)\)</span> = best linear estimator of Y|X = least square estimate</p></li>
-<li>Use this when we don’t know the distribution of the random variable
+<li><p>Use this when we don’t know the distribution of the random variable</p></li>
+<li><span class="math inline">\(L(x) = Q(x)\)</span> when <span class="math inline">\(Q(x)\)</span> is linear
 </div>
 <p></p></li>
 </ul>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> This is like the Bühlmann method, where <span class="math inline">\(L\)</span> is a linear function that minimizes <span class="math inline">\(\mathrm{E}_X\left[\left(Q(X) - L(X)\right)^2\right]\)</span></p>
+If <span class="math inline">\(L(x) = a + b x\)</span> then we minimize <span class="math inline">\(\mathrm{E}_X\left[\left(Q(X) - a - bX \right)^2\right]\)</span>
+</div>
+<p></p>
 <table>
 <caption><span id="tab:bayes-variance">Table 1.2: </span> Intuitive interpretation of <span class="math inline">\(L(x)\)</span></caption>
 <colgroup>
@@ -191,59 +200,112 @@
 </tr>
 </tbody>
 </table>
+<div id="practical-application-ls-development" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Practical Application (LS Development)</h3>
 
-<div class="proof">
-<p><span class="proof"><em>Proof. </em></span> Show that <span class="math inline">\(L(x)\)</span> is the same as the least-square estimate</p>
-<p><span class="math inline">\(y = a + bx\)</span></p>
-<p>Plug in <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from proposition <a href="method-assumptions.html#prp:least-sq">1.1</a></p>
-<p>We get:</p>
-<p><span class="math inline">\(\begin{align}  y &amp;= (\bar{y} - b\bar{x}) + bx \\  &amp;= \bar{y} + b \left(x - \bar{x}\right) \\  &amp;= \left(x - \bar{x}\right) \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} + \bar{y} \\ \end{align}\)</span></p>
-Which equals <span class="math inline">\(L(x)\)</span>, <span class="math inline">\(\therefore\)</span> the least-square estimate is the best linear estimate of <span class="math inline">\(Q(x)\)</span>
-</div>
-<p></p>
-<div id="cred-dev" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Credibility Form of the Dev’ Formula</h3>
-
-<div class="rmdnote">
-<p>Formula is the credibility weighted average of the development and ELR method</p>
-<p><span class="math inline">\(L(x) = Z \underbrace{\dfrac{x}{d}}_{\begin{array}{c} \text{Dev&#39;}\\ \text{Method}\\ \end{array}} + (1-Z)\underbrace{\mathrm{E[Y]}}_{ELR}\)</span></p>
+<div class="proposition">
+<p><span id="prp:dev-form-1" class="proposition"><strong>Proposition 1.5  (Development Formual 1) </strong></span>Estimate <span class="math inline">\(\mathrm{E}[X]\)</span>, <span class="math inline">\(\mathrm{Var}(X)\)</span>, and <span class="math inline">\(\mathrm{Cov}(X,Y)\)</span> from data (i.e. a series of past years) assuming a common <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span></p>
 <ul>
-<li><span class="math inline">\(L(x) = Q(x)\)</span> when <span class="math inline">\(Q(x)\)</span> is linear
+<li>This <span class="math inline">\(L(x)\)</span> here is the same as the least-square estimate as in <a href="method-assumptions.html#prp:least-sq">1.1</a>
 </div>
 </li>
 </ul>
 
+<div class="proof">
+<p><span class="proof"><em>Proof. </em></span> Start with<span class="math inline">\(y = a + bx\)</span> and plug in <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from proposition <a href="method-assumptions.html#prp:least-sq">1.1</a></p>
+<p>We get:</p>
+<p><span class="math inline">\(\begin{align}  y &amp;= (\bar{y} - b\bar{x}) + bx \\  &amp;= \bar{y} + b \left(x - \bar{x}\right) \\  &amp;= \left(x - \bar{x}\right) \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} + \bar{y} \\ \end{align}\)</span></p>
+Which equals <span class="math inline">\(L(x)\)</span> <span class="math inline">\(\therefore\)</span> the least-square estimate is the best linear estimate of <span class="math inline">\(Q(x)\)</span>
+</div>
+<p></p>
+
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> If not for sampling error, the least square method will give us the best linear approximation to the Bayesian estimate, regardless of the distributions of <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span>
+</div>
+<p></p>
+</div>
+<div id="cred-dev" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Credibility Form of the Dev’ Formula</h3>
+<p>Alternative way to express <span class="math inline">\(L(x)\)</span>, following Bühlmann credibility, we express <span class="math inline">\(L(x)\)</span> in terms of:</p>
+<ul>
+<li><p>Expected Value of the Process Variance (<span class="math inline">\(EVPV\)</span>)</p>
+<p><span class="math inline">\(\mathrm{E}_Y\left[\mathrm{Var}(X \mid Y )\right]\)</span></p></li>
+<li><p>Variance of the Hypothetical Mean (<span class="math inline">\(VHM\)</span>)</p>
+<p><span class="math inline">\(\mathrm{Var}_Y(\mathrm{E}\left[X \mid Y \right])\)</span></p></li>
+<li><p>We can read <span class="math inline">\(VHM\)</span> as distrust in underwriters and EVPV distrust in the claims department</p></li>
+<li><p>Use the method below when the least-square assumption fails</p>
+<p>(i.e. Year to year changes in loss and loss distributions are small, or can be corrected for)</p></li>
+</ul>
+<p>Formula below requires addtional hypothesis (in paper appendix?)</p>
+<hr />
+
 <div class="proposition">
-<p><span id="prp:cred-dev-m1" class="proposition"><strong>Proposition 1.5 </strong></span>Method 1 for Z</p>
+<p><span id="prp:dev-form-2" class="proposition"><strong>Proposition 1.6  (Development Formual 2) </strong></span>Suppose that there is a real number <span class="math inline">\(d \neq 0\)</span> such that <span class="math inline">\(\mathrm{E}\left[X \mid Y = y \right] = dy\)</span> for all <span class="math inline">\(y\)</span></p>
+<p><span class="math inline">\(L(x) = Z \underbrace{\dfrac{x}{d}}_{\begin{array}{c} \text{Dev&#39;}\\ \text{Method}\\ \end{array}} + (1-Z)\underbrace{\mathrm{E[Y]}}_{ELR}\)</span></p>
+<ul>
+<li><p>Formula is the credibility weighting of the chainladder estimate and ELR estimate</p></li>
+<li><p>If <span class="math inline">\(EVPV = 0\)</span> <span class="math inline">\(\Rightarrow\)</span> Full weight to the chainladder</p></li>
+<li>If <span class="math inline">\(VHM = 0\)</span> <span class="math inline">\(\Rightarrow\)</span> Full weight to the <span class="math inline">\(\mathrm{E}[Y]\)</span>
+</div>
+<p></p></li>
+</ul>
+
+<div class="proof">
+<p><span class="proof"><em>Proof. </em></span> Start with the proposition <a href="bay-cred.html#prp:bayes-ble">1.4</a> and we set <span class="math inline">\(\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} = \dfrac{1}{d} \dfrac{VHM}{VHM + EVPV}\)</span></p>
+<p><span class="math inline">\(\begin{align}  L(x) &amp;= (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]} \\  &amp;= (x - \mathrm{E[X]}) \left \{ \dfrac{1}{d} \dfrac{VHM}{VHM + EVPV} \right \} + \mathrm{E[Y]} \\  &amp;= (x - \mathrm{E[X]}) \left \{ \dfrac{1}{d} Z \right \} + \mathrm{E[Y]} \\  &amp;= Z \dfrac{x}{d} - Z \dfrac{\mathrm{E}[X]}{d} + \mathrm{E}[Y] \\  &amp;= Z \dfrac{x}{d} - Z \mathrm{E}[Y] + \mathrm{E}[Y] \\  &amp;= Z \dfrac{x}{d} + (1 - Z) \mathrm{E}[Y] \\ \end{align}\)</span></p>
+Which is what we have above in proposition <a href="bay-cred.html#prp:dev-form-2">1.6</a>
+</div>
+<p></p>
+<hr />
+
+<div class="proposition">
+<p><span id="prp:cred-dev-m1" class="proposition"><strong>Proposition 1.7  (Method for Z) </strong></span>Calculate Z to use with formula in proposition <a href="bay-cred.html#prp:dev-form-2">1.6</a></p>
 <p><span class="math inline">\(Z = \dfrac{VHM}{VHM + EVPV} = \dfrac{\mathrm{Var_Y(E[X|Y])}}{\mathrm{Var_Y(E[X|Y])}+\mathrm{E_Y[Var(X|Y)]}}\)</span></p>
 <ul>
 <li><p><span class="math inline">\(VHM = d^2 \sigma^2_Y\)</span></p></li>
 <li><p><span class="math inline">\(EVPV = \sigma^2_d[\sigma^2_Y + \mathrm{E[Y]}^2]\)</span></p></li>
-<li><p>Use this when underlying distribution not stable (historical not a good predictor); LS only works when the underlying dist<sup>n</sup> are stable</p></li>
-<li><p><span class="math inline">\(d =\)</span> % reported</p></li>
-</ul>
-<p>Notes:</p>
-<ul>
-<li><p><span class="math inline">\(d \: {\perp\!\!\!\perp} \: X\)</span>: reporting speed does not vary with the volume of claims</p></li>
-<li><p><span class="math inline">\(D = \dfrac{X}{Y}\)</span></p></li>
-</ul>
-<p>Results sensitive to <span class="math inline">\(\mathrm{E[Y]}\)</span> and <span class="math inline">\(\mathrm{E[D]}\)</span> but not the <span class="math inline">\(\sigma\)</span></p>
-Based on estimates of VHM and EVPV of the dist<sup>n</sup> instead
+<li><span class="math inline">\(d =\)</span> % reported
 </div>
-<p></p>
+<p></p></li>
+</ul>
 
-<div class="proposition">
-<p><span id="prp:cred-dev-m2" class="proposition"><strong>Proposition 1.6 </strong></span>Method 2 for Z</p>
-<p><span class="math inline">\(Z = \dfrac{b}{c}\)</span>, where <span class="math inline">\(c\)</span> is the CDF and <span class="math inline">\(b\)</span> is from the LS</p>
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> We use the above <span class="math inline">\(Z\)</span> when underlying distribution not stable (historical not a good predictor)</p>
 <ul>
-<li><p>This yield the LS results <span style="color:red">(always?)</span></p></li>
+<li>LS only works when the underlying dist<sup>n</sup> are stable</li>
+</ul>
+<p>We assumes the following</p>
+<ul>
+<li><p><span class="math inline">\(d \: {\perp\!\!\!\!\perp} \: X\)</span>: reporting speed does not vary with the volume of claims</p></li>
+<li><p><span class="math inline">\(D = \dfrac{X}{Y}\)</span></p></li>
+<li><p>Results sensitive to <span class="math inline">\(\mathrm{E[Y]}\)</span> and <span class="math inline">\(\mathrm{E[D]}\)</span> but not the <span class="math inline">\(\sigma\)</span></p></li>
+<li>Based on estimates of VHM and EVPV of the dist<sup>n</sup> instead
+</div>
+<p></p></li>
+</ul>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> Alternatively, <span class="math inline">\(Z = \dfrac{b}{c}\)</span>, where <span class="math inline">\(c\)</span> is the CDF and <span class="math inline">\(b\)</span> is from the LS</p>
+<ul>
+<li><p>This yield the LS results (Where we assume there’s no change in the underlying year to year data)</p></li>
 <li>Assume same <span class="math inline">\(d\)</span> for any size of <span class="math inline">\(y\)</span>; Not necessarily true for large or small <span class="math inline">\(y\)</span>
 </div>
 <p></p></li>
 </ul>
 
+<div class="proof">
+<p><span class="proof"><em>Proof. </em></span> Start with <span class="math inline">\(\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} = \dfrac{1}{d} \dfrac{VHM}{VHM + EVPV}\)</span></p>
+<p>Based on <a href="bay-cred.html#prp:cred-dev-m1">1.7</a> we have <span class="math inline">\(Z = \dfrac{VHM}{VHM + EVPV}\)</span></p>
+<p>And <span class="math inline">\(b\)</span> from <a href="method-assumptions.html#prp:least-sq">1.1</a> <span class="math inline">\(\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}\)</span></p>
+<p>Then we have <span class="math inline">\(b = \dfrac{1}{d} Z\)</span></p>
+<p>Next, <span class="math inline">\(\dfrac{1}{d} = \dfrac{1}{\text{% Reported}} = \text{Reported CDF} = c\)</span></p>
+Finally we have <span class="math inline">\(Z = \dfrac{b}{c}\)</span>
+</div>
+<p></p>
+<hr />
+
 <div class="proposition">
-<p><span id="prp:spec-poi-bin" class="proposition"><strong>Proposition 1.7  (Poisson-Binomial Special Case) </strong></span></p>
+<p><span id="prp:spec-poi-bin" class="proposition"><strong>Proposition 1.8  (Poisson-Binomial Special Case) </strong></span></p>
 <p><span class="math inline">\(L(x) = x + (1-d)\mathrm{E(Y)}\)</span></p>
 <ul>
 <li><p><span class="math inline">\(Z = d\)</span></p></li>
@@ -252,9 +314,40 @@ Based on estimates of VHM and EVPV of the dist<sup>n</sup> instead
 </div>
 <p></p></li>
 </ul>
+
+<div class="proof">
+<p><span class="proof"><em>Proof. </em></span> Start with <span class="math inline">\(EVPV\)</span> and <span class="math inline">\(VHM\)</span> under the Poisson-Binomial case as discussed in proposition <a href="best-estimate-based-on-bayes-with-theoretical-distribution.html#prp:poi-bin">1.2</a></p>
+<p><span class="math inline">\(EVPV = \mathrm{E}[yd(1-d)] = \mu d(1-d)\)</span></p>
+<p><span class="math inline">\(VHM = \mathrm{Var}(yd) = \mu d^2\)</span></p>
+<p>Then <span class="math inline">\(Z = \dfrac{\mu d^2}{\mu d^2 + \mu d(1-d)} = d\)</span></p>
+And we get what we have from proposition <a href="bay-cred.html#prp:spec-poi-bin">1.8</a> <span class="math inline">\(L(x) = x + (1-d)\mathrm{E(Y)}\)</span>
+</div>
+<p></p>
+
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> Note that <span class="math inline">\(L(x) = Q(x)\)</span> (as in proposition <a href="best-estimate-based-on-bayes-with-theoretical-distribution.html#prp:poi-bin">1.2</a>) since <span class="math inline">\(Q(x)\)</span> is linear, so the best linear estimate = the bayesian estimate
+</div>
+<p></p>
+<hr />
+
+<div class="proposition">
+<p><span id="prp:spec-NB-bin" class="proposition"><strong>Proposition 1.9  (Negative Bin-Binomial Special Case) </strong></span></p>
+<p><span class="math inline">\(L(x) = \dfrac{x}{d + p(1-d)} + \dfrac{\mu p (1-d)}{d + p(1-d)}\)</span></p>
+<ul>
+<li><span class="math inline">\(Z = \dfrac{d}{d + p(1-d)}\)</span>
+</div>
+</li>
+</ul>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> <span class="math inline">\(VHM\)</span> is larger here than in the Poi-Binomial case while the <span class="math inline">\(EVPV\)</span> is the same</p>
+<p><span class="math inline">\(\therefore\)</span> <span class="math inline">\(Z\)</span> is larger <span class="math inline">\(\Rightarrow\)</span> Chainladder method gets more weight</p>
+Also note that since <span class="math inline">\(Q(x)\)</span> is still linear, <span class="math inline">\(L(x) = Q(x)\)</span>
+</div>
+<p></p>
 </div>
 <div id="case-load" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> Caseload Effect</h3>
+<h3><span class="header-section-number">1.3.3</span> Caseload Effect</h3>
 <p>When <span class="math inline">\(D\)</span> and <span class="math inline">\(Y\)</span> not independent still works</p>
 <ul>
 <li><p>e.g. <span class="math inline">\(d\)</span> larger for small <span class="math inline">\(y\)</span> since small claims are settle faster</p></li>
@@ -269,7 +362,7 @@ Based on estimates of VHM and EVPV of the dist<sup>n</sup> instead
 <p></p>
 </div>
 <div id="consid" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> Calculation Considerations</h3>
+<h3><span class="header-section-number">1.3.4</span> Practical Considerations</h3>
 <p><strong>Normalize</strong> the losses by dividing with premium since LS assume constant distribution and also <strong><em>adjust for inflation</em></strong></p>
 <p>Calculates ATU, so needs the tail factor first and also start from the oldest period</p>
 <p>Recursively go backwards using the previous estimates</p>
