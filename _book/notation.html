@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html">
-<link rel="next" href="remark-6-1.html">
+<link rel="prev" href="remark-6-1.html">
+<link rel="next" href="past-exam-questions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -130,117 +130,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="loss-ratio-claims-reserve" class="section level2">
-<h2><span class="header-section-number">3.1</span> Loss Ratio Claims Reserve</h2>
-<p><span class="math inline">\(m_k\)</span>: <strong>Expected loss ratio @ each age</strong> <span class="math inline">\(k\)</span></p>
+<div id="notation" class="section level2">
+<h2><span class="header-section-number">3.3</span> Notation</h2>
+<p>For <span class="math inline">\(n \times n\)</span> triangle and losses fully developed at <span class="math inline">\(n\)</span></p>
+<p>Where <span class="math inline">\(i\)</span> is exposure period and <span class="math inline">\(k\)</span> is the age</p>
 <ul>
-<li><p>Based on <strong>incremental</strong> column paid loss ratios</p></li>
-<li><p><span class="math inline">\(k \in \{1, ..., n \}\)</span> For <span class="math inline">\(n\)</span> development periods</p></li>
+<li><p><span class="math inline">\(S_{ik} =\)</span> Incremental Paid</p></li>
+<li><p><span class="math inline">\(C_{ik} =\)</span> Cumulative Paid</p></li>
+<li><p><span class="math inline">\(U_i =\)</span> Ultimate loss</p></li>
+<li><p><span class="math inline">\(V_i =\)</span> Exposure base</p></li>
+<li><p><span class="math inline">\(m_k =\)</span> expected loss ratio</p></li>
+<li><p><span class="math inline">\(\hat{m}_k =\)</span> estimate of <span class="math inline">\(m_k\)</span></p></li>
 </ul>
-<p><span class="math inline">\(ELR\)</span>: <strong>Expected loss ratio</strong>:</p>
-<ul>
-<li><p><span class="math inline">\(ELR = \sum \limits_{k=1}^n m_k\)</span></p></li>
-<li><p>a priori ELR for collective loss ratio approach</p></li>
-<li><p>Use for the entire triangle</p></li>
-</ul>
-<p><span class="math inline">\(p_k\)</span>: <strong>% Losses emerged</strong> for exposure period <span class="math inline">\(k\)</span></p>
-<ul>
-<li><p><span class="math inline">\(p_k = \dfrac{\sum \limits_{j=1}^{n} m_j}{ELR}\)</span></p></li>
-<li><p>Based on column loss ratios <span class="math inline">\(m_k\)</span></p></li>
-<li><p>Loss ratio payout factor or loss ratio lag-factor</p></li>
-<li><p><span class="math inline">\(q_k = 1 - p_k\)</span> is the loss ratio reserve factor</p></li>
-</ul>
-<div id="lr-claims-reserve-summary" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> LR Claims Reserve Summary</h3>
-<p><span class="math display">\[R_i^c = Z_iR_i^{ind} + (1-Z_i)R_i^{coll}\]</span></p>
-<table>
-<caption><span id="tab:method-tbl-cred">Table 3.1: </span> Comparison of <span class="math inline">\(Z_i\)</span> for Different Methods</caption>
-<thead>
-<tr class="header">
-<th><span class="math inline">\(Z_i\)</span></th>
-<th>Method</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Chainladder; Individual LR</td>
-</tr>
-<tr class="even">
-<td>0</td>
-<td>BF; Collective LR</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(p_i\)</span></td>
-<td>Benktander</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(p_i \times ELR\)</span></td>
-<td>Neuhaus</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(Z = \dfrac{p_i}{p_i + \sqrt{p_i}}\)</span></td>
-<td>Optimal</td>
-</tr>
-</tbody>
-</table>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
-<ul>
-<li><p>Neuhaus gives low credibility to lines with low loss ratios <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\Delta\)</span> exposure base will <span class="math inline">\(\Delta\)</span> result</p></li>
-<li><p>Optimal credibility is capped @ 0.5</p></li>
-<li>Benktander and Neuhaus reduce the MSE of the reserve estimate nearly to an optimal level outperforming individual and collective
-</div>
-<p></p></li>
-</ul>
-
-<div class="proposition">
-<p><span id="prp:indi-res" class="proposition"><strong>Proposition 3.1  (Individual Loss Ratio Claims Reserve) </strong></span>Analogous to chainladder</p>
-<span class="math inline">\(\begin{align}  R_i^{ind} &amp;= \dfrac{C_{ik}}{p_k} \times q_k \\  &amp;= \dfrac{C_{ik}}{p_k} - C_{ik} \\  &amp;= U_i^{ind} - C_{ik} \\ \end{align}\)</span>
-</div>
-<p></p>
-
-<div class="proposition">
-<p><span id="prp:coll-res" class="proposition"><strong>Proposition 3.2  (Collective Loss Ratio Claims Reserve) </strong></span>Analogous to BF</p>
-<p><span class="math inline">\(\begin{align}  R_i^{Coll} &amp;= q_i(V_i \times ELR) \\  &amp;= = q_i(U_i^{BC}) \\ \end{align}\)</span></p>
-<ul>
-<li>BC = Burning Cost
-</div>
-</li>
-</ul>
-</div>
-<div id="credible-lr-claims-reserve" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Credible LR Claims Reserve</h3>
-<p>Optimal credibility weights for loss ratio claims reserve</p>
-<p>Walk through of how we got the optimal <span class="math inline">\(Z^*\)</span> formula</p>
-<hr />
-<p>Minimize error between actual and estimate unpaid losses: <span class="math inline">\(MSE(R_i^c) = \mathrm{E}[(R_i^c - R_i)^2]\)</span></p>
-<p><span class="math inline">\(Z^* = \dfrac{p_i}{q_i} \dfrac{Cov(C_i, R_i) + p_i q_i Var(U_i^{BC})}{Var(C_i) + p_i^2 Var(U_i^{BC})}\)</span></p>
-<ul>
-<li><strong>Assumes</strong> <span class="math inline">\(U_i^{BC} {\perp\!\!\!\!\perp} C_i\)</span> and <span class="math inline">\(R_i\)</span></li>
-</ul>
-<p>Comments on the formula:</p>
-<ul>
-<li><p><span class="math inline">\(p \uparrow \: \Rightarrow \: Z_i^* \uparrow\)</span> because of <span class="math inline">\(\dfrac{p}{q}\)</span></p></li>
-<li><p>High <span class="math inline">\(Cov(C_i, R_i)\)</span> <span class="math inline">\(\Rightarrow\)</span> Paid to date and unpaid are correlated <span class="math inline">\(\Rightarrow\)</span> Credibility <span class="math inline">\(\uparrow\)</span></p></li>
-<li><p>Large <span class="math inline">\(Var(U_i^{BC})\)</span> <span class="math inline">\(\Rightarrow\)</span> Don’t trust a priori</p>
-<ul>
-<li><p><span class="math inline">\(Z \approx \dfrac{p}{q} \times \dfrac{pq}{p^2} = 1\)</span></p></li>
-<li><p>Give nearly full credibility to the CL when a priori has large variance</p></li>
-</ul></li>
-</ul>
-<p><span class="math inline">\(Z_i^* = \dfrac{p_i}{p_i + t_i}\)</span> After some assumptions about distribution of <span class="math inline">\(\dfrac{c_i}{U_i}\)</span></p>
-<p><span class="math inline">\(Z_i^* = \dfrac{p_i}{p_i + \sqrt{p_i}}\)</span> After some more assumptions</p>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="remark-6-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="remark-6-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="past-exam-questions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

@@ -83,7 +83,7 @@ Where:
 * $c = c^*$ for optimal credibility where $c \in [0, 1]$
 ```
 
-### Defintions
+## Notation
 
 $U =$ Ultimate Loss
 
@@ -98,6 +98,10 @@ $q_k = 1 - p_k =$ %  of total losses **unpaid** a $k$
 $C_k =$ Actual paid losses at $k$
 
 ## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
 
 **Concepts**
 
