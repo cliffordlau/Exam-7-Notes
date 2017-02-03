@@ -1,6 +1,4 @@
-# A3 Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann
-
-## Cliff's Summary
+# Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann
 
 Everything is based on a special method to calculate the $ELR$ and $LDFs$
 
@@ -15,16 +13,6 @@ Know the $Z$ for [different methods](#sum_tbl)
 * The $Z$ is for weighting the **reserve**
 
 * Optimal credibility formula assumes $U_i^{BC} {\perp\!\!\!\perp} C_i$ and $R_i$
-
-### Types of Exam Questions
-
-<span style="color:red">Haven't done TIA practice questions</span>
-
-**Full Calculation**
-
-* [2013 #2](#2013-2): Reserve calc 
-* $\star$ 2015 #1: Neuhaus and optimal
-    * <span style="color:red">Why is this needed?</span> $\operatorname{Var}(U_i) = \operatorname{Var}(U_i^{BC})$ for the optimal credibility formula
 
 ## Loss Ratio Claims Reserve
 
@@ -137,6 +125,16 @@ Doing all the above with more "Traditional" method
     * <span style="color:red">double check the weight, the summary say it is Z=0 but full notes say Z = p</span>
     
 ## Past Exam Questions
+
+<span style="color:red">Haven't done TIA practice questions</span>
+
+**Full Calculation**
+
+* [2013 #2](#2013-2): Reserve calc 
+* $\star$ 2015 #1: Neuhaus and optimal
+    * <span style="color:red">Why is this needed?</span> $\operatorname{Var}(U_i) = \operatorname{Var}(U_i^{BC})$ for the optimal credibility formula
+
+### Question Highlights
 
 <a name="2013-2"></a>2013 #2
 ![](questions/2013-2Q.png)

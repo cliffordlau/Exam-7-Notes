@@ -1,10 +1,10 @@
 # Credible Claims Reserve: The Benktander Method - T. Mack
 
-Know the GB method formula and properties
+Know the GB method formula (\@ref(prp:GB-method))and properties
 
 * Recognize actual emergence faster
 
-## Benktander Method (GB)
+## Gunnar Benktander Method (GB)
 
 ```{proposition, GB-method, name = "Benktander Reserve"} 
 Reserve under the Benktaner Method
@@ -43,6 +43,18 @@ Table: (\#tab:GB-CL-BF-Comp) Comparison of Ulltimate Loss and Reserve for Differ
 | BF Method | $C_k + q_kU_0$ | $q_k U_0$ |
 | GB Method | $C_k + q_kU_{BF}$ | $q_k U_{BF}$ |
 
+```{theorem, GB-iterate}
+For an arbitrary starting point $U^{(0)} = U_0$ and the iteration rule $R^{(m)} = q_k U^{(m)}$ and $U^{(m+1)} = C_k + R^{(m)}$, $m = 0, 1, 2, ...$ 
+
+gives credibility mixtures
+
+$$U^{(m)} = (1-q^m_k)U_{CL} + q^m_k U_0$$
+
+$$R^{(m)} = (1-q^m_k)R_{CL} + q^m_k R_{BF}$$
+
+between $BF$ and $CL$ which start at $BF$ and lead via $GB$ to $CL$ for $m= \infty$
+```
+
 ### MSE
 
 MSE of Benktander is almost as small as the MSE of the optimal credibility in most cases
@@ -51,10 +63,24 @@ $MSE(R_{GB}) < MSE(R_{BF})$
 
 * When $p_k \in [0, 2c^*]$; $c^*$ is the optimal credibility
 
+    * $R_{GB}$ doesn't have the lowet $MSE$ only when $p_k > 2c^*$
+
 * Doesn't hold if $c^*$ is small and $p_k$ is large
 
-```{theorem, GB-iterate}
-As you iterate the Benktander many more times, the weight to $U_0$ approaches 0 and full credibility goes to the CL method
+```{remark}
+$MSE(R_c) = \mathrm{E}[R_c - R]^2$
+
+* $R_c = c R_{CL} + (1-c)R_{BF}$
+
+* $R = U - C_k = C_n - C_k$
+
+Where:
+
+* $c = 0$ for $BF$
+
+* $c = p_k$ for $GB$
+
+* $c = c^*$ for optimal credibility where $c \in [0, 1]$
 ```
 
 ### Defintions
@@ -70,8 +96,6 @@ $p_k =$ % of total losses **paid** at $k$
 $q_k = 1 - p_k =$ %  of total losses **unpaid** a $k$
 
 $C_k =$ Actual paid losses at $k$
-
-
 
 ## Past Exam Questions
 
