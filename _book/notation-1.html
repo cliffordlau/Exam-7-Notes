@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="parameterize-with-glm.html">
-<link rel="next" href="bootstrap-procedures.html">
+<link rel="prev" href="remark-6-1.html">
+<link rel="next" href="past-exam-questions-2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -578,37 +578,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="simplified-glm" class="section level2">
-<h2><span class="header-section-number">10.4</span> Simplified GLM</h2>
-<p>GLM model = Chainladder w/ volume-weighted averages when:</p>
+<div id="notation-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> Notation</h2>
+<p>For <span class="math inline">\(n \times n\)</span> triangle and losses fully developed at <span class="math inline">\(n\)</span></p>
+<p>Where <span class="math inline">\(i\)</span> is exposure period and <span class="math inline">\(k\)</span> is the age</p>
 <ul>
-<li>Variance <span class="math inline">\(\propto\)</span> Mean</li>
-<li><span class="math inline">\(\varepsilon \sim\)</span> Poisson; Poisson error</li>
-<li>Parameter for each row and column (x 1<sup>st</sup> column)</li>
+<li><p><span class="math inline">\(S_{ik} =\)</span> Incremental Paid</p></li>
+<li><p><span class="math inline">\(C_{ik} =\)</span> Cumulative Paid</p></li>
+<li><p><span class="math inline">\(U_i =\)</span> Ultimate loss</p></li>
+<li><p><span class="math inline">\(V_i =\)</span> Exposure base</p></li>
+<li><p><span class="math inline">\(m_k =\)</span> expected loss ratio</p></li>
+<li><p><span class="math inline">\(\hat{m}_k =\)</span> estimate of <span class="math inline">\(m_k\)</span></p></li>
 </ul>
-<p>Benefits:</p>
-<ul>
-<li>Replace GLM fitting with much simpler calculation</li>
-<li>LDFs are easier to explain</li>
-<li>Still works even when there are negative incremental values</li>
-</ul>
-<div id="residuals-pearson" class="section level3">
-<h3><span class="header-section-number">10.4.1</span> Residuals (Pearson)</h3>
-<p><a name="pearson-res"></a><span style="color:red; background-color:yellow">Memorize Formula</span><br />
-<span class="math inline">\(\begin{array}  Rr_p &amp; = &amp; \dfrac{A - E}{\sqrt{\operatorname{Var}(A)}} &amp; \\  &amp; = &amp; \dfrac{q(w,d) - m_{wd}}{\sqrt{\phi m_{wd}}} &amp; \text{Mean &amp; Var Assumptions Above}\\  &amp; \propto &amp; \dfrac{q(w,d) - m_{wd}}{\sqrt{m_{wd}}} &amp; \text{Since }\phi \text{ is constant for all}\\ \end{array}\)</span></p>
-<ul>
-<li><p><a href="#loss-dist">Mean &amp; Var</a></p></li>
-<li><p>Note the residual for the 2 corners of the triangle are going to be 0 because only the row parameter or column parameter are used</p></li>
-</ul>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="parameterize-with-glm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bootstrap-procedures.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="remark-6-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="past-exam-questions-2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -636,7 +625,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/10-Bootstrap-Modeling.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/03-BK-Neuhaus-Mack.Rmd",
 "text": "Edit"
 },
 "download": null,
