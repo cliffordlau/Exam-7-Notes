@@ -1,8 +1,6 @@
-# A12 Reinsurance Loss Reserving - Patrik
+# Reinsurance Loss Reserving - Patrik
 
-## Cliff's Summary
-
-Know the 7 problems of reinsurance reserving
+Know the [7 problems of reinsurance reserving](#prob-of-re)
 
 * General theme: Heterogeneity, lower frequency, lack of detailed exposure information
 
@@ -22,61 +20,7 @@ Reinsurance reservering procedure:
 
 * AvE
 
-### Types of Exam Questions
-
-<span style="color:red">Haven't done TIA practice questions</span>
-
-**Concepts**
-
-* 1996 #10: Problems of reinsurance reserving
-* 1999 #9: Partition consideration
-* 1999 #10: Fidelity proportional is short tail
-* 2000 #68 b c: SB incorporates reported loss in the ELR but difficult to adjust ELR to a prior estimate for each year
-* 2001 #54: pros and cons of CL and BF
-* 2002 #42: SB vs BF similarity and difference
-* 2004 #49 c d: SB vs BF pros and cons
-* 2006 - #45: Which method to use SB vs CL
-* 2007 - #21: Discuss how SB is a special case of BF
-59
-* $\star$ 2008 - #35: Reason of report lag and upward development due to modal value claim reserve
-* $\star$ 2008 - #37: Industry data vs internal
-    * Industry: thin internal data; volatile from rate changes; rate change history not credible; shift in underlying policies
-    * Internal: Rate change not reflected in industry; industry composition different from reinsurer; Underlying policies not represented in Sch P data; believe data is credible and representative of the specific business involved
-* $\star$ 2009 - #32: How to partition data
-    * Fac vs treaty $\Rightarrow$ LoB; Don't split by cedant as data too thin
-    * Diagnostics: Look at reporting pattern and amount of data for credibility; discuss with u/w and claims
-* 2011 #10 b: SB pros and cons
-* 2011 #11: report lag; upward developement; standard method not work; industry data not work
-* 2012 #10 b-d: SB vs CL
-* 2012 #11: problems of reinsurance reserving
-* 2013 #10 c: SB vs CL
-* 2014 #13: problems of reinsurance reserving
-* $\star$ 2015 #12: Discuss problems of reinsurance reserving based on data given
-    * Reporting lag (claims below reporting threshold)
-    * Persistent upward development (upward development of ALAE by looking at ratio)
-    * Heterogeneity patterns (each AYs have different retention)
-* 2015 #13 b: Reason to adjust EP for SB (e.g onlevel so LR for each AY is comparable, adjust for varying rate as SB assumes constant ELR)
-
-**Calculations**
-
-* 1997 #11: SB (Use adjusted onlevel premium)
-* 1998 #35: IBNR with CL, BF, SB
-* 2000 #68 a: SB
-* 2001 #53: SB
-* 2003 #44: SB
-* 2004 #49 a b: CL and SB
-* 2005 #38: SB
-* $\star$ 2007 - #3: Credibility weight SB and CL, remember to use $Z_k = p_k \cdot CF$
-* 2007 - #22 a b: CL and SB
-* 2008 - #36: SB
-* 2009 - #31: SB
-* 2011 #10 a c: SB and credibility weighted
-* $\star$ 2012 #10 a: SB method, need to consider age of policy on risk attaching vs loss occurring basis, also take out expense from premium
-* 2013 #10 a b: SB and credibility weighted SB and CL
-* 2014 #14: SB
-* 2015 #13 a: SB
-
-## 7 Problems with Reinsurance Reserving
+## 7 Problems with Reinsurance Reserving {#prob-of-re}
 
 Problem 1: **Longer report lag of claims**
 
@@ -294,3 +238,100 @@ Look for deviations over time and look for trends
 It could be IBNR is too small, claims are paying faster than expected, or just random fluctuation
 
 ## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
+
+**Concepts**
+
+* 1996 #10: Problems of reinsurance reserving
+
+* 1999 #9: Partition consideration
+
+* 1999 #10: Fidelity proportional is short tail
+
+* 2000 #68 b c: SB incorporates reported loss in the ELR but difficult to adjust ELR to a prior estimate for each year
+
+* 2001 #54: pros and cons of CL and BF
+
+* 2002 #42: SB vs BF similarity and difference
+
+* 2004 #49 c d: SB vs BF pros and cons
+
+* 2006 - #45: Which method to use SB vs CL
+
+* 2007 - #21: Discuss how SB is a special case of BF
+59
+
+* $\star$ 2008 - #35: Reason of report lag and upward development due to modal value claim reserve
+
+* $\star$ 2008 - #37: Industry data vs internal
+
+    * Industry: thin internal data; volatile from rate changes; rate change history not credible; shift in underlying policies
+
+    * Internal: Rate change not reflected in industry; industry composition different from reinsurer; Underlying policies not represented in Sch P data; believe data is credible and representative of the specific business involved
+
+* $\star$ 2009 - #32: How to partition data
+
+    * Fac vs treaty $\Rightarrow$ LoB; Don't split by cedant as data too thin
+
+    * Diagnostics: Look at reporting pattern and amount of data for credibility; discuss with u/w and claims
+
+* 2011 #10 b: SB pros and cons
+
+* 2011 #11: report lag; upward developement; standard method not work; industry data not work
+
+* 2012 #10 b-d: SB vs CL
+
+* 2012 #11: problems of reinsurance reserving
+
+* 2013 #10 c: SB vs CL
+
+* 2014 #13: problems of reinsurance reserving
+
+* $\star$ 2015 #12: Discuss problems of reinsurance reserving based on data given
+
+    * Reporting lag (claims below reporting threshold)
+
+    * Persistent upward development (upward development of ALAE by looking at ratio)
+
+    * Heterogeneity patterns (each AYs have different retention)
+
+* 2015 #13 b: Reason to adjust EP for SB (e.g onlevel so LR for each AY is comparable, adjust for varying rate as SB assumes constant ELR)
+
+**Calculations**
+
+* 1997 #11: SB (Use adjusted onlevel premium)
+
+* 1998 #35: IBNR with CL, BF, SB
+
+* 2000 #68 a: SB
+
+* 2001 #53: SB
+
+* 2003 #44: SB
+
+* 2004 #49 a b: CL and SB
+
+* 2005 #38: SB
+
+* $\star$ 2007 - #3: Credibility weight SB and CL, remember to use $Z_k = p_k \cdot CF$
+
+* 2007 - #22 a b: CL and SB
+
+* 2008 - #36: SB
+
+* 2009 - #31: SB
+
+* 2011 #10 a c: SB and credibility weighted
+
+* $\star$ 2012 #10 a: SB method, need to consider age of policy on risk attaching vs loss occurring basis, also take out expense from premium
+
+* 2013 #10 a b: SB and credibility weighted SB and CL
+
+* 2014 #14: SB
+
+* 2015 #13 a: SB
+
+### Question Highlights
