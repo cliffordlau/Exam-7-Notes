@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-02-05">
+<meta name="date" content="2017-02-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -85,9 +85,9 @@
 <li class="chapter" data-level="12.1" data-path="prob-of-re.html"><a href="prob-of-re.html"><i class="fa fa-check"></i><b>12.1</b> 7 Problems with Reinsurance Reserving</a></li>
 <li class="chapter" data-level="12.2" data-path="components-to-a-reinsurance-loss-reserve.html"><a href="components-to-a-reinsurance-loss-reserve.html"><i class="fa fa-check"></i><b>12.2</b> 6 Components to a Reinsurance Loss Reserve</a></li>
 <li class="chapter" data-level="12.3" data-path="reinsurance-reserving-procedure.html"><a href="reinsurance-reserving-procedure.html"><i class="fa fa-check"></i><b>12.3</b> Reinsurance Reserving Procedure</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="reinsurance-reserving-procedure.html"><a href="reinsurance-reserving-procedure.html#portfolio-partition"><i class="fa fa-check"></i><b>12.3.1</b> Portfolio Partition</a></li>
-<li class="chapter" data-level="12.3.2" data-path="reinsurance-reserving-procedure.html"><a href="reinsurance-reserving-procedure.html#analyze-distorical-data-and-projection"><i class="fa fa-check"></i><b>12.3.2</b> Analyze Distorical Data and Projection</a></li>
-<li class="chapter" data-level="12.3.3" data-path="reinsurance-reserving-procedure.html"><a href="reinsurance-reserving-procedure.html#monitoring-and-testing-predictions"><i class="fa fa-check"></i><b>12.3.3</b> Monitoring and Testing Predictions</a></li>
+<li class="chapter" data-level="12.3.1" data-path="reinsurance-reserving-procedure.html"><a href="reinsurance-reserving-procedure.html#step-1-portfolio-partition"><i class="fa fa-check"></i><b>12.3.1</b> Step (1): Portfolio Partition</a></li>
+<li class="chapter" data-level="12.3.2" data-path="reinsurance-reserving-procedure.html"><a href="reinsurance-reserving-procedure.html#step-2-3-analyze-distorical-data-and-projection"><i class="fa fa-check"></i><b>12.3.2</b> Step (2) &amp; (3): Analyze Distorical Data and Projection</a></li>
+<li class="chapter" data-level="12.3.3" data-path="reinsurance-reserving-procedure.html"><a href="reinsurance-reserving-procedure.html#step-4-monitoring-and-testing-predictions"><i class="fa fa-check"></i><b>12.3.3</b> Step (4): Monitoring and Testing Predictions</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>12.4</b> Past Exam Questions</a><ul>
 <li class="chapter" data-level="12.4.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>12.4.1</b> Question Highlights</a></li>
@@ -134,36 +134,96 @@
 <div id="reinsurance-reserving-procedure" class="section level2">
 <h2><span class="header-section-number">12.3</span> Reinsurance Reserving Procedure</h2>
 <p>Partition <span class="math inline">\(\Rightarrow\)</span> Development Patterns <span class="math inline">\(\Rightarrow\)</span> Estimate <span class="math inline">\(\Rightarrow\)</span> Monitor and AvE</p>
-<div id="portfolio-partition" class="section level3">
-<h3><span class="header-section-number">12.3.1</span> Portfolio Partition</h3>
+<ol style="list-style-type: decimal">
+<li><p>Partition into homogenous exposure groups that are consistent over time with respect to mix of business</p></li>
+<li><p>Analyze historical development; Ideally, consider case and emergence of IBNR claims separately</p></li>
+<li><p>Estimate future development; Ideally, estimate IBNER and pure IBNR separately</p></li>
+<li><p>Monitor and testin predictions (AvE)</p></li>
+</ol>
+<div id="step-1-portfolio-partition" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> Step (1): Portfolio Partition</h3>
 <p>Data needs to be split into reasonably <strong>homogenous</strong> exposure groups that are relatively <strong>consistent over time</strong> with respect to mix of business (exposures)</p>
+<ul>
+<li>Group policies with similar report lags and development profile</li>
+</ul>
 <p>Variables to consider when partitioning data in approximately priority order:</p>
-<p><strong>LoB</strong><br />
-<strong>Contract type</strong> (fac, treaty, finite)<br />
-<strong>Types of Cover</strong> (QS, SS, XS per risk/occ, agg XS, CAT, LPT)<br />
-<strong>Primary LoB</strong> (for cas)<br />
-<strong>Attachment Point</strong> (for cas)<br />
-<strong>Contract terms</strong> (flat-rates, retro rated, sunset clause, LAE share, CM, Occ)<br />
-<strong>Type of cedant</strong> (Small, large, E&amp;S)<br />
-<strong>Intermediary</strong> (brokers)</p>
-<div class="figure">
-<img src="figures/FullSizeRender.jpg" />
-
+<ul>
+<li><p><strong>LoB</strong></p></li>
+<li><p><strong>Contract type</strong> (fac, treaty, finite)</p></li>
+<li><p><strong>Types of Cover</strong> (QS, SS, XS per risk/occ, agg XS, CAT, LPT)</p></li>
+<li><p><strong>Primary LoB</strong> (for cas)</p></li>
+<li><p><strong>Attachment Point</strong> (for cas)</p></li>
+<li><p><strong>Contract terms</strong> (flat-rated, retro rated, sunset clause, LAE share, CM, Occ)</p></li>
+<li><p><strong>Type of cedant</strong> (Small, large, E&amp;S)</p></li>
+<li><p><strong>Intermediary</strong> (brokers)</p></li>
+</ul>
+<div class="figure"><span id="fig:ptf-part"></span>
+<img src="figures/FullSizeRender0.jpg" alt="Portfolio Partition" width="100%" />
+<p class="caption">
+Figure 12.1: Portfolio Partition
+</p>
 </div>
+<p>Example:</p>
+<ul>
+<li><p>Start with the LoB or some other major categories</p></li>
+<li><p>Further breakdown into fac or treaty</p></li>
+<li><p>All significant XS exposure should be further brokendown by type of retention (e.g. per-occ XS vs agg XS)</p></li>
+<li><p>Treaty casualty XS should be further brokendown by attachment point range and primary LoB (e.g. AL, GL, PL, WC, etc)</p></li>
+<li><p>Treaty casualty proportional should be brokendown by first dollor primary layers (group-up) vs higher excess layer (excess)</p>
+<ul>
+<li>Do we also breakdown by primarly line?</li>
+</ul></li>
+<li><p>Facultative casualty: breakdown by automatice primary programs (pro rata share of group-up exposure) vs automatic nonprimary programs (excess)</p></li>
+<li><p>Certificate exposure should ideally be split by attachment point range</p>
+<ul>
+<li>Or at least buffer vs umbrella layer and then further by primary line</li>
+</ul></li>
+<li><p>For property and other exposure: split by pricing categories</p></li>
+</ul>
 <p>Need to <strong>balance</strong> <em>homogeneity</em> with <em>credibility</em> of data</p>
-<p>Review loss statistics and reporting pattern to see if data is still credible</p>
+<ul>
+<li><p>Review loss statistics and reporting pattern to see if data is still credible</p></li>
+<li><p>Leverage u/w-er, claim handlers and data processors to determine which variables are the most important</p></li>
+</ul>
 </div>
-<div id="analyze-distorical-data-and-projection" class="section level3">
-<h3><span class="header-section-number">12.3.2</span> Analyze Distorical Data and Projection</h3>
-<p><strong>Backwards</strong> looking (Step 2):<br />
+<div id="step-2-3-analyze-distorical-data-and-projection" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> Step (2) &amp; (3): Analyze Distorical Data and Projection</h3>
+<p><strong>Backward</strong> looking of historical data (Step 2):<br />
 Analyze the historical development patterns. If possible, consider individual case reserve development and the emergence of IBNR claims separately</p>
 <ul>
 <li>Use long periods where practical and curve fit where practical</li>
 </ul>
-<p><strong>Forward</strong> looking projection (Step 3):<br />
+<p><strong>Forward</strong> looking and projection (Step 3):<br />
 Estimate the future development. If possible, estimate the bulk reserve for IBNER and pure IBNR separately</p>
+<div id="claim-report-and-payment-lags" class="section level4">
+<h4><span class="header-section-number">12.3.2.1</span> Claim Report and Payment Lags</h4>
+<p>We want to find stable expected development pattern for homogenous categories</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-1" class="definition"><strong>Definition 12.1 </strong></span><span class="math inline">\(y = Rlag(t)\)</span></p>
+Report lag <span class="math inline">\(= \dfrac{1}{ATU \text{at time }t} =\)</span> % Reported to Date
+</div>
+<p></p>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> Benefits of the above definition:</p>
+<ul>
+<li><p>We can fit a parametric curve (see Clark) to smooth curves to compute the tail</p>
+<p>e.g. Gamma with <span class="math inline">\(\mu\)</span> = 2.5 years and <span class="math inline">\(\sigma\)</span> = 1.5 years (Figure <a href="reinsurance-reserving-procedure.html#fig:gamma-rpt-lag">12.2</a>)</p></li>
+<li><p><span class="math inline">\(Rlag(t)\)</span> can be interpret as probability that any particular claims dollar will be reported to the reinsure by time <span class="math inline">\(t\)</span></p></li>
+<li>We can compute statistics such as the expected value to compare one claim report pattern with another
+</div>
+<p></p></li>
+</ul>
+<div class="figure"><span id="fig:gamma-rpt-lag"></span>
+<img src="CAS-Exam-7-Notes_files/figure-html/gamma-rpt-lag-1.png" alt="Claims report lag based on Gamma distribution" width="672" />
+<p class="caption">
+Figure 12.2: Claims report lag based on Gamma distribution
+</p>
+</div>
+</div>
 <div id="short-tailed-lines" class="section level4">
-<h4><span class="header-section-number">12.3.2.1</span> Short Tailed Lines</h4>
+<h4><span class="header-section-number">12.3.2.2</span> Short Tailed Lines</h4>
 <p>Settlement is quick, basic methods work fine</p>
 <p>For property, beware of recent CATs</p>
 <p>Exclude the high layers for XS property</p>
@@ -172,14 +232,14 @@ Estimate the future development. If possible, estimate the bulk reserve for IBNE
 <p>Book LR for new lines and maybe allocate claims to AY for reserving</p>
 </div>
 <div id="medium-tailed-lines" class="section level4">
-<h4><span class="header-section-number">12.3.2.2</span> Medium Tailed Lines</h4>
+<h4><span class="header-section-number">12.3.2.3</span> Medium Tailed Lines</h4>
 <p>Average dollar lag of 1-2 years and nearly complete within 5 years</p>
 <p>XS Property (separate from working layers), Construction (separate from other), Surety, XS Fidelity, Marine, Agg XS (non-casualty)</p>
 <p>Surety should estimate gross and recovery separately as the recovery has a longer tail</p>
 <p>Chainladder works fine for paid and incurred with or without ACR</p>
 </div>
 <div id="long-tailed-lines" class="section level4">
-<h4><span class="header-section-number">12.3.2.3</span> Long Tailed Lines</h4>
+<h4><span class="header-section-number">12.3.2.4</span> Long Tailed Lines</h4>
 <p>Any time of casualty reinsurance, XS Cas is the longest before APH</p>
 <p>APH should be analyzed separately:</p>
 <ul>
@@ -226,8 +286,8 @@ Estimate the future development. If possible, estimate the bulk reserve for IBNE
 <p>Model claim counts or use stochastic model (Bootstrap). Caveat being that it might be difficult to explain to management</p>
 </div>
 </div>
-<div id="monitoring-and-testing-predictions" class="section level3">
-<h3><span class="header-section-number">12.3.3</span> Monitoring and Testing Predictions</h3>
+<div id="step-4-monitoring-and-testing-predictions" class="section level3">
+<h3><span class="header-section-number">12.3.3</span> Step (4): Monitoring and Testing Predictions</h3>
 <p>Compare AvE over quarters and do this for several quarters to see if any trends become apparent</p>
 <p>Expected = <span class="math inline">\(\dfrac{\text{Expected % Reported in Period}}{\text{Expected % Unreported}} \times IBNR\)</span></p>
 <p>Sometime difficult to tell if the difference is large or small</p>

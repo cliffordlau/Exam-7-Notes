@@ -2,11 +2,25 @@
 
 Know the [7 problems of reinsurance reserving](#prob-of-re)
 
+1. Longer claims report lag
+
+2. Persistent upward development of most claims reserves
+
+3. Reporting pattern differ greatly
+
+4. Industry statistics not useful
+
+5. Reports received lack important information
+
+6. Data coding and IT system problems
+
+7. Reserve to surplus ratio is higher for reinsurer
+
 * General theme: Heterogeneity, lower frequency, lack of detailed exposure information
 
 Know the components of reinurance reserve
 
-Reinsurance reservering procedure:
+4 steps of setting reinsurance reserve:
 
 * Partition $\Rightarrow$ Development Patterns $\Rightarrow$ Estimate $\Rightarrow$ Monitor and AvE
 
@@ -22,13 +36,17 @@ Reinsurance reservering procedure:
 
 ## 7 Problems with Reinsurance Reserving {#prob-of-re}
 
-Problem 1: **Longer report lag of claims**
+Problem 1: **Longer claims report lag**
 
 * Claim must be perceived as report-able to the reinsurer by the cedant (e.g. half of the attachment point) and then flow through cedent's system to reinsurer
 
-* Cedant may undervalue the claim for a long time and thus not report to the reinsurer
+    * Cedant's reporting system $\Rightarrow$ Cedant's reinsurance accounting $\Rightarrow$ Intermediary (broker) $\Rightarrow$ Reinsurer books the claims $\Rightarrow$ Reinsurer's claim system
 
-* Extreme delays in discovery or reporting for mass tort claims
+* Cedant may undervalue the claim for a long time and thus not reported to the reinsurer
+
+    * See Problem 2 on the cedant reserving to the modal value
+
+* Extreme delays in discovery or reporting for mass tort claims (e.g. asbestos)
 
 Problem 2: **Persistent Upward Development of Most Claim Reserves**
 
@@ -44,7 +62,7 @@ Problem 2: **Persistent Upward Development of Most Claim Reserves**
 
 Problem 3: **Reporting Pattern Differ Greatly**
 
-* Differ by: LoB, contract type, contract terms, cedant, intermediary
+* Pattern differs by: LoB, contract type, contract terms, cedant, and intermediary
 
 * Extremely heterogeneous exposures
 
@@ -64,39 +82,51 @@ Problem 5: **Reports Received Lack Important Information**
 
 * Proportional covers require only summary claims info
 
-* Might only have u/w year info (no AY or PY)
+* Might only have UY or CY info (no AY or PY)
 
-* Need exposure measure
+* Limitation of reinsurance premium by primary LoB as an exposure base
 
-    * Can use reinsurance premium but often it is allocated to primary lines using a fixed percentage. If % not correctly reflect loss exposure, premium by line may be distorted
+    * Reinsurance premium is assigned to line according to a % breakdown estimate made at the beginning of the contract and based upon the distribution of subject premium by line
+    
+    * To the degree that these % do not accurately reflect the reinsurer's loss exposure by primary line, comparisons of premiums and losses by line maybe be distorted
+    
+    * Mostly a problem for multi-line porportional treaties
     
 * Reporting is typically done with a quarter lag so always missing a quarter of premium
 
 Problem 6: **Data Coding and IT System Problems**
 
-* Due to the heterogeneity in coverage
+* Again due to the heterogeneity in coverage
 
 * Might have grown in size and complexity faster than data system could handle
 
 Problem 7: **Reserve to Surplus Ratio is Higher for Reinsurer**
 
-* Management problem
+* More of a management problem
 
-* Management may underestimate level of reserves need until claims emerge and difficulty with actuary convincing management to post the appropriate reserve
+* Management may underestimate level of reserves need (due to problem 1-6) until claims emerge. Difficulty with actuary convincing management to post the appropriate reserve
 
 ***
 
 Standard techniques requires: Homogeneous book, sufficient frequency, and detailed exposure info (Problems 3, 4, 5); Difficult to supplement with industry info
 
+***
+
+Side note on tax impact, reinsurer liabilities are much longer tail than primary and there for the discounted liabilities are smaller and will incur greater income tax
+
 ## 6 Components to a Reinsurance Loss Reserve
+
+6 components of a reinsurer's loss reserve
 
 1) **Case reserve** reported by *cedent*
 
-    * Summary reporting for proportional contracts
+    * Can **individual case reports** (XS contracts) or reported in **bulk** (proportional contracts)
     
-    * Individual case reports for XS contracts
+2) **Additional Case reserve** from reinsurer (ACR)
+
+    * From reinsurer's claim department's review of individual case reserve reports
     
-2) **Additional Case reserve** from reinsurer
+    * May vary considerably by contract and cedant
 
 3) **IBNER**
 
@@ -106,44 +136,124 @@ Standard techniques requires: Homogeneous book, sufficient frequency, and detail
 
     * For tabular discount as well as for tax purposes
     
+    * Tabular discount is on (WC permanent total, auto PIP annuity claims and medical PL)
+    
 6) **Risk Load**
 
     * For adverse deviation so uncertain income doesn't flow into profits too quickly
+    
+    * Can be implicitly built into the reserving assumptions or explicitly
     
 ## Reinsurance Reserving Procedure
 
 Partition $\Rightarrow$ Development Patterns $\Rightarrow$ Estimate $\Rightarrow$ Monitor and AvE
 
-### Portfolio Partition
+1. Partition into homogenous exposure groups that are consistent over time with respect to mix of business
+
+2. Analyze historical development; Ideally, consider case and emergence of IBNR claims separately
+
+3. Estimate future development; Ideally, estimate IBNER and pure IBNR separately
+
+4. Monitor and testin predictions (AvE)
+
+### Step (1): Portfolio Partition
 
 Data needs to be split into reasonably **homogenous** exposure groups that are relatively **consistent over time** with respect to mix of business (exposures)
 
+* Group policies with similar report lags and development profile
+
 Variables to consider when partitioning data in approximately priority order:
 
-**LoB**  
-**Contract type** (fac, treaty, finite)  
-**Types of Cover** (QS, SS, XS per risk/occ, agg XS, CAT, LPT)   
-**Primary LoB** (for cas)  
-**Attachment Point** (for cas)  
-**Contract terms** (flat-rates, retro rated, sunset clause, LAE share, CM, Occ)  
-**Type of cedant** (Small, large, E&S)  
-**Intermediary** (brokers)
+* **LoB**  
 
-![](figures/FullSizeRender.jpg)
+* **Contract type** (fac, treaty, finite)  
+
+* **Types of Cover** (QS, SS, XS per risk/occ, agg XS, CAT, LPT)   
+
+* **Primary LoB** (for cas)  
+
+* **Attachment Point** (for cas)  
+
+* **Contract terms** (flat-rated, retro rated, sunset clause, LAE share, CM, Occ)  
+
+* **Type of cedant** (Small, large, E&S)  
+
+* **Intermediary** (brokers)
+
+```{r ptf-part, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Portfolio Partition'}
+knitr::include_graphics('figures/FullSizeRender0.jpg')
+```
+
+Example:
+
+* Start with the LoB or some other major categories
+
+* Further breakdown into fac or treaty
+
+* All significant XS exposure should be further brokendown by type of retention (e.g. per-occ XS vs agg XS)
+
+* Treaty casualty XS should be further brokendown by attachment point range and primary LoB (e.g. AL, GL, PL, WC, etc)
+
+* Treaty casualty proportional should be brokendown by first dollor primary layers (group-up) vs higher excess layer (excess)
+
+    * Do we also breakdown by primarly line?
+    
+* Facultative casualty: breakdown by automatice primary programs (pro rata share of group-up exposure) vs automatic nonprimary programs (excess)
+    
+* Certificate exposure should ideally be split by attachment point range
+
+    * Or at least buffer vs umbrella layer and then further by primary line
+    
+* For property and other exposure: split by pricing categories
 
 Need to **balance** *homogeneity* with *credibility* of data
 
-Review loss statistics and reporting pattern to see if data is still credible
+* Review loss statistics and reporting pattern to see if data is still credible
 
-### Analyze Distorical Data and Projection
+* Leverage u/w-er, claim handlers and data processors to determine which variables are the most important
 
-**Backwards** looking (Step 2):  
+### Step (2) & (3): Analyze Distorical Data and Projection
+
+**Backward** looking of historical data (Step 2):  
 Analyze the historical development patterns. If possible, consider individual case reserve development and the emergence of IBNR claims separately
 
 * Use long periods where practical and curve fit where practical
 
-**Forward** looking projection (Step 3):  
+**Forward** looking and projection (Step 3):  
 Estimate the future development. If possible, estimate the bulk reserve for IBNER and pure IBNR separately
+
+#### Claim Report and Payment Lags
+
+We want to find stable expected development pattern for homogenous categories
+
+```{definition}
+$y = Rlag(t)$
+
+Report lag $= \dfrac{1}{ATU \text{at time }t} =$ % Reported to Date
+```
+
+```{remark}
+Benefits of the above definition:
+
+* We can fit a parametric curve (see Clark) to smooth curves to compute the tail
+
+    e.g. Gamma with $\mu$ = 2.5 years and $\sigma$ = 1.5 years (Figure \@ref(fig:gamma-rpt-lag))
+
+* $Rlag(t)$ can be interpret as probability that any particular claims dollar will be reported to the reinsure by time $t$
+
+* We can compute statistics such as the expected value to compare one claim report pattern with another
+```
+
+```{r gamma-rpt-lag, fig.cap = "Claims report lag based on Gamma distribution", echo = FALSE}
+data_frame(x = seq(0,0.999, 0.001)) %>%
+  mutate(y = qgamma(x, shape = 2.5^2 / 1.5, scale = 1.5/2.5)) %>% 
+  ggplot(aes(y,x)) + 
+  geom_line() +
+  labs(title = "Claims Report lag",
+       subtitle = "Based on gamma with mean = 2.5 and s.d. = 1.5",
+       x = "Years",
+       y = "% Reported")
+```
 
 #### Short Tailed Lines
 
@@ -225,7 +335,7 @@ Fit losses reported to date to a curve
 
 Model claim counts or use stochastic model (Bootstrap). Caveat being that it might be difficult to explain to management
 
-### Monitoring and Testing Predictions
+### Step (4): Monitoring and Testing Predictions
 
 Compare AvE over quarters and do this for several quarters to see if any trends become apparent
 
