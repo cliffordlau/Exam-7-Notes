@@ -257,27 +257,86 @@ data_frame(x = seq(0,0.999, 0.001)) %>%
 
 #### Short Tailed Lines
 
-Settlement is quick, basic methods work fine
+Loss reporting and settlement is quick
 
-For property, beware of recent CATs
+$\therefore$ Use method that provide reasonable accuracy for the least effort and cost
 
-Exclude the high layers for XS property
+Table: (\#tab:short-tail-lines) Reinsurance categories that are usually short-tailed
 
-Exclude construction for Fac Prop
+| Category I^1^ | Category II | Category III |
+| ------------ | ------------ | ------------ |
+| Property | Treaty | Proportional |
+| Property | Treaty | Cat |
+| Property | Treaty | Excess^2^ |
+| Property | Facultative^3^ |  |
+| Fidelity |  | Proportional |
 
-Fidelity proportional is short tail as well
+1. For property, beware of recent cat events
 
-Book LR for new lines and maybe allocate claims to AY for reserving
+2. Exclude high layers for XS property
+
+3. Exclude construction
+    
+* International exposure can have significant reporting delay as well
+
+**Methods**:
+
+* Set IBNR = % of the last 12 months' EP
+
+    * Reasonable for non-major-cat "filtered" claims 
+    
+    * Claims for major cat may not be fully reported and finalized for years even on proportional covers
+
+* Book LR for new lines
+
+* Allocate claims to AY for reserving (based on historical information)
+
+    * U/w year (or treat year) will have extra lag
+    
+        Treaty effective 1/1/16 will cover policies inception from 1/1/16 to 12/31/16 and therefore can cover accidents that happens in 12/31/17 $\Rightarrow$ 2 years after the inception of the treaty
 
 #### Medium Tailed Lines
 
-Average dollar lag of 1-2 years and nearly complete within 5 years
+```{definition}
+Medium-taild exposure
 
-XS Property (separate from working layers), Construction (separate from other), Surety, XS Fidelity, Marine, Agg XS (non-casualty)
+* Average dollar lag of 1-2 years
 
-Surety should estimate gross and recovery separately as the recovery has a longer tail
+* Almost completely settled within 5 years
 
-Chainladder works fine for paid and incurred with or without ACR
+* Over half the ultimate losses are reported within 2 years
+```
+
+Table: (\#tab:medium-tail-lines) Reinsurance categories that are usually medium-tailed
+
+| Category I | Category II | Category III |
+| ------------ | ------------ | ------------ |
+| Property | Treaty | Excess (High layers)^1^ |
+| Construction^2^ | | |
+| Surety | | |
+| Fidelity | | Excess |
+| Ocean Marine | | |
+| Inland Marine | | |
+| Property | | International |
+| Non-casualty | | Aggregate excess^3^ |
+
+1. Ideally seperate from working layers
+
+    * Ultimate value may not be known immediately and will take longer to penetrate higher per-risk XS attachment point
+
+2. Ideally separate from other property exposures
+
+    * Discovery period can extend years beyond the contract period
+
+3. Lags are longer then the underlying exposure
+
+* For surety should estimate gross and recovery separately as the recovery has a longer tail
+
+    * Consider the ratio of salvage to gross loss for mature years
+
+**Methods**
+
+* Chainladder works fine for paid and incurred with or without ACR
 
 #### Long Tailed Lines
 

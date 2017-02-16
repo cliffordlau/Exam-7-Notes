@@ -224,19 +224,153 @@ Figure 12.2: Claims report lag based on Gamma distribution
 </div>
 <div id="short-tailed-lines" class="section level4">
 <h4><span class="header-section-number">12.3.2.2</span> Short Tailed Lines</h4>
-<p>Settlement is quick, basic methods work fine</p>
-<p>For property, beware of recent CATs</p>
-<p>Exclude the high layers for XS property</p>
-<p>Exclude construction for Fac Prop</p>
-<p>Fidelity proportional is short tail as well</p>
-<p>Book LR for new lines and maybe allocate claims to AY for reserving</p>
+<p>Loss reporting and settlement is quick</p>
+<p><span class="math inline">\(\therefore\)</span> Use method that provide reasonable accuracy for the least effort and cost</p>
+<table>
+<caption><span id="tab:short-tail-lines">Table 12.1: </span> Reinsurance categories that are usually short-tailed</caption>
+<thead>
+<tr class="header">
+<th>Category I<sup>1</sup></th>
+<th>Category II</th>
+<th>Category III</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Property</td>
+<td>Treaty</td>
+<td>Proportional</td>
+</tr>
+<tr class="even">
+<td>Property</td>
+<td>Treaty</td>
+<td>Cat</td>
+</tr>
+<tr class="odd">
+<td>Property</td>
+<td>Treaty</td>
+<td>Excess<sup>2</sup></td>
+</tr>
+<tr class="even">
+<td>Property</td>
+<td>Facultative<sup>3</sup></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Fidelity</td>
+<td></td>
+<td>Proportional</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><p>For property, beware of recent cat events</p></li>
+<li><p>Exclude high layers for XS property</p></li>
+<li><p>Exclude construction</p></li>
+</ol>
+<ul>
+<li>International exposure can have significant reporting delay as well</li>
+</ul>
+<p><strong>Methods</strong>:</p>
+<ul>
+<li><p>Set IBNR = % of the last 12 months’ EP</p>
+<ul>
+<li><p>Reasonable for non-major-cat “filtered” claims</p></li>
+<li><p>Claims for major cat may not be fully reported and finalized for years even on proportional covers</p></li>
+</ul></li>
+<li><p>Book LR for new lines</p></li>
+<li><p>Allocate claims to AY for reserving (based on historical information)</p>
+<ul>
+<li><p>U/w year (or treat year) will have extra lag</p>
+<p>Treaty effective 1/1/16 will cover policies inception from 1/1/16 to 12/31/16 and therefore can cover accidents that happens in 12/31/17 <span class="math inline">\(\Rightarrow\)</span> 2 years after the inception of the treaty</p></li>
+</ul></li>
+</ul>
 </div>
 <div id="medium-tailed-lines" class="section level4">
 <h4><span class="header-section-number">12.3.2.3</span> Medium Tailed Lines</h4>
-<p>Average dollar lag of 1-2 years and nearly complete within 5 years</p>
-<p>XS Property (separate from working layers), Construction (separate from other), Surety, XS Fidelity, Marine, Agg XS (non-casualty)</p>
-<p>Surety should estimate gross and recovery separately as the recovery has a longer tail</p>
-<p>Chainladder works fine for paid and incurred with or without ACR</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-3" class="definition"><strong>Definition 12.2 </strong></span>Medium-taild exposure</p>
+<ul>
+<li><p>Average dollar lag of 1-2 years</p></li>
+<li><p>Almost completely settled within 5 years</p></li>
+<li>Over half the ultimate losses are reported within 2 years
+</div>
+<p></p></li>
+</ul>
+<table>
+<caption><span id="tab:medium-tail-lines">Table 12.2: </span> Reinsurance categories that are usually medium-tailed</caption>
+<thead>
+<tr class="header">
+<th>Category I</th>
+<th>Category II</th>
+<th>Category III</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Property</td>
+<td>Treaty</td>
+<td>Excess (High layers)<sup>1</sup></td>
+</tr>
+<tr class="even">
+<td>Construction<sup>2</sup></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Surety</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Fidelity</td>
+<td></td>
+<td>Excess</td>
+</tr>
+<tr class="odd">
+<td>Ocean Marine</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Inland Marine</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Property</td>
+<td></td>
+<td>International</td>
+</tr>
+<tr class="even">
+<td>Non-casualty</td>
+<td></td>
+<td>Aggregate excess<sup>3</sup></td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><p>Ideally seperate from working layers</p>
+<ul>
+<li>Ultimate value may not be known immediately and will take longer to penetrate higher per-risk XS attachment point</li>
+</ul></li>
+<li><p>Ideally separate from other property exposures</p>
+<ul>
+<li>Discovery period can extend years beyond the contract period</li>
+</ul></li>
+<li><p>Lags are longer then the underlying exposure</p></li>
+</ol>
+<ul>
+<li><p>For surety should estimate gross and recovery separately as the recovery has a longer tail</p>
+<ul>
+<li>Consider the ratio of salvage to gross loss for mature years</li>
+</ul></li>
+</ul>
+<p><strong>Methods</strong></p>
+<ul>
+<li>Chainladder works fine for paid and incurred with or without ACR</li>
+</ul>
 </div>
 <div id="long-tailed-lines" class="section level4">
 <h4><span class="header-section-number">12.3.2.4</span> Long Tailed Lines</h4>
