@@ -16,9 +16,9 @@ Know the [7 problems of reinsurance reserving](#prob-of-re)
 
 7. Reserve to surplus ratio is higher for reinsurer
 
-* General theme: Heterogeneity, lower frequency, lack of detailed exposure information
+* General theme: Heterogeneity, low frequency & high severity, lack of detailed (exposure & claims) information, longer lag
 
-Know the components of reinurance reserve
+Know the components of reinsurance reserve
 
 4 steps of setting reinsurance reserve:
 
@@ -58,7 +58,7 @@ Problem 2: **Persistent Upward Development of Most Claim Reserves**
 
     * Not initially clear which of a group of similar claims will become large so choose the same mostly likely value for all
     
-    * Modal value likely under attachement point of treaty so reinsurer does not learn about claim until it is known to be large, which may be several years after reported to primary insurer
+    * Modal value likely under attachment point of treaty so reinsurer does not learn about claim until it is known to be large, which may be several years after reported to primary insurer
 
 Problem 3: **Reporting Pattern Differ Greatly**
 
@@ -90,7 +90,7 @@ Problem 5: **Reports Received Lack Important Information**
     
     * To the degree that these % do not accurately reflect the reinsurer's loss exposure by primary line, comparisons of premiums and losses by line maybe be distorted
     
-    * Mostly a problem for multi-line porportional treaties
+    * Mostly a problem for multi-line proportional treaties
     
 * Reporting is typically done with a quarter lag so always missing a quarter of premium
 
@@ -148,13 +148,13 @@ Side note on tax impact, reinsurer liabilities are much longer tail than primary
 
 Partition $\Rightarrow$ Development Patterns $\Rightarrow$ Estimate $\Rightarrow$ Monitor and AvE
 
-1. Partition into homogenous exposure groups that are consistent over time with respect to mix of business
+1. Partition into homogeneous exposure groups that are consistent over time with respect to mix of business
 
 2. Analyze historical development; Ideally, consider case and emergence of IBNR claims separately
 
 3. Estimate future development; Ideally, estimate IBNER and pure IBNR separately
 
-4. Monitor and testin predictions (AvE)
+4. Monitor and testing predictions (AvE)
 
 ### Step (1): Portfolio Partition
 
@@ -190,15 +190,15 @@ Example:
 
 * Further breakdown into fac or treaty
 
-* All significant XS exposure should be further brokendown by type of retention (e.g. per-occ XS vs agg XS)
+* All significant XS exposure should be further broken down by type of retention (e.g. per-occ XS vs agg XS)
 
-* Treaty casualty XS should be further brokendown by attachment point range and primary LoB (e.g. AL, GL, PL, WC, etc)
+* Treaty casualty XS should be further broken down by attachment point range and primary LoB (e.g. AL, GL, PL, WC, etc)
 
-* Treaty casualty proportional should be brokendown by first dollor primary layers (group-up) vs higher excess layer (excess)
+* Treaty casualty proportional should be broken down by first dollar primary layers (group-up) vs higher excess layer (excess)
 
-    * Do we also breakdown by primarly line?
+    * Do we also breakdown by primary line?
     
-* Facultative casualty: breakdown by automatice primary programs (pro rata share of group-up exposure) vs automatic nonprimary programs (excess)
+* Facultative casualty: breakdown by automatic primary programs (pro rata share of group-up exposure) vs automatic nonprimary programs (excess)
     
 * Certificate exposure should ideally be split by attachment point range
 
@@ -224,10 +224,10 @@ Estimate the future development. If possible, estimate the bulk reserve for IBNE
 
 #### Claim Report and Payment Lags
 
-We want to find stable expected development pattern for homogenous categories
+We want to find stable expected development pattern for homogeneous categories
 
 ```{definition}
-$y = Rlag(t)$
+$y = Rlag(t) = p_k$ ($p_k$ is the Clark notation)
 
 Report lag $= \dfrac{1}{ATU \text{at time }t} =$ % Reported to Date
 ```
@@ -245,6 +245,8 @@ Benefits of the above definition:
 ```
 
 ```{r gamma-rpt-lag, fig.cap = "Claims report lag based on Gamma distribution", echo = FALSE}
+library(dplyr)
+library(ggplot2)
 data_frame(x = seq(0,0.999, 0.001)) %>%
   mutate(y = qgamma(x, shape = 2.5^2 / 1.5, scale = 1.5/2.5)) %>% 
   ggplot(aes(y,x)) + 
@@ -279,7 +281,7 @@ Table: (\#tab:short-tail-lines) Reinsurance categories that are usually short-ta
     
 * International exposure can have significant reporting delay as well
 
-**Methods**:
+***Estimation Methods***
 
 * Set IBNR = % of the last 12 months' EP
 
@@ -309,18 +311,18 @@ Medium-taild exposure
 
 Table: (\#tab:medium-tail-lines) Reinsurance categories that are usually medium-tailed
 
-| Category I | Category II | Category III |
-| ------------ | ------------ | ------------ |
-| Property | Treaty | Excess (High layers)^1^ |
-| Construction^2^ | | |
-| Surety | | |
-| Fidelity | | Excess |
-| Ocean Marine | | |
-| Inland Marine | | |
-| Property | | International |
-| Non-casualty | | Aggregate excess^3^ |
+| Category I | Category II | Category III | Category IV |
+| ------------ | ------------ | ------------ | ------------ |
+| Property | Treaty | Excess | High layers^1^ |
+| Construction^2^ | | | |
+| Surety | | | |
+| Fidelity | | Excess | |
+| Ocean Marine | | | |
+| Inland Marine | | | |
+| Property | | | International |
+| Non-casualty | | Excess | Aggregate^3^ |
 
-1. Ideally seperate from working layers
+1. Ideally separate from working layers
 
     * Ultimate value may not be known immediately and will take longer to penetrate higher per-risk XS attachment point
 
@@ -334,77 +336,142 @@ Table: (\#tab:medium-tail-lines) Reinsurance categories that are usually medium-
 
     * Consider the ratio of salvage to gross loss for mature years
 
-**Methods**
+***Estimation Methods***
 
 * Chainladder works fine for paid and incurred with or without ACR
 
 #### Long Tailed Lines
 
-Any time of casualty reinsurance, XS Cas is the longest before APH
+```{definition}
+Long-taild exposure
 
-APH should be analyzed separately:
+* Exposures which the average aggregate claims dollar report lag is over 2 years
 
-* Use different methods specifically for APH
+* Claims are not settled for many years
+```
 
-* Separate commuted contracts
+Table: (\#tab:medium-tail-lines) Reinsurance categories that are usually long-tailed
 
-***Chainladder***:
+| Category I | Category II | Category III | Category IV |
+| ------------ | ------------ | ------------ |------------ |
+| Casualty | Treaty | Excess^1^ | |
+| Casualty | Treaty | Proportional^2^ | |
+| Casualty | Facultative | | |
+| Casualty | | Excess | Aggregate^3^ |
+| APH^4^ | | | |
 
-* Don't use, too much leverage
+1. Longest lags except for APH
 
-***BF***:
+2. Some of this exposure maybe medium-tailed
 
-* Better than CL
+3. Lag are longer than for the underlying exposure
 
-* Dependent on selected LR
+4. Asbestos, pollution, and other health hazard and mass tort claims
 
-    * Consider u/w cycle in selecting LR since AY LR is strongly correlated to the place in the reinsurance profitability cycle
-
-    * May use LR from pricing work
+    * Longest of the long tail
     
-***Stanard Buhlmann***:
-
-* Must on-level the historical premium and adjust to be pure premium
-
-    * Remove commissions and brokerage and internal expenses (but might not worth the effort)
-
-    * Remove any suspected rate level differences
-
-* $ELR = \dfrac{\sum C_k}{\sum E_k p_k}$
-
-    * $C_k$: reported to date; $E_k$: Adj Prem; $p_k$: expected % reported to date
-
-* Estimate ELR using actual incurred loss
-
-* Sensitive to the accurary of the onlevel EP
+    * Should be remove from data and analyzed separately
     
-***Credibility IBNR Estimates***:
+    * Use methods specifically for APH
+    
+    * Exclude claims from commuted contracts as they distort development patterns
+    
+* Need to separate the above into finer, more homogeneous categories (e.g. separate claims-made and occurrence coverage)
 
-Weight the CL method with SB or BF
+***Estimation Methods***
 
-* $R_k = Z \cdot R_{CL} + (1-Z) \cdot R_{SB}$
+* **Chainladder** (*BF*):
 
-* $Z_k = p_k \cdot CF$, $CF \in [0,1]$
+    Don't use, too much leverage
 
-* $CF$ is the credibility factor, Benktander = 1, BF = 0\
+* **Bornhuetter-Ferguson** (*CL*):
 
-***Alt Methods***:
+    Better than *CL*, correlate future development with an exposure measure (reinsurance premium): Premium $\times$ ELR
 
-Fit losses reported to date to a curve
+    * Caveat 1): Very dependent on selected LR
+    
+        LR for a given AY is strongly correlated with the underwriting cycle as well as the reported loss to date
+        
+        $\therefore$ need to consider the u/w cycle in ELR pick
+        May use LR from pricing work
+        
+    * Caveat 2): Estimate for each AY does not reflect the reported to date (unless the selected LR is chosen with that in mind)
 
-Model claim counts or use stochastic model (Bootstrap). Caveat being that it might be difficult to explain to management
+* **Stanard Buhlmann** (*SB* or Cape Cod in Europe):
+
+    $ELR = \dfrac{\sum C_k}{\sum E_k p_k}$
+
+    * $C_k$: reported to date; $E_k$: Adj Prem; $p_k$: expected % reported to date; $k$ is the exposure year
+    
+    * Must on-level the historical premium and adjust to be pure premium ($E_k$)
+
+        * Remove commissions and brokerage and internal expenses (but might not worth the effort)
+
+        * Remove any suspected rate level differences (so each year have the same ELR)
+        
+    * *SB* IBNR $= E_k(1-p_k) \times ELR$
+    
+    * Remark:
+    
+        This estimate of the ELR use actual incurred loss
+
+        Method is sensitive to the accurary of the on-level EP
+    
+* **Credibility IBNR Estimates**:
+
+    Weight the *CL* method with *SB* or *BF*
+    
+    Reserve for year $k$: $\hat{R}_k = Z_k \times R^{CL}_k + (1-Z_k)\times R^{SB}_k$
+
+    * $Z_k = p_k \times CF$; Credibility Factor $CF \in [0,1]$
+
+        $CF = 0$ $\Rightarrow$ *BF*
+    
+        $CF = 1$ $\Rightarrow$ Benktander (*GB*)
+        
+    * Can also weight together the IBNR estimate from paid loss method
+    
+        Case reserve are based on judgement of many people and can vary over time (lack consistency) $\Rightarrow$ Given long enough paid history, paid estimate might be more stable and credible
+        
+    * Or weight with *BF* based on different a-priori (e.g. based on pricing ELR)
+
+* **Alternative Methods**:
+
+    * Fit losses reported to date to a curve (Clark)
+    
+        Practical problem: negative incrementals (get around by grouping over different periods)
+
+    * Model claim counts and use stochastic model (Bootstrap) for the whole claims development process
+    
+        Caveat: difficult to explain to management
+        
+        Advantage: Can contemplate intuitively satisfying models for various lag distributions
+        
+        * Time from loss to first report and lag from report to settlement
+        
+        * Connect the lags with appropriate models for the dollar reserving and payments on individual claims up through settlement
 
 ### Step (4): Monitoring and Testing Predictions
 
 Compare AvE over quarters and do this for several quarters to see if any trends become apparent
 
-Expected = $\dfrac{\text{Expected % Reported in Period}}{\text{Expected % Unreported}} \times IBNR$
+* Forecast IBNR runoff over the quarters
 
-Sometime difficult to tell if the difference is large or small
+* Provides early warning if claims are emerging higher than expected
 
-Look for deviations over time and look for trends
+```{definition}
+Expected reported claims
 
-It could be IBNR is too small, claims are paying faster than expected, or just random fluctuation
+$\dfrac{\text{Expected % Reported in Period}}{\text{Expected % Unreported}} \times IBNR$
+```
+
+Caveat:
+
+* Can be difficult to tell if the AvE difference is large or small
+
+    $\therefore$ Look for deviations over time and look for trends
+
+* Deviation could be IBNR is too small, claims are paying faster than expected, or just random fluctuation
 
 ## Past Exam Questions
 
@@ -449,7 +516,7 @@ Haven't done TIA practice questions
 
 * 2011 #10 b: SB pros and cons
 
-* 2011 #11: report lag; upward developement; standard method not work; industry data not work
+* 2011 #11: report lag; upward development; standard method not work; industry data not work
 
 * 2012 #10 b-d: SB vs CL
 
@@ -467,11 +534,11 @@ Haven't done TIA practice questions
 
     * Heterogeneity patterns (each AYs have different retention)
 
-* 2015 #13 b: Reason to adjust EP for SB (e.g onlevel so LR for each AY is comparable, adjust for varying rate as SB assumes constant ELR)
+* 2015 #13 b: Reason to adjust EP for SB (e.g on-level so LR for each AY is comparable, adjust for varying rate as SB assumes constant ELR)
 
 **Calculations**
 
-* 1997 #11: SB (Use adjusted onlevel premium)
+* 1997 #11: SB (Use adjusted on-level premium)
 
 * 1998 #35: IBNR with CL, BF, SB
 

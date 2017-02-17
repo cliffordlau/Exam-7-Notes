@@ -35,7 +35,7 @@ $\begin{align}
 
 ### Method Comparison
 
-Table: (\#tab:GB-CL-BF-Comp) Comparison of Ulltimate Loss and Reserve for Different Methods
+Table: (\#tab:GB-CL-BF-Comp) Comparison of Ultimate Loss and Reserve for Different Methods
 
 | Method | Ultimate ($U$) | Reserve ($R$) |
 | ------------------------ | ------------------------ | ------------------------ |

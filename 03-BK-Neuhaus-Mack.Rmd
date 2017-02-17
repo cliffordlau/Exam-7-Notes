@@ -6,7 +6,7 @@ Everything is based on a special method to calculate the $ELR$ and $LDFs$
 
 * $LDFs$ are based $\dfrac{\text{Col LRs}}{ELR}$
 
-* Key is just to watch out for incremental vs cummulative
+* Key is just to watch out for incremental vs cumulative
 
 Know the $Z$ for different methods (Table \@ref(tab:method-tbl-cred))
 

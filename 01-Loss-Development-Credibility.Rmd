@@ -10,7 +10,7 @@
     
     * Remember to adjust for exposure if needed
 
-* Theorectical dis^n^ formulas: Poisson - Binomial (\@ref(prp:poi-bin)) and Negative Binomial - Binomail (\@ref(prp:nb-bin))
+* Theoretical dis^n^ formulas: Poisson - Binomial (\@ref(prp:poi-bin)) and Negative Binomial - Binomial (\@ref(prp:nb-bin))
 
 * Know the [conclusions](#conclusions) on LS
 
@@ -64,7 +64,7 @@ Notes:
 ```
 
 ```{block, calc-note, type='rmdtip'}
-Above caluclation can be done with the table features on TI-30XS
+Above calculation can be done with the table features on TI-30XS
 ```
 
 ### Caveat with Traditional Method {#Trad-Caveat}
@@ -183,11 +183,11 @@ Assume the loss reporting follows a theoretical distribution
 
 ### Comparing Loss Development Methods
 
-1. Simulate loss based on one of the theortical distribution
+1. Simulate loss based on one of the theoretical distribution
 
 2. Apply the various loss development method and calculate their respective parameters ($y = a + b x$)
 
-3. Compare the estimated parameters with the true parameters based on the underlying theortical distribution
+3. Compare the estimated parameters with the true parameters based on the underlying theoretical distribution
 
 4. Also compare the MSE from different methods
 
@@ -221,7 +221,7 @@ Table: (\#tab:bayes-variance) Intuitive interpretation of $L(x)$
 | $\mathrm{Cov(X,Y)} \approx 0$  | $L(X) \cong \mathrm{E[Y]}$ | $X$ and $Y$ are only loosely related $\Rightarrow$ Use ELR Method |
 | $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \cong \mathrm{E[Y]}$ | $X$ and $Y$ don't vary together | 
 | $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \left[\mathrm{E}[Y] - \mathrm{E}[X] \right]$ | Same as BF Method |
-| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | $X$ and $Y$ move togther, $Y$ is significantly influenced by $X$ | Use Dev Method |
+| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | $X$ and $Y$ move together, $Y$ is significantly influenced by $X$ | Use Dev Method |
 
 ### Practical Application (LS Development)
 
@@ -267,7 +267,7 @@ Alternative way to express $L(x)$, following Bühlmann credibility, we express $
 
     (i.e. Year to year changes in loss and loss distributions are small, or can be corrected for)
 
-Formula below requires addtional hypothesis (in paper appendix?)
+Formula below requires additional hypothesis (in paper appendix?)
 
 ***
 
