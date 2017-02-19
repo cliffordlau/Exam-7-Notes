@@ -1,6 +1,4 @@
-# A6 Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack
-
-## Cliff's Summary
+# Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack
 
 Know the 3 **assumptions** of [chain ladder](#cl-ass)
 
@@ -30,6 +28,7 @@ $\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^
 **Confidence Interval**
 
 * [Normal](#ci-normal)
+
 * [Log-normal](#ci-log-normal)
 
 Know the 4 **test of assumptions**
@@ -72,64 +71,152 @@ Test 4. [Adjacent LDF Correlation](#adjacent-ldf)
 
 * Use $Z = 0.67$ for range of [25%, 75%]
 
-### Types of Exam Questions
+## Chain Ladder Assumptions {#cl-ass}
 
-<span style="color:red">Haven't done TIA practice questions</span>
+```{definition}
+Notations use for Mack
 
-<span style="color:red">Not historical questions on the MSE yet</span>
+* $c_{i,k} =$ cumulative losses for AY $i$ @ age $k$
 
-**Concepts**
+* $f_k =$ LDF from $k$ to $k + 1$
 
-* 2011 #3 b: CL method assumptions
-* 2012 #5: CL assumptions and whether they are met
-* 2014 #2: CL assumptions on intercept and residuals
-* 2014 #4 b: CL LS assumptions
+* $I =$ size of the triangle
+```
 
-**Assumption test**
+```{proposition, cl-ass-1, name = "Chain Ladder Assumption 1"}
+$\operatorname{E}\left [c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ] = c_{i,k} \: f_k$
 
-* $\star$ [2011 #3 a](#2011-3): CY Test
-* 2013 #3: Residuals test
-* 2013 #1: CY test and potential cause
-* $\star$ [2014 #4 a](#2014-4): Adjacent LDFs correlation test
-    * Has to use method from Venter?
-* 2015 #3: Residuals test and plot, remember to label them
-* 2015 #4: CY Test
-
-## Chain Ladder Assumptions
-
-**Definitions**
-
-$c_{i,k} =$ cumulative losses for AY $i$ @ age $k$
-
-$f_k =$ LDF from $k$ to $k + 1$
-
-<a name="cl-ass"><a/>**3 + 1 Assumptions**
-
-1) $\operatorname{E}\left [c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ] = c_{i,k} \: f_k$
-
-    * Expected incremental losses are $\propto$ losses reported to date
+* Expected incremental losses are $\propto$ losses reported to date
     
-    * Proportion depends on the age of AY
+* Proportion depends on the age of AY
     
-2) $\left \{c_{i,1} \cdots c_{i,I} \right \} \: {\perp\!\!\!\perp} \: \left \{c_{j,1} \cdots c_{j,I} \right \}$ for $i \neq\ j$
+```
 
-    * Losses in each AYs are ${\perp\!\!\!\perp}$ of the losses in other AYs
-    
-    * $I =$ size of the triangle
-    
-    * This assumption make our estimate unbiased
-    
-3) $\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
+```{proposition, cl-ass-2, name = "Chain Ladder Assumption 2"}
+$\left \{c_{i,1} \cdots c_{i,I} \right \} \: {\perp\!\!\!\!\perp} \: \left \{c_{j,1} \cdots c_{j,I} \right \}$ for $i \neq\ j$
 
-    * Variance of the incremental losses is $\propto$ losses reported to date
+* Losses in each AYs are ${\perp\!\!\!\!\perp}$ of the losses in other AYs
     
-    * Proportion depends on the age of AY
-    
-    * $\hat{f}_k$ is selected to minimize the variance
-    
-4) = (1) & (3) Variance is $\propto$ mean
+* This assumption make our estimate unbiased
 
-    * If variance follows distribution x, then it implies the variance is $\propto$ loss
+```
+
+```{proposition, cl-ass-3, name = "Chain Ladder Assumption 3"}
+$\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
+
+* Variance of the incremental losses is $\propto$ losses reported to date
+    
+* Proportion depends on the age ($k$) of AY (i.e. same for each column but varies for each column)
+    
+* $\hat{f}_k$ is selected to minimize the variance
+
+```
+
+Need to double check on the below:
+
+```{proposition, cl-ass-4, name = "Chain Ladder Assumption 4"}
+Variance is $\propto$ mean
+
+* Based on assumption 1 and 3 (proposition \@ref(prp:cl-ass-1) & proposition \@ref(prp:cl-ass-3))
+
+* If variance follows distribution x, then it implies the variance is $\propto$ loss
+```
+
+### Implications of Assumptions
+
+When using *CL*, we are making assumptions on how we select the factor $\hat{f}_k$ and the application $\hat{c}_{i,k+1} = c_{i,k} \times \hat{f}_k$
+
+Which requires the following assumptions:
+
+1. Unbiased estimate of each $f_k$
+
+    * $\mathrm{E}\left[ \hat{f}_k \right] = f_k$
+    
+        $\hat{f}_k$ are representative of the true $f_k$
+
+    * Based on assumption 1 & 2 (prop. \@ref(prp:cl-ass-1) & prop. \@ref(prp:cl-ass-2))
+
+2. Unbiased estimate of Ultimate
+
+    * $\mathrm{E}\left[ \hat{c}_{iI} \right] = c_{ik} \times \hat{f}_k \times \cdots \times \hat{f}_{I-1} = \mathrm{E}\left[ c_{iI} \right]$
+    
+        Multiplying the $\hat{f}_k$'s by the paid to date will give us an unbiased estimate of the future losses
+
+    * Based on assumption 1 & 2 (prop. \@ref(prp:cl-ass-1) & prop. \@ref(prp:cl-ass-2))
+
+3. To use volume weighted average LDF
+
+    * Based on assumption 3 (prop. \@ref(prp:cl-ass-3))
+    
+4. To calculate the confidence interval
+
+    * Based on assumption 3 (prop. \@ref(prp:cl-ass-3))
+
+### Proof for Assumption 3
+
+```{block, type='rmdcaution'}
+Work in progress section
+```
+
+To estimate $f_k$ we can weight the historical LDFs in many different ways, putting it in general terms:
+
+$$\hat{f}_k = \sum_i \left( \dfrac{c_{i,k+1}}{c_{i,k}} \right) \times w_{i,k} \:\:\:\: : \:\:\:\: \sum_i w_{i,k} = 1$$
+
+```{remark}
+We assume each of the $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ are an unbiased estimate of $f_k$
+
+* From assumption 1 & 2?
+
+$\therefore$ Any weighting of them is also unbiased
+```
+
+```{remark}
+When we use weighted volume average $w_{i,k} = \dfrac{c_{i,k}}{\sum \limits_{j} c_{j,k}}$
+```
+
+***
+
+The weights that minimize the variance is inversely proportional to the variance of the item we are estimating
+
+* We want weights $w_{i,k}$ for each $i$ on $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$
+
+* The weight we apply to each $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ varies based on the variance of $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$
+
+* And if $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ has high variance its weight will be lower to minimize the total variance of our estimate of $\hat{f}_k = \left( \dfrac{c_{1,k+1}}{c_{1,k}} \right) \times w_{1,k} + \cdots + \left( \dfrac{c_{I,k+1}}{c_{I,k}} \right) \times w_{I,k}$
+
+High variance estimate get lower weight:
+
+$$\dfrac{1}{w_{i,k}} \propto \mathrm{Var}\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$$
+
+Since $c_{i,k}$ is known, we can pull it out of the variance term
+
+$$\dfrac{1}{w_{i,k}} \propto \dfrac{\mathrm{Var}(c_{i,k+1})}{c_{i,k}^2}$$
+
+and we get
+
+\begin{equation}
+  w_{i,k} \times \mathrm{Var}(c_{i,k+1}) \propto c_{i,k}^2
+  (\#eq:var-weight)
+\end{equation}
+
+***
+
+Recall the weight for the volume weighted average is:
+
+$$\begin{align}
+  w_{i,k} &= \dfrac{c_{i,k}}{\sum \limits_{j} c_{j,k}}\\
+  w_{i,k} &\propto c_{i,k}\\
+\end{align}$$
+
+Applying the above to equation \@ref(eq:var-weight) we get:
+
+$$\begin{align}
+  c_{i,k} \times \mathrm{Var}(c_{i,k+1}) &\propto c_{i,k}^2 \\
+  \mathrm{Var}(c_{i,k+1}) &\propto c_{i,k} \\
+  \mathrm{Var}(c_{i,k+1}) &= \alpha^2_k \times c_{i,k} \\
+\end{align}$$
+
+And we have chainladder assumption 3 (Prop. \@ref(prp:cl-ass-3))
 
 ## LDF Selections Assumptions
 
@@ -336,10 +423,48 @@ Venter has a method too
 
 ## Past Exam Questions
 
-<a name="2011-3"></a>
-![](questions/2011-3Q.png)
-![](questions/2011-3A.png)
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
 
-<a name="2014-4"></a>
-![](questions/2014-4Q.png)
-![](questions/2014-4A.png)
+```{block, type='rmdcaution'}
+No historical questions on the MSE yet
+```
+
+**Concepts**
+
+* 2011 #3 b: CL method assumptions
+
+* 2012 #5: CL assumptions and whether they are met
+
+* 2014 #2: CL assumptions on intercept and residuals
+
+* 2014 #4 b: CL LS assumptions
+
+**Assumption test**
+
+* $\star$ 2011 #3 a (fig \@ref(fig:2011-3)): CY Test
+
+* 2013 #3: Residuals test
+
+* 2013 #1: CY test and potential cause
+
+* $\star$ 2014 #4 a (fig \@ref(fig:2014-4)): Adjacent LDFs correlation test
+
+    * Has to use method from Venter?
+
+* 2015 #3: Residuals test and plot, remember to label them
+
+* 2015 #4: CY Test
+
+### Question Highlights
+
+```{r 2011-3, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2011 Question 3'}
+knitr::include_graphics('questions/2011-3Q.png')
+knitr::include_graphics('questions/2011-3A.png')
+```
+
+```{r 2014-4, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2014 Question 4'}
+knitr::include_graphics('questions/2014-4Q.png')
+knitr::include_graphics('questions/2014-4A.png')
+```

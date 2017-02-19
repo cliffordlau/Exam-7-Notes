@@ -36,6 +36,8 @@ I. **Estimation of Policy Liabilities** (14 chapters)
     
     4. Mack (1994)
     
+        *Measuring the Variability of Chain Ladder Reserve Estimate*
+    
     5. Venter Factors
     
     6. Clark

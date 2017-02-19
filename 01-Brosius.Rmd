@@ -452,7 +452,7 @@ Subject to sampling error when estimating parameters similar to other methods
 
 ## Past Exam Questions
 
-```{block, TIA-Q, type='rmdcaution'}
+```{block, type='rmdcaution'}
 Haven't done TIA practice questions
 ```
 
