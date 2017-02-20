@@ -160,7 +160,10 @@ Work in progress section
 
 To estimate $f_k$ we can weight the historical LDFs in many different ways, putting it in general terms:
 
-$$\hat{f}_k = \sum_i \left( \dfrac{c_{i,k+1}}{c_{i,k}} \right) \times w_{i,k} \:\:\:\: : \:\:\:\: \sum_i w_{i,k} = 1$$
+\begin{equation}
+  \hat{f}_k = \sum_i \left( \dfrac{c_{i,k+1}}{c_{i,k}} \right) \times w_{i,k} \:\:\:\: : \:\:\:\: \sum_i w_{i,k} = 1
+  (\#eq:wtd-ldf)
+\end{equation}
 
 ```{remark}
 We assume each of the $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ are an unbiased estimate of $f_k$
@@ -220,9 +223,7 @@ And we have chainladder assumption 3 (Prop. \@ref(prp:cl-ass-3))
 
 ## LDF Selections Assumptions
 
-$\begin{align}
-  \hat{f_k} = \frac{\sum_j \overbrace{\frac{c_{j,k+1}}{c_{j,k}}}^{LDF_j} \: w_{j,k}}{\sum_j w_{j,k}}
-  \end{align}$
+Recall equation \@ref(eq:wtd-ldf) and \@ref(eq:var-weight)
 
 | Weight $w_{j,k}$ | Description | Variance | Residual |
 | ---------------- | ----------- | -------- | -------- |
