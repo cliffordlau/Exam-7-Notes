@@ -25,11 +25,11 @@ $\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^
   \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} & \text{else}\\
 \end{cases}$
 
-**Confidence Interval**
+Confidence Interval
 
-* [Normal](#ci-normal)
+* Normal: equation \@ref(eq:normal-ci)
 
-* [Log-normal](#ci-log-normal)
+* Log-normal: equation \@ref(eq:lognormal-ci)
 
 Know the 4 **test of assumptions**
 
@@ -78,7 +78,7 @@ Notations use for Mack
 
 * $c_{i,k} =$ cumulative losses for AY $i$ @ age $k$
 
-* $f_k =$ LDF from $k$ to $k + 1$
+* $f_k =$ LDF from $k$ to $k + 1$, $k \in [1:I-1]$
 
 * $I =$ size of the triangle
 ```
@@ -221,15 +221,19 @@ $$\begin{align}
 
 And we have chainladder assumption 3 (Prop. \@ref(prp:cl-ass-3))
 
-## LDF Selections Assumptions
+### LDF Selections Assumptions
 
 Recall equation \@ref(eq:wtd-ldf) and \@ref(eq:var-weight)
 
-| Weight $w_{j,k}$ | Description | Variance | Residual |
-| ---------------- | ----------- | -------- | -------- |
-| 1                | Simple Average | $\alpha_k^2 \times \mathbf{c_{j,k}^2}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{j,k}^2}}}$ |
-| $c_{j,k}$        | Weighted Average | $\alpha_k^2 \times \mathbf{c_{j,k}}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{j,k}}}}$ |
-| $c_{j,k}^2$      | Least Square | $\alpha_k^2 \times \mathbf{1}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{1}}}$ |
+| Weight $w_{i,k}$ | Description | Variance | Residual \@ref(eq:residual-eq)|
+| --------------- | ------------------------ | ------------ | --------------- |
+| 1                | Simple Average | $\alpha_k^2 \times \mathbf{c_{i,k}^2}$ | $\varepsilon_{i,k} = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{i,k}^2}}}$ |
+| $c_{i,k}$        | Weighted Average | $\alpha_k^2 \times \mathbf{c_{i,k}}$ | $\varepsilon_{i,k} = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{i,k}}}}$ |
+| $c_{i,k}^2$      | Least Square^2^ | $\alpha_k^2 \times \mathbf{1}$ | $\varepsilon_{i,k} = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{\mathbf{1}}}$ |
+
+2. Note the least square here we are forcing the intercept through the origin
+
+    Assumption for LS is that variance is the same for each exposure year (See Brosius)
 
 * Use different method for LDF selection based on variance assumption
 
@@ -237,108 +241,211 @@ Recall equation \@ref(eq:wtd-ldf) and \@ref(eq:var-weight)
 
 ## Mean Squared Error
 
-<span style="color:red;background-color:yellow">Important Formulas</span>
+We wish to measure the average error between the ultimate losses $c_u$ and the estimate $\hat{c}_u$
 
-$\begin{align}
-  MSE(\hat{c}_{i,I}) = \operatorname{E}[(c_{i,I}-\hat{c}_{i,I})^2 \mid D]
-  \end{align}$
+$$\begin{align}
+  MSE(\hat{c}_{i,I}) = \mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I})^2 \mid D\right]
+  \end{align}$$
 
-* Average error between estimate and actual given data $D$
+```{remark}
+
+
+* Above represents the average error between estimate and actual utlimate given data to date $D$
 
 * Standard error: $s.e. = \sqrt{MSE}$
+```
 
-$\begin{align}
-  MSE(\hat{c}_{i,I}) = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
-\end{align}$
+Appling the properties of $\mathrm{Var}(X) = \mathrm{E}[X^2] - \mathrm{E}[X]^2$ we get
+
+$$MSE(\hat{c}_{i,I}) = \mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I})^2 \mid D\right] = \mathrm{Var}\left((c_{i,I}-\hat{c}_{i,I}) \mid D\right) + \left[\mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I}) \mid D\right]\right]^2$$
+
+We can pull out $\hat{c}_{i,I}$ from the variance and expectation term to get
+
+$$MSE(\hat{c}_{i,I}) = \underbrace{\mathrm{Var}\left(c_{i,I} \mid D\right)}_{\text{Process Variance}} + \underbrace{\left[\mathrm{E}\left[c_{i,I} \mid D\right] - \hat{c}_{i,I} \right]^2}_{\text{Parameter Variance}}$$
+
+***
+
+$R_i$ is the unpaid for year $i$: $R_i = c_{i,I} - c_{i,k}$
+
+So the estimate of the unpaid claim is $\hat{R}_i = \hat{c}_{i,I} - c_{i,k}$
+
+Since the difference between $\hat{R}_i$ and $\hat{c}_{i,I}$ is just paid to date (constant) so the MSE are the same
+
+$$MSE(\hat{R}_i) = MSE(\hat{c}_{i,I})$$
+
+### Applying the MSE Formula
+
+```{block2, type='rmdnote'}
+Important formulas below
+```
+
+\begin{equation}
+  MSE(\hat{c}_{i,I}) = \left[ s.e.(\hat{c}_{i,I}) \right]^2  = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f}_k^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
+  (\#eq:mse-formula)
+\end{equation}
+
+```{remark}
+
 
 * The big $\sum$ sum over the remaining years till ultimate
 
 * For bit outside the $\sum$ is same for the row
+```
 
-Proportions for the variance
+#### Estimating $\alpha$
 
-$\begin{align}
+```{block2, type='rmdnote'}
+Important formulas below
+```
+
+$\alpha$ is the proportions for the variance
+
+\begin{equation}
   \hat{\alpha}_k^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2
-\end{align}$
+  (\#eq:alpha-1)
+\end{equation}
 
-$\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
+```{remark}
+This one varies by age (columns), for each age:
+
+1. Calculate the difference^2^ of the LDFs for each AY and the selected
+
+2. Then multiply by each row's respective cumulative loss for that age
+
+3. Sum the above and then divide by the number of rows minus 1
+```
+
+$\alpha^2_{I-1}$ (e.g. $\alpha^2_9$ for a 10 $\times$ 10 triangle)
+
+\begin{equation}
+\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
   \hat{\alpha}_{I-3}^2 & \text{if } \hat{\alpha}_{I-3}^2 < \hat{\alpha}_{I-2}^2 \\
   \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} & \text{else}\\
-\end{cases}$
+\end{cases}
+(\#eq:alpha-2)
+\end{equation}
 
-* This one varies by age (columns), for each age:
+```{remark}
+For the last $\alpha$:
 
-    1. Calculate the difference^2^ of the LDFs for each AY and the selected
-    2. Then multiply by each row's respective cumulative loss for that age
-    3. Sum the above and then divide by the number of rows minus 1
+* If the 3^rd^ last $\alpha$ is lower than the 2^nd^ last $\alpha$, use the 3^rd^ last $\alpha$
 
-* For the last one:
-
-    * If the 3rd last one is lower, take that
+    (If the final $alpha$'s are not trending down, take the lower one)
     
-    * Else, you take the 2nd last times the ratio of the 2nd last to 3rd last
-    
+* If the final $\alpha$'s are decreasing, then just take the same % of decrease to get the last $\alpha$
+
+Also note that if we believe the claims development have stopped at some age $j$ then we can set $\alpha^2_j = 0$
+
+Finally, you can also fit a logarithmic curve to the $\alpha^2_k$'s to estimate $\alpha^2_{I-1}$
+```
+
 ## Confidence Intervals
 
 Can have different assumptions on the distribution of the unpaid
 
-Formulas applies to total reserve as well
+```{block2, type='rmdnote'}
+Important formulas below
+```
 
-  * Need $MSE(\hat{R})$
-  
-  * Correlate the individual $\hat{R}_i$'s. Because we use the same LDFs to forecast the estimates
-  
-  * Can just use the square root rule to sum up the different AYs if we assume independence
+***Normal Estimation***
 
-<a name="ci-normal"></a>**Normal**
+\begin{equation}
+  \hat{R}_i \pm Z_\alpha \: s.e.(\hat{R}_i)
+  (\#eq:normal-ci)
+\end{equation}
 
-$\hat{R}_i \pm Z_\alpha \: s.e.(\hat{R}_i)$
+```{remark}
 
-<a name="ci-log-normal"></a>**LogNormal**
 
-<span style="color:red;background-color:yellow">Memorize Formulas</span>
+* Under CLT we can assume that $\hat{R}_i$ is normally distributed given that the outstanding claims are large
 
-$R_i \operatorname{exp}\left \{ -\dfrac{\sigma_i^2}{2} \pm \: Z_\alpha \sigma_i \right \}$
+* We can get the 95% CI with $Z_{0.975} = 1.96$
+```
 
-* $\sigma_i^2 = \operatorname{ln} \left [ 1 + \left ( \dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} \right)^2 \right]$
+***Log-Normal Estimation***
 
-* $\mu_i = \operatorname{ln}(\hat{R}_i) - \dfrac{\sigma_i^2}{2}$
+\begin{equation}
+  e^{\mu_i + Z_{\alpha} \sigma_i} = \hat{R}_i \times \exp\left \{ -\dfrac{\sigma_i^2}{2} \pm \: Z_\alpha \sigma_i \right \}
+  (\#eq:lognormal-ci)
+\end{equation}
+
+$$\sigma_i^2 = \operatorname{ln} \left [ 1 + \left ( \dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} \right)^2 \right]$$
+
+$$\mu_i = \operatorname{ln}(\hat{R}_i) - \dfrac{\sigma_i^2}{2}$$
+
+```{remark}
+
+
+* Use log-normal when the true distribution of $R_i$ is skewed
+
+* Especially true when $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$
+
+    This would give us negative value for the bottom end of the CI if we use normal distribution
+```
+
+### CI for All Years Reserves
+
+Mean is easy: $\hat{R} = \sum \limits_{i} \hat{R}_i$
+
+But since $\hat{R}_{i}$ rely on the same LDFs they are not independent and we need to include a correlation factor for the $MSE(\hat{R})$
+
+\begin{equation}
+  [s.e.(\hat{R})]^2 = \sum \limits_{i=2}^I \left\{ [s.e.(\hat{R}_i)]^2 + \hat{c}_{i,I} \left( \sum \limits_{j = i+1}^{I} \hat{c}_{j,I} \right) \left( \sum \limits_{k = I + 1 - i}^{I - 1} \dfrac{2 \hat{\alpha}^2_k \big/ \hat{f}^2_k}{\sum_{n=1}^{I-k}c_{n,k}}\right) \right\}
+  (\#eq:mse-total)
+\end{equation}
+
+If we want to simplify things we can use the square root rule to sum up the different AYs if we assume independence
 
 ## Chain Ladder Assumptions Test
 
-Look at various test on the Chain Ladder assumptions
+Tests on the various Chain Ladder assumptions
+
+1. Intercept
+
+2. Residuals
+
+3. Calendar year test
+
+4. Correlation of adjacent LDFs
 
 ### Intercept
 
-Test for assumption (1)
+Test for assumption 1 (prop. \@ref(prp:cl-ass-1))
 
 Plot the losses at adjacent ages to see if the line of best fit goes through the origin
 
-### Residuals
+* Do this for every age $k$ vs age $k+1$
 
-<a name="residuals"></a>
+### Residuals{#residuals}
 
-Test for assumption (1)
+Test for assumption 3 (prop. \@ref(prp:cl-ass-3))
 
-For each age $k$, graph the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
+For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
 
-* $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\operatorname{Var}(c_{j,k})}}$
+\begin{equation}
+  \varepsilon_{i,k} = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\operatorname{Var}(c_{j,k})}}
+  (\#eq:residual-eq)
+\end{equation}
 
-* e.g. $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{c_{j,k}}}$ for the variance of the incremental losses is $\propto$ losses reported to date scenarios; Proportional term doesn't affect the variance since it's the same for the column
+```{remark}
 
-* For residuals @ t, you need LDFs from t-1 to t
+
+* We can take out the $\alpha^2_k$ term since it's constant for the same $k$
+
+    e.g. $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{c_{j,k}}}$ for weighted average assumption
+
+* For residuals @ $k$, you need LDFs from $k-1$ to $k$
 
 * They should vary randomly around zero
 
 * If passed $\Rightarrow$ expected losses are linear w.r.t. cumulative losses paid to date
 
 * Can also use to test assumption (3) on the other variance assumption by calculating the $\varepsilon$ differently
+```
 
-### Calendar Year Test
+### Calendar Year Test{#cy-test}
 
-<a name="cy-test"></a>
-
-Test for assumption (2)
+Test for assumption 1 (prop. \@ref(prp:cl-ass-2))
 
 Step 1) Rank the LDFs in each column
 
@@ -372,11 +479,9 @@ Step 5) See if $Z$ is in the CI based on the the above
 
 CY effect can be caused by changing or high inflation; change in claims handling; change in legal environment
 
-### Correlation of Adjacent LDFs
+### Correlation of Adjacent LDFs{#adjacent-ldf}
 
-<a name="adjacent-ldf"></a>
-
-Test assumption (1) where expected only depends on most recent
+Test assumption (1) (prop. \@ref(prp:cl-ass-1)) where expected only depends on most recent
 
 Use a relatively low threshold of 50%
 
