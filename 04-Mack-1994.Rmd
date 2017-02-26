@@ -84,16 +84,44 @@ Notations use for Mack
 ```
 
 ```{proposition, cl-ass-1, name = "Chain Ladder Assumption 1"}
-$\operatorname{E}\left [c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ] = c_{i,k} \: f_k$
-
-* Expected incremental losses are $\propto$ losses reported to date
-    
-* Proportion depends on the age of AY
-    
+$$\operatorname{E}\left [c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ] = c_{i,k} \times f_k$$
 ```
 
+```{remark}
+
+
+* Expected incremental losses are $\propto$ losses to date
+    
+* Proportion depends on the age $k$ of AY
+
+* Our best estimate of ultimate depends only on the losses to date
+
+    Ignores prior period losses
+```
+
+```{corollary}
+Restating Chain Ladder Assumption 1:
+
+$$\mathrm{E}\left[ \dfrac{c_{i,k+1}}{c_{i,k}} \mid c_{i,1},...,c_{i,k} \right]$$
+```
+
+```{remark}
+
+
+* Expected LDF is unbiased
+
+* Implies that development to $c_{i,k+1}$ is independent of the size of losses at $c_{i,k}$
+
+* Implies that adjacent LDFs are independent
+```
+
+
 ```{proposition, cl-ass-2, name = "Chain Ladder Assumption 2"}
-$\left \{c_{i,1} \cdots c_{i,I} \right \} \: {\perp\!\!\!\!\perp} \: \left \{c_{j,1} \cdots c_{j,I} \right \}$ for $i \neq\ j$
+$$\left \{c_{i,1} \cdots c_{i,I} \right \} \: {\perp\!\!\!\!\perp} \: \left \{c_{j,1} \cdots c_{j,I} \right \} \:\: : \:\: i \neq\ j$$
+```
+
+```{remark}
+
 
 * Losses in each AYs are ${\perp\!\!\!\!\perp}$ of the losses in other AYs
     
@@ -102,7 +130,11 @@ $\left \{c_{i,1} \cdots c_{i,I} \right \} \: {\perp\!\!\!\!\perp} \: \left \{c_{
 ```
 
 ```{proposition, cl-ass-3, name = "Chain Ladder Assumption 3"}
-$\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
+$$\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$$
+```
+
+```{remark}
+
 
 * Variance of the incremental losses is $\propto$ losses reported to date
     
@@ -112,17 +144,17 @@ $\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha
 
 ```
 
-Need to double check on the below:
+<!-- Need to double check on the below: -->
 
-```{proposition, cl-ass-4, name = "Chain Ladder Assumption 4"}
-Variance is $\propto$ mean
+<!-- ```{proposition, cl-ass-4, name = "Chain Ladder Assumption 4"} -->
+<!-- Variance is $\propto$ mean -->
 
-* Based on assumption 1 and 3 (proposition \@ref(prp:cl-ass-1) & proposition \@ref(prp:cl-ass-3))
+<!-- * Based on assumption 1 and 3 (proposition \@ref(prp:cl-ass-1) & proposition \@ref(prp:cl-ass-3)) -->
 
-* If variance follows distribution x, then it implies the variance is $\propto$ loss
-```
+<!-- * If variance follows distribution x, then it implies the variance is $\propto$ loss -->
+<!-- ``` -->
 
-### Implications of Assumptions
+### Implicit Assumptions
 
 When using *CL*, we are making assumptions on how we select the factor $\hat{f}_k$ and the application $\hat{c}_{i,k+1} = c_{i,k} \times \hat{f}_k$
 
@@ -225,6 +257,8 @@ And we have chainladder assumption 3 (Prop. \@ref(prp:cl-ass-3))
 
 Recall equation \@ref(eq:wtd-ldf) and \@ref(eq:var-weight)
 
+Table: (\#tab:CL-var-weight) Relationships between weight, variance and residual
+
 | Weight $w_{i,k}$ | Description | Variance | Residual \@ref(eq:residual-eq)|
 | --------------- | ------------------------ | ------------ | --------------- |
 | 1                | Simple Average | $\alpha_k^2 \times \mathbf{c_{i,k}^2}$ | $\varepsilon_{i,k} = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{i,k}^2}}}$ |
@@ -238,6 +272,36 @@ Recall equation \@ref(eq:wtd-ldf) and \@ref(eq:var-weight)
 * Use different method for LDF selection based on variance assumption
 
 * Variance and the weight always multiply to $c_{j,k}^2$
+
+### Violation of Assumptions
+
+Correlation between on AYs and another
+
+* Assumption 2 (Prop. \@ref(prp:cl-ass-2)) is violated
+
+* e.g. Strong calendar year effects (i.e. faster payment, changing inflation) will lead to correlation along a diagonal
+
+* Check using [calendar year test](#cy-test)
+
+A single $\hat{f}_k$ is **not** appropriate for all years $i$
+
+* Assumption 1 (Prop. \@ref(prp:cl-ass-1)) is violated
+
+Dependence among columns
+
+* Assumption 1 (Prop. \@ref(prp:cl-ass-1)) is violated
+
+* Not necessarily assumption 2 (Prop. \@ref(prp:cl-ass-1))
+
+    If losses in the follow period are inversely correlated to the losses in the current period, then we'll have correlation between adjacent LDFs but still maintain independence of AYs
+    
+If residuals are not random around zero
+
+* Assumption 3 (Prop. \@ref(prp:cl-ass-3)) is violated
+
+* If we see any trends or change in magnitude
+
+* Check with [residual test](#residuals)
 
 ## Mean Squared Error
 
@@ -396,6 +460,32 @@ But since $\hat{R}_{i}$ rely on the same LDFs they are not independent and we ne
 
 If we want to simplify things we can use the square root rule to sum up the different AYs if we assume independence
 
+### CI Application
+
+**Total CI**
+
+Consider the ratio $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i}$
+
+* Can be high for older years since reserve is small but absoluate s.e. is also small $\therefore$ not important
+
+* Good to calculate the ratio since we need it for $\sigma_i^2$ 
+
+* Tend to be high for most recent AY as well
+
+    Driven by the large uncertainty around the development from age 12 - 24
+    
+* Recall from previous section we mentioned that we should use log-normal distributio for the CI if $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$, this is equivalent to $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} > 50%$
+
+* Then calculate the total reserve CI
+
+**Allocate CI to each AY**
+
+After calculating the all year CI, we can allocate the upperbound the total CI to each AYs
+
+* Through trial & error to figure out the $Z_{\alpha}$ for each AY that would yield the total upperbound CI
+
+**Empirical Limits**
+
 ## Chain Ladder Assumptions Test
 
 Tests on the various Chain Ladder assumptions
@@ -412,13 +502,21 @@ Tests on the various Chain Ladder assumptions
 
 Test for assumption 1 (prop. \@ref(prp:cl-ass-1))
 
-Plot the losses at adjacent ages to see if the line of best fit goes through the origin
+***Test Procdeure***
+
+Plot the losses at adjacent ages
 
 * Do this for every age $k$ vs age $k+1$
+
+***Results Interpretation***
+
+We expect to see the line of best fit goes through the origin if the chain ladder assumption holds
 
 ### Residuals{#residuals}
 
 Test for assumption 3 (prop. \@ref(prp:cl-ass-3))
+
+***Test Procdeure***
 
 For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
 
@@ -436,12 +534,15 @@ For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
 
 * For residuals @ $k$, you need LDFs from $k-1$ to $k$
 
-* They should vary randomly around zero
+```
+
+***Results Interpretation***
+
+Residuals should vary randomly around zero across $c_{i,k}$
+
+Test can be used to test the various variance assumptions by calculating the $\varepsilon$ differently (See Table \@ref(tab:CL-var-weight))
 
 * If passed $\Rightarrow$ expected losses are linear w.r.t. cumulative losses paid to date
-
-* Can also use to test assumption (3) on the other variance assumption by calculating the $\varepsilon$ differently
-```
 
 ### Calendar Year Test{#cy-test}
 
