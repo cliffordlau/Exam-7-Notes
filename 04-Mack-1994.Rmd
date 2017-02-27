@@ -279,6 +279,8 @@ Correlation between on AYs and another
 
 * Assumption 2 (Prop. \@ref(prp:cl-ass-2)) is violated
 
+* Not necessarily assumption 1 (Prop. \@ref(prp:cl-ass-1))
+
 * e.g. Strong calendar year effects (i.e. faster payment, changing inflation) will lead to correlation along a diagonal
 
 * Check using [calendar year test](#cy-test)
@@ -291,7 +293,7 @@ Dependence among columns
 
 * Assumption 1 (Prop. \@ref(prp:cl-ass-1)) is violated
 
-* Not necessarily assumption 2 (Prop. \@ref(prp:cl-ass-1))
+* Not necessarily assumption 2 (Prop. \@ref(prp:cl-ass-2))
 
     If losses in the follow period are inversely correlated to the losses in the current period, then we'll have correlation between adjacent LDFs but still maintain independence of AYs
     
@@ -302,6 +304,26 @@ If residuals are not random around zero
 * If we see any trends or change in magnitude
 
 * Check with [residual test](#residuals)
+
+### Strength/Weakness of Chainladder
+
+Weakness
+
+* Tail LDFs depend on very few observations
+
+* High variability in the reported claims in the most recent years lead to uncertainty
+
+    * $c_{I,1} = 0$ $\Rightarrow$ $\hat{R}_{I,1} = 0$, which is not reasonable
+    
+* Results need to be judged by someone who knows the business under consideration
+
+* Unexpected future changes can make the observations obsolete
+
+Strength
+
+* User knows exactly how the method works and it's weakness
+
+* Can be easily explained to non-actuaries
 
 ## Mean Squared Error
 
@@ -319,7 +341,7 @@ $$\begin{align}
 * Standard error: $s.e. = \sqrt{MSE}$
 ```
 
-Appling the properties of $\mathrm{Var}(X) = \mathrm{E}[X^2] - \mathrm{E}[X]^2$ we get
+Applying the properties of $\mathrm{Var}(X) = \mathrm{E}[X^2] - \mathrm{E}[X]^2$ we get
 
 $$MSE(\hat{c}_{i,I}) = \mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I})^2 \mid D\right] = \mathrm{Var}\left((c_{i,I}-\hat{c}_{i,I}) \mid D\right) + \left[\mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I}) \mid D\right]\right]^2$$
 
@@ -460,13 +482,13 @@ But since $\hat{R}_{i}$ rely on the same LDFs they are not independent and we ne
 
 If we want to simplify things we can use the square root rule to sum up the different AYs if we assume independence
 
-### CI Application
+### CI Application & Range
 
 **Total CI**
 
 Consider the ratio $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i}$
 
-* Can be high for older years since reserve is small but absoluate s.e. is also small $\therefore$ not important
+* Can be high for older years since reserve is small but absolute s.e. is also small $\therefore$ not important
 
 * Good to calculate the ratio since we need it for $\sigma_i^2$ 
 
@@ -474,7 +496,7 @@ Consider the ratio $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i}$
 
     Driven by the large uncertainty around the development from age 12 - 24
     
-* Recall from previous section we mentioned that we should use log-normal distributio for the CI if $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$, this is equivalent to $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} > 50%$
+* Recall from previous section we mentioned that we should use log-normal distribution for the CI if $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$, this is equivalent to $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} > 50%$
 
 * Then calculate the total reserve CI
 
@@ -485,6 +507,12 @@ After calculating the all year CI, we can allocate the upperbound the total CI t
 * Through trial & error to figure out the $Z_{\alpha}$ for each AY that would yield the total upperbound CI
 
 **Empirical Limits**
+
+Use the max/min historical LDFs for each age $k$ to get the upper and lower limit of the confidence interval
+
+* CI is too small for older ages as there are only a few LDFs (and too large for younger ages)
+
+    $\therefore$ Not very useful
 
 ## Chain Ladder Assumptions Test
 
@@ -502,7 +530,7 @@ Tests on the various Chain Ladder assumptions
 
 Test for assumption 1 (prop. \@ref(prp:cl-ass-1))
 
-***Test Procdeure***
+***Test Procedure***
 
 Plot the losses at adjacent ages
 
@@ -516,7 +544,7 @@ We expect to see the line of best fit goes through the origin if the chain ladde
 
 Test for assumption 3 (prop. \@ref(prp:cl-ass-3))
 
-***Test Procdeure***
+***Test Procedure***
 
 For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
 
@@ -546,87 +574,141 @@ Test can be used to test the various variance assumptions by calculating the $\v
 
 ### Calendar Year Test{#cy-test}
 
-Test for assumption 1 (prop. \@ref(prp:cl-ass-2))
+Test for assumption 2 (prop. \@ref(prp:cl-ass-2))
 
-Step 1) Rank the LDFs in each column
+```{block2, type='rmdnote'}
+Important formulas below
+```
 
-Step 2) Label them S and L and the median is discarded
+***Test Procdeure***
 
-Step 3) For each diagonal with at least 2 elements, $z = \operatorname{min}(\text{# of S}, \text{# of L})$
+1. Rank the LDFs in each column (1 = lowest)
 
-Step 4) Calculate $\operatorname{E}[z_n]$ and $\operatorname{Var}(z_n)$
+2. Label them $S$ (small) and $L$ (large) and the median is discarded
 
-* $\operatorname{E}[z_n] = \dfrac{n}{2} - c_n$ <span style="color:red;background-color:yellow">Memorize Formulas</span>
+3. For each diagonal $d$ with at least 2 elements:
 
-    * $n =$ # of elements in each diagonal **excluding** the throw away value
+$$z^d = \mathrm{min}(\text{# of }S, \text{# of }L)$$
+
+4. Calculate $\mathrm{E}[z_n]$ and $\mathrm{Var}(z_n)$ for each diagonal $d$
+
+$$\mathrm{E}[z_n] = \dfrac{n}{2} - c_n$$
+
+$$\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[z_n] - \operatorname{E}[z_n]^2$$
+
+```{remark}
+
+
+* $n =$ # of elements in each diagonal **excluding** the throw away value
     
-    * $c_n = {n - 1 \choose m}\frac{n}{2^n}$
+* $c_n = {n - 1 \choose m}\frac{n}{2^n}$
     
-    * $m = \operatorname{floor}\left[ \dfrac{n-1}{2} \right]$
-
-* $\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[Z_n] - \operatorname{E}[z_n]^2$ <span style="color:red;background-color:yellow">Memorize Formulas</span>
+* $m = \operatorname{floor}\left[ \dfrac{n-1}{2} \right]$
 
 * $z \sim$ Normal
+```
 
-Step 5) See if $Z$ is in the CI based on the the above
+5.  See if the observed $Z$ is in the CI
 
-* $Z = \sum_{diagonal} z$
+\begin{equation*} Z = \sum_{d} z^d \end{equation*}
 
-* Since $Z \sim$ Normal, can sum the mean and variance by assuming independence
+\begin{equation*} \mathrm{E}[Z_n] = \sum_{d} \mathrm{E}[z_n^d] \end{equation*}
 
-* Test 95% CI: $\operatorname{E}[Z] \pm 2 \times \sigma$
+\begin{equation*} \mathrm{Var}[Z_n] = \sum_{d} \mathrm{Var}[z_n^d] \end{equation*}
 
-* If the observed is outside the range $\Rightarrow$ There is calendar year effects, fail assumption (2)
+```{remark}
+Since $z \sim Normal$, can sum the mean and variance by assuming independence
+```
 
-CY effect can be caused by changing or high inflation; change in claims handling; change in legal environment
+6. Test 95% CI: $\mathrm{E}[Z_n] \pm 2 \times \sqrt{\mathrm{Var}(Z_n)}$
+
+***Results Interpretation***
+
+If the observed $Z$ is outside the CI range $\Rightarrow$ There is calendar year effects and assumption (2) is violated
 
 ### Correlation of Adjacent LDFs{#adjacent-ldf}
 
-Test assumption (1) (prop. \@ref(prp:cl-ass-1)) where expected only depends on most recent
+Test assumption (1) (prop. \@ref(prp:cl-ass-1))
 
-Use a relatively low threshold of 50%
+* Measures correlation between each column and the adjacent column
 
-Step 1) Calculate Spearman's correlation for each pair of adjacent LDFs
+* We want to test if there is a correlation among columns for the triangle as a whole
 
-<span style="color:red;background-color:yellow">Memorize Formulas</span>
+    $\therefore$ We define one test statistics for the whole triangle
 
-* $S = \sum \limits_{\in rows} \Big \{ [Rank \: Col \: i \: LDF] - [Rank \: Col \: j \: LDF] \Big \}^2$
+Use rank correlation (e.g. Spearman's correlation) instead of value correlation (e.g. Person correlation)
 
-* Rank from low to high (i.e. lowest is 1)
+* Because LDFs down the column for a given age $k$ have different variance
 
-* $T_k = 1 - \dfrac{S}{n(n^2-1)/6}$
+* See Venter for his method too
 
-    * $n =$ # of rows
+We are testing for independence
+
+* Which is more strict than just testing for 0 correlation
+
+Threshold use is relatively low, at 50%, as an indicator that we need to investigate further
+
+```{block2, type='rmdnote'}
+Important formulas below
+```
+
+***Test Procedure***
+
+1. Calculate Spearman's correlation for each pair of **adjacent LDFs**
+
+$$S_k = \sum \limits_{i} \Big \{ rank(f_{i,k-1}) - rank(f_{i,k}) \Big \}^2$$
+
+$$T_k = 1 - \dfrac{S}{n_k(n_k^2-1)/6}$$
+
+```{remark}
+
+
+* Rank is for each column $k$ from low to high (i.e. lowest is 1)
+
+* $n_k =$ number of pairs
     
-    * For a 10 x 10 triangle, $k$ is at most 7 because there's only 9 LDFs so 8 pairs. And down to 7 because we don't use the pair with only 1 row
+* For a 10 x 10 triangle, $k \in [2 , 8]$
+
+    * Only 9 LDFs so 8 pairs
     
-Step 2) Calculate $T$ for the whole triangle
-
-<span style="color:red;background-color:yellow">Memorize Formulas</span>
-
-* $T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}$
-
-    * $I =$ size of triangle
+    * And we don't use the column with only 1 row
     
-    * $k$ starts at 2
+* $k$ starts at 2 by convention
+```
+
+2. Calculate $T$ for the whole triangle
+
+$$T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}$$
+
+```{remark}
+
+
+* Formula is the weighted average of the $T_k$'s, weight = $n_k - 1$
+
+* $I =$ size of triangle
     
-    * Formula gives more weight to $T_k$ with more data
-    
-Step 3) Compare $T$ with CI based on distribution
+* Formula gives more weight to $T_k$ with more data
+```
 
-<span style="color:red;background-color:yellow">Memorize Formulas</span>
+3. Compare $T$ with CI based on distribution
 
-* $\operatorname{E}[T] = 0$
+$$\mathrm{E}[T] = 0$$
 
-* $\operatorname{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}$
+$$\mathrm{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}$$
 
-* $\operatorname{E}[T] \pm Z \sqrt{\operatorname{Var}(T)}$
+$$CI = \mathrm{E}[T] \pm Z \sqrt{\mathrm{Var}(T)}$$
 
-* Use $Z = 0.67$ for range of [25%, 75%]
+```{remark}
 
-* Do not reject the $H_0$ of uncorrelated LDFs if the $T$ is in the CI
 
-Venter has a method too
+* Assume $T \sim Normal(0, \sqrt{\mathrm{Var}(T)})$
+
+* Use $Z_{75%} = 0.67$ for range of [25%, 75%]
+```
+
+***Results Interpretation***
+
+If the $T$ is in the CI $\Rightarrow$ Do not reject the $H_0$ of uncorrelated LDFs 
 
 ## Past Exam Questions
 
