@@ -703,7 +703,7 @@ $$CI = \mathrm{E}[T] \pm Z \sqrt{\mathrm{Var}(T)}$$
 
 * Assume $T \sim Normal(0, \sqrt{\mathrm{Var}(T)})$
 
-* Use $Z_{75%} = 0.67$ for range of [25%, 75%]
+* Use $Z_{75\%} = 0.67$ for range of [25%, 75%]
 ```
 
 ***Results Interpretation***
