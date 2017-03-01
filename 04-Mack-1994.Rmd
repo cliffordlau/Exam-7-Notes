@@ -73,7 +73,7 @@ Test 4. [Adjacent LDF Correlation](#adjacent-ldf)
 
 ## Chain Ladder Assumptions {#cl-ass}
 
-```{definition}
+```{definition, mack-1994-def}
 Notations use for Mack
 
 * $c_{i,k} =$ cumulative losses for AY $i$ @ age $k$
@@ -257,7 +257,7 @@ And we have chainladder assumption 3 (Prop. \@ref(prp:cl-ass-3))
 
 Recall equation \@ref(eq:wtd-ldf) and \@ref(eq:var-weight)
 
-Table: (\#tab:CL-var-weight) Relationships between weight, variance and residual
+Table: (\#tab:CL-var-weight) Relationships between weight, variance and residual (Mack)
 
 | Weight $w_{i,k}$ | Description | Variance | Residual \@ref(eq:residual-eq)|
 | --------------- | ------------------------ | ------------ | --------------- |

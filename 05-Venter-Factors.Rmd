@@ -1,6 +1,4 @@
-# A7 Testing the Assumptions of Age-to-Age Factors - G. Venter
-
-## Cliff's Summary
+# Testing the Assumptions of Age-to-Age Factors - G. Venter
 
 Standards used in this paper
 
@@ -16,9 +14,9 @@ Know the 6 implications
 
 2) Is there a better estimate for $q$ than $f \times c$
 
-    * [Number of parameters](#para-num)
+    * Number of parameters (Table \@ref(tab:venter-alt-pattern))
     
-    * [BF parameters](#bf-para)
+    * BF parameters (Table \@ref(tab:venter-var-weight-BF))
 
 3) Check residuals against $c(w,d)$
 
@@ -30,124 +28,206 @@ Know the 6 implications
 
 6) No particularly high or low diagonals
 
-
-### Types of Exam Questions
-
-<span style="color:red">Haven't done TIA practice questions</span>
-
-**Concepts**
-
-* 2011 #4: Implication 1
-* 2012 #5: Mack assumptions
-
-**Implication Tests**
-
-* 2014 #4: Implication 5 correlation tests
-* 2015 #5: Implication 5 correlation tests
-
 ## Definitions and Assumptions
 
-**Definitions**
+Table: (\#tab:venter-mack-def) Tables of Definitions
 
-| Notations | Definitions |
-| --------- | ----------- |
-| $w$       | AYs         |
-| $d$       | Dev period; $d=0$ is age @ end of year 1  |
-| $c(w,d)$  | Cumulative losses for AY $w$ age $d$ |
-| $q(w, d+1)$ | Inc losses for AY $w$ age $d$ to $d+1$ |
-| $f(d)$    | Col parameters; LDFs or % paid; applies to whole col |
-| $h(w)$    | Row parameters; Ult losses; applies to whole row |
+| Venter Notations | Definitions | Mack Notations (\@ref(def:mack-1994-def)) | 
+| --------- | ------------------------------------------------|----------- |
+| $w$       | AYs | $i$ |
+| $d$       | Dev period; $d=0$ is age @ end of year 1 | $k$ |
+| $c(w,d)$  | Cumulative losses for AY $w$ age $d$ | $c_{i,k}$ |
+| $c(w,\infty)$  | Ultimate losses for AY $w$| $c_{i,I}$ |
+| $q(w, d+1)$ | **Incremental** losses for AY $w$ age $d$ to $d+1$ | |
+| $f(d)$    | Col parameters; **(LDF - 1)**; applies to whole col | $f_k - 1$ |
+| $F(d)$    | LDF to ultimate that applies to $c(w,d)$ | |
+| $h(w)$    | Row parameters; applies to whole row | |
 
-**Mack's assumptions**
+### Mack's Chainladder Assumptions
 
-1) $\operatorname{E}[q(w,d+1) \mid \text{Data to } w+d] = f(d) \: c(w,d)$
+Same assumptions as the [Mack 1994](#cl-ass) but stated in Venter's terminology
 
-    * Expected incremental development is $\propto$ reported losses
+```{proposition, mack-ass-1, name = "Mack Assumption 1"}
+$$\mathrm{E}[q(w,d+1) \mid \text{Data to } w+d] = f(d) \times c(w,d)$$
+```
 
-2) $c(w,d)$ is $\perp\!\!\!\perp$ of $c(v,g)$ $\forall$ $d,g,v,w$ given $v \neq w$
+```{remark}
 
-    * AY's losses are $\perp\!\!\!\perp$ of other AYs' losses
 
-3) $\operatorname{Var}[q(w,d) \mid \text{Data to } w+d] = a[d,c(w,d)]$
+* Here $f(d)$ is LDF - 1
 
-    * Variance of incremental losses is a function of reported losses and age
+* Expected incremental development is $\propto$ reported losses
+
+* See also (Prop \@ref(prp:cl-ass-1)) from Mack (1994)
+```
+
+```{proposition, mack-ass-2, name = "Mack Assumption 2"}
+$$c(w,d) \perp\!\!\!\!\perp c(v,g) \:\:\:\: \forall \: d,g,v,w \:\:\:\: : \:\:\:\: v \neq w$$
+```
+
+```{remark}
+
+
+* Losses not in the same row are independent of each other
+
+* See also (Prop \@ref(prp:cl-ass-2)) from Mack (1994)
+```
+
+```{proposition, mack-ass-3, name = "Mack Assumption 3"}
+$$\mathrm{Var}[q(w,d) \mid \text{Data to } w+d] = a_{fun}\big(d,c(w,d)\big)$$
+```
     
-    * Different $a(\cdots)$ change the $\hat{f}$ estimate
+```{remark}
+
+
+* Variance of incremental losses depends only on:
+
+    1. Cumulative losses reported to date $c(w,d)$
     
-    * Mack assumes $\operatorname{Var}(q) = ac$, variance is $\propto$ cumulative losses
+    2. Age of the AY $d$ (Does not vary by AY down the column)
+
+* Different $a_{fun}(\cdots)$ leads to different $\hat{f}(d)$ estimate
+
+* See also (Prop \@ref(prp:cl-ass-3)) from Mack (1994)
+```
+
+### Variance Assumptions (for Chainladder)
+
+Same as shown in Mack 1994 Table \@ref(tab:CL-var-weight)
+
+Table: (\#tab:venter-var-weight) Relationships between weight, variance and residual (Venter)
+
+| Weight | Description | Variance $a_{fun}\big(d,c(w,d)\big)$ | LDF - 1 $f(d)$ |
+| --------------- | ------------------------ | ------------ | --------------- |
+| 1                | Simple Average | $k(d)c(w,d)^2$ | $\dfrac{\sum_w 1 \frac{q(w,d+1)}{c(w,d)}}{\sum_w 1}$ |
+| $c(w,d)$        | Weighted Average | $k(d)c(w,d)$ | $\dfrac{\sum_w c(w,d) \frac{q(w,d+1)}{c(w,d)}}{\sum_w c(w,d)}$ |
+| $c(w,d)^2$      | Least Square | $k(d)$ | $\dfrac{\sum_w c(w,d)^2 \frac{q(w,d+1)}{c(w,d)}}{\sum_w c(w,d)^2}$ |
+
+* $c(w,\infty) = F(d)c(w,d)$
+
+    $F(d) = \prod_{s \geq d} (1 + f(s))$
     
-        * $f = \dfrac{\sum_w c \frac{q}{c}}{\sum_w c}$
-        
-        * Volume weighted LDF - 1
+* Recall $\dfrac{q(w,d+1)}{c(w,d)}$ are the empirical LDF - 1
+
+$\mathrm{E}[q(w,d+1)] = f(d)c(w,d)$
+
+* $n = \sum \limits_{i=1}^{m-1} i = \dfrac{m(m-1)}{2}$ = predicted data point?
+
+* $p=m-1$ since we dont' predict the first column
+
+* $m =$ dimension
 
 ## 6 Testable Implications
 
-Compare different fit of the models based on adjusted $SSE$ (actual vs projected x 1st column)
+**6 Testable Implications**
 
-1) $\dfrac{SSE}{(n-p^2)}$
+1) [Statistical significance of $f(d)$](#venter-imp-1)
 
-2) $AIC \approx SSE \times e^{2p/n}$
+2) [Is there a better estimate for $q$ than $f \times c$](#venter-imp-2)
 
-    * Can be too permissive of over-parameterization for large data sets
+3) [Check residuals against $c(w,d)$](#venter-imp-3)
 
-3) $BIC \approx SSE \times n^{p/n}$
+4) [Stability of $f(d)$ down the column](#venter-imp-4)
+
+5) [No correlation among columns](#venter-imp-5)
+
+6) [No particularly high or low diagonals](#venter-imp-6)
+
+### Goodness of Fit Measurement
+
+Compare different fit of the models based on adjusted $SSE$ (actual vs projected **excluding** 1st column)
+
+Adjusted *SSE*
+
+\begin{equation}
+  \dfrac{SSE}{(n-p^2)}
+  (\#eq:adj-sse-venter)
+\end{equation}
+
+Akaike Information Criterion
+
+\begin{equation}
+  AIC \approx SSE \times e^{2p/n}
+  (\#eq:aic-venter)
+\end{equation}
+
+Bayesian Information Criterion
+
+\begin{equation}
+  BIC \approx SSE \times n^{p/n}
+  (\#eq:bic-venter)
+\end{equation}
+
+```{remark}
+
 
 * $n =$ # of predicted data points **EXCLUDING 1st column**
 
     * Exclude because when we do reserving we don't predict anything from the first column
+    
+    * Usually the triangle excluding the first column
 
 * $p =$ # of parameters
 
 * $SSE = \sum (A - E)^2$
 
     * Here you exclude the first column when calculating the difference
+    
+* Venter use the adjusted SSE as the AIC can be too permissive of over parameterization for large data sets
+```
 
-***
+### Implication 1: Significance of Factors {#venter-imp-1}
 
-**6 Testable Implications**
-
-1) Statistical significance of $f(d)$
-
-2) Is there a better estimate for $q$ than $f \times c$
-
-3) Check residuals against $c(w,d)$
-
-4) Stability of $f(d)$ down the column
-
-5) No correlation among columns
-
-6) No particularly high or low diagonals
-
-## Implication 1: Significance of Factors
-
-Check if the coefficient is $> 2 \sigma$ for 95% sure they are $\neq 0$
+Check if the parameter coefficient is $> 2 \sigma$ for 95% sure that the parameters are $\neq 0$
 
 * Can do $1.65 \sigma$ for 90% confidence
 
-## Implication 2: Superiority of Alternative Emergence Patterns
+* Remember $f(d)$ is LDF - 1
 
-### Parameters
+* LDFs tend to fail towards the tail
 
-Alternative projection on a $m \times m$ triangle
+### Implication 2: Superiority of Alternative Emergence Patterns {#venter-imp-2}
 
-<a name="para-num"></a>
+If an alternative emergence pattern provides a better explanation of the triangle, maybe it should be used
 
-| $\mathbf{q(w,d)}$ | Parameters | Comments |
-| ------ | ---------- | --- |
-| $f(d) c(w,d) + g(d)$ | $2m - 2$ | e.g. Least Squares |
-| Chainladder | $m - 1$ | | 
-| $f(d)h(w)$ | $2m-2$ | e.g. BF |
-| $f(d)h$ | $m-1$ | e.g. Cape Cod |
+Table: (\#tab:venter-alt-pattern) Alternative emergerence pattern on a $m \times m$ triangle
 
+| Emergence Patterns | # of Parameters | Comments |
+| ------------------------------ | ---------- | ------------------------ |
+| $\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d)$ | $m - 1$ | e.g. Chainladder |
+| $\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d) + g(d)$ | $2m - 2$ | e.g. Least Squares |
+| $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)$ | $2m-2$ | e.g. BF |
+| $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h$ | $m-1$ | e.g. Cape Cod |
+
+```{remark}
+$f(d) c(w,d) + g(d)$
+
+* Often significant in forecasting age 1
+```
+
+```{remark}
+$f(d)h(w)$
+
+* Here $f(d)$ is related to the % of losses emerged in period $d$
+
+    Not LDF -1
+    
+* $h(w)$ can be think of as an estimate of ultimate losses for AY $w$
+
+    Like an a-priori
+    
 * The -2 for the BF is due to $f(0)$ and constant
 
+* If BF is better $\Rightarrow$ Loss emergence is more accurately represented as fluctuating around a proportion of expected ultimate losses (rather than proportion of reported losses)
+
+* Cape Cod works when the loss ratio is stable (stable book of business)
+
+    * Use $h(w) = h \times Premium(w)$, so we only need stable ELR
+
 * Can further reduce parameters by combining some row and column parameters
+```
 
-* If BF is better $\Rightarrow$ Loss emergence is more accurately represented as fluctuating around a proportion of expected ultimate losses rather than proportion of reported losses
-
-* Cape Cod works when the loss ratio is stable
-
-### Variance Assumptions
+#### Variance Assumptions: Alternative Emergence Pattern
 
 Minimize sum of squared error for the optimal parameters:
 
@@ -155,7 +235,7 @@ Minimize sum of squared error for the optimal parameters:
 
 Different variance assumption for $\varepsilon$ $\Rightarrow$ different parameters
 
-$\operatorname{Var}(\varepsilon) = f^p h^q$
+$\mathrm{Var}(\varepsilon) = f^p h^q$
 
 * $p$ & $q$ typically in (0,1,2)
 
@@ -165,11 +245,9 @@ $\operatorname{Var}(\varepsilon) = f^p h^q$
 
 * $h(w)$ = weighted average of $\frac{q}{f}$
 
-#### BF
+Table: (\#tab:venter-var-weight-BF) Variance and parameters for various form of $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)$
 
-<a name="bf-para"></a>
-
-| Method | $\mathbf{\operatorname{Var}(q)}$ | $\mathbf{f(d)}$: Col Parameters | $\mathbf{h(w)}$: Row Parameters |
+| Method | $\mathbf{\mathrm{Var}(q)}$ | $\mathbf{f(d)}$: Col Parameters | $\mathbf{h(w)}$: Row Parameters |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | BF (Constant Var, Least Square) | $a(d); p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}$ |
 | Cape Cod | $a(d); p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}$ |
@@ -190,34 +268,14 @@ $\operatorname{Var}(\varepsilon) = f^p h^q$
 * Use the above to estimate the parameters and then calculate the unpaid
 
 * When combining parameters, don't count the $f(0)$ and always subtract 1
-
-#### Chainladder
-
-$\operatorname{E}[q(w,d+1)] = f(d)c(w,d)$
-
-* $n = \sum \limits_{i=1}^{m-1} i = \dfrac{m(m-1)}{2}$ = predicted data point?
-
-* $p=m-1$ since we dont' predict the first column
-
-* $m =$ dimension
-
-| $\mathbf{\operatorname{Var}(q)}$ | $\mathbf{f(d)}$ |
-| ---------------------------- | ---------------------------------- |
-| $a(d) c$      | $f(d) = \dfrac{\sum c \frac{q}{c}}{\sum c}$       |
-| $a(d) c^2$    | $f(d) = \dfrac{\sum 1 \frac{q}{c}}{\sum 1}$       |
-| $a(d)$        | $f(d) = \dfrac{\sum c^2 (\frac{q}{c})}{\sum c^2}$ |
-
-* $f(d)$ LDF minus 1
-
-    * Estimate by $\frac{q}{c}$
     
-## Implication 3: Linearity
+### Implication 3: Linearity {#venter-imp-3}
 
 The forecast incremental losses doesn't have to be linear
 
 Test for linearity to make sure the residuals are not a sequence of positive then negative and vice versa
 
-## Implication 4: Stability
+### Implication 4: Stability {#venter-imp-4}
 
 Look at empirical LDFs $f(d)$ down a column
 
@@ -225,7 +283,7 @@ Look at empirical LDFs $f(d)$ down a column
 
 * Take more recent average if unstable or follow a trend
 
-## Implication 5: No Correlation on Columns
+### Implication 5: No Correlation on Columns {#venter-imp-5}
 
 Calculate Pearson correlation for every pair of columns with at least 3 LDFs
 
@@ -253,7 +311,7 @@ Perform test for all columns (with 3 or more LDFs pair)
 
 * m = # of pair tested
 
-## Implication 6: No High of Low Diagonals
+### Implication 6: No High of Low Diagonals {#venter-imp-6}
 
 Run regression that includes a variable for each diagonal
 
@@ -271,16 +329,34 @@ Deficiceny of this method is that the diagonal effect is additive
 
 * This can be implement with a regression on the logarithm of the losses
 
-### Diagonal Trend as Inflation
+#### Diagonal Trend as Inflation
 
 Model $q(w,d)$ with a diagonal parameter $w+d$
 
-$\operatorname{E}[q(w,d)] = f(d)h(w)g(w+d)$
+$\mathrm{E}[q(w,d)] = f(d)h(w)g(w+d)$
 
 Model constant CY trend to reduce the parameters:
 
 $g(w+d) = (1+j)^{w+d}$
 
 ## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
+
+**Concepts**
+
+* 2011 #4: Implication 1
+
+* 2012 #5: Mack assumptions
+
+**Implication Tests**
+
+* 2014 #4: Implication 5 correlation tests
+
+* 2015 #5: Implication 5 correlation tests
+
+### Question Highlights
 
 n/a
