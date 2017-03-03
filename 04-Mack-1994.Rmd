@@ -184,7 +184,7 @@ Which requires the following assumptions:
 
     * Based on assumption 3 (prop. \@ref(prp:cl-ass-3))
 
-### Proof for Assumption 3
+### Proof for Assumption 3 {#cl-ass-3-proof}
 
 ```{block, type='rmdcaution'}
 Work in progress section
@@ -640,7 +640,7 @@ Use rank correlation (e.g. Spearman's correlation) instead of value correlation 
 
 * Because LDFs down the column for a given age $k$ have different variance
 
-* See Venter for his method too
+* See [Venter](#venter-imp-5) for his method too
 
 We are testing for independence
 

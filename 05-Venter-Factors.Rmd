@@ -131,7 +131,11 @@ $\mathrm{E}[q(w,d+1)] = f(d)c(w,d)$
 
 5) [No correlation among columns](#venter-imp-5)
 
+    Test for independence
+
 6) [No particularly high or low diagonals](#venter-imp-6)
+
+    Test for independence
 
 ### Goodness of Fit Measurement
 
@@ -190,9 +194,15 @@ Check if the parameter coefficient is $> 2 \sigma$ for 95% sure that the paramet
 
 If an alternative emergence pattern provides a better explanation of the triangle, maybe it should be used
 
+1. Calculate $q(w,d)$ under various emergence patterns (See Table \@ref(tab:venter-alt-pattern))
+
+2. Calculate the Adjusted SSE \@ref(eq:adj-sse-venter) (based on every cell except the age 0 column)
+
+#### Parameters: Alternative Emergence Pattern
+
 Table: (\#tab:venter-alt-pattern) Alternative emergerence pattern on a $m \times m$ triangle
 
-| Emergence Patterns | # of Parameters | Comments |
+| Emergence Patterns | # of Parameters $p$ | Comments |
 | ------------------------------ | ---------- | ------------------------ |
 | $\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d)$ | $m - 1$ | e.g. Chainladder |
 | $\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d) + g(d)$ | $2m - 2$ | e.g. Least Squares |
@@ -223,57 +233,142 @@ $f(d)h(w)$
 * Cape Cod works when the loss ratio is stable (stable book of business)
 
     * Use $h(w) = h \times Premium(w)$, so we only need stable ELR
+    
+    * Cape Cod works out to an additive model $q(w,d) = h \times f(d)$
 
-* Can further reduce parameters by combining some row and column parameters
+* Can further reduce parameters by **combining** some row and column parameters
+
+    * Might be intuitively appealing to sum up the recent and tail years of the $h(w)$ since there's little empirical data to support different estimates
+
+* We'll be mostly focusing on this form
 ```
 
 #### Variance Assumptions: Alternative Emergence Pattern
 
-Minimize sum of squared error for the optimal parameters:
+Consider $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)$ from Table \@ref(tab:venter-alt-pattern)
 
-* e.g. error term for BF: $\varepsilon(w,d) = q(w,d) - f(d)h(w)$
+We need to minimize the sum of squared residuals to get the optimal $f(d)$ and $h(w)$:
 
-Different variance assumption for $\varepsilon$ $\Rightarrow$ different parameters
+$$\sum_{w,d} \varepsilon^2(w,d) = \sum_{w,d} [q(w,d) - \underbrace{f(d)h(w)}_{\mathrm{E}[q(w,d)]}]^2$$
 
-$\mathrm{Var}(\varepsilon) = f^p h^q$
+```{remark}
 
-* $p$ & $q$ typically in (0,1,2)
 
-* Weights will be $\dfrac{1}{f^p h^q}$ (inversely proportional to variance)
+* Since this is a non-linear model, we need an iterative method to minimize to *SSE*
 
-* $f(d)$ = weighted average of $\frac{q}{h}$
+* We can use weighted least squares if the variances of the residuals are not constant over the triangle
+```
 
-* $h(w)$ = weighted average of $\frac{q}{f}$
+We need to minimize the variance of each residual $\varepsilon(w,d)$
+
+$$\mathrm{Var}(\varepsilon(w,d)) \propto f(d)^p h(w)^q$$
+
+```{remark}
+
+
+* $p$ & $q$ typically $\in [0,1,2]$
+
+* And regression weights (applied to each $f(d)$ or $h(w)$) will be $\dfrac{1}{f(d)^p h(w)^q}$ (inversely proportional to variance, similar to [Mack 1994](#cl-ass-3-proof))
+
+Since $\mathrm{E}[q(w,d)] = f(d)h(w)$
+
+* $f(d) = \dfrac{\mathrm{E}[q(w,d)]}{h(w)}$, and
+
+* $h(w) = \dfrac{\mathrm{E}[q(w,d)]}{f(d)}$
+
+* So the actual $\dfrac{q(w,d)}{h(w)}$ is an estimate of $f(d)$ and vice versa
+
+* And we can estimate $f(d)$ based on a weighted average of each observation
+
+```
+
+Different variance assumption for $\varepsilon$ $\Rightarrow$ different parameters (weight) similar to the Chainladder method in table \@ref(tab:venter-var-weight)
 
 Table: (\#tab:venter-var-weight-BF) Variance and parameters for various form of $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)$
 
-| Method | $\mathbf{\mathrm{Var}(q)}$ | $\mathbf{f(d)}$: Col Parameters | $\mathbf{h(w)}$: Row Parameters |
+| Method | $\mathrm{Var}(\varepsilon(w,d)) \propto f(d)^p h(w)^q$ | $\mathbf{f(d)}$: Col Parameters | $\mathbf{h(w)}$: Row Parameters |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| BF (Constant Var, Least Square) | $a(d); p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}$ |
-| Cape Cod | $a(d); p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}$ |
-| BF (Var $\propto$ $fh$)| $a(d) \cdot f \cdot h; p=q=1$ | $f^2(d) = \dfrac{\sum_w h (\frac{q}{h})^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f (\frac{q}{f})^2}{\sum_d f}$ |
+| *BF*^1^ | $p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}$ |
+| Cape Cod^2^ | $p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}$ |
+| *BF* (Var $\propto$ $fh$)| $p=q=1$ | $f^2(d) = \dfrac{\sum_w h \left( \frac{q}{h} \right) ^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f \left( \frac{q}{f} \right)^2}{\sum_d f}$ |
 
-* $f(d)$ is % losses paid @ $d$
+1. *BF*: assumes each $q(w,d)$ have constanct variance (least square, standard regression)
 
-    * Estimate by $\frac{q}{h}$
+    For $h(w)$ weight is $f(d)^2$ and cells with higher expectes loss get higher weight
+    
+    For $f(d)$ weight is expected ultimate losses squared, years with higher expected losses get higher weight
+    
+2. Cape Cod: also assumes constant variance
 
-* $h(w)$ is estimate of ultimate losses
+Recall from [Mack 1994](#residuals), we need to look at the residual graphs to determine which variance assumption is appropriate
 
-    * Estimate by $\frac{q}{f}$
+#### Iteration Process
+
+```{block, type='rmdcaution'}
+Work in progress section
+```
+
+Need to seed one of them and iterate until convergence
 
 * $f(d)$ $\sum \downarrow$; $h(w)$ $\sum \rightarrow$ (for the constant var BF)
-
-* Need to seed one of them and iterate until convergence
 
 * Use the above to estimate the parameters and then calculate the unpaid
 
 * When combining parameters, don't count the $f(0)$ and always subtract 1
+
+Step 1) Start iteration with the $f(d)$ from Chainladder
+
+* For age greater than 0, these are the incremental ATA factors $\div$ ATU factors
+    
+* For age 0, subtract the sum of the other factors from unity
+
+Step 2) Find $h(w)$'s that minimize the SSE
+
+* One regression for each $w$
+
+Step 3) Find $f(d)$'s that minimize the SSE based on the $h(w)$ above
+
+Step 4) Do this till convergence
+
+#### Counting *n* and *p* for SSE
+
+**For *n***
+
+* For reserving: number of cell in the triangle minus the first column
+
+    Since we don't need to forcast the first column to calculate the unpaid
+    
+* For pricing: number of cell in the triangle
+
+**For *p*** (Just a walkthrough of how we get the $m$ in Table \@ref(\#tab:venter-alt-pattern))
+
+* ***BF***: Start with $2m$ parameters all the $f(d)$'s and $h(w)$'s
+
+    1. We don't need $f(0)$ for reserves again since we don't need to forcast the first column
+    
+    2. Less one more due to degree of freedom (?)
+    
+        Since you can fix any one of the parameters and still get the same results
+        
+    3. So we have $p = 2m-2$
+
+* Similarly for **Cape Cod** but we only start with $m + 1$ so we ended up with $m-1$ taking out the $f(d)$ and the degree of freedom
+
+* **Grouped *BF*** is similar as well if you don't group the $f(0)$
+
+    If you group the $f(0)$ you can't subtract one for that as you'll be using the parameter
+    
+* **Chainladder** you have $m$ for all the $f(d)$'s to start with and less the $f(d)$
     
 ### Implication 3: Linearity {#venter-imp-3}
 
-The forecast incremental losses doesn't have to be linear
+The forecast incremental losses might not be a linear function (e.g. $q(w,d) = a\sqrt{c(w,d)}$)
 
-Test for linearity to make sure the residuals are not a sequence of positive then negative and vice versa
+Look at residuals as function of rrevious
+
+* Test for linearity by making sure the residuals are not a sequence of positive then negative and vice versa
+
+* Do this for each regression (i.e. every $d$)
 
 ### Implication 4: Stability {#venter-imp-4}
 
@@ -283,35 +378,45 @@ Look at empirical LDFs $f(d)$ down a column
 
 * Take more recent average if unstable or follow a trend
 
-### Implication 5: No Correlation on Columns {#venter-imp-5}
+* Can compare rolling 5 year averages as well
 
-Calculate Pearson correlation for every pair of columns with at least 3 LDFs
+### Implication 5: No Correlation on Columns (Test for independence) {#venter-imp-5}
+
+Calculate Pearson correlation for every pair of columns with at **least 3 LDFs**
 
 * This is a test on the LDFs
 
 * Test with only 2 LDFs will either be 1 or -1
 
-Correlation $r = \dfrac{\sum \tilde{x} \tilde{y}}{\sqrt{\sum \tilde{x}^2\sum \tilde{y}^2}}$
+* Not just adjacent LDF pairs like in [Mack-1994](#adjacent-ldf)
 
-* $\tilde{x} = x - \bar{x}$
+    $\therefore$ For a $m \times m$ triangle we have ${7 \choose 2}$ pairs (7 because only 9 columns of LDFs and we take out the 2 columns with less than 3 LDFs)
 
-* $\tilde{y} = y - \bar{y}$
+***Correlation***:
 
-Test statistics: $T = r \sqrt{ \dfrac{n-2}{1-r^2} }$
+$$r = \dfrac{\sum \tilde{x} \tilde{y}}{\sqrt{\sum \tilde{x}^2\sum \tilde{y}^2}}$$
 
-* $T \sim t_{n-2}$
+Where $\tilde{x} = x - \bar{x}$ and $\tilde{y} = y - \bar{y}$
+
+* $x$'s and $y$'s are **incremental LDFs - 1**
+
+* But actually not necessary since -1 doesn't affect the correlation
+
+***Test statistics*** for significance is $T \sim t_{n-2}$
+
+$$T = r \sqrt{ \dfrac{n-2}{1-r^2} }$$
 
 * Look up the t-value from table for 90%
 
-* If the absolute value of $T <$ table value $\Rightarrow$ Not correlated
+* If $|T| <$ table value $\Rightarrow$ Not correlated
 
-Perform test for all columns (with 3 or more LDFs pair)
+Perform test for all columns
 
-* Correlations within the triangle if more than $0.1 m + \sqrt{m}$ pairs are correlated
+* We deem the triangle have significant correlations if more than $0.1 x + \sqrt{x}$ pairs are correlated
 
-* m = # of pair tested
+* x = # of pair tested = ${m - 3 \choose 2}$ for a $m \times m$ triangle
 
-### Implication 6: No High of Low Diagonals {#venter-imp-6}
+### Implication 6: No High of Low Diagonals (Test for independence) {#venter-imp-6}
 
 Run regression that includes a variable for each diagonal
 
