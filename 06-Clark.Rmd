@@ -51,13 +51,25 @@ Important formulas and definition below
 \end{equation}
 
 ```{remark}
-Advantages:
+
+
+% Emergence in period $x$ to $x+12$ = $G(x+12) - G(x)$
+
+* Equivalent to the $f(d)$ in Venter Table \@ref(tab:venter-alt-pattern) for the alternative pattern $f(d)h(w)$
+
+    Given $d = x / 12 - 1$
+
+**Advantages** (over Venter):
 
 * Uses only 2 column parameters: $\theta$ for mean; $\omega$ for s.d.
 
 * Can use data @ different age
 
 * Output is a smooth curve $\Rightarrow$ Can interpolate between ages and estimates a tail
+
+Motivation for using a curve is to recognize that adjacent LDFs are related
+
+Doesn't work when there is **expected** negative loss development
 ```
 
 ### Expected Ultimate Loss Methods
@@ -74,6 +86,12 @@ $$Premium_{AY} \times ELR$$
 * $h$ here is the $ELR$
 
 * Similar parameters in Venter (\@ref(tab:venter-alt-pattern))
+
+* This method is preferred:
+
+    * Only need 3 parameters
+    
+    * Includes extra information, exposure base
 ```
 
 Estimate Future Emergence:
@@ -100,72 +118,102 @@ $$[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}$$
 
 ## Distribution of Actual Loss Emergence and Maximum Likelihood
 
-Parameter estimation with MLE
+Estimate parameters with MLE
 
 ### Process Variance
 
-For each incremental loss, $\operatorname{Var}(c_i) \propto \operatorname{E}[c_i]$
+```{block2, type='rmdnote'}
+Important formulas below
+```
 
-* $\operatorname{Var}(c_i) = \sigma^2 \operatorname{E}[c_i]$
+***Key assumption***:
 
-* $c_i$ is the **incremental** loss here <span style="color:red">Note</span>
+$$\operatorname{Var}(c_i) \propto \operatorname{E}[c_i] = \sigma^2 \operatorname{E}[c_i]$$
+
+* Assume ratio of the variance to mean is constant for each cell in the **triangle**
+
+* $c_i$ is the **incremental** loss here
 
 * $\sigma^2$ is the **same for the entire triangle**
 
-$\dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}$ <span style="color:red; background-color:yellow">Memorize Formula</span>
+```{remark}
+Compare variance assumption with Mack and Venter
+
+* Mack-1994:
+    
+    Proposition \@ref(prp:cl-ass-3): $\mathrm{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
+
+    Constant is same for each column $k$ (development period)
+
+    n = includes all here?
+
+* Venter Factors:  
+
+    2 version of BF method \@ref(tab:venter-var-weight-BF)
+
+    Variance is either constant or varied by $\propto f(d)h(w)$
+
+    n = predicted?
+
+```
+
+**Estimate $\mathbf{\sigma^2}$ based on the entire triangle**:
+
+$$\dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}$$
 
 * $n =$ # of data points in triangle
 
 * $p =$ # of parameters
 
-    * Cape Cod $p=3$ ($\omega, \theta, ELR$)
-    * LDF $p=2 +$ # of AYs ($\omega, \theta,$ row parameters)
+    * Cape Cod: $p=3$
+    
+        ($\omega, \theta, ELR$)
+    
+    * LDF: $p=2 +$ # of AYs
+    
+        ($\omega, \theta,$ row parameters)
 
 * $c_i =$ actual incremental loss emergence
 
 * $\mu_i =$ expected incremental loss emergence
 
-***
+***Assume incremental loss follows ODP Poisson***
 
-Variance relationship in other papers
-
-* Mack (1994):  
-CL method assumes $\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$  
-Constant is same for each column (development period)
-n includes all here?
-
-* Venter Factors:  
-BF method assumed variance $\propto$ expected losses in a cell
-Constant varied by column
-n = predicted?
-
-***
-
-$C_i \sim ODP(\lambda_i, \sigma^2)$
+$$C_i \sim ODP(\lambda_i, \sigma^2)$$
 
 * Use ODP so that variance $\neq$ mean
 
-* $C_i = \sigma^2 X$ where $X \sim Poi(\lambda_i)$
+* $C_i = \sigma^2 X_i$ where $X_i \sim Poi(\lambda_i)$
 
 * $\operatorname{E}[C_i] = \sigma^2 \lambda_i = \mu_i$
 
 * $\operatorname{Var}(C_i) = \sigma^2 \mu_i$
 
-Potential issue with ODP is that some granularity is lost since reserves are estimated in multiple of $\sigma^2$. However $\sigma^2$ is generally small so little precision is lost
+* Here $C_i$ means the r.v. while $c_i$ is the observation
 
-### MLE 
+Caveat:
 
-<span style="color:red; background-color:yellow">Not super testable</span>
+* Potential issue with ODP is that some granularity is lost since reserves are estimated in multiple of $\sigma^2$
 
-$l = \sum \limits_{i \in \Delta} c_i \operatorname{ln}(\mu_i) - \mu_i$ <span style="color:red; background-color:yellow">Memorize Formula</span>
+* However $\sigma^2$ is generally small so little precision is lost
+
+### MLE for Best Parameters
+
+```{block, type='rmdcaution'}
+Not super testable
+```
+
+$l = \sum \limits_{i \in \Delta} c_i \operatorname{ln}(\mu_i) - \mu_i$
 
 * $\sigma^2$ was assumed to be a known constant
 
-* Plug in $\mu_i$ for the different methods and then maximize $l$ by $\dfrac{\partial l}{\partial ELR} = 0$ or $\dfrac{\partial l}{\partial ULT_{AY}} = 0$
+* Maximize each $l$ across each parameters $\omgea$, $\theta$ and $ELR$ by taking the derivative of $l$ w.r.t. each of the parameters and setting the equation to zero 
 
 ### Parameter Variance
 
-<span style="color:red; background-color:yellow">Not super testable</span>
+```{block, type='rmdcaution'}
+Not super testable
+```
 
 Covariance matrix = $\Sigma = -\sigma^2 \times I^{-1}$
 

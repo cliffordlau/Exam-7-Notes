@@ -20,7 +20,7 @@ $\begin{align}
   \hat{\alpha}_k^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2
 \end{align}$
 
-$\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
+$\hat{\alpha}_{I-1}^2 = \mathrm{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
   \hat{\alpha}_{I-3}^2 & \text{if } \hat{\alpha}_{I-3}^2 < \hat{\alpha}_{I-2}^2 \\
   \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} & \text{else}\\
 \end{cases}$
@@ -41,19 +41,19 @@ Test 3. [CY Test](#cy-test)
 
 * Rank small and large
     
-* $\operatorname{E}[z_n] = \dfrac{n}{2} - c_n$
+* $\mathrm{E}[z_n] = \dfrac{n}{2} - c_n$
     
     * $c_n = {n - 1 \choose m}\frac{n}{2^n}$
         
-    * $m = \operatorname{floor}\left[ \dfrac{n-1}{2} \right]$
+    * $m = \mathrm{floor}\left[ \dfrac{n-1}{2} \right]$
 
-* $\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[Z_n] - \operatorname{E}[z_n]^2$
+* $\mathrm{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \mathrm{E}[Z_n] - \mathrm{E}[z_n]^2$
     
 * $Z = \sum_{diagonal} z$
 
 * Since $Z \sim$ Normal, can sum the mean and variance assuming $\perp\!\!\!\perp$
 
-* Test 95% CI: $\operatorname{E}[Z] \pm 2 \times \sigma$
+* Test 95% CI: $\mathrm{E}[Z] \pm 2 \times \sigma$
 
 Test 4. [Adjacent LDF Correlation](#adjacent-ldf)
 
@@ -63,11 +63,11 @@ Test 4. [Adjacent LDF Correlation](#adjacent-ldf)
     
 * $T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}$
 
-* $\operatorname{E}[T] \pm Z \sqrt{\operatorname{Var}(T)}$
+* $\mathrm{E}[T] \pm Z \sqrt{\mathrm{Var}(T)}$
 
-    * $\operatorname{E}[T] = 0$
+    * $\mathrm{E}[T] = 0$
 
-    * $\operatorname{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}$
+    * $\mathrm{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}$
 
 * Use $Z = 0.67$ for range of [25%, 75%]
 
@@ -84,7 +84,7 @@ Notations use for Mack
 ```
 
 ```{proposition, cl-ass-1, name = "Chain Ladder Assumption 1"}
-$$\operatorname{E}\left [c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ] = c_{i,k} \times f_k$$
+$$\mathrm{E}\left [c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ] = c_{i,k} \times f_k$$
 ```
 
 ```{remark}
@@ -130,7 +130,7 @@ $$\left \{c_{i,1} \cdots c_{i,I} \right \} \: {\perp\!\!\!\!\perp} \: \left \{c_
 ```
 
 ```{proposition, cl-ass-3, name = "Chain Ladder Assumption 3"}
-$$\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$$
+$$\mathrm{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$$
 ```
 
 ```{remark}
@@ -404,7 +404,7 @@ This one varies by age (columns), for each age:
 $\alpha^2_{I-1}$ (e.g. $\alpha^2_9$ for a 10 $\times$ 10 triangle)
 
 \begin{equation}
-\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
+\hat{\alpha}_{I-1}^2 = \mathrm{min} \left( \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
   \hat{\alpha}_{I-3}^2 & \text{if } \hat{\alpha}_{I-3}^2 < \hat{\alpha}_{I-2}^2 \\
   \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} & \text{else}\\
 \end{cases}
@@ -455,9 +455,9 @@ Important formulas below
   (\#eq:lognormal-ci)
 \end{equation}
 
-$$\sigma_i^2 = \operatorname{ln} \left [ 1 + \left ( \dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} \right)^2 \right]$$
+$$\sigma_i^2 = \mathrm{ln} \left [ 1 + \left ( \dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} \right)^2 \right]$$
 
-$$\mu_i = \operatorname{ln}(\hat{R}_i) - \dfrac{\sigma_i^2}{2}$$
+$$\mu_i = \mathrm{ln}(\hat{R}_i) - \dfrac{\sigma_i^2}{2}$$
 
 ```{remark}
 
@@ -549,7 +549,7 @@ Test for assumption 3 (prop. \@ref(prp:cl-ass-3))
 For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
 
 \begin{equation}
-  \varepsilon_{i,k} = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\operatorname{Var}(c_{j,k})}}
+  \varepsilon_{i,k} = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathrm{Var}(c_{j,k})}}
   (\#eq:residual-eq)
 \end{equation}
 
@@ -594,7 +594,7 @@ $$z^d = \mathrm{min}(\text{# of }S, \text{# of }L)$$
 
 $$\mathrm{E}[z_n] = \dfrac{n}{2} - c_n$$
 
-$$\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[z_n] - \operatorname{E}[z_n]^2$$
+$$\mathrm{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \mathrm{E}[z_n] - \mathrm{E}[z_n]^2$$
 
 ```{remark}
 
@@ -603,7 +603,7 @@ $$\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[z_n
     
 * $c_n = {n - 1 \choose m}\frac{n}{2^n}$
     
-* $m = \operatorname{floor}\left[ \dfrac{n-1}{2} \right]$
+* $m = \mathrm{floor}\left[ \dfrac{n-1}{2} \right]$
 
 * $z \sim$ Normal
 ```

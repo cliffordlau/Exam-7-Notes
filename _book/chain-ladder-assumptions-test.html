@@ -154,10 +154,12 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a><ul>
-<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a></li>
+<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html#expected-ultimate-loss-methods"><i class="fa fa-check"></i><b>6.1.1</b> Expected Ultimate Loss Methods</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><i class="fa fa-check"></i><b>6.2</b> Distribution of Actual Loss Emergence and Maximum Likelihood</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#process-variance"><i class="fa fa-check"></i><b>6.2.1</b> Process Variance</a></li>
-<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle"><i class="fa fa-check"></i><b>6.2.2</b> MLE</a></li>
+<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle-for-best-parameters"><i class="fa fa-check"></i><b>6.2.2</b> MLE for Best Parameters</a></li>
 <li class="chapter" data-level="6.2.3" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#parameter-variance"><i class="fa fa-check"></i><b>6.2.3</b> Parameter Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="variance-of-the-reserves.html"><a href="variance-of-the-reserves.html"><i class="fa fa-check"></i><b>6.3</b> Variance of the Reserves</a></li>
@@ -649,7 +651,7 @@
 <p><strong><em>Test Procedure</em></strong></p>
 <p>For each age <span class="math inline">\(k\)</span>, plot the <span class="math inline">\(c_{i,k}\)</span> with the residuals <span class="math inline">\(\varepsilon_{i,k}\)</span></p>
 <span class="math display" id="eq:residual-eq">\[\begin{equation}
-  \varepsilon_{i,k} = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\operatorname{Var}(c_{j,k})}}
+  \varepsilon_{i,k} = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathrm{Var}(c_{j,k})}}
   \tag{4.9}
 \end{equation}\]</span>
 
@@ -688,14 +690,14 @@ Important formulas below
 <li>Calculate <span class="math inline">\(\mathrm{E}[z_n]\)</span> and <span class="math inline">\(\mathrm{Var}(z_n)\)</span> for each diagonal <span class="math inline">\(d\)</span></li>
 </ol>
 <p><span class="math display">\[\mathrm{E}[z_n] = \dfrac{n}{2} - c_n\]</span></p>
-<p><span class="math display">\[\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[z_n] - \operatorname{E}[z_n]^2\]</span></p>
+<p><span class="math display">\[\mathrm{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \mathrm{E}[z_n] - \mathrm{E}[z_n]^2\]</span></p>
 
 <div class="remark">
 <p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
 <li><p><span class="math inline">\(n =\)</span> # of elements in each diagonal <strong>excluding</strong> the throw away value</p></li>
 <li><p><span class="math inline">\(c_n = {n - 1 \choose m}\frac{n}{2^n}\)</span></p></li>
-<li><p><span class="math inline">\(m = \operatorname{floor}\left[ \dfrac{n-1}{2} \right]\)</span></p></li>
+<li><p><span class="math inline">\(m = \mathrm{floor}\left[ \dfrac{n-1}{2} \right]\)</span></p></li>
 <li><span class="math inline">\(z \sim\)</span> Normal
 </div>
 <p></p></li>

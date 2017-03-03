@@ -154,10 +154,12 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a><ul>
-<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a></li>
+<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html#expected-ultimate-loss-methods"><i class="fa fa-check"></i><b>6.1.1</b> Expected Ultimate Loss Methods</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><i class="fa fa-check"></i><b>6.2</b> Distribution of Actual Loss Emergence and Maximum Likelihood</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#process-variance"><i class="fa fa-check"></i><b>6.2.1</b> Process Variance</a></li>
-<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle"><i class="fa fa-check"></i><b>6.2.2</b> MLE</a></li>
+<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle-for-best-parameters"><i class="fa fa-check"></i><b>6.2.2</b> MLE for Best Parameters</a></li>
 <li class="chapter" data-level="6.2.3" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#parameter-variance"><i class="fa fa-check"></i><b>6.2.3</b> Parameter Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="variance-of-the-reserves.html"><a href="variance-of-the-reserves.html"><i class="fa fa-check"></i><b>6.3</b> Variance of the Reserves</a></li>
@@ -666,7 +668,7 @@
 <p><strong>Mean squared error</strong> calculation</p>
 <p><span class="math inline">\(\begin{align}  MSE(\hat{c}_{i,I}) = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \} \end{align}\)</span></p>
 <p><span class="math inline">\(\begin{align}  \hat{\alpha}_k^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2 \end{align}\)</span></p>
-<p><span class="math inline">\(\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}  \hat{\alpha}_{I-3}^2 &amp; \text{if } \hat{\alpha}_{I-3}^2 &lt; \hat{\alpha}_{I-2}^2 \\  \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} &amp; \text{else}\\ \end{cases}\)</span></p>
+<p><span class="math inline">\(\hat{\alpha}_{I-1}^2 = \mathrm{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}  \hat{\alpha}_{I-3}^2 &amp; \text{if } \hat{\alpha}_{I-3}^2 &lt; \hat{\alpha}_{I-2}^2 \\  \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} &amp; \text{else}\\ \end{cases}\)</span></p>
 <p>Confidence Interval</p>
 <ul>
 <li><p>Normal: equation <a href="confidence-intervals.html#eq:normal-ci">(4.6)</a></p></li>
@@ -678,25 +680,25 @@
 <p>Test 3. <a href="chain-ladder-assumptions-test.html#cy-test">CY Test</a></p>
 <ul>
 <li><p>Rank small and large</p></li>
-<li><p><span class="math inline">\(\operatorname{E}[z_n] = \dfrac{n}{2} - c_n\)</span></p>
+<li><p><span class="math inline">\(\mathrm{E}[z_n] = \dfrac{n}{2} - c_n\)</span></p>
 <ul>
 <li><p><span class="math inline">\(c_n = {n - 1 \choose m}\frac{n}{2^n}\)</span></p></li>
-<li><p><span class="math inline">\(m = \operatorname{floor}\left[ \dfrac{n-1}{2} \right]\)</span></p></li>
+<li><p><span class="math inline">\(m = \mathrm{floor}\left[ \dfrac{n-1}{2} \right]\)</span></p></li>
 </ul></li>
-<li><p><span class="math inline">\(\operatorname{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \operatorname{E}[Z_n] - \operatorname{E}[z_n]^2\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \mathrm{E}[Z_n] - \mathrm{E}[z_n]^2\)</span></p></li>
 <li><p><span class="math inline">\(Z = \sum_{diagonal} z\)</span></p></li>
 <li><p>Since <span class="math inline">\(Z \sim\)</span> Normal, can sum the mean and variance assuming <span class="math inline">\(\perp\!\!\!\perp\)</span></p></li>
-<li><p>Test 95% CI: <span class="math inline">\(\operatorname{E}[Z] \pm 2 \times \sigma\)</span></p></li>
+<li><p>Test 95% CI: <span class="math inline">\(\mathrm{E}[Z] \pm 2 \times \sigma\)</span></p></li>
 </ul>
 <p>Test 4. <a href="chain-ladder-assumptions-test.html#adjacent-ldf">Adjacent LDF Correlation</a></p>
 <ul>
 <li><p><span class="math inline">\(S = \sum \limits_{\in rows} \Big \{ [Rank \: Col \: i \: LDF] - [Rank \: Col \: j \: LDF] \Big \}^2\)</span></p></li>
 <li><p><span class="math inline">\(T_k = 1 - \dfrac{S}{n(n^2-1)/6}\)</span></p></li>
 <li><p><span class="math inline">\(T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}\)</span></p></li>
-<li><p><span class="math inline">\(\operatorname{E}[T] \pm Z \sqrt{\operatorname{Var}(T)}\)</span></p>
+<li><p><span class="math inline">\(\mathrm{E}[T] \pm Z \sqrt{\mathrm{Var}(T)}\)</span></p>
 <ul>
-<li><p><span class="math inline">\(\operatorname{E}[T] = 0\)</span></p></li>
-<li><p><span class="math inline">\(\operatorname{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{E}[T] = 0\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}\)</span></p></li>
 </ul></li>
 <li><p>Use <span class="math inline">\(Z = 0.67\)</span> for range of [25%, 75%]</p></li>
 </ul> 

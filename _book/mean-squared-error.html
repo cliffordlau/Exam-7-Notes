@@ -154,10 +154,12 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a><ul>
-<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a></li>
+<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html#expected-ultimate-loss-methods"><i class="fa fa-check"></i><b>6.1.1</b> Expected Ultimate Loss Methods</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><i class="fa fa-check"></i><b>6.2</b> Distribution of Actual Loss Emergence and Maximum Likelihood</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#process-variance"><i class="fa fa-check"></i><b>6.2.1</b> Process Variance</a></li>
-<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle"><i class="fa fa-check"></i><b>6.2.2</b> MLE</a></li>
+<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle-for-best-parameters"><i class="fa fa-check"></i><b>6.2.2</b> MLE for Best Parameters</a></li>
 <li class="chapter" data-level="6.2.3" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#parameter-variance"><i class="fa fa-check"></i><b>6.2.3</b> Parameter Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="variance-of-the-reserves.html"><a href="variance-of-the-reserves.html"><i class="fa fa-check"></i><b>6.3</b> Variance of the Reserves</a></li>
@@ -691,7 +693,7 @@ Important formulas below
 </ol>
 <p><span class="math inline">\(\alpha^2_{I-1}\)</span> (e.g. <span class="math inline">\(\alpha^2_9\)</span> for a 10 <span class="math inline">\(\times\)</span> 10 triangle)</p>
 <span class="math display" id="eq:alpha-2">\[\begin{equation}
-\hat{\alpha}_{I-1}^2 = \operatorname{min} \left( \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
+\hat{\alpha}_{I-1}^2 = \mathrm{min} \left( \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
   \hat{\alpha}_{I-3}^2 &amp; \text{if } \hat{\alpha}_{I-3}^2 &lt; \hat{\alpha}_{I-2}^2 \\
   \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} &amp; \text{else}\\
 \end{cases}

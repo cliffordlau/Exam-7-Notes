@@ -81,7 +81,7 @@
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><i class="fa fa-check"></i><b>6.2</b> Distribution of Actual Loss Emergence and Maximum Likelihood</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#process-variance"><i class="fa fa-check"></i><b>6.2.1</b> Process Variance</a></li>
-<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle"><i class="fa fa-check"></i><b>6.2.2</b> MLE</a></li>
+<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle-for-best-parameters"><i class="fa fa-check"></i><b>6.2.2</b> MLE for Best Parameters</a></li>
 <li class="chapter" data-level="6.2.3" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#parameter-variance"><i class="fa fa-check"></i><b>6.2.3</b> Parameter Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="variance-of-the-reserves.html"><a href="variance-of-the-reserves.html"><i class="fa fa-check"></i><b>6.3</b> Variance of the Reserves</a></li>
@@ -149,57 +149,85 @@
             <section class="normal" id="section-">
 <div id="distribution-of-actual-loss-emergence-and-maximum-likelihood" class="section level2">
 <h2><span class="header-section-number">6.2</span> Distribution of Actual Loss Emergence and Maximum Likelihood</h2>
-<p>Parameter estimation with MLE</p>
+<p>Estimate parameters with MLE</p>
 <div id="process-variance" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Process Variance</h3>
-<p>For each incremental loss, <span class="math inline">\(\operatorname{Var}(c_i) \propto \operatorname{E}[c_i]\)</span></p>
+
+<div class="rmdnote">
+Important formulas below
+</div>
+<p></p>
+<p><strong><em>Key assumption</em></strong>:</p>
+<p><span class="math display">\[\operatorname{Var}(c_i) \propto \operatorname{E}[c_i] = \sigma^2 \operatorname{E}[c_i]\]</span></p>
 <ul>
-<li><p><span class="math inline">\(\operatorname{Var}(c_i) = \sigma^2 \operatorname{E}[c_i]\)</span></p></li>
-<li><p><span class="math inline">\(c_i\)</span> is the <strong>incremental</strong> loss here <span style="color:red">Note</span></p></li>
+<li><p>Assume ratio of the variance to mean is constant for each cell in the <strong>triangle</strong></p></li>
+<li><p><span class="math inline">\(c_i\)</span> is the <strong>incremental</strong> loss here</p></li>
 <li><p><span class="math inline">\(\sigma^2\)</span> is the <strong>same for the entire triangle</strong></p></li>
 </ul>
-<p><span class="math inline">\(\dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}\)</span> <span style="color:red; background-color:yellow">Memorize Formula</span></p>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> Compare variance assumption with Mack and Venter</p>
+<ul>
+<li><p>Mack-1994:</p>
+<p>Proposition <a href="#prp:cl-ass-3"><strong>??</strong></a>: <span class="math inline">\(\mathrm{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}\)</span></p>
+<p>Constant is same for each column <span class="math inline">\(k\)</span> (development period)</p>
+<p>n = includes all here?</p></li>
+<li><p>Venter Factors:</p>
+<p>2 version of BF method <a href="#tab:venter-var-weight-BF"><strong>??</strong></a></p>
+<p>Variance is either constant or varied by <span class="math inline">\(\propto f(d)h(w)\)</span></p>
+n = predicted?</li>
+</ul>
+</div>
+<p></p>
+<p><strong>Estimate <span class="math inline">\(\mathbf{\sigma^2}\)</span> based on the entire triangle</strong>:</p>
+<p><span class="math display">\[\dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}\]</span></p>
 <ul>
 <li><p><span class="math inline">\(n =\)</span> # of data points in triangle</p></li>
 <li><p><span class="math inline">\(p =\)</span> # of parameters</p>
 <ul>
-<li>Cape Cod <span class="math inline">\(p=3\)</span> (<span class="math inline">\(\omega, \theta, ELR\)</span>)</li>
-<li>LDF <span class="math inline">\(p=2 +\)</span> # of AYs (<span class="math inline">\(\omega, \theta,\)</span> row parameters)</li>
+<li><p>Cape Cod: <span class="math inline">\(p=3\)</span></p>
+<p>(<span class="math inline">\(\omega, \theta, ELR\)</span>)</p></li>
+<li><p>LDF: <span class="math inline">\(p=2 +\)</span> # of AYs</p>
+<p>(<span class="math inline">\(\omega, \theta,\)</span> row parameters)</p></li>
 </ul></li>
 <li><p><span class="math inline">\(c_i =\)</span> actual incremental loss emergence</p></li>
 <li><p><span class="math inline">\(\mu_i =\)</span> expected incremental loss emergence</p></li>
 </ul>
-<hr />
-<p>Variance relationship in other papers</p>
-<ul>
-<li><p>Mack (1994):<br />
-CL method assumes <span class="math inline">\(\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}\)</span><br />
-Constant is same for each column (development period) n includes all here?</p></li>
-<li><p>Venter Factors:<br />
-BF method assumed variance <span class="math inline">\(\propto\)</span> expected losses in a cell Constant varied by column n = predicted?</p></li>
-</ul>
-<hr />
-<p><span class="math inline">\(C_i \sim ODP(\lambda_i, \sigma^2)\)</span></p>
+<p><strong><em>Assume incremental loss follows ODP Poisson</em></strong></p>
+<p><span class="math display">\[C_i \sim ODP(\lambda_i, \sigma^2)\]</span></p>
 <ul>
 <li><p>Use ODP so that variance <span class="math inline">\(\neq\)</span> mean</p></li>
-<li><p><span class="math inline">\(C_i = \sigma^2 X\)</span> where <span class="math inline">\(X \sim Poi(\lambda_i)\)</span></p></li>
+<li><p><span class="math inline">\(C_i = \sigma^2 X_i\)</span> where <span class="math inline">\(X_i \sim Poi(\lambda_i)\)</span></p></li>
 <li><p><span class="math inline">\(\operatorname{E}[C_i] = \sigma^2 \lambda_i = \mu_i\)</span></p></li>
 <li><p><span class="math inline">\(\operatorname{Var}(C_i) = \sigma^2 \mu_i\)</span></p></li>
+<li><p>Here <span class="math inline">\(C_i\)</span> means the r.v. while <span class="math inline">\(c_i\)</span> is the observation</p></li>
 </ul>
-<p>Potential issue with ODP is that some granularity is lost since reserves are estimated in multiple of <span class="math inline">\(\sigma^2\)</span>. However <span class="math inline">\(\sigma^2\)</span> is generally small so little precision is lost</p>
+<p>Caveat:</p>
+<ul>
+<li><p>Potential issue with ODP is that some granularity is lost since reserves are estimated in multiple of <span class="math inline">\(\sigma^2\)</span></p></li>
+<li><p>However <span class="math inline">\(\sigma^2\)</span> is generally small so little precision is lost</p></li>
+</ul>
 </div>
-<div id="mle" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> MLE</h3>
-<p><span style="color:red; background-color:yellow">Not super testable</span></p>
-<p><span class="math inline">\(l = \sum \limits_{i \in \Delta} c_i \operatorname{ln}(\mu_i) - \mu_i\)</span> <span style="color:red; background-color:yellow">Memorize Formula</span></p>
+<div id="mle-for-best-parameters" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> MLE for Best Parameters</h3>
+<div class="rmdcaution">
+<p>
+Not super testable
+</p>
+</div>
+<p><span class="math inline">\(l = \sum \limits_{i \in \Delta} c_i \operatorname{ln}(\mu_i) - \mu_i\)</span></p>
 <ul>
 <li><p><span class="math inline">\(\sigma^2\)</span> was assumed to be a known constant</p></li>
-<li><p>Plug in <span class="math inline">\(\mu_i\)</span> for the different methods and then maximize <span class="math inline">\(l\)</span> by <span class="math inline">\(\dfrac{\partial l}{\partial ELR} = 0\)</span> or <span class="math inline">\(\dfrac{\partial l}{\partial ULT_{AY}} = 0\)</span></p></li>
+<li><p>Maximize each <span class="math inline">\(l\)</span> across each parameters <span class="math inline">\(\omgea\)</span>, <span class="math inline">\(\theta\)</span> and <span class="math inline">\(ELR\)</span> by taking the derivative of <span class="math inline">\(l\)</span> w.r.t. each of the parameters and setting the equation to zero</p></li>
 </ul>
 </div>
 <div id="parameter-variance" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Parameter Variance</h3>
-<p><span style="color:red; background-color:yellow">Not super testable</span></p>
+<div class="rmdcaution">
+<p>
+Not super testable
+</p>
+</div>
 <p>Covariance matrix = <span class="math inline">\(\Sigma = -\sigma^2 \times I^{-1}\)</span></p>
 <ul>
 <li><p>Information matrix <span class="math inline">\(I\)</span>: Use 2<sup>nd</sup> derivative matrix of <span class="math inline">\(l\)</span> vs each parameter</p></li>

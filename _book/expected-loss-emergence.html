@@ -81,7 +81,7 @@
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><i class="fa fa-check"></i><b>6.2</b> Distribution of Actual Loss Emergence and Maximum Likelihood</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#process-variance"><i class="fa fa-check"></i><b>6.2.1</b> Process Variance</a></li>
-<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle"><i class="fa fa-check"></i><b>6.2.2</b> MLE</a></li>
+<li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle-for-best-parameters"><i class="fa fa-check"></i><b>6.2.2</b> MLE for Best Parameters</a></li>
 <li class="chapter" data-level="6.2.3" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#parameter-variance"><i class="fa fa-check"></i><b>6.2.3</b> Parameter Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="variance-of-the-reserves.html"><a href="variance-of-the-reserves.html"><i class="fa fa-check"></i><b>6.3</b> Variance of the Reserves</a></li>
@@ -180,14 +180,22 @@ Important formulas and definition below
 \end{equation}\]</span>
 
 <div class="remark">
-<p><span class="remark"><em>Remark. </em></span> Advantages:</p>
+<p><span class="remark"><em>Remark. </em></span> </p>
+<p>% Emergence in period <span class="math inline">\(x\)</span> to <span class="math inline">\(x+12\)</span> = <span class="math inline">\(G(x+12) - G(x)\)</span></p>
+<ul>
+<li><p>Equivalent to the <span class="math inline">\(f(d)\)</span> in Venter Table <a href="#tab:venter-alt-pattern"><strong>??</strong></a> for the alternative pattern <span class="math inline">\(f(d)h(w)\)</span></p>
+<p>Given <span class="math inline">\(d = x / 12 - 1\)</span></p></li>
+</ul>
+<p><strong>Advantages</strong> (over Venter):</p>
 <ul>
 <li><p>Uses only 2 column parameters: <span class="math inline">\(\theta\)</span> for mean; <span class="math inline">\(\omega\)</span> for s.d.</p></li>
 <li><p>Can use data @ different age</p></li>
-<li>Output is a smooth curve <span class="math inline">\(\Rightarrow\)</span> Can interpolate between ages and estimates a tail
-</div>
-<p></p></li>
+<li><p>Output is a smooth curve <span class="math inline">\(\Rightarrow\)</span> Can interpolate between ages and estimates a tail</p></li>
 </ul>
+<p>Motivation for using a curve is to recognize that adjacent LDFs are related</p>
+Doesn’t work when there is <strong>expected</strong> negative loss development
+</div>
+<p></p>
 <div id="expected-ultimate-loss-methods" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Expected Ultimate Loss Methods</h3>
 <p><strong><em>Method 1: Cape Cod</em></strong></p>
@@ -198,9 +206,14 @@ Important formulas and definition below
 <ul>
 <li><p>A single row parameter <span class="math inline">\(h\)</span> for the entire triangle</p></li>
 <li><p><span class="math inline">\(h\)</span> here is the <span class="math inline">\(ELR\)</span></p></li>
-<li>Similar parameters in Venter (<a href="#tab:venter-alt-pattern"><strong>??</strong></a>)
+<li><p>Similar parameters in Venter (<a href="#tab:venter-alt-pattern"><strong>??</strong></a>)</p></li>
+<li><p>This method is preferred:</p>
+<ul>
+<li><p>Only need 3 parameters</p></li>
+<li>Includes extra information, exposure base
 </div>
 <p></p></li>
+</ul></li>
 </ul>
 <p>Estimate Future Emergence:</p>
 <p><span class="math display">\[[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times [Premium_{AY} \times ELR]\]</span></p>
