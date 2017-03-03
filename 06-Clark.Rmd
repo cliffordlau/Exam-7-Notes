@@ -1,6 +1,4 @@
-# A8 LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark
-
-## Cliff's Summary
+# LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark
 
 Memorize the CDF for [loglogistic](#Loglogistic) and [weibull](#Weibull)
 
@@ -17,23 +15,6 @@ Know how to calculate reserves given the $G(x)$ and for each of the 2 methods gi
 * Test for truncation by looking at age twice the triangle
 
 Other use of the model
-
-### Types of Exam Questions
-
-<span style="color:red">Haven't done TIA practice questions</span>
-
-**Reserve Calculation**
-
-* $\star$ [2011 #2](#2011-2): Cape Cod truncated and reserve CoV
-* 2012 #2: Cape Cod method and reserve CoV
-* $\star \star$ [2013 #3](#2013-3): LDF method with $\sigma^2$ calc
-* 2013 #10: Stanard-Buhlmann
-* 2014 #5: plug and play LDF and Cape Cod method with Benktander
-* [2015 #2](#2015-2): LDF Method and concept where if we switch to Cape Cod the CoV should go down as it incorporates additional information
-
-**Other**
-
-* 2012 #3: Residual plot from projection and assumptions
 
 ## Expected Loss Emergence
 
@@ -327,14 +308,37 @@ CV will be smaller since the tail with the most variability gets discounted the 
     
 ## Past Exam Questions
 
-<a name="2011-2"></a>
-![](questions/2011-2Q.png)
-![](questions/2011-2A.png)
+**Reserve Calculation**
 
-<a name="2013-3"></a>
-![](questions/2013-3Q.png)
-![](questions/2013-3A.png)
+* $\star$ 2011 #2 (\@ref(fig:2011-2)): Cape Cod truncated and reserve CoV
 
-<a name="2015-2"></a>
-![](questions/2015-2Q.png)
-![](questions/2015-2A.png)
+* 2012 #2: Cape Cod method and reserve CoV
+
+* $\star \star$ 2013 #3 (\@ref(fig:2013-3)): LDF method with $\sigma^2$ calc
+
+* 2013 #10: Stanard-Buhlmann
+
+* 2014 #5: plug and play LDF and Cape Cod method with Benktander
+
+* 2015 #2 (\@ref(fig:2015-2)): LDF Method and concept where if we switch to Cape Cod the CoV should go down as it incorporates additional information
+
+**Other**
+
+* 2012 #3: Residual plot from projection and assumptions
+
+### Question Highlights
+
+```{r 2011-2, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2011 Question 2'}
+knitr::include_graphics('questions/2011-2Q.png')
+knitr::include_graphics('questions/2011-2A.png')
+```
+
+```{r 2013-3, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2013 Question 3'}
+knitr::include_graphics('questions/2013-3Q.png')
+knitr::include_graphics('questions/2013-3A.png')
+```
+
+```{r 2015-2, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2015 Question 2'}
+knitr::include_graphics('questions/2015-2Q.png')
+knitr::include_graphics('questions/2015-2A.png')
+```

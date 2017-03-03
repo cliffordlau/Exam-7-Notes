@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ldf-method-method-2.html">
-<link rel="next" href="other-use-of-model.html">
+<link rel="prev" href="testing-the-assumptions-of-age-to-age-factors-g-venter.html">
+<link rel="next" href="expected-loss-emergence.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,41 +145,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cape-cod-method-method-1" class="section level2">
-<h2><span class="header-section-number">6.6</span> Cape Cod Method (Method 1)</h2>
-<p>Needs exposure base (e.g. on-level and trended EP) that allow us to assume a constant ELR across AYs</p>
-<p>Estimate <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\omega\)</span> with MLE</p>
-<p>Estimate ELR with below:</p>
-<p><span class="math inline">\(ELR = \sum_{AY} \dfrac{\text{Losses Paid to Date}}{\underbrace{G(x)}_{\text{Expected portion paid}} \times Premium}\)</span></p>
+<div id="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach---d.-clark" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</h1>
+<p>Memorize the CDF for <a href="#Loglogistic">loglogistic</a> and <a href="#Weibull">weibull</a></p>
+<p>We use the <strong>average age</strong> of the period here</p>
+<p>Know how to calculate reserves given the <span class="math inline">\(G(x)\)</span> and for each of the 2 methods given:</p>
 <ul>
-<li>Do not truncate when calculating ELR</li>
+<li><p>Growth function distribution and parameter (might have to estimate)</p></li>
+<li><p>LDF or Cape Cod</p></li>
+<li><p>Data (e.g. paid to date for each AY)</p></li>
+<li><p>Test for truncation by looking at age twice the triangle</p></li>
 </ul>
-<p><span class="math inline">\(\mu = ULT_{AY} \times [G(y) - G(x)]\)</span></p>
-<p>Calculate <span class="math inline">\(\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}\)</span></p>
-<ul>
-<li><p>n = all data points (not just the predicted like in Venter)</p></li>
-<li><p>P = 3</p></li>
-</ul>
-<p>Check if the assumption of one expected LR is reasonable by looking for any upward or downward trends in the ultimate LR</p>
-<div id="reserve-estimate-1" class="section level3">
-<h3><span class="header-section-number">6.6.1</span> Reserve Estimate</h3>
-<p><strong>Untruncated</strong></p>
-<p>Reserve = On-level Premium <span class="math inline">\(\times ELR \times [1 - G(x)]\)</span></p>
-<p><strong>Truncated</strong> @ age <span class="math inline">\(x_t\)</span></p>
-<p>Reserve = On-level Premium <span class="math inline">\(\times ELR \times [(G(x_t) - G(x)]\)</span></p>
-<hr />
-<p>Similar story for the process variance and parameter variance as the LDF method.</p>
-<p>The Covariance matrix is smaller just <span class="math inline">\(3 \times 3\)</span></p>
-<p>Parameter variance is smaller than the LDF method since we have more information in the Cape Cod method (?)</p>
-</div>
+<p>Other use of the model</p> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="ldf-method-method-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="other-use-of-model.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="testing-the-assumptions-of-age-to-age-factors-g-venter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="expected-loss-emergence.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
