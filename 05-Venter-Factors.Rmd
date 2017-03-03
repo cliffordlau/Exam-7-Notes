@@ -113,7 +113,7 @@ $\mathrm{E}[q(w,d+1)] = f(d)c(w,d)$
 
 * $n = \sum \limits_{i=1}^{m-1} i = \dfrac{m(m-1)}{2}$ = predicted data point?
 
-* $p=m-1$ since we dont' predict the first column
+* $p=m-1$ since we don't predict the first column
 
 * $m =$ dimension
 
@@ -200,7 +200,7 @@ If an alternative emergence pattern provides a better explanation of the triangl
 
 #### Parameters: Alternative Emergence Pattern
 
-Table: (\#tab:venter-alt-pattern) Alternative emergerence pattern on a $m \times m$ triangle
+Table: (\#tab:venter-alt-pattern) Alternative emergence pattern on a $m \times m$ triangle
 
 | Emergence Patterns | # of Parameters $p$ | Comments |
 | ------------------------------ | ---------- | ------------------------ |
@@ -292,7 +292,7 @@ Table: (\#tab:venter-var-weight-BF) Variance and parameters for various form of 
 | Cape Cod^2^ | $p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}$ |
 | *BF* (Var $\propto$ $fh$)| $p=q=1$ | $f^2(d) = \dfrac{\sum_w h \left( \frac{q}{h} \right) ^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f \left( \frac{q}{f} \right)^2}{\sum_d f}$ |
 
-1. *BF*: assumes each $q(w,d)$ have constanct variance (least square, standard regression)
+1. *BF*: assumes each $q(w,d)$ have constant variance (least square, standard regression)
 
     For $h(w)$ weight is $f(d)^2$ and cells with higher expectes loss get higher weight
     
@@ -334,13 +334,13 @@ Step 4) Do this till convergence
 
 **For *n***
 
-* For reserving: number of cell in the triangle minus the first column
+* For reserving: number of cell in the triangle minus the first column $\dfrac{m(m-1)}{2}$
 
-    Since we don't need to forcast the first column to calculate the unpaid
+    Since we don't need to forecast the first column to calculate the unpaid
     
 * For pricing: number of cell in the triangle
 
-**For *p*** (Just a walkthrough of how we get the $m$ in Table \@ref(\#tab:venter-alt-pattern))
+**For *p*** (Just a walk through of how we get the $m$ in Table \@ref(\#tab:venter-alt-pattern))
 
 * ***BF***: Start with $2m$ parameters all the $f(d)$'s and $h(w)$'s
 
@@ -364,7 +364,7 @@ Step 4) Do this till convergence
 
 The forecast incremental losses might not be a linear function (e.g. $q(w,d) = a\sqrt{c(w,d)}$)
 
-Look at residuals as function of rrevious
+Look at residuals as function of previous
 
 * Test for linearity by making sure the residuals are not a sequence of positive then negative and vice versa
 
@@ -418,17 +418,19 @@ Perform test for all columns
 
 ### Implication 6: No High of Low Diagonals (Test for independence) {#venter-imp-6}
 
-Run regression that includes a variable for each diagonal
+Similar to [Mack](#cy-test)'s CY Test
 
-Each $q(w,d)$ is regressed against the cumulative losses at the prior period + dummy variable for which diagonal it is in
+**Key Idea**: Run regression on the triangle with a dummy variable for each diagonal
 
-* $q(w,d) ~ c(w,d-1) + diagonal_{year}$
+Each $q(w,d)$ is regressed against the prior cumulative losses  + dummy variable for which diagonal it is in
 
-* If diagonal significatly high or low $\Rightarrow$ Dummy variable should have a statistically significant coefficient
+* $q(w,d) \sim c(w,d-1) + dummy_{CY}$
 
-* Same criteria where it is significant if coefficient is double the $\sigma$
+* If losses are significantly higher or lower in a diagonal $\Rightarrow$ The coefficient of the dummy variable would be statistically significant (i.e. coefficient is double the $\sigma$)
 
-Deficiceny of this method is that the diagonal effect is additive
+* Only includes diagonals that **forcast** at least 2 elements
+
+**Caveat**: Diagonal effect is additive
 
 * More likely to see multiplicative impact. e.g. from inflation
 
@@ -436,13 +438,17 @@ Deficiceny of this method is that the diagonal effect is additive
 
 #### Diagonal Trend as Inflation
 
-Model $q(w,d)$ with a diagonal parameter $w+d$
+Consider CY trend as inflation and model $q(w,d)$ with a diagonal parameter $g(w+d)$, where $w+d$ is the diagonal
 
-$\mathrm{E}[q(w,d)] = f(d)h(w)g(w+d)$
+$$\mathrm{E}[q(w,d)] = f(d)h(w)g(w+d)$$
 
-Model constant CY trend to reduce the parameters:
+This will have parameters for each row, column, and diagonal
 
-$g(w+d) = (1+j)^{w+d}$
+* Can be reduce similar to the grouped BF
+
+* We can model a constant CY trend to reduce the parameters
+
+    e.g. $g(w+d) = (1+j)^{w+d}$
 
 ## Past Exam Questions
 

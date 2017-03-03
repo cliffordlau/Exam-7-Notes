@@ -207,7 +207,7 @@
 <div id="parameters-alternative-emergence-pattern" class="section level4">
 <h4><span class="header-section-number">5.2.3.1</span> Parameters: Alternative Emergence Pattern</h4>
 <table style="width:93%;">
-<caption><span id="tab:venter-alt-pattern">Table 5.3: </span> Alternative emergerence pattern on a <span class="math inline">\(m \times m\)</span> triangle</caption>
+<caption><span id="tab:venter-alt-pattern">Table 5.3: </span> Alternative emergence pattern on a <span class="math inline">\(m \times m\)</span> triangle</caption>
 <colgroup>
 <col width="43%" />
 <col width="15%" />
@@ -346,7 +346,7 @@
 </tbody>
 </table>
 <ol style="list-style-type: decimal">
-<li><p><em>BF</em>: assumes each <span class="math inline">\(q(w,d)\)</span> have constanct variance (least square, standard regression)</p>
+<li><p><em>BF</em>: assumes each <span class="math inline">\(q(w,d)\)</span> have constant variance (least square, standard regression)</p>
 <p>For <span class="math inline">\(h(w)\)</span> weight is <span class="math inline">\(f(d)^2\)</span> and cells with higher expectes loss get higher weight</p>
 <p>For <span class="math inline">\(f(d)\)</span> weight is expected ultimate losses squared, years with higher expected losses get higher weight</p></li>
 <li><p>Cape Cod: also assumes constant variance</p></li>
@@ -382,11 +382,11 @@ Work in progress section
 <h4><span class="header-section-number">5.2.3.4</span> Counting <em>n</em> and <em>p</em> for SSE</h4>
 <p><strong>For <em>n</em></strong></p>
 <ul>
-<li><p>For reserving: number of cell in the triangle minus the first column</p>
-<p>Since we don’t need to forcast the first column to calculate the unpaid</p></li>
+<li><p>For reserving: number of cell in the triangle minus the first column <span class="math inline">\(\dfrac{m(m-1)}{2}\)</span></p>
+<p>Since we don’t need to forecast the first column to calculate the unpaid</p></li>
 <li><p>For pricing: number of cell in the triangle</p></li>
 </ul>
-<p><strong>For <em>p</em></strong> (Just a walkthrough of how we get the <span class="math inline">\(m\)</span> in Table @ref(#tab:venter-alt-pattern))</p>
+<p><strong>For <em>p</em></strong> (Just a walk through of how we get the <span class="math inline">\(m\)</span> in Table @ref(#tab:venter-alt-pattern))</p>
 <ul>
 <li><p><strong><em>BF</em></strong>: Start with <span class="math inline">\(2m\)</span> parameters all the <span class="math inline">\(f(d)\)</span>’s and <span class="math inline">\(h(w)\)</span>’s</p>
 <ol style="list-style-type: decimal">
@@ -405,7 +405,7 @@ Work in progress section
 <div id="venter-imp-3" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Implication 3: Linearity</h3>
 <p>The forecast incremental losses might not be a linear function (e.g. <span class="math inline">\(q(w,d) = a\sqrt{c(w,d)}\)</span>)</p>
-<p>Look at residuals as function of rrevious</p>
+<p>Look at residuals as function of previous</p>
 <ul>
 <li><p>Test for linearity by making sure the residuals are not a sequence of positive then negative and vice versa</p></li>
 <li><p>Do this for each regression (i.e. every <span class="math inline">\(d\)</span>)</p></li>
@@ -450,24 +450,29 @@ Work in progress section
 </div>
 <div id="venter-imp-6" class="section level3">
 <h3><span class="header-section-number">5.2.7</span> Implication 6: No High of Low Diagonals (Test for independence)</h3>
-<p>Run regression that includes a variable for each diagonal</p>
-<p>Each <span class="math inline">\(q(w,d)\)</span> is regressed against the cumulative losses at the prior period + dummy variable for which diagonal it is in</p>
+<p>Similar to <a href="#cy-test">Mack</a>’s CY Test</p>
+<p><strong>Key Idea</strong>: Run regression on the triangle with a dummy variable for each diagonal</p>
+<p>Each <span class="math inline">\(q(w,d)\)</span> is regressed against the prior cumulative losses + dummy variable for which diagonal it is in</p>
 <ul>
-<li><p><span class="math inline">\(q(w,d) ~ c(w,d-1) + diagonal_{year}\)</span></p></li>
-<li><p>If diagonal significatly high or low <span class="math inline">\(\Rightarrow\)</span> Dummy variable should have a statistically significant coefficient</p></li>
-<li><p>Same criteria where it is significant if coefficient is double the <span class="math inline">\(\sigma\)</span></p></li>
+<li><p><span class="math inline">\(q(w,d) \sim c(w,d-1) + dummy_{CY}\)</span></p></li>
+<li><p>If losses are significantly higher or lower in a diagonal <span class="math inline">\(\Rightarrow\)</span> The coefficient of the dummy variable would be statistically significant (i.e. coefficient is double the <span class="math inline">\(\sigma\)</span>)</p></li>
+<li><p>Only includes diagonals that <strong>forcast</strong> at least 2 elements</p></li>
 </ul>
-<p>Deficiceny of this method is that the diagonal effect is additive</p>
+<p><strong>Caveat</strong>: Diagonal effect is additive</p>
 <ul>
 <li><p>More likely to see multiplicative impact. e.g. from inflation</p></li>
 <li><p>This can be implement with a regression on the logarithm of the losses</p></li>
 </ul>
 <div id="diagonal-trend-as-inflation" class="section level4">
 <h4><span class="header-section-number">5.2.7.1</span> Diagonal Trend as Inflation</h4>
-<p>Model <span class="math inline">\(q(w,d)\)</span> with a diagonal parameter <span class="math inline">\(w+d\)</span></p>
-<p><span class="math inline">\(\mathrm{E}[q(w,d)] = f(d)h(w)g(w+d)\)</span></p>
-<p>Model constant CY trend to reduce the parameters:</p>
-<p><span class="math inline">\(g(w+d) = (1+j)^{w+d}\)</span></p>
+<p>Consider CY trend as inflation and model <span class="math inline">\(q(w,d)\)</span> with a diagonal parameter <span class="math inline">\(g(w+d)\)</span>, where <span class="math inline">\(w+d\)</span> is the diagonal</p>
+<p><span class="math display">\[\mathrm{E}[q(w,d)] = f(d)h(w)g(w+d)\]</span></p>
+<p>This will have parameters for each row, column, and diagonal</p>
+<ul>
+<li><p>Can be reduce similar to the grouped BF</p></li>
+<li><p>We can model a constant CY trend to reduce the parameters</p>
+<p>e.g. <span class="math inline">\(g(w+d) = (1+j)^{w+d}\)</span></p></li>
+</ul>
 </div>
 </div>
 </div>
