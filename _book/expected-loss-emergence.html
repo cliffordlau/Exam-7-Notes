@@ -76,7 +76,9 @@
 <li class="chapter" data-level="4" data-path="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><a href="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><i class="fa fa-check"></i><b>4</b> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</a></li>
 <li class="chapter" data-level="5" data-path="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><a href="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><i class="fa fa-check"></i><b>5</b> Testing the Assumptions of Age-to-Age Factors - G. Venter</a></li>
 <li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a><ul>
-<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a></li>
+<li class="chapter" data-level="6.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html"><i class="fa fa-check"></i><b>6.1</b> Expected Loss Emergence</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="expected-loss-emergence.html"><a href="expected-loss-emergence.html#expected-ultimate-loss-methods"><i class="fa fa-check"></i><b>6.1.1</b> Expected Ultimate Loss Methods</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><i class="fa fa-check"></i><b>6.2</b> Distribution of Actual Loss Emergence and Maximum Likelihood</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#process-variance"><i class="fa fa-check"></i><b>6.2.1</b> Process Variance</a></li>
 <li class="chapter" data-level="6.2.2" data-path="distribution-of-actual-loss-emergence-and-maximum-likelihood.html"><a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#mle"><i class="fa fa-check"></i><b>6.2.2</b> MLE</a></li>
@@ -147,32 +149,76 @@
             <section class="normal" id="section-">
 <div id="expected-loss-emergence" class="section level2">
 <h2><span class="header-section-number">6.1</span> Expected Loss Emergence</h2>
-<p><span class="math inline">\(x =\)</span> <strong>average age</strong> of AY (e.g. 6mo for the most recent instead of 12mo) <span style="color:red">Note</span></p>
-<p>% paid to date growth function: <span class="math inline">\(G(x \mid \omega, \theta)\)</span> <span style="color:red; background-color:yellow">Memorize Formula</span></p>
+
+<div class="rmdnote">
+Important formulas and definition below
+</div>
+<p></p>
+
+<div class="definition">
+<p><span id="def:clark-def" class="definition"><strong>Definition 6.1 </strong></span></p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(x =\)</span> <strong>average age</strong> of AY</p>
+<p>(e.g. 6mo for the most recent instead of 12mo)</p></li>
+<li><p><span class="math inline">\(G(x \mid \omega, \theta)\)</span> = % paid to date growth function</p>
 <ul>
-<li><p><a name="Loglogistic"></a><strong>Loglogistic</strong>: <span class="math inline">\(G(x \mid \omega, \theta) = \dfrac{x^{\omega}}{x^{\omega} + \theta^{\omega}}\)</span></p></li>
-<li><p><a name="Weibull"></a><strong>Weibull</strong>: <span class="math inline">\(G(x \mid \omega, \theta) = 1- \operatorname{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}\)</span></p></li>
-<li><p>The curves move smoothly from 0 to 1</p></li>
-</ul>
-<p>Advantages:</p>
+<li><p>2 forms of the growth function below</p></li>
+<li>The curves move smoothly from 0 to 1
+</div>
+<p></p></li>
+</ul></li>
+</ol>
+<p><strong>Loglogistic</strong>:</p>
+<span class="math display" id="eq:clark-loglogistic">\[\begin{equation}
+  G(x \mid \omega, \theta) = \dfrac{x^{\omega}}{x^{\omega} + \theta^{\omega}}
+  \tag{6.1}
+\end{equation}\]</span>
+<p><strong>Weibull</strong>:</p>
+<span class="math display" id="eq:clark-weibull">\[\begin{equation}
+  G(x \mid \omega, \theta) = 1- \operatorname{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}
+  \tag{6.2}
+\end{equation}\]</span>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> Advantages:</p>
 <ul>
 <li><p>Uses only 2 column parameters: <span class="math inline">\(\theta\)</span> for mean; <span class="math inline">\(\omega\)</span> for s.d.</p></li>
 <li><p>Can use data @ different age</p></li>
-<li><p>Output is a smooth curve <span class="math inline">\(\Rightarrow\)</span> Can interpolate between ages and estimates a tail</p></li>
+<li>Output is a smooth curve <span class="math inline">\(\Rightarrow\)</span> Can interpolate between ages and estimates a tail
+</div>
+<p></p></li>
 </ul>
-<hr />
-<p><strong>Expected Ultimate Loss</strong></p>
-<p>Method 1: Cape Cod <span class="math inline">\(Premium_{AY} \times ELR\)</span></p>
+<div id="expected-ultimate-loss-methods" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Expected Ultimate Loss Methods</h3>
+<p><strong><em>Method 1: Cape Cod</em></strong></p>
+<p><span class="math display">\[Premium_{AY} \times ELR\]</span></p>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
-<li>Having a single row parameter <span class="math inline">\(h\)</span></li>
+<li><p>A single row parameter <span class="math inline">\(h\)</span> for the entire triangle</p></li>
+<li><p><span class="math inline">\(h\)</span> here is the <span class="math inline">\(ELR\)</span></p></li>
+<li>Similar parameters in Venter (<a href="#tab:venter-alt-pattern"><strong>??</strong></a>)
+</div>
+<p></p></li>
 </ul>
-<p>Method 2: LDF <span class="math inline">\(ULT_{AY}\)</span></p>
+<p>Estimate Future Emergence:</p>
+<p><span class="math display">\[[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times [Premium_{AY} \times ELR]\]</span></p>
+<p><strong><em>Method 2: LDF</em></strong></p>
+<p><span class="math display">\[ULT_{AY}\]</span></p>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
-<li>Having a <span class="math inline">\(h(w)\)</span> for each row</li>
+<li><p><span class="math inline">\(h(w)\)</span> for each row</p></li>
+<li><p><span class="math inline">\(h(w)\)</span> here represents the ultimate loss for each <span class="math inline">\(w\)</span></p></li>
+<li>Similar parameters in Venter (<a href="#tab:venter-alt-pattern"><strong>??</strong></a>)
+</div>
+<p></p></li>
 </ul>
-<p><strong>Estimate Future Emergence</strong></p>
-<p>Method 1: <span class="math inline">\([G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times [Premium_{AY} \times ELR]\)</span></p>
-<p>Method 2: <span class="math inline">\([G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}\)</span></p>
+<p>Estimate Future Emergence:</p>
+<p><span class="math display">\[[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}\]</span></p>
+</div>
 </div>
             </section>
 

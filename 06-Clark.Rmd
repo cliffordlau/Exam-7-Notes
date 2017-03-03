@@ -1,6 +1,6 @@
 # LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark
 
-Memorize the CDF for [loglogistic](#Loglogistic) and [weibull](#Weibull)
+Memorize the CDF for loglogistic \@ref(eq:clark-loglogistic) and weibull \@ref(eq:clark-weibull)
 
 We use the **average age** of the period here
 
@@ -18,16 +18,39 @@ Other use of the model
 
 ## Expected Loss Emergence
 
-$x =$ **average age** of AY (e.g. 6mo for the most recent instead of 12mo) <span style="color:red">Note</span>
+```{block2, type='rmdnote'}
+Important formulas and definition below
+```
 
-% paid to date growth function: $G(x \mid \omega, \theta)$ <span style="color:red; background-color:yellow">Memorize Formula</span>  
+```{definition, clark-def}
 
-* <a name="Loglogistic"></a>**Loglogistic**: $G(x \mid \omega, \theta) = \dfrac{x^{\omega}}{x^{\omega} + \theta^{\omega}}$
 
-* <a name="Weibull"></a>**Weibull**: $G(x \mid \omega, \theta) = 1- \operatorname{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}$
+1. $x =$ **average age** of AY
 
-* The curves move smoothly from 0 to 1
+    (e.g. 6mo for the most recent instead of 12mo)
 
+2. $G(x \mid \omega, \theta)$ = % paid to date growth function
+
+    * 2 forms of the growth function below
+    
+    * The curves move smoothly from 0 to 1
+```
+
+**Loglogistic**:
+
+\begin{equation}
+  G(x \mid \omega, \theta) = \dfrac{x^{\omega}}{x^{\omega} + \theta^{\omega}}
+  (\#eq:clark-loglogistic)
+\end{equation}
+
+**Weibull**:
+
+\begin{equation}
+  G(x \mid \omega, \theta) = 1- \operatorname{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}
+  (\#eq:clark-weibull)
+\end{equation}
+
+```{remark}
 Advantages:
 
 * Uses only 2 column parameters: $\theta$ for mean; $\omega$ for s.d.
@@ -35,24 +58,45 @@ Advantages:
 * Can use data @ different age
 
 * Output is a smooth curve $\Rightarrow$ Can interpolate between ages and estimates a tail
+```
 
-***
+### Expected Ultimate Loss Methods
 
-**Expected Ultimate Loss**
+***Method 1: Cape Cod***
 
-Method 1: Cape Cod $Premium_{AY} \times ELR$
+$$Premium_{AY} \times ELR$$
 
-* Having a single row parameter $h$
+```{remark}
 
-Method 2: LDF $ULT_{AY}$
 
-* Having a $h(w)$ for each row
+* A single row parameter $h$ for the entire triangle
 
-**Estimate Future Emergence**
+* $h$ here is the $ELR$
 
-Method 1: $[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times [Premium_{AY} \times ELR]$
+* Similar parameters in Venter (\@ref(tab:venter-alt-pattern))
+```
 
-Method 2: $[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}$
+Estimate Future Emergence:
+
+$$[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times [Premium_{AY} \times ELR]$$
+
+***Method 2: LDF***
+
+$$ULT_{AY}$$
+
+```{remark}
+
+
+* $h(w)$ for each row
+
+* $h(w)$ here represents the ultimate loss for each $w$
+
+* Similar parameters in Venter (\@ref(tab:venter-alt-pattern))
+```
+
+Estimate Future Emergence:
+
+$$[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}$$
 
 ## Distribution of Actual Loss Emergence and Maximum Likelihood
 
@@ -307,6 +351,10 @@ CV will be smaller since the tail with the most variability gets discounted the 
     * Others can be used as well
     
 ## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
 
 **Reserve Calculation**
 
