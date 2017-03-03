@@ -360,7 +360,7 @@ Plot residuals (should be randomly scattered around 0):
 
 1. age $x$ vs $r_{i,x}$ 
 
-2. expected los $\mu_i$ vs $r_{i,x}$ 
+2. expected loss $\mu_i$ vs $r_{i,x}$ 
 
     Test of the constant $\frac{Variance}{Mean}$ assumption
 
@@ -390,85 +390,105 @@ $$\sigma^2 \sum_i \mu_i = \sigma^2 \times \text{Unpaid}$$
 
 [Parameter variance](#clark-var-reserve) is huge and computational intensive as it requires inverting a big matrix
 
+* We expect the Cape Cod to have parameter variance (as we only estimate 3 parameters)
+
+Total variance can be calculated by summing the process and parameter variance
+
 ## Cape Cod Method (Method 1)
 
-Needs exposure base (e.g. on-level and trended EP) that allow us to assume a constant ELR across AYs
+Requires exposure base:
 
-Estimate $\theta$ and $\omega$ with MLE
+* e.g. on-level and trended EP, original loss projection, trended # of vehicles, claim counts, etc
 
-Estimate ELR with below:
+* We want an exposure base that allow us to assume a constant ELR across AYs
 
-$ELR = \sum_{AY} \dfrac{\text{Losses Paid to Date}}{\underbrace{G(x)}_{\text{Expected portion paid}} \times Premium}$
+Estimate $\theta$, $\omega$ and $ELR$ with [MLE](#clark-MLE)
 
-* Do not truncate when calculating ELR
+$$ELR = \sum_{AY} \dfrac{\text{Losses Paid to Date}}{\underbrace{G(x)}_{\text{Expected portion paid}} \times Premium}$$
 
-$\mu = ULT_{AY} \times [G(y) - G(x)]$
+* **Do not truncate** when calculating ELR
 
-Calculate $\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}$
+$$\mu = Premium_{AY} \times ELR \times [G(y) - G(x)]$$
 
-* n = all data points (not just the predicted like in Venter)
+Calculate $\sigma^2$:
 
-* P = 3
+$$\sigma^2= \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}$$
+
+* $n =$ all data points
+
+    (Not just the predicted like in [Venter](#venter-count-para))
+
+* $p = 3$
 
 Check if the assumption of one expected LR is reasonable by looking for any upward or downward trends in the ultimate LR
+
+* Since we're assuming a single $ELR$
 
 ### Reserve Estimate
 
 **Untruncated**
 
-Reserve = On-level Premium $\times ELR \times [1 - G(x)]$
+* Reserve = On-level Premium $\times \: ELR \: \times [1 - G(x)]$
 
 **Truncated** @ age $x_t$
 
-Reserve = On-level Premium $\times ELR \times [(G(x_t) - G(x)]$
+* Reserve = On-level Premium $\times \: ELR \: \times [(G(x_t) - G(x)]$
 
-***
+Similar story for the process variance and parameter variance as the LDF method
 
-Similar story for the process variance and parameter variance as the LDF method.
+The Covariance matrix $\Sigma$ is smaller just $3 \times 3$
 
-The Covariance matrix is smaller just $3 \times 3$
+Parameter variance is smaller than the LDF method since we have more information (exposure) in the Cape Cod method 
 
-Parameter variance is smaller than the LDF method since we have more information in the Cape Cod method (?)
-
-## Other Use of Model {.tabset}
+## Other Use of Model
 
 ### Variance of Prospective Losses
 
 Estimate variance for the **next u/w year**
 
-Need to be given the $\mathrm{Var}(ELR)$
+* Need to be given the $\mathrm{Var}(ELR)$
 
-Process Variance: $\sigma^2 R$
+Process Variance:
 
-Parameter Variance: $\left(\sqrt{\mathrm{Var}(ELR)}\times Premium \right)^2$
+$$\sigma^2 \times \: ELR \: \times Premium$$
+
+Parameter Variance:
+
+$$\left(\sqrt{\mathrm{Var}(ELR)}\times Premium \right)^2$$
 
 Total Variance: Process Variance + Parameter Variance
 
-CoV: $\dfrac{\sqrt{Total \: Variance}}{R}$
+CoV:
+
+$$\dfrac{\sqrt{Total \: Variance}}{ELR \times Premium}$$
 
 ### Calendar Year Development
 
-Calculate $[G(x+12) - G(x)] \times Ultimate$
+Estimated paid losses over the next 12 months:
 
-No truncation here
+$$[G(x+12) - G(x)] \times a \: priori \:Ultimate$$
 
-Sum for all AYs and compare with actual calendar year emergence
+* No truncation here
 
-Can calculate the s.d. to see if it's in range (process var is still $\sigma^2 \times$ estimate)
+* *a priori* from the LDF method here
+
+* Sum for all AYs and compare with actual calendar year emergence
+
+* Can calculate the s.d. to see if it's in range (process var is still $\sigma^2 \times$ estimate)
 
 ### Variability in the Discounted Reserves
 
-CV will be smaller since the tail with the most variability gets discounted the most
+Similar to the above, but CoV will be smaller since the tail with the most variability gets discounted the most
 
 ## Comments and Conclusion
 
-* Can use data in table format
+* Can use data in table format (AY, From and To Age, Incremental Paid, Exposure)
 
-* Use the CV from the model even if select a different reserve
+* Can we Use the CoV from the model even if select a different reserve?
 
-    * Not okay since you don't trust the reserve estimate
+    * No: since you don't trust the reserve estimate
     
-    * Okay since the s.d. is a selection and the CoV from this model is a reasonable basis
+    * Yes: since the s.d. is a selection and the CoV from this model is a reasonable basis
     
 * Curve was selected because:
 
@@ -479,6 +499,10 @@ CV will be smaller since the tail with the most variability gets discounted the 
     * 1st and 2nd derivative are calculable
     
     * Others can be used as well
+    
+MLE is useful for estimating both the expected emergence pattern and the variance
+
+ODP is convenient link to LDF and Cape Cod estimates
     
 ## Past Exam Questions
 

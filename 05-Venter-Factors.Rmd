@@ -330,7 +330,7 @@ Step 3) Find $f(d)$'s that minimize the SSE based on the $h(w)$ above
 
 Step 4) Do this till convergence
 
-#### Counting *n* and *p* for SSE
+#### Counting *n* and *p* for SSE {#venter-count-para}
 
 **For *n***
 
