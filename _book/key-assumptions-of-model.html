@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html">
-<link rel="next" href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html">
+<link rel="prev" href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html">
+<link rel="next" href="ldf-method-method-2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -148,99 +148,35 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="expected-loss-emergence" class="section level2">
-<h2><span class="header-section-number">6.1</span> Expected Loss Emergence</h2>
-
-<div class="rmdnote">
-Important formulas and definition below
-</div>
-<p></p>
-
-<div class="definition">
-<p><span id="def:clark-def" class="definition"><strong>Definition 6.1 </strong></span></p>
+<div id="key-assumptions-of-model" class="section level2">
+<h2><span class="header-section-number">6.3</span> 3 Key Assumptions of Model</h2>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(x =\)</span> <strong>average age</strong> of AY</p>
-<p>(e.g. 6mo for the most recent instead of 12mo)</p></li>
-<li><p><span class="math inline">\(G(x \mid \omega, \theta)\)</span> = % paid to date growth function</p>
+<li><p>Incremental losses <span class="math inline">\(iid\)</span></p>
 <ul>
-<li><p>2 forms of the growth function below</p></li>
-<li>The curves move smoothly from 0 to 1
-</div>
-<p></p></li>
+<li>Test this using residual analysis</li>
+</ul></li>
+<li><p><span class="math inline">\(\frac{Variance}{Mean}\)</span> scale parameter <span class="math inline">\(\sigma^2\)</span> is fixed and known</p>
+<ul>
+<li>Technically this should be estimated with the other parameters but will makes things intractable</li>
+</ul></li>
+<li><p>Variance estimates are based on the approximation to the Rao-Cramer lower bound</p>
+<ul>
+<li><p>Variance based on information matrix <span class="math inline">\(I\)</span> <a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#eq:clark-info-matrix">(6.3)</a></p></li>
+<li><p><span class="math inline">\(I\)</span> is exact only when using linear functions</p></li>
+<li><p>In our case this is simply a lower bound</p></li>
+<li><p>We are using approximated parameters</p></li>
 </ul></li>
 </ol>
-<p><strong>Loglogistic</strong>:</p>
-<span class="math display" id="eq:clark-loglogistic">\[\begin{equation}
-  G(x \mid \omega, \theta) = \dfrac{x^{\omega}}{x^{\omega} + \theta^{\omega}}
-  \tag{6.1}
-\end{equation}\]</span>
-<p><strong>Weibull</strong>:</p>
-<span class="math display" id="eq:clark-weibull">\[\begin{equation}
-  G(x \mid \omega, \theta) = 1- \mathrm{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}
-  \tag{6.2}
-\end{equation}\]</span>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
-<p>% Emergence in period <span class="math inline">\(x\)</span> to <span class="math inline">\(x+12\)</span> = <span class="math inline">\(G(x+12) - G(x)\)</span></p>
-<ul>
-<li><p>Equivalent to the <span class="math inline">\(f(d)\)</span> in Venter Table <a href="#tab:venter-alt-pattern"><strong>??</strong></a> for the alternative pattern <span class="math inline">\(f(d)h(w)\)</span></p>
-<p>Given <span class="math inline">\(d = x / 12 - 1\)</span></p></li>
-</ul>
-<p><strong>Advantages</strong> (over Venter):</p>
-<ul>
-<li><p>Uses only 2 column parameters: <span class="math inline">\(\theta\)</span> for mean; <span class="math inline">\(\omega\)</span> for s.d.</p></li>
-<li><p>Can use data @ different age</p></li>
-<li><p>Output is a smooth curve <span class="math inline">\(\Rightarrow\)</span> Can interpolate between ages and estimates a tail</p></li>
-</ul>
-<p>Motivation for using a curve is to recognize that adjacent LDFs are related</p>
-Doesn’t work when there is <strong>expected</strong> negative loss development
-</div>
-<p></p>
-<div id="expected-ultimate-loss-methods" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> Expected Ultimate Loss Methods</h3>
-<p><strong><em>Method 1: Cape Cod</em></strong></p>
-<p><span class="math display">\[Premium_{AY} \times ELR\]</span></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
-<ul>
-<li><p>A single row parameter <span class="math inline">\(h\)</span> for the entire triangle</p></li>
-<li><p><span class="math inline">\(h\)</span> here is the <span class="math inline">\(ELR\)</span></p></li>
-<li><p>Similar parameters in Venter (<a href="#tab:venter-alt-pattern"><strong>??</strong></a>)</p></li>
-<li><p>This method is preferred:</p>
-<ul>
-<li><p>Only need 3 parameters</p></li>
-<li>Includes extra information, exposure base
-</div>
-<p></p></li>
-</ul></li>
-</ul>
-<p>Estimate Future Emergence:</p>
-<p><span class="math display">\[[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times [Premium_{AY} \times ELR]\]</span></p>
-<p><strong><em>Method 2: LDF</em></strong></p>
-<p><span class="math display">\[ULT_{AY}\]</span></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
-<ul>
-<li><p><span class="math inline">\(h(w)\)</span> for each row</p></li>
-<li><p><span class="math inline">\(h(w)\)</span> here represents the ultimate loss for each <span class="math inline">\(w\)</span></p></li>
-<li>Similar parameters in Venter (<a href="#tab:venter-alt-pattern"><strong>??</strong></a>)
-</div>
-<p></p></li>
-</ul>
-<p>Estimate Future Emergence:</p>
-<p><span class="math display">\[[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}\]</span></p>
-</div>
+<p>The above temper the volatility in the model, actual results can be more variable</p>
+<p>Model only works for positive expected incremental losses, but a negative loss here or there is fine as well</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ldf-method-method-2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

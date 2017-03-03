@@ -46,7 +46,7 @@ Important formulas and definition below
 **Weibull**:
 
 \begin{equation}
-  G(x \mid \omega, \theta) = 1- \operatorname{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}
+  G(x \mid \omega, \theta) = 1- \mathrm{exp}\left\{ { - \left( \dfrac{x}{ \theta } \right)^{\omega}} \right \}
   (\#eq:clark-weibull)
 \end{equation}
 
@@ -128,7 +128,7 @@ Important formulas below
 
 ***Key assumption***:
 
-$$\operatorname{Var}(c_i) \propto \operatorname{E}[c_i] = \sigma^2 \operatorname{E}[c_i]$$
+$$\mathrm{Var}(c_i) \propto \mathrm{E}[c_i] = \sigma^2 \mathrm{E}[c_i]$$
 
 * Assume ratio of the variance to mean is constant for each cell in the **triangle**
 
@@ -185,9 +185,9 @@ $$C_i \sim ODP(\lambda_i, \sigma^2)$$
 
 * $C_i = \sigma^2 X_i$ where $X_i \sim Poi(\lambda_i)$
 
-* $\operatorname{E}[C_i] = \sigma^2 \lambda_i = \mu_i$
+* $\mathrm{E}[C_i] = \sigma^2 \lambda_i = \mu_i$
 
-* $\operatorname{Var}(C_i) = \sigma^2 \mu_i$
+* $\mathrm{Var}(C_i) = \sigma^2 \mu_i$
 
 * Here $C_i$ means the r.v. while $c_i$ is the observation
 
@@ -197,17 +197,62 @@ Caveat:
 
 * However $\sigma^2$ is generally small so little precision is lost
 
-### MLE for Best Parameters
+### MLE for Best Parameters {#clark-MLE}
 
 ```{block, type='rmdcaution'}
 Not super testable
 ```
 
-$l = \sum \limits_{i \in \Delta} c_i \operatorname{ln}(\mu_i) - \mu_i$
+Given a set of observed incremental losses $\{c_i\}$, we want to find the $\omega$, $\theta$, and $ELR$ that best fit the actual losses
 
-* $\sigma^2$ was assumed to be a known constant
+```{proposition, clark-mle-odp}
+Maximum likelihood function
 
-* Maximize each $l$ across each parameters $\omgea$, $\theta$ and $ELR$ by taking the derivative of $l$ w.r.t. each of the parameters and setting the equation to zero 
+$$l = \sum \limits_{i \in \Delta} c_i \mathrm{ln}(\mu_i) - \mu_i$$
+
+* Maximize each $l$ across each parameters $\omega$, $\theta$ and $ELR$ by taking the derivative of $l$ w.r.t. each of the parameters and setting the equation to zero 
+```
+
+```{proof}
+For each cell $i$ we have incremental losses $C_i$ with mean:
+
+$$\mu_i = \sigma^2 \lambda_i$$
+
+The likelihood function is:
+
+$$\prod \limits_{i \in \Delta} \Pr(C_i = c_i) = \prod \limits_{i \in \Delta} \dfrac{\lambda_i ^{c_i / \sigma^2} e^{-\lambda_i}}{(c_i / \sigma^2)!} = \prod \limits_{i \in \Delta} \dfrac{(\mu_1 / \sigma^2) ^{c_i / \sigma^2} e^{-\lambda_i}}{(c_i / \sigma^2)!}$$
+
+Take the log of the above
+
+$$\sum_{i \in \Delta} \dfrac{c_i}{\sigma^2} \ln \left( \dfrac{\mu_i}{\sigma^2} \right) - \dfrac{\mu_i}{\sigma^2} - \ln \left[ \left(\dfrac{c_i}{\sigma^2} \right)! \right]$$
+
+If we assume the $\sigma^2 is known and constant then we have function in proposition \@ref(prp:clark-mle-odp)
+
+* We can remove $\sigma^2$ in the first 2 terms as it is a constant
+
+* The 3^rd^ term goes away as the whole thing is now a constant
+
+```
+
+#### MLE for Method 1
+
+When maximize the MLE for $ELR$ we get:
+
+$$ELR = \dfrac{\sum_{i \in \Delta} c_i}{\sum_{i \in \Delta} P_i \times [G(y) - G(x)]}$$
+
+* This is the sum of all incremental losses in the triangle $\div$ Premium $\times$ Expected portion of claims paid
+
+* Which is the Cape Cod $ELR$ from [Hurlimann](#hur-remark)
+
+#### MLE for Method 2
+
+When we maximize the MLE for $ULT_{AY}$ we get:
+
+$$ULT_{AY} = \dfrac{\sum_{i \in AY} c_i}{\sum_{i \in AY}[G(y) - G(x)]}$$
+
+* Sum of claims reported to date $\div$ % expected reported to date in a row
+
+* The is the LDF method of estimating ultimate
 
 ### Parameter Variance
 
@@ -215,43 +260,61 @@ $l = \sum \limits_{i \in \Delta} c_i \operatorname{ln}(\mu_i) - \mu_i$
 Not super testable
 ```
 
-Covariance matrix = $\Sigma = -\sigma^2 \times I^{-1}$
+Information matrix $I$ (2^nd^ derivative matrix $l$ vs each parameter)
 
-* Information matrix $I$: Use 2^nd^ derivative matrix of $l$ vs each parameter
+\begin{equation}
+\begin{bmatrix}
+  \dfrac{\partial^2 l}{\partial^2 ELR} & \dfrac{\partial^2 l}{\partial ELR \: \partial \omega} & \dfrac{\partial^2 l}{\partial ELR \: \partial \theta}\\
+  \dfrac{\partial^2 l}{\partial \omega \: \partial ELR} & \dfrac{\partial^2 l}{\partial^2 \omega} & \dfrac{\partial^2 l}{\partial \omega \: \partial \theta}\\
+  \dfrac{\partial^2 l}{\partial \theta \: \partial ELR} & \dfrac{\partial^2 l}{\partial \theta \: \partial \omega} & \dfrac{\partial^2 l}{\partial^2 \theta}\\
+\end{bmatrix}
+(\#eq:clark-info-matrix)
+\end{equation}
+
+Covariance matrix:
+
+\begin{equation}
+  \Sigma = -\sigma^2 \times I^{-1}
+  (\#eq:clark-cov-matrix)
+\end{equation}
 
 * $3 \times 3$ matrix for Cape Cod
 
-* $(n+2) \times (n+2)$ for LDF
+* $(n+2) \times (n+2)$ for LDF Method
 
-## Variance of the Reserves
+### Variance of the Reserves {#clark-var-reserve}
 
 **Process Variance of $R$**
 
-$\sigma^2 \sum_i \mu_i$
+$$\sigma^2 \sum_i \mu_i$$
 
-* Technically testable if given $\sigma^2$ <span style="color:red">Not sure how</span>
+* Technically testable if given $\sigma^2$
+
+* Process variance $\propto$ to the mean with proportion $\sigma^2$
 
 **Parameter Variance of $R$**
 
-$\operatorname{Var}(\operatorname{E}[R]) = (\partial R)'\Sigma (\partial R)$
+$$\mathrm{Var}(\mathrm{E}[R]) = (\partial R)'\Sigma (\partial R)$$
+
+* $\Sigma$ is from equation \@ref(eq:clark-cov-matrix) above
 
 * $\partial R$ = vector that is the derivative of the reserve by each parameter
 
 * Calculation heavy, not testable
 
-## Key Assumptions
+## 3 Key Assumptions of Model
 
 1) Incremental losses $iid$
 
-    * Can test this by looking at residuals
+    * Test this using residual analysis
 
-2) $\dfrac{Variance}{Mean}$ scale parameter $\sigma^2$ is fixed and known
+2) $\frac{Variance}{Mean}$ scale parameter $\sigma^2$ is fixed and known
 
     * Technically this should be estimated with the other parameters but will makes things intractable
 
 3) Variance estimates are based on the approximation to the Rao-Cramer lower bound
 
-    * Variance based on information matrix $I$
+    * Variance based on information matrix $I$ \@ref(eq:clark-info-matrix)
     
     * $I$ is exact only when using linear functions
     
@@ -261,17 +324,21 @@ $\operatorname{Var}(\operatorname{E}[R]) = (\partial R)'\Sigma (\partial R)$
 
 The above temper the volatility in the model, actual results can be more variable
 
-Model only works for positive expected incremental losses. But a negative loss here or there is fine as well
+Model only works for positive expected incremental losses, but a negative loss here or there is fine as well
 
 ## LDF Method (Method 2)
 
-Can use either [Loglogistic](#Loglogistic) or [Weibull](#Weibull) for $G(x)$
+Can use either Loglogistic \@ref(eq:clark-loglogistic) or Weibull \@ref(eq:clark-weibull) for $G(x)$
 
-Estimate $\theta$ and $\omega$ with MLE
+Estimate $\theta$, $\omega$, and $ULT_{AY}$ with [MLE](#clark-MLE)
 
-$\mu = ULT_{AY} \times [G(y) - G(x)]$
+$$\mu = ULT_{AY} \times [G(y) - G(x)]$$
 
-Calculate $\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}$
+$$l = c_i \ln(\mu_i) - \mu_i$$
+
+Calculate $\sigma^2$
+
+$$\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta} \underbrace{\dfrac{(c_i - \mu_i)^2}{\mu_i}}_{\chi^2 \text{ term}}$$
 
 * n = all data points (not just the predicted like in Venter)
 
@@ -279,34 +346,49 @@ Calculate $\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \m
 
 * This is for **incremental** losses
 
-**Residual Review**
+### Residual Review
 
-Residuals = $r_i = \dfrac{c_i - \mu_i}{\sigma \sqrt{\mu_i}}$
+Normalized residuals:
 
-* Divide by the square root of the variance $\sigma^2 \mu$ for ODP?
+$$r_i = \dfrac{c_i - \mu_i}{\sigma \sqrt{\mu_i}}$$
 
-Plot $r$ vs age, expected loss (test constant var/mean assumption)
+* Divide by the square root of the variance $\sigma^2 \mu$ for ODP
+
+* Same as $\dfrac{\sqrt{\chi^2 \text{ term}}}{\sigma}$
+
+Plot residuals (should be randomly scattered around 0):
+
+1. age $x$ vs $r_{i,x}$ 
+
+2. expected los $\mu_i$ vs $r_{i,x}$ 
+
+    Test of the constant $\frac{Variance}{Mean}$ assumption
+
+    * If fail, can try alternative variance assumptions (e.g. $\mathrm{Var} \propto \mu^2$)
+    
+3. AY, CY, etc vs $r_{i,x}$
 
 ### Reserve Estimate
 
-**Untruncated**
+***Untruncated***
 
 1) Get G(x): % paid(reported) to date
-2) Paid to date (reported to date) $\div$ G(x) = Ultimate
 
-**Truncated** @ age $x_t$
+2) Ultimate = Paid to date (reported to date) $\div$ G(x)
 
-To cut of the tail at some point and stop the development
+***Truncated*** @ age $x_t$
 
-Remember to subtract 6 months
+* To cut of the tail at some point and stop the development
 
-Use $G'(x) = \dfrac{G(x)}{G(x_t)}$ instead just like above
+* Remember we're $x$ is in mid year (so year times 12 and minus 6 months)
 
-***
+* Use $G'(x) = \dfrac{G(x)}{G(x_t)}$ instead just like above
 
-Process Variance = $\sigma^2 \sum_i \mu_i = \sigma^2 \times \text{Unpaid}$
+[Process Variance](#clark-var-reserve):
 
-Parameter variance is huge and computational intensive as it requires inverting a big matrix
+$$\sigma^2 \sum_i \mu_i = \sigma^2 \times \text{Unpaid}$$
+
+[Parameter variance](#clark-var-reserve) is huge and computational intensive as it requires inverting a big matrix
 
 ## Cape Cod Method (Method 1)
 
@@ -354,11 +436,11 @@ Parameter variance is smaller than the LDF method since we have more information
 
 Estimate variance for the **next u/w year**
 
-Need to be given the $\operatorname{Var}(ELR)$
+Need to be given the $\mathrm{Var}(ELR)$
 
 Process Variance: $\sigma^2 R$
 
-Parameter Variance: $\left(\sqrt{\operatorname{Var}(ELR)}\times Premium \right)^2$
+Parameter Variance: $\left(\sqrt{\mathrm{Var}(ELR)}\times Premium \right)^2$
 
 Total Variance: Process Variance + Parameter Variance
 

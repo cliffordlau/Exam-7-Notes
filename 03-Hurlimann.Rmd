@@ -135,7 +135,7 @@ $Z_k^* = \dfrac{p_k}{p_k + \sqrt{p_k}}$
 Where the above assumption lead to $t_k \sim \sqrt{p_k}$
 ```
 
-## Remark 6.1
+## Remark 6.1 {#hur-remark}
 
 Doing all the above with more "Traditional" method
 
@@ -145,7 +145,7 @@ Doing all the above with more "Traditional" method
 
     * $R^{ind}_i = \dfrac{C_i}{p_k} - C_i$
 
-* **Cape Code**
+* **Cape Cod**
 
     * $ELR = \dfrac{\sum\limits_{i,k}S_{ik}}{\sum\limits_i V_i \times p_i^{CL}}$
     
