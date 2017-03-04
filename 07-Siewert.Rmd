@@ -36,11 +36,50 @@ Know the 6 methods and their pros and cons:
 
 WC high deductible reserving with occurrence and/or aggregate deductible
 
+* Reserving for layers XS of a per occ limit and/or aggregate limit
+
+```{block, type='rmdtip'}
+
+The rest of this section is not important for exam but just background information on high deductible WC program
+```
+
+High deductible WC became popular in the 90's and actuarial efforts focused on pricing issues
+
+Program was developed to provide both **insurer and insured many advantages**:
+
+1. Achieving pricing flexibility while passing additional risk to larger insureds in what was considered at the time an unprofitable LoB
+
+2. Ameliorating onerous residual market charges and premium taxes in some states
+
+3. Realizing cash flow advantages similar to paid loss retor
+
+4. providing insureds with another vehicel to control losses while protecting them against random large losses
+
+5. Allowing self-insurance without submitting insureds to sometimes demanding state requirements
+
+After the program matures, the focus shifts to **issues on the liability side**
+
+1. How to estimate these liabilities when losses are not expected to emerge above deductible limits for many years
+
+2. How to construct development factors in the absence of long-term histories under a deductible program
+
+3. How to determine development patterns that reflect the diversity of deductible size and mix
+
+4. How to determine consistent development factors between limited and XS values
+
+5. What is a reasonable approach for the indexing of deductible limits over time
+
+6. How to estimate the liability associated with aggregate loss limits
+
+7. Is there a sound way to determine the proper asset value for associated service revenue
+
+    * Similar to loss conversion factor in retro rating, loss multipliers are applied to deductible losses to capture expenses that vary with loss
+
 ## 1. Loss Ratio Method {#siewert-lr-method}
 
-**Per Occurrence Expected XS loss**
+**Expected Ultimate lossXS Per Occ limit**
 
-$P \cdot E \cdot \chi$
+$$P \cdot E \cdot \chi$$
 
 * $P$ = Premium
 
@@ -48,21 +87,25 @@ $P \cdot E \cdot \chi$
 
 * $\chi$ = Occurrence charge = % of losses above deductible
 
-**Expected Loss XS Aggregate**
+**Expected Ultimate Loss XS Aggregate Limits**
 
-$P \cdot E \cdot (1-\chi) \cdot \varphi$
+$$P \cdot E \cdot (1-\chi) \cdot \varphi$$
 
 * $\varphi$ = Aggregate charge = % of losses in deductible layer that exceed the aggregate
 
-***
+```{remark}
 
 $\chi$ and $\varphi$ are from industry tables
 
-* Specific to the deductible, aggregate, and size of expected losses
+* Specific to the *deductible*, *aggregate*, and size of *expected losses*
+
+* E.g. From NCCI Table M
 
 These are ultimate loss estimate
 
-**Advantages**
+```
+
+***Advantages***
 
 * Useful when little data is available
 
@@ -70,7 +113,7 @@ These are ultimate loss estimate
 
 * Can include industry experience
 
-**Disadvantages**
+***Disadvantages***
 
 * Ignores actual emergence
 
@@ -80,19 +123,27 @@ These are ultimate loss estimate
 
 Ultimate excess loss = ultimate unlimited loss - ultimate limited loss
 
-* Need to make sure LDFs and development are consistent with the different layers
+* Need to make sure **LDFs are consistent** with the different layers (especially for the tail)
 
-* Adjust the deductible for inflation when selecting limited LDFs; Else it distorts the LDFs
+    * $LDF^L \leq LDF$
+    
+    * Don't develop limited losses at a layer above limited losses at a higher layer
 
-**Advantages**
+* Need to adjust the deductible at different exposure year for **inflation** when selecting limited LDFs
+
+    * Keeps the proportion of deductible/XS losses consistent over time
+    
+    * Otherwise historical losses take too long to hit the deductible limit and distorts the LDF
+
+***Advantages***
 
 * Get estimate for early period with no losses
 
 * Limited factors are more stable
 
-**Disadvantages**
+***Disadvantages***
 
-* Weakness: Does not directly estimate the XS loss
+* Does not directly estimate the XS loss
 
 ## 3. Direct Development {#siewert-direct-dev}
 
