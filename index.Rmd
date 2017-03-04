@@ -40,7 +40,11 @@ I. **Estimation of Policy Liabilities** (14 chapters)
     
     5. Venter Factors
     
+        *Testing the Assumptions of Age-to-Age Factors*
+    
     6. Clark
+    
+        *LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach*
     
 * Learning Objective 4: **5-7%**
     
