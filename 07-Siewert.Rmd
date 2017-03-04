@@ -75,7 +75,7 @@ After the program matures, the focus shifts to **issues on the liability side**
 
     * Similar to loss conversion factor in retro rating, loss multipliers are applied to deductible losses to capture expenses that vary with loss
 
-## 1. Loss Ratio Method {#siewert-lr-method}
+## Method 1) Loss Ratio Method {#siewert-lr-method}
 
 **Expected Ultimate lossXS Per Occ limit**
 
@@ -119,7 +119,7 @@ These are ultimate loss estimate
 
 * May not properly reflect account characteristics
 
-## 2. Implied Development {#siewert-implied-dev}
+## Method 2) Implied Development {#siewert-implied-dev}
 
 Ultimate excess loss = ultimate unlimited loss - ultimate limited loss
 
@@ -145,27 +145,41 @@ Ultimate excess loss = ultimate unlimited loss - ultimate limited loss
 
 * Does not directly estimate the XS loss
 
-## 3. Direct Development {#siewert-direct-dev}
+## Method 3) Direct Development {#siewert-direct-dev}
 
-Determine LDFs for XS layer with unlimited LDFs, limited LDFs and $\chi$
+Directly applying XS LDF to XS loss to date
 
-$XSLDF_t^{L} = \dfrac{Ult_{XS}}{Y_t^{XS}} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}} = \dfrac{\chi}{\frac{1}{LDF_t} - \frac{(1-\chi)}{LDF_t^L}}$
+Different ways to get $^{XS}LDF^L_t$:
 
-* Based on $\underbrace{Y_t \cdot LDF_t}_{100\%} = \underbrace{Y^L_t \cdot LDF^L_t}_{100\% - \chi} + \underbrace{XSY_t^L \cdot XSLDF^L_t}_{\chi}$
+**Formula 1**: Given unlimited & limited LDFs and $\chi$
+
+$$^{XS}LDF_t^{L} = \dfrac{^{XS}Ult}{^{XS}Loss_t} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}} = \dfrac{\chi}{\frac{1}{LDF_t} - \frac{(1-\chi)}{LDF_t^L}}$$
+
+* Based on $\underbrace{Loss_t \cdot LDF_t}_{100\%} = \underbrace{Loss^L_t \cdot LDF^L_t}_{100\% - \chi} + \underbrace{^{XS}Loss_t^L \cdot {^{XS}LDF}^L_t}_{\chi}$
 
 * Can't use the actual losses to date for this as it'll just be equal to the implied method mathematically
+
+**Formula 2**: Given unlimited & limited LDFs and $R^L_t$
+
+$$^{XS}LDF^L_t = \dfrac{LDF_t - R^L_t \times LDF^L_t}{1-R^L_t}$$
+
+* Based on Question 21 from 2004 (\@ref(fig:2004-21))
+
+* $R^L_t = \dfrac{Sev^L}{Sev}$, or
+
+* $R^L_t = \dfrac{Ult^L \div LDF^L}{Ult \div LDF} = \dfrac{\text{Expected Limited Reported}}{\text{Expected Unlimited Reported}}$
 
 **Disadvantages**
 
 * LDFs large and volatile, not recommend this method
 
-## 4. Credibility Weighting Techniques / Bornhuetter-Ferguson {#siewert-cred-weight-model}
+## Method 4) Credibility Weighting Techniques / Bornhuetter-Ferguson {#siewert-cred-weight-model}
 
 Ultimate Loss: $L = Z\underbrace{(O_t \cdot XSLDF_t^{L})}_{\text{Inc'd to Date } \times \text{ XS LDF}} + (1 - Z)\underbrace{E}_{\text{Method 1}}$
 
 * $Z = \frac{1}{XSLDF_t^L}$ then we have the BF method
 
-## 5. Development Method {#siewert-dev-method}
+## Method 5) Development Method {#siewert-dev-method}
 
 **Data**
 
@@ -238,7 +252,7 @@ $\dfrac{ILDF^L_t}{ILDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}$
 
 $\dfrac{IXSLDF^L_t}{IXSLDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}$
 
-## 6. Distribution Model {#siewert-dist-model}
+## Method 6) Distribution Model {#siewert-dist-model}
 
 Model severity of losses @ each age with Weibull
 

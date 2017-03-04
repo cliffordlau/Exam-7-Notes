@@ -78,16 +78,16 @@
 <li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a></li>
 <li class="chapter" data-level="7" data-path="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><i class="fa fa-check"></i><b>7</b> A Model for Reserving Workers Compensation High Deductibles - J. Siewert</a><ul>
 <li class="chapter" data-level="7.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="siewert-lr-method.html"><a href="siewert-lr-method.html"><i class="fa fa-check"></i><b>7.2</b> 1. Loss Ratio Method</a></li>
-<li class="chapter" data-level="7.3" data-path="siewert-implied-dev.html"><a href="siewert-implied-dev.html"><i class="fa fa-check"></i><b>7.3</b> 2. Implied Development</a></li>
-<li class="chapter" data-level="7.4" data-path="siewert-direct-dev.html"><a href="siewert-direct-dev.html"><i class="fa fa-check"></i><b>7.4</b> 3. Direct Development</a></li>
-<li class="chapter" data-level="7.5" data-path="siewert-cred-weight-model.html"><a href="siewert-cred-weight-model.html"><i class="fa fa-check"></i><b>7.5</b> 4. Credibility Weighting Techniques / Bornhuetter-Ferguson</a></li>
-<li class="chapter" data-level="7.6" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html"><i class="fa fa-check"></i><b>7.6</b> 5. Development Method</a><ul>
+<li class="chapter" data-level="7.2" data-path="siewert-lr-method.html"><a href="siewert-lr-method.html"><i class="fa fa-check"></i><b>7.2</b> Method 1) Loss Ratio Method</a></li>
+<li class="chapter" data-level="7.3" data-path="siewert-implied-dev.html"><a href="siewert-implied-dev.html"><i class="fa fa-check"></i><b>7.3</b> Method 2) Implied Development</a></li>
+<li class="chapter" data-level="7.4" data-path="siewert-direct-dev.html"><a href="siewert-direct-dev.html"><i class="fa fa-check"></i><b>7.4</b> Method 3) Direct Development</a></li>
+<li class="chapter" data-level="7.5" data-path="siewert-cred-weight-model.html"><a href="siewert-cred-weight-model.html"><i class="fa fa-check"></i><b>7.5</b> Method 4) Credibility Weighting Techniques / Bornhuetter-Ferguson</a></li>
+<li class="chapter" data-level="7.6" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html"><i class="fa fa-check"></i><b>7.6</b> Method 5) Development Method</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-trend"><i class="fa fa-check"></i><b>7.6.1</b> Severity Trend</a></li>
 <li class="chapter" data-level="7.6.2" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#claim-count-development"><i class="fa fa-check"></i><b>7.6.2</b> Claim Count Development</a></li>
 <li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-ldfs"><i class="fa fa-check"></i><b>7.6.3</b> Severity LDFs</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="siewert-dist-model.html"><a href="siewert-dist-model.html"><i class="fa fa-check"></i><b>7.7</b> 6. Distribution Model</a></li>
+<li class="chapter" data-level="7.7" data-path="siewert-dist-model.html"><a href="siewert-dist-model.html"><i class="fa fa-check"></i><b>7.7</b> Method 6) Distribution Model</a></li>
 <li class="chapter" data-level="7.8" data-path="aggregate-limits.html"><a href="aggregate-limits.html"><i class="fa fa-check"></i><b>7.8</b> Aggregate Limits</a></li>
 <li class="chapter" data-level="7.9" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>7.9</b> Past Exam Questions</a><ul>
 <li class="chapter" data-level="7.9.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>7.9.1</b> Question Highlights</a></li>
@@ -138,12 +138,21 @@
 
             <section class="normal" id="section-">
 <div id="siewert-direct-dev" class="section level2">
-<h2><span class="header-section-number">7.4</span> 3. Direct Development</h2>
-<p>Determine LDFs for XS layer with unlimited LDFs, limited LDFs and <span class="math inline">\(\chi\)</span></p>
-<p><span class="math inline">\(XSLDF_t^{L} = \dfrac{Ult_{XS}}{Y_t^{XS}} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}} = \dfrac{\chi}{\frac{1}{LDF_t} - \frac{(1-\chi)}{LDF_t^L}}\)</span></p>
+<h2><span class="header-section-number">7.4</span> Method 3) Direct Development</h2>
+<p>Directly applying XS LDF to XS loss to date</p>
+<p>Different ways to get <span class="math inline">\(^{XS}LDF^L_t\)</span>:</p>
+<p><strong>Formula 1</strong>: Given unlimited &amp; limited LDFs and <span class="math inline">\(\chi\)</span></p>
+<p><span class="math display">\[^{XS}LDF_t^{L} = \dfrac{^{XS}Ult}{^{XS}Loss_t} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}} = \dfrac{\chi}{\frac{1}{LDF_t} - \frac{(1-\chi)}{LDF_t^L}}\]</span></p>
 <ul>
-<li><p>Based on <span class="math inline">\(\underbrace{Y_t \cdot LDF_t}_{100\%} = \underbrace{Y^L_t \cdot LDF^L_t}_{100\% - \chi} + \underbrace{XSY_t^L \cdot XSLDF^L_t}_{\chi}\)</span></p></li>
+<li><p>Based on <span class="math inline">\(\underbrace{Loss_t \cdot LDF_t}_{100\%} = \underbrace{Loss^L_t \cdot LDF^L_t}_{100\% - \chi} + \underbrace{^{XS}Loss_t^L \cdot {^{XS}LDF}^L_t}_{\chi}\)</span></p></li>
 <li><p>Can’t use the actual losses to date for this as it’ll just be equal to the implied method mathematically</p></li>
+</ul>
+<p><strong>Formula 2</strong>: Given unlimited &amp; limited LDFs and <span class="math inline">\(R^L_t\)</span></p>
+<p><span class="math display">\[^{XS}LDF^L_t = \dfrac{LDF_t - R^L_t \times LDF^L_t}{1-R^L_t}\]</span></p>
+<ul>
+<li><p>Based on Question 21 from 2004 (<a href="past-exam-questions.html#fig:2004-21">7.1</a>)</p></li>
+<li><p><span class="math inline">\(R^L_t = \dfrac{Sev^L}{Sev}\)</span>, or</p></li>
+<li><p><span class="math inline">\(R^L_t = \dfrac{Ult^L \div LDF^L}{Ult \div LDF} = \dfrac{\text{Expected Limited Reported}}{\text{Expected Unlimited Reported}}\)</span></p></li>
 </ul>
 <p><strong>Disadvantages</strong></p>
 <ul>
