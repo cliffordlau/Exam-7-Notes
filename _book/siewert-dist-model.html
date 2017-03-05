@@ -85,7 +85,7 @@
 <li class="chapter" data-level="7.6" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html"><i class="fa fa-check"></i><b>7.6</b> Method 5) Development Method</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-trend"><i class="fa fa-check"></i><b>7.6.1</b> Severity Trend</a></li>
 <li class="chapter" data-level="7.6.2" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#claim-count-development"><i class="fa fa-check"></i><b>7.6.2</b> Claim Count Development</a></li>
-<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-ldfs"><i class="fa fa-check"></i><b>7.6.3</b> Severity LDFs</a></li>
+<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-development"><i class="fa fa-check"></i><b>7.6.3</b> Severity Development</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="siewert-dist-model.html"><a href="siewert-dist-model.html"><i class="fa fa-check"></i><b>7.7</b> Method 6) Distribution Model</a></li>
 <li class="chapter" data-level="7.8" data-path="aggregate-limits.html"><a href="aggregate-limits.html"><i class="fa fa-check"></i><b>7.8</b> Aggregate Limits</a></li>
@@ -139,14 +139,21 @@
             <section class="normal" id="section-">
 <div id="siewert-dist-model" class="section level2">
 <h2><span class="header-section-number">7.7</span> Method 6) Distribution Model</h2>
-<p>Model severity of losses @ each age with Weibull</p>
+<p>Use a modeled severity distribution (e.g. Weibull) <strong>for each age</strong></p>
 <ul>
-<li><p>Parameters different @ different ages; make sure they are consistent</p></li>
-<li><p>This will maintain the relationships of the limited and unlimited over time</p></li>
-<li><p>Can easily interpolate among limits and years</p></li>
-<li><p>Mean of Weibull = <span class="math inline">\(\theta \cdot \Gamma (1 + \frac{1}{\omega})\)</span></p></li>
+<li><p>Parameters vary @ different ages; make sure they are consistent</p>
+<p>e.g. Parameters for Weibull, <span class="math inline">\((\theta, \omega)_t\)</span>, are different depending on age</p></li>
+<li><p><span class="math inline">\(R^L_t = \dfrac{\mu^L_t}{\mu_t}\)</span></p>
+<ul>
+<li>Mean of Weibull: <span class="math inline">\(\mu^L_t = \theta \cdot \Gamma \left(1 + \frac{1}{\omega}\right)\)</span></li>
+</ul></li>
 </ul>
-<p>Can then use the distribution and then applies all the relationships discussed in 5</p>
+<p><strong><em>Advantages</em></strong></p>
+<ul>
+<li><p>Maintain the relationships of the limited and unlimited over time</p></li>
+<li><p>Can easily interpolate among limits and years</p></li>
+</ul>
+<p>Then we can use the distribution and then applies all the relationships discussed in <a href="siewert-dev-method.html#siewert-dev-method">Method 5</a></p>
 </div>
             </section>
 

@@ -85,7 +85,7 @@
 <li class="chapter" data-level="7.6" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html"><i class="fa fa-check"></i><b>7.6</b> Method 5) Development Method</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-trend"><i class="fa fa-check"></i><b>7.6.1</b> Severity Trend</a></li>
 <li class="chapter" data-level="7.6.2" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#claim-count-development"><i class="fa fa-check"></i><b>7.6.2</b> Claim Count Development</a></li>
-<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-ldfs"><i class="fa fa-check"></i><b>7.6.3</b> Severity LDFs</a></li>
+<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-development"><i class="fa fa-check"></i><b>7.6.3</b> Severity Development</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="siewert-dist-model.html"><a href="siewert-dist-model.html"><i class="fa fa-check"></i><b>7.7</b> Method 6) Distribution Model</a></li>
 <li class="chapter" data-level="7.8" data-path="aggregate-limits.html"><a href="aggregate-limits.html"><i class="fa fa-check"></i><b>7.8</b> Aggregate Limits</a></li>
@@ -139,13 +139,32 @@
             <section class="normal" id="section-">
 <div id="aggregate-limits" class="section level2">
 <h2><span class="header-section-number">7.8</span> Aggregate Limits</h2>
-<p>Use collective risk model with Poisson and Weibull to build out a table with excess loss for each deductible and aggregate</p>
-<p>Need 4 inputs: expected unlimited, age, deductible and aggregate limit</p>
-<p>The paper shows calculating the reserve as just the expected aggregate loss <span class="math inline">\(\times\)</span> % unreported</p>
+<p>Use collective risk model to model individual losses</p>
 <ul>
-<li>Doesn’t take into account if the aggregate is about to be pieced of not</li>
+<li><p><em>Poisson</em> (frequency) and <em>Weibull</em> (severity)</p></li>
+<li><p>Build out a table with XS loss for each <em>deductible</em> and <em>aggregate</em></p></li>
+<li><p>Need a different model for each age?</p></li>
 </ul>
+<p>Need 4 inputs:</p>
+<ol style="list-style-type: decimal">
+<li><p>Expected unlimited</p></li>
+<li><p>Age</p></li>
+<li><p>Deductible</p></li>
+<li><p>Aggregate limit</p></li>
+</ol>
+<p>Reserve (use BF): Expected aggregate loss <span class="math inline">\(\times\)</span> % unreported</p>
+<ul>
+<li><strong>Caveat</strong>: doesn’t take into account if the aggregate is about to be pieced of not</li>
+</ul>
+<div id="table-m" class="section level4">
+<h4><span class="header-section-number">7.8.0.1</span> Table M</h4>
 <p>Appendix discuss calculation with Table M</p>
+<div class="rmdcaution">
+<p>
+To be included later…(Not crucial)
+</p>
+</div>
+</div>
 </div>
             </section>
 

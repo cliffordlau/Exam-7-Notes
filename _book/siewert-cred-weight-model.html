@@ -85,7 +85,7 @@
 <li class="chapter" data-level="7.6" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html"><i class="fa fa-check"></i><b>7.6</b> Method 5) Development Method</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-trend"><i class="fa fa-check"></i><b>7.6.1</b> Severity Trend</a></li>
 <li class="chapter" data-level="7.6.2" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#claim-count-development"><i class="fa fa-check"></i><b>7.6.2</b> Claim Count Development</a></li>
-<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-ldfs"><i class="fa fa-check"></i><b>7.6.3</b> Severity LDFs</a></li>
+<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-development"><i class="fa fa-check"></i><b>7.6.3</b> Severity Development</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="siewert-dist-model.html"><a href="siewert-dist-model.html"><i class="fa fa-check"></i><b>7.7</b> Method 6) Distribution Model</a></li>
 <li class="chapter" data-level="7.8" data-path="aggregate-limits.html"><a href="aggregate-limits.html"><i class="fa fa-check"></i><b>7.8</b> Aggregate Limits</a></li>
@@ -139,9 +139,11 @@
             <section class="normal" id="section-">
 <div id="siewert-cred-weight-model" class="section level2">
 <h2><span class="header-section-number">7.5</span> Method 4) Credibility Weighting Techniques / Bornhuetter-Ferguson</h2>
-<p>Ultimate Loss: <span class="math inline">\(L = Z\underbrace{(O_t \cdot XSLDF_t^{L})}_{\text{Inc&#39;d to Date } \times \text{ XS LDF}} + (1 - Z)\underbrace{E}_{\text{Method 1}}\)</span></p>
+<p>Credibility weighting between <a href="siewert-lr-method.html#siewert-lr-method">Method 1</a> and <a href="siewert-direct-dev.html#siewert-direct-dev">Method 3</a></p>
+<p><span class="math display">\[L = Z \times ({^{XS}Loss}_t^L \cdot {^{XS}LDF}_t^{L}) + (1 - Z) \times E\]</span></p>
 <ul>
-<li><span class="math inline">\(Z = \frac{1}{XSLDF_t^L}\)</span> then we have the BF method</li>
+<li><p>If <span class="math inline">\(Z = \frac{1}{^{XS}LDF_t^L}\)</span> then we have the BF method</p></li>
+<li><p><span class="math inline">\(E\)</span> is from <a href="siewert-lr-method.html#siewert-lr-method">method 1</a></p></li>
 </ul>
 </div>
             </section>

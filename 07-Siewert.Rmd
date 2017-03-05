@@ -8,29 +8,23 @@ Know the 6 methods and their pros and cons:
 
 3) [Direct Development](#siewert-direct-dev)
 
-    * $XSLDF_t^{L} = \dfrac{Ult_{XS}}{S_t^{XS}} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}}$
+    * See the 2 methods for calculating the $^{XS}LDF^L_t$
     
 4) [Credibility Weight Method](#siewert-cred-weight-model)
 
 5) [Development Method](#siewert-dev-method)
 
-    * Severity needs to be trended
+    i. Severity needs to be trended
     
-    * Claim counts are developed separately ground up
+    ii. Claim counts are developed separately ground up
     
-    * Severity LDF formulas, know them well to manipulate and know what formula requires what
+    iii. Severity LDF formulas, know them well to manipulate and know what formula requires what
     
-        * $LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}$
-    
-        * $XSLDF_t^L = LDF_t \dfrac{(1-R^L)}{(1-R_t^L)}$
-    
-        * $LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot XSLDF^L_t$
-    
-        * $\dfrac{ILDF^L_t}{ILDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}$
-
-        * $\dfrac{IXSLDF^L_t}{IXSLDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}$
+        Proposition \@ref(prp:siewert-ldf-rel-1), \@ref(prp:siewert-ldf-rel-2), \@ref(prp:siewert-ldf-rel-3), \@ref(prp:inc-ldf-rel-1), and \@ref(prp:inc-ldf-rel-2)
 
 6) [Distribution Method](#siewert-dist-model)
+
+Finally there's the method for accounting for aggregate charge
 
 ## Introduction
 
@@ -51,9 +45,9 @@ Program was developed to provide both **insurer and insured many advantages**:
 
 2. Ameliorating onerous residual market charges and premium taxes in some states
 
-3. Realizing cash flow advantages similar to paid loss retor
+3. Realizing cash flow advantages similar to paid loss retro
 
-4. providing insureds with another vehicel to control losses while protecting them against random large losses
+4. providing insureds with another vehicle to control losses while protecting them against random large losses
 
 5. Allowing self-insurance without submitting insureds to sometimes demanding state requirements
 
@@ -175,37 +169,57 @@ $$^{XS}LDF^L_t = \dfrac{LDF_t - R^L_t \times LDF^L_t}{1-R^L_t}$$
 
 ## Method 4) Credibility Weighting Techniques / Bornhuetter-Ferguson {#siewert-cred-weight-model}
 
-Ultimate Loss: $L = Z\underbrace{(O_t \cdot XSLDF_t^{L})}_{\text{Inc'd to Date } \times \text{ XS LDF}} + (1 - Z)\underbrace{E}_{\text{Method 1}}$
+Credibility weighting between [Method 1](#siewert-lr-method) and [Method 3](#siewert-direct-dev)
 
-* $Z = \frac{1}{XSLDF_t^L}$ then we have the BF method
+$$L = Z \times ({^{XS}Loss}_t^L \cdot {^{XS}LDF}_t^{L}) + (1 - Z) \times E$$
+
+* If $Z = \frac{1}{^{XS}LDF_t^L}$ then we have the BF method
+
+* $E$ is from [method 1](#siewert-lr-method)
 
 ## Method 5) Development Method {#siewert-dev-method}
 
-**Data**
+Method overview:
 
-Ground up WC claims level data
+1. Select trend to adjust historical layers
 
-Indemnity, medical and ALAE together
+2. Develop ground up claim count 
 
-Can split the data by account, injury, and state as a future step
+3. Calculate $^{XS}LDF^L_t$ based on $R^L_t$
+
+**Data Required**
+
+* Ground up WC claims level data
+
+    (Allows individual losses to ber capped at different amounts)
+
+* Includes indemnity, medical and ALAE together
+
+* Can split the data by *account*, *injury*, and *state* as a future step
 
 ### Severity Trend
 
-Important to account for loss trend when capping losses
+Need to account for loss trend when capping losses
 
-Apply different limits to the historical data by AYs or else there will be more and more losses piercing the limiting layer $\Rightarrow$ Distorting the LDFs
+* Apply different limits to the historical data by AYs
 
-1) Look at average severity of unlimited losses by AY and fit an exponential curve
+    (or else there will be more and more losses piercing the limiting layer $\therefore$ Distorting the LDFs)
 
-    * Can use different trend for different years
+**Adjusting for loss trend**
+
+1) Select a trend by fitting an exponential curve to the average severity of *unlimited losses* by AY (e.g. $y = ce^{bx}$)
+
+    * Optional: Use different trend for different years
     
-    * Can adjust for large losses as well
+    * Optional: Adjust for large losses
     
-2) Cap the historical losses at lower amount to compensate for the loss trend by detrending the historical layer
+2) Cap the historical losses at **lower** amount to compensate for the loss trend by detrending the historical layer
 
 ### Claim Count Development
 
-Split the development of claim count dev from severity dev and focusing on **ground up** claims
+Split claim count development from severity development
+
+For claim count development we focusing on **ground up** claims
 
 **Advantages**:
 
@@ -215,68 +229,144 @@ Split the development of claim count dev from severity dev and focusing on **gro
 
 * If your claim counts depend on the limits, every time you update the severity trend assumptions the claim counts will change
 
-### Severity LDFs
+### Severity Development
 
-**Definition**
+Fit LDFs for each layer to the power curve
 
-$R_t^L = \dfrac{\text{Limited Sev @ t}}{\text{Unlimited Sev @ t}}$
+* Power curve needs a cutoff
+
+* Using the same cut off for all layers might introduce a bias as lower layers will cease development earlier
+
+* Different layer LDFs need to respect the relationships lay out below (Proposition \@ref(prp:siewert-ldf-rel-1), \@ref(prp:siewert-ldf-rel-2) and \@ref(prp:siewert-ldf-rel-3))
+
+#### Relativities
+
+```{definition}
+Relativity
+
+$R_t^L = \dfrac{\text{Limited Sev @ }t}{\text{Unlimited Sev @ t}} = \dfrac{S^L_t}{S_t}$
+
+$R^L = \dfrac{\text{Limited Sev @ Ult}}{\text{Unlimited Sev @ Ult}} = \dfrac{S^L}{S}$
+```
+
+```{remark}
+Relativity (for different limits) over time
 
 * Relativity starts close to 1.00, and drops over time before reaching the ultimate relativity
 
 * The losses limited at higher limits start with a very high relativity (close to 1.00), and take longer to come down
 
-$R^L = \dfrac{\text{Limited Sev @ Ult}}{\text{Unlimited Sev @ Ult}}$
+* Here they define $LDF_t = \dfrac{S}{S_t}$ (So severity LDFs, not sure what's the implication)
+```
 
-**Key Relationships**
+```{proposition, siewert-ldf-rel-1}
+$$LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}$$
+```
 
-$LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}$ <span style="color:red;background:yellow">Memorize Formula</span>
+```{proof}
 
-* $\cdots = \dfrac{C \cdot S^L}{C_t \cdot S^L_t} = \dfrac{C \cdot S \cdot R^L}{C_t \cdot S_t \cdot R^L_t} = \dfrac{C \cdot S}{C_t \cdot S_t } \times \dfrac{R^L}{R^L_t} = \cdots$
 
-* $C$ is claim count and $S$ is severity
+$LDF_t^L = \dfrac{\text{Ultimate Loss}}{\text{Losses @ t}} = \dfrac{C \cdot S^L}{C_t \cdot S^L_t} = \dfrac{C \cdot S \cdot R^L}{C_t \cdot S_t \cdot R^L_t} = \underbrace{\dfrac{C \cdot S}{C_t \cdot S_t }}_{LDF_t} \times \dfrac{R^L}{R^L_t} = LDF_t \dfrac{R^L}{R_t^L}$
 
-$XSLDF_t^L = LDF_t \dfrac{(1-R^L)}{(1-R_t^L)}$ <span style="color:red;background:yellow">Memorize Formula</span>
+```
 
-$LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot XSLDF^L_t$ <span style="color:red;background:yellow">Memorize Formula</span>
+```{remark}
+$C$ is claim count and $S$ is severity
+```
+
+```{proposition, siewert-ldf-rel-2}
+$$^{XS}LDF_t^L = LDF_t \dfrac{(1-R^L)}{(1-R_t^L)}$$
+```
+
+```{remark}
+Analogous relationship for XS LDFs
+```
+
+```{proposition, siewert-ldf-rel-3}
+$$LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot {^{XS}LDF}^L_t$$
+```
+
+```{remark}
+
+
+* This follows from Proposition \@ref(prp:siewert-ldf-rel-2) and \@ref(prp:siewert-ldf-rel-3)
 
 * This formula doesn't require $R^L$
+
 * Formula only work once claim reporting is finished
+
 * Relativity based on average from historical losses
+```
 
-**Incremental LDFs**
+#### Incremental LDFs and Change in Relativities
 
-$\dfrac{ILDF^L_t}{ILDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}$
+```{proposition, inc-ldf-rel-1}
+$$\dfrac{_{inc}LDF^L_t}{_{inc}LDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}$$
+```
+
+```{remark}
+
 
 * Difference of limited and unlimited incremental LDFs is driven by the change in relativity
-* With $R_t$ and $R_{t+1}$ we can get the limited or unlimited LDF given one or the other
 
-$\dfrac{IXSLDF^L_t}{IXSLDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}$
+* With $R_t$ and $R_{t+1}$ we can get the limited or unlimited LDF given one or the other
+```
+
+```{proposition, inc-ldf-rel-2}
+$$\dfrac{_{inc}^{XS}LDF^L_t}{_{inc}LDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}$$
+```
 
 ## Method 6) Distribution Model {#siewert-dist-model}
 
-Model severity of losses @ each age with Weibull
+Use a modeled severity distribution (e.g. Weibull) **for each age**
 
-* Parameters different @ different ages; make sure they are consistent
+* Parameters vary @ different ages; make sure they are consistent
 
-* This will maintain the relationships of the limited and unlimited over time
+    e.g. Parameters for Weibull, $(\theta, \omega)_t$, are different depending on age
+
+* $R^L_t = \dfrac{\mu^L_t}{\mu_t}$
+
+    * Mean of Weibull: $\mu^L_t = \theta \cdot \Gamma \left(1 + \frac{1}{\omega}\right)$
+
+***Advantages***
+
+* Maintain the relationships of the limited and unlimited over time
 
 * Can easily interpolate among limits and years
 
-* Mean of Weibull = $\theta \cdot \Gamma (1 + \frac{1}{\omega})$
-
-Can then use the distribution and then applies all the relationships discussed in 5
+Then we can use the distribution and then applies all the relationships discussed in [Method 5](#siewert-dev-method)
 
 ## Aggregate Limits
 
-Use collective risk model with Poisson and Weibull to build out a table with excess loss for each deductible and aggregate
+Use collective risk model to model individual losses
 
-Need 4 inputs: expected unlimited, age, deductible and aggregate limit
+* *Poisson* (frequency) and *Weibull* (severity)
 
-The paper shows calculating the reserve as just the expected aggregate loss $\times$ % unreported
+* Build out a table with XS loss for each *deductible* and *aggregate*
 
-* Doesn't take into account if the aggregate is about to be pieced of not
+* Need a different model for each age?
+
+Need 4 inputs:
+
+1. Expected unlimited
+
+2. Age
+
+3. Deductible
+
+4. Aggregate limit
+
+Reserve (use BF): Expected aggregate loss $\times$ % unreported
+
+* **Caveat**: doesn't take into account if the aggregate is about to be pieced of not
+
+#### Table M
 
 Appendix discuss calculation with Table M
+
+```{block, type='rmdcaution'}
+To be included later...(Not crucial)
+```
 
 ## Past Exam Questions
 

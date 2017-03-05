@@ -85,7 +85,7 @@
 <li class="chapter" data-level="7.6" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html"><i class="fa fa-check"></i><b>7.6</b> Method 5) Development Method</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-trend"><i class="fa fa-check"></i><b>7.6.1</b> Severity Trend</a></li>
 <li class="chapter" data-level="7.6.2" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#claim-count-development"><i class="fa fa-check"></i><b>7.6.2</b> Claim Count Development</a></li>
-<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-ldfs"><i class="fa fa-check"></i><b>7.6.3</b> Severity LDFs</a></li>
+<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-development"><i class="fa fa-check"></i><b>7.6.3</b> Severity Development</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="siewert-dist-model.html"><a href="siewert-dist-model.html"><i class="fa fa-check"></i><b>7.7</b> Method 6) Distribution Model</a></li>
 <li class="chapter" data-level="7.8" data-path="aggregate-limits.html"><a href="aggregate-limits.html"><i class="fa fa-check"></i><b>7.8</b> Aggregate Limits</a></li>
@@ -139,26 +139,40 @@
             <section class="normal" id="section-">
 <div id="siewert-dev-method" class="section level2">
 <h2><span class="header-section-number">7.6</span> Method 5) Development Method</h2>
-<p><strong>Data</strong></p>
-<p>Ground up WC claims level data</p>
-<p>Indemnity, medical and ALAE together</p>
-<p>Can split the data by account, injury, and state as a future step</p>
+<p>Method overview:</p>
+<ol style="list-style-type: decimal">
+<li><p>Select trend to adjust historical layers</p></li>
+<li><p>Develop ground up claim count</p></li>
+<li><p>Calculate <span class="math inline">\(^{XS}LDF^L_t\)</span> based on <span class="math inline">\(R^L_t\)</span></p></li>
+</ol>
+<p><strong>Data Required</strong></p>
+<ul>
+<li><p>Ground up WC claims level data</p>
+<p>(Allows individual losses to ber capped at different amounts)</p></li>
+<li><p>Includes indemnity, medical and ALAE together</p></li>
+<li><p>Can split the data by <em>account</em>, <em>injury</em>, and <em>state</em> as a future step</p></li>
+</ul>
 <div id="severity-trend" class="section level3">
 <h3><span class="header-section-number">7.6.1</span> Severity Trend</h3>
-<p>Important to account for loss trend when capping losses</p>
-<p>Apply different limits to the historical data by AYs or else there will be more and more losses piercing the limiting layer <span class="math inline">\(\Rightarrow\)</span> Distorting the LDFs</p>
-<ol style="list-style-type: decimal">
-<li><p>Look at average severity of unlimited losses by AY and fit an exponential curve</p>
+<p>Need to account for loss trend when capping losses</p>
 <ul>
-<li><p>Can use different trend for different years</p></li>
-<li><p>Can adjust for large losses as well</p></li>
+<li><p>Apply different limits to the historical data by AYs</p>
+<p>(or else there will be more and more losses piercing the limiting layer <span class="math inline">\(\therefore\)</span> Distorting the LDFs)</p></li>
+</ul>
+<p><strong>Adjusting for loss trend</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Select a trend by fitting an exponential curve to the average severity of <em>unlimited losses</em> by AY (e.g. <span class="math inline">\(y = ce^{bx}\)</span>)</p>
+<ul>
+<li><p>Optional: Use different trend for different years</p></li>
+<li><p>Optional: Adjust for large losses</p></li>
 </ul></li>
-<li><p>Cap the historical losses at lower amount to compensate for the loss trend by detrending the historical layer</p></li>
+<li><p>Cap the historical losses at <strong>lower</strong> amount to compensate for the loss trend by detrending the historical layer</p></li>
 </ol>
 </div>
 <div id="claim-count-development" class="section level3">
 <h3><span class="header-section-number">7.6.2</span> Claim Count Development</h3>
-<p>Split the development of claim count dev from severity dev and focusing on <strong>ground up</strong> claims</p>
+<p>Split claim count development from severity development</p>
+<p>For claim count development we focusing on <strong>ground up</strong> claims</p>
 <p><strong>Advantages</strong>:</p>
 <ul>
 <li><p>Most claims are reported not too deep in the tail even if the full severity in not yet known</p></li>
@@ -166,35 +180,98 @@
 <li><p>If your claim counts depend on the limits, every time you update the severity trend assumptions the claim counts will change</p></li>
 </ul>
 </div>
-<div id="severity-ldfs" class="section level3">
-<h3><span class="header-section-number">7.6.3</span> Severity LDFs</h3>
-<p><strong>Definition</strong></p>
-<p><span class="math inline">\(R_t^L = \dfrac{\text{Limited Sev @ t}}{\text{Unlimited Sev @ t}}\)</span></p>
+<div id="severity-development" class="section level3">
+<h3><span class="header-section-number">7.6.3</span> Severity Development</h3>
+<p>Fit LDFs for each layer to the power curve</p>
+<ul>
+<li><p>Power curve needs a cutoff</p></li>
+<li><p>Using the same cut off for all layers might introduce a bias as lower layers will cease development earlier</p></li>
+<li><p>Different layer LDFs need to respect the relationships lay out below (Proposition <a href="siewert-dev-method.html#prp:siewert-ldf-rel-1">7.1</a>, <a href="siewert-dev-method.html#prp:siewert-ldf-rel-2">7.2</a> and <a href="siewert-dev-method.html#prp:siewert-ldf-rel-3">7.3</a>)</p></li>
+</ul>
+<div id="relativities" class="section level4">
+<h4><span class="header-section-number">7.6.3.1</span> Relativities</h4>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-3" class="definition"><strong>Definition 7.1 </strong></span>Relativity</p>
+<p><span class="math inline">\(R_t^L = \dfrac{\text{Limited Sev @ }t}{\text{Unlimited Sev @ t}} = \dfrac{S^L_t}{S_t}\)</span></p>
+<span class="math inline">\(R^L = \dfrac{\text{Limited Sev @ Ult}}{\text{Unlimited Sev @ Ult}} = \dfrac{S^L}{S}\)</span>
+</div>
+<p></p>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> Relativity (for different limits) over time</p>
 <ul>
 <li><p>Relativity starts close to 1.00, and drops over time before reaching the ultimate relativity</p></li>
 <li><p>The losses limited at higher limits start with a very high relativity (close to 1.00), and take longer to come down</p></li>
+<li>Here they define <span class="math inline">\(LDF_t = \dfrac{S}{S_t}\)</span> (So severity LDFs, not sure what’s the implication)
+</div>
+<p></p></li>
 </ul>
-<p><span class="math inline">\(R^L = \dfrac{\text{Limited Sev @ Ult}}{\text{Unlimited Sev @ Ult}}\)</span></p>
-<p><strong>Key Relationships</strong></p>
-<p><span class="math inline">\(LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}\)</span> <span style="color:red;background:yellow">Memorize Formula</span></p>
+
+<div class="proposition">
+<span id="prp:siewert-ldf-rel-1" class="proposition"><strong>Proposition 7.1 </strong></span><span class="math display">\[LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}\]</span>
+</div>
+<p></p>
+
+<div class="proof">
+<p><span class="proof"><em>Proof. </em></span> </p>
+<p><span class="math inline">\(LDF_t^L = \dfrac{\text{Ultimate Loss}}{\text{Losses @ t}} = \dfrac{C \cdot S^L}{C_t \cdot S^L_t} = \dfrac{C \cdot S \cdot R^L}{C_t \cdot S_t \cdot R^L_t} = \underbrace{\dfrac{C \cdot S}{C_t \cdot S_t }}_{LDF_t} \times \dfrac{R^L}{R^L_t} = LDF_t \dfrac{R^L}{R_t^L}\)</span></p>
+</div>
+<p></p>
+
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> <span class="math inline">\(C\)</span> is claim count and <span class="math inline">\(S\)</span> is severity
+</div>
+<p></p>
+
+<div class="proposition">
+<span id="prp:siewert-ldf-rel-2" class="proposition"><strong>Proposition 7.2 </strong></span><span class="math display">\[^{XS}LDF_t^L = LDF_t \dfrac{(1-R^L)}{(1-R_t^L)}\]</span>
+</div>
+<p></p>
+
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> Analogous relationship for XS LDFs
+</div>
+<p></p>
+
+<div class="proposition">
+<span id="prp:siewert-ldf-rel-3" class="proposition"><strong>Proposition 7.3 </strong></span><span class="math display">\[LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot {^{XS}LDF}^L_t\]</span>
+</div>
+<p></p>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
-<li><p><span class="math inline">\(\cdots = \dfrac{C \cdot S^L}{C_t \cdot S^L_t} = \dfrac{C \cdot S \cdot R^L}{C_t \cdot S_t \cdot R^L_t} = \dfrac{C \cdot S}{C_t \cdot S_t } \times \dfrac{R^L}{R^L_t} = \cdots\)</span></p></li>
-<li><p><span class="math inline">\(C\)</span> is claim count and <span class="math inline">\(S\)</span> is severity</p></li>
+<li><p>This follows from Proposition <a href="siewert-dev-method.html#prp:siewert-ldf-rel-2">7.2</a> and <a href="siewert-dev-method.html#prp:siewert-ldf-rel-3">7.3</a></p></li>
+<li><p>This formula doesn’t require <span class="math inline">\(R^L\)</span></p></li>
+<li><p>Formula only work once claim reporting is finished</p></li>
+<li>Relativity based on average from historical losses
+</div>
+<p></p></li>
 </ul>
-<p><span class="math inline">\(XSLDF_t^L = LDF_t \dfrac{(1-R^L)}{(1-R_t^L)}\)</span> <span style="color:red;background:yellow">Memorize Formula</span></p>
-<p><span class="math inline">\(LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot XSLDF^L_t\)</span> <span style="color:red;background:yellow">Memorize Formula</span></p>
+</div>
+<div id="incremental-ldfs-and-change-in-relativities" class="section level4">
+<h4><span class="header-section-number">7.6.3.2</span> Incremental LDFs and Change in Relativities</h4>
+
+<div class="proposition">
+<span id="prp:inc-ldf-rel-1" class="proposition"><strong>Proposition 7.4 </strong></span><span class="math display">\[\dfrac{_{inc}LDF^L_t}{_{inc}LDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}\]</span>
+</div>
+<p></p>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
-<li>This formula doesn’t require <span class="math inline">\(R^L\)</span></li>
-<li>Formula only work once claim reporting is finished</li>
-<li>Relativity based on average from historical losses</li>
+<li><p>Difference of limited and unlimited incremental LDFs is driven by the change in relativity</p></li>
+<li>With <span class="math inline">\(R_t\)</span> and <span class="math inline">\(R_{t+1}\)</span> we can get the limited or unlimited LDF given one or the other
+</div>
+<p></p></li>
 </ul>
-<p><strong>Incremental LDFs</strong></p>
-<p><span class="math inline">\(\dfrac{ILDF^L_t}{ILDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}\)</span></p>
-<ul>
-<li>Difference of limited and unlimited incremental LDFs is driven by the change in relativity</li>
-<li>With <span class="math inline">\(R_t\)</span> and <span class="math inline">\(R_{t+1}\)</span> we can get the limited or unlimited LDF given one or the other</li>
-</ul>
-<p><span class="math inline">\(\dfrac{IXSLDF^L_t}{IXSLDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}\)</span></p>
+
+<div class="proposition">
+<span id="prp:inc-ldf-rel-2" class="proposition"><strong>Proposition 7.5 </strong></span><span class="math display">\[\dfrac{_{inc}^{XS}LDF^L_t}{_{inc}LDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}\]</span>
+</div>
+<p></p>
+</div>
 </div>
 </div>
             </section>

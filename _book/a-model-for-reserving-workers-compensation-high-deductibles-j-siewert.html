@@ -85,7 +85,7 @@
 <li class="chapter" data-level="7.6" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html"><i class="fa fa-check"></i><b>7.6</b> Method 5) Development Method</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-trend"><i class="fa fa-check"></i><b>7.6.1</b> Severity Trend</a></li>
 <li class="chapter" data-level="7.6.2" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#claim-count-development"><i class="fa fa-check"></i><b>7.6.2</b> Claim Count Development</a></li>
-<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-ldfs"><i class="fa fa-check"></i><b>7.6.3</b> Severity LDFs</a></li>
+<li class="chapter" data-level="7.6.3" data-path="siewert-dev-method.html"><a href="siewert-dev-method.html#severity-development"><i class="fa fa-check"></i><b>7.6.3</b> Severity Development</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="siewert-dist-model.html"><a href="siewert-dist-model.html"><i class="fa fa-check"></i><b>7.7</b> Method 6) Distribution Model</a></li>
 <li class="chapter" data-level="7.8" data-path="aggregate-limits.html"><a href="aggregate-limits.html"><i class="fa fa-check"></i><b>7.8</b> Aggregate Limits</a></li>
@@ -145,24 +145,19 @@
 <li><p><a href="siewert-implied-dev.html#siewert-implied-dev">Implied Development</a></p></li>
 <li><p><a href="siewert-direct-dev.html#siewert-direct-dev">Direct Development</a></p>
 <ul>
-<li><span class="math inline">\(XSLDF_t^{L} = \dfrac{Ult_{XS}}{S_t^{XS}} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}}\)</span></li>
+<li>See the 2 methods for calculating the <span class="math inline">\(^{XS}LDF^L_t\)</span></li>
 </ul></li>
 <li><p><a href="siewert-cred-weight-model.html#siewert-cred-weight-model">Credibility Weight Method</a></p></li>
 <li><p><a href="siewert-dev-method.html#siewert-dev-method">Development Method</a></p>
-<ul>
+<ol style="list-style-type: lower-roman">
 <li><p>Severity needs to be trended</p></li>
 <li><p>Claim counts are developed separately ground up</p></li>
 <li><p>Severity LDF formulas, know them well to manipulate and know what formula requires what</p>
-<ul>
-<li><p><span class="math inline">\(LDF_t^L = LDF_t \dfrac{R^L}{R_t^L}\)</span></p></li>
-<li><p><span class="math inline">\(XSLDF_t^L = LDF_t \dfrac{(1-R^L)}{(1-R_t^L)}\)</span></p></li>
-<li><p><span class="math inline">\(LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot XSLDF^L_t\)</span></p></li>
-<li><p><span class="math inline">\(\dfrac{ILDF^L_t}{ILDF_t} = \Delta R^L_t = \dfrac{R^L_{t+1}}{R^L_t}\)</span></p></li>
-<li><p><span class="math inline">\(\dfrac{IXSLDF^L_t}{IXSLDF_t} = \Delta (1 - R^L_t) = \dfrac{1 - R^L_{t+1}}{1 - R^L_t}\)</span></p></li>
-</ul></li>
-</ul></li>
+<p>Proposition <a href="siewert-dev-method.html#prp:siewert-ldf-rel-1">7.1</a>, <a href="siewert-dev-method.html#prp:siewert-ldf-rel-2">7.2</a>, <a href="siewert-dev-method.html#prp:siewert-ldf-rel-3">7.3</a>, <a href="siewert-dev-method.html#prp:inc-ldf-rel-1">7.4</a>, and <a href="siewert-dev-method.html#prp:inc-ldf-rel-2">7.5</a></p></li>
+</ol></li>
 <li><p><a href="siewert-dist-model.html#siewert-dist-model">Distribution Method</a></p></li>
-</ol> 
+</ol>
+<p>Finally there’s the method for accounting for aggregate charge</p> 
 </div>
             </section>
 
