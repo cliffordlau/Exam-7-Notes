@@ -365,7 +365,7 @@ Reserve (use BF): Expected aggregate loss $\times$ % unreported
 Appendix discuss calculation with Table M
 
 ```{block, type='rmdcaution'}
-To be included later...(Not crucial)
+From paper appendix, to be included later...(Not crucial)
 ```
 
 ## Past Exam Questions

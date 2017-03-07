@@ -504,6 +504,12 @@ MLE is useful for estimating both the expected emergence pattern and the varianc
 
 ODP is convenient link to LDF and Cape Cod estimates
     
+## Average Age of Claims
+
+```{block, type='rmdcaution'}
+From paper appendix, to be included later...(Not crucial)
+```
+
 ## Past Exam Questions
 
 ```{block, type='rmdcaution'}
