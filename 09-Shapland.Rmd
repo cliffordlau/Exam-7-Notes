@@ -489,7 +489,7 @@ $$\phi \sim \phi^H = \dfrac{\sum (r^H_{w,d})^2}{N}$$
 
 * We can still use the same dispersion factor even with the *scaled* and *standardized* residuals, this just give us another method to estimate $\phi$
 
-## Bootstrap Simulation Procedure
+## Bootstrap Simulation Procedure {#odp-boot-sim}
 
 Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
 
@@ -545,95 +545,485 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
     
 ## Variations on the ODP Bootstrap
 
-**Use incurred loss triangle**
+**Reason to use paid data**:
 
-* Convert ultimate from incurred to a payment stream based on paid analysis
+* For insurance risk it is best to focus on the **claim payment stream**:
 
-* Correlate the simulations from the 2 method so that if we have large payment @ an older age, the incurred should be large as well
+    It measures the variability of the actual cash flows that directly affect the bottom line
 
-**Use BF Ult for recent years**
-
-* Have the a-priori varies based on some $\sigma$
-
-**Generalizing the ODP Model**
-
-* Reduce # of parameters
-
-    * Combine accident years
+* **Case reserves temper the volatility**
+      
+    Changes in case reserves and IBNR reserves will also impact the bottom line, but to a considerable extent the changes in IBNR are intended to counter the impact of the changes in case reserves
     
-    * Use just 1 development year since the column parameters is just a measure of decay and can be used for multiple columns
+    To some degree, then, the total reserve movements can act to mask the underlying changes due to cash flows
+
+**Reason to include case reserves**:
+
+* Case reserves contain valuable information about potential future payments
+
+### Bootstrapping the Incurred Loss Triangle
+
+2 approaches to model the *unpaid loss* distribution using incurred loss triangle
+
+**Method 1**: Modeling the incurred data and convert the ultimate values to a payment pattern
+
+i. Run the paid and incurred data model in parallel
     
-* Add calendar year trend parameter $\gamma_k$ for each column except for the first
+ii. For each iteration and each AY individually:
 
-* Must use GLM to determine the parameters
+    Use the payment pattern (from paid model) to convert the ultimate values (from incurred model) to a payment stream
 
-## Practical Issues
+*Method 1* **Advantages**:
 
-### Negative Incremental Values
+* We improve the ultimate estimates by incorporating the case reserves while still focusing on the payment stream for measuring risk
 
-How to deal with negative incremental values in the triangle
+* Which effectively allows a distribution of IBNR to become a distribution of IBNR and case reserves
+    
+* Can make it more sophisticated by correlating some part of the paid and incurred models (e.g. the residual sampling and/or process variance portions)
 
-#### Model Fitting
+    So that if we have large payment @ an older age, the incurred should be large as well
+    
+**Method 2**: Applying the ODP bootstrap to the Munich chain ladder model
 
-**Method 1**: $-ln(-q(w,d))$
+* See Liu and Verral (2010)
 
-* Works when there are a few cells with negatives
+*Method 2* **Advantages**:
 
-* Doesn't work when the column sum to a negative value
+* Don't have to model the paid loss twice
 
-**Method 2**: Add a constant $\Psi$
+* Explicitly measuring and imposing a framework around the correlation of the paid and outstanding losses
 
-* Add $\Psi$ to every cell before running GLM then subtract $\Psi$ from each incremental loss once the means are calculated
+### Bootstrapping the BF and Cape Cod Method
 
-* $ln[m_{wd} + \Psi] = \eta_{wd}$
+**ODP issue**: Distribution for the most recent AYs can produce results with more variance than you would expect when compared to earlier AYs in the actual data
+
+* Due More LDFs are used to extrapolate the sampled values for the most recent accident years and the random samples of incremental values
+
+* Similar to the leverage effect of the deterministic chainladder
+
+**Solution**: Incorporate BF or Cape Cod
+
+* Have the a-priori be stochastic e.g. draw the BF a-priori from a distribution or apply Cape Cod to each simulated triangle
+
+* More complicated approach is to modify the underlying assumptions of the GLM framework which would results in a completely different set of residuals (this is beyond scope)
+
+## GLM Bootstrap Model
+
+**Limitations** of *ODP Bootstrap* carry over from chainladder
+
+1. Does not adjust for [CY trend](#GLM-variation-4) 
+
+2. May over fit the data from using [too many parameters](#GLM-variation-3)
+
+We can solve the above by going back to the [GLM framework](#ODP-GLM-fit) instead of using the [Simplified GLM](#simplified-glm) when we're at Step 2 of the [simulation](#odp-boot-sim)
+
+**GLM benefits**
+
+1. Not forced to use a specific number of parameters (e.g. GLM Variation [1](#GLM-variation-1) and [2](#GLM-variation-2))
+
+2. Allos for [CY trend](#GLM-variation-4)
+
+3. Can work with shapes that are non triangles (e.g. data with only the last $x$ diagonals)
+    
+    * We can forecast past the end of the triangle (e.g. have the $\beta$'s continue the decay)
+    
+    * Also see section on [practical issues](#prac-issue-4)
+    
+**GLM drawbacks**
+
+1. Solving GLM at each iteration can slow down the process
+
+2. Model not explainable using development factors
+
+```{block, type='rmdtip'}
+Below subsections are just examples of the variations discussed above
+```
+
+### GLM Variation 1: Reduce Row Parameters {#GLM-variation-1}
+
+Use only 1 AY parameter $\alpha_1$
+
+* Similar to Venter Cap Code method \@ref(tab:venter-alt-pattern) with $h(w) = h$
+
+* Moves away from the Chainladder assumption that each AY has its own level
+
+* Also note that the residual in cell (3,1) will no longer be zero since it shares the $\alpha_1$ with all the other rows
+
+* Below is our $3 \times 3$ triangle example analogous to our example in \@ref(eq:odp-sys-eq-matrix)
+
+\begin{equation*}
+\begin{array}{ccccc}
+  \mathbf{Y} & = & \mathbf{X} &\times & \mathbf{A} \\
+  & & \alpha_1 \:\:\: \beta_2 \:\:\: \beta_3 & &\\
+  \begin{bmatrix}
+    ln[q(1,1)] \\
+    ln[q(2,1)] \\
+    ln[q(3,1)] \\
+    ln[q(1,2)] \\
+    ln[q(2,2)] \\
+    ln[q(1,3)] \\
+  \end{bmatrix}
+    & =
+      &
+      \begin{bmatrix}
+        1 & - & - \\
+        1 & - & - \\
+        1 & - & - \\
+        1 & 1 & - \\
+        1 & 1 & - \\
+        1 & 1 & 1 \\
+      \end{bmatrix}
+        & \times
+          &
+          \begin{bmatrix}
+            \alpha_1 \\
+            \beta_2 \\
+            \beta_3 \\
+          \end{bmatrix}
+\end{array}
+\end{equation*}
+
+### GLM Variation 2: Reduce Column Parameters {#GLM-variation-2}
+
+Use only 1 development year parameter $\beta_2$
+
+* This just assumes the losses decay by $e^{-\beta_2}$ for all ages
+
+* Also note that the residual in cell (1,3) will no longer be zero since it shares the $\beta_2$ with all the other columns
+
+* Below is our $3 \times 3$ triangle example analogous to our example in \@ref(eq:odp-sys-eq-matrix)
+
+\begin{equation*}
+\begin{array}{ccccc}
+  \mathbf{Y} & = & \mathbf{X} &\times & \mathbf{A} \\
+  & & \alpha_1 \:\:\: \alpha_2 \:\:\: \alpha_3 \:\:\: \beta_2  & &\\
+  \begin{bmatrix}
+    ln[q(1,1)] \\
+    ln[q(2,1)] \\
+    ln[q(3,1)] \\
+    ln[q(1,2)] \\
+    ln[q(2,2)] \\
+    ln[q(1,3)] \\
+  \end{bmatrix}
+    & =
+      &
+      \begin{bmatrix}
+        1 & - & - & - \\
+        - & 1 & - & - \\
+        - & - & 1 & - \\
+        1 & - & - & 1 \\
+        - & 1 & - & 1 \\
+        1 & - & - & 2 \\
+      \end{bmatrix}
+        & \times
+          &
+          \begin{bmatrix}
+            \alpha_1 \\
+            \alpha_2 \\
+            \alpha_3 \\
+            \beta_2 \\
+          \end{bmatrix}
+\end{array}
+\end{equation*}
+
+### GLM Variation 3: Reduce Row and Column Parameters {#GLM-variation-3}
+
+Further reduce the parameters to just 1 row and 1 column parameter $\alpha_1$ and $\beta_2$
+
+* Flexibility of the GLM Bootstrap so that we're not always stuck with $p = 2n-1$ as stated [earlier](#odp-dispersion)
+
+* This will gives us 6 residuals to sample from (the corners will not longer be 0's)
+
+* Below is our $3 \times 3$ triangle example analogous to our example in \@ref(eq:odp-sys-eq-matrix)
+
+* See [diagnostics](#odp-diagnostics) section on how to determine which parameters are statistically significant
+
+\begin{equation*}
+\begin{array}{ccccc}
+  \mathbf{Y} & = & \mathbf{X} &\times & \mathbf{A} \\
+  & & \alpha_1 \:\:\: \beta_2  & &\\
+  \begin{bmatrix}
+    ln[q(1,1)] \\
+    ln[q(2,1)] \\
+    ln[q(3,1)] \\
+    ln[q(1,2)] \\
+    ln[q(2,2)] \\
+    ln[q(1,3)] \\
+  \end{bmatrix}
+    & =
+      &
+      \begin{bmatrix}
+        1 & - \\
+        1 & - \\
+        1 & - \\
+        1 & 1 \\
+        1 & 1 \\
+        1 & 2 \\
+      \end{bmatrix}
+        & \times
+          &
+          \begin{bmatrix}
+            \alpha_1 \\
+            \beta_2 \\
+          \end{bmatrix}
+\end{array}
+\end{equation*}
+
+### GLM Variation 4: Calendar Year Parameter {#GLM-variation-4}
+
+We can also add calendar year trend $\gamma_k$ where $k$ is the CY
+
+* $\gamma_2$ is the 2^nd^ diagonal and etc
+
+* $\gamma_k$'s are **incremental** decay similar to the $\beta_d$'s
+
+    $\therefore$ The total impact on the 3^rd^ diagonal is $e^{\gamma_2 + \gamma_3}$
+
+* Note that the model here have 7 parameters and 6 values
+
+    $\therefore$ It has no unique solution
+
+* Below is our $3 \times 3$ triangle example analogous to our example in \@ref(eq:odp-sys-eq-matrix)
+
+\begin{equation*}
+\begin{array}{ccccc}
+  \mathbf{Y} & = & \mathbf{X} &\times & \mathbf{A} \\
+  & & \alpha_1 \:\:\: \alpha_2 \:\:\: \alpha_3 \:\:\: \beta_2 \:\:\: \beta_3 \:\:\: \gamma_2 \:\:\: \gamma_3 & &\\
+  \begin{bmatrix}
+    ln[q(1,1)] \\
+    ln[q(2,1)] \\
+    ln[q(3,1)] \\
+    ln[q(1,2)] \\
+    ln[q(2,2)] \\
+    ln[q(1,3)] \\
+  \end{bmatrix}
+    & =
+      &
+      \begin{bmatrix}
+        1 & - & - & - & - & - & -\\
+        - & 1 & - & - & - & 1 & -\\
+        - & - & 1 & - & - & 1 & 1\\
+        1 & - & - & 1 & - & 1 & -\\
+        - & 1 & - & 1 & - & 1 & 1\\
+        1 & - & - & 1 & 1 & 1 & 1\\
+      \end{bmatrix}
+        & \times
+          &
+          \begin{bmatrix}
+            \alpha_1 \\
+            \alpha_2 \\
+            \alpha_3 \\
+            \beta_2 \\
+            \beta_3 \\
+            \gamma_2 \\
+            \gamma_3 \\
+          \end{bmatrix}
+\end{array}
+\end{equation*}
+
+### GLM Variation 5: One Parameter for Each Dimension {#GLM-variation-5}
+
+Again we can simplify things by having only 1 parameters for each dimension: $\alpha_1$, $\beta_2$, and $\gamma_2$
+
+* Use this as a starting point then add or remove parameters as needed
+
+* Below is our $3 \times 3$ triangle example analogous to our example in \@ref(eq:odp-sys-eq-matrix)
+
+\begin{equation*}
+\begin{array}{ccccc}
+  \mathbf{Y} & = & \mathbf{X} &\times & \mathbf{A} \\
+  & & \alpha_1 \:\:\: \beta_2 \:\:\: \gamma_2  & &\\
+  \begin{bmatrix}
+    ln[q(1,1)] \\
+    ln[q(2,1)] \\
+    ln[q(3,1)] \\
+    ln[q(1,2)] \\
+    ln[q(2,2)] \\
+    ln[q(1,3)] \\
+  \end{bmatrix}
+    & =
+      &
+      \begin{bmatrix}
+        1 & - & - \\
+        1 & - & 1 \\
+        1 & - & 2 \\
+        1 & 1 & 1 \\
+        1 & 1 & 2 \\
+        1 & 2 & 2 \\
+      \end{bmatrix}
+        & \times
+          &
+          \begin{bmatrix}
+            \alpha_1 \\
+            \beta_2 \\
+            \gamma_2 \\
+          \end{bmatrix}
+\end{array}
+\end{equation*}
+
+## ODP vs GLM Bootstrap Summary
+
+**ODP Bootstrap** is a specific case of the GLM model with the following parameters:
+
+* Parameters for every AY
+
+* Parameters for every development year minus the first
+
+* Variance of the incremental losses $\propto$ mean
+
+Solution is the same as volume weighted Chainladder
+
+**GLM Bootstrap** is the general model
+
+* Can have as few as 1 row and/or column parameters
+
+* Can include CY trend
+
+* Variance of the incremental losses $\propto% $m^z_{wd}$ (where $z=1$ for this paper)
+
+## Practical Issues {#odp-prac-issues}
+
+Practical issues we might run into with ODP bootstrap
+
+1. [Negative Incremental Values](#prac-issue-1)
+
+2. [Non‐Zero Sum of Residuals](#prac-issue-2)
+
+3. [Using an L-year Weighted Average](#prac-issue-3)
+
+4. [Missing Values](#prac-issue-4)
+
+5. [Outliers](#prac-issue-5)
+
+6. [Heteroscedasticity](#prac-issue-6)
+
+7. [Heteroecthesious Data](#prac-issue-7)
+
+8. [Exposure Adjustment](#prac-issue-8)
+
+9. [Tail Factors](#prac-issue-9)
+
+10. [Fitting a Distribution to ODP Bootstrap Residuals](#prac-issue-10)
+
+### Negative Incremental Values {#prac-issue-1}
+
+GLM doesn't work with negative incremental values because of $\ln[q(w,d)]$
+
+Need to work around this in:
+
+1. [Model fitting](#prac-issues-1.1) (e.g. Step 0 and 1 of the [Bootstrap process](#odp-boot-sim))
+
+2. [Simulating](#prac-issues-1.2) for process variance with negative means (e.g. Step 4 of the [Bootstrap process](#odp-boot-sim))
+
+Also [additional work around](#prac-issues-1.3) on extreme outcomes from negative values
+
+#### Model Fitting {#prac-issues-1.1}
+
+**Method 1**: Use $-ln(abs\{q(w,d)\})$
+
+\begin{equation}
+Cell_{w,d} = 
+\begin{cases}
+  \ln[q(w,d)] & \text{if } q(w,d) > 0 \\
+  0 & \text{if } q(w,d) = 0 \\
+  -\ln[abs \{ q(w,d) \}] & \text{if } q(w,d) < 0 \\
+\end{cases}
+(\#eq:method-1-inc-neg-fit)
+\end{equation}
+
+```{remark}
+Doesn't work when the column sum to a negative value
+```
+
+**Method 2**: *Subtract* a *negative* constant $\Psi$
+
+\begin{equation}
+q^+(w,d) = q(w,d) - \Psi \\
+\ln[q^+(w,d)] \text{   for all   } Cell_{w,d}
+(\#eq:method-2-inc-neg-fit)
+\end{equation}
+
+* Pick $\Psi =$ largest negative value in the column
+
+* Apply \@ref(eq:method-2-inc-neg-fit) before solving the GLM system of equations (e.g. \@ref(eq:odp-log-mean) and \@ref(eq:odp-sys-eq))
+
+* Then adjust the fitted values by additing back $\Phi$ to reduce each fitted incremental value
+
+\begin{equation}
+m_{w,d} = m^+_{w,d} + \Psi
+(\#eq:method-2-inc-neg-fit-adj)
+\end{equation}
 
 * Can use this method combined with method 1 to take care of the extra large negative ones
 
-**Method 3**: Simplified GLM
+* Need to make use the absolute value for the residual and re-sampling formula, modify \@ref(eq:odp-pear-res) and \@ref(eq:odp-sim-loss) with below:
 
-* Use Chainladder with volume weighted average LDFs
+\begin{equation}
+  r_{wd} = \dfrac{q(w,d)-m_{wd}}{\sqrt{abs\{m^z_{wd}\}}}
+  (\#eq:odp-pear-res-adj-neg)
+\end{equation}
 
-* Only if the assumptions fit
+\begin{equation}
+  q^*(w,d) = m_{wd} + r^*_p \sqrt{abs\{m^z_{wd}\}}
+  (\#eq:odp-sim-loss-adj-neg)
+\end{equation}
 
-* Need to make use the absolute value for the residual and re-sampling formula:
+**Method 3**: USe [simplified GLM](#simplified-glm)
 
-    * $r_{wd} = \dfrac{q(w,d)-m_{wd}}{\sqrt{abs(m_{wd})}}$
+* Use ODP bootstrap (i.e. Chainladder with volume weighted average LDFs)
 
-    * $q^*(w,d) = m_{wd} + r_p \sqrt{abs(m_{wd})}$
+* This will yield different estimate than using the GLM framework with adjustment 1 or 2
     
-#### Simulating Negative Values
+#### Simulating Negative Values {#prac-issues-1.2}
 
-**Adjustment to the *Gamma* Distribution**
+From [above](#prac-issues-1.1), we might have the fitted $m_{wd}$ that are negative, which will be an issue when used in Step 4 of the [bootstrap simulation](#odp-boot-sim), when we need to model the process variance with $Gamma(m_{wd},\phi m_{wd})$
 
-Use $Gamma(-m_{wd}, -\phi m_{wd}) + 2m_{wd}$
+* Since $Gamma$ only takes positive parameters
 
-* Maintaining the right tail but also having the mean of $m_{wd}$
+**Adjustment to the *Gamma* Distribution** with negative $m_{wd}$
 
-* Just doing $-Gamma(-m_{wd}, -\phi m_{wd})$ doesn't work since the tail would be flipped
+\begin{equation}
+  Gamma(abs\{m_{wd}\}, \phi abs\{m_{wd}\}) + 2m_{wd}
+  (\#eq:gamma-adj-odp)
+\end{equation}
 
-**Extreme Outcomes from Negative Values**
+* This will maintain the right skew of *Gamma* while having the mean of $m_{wd}$
 
-Column with negative mean can results in vary large LDFs, 4 options to deal with that:
+* Alternatively if we use $-Gamma(abs\{m_{wd}\}, \phi abs\{m_{wd}\})$ it'll flip the curve to skew left
 
-1) ***Remove the extreme iterations***
+#### Extreme Outcomes from Negative Values {#prac-issues-1.3}
 
-    * But beware of understating the the likelihood of extreme outcomes
+Column with negative mean in the early ages can results in *vary large LDFs* (and lead to simulated outcomes that are 1,000 times greater than our mean)
 
-2) ***Recalibrate*** the Model
+* Negative mean causes one column of cumulative values to sum close to 0 and the next to sum to a much larger number resulting in extremely large LDF and there for projection that are extremely large
 
-    * Review data used and parameter selection (e.g. remove the first AY as it does not represent current behavior)
+* Need to address this as it'll throw off the mean even if you don't care about the high percentiles
 
-3) ***Limit Incremental Losses Below 0***
+3 options to address this:
 
-    * Either in the original triangle, sampled or simulated loss (process var step); Replace with 0
+1) **Remove the extreme iterations**
+
+    Beware of understating the the likelihood of extreme outcomes
+
+2) **Recalibrate** the Model
+
+    * First need to identify the source of the negative losses
+
+    * Review data used and parameter selection
+    
+        * e.g. remove the AYs that might not represent current behavior
+        
+        * e.g. if due to S&S then you can just model them separately and then correlate them during simulation
+
+3) **Limit Incremental Losses to 0**
+
+    Either with the simulated mean (Step 2) or the process var step (Step 4)
+    
+    * Replace with negatives with 0s
 
     * Can just do it in certain columns
 
-4) **Understand**
-
-    * Understand why this is happening. e.g. if due to S&S then you can just model them separately and then correlated them during simulation
-
-### Non-Zero Sum of Residuals
+### Non-Zero Sum of Residuals {#prac-issue-2}
 
 Since we assume $iid$ and constant $\sigma$, the sum of residuals should be 0
 
@@ -647,7 +1037,7 @@ Consequence is that the simulated outcomes will be higher than the means
 
 * Add a constant to each residual so that it sums to 0 and then sample from the adjusted residuals
 
-### Using N-year Weighted Average
+### Using N-year Weighted Average {#prac-issue-3}
 
 **GLM**
 
@@ -671,7 +1061,7 @@ The 2 methods will results in different results
 
 * Simplified GLM: Model the same losses but in relation to the cumulative losses, which include the non-modeled losses in the diagonals excluded
 
-### Missing Value
+### Missing Value {#prac-issue-4}
 
 Solution
 
@@ -681,7 +1071,7 @@ Solution
 
 Won't have residual for this cell
 
-### Outliers
+### Outliers {#prac-issue-5}
 
 Remove extreme values that are not representative of the variability of the losses
 
@@ -691,7 +1081,7 @@ Remove extreme values that are not representative of the variability of the loss
 
 * Exclude in LDFs but continue to use them when calculating residuals and use them for the re-sampling
 
-### Heteroskedasticity
+### Heteroskedasticity {#prac-issue-6}
 
 Non constant variance (bootstrap assumes residuals are $iid$)
 
@@ -715,7 +1105,7 @@ Need to divide the sampled residual by $h^i$ to reflect the variability of group
 
 * $q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}$
 
-### Heteroecthesious Data
+### Heteroecthesious Data {#prac-issue-7}
 
 Accident years have different level of exposures
 
@@ -745,17 +1135,21 @@ Latest diagonal is partial
 
 Then prorate the losses similar to the first scenario
 
-### Exposure Adjustment
+### Exposure Adjustment {#prac-issue-8}
 
 Consider dividing the losses by the exposure in each AY if there are significant changes in exposure and model pure premium
 
 Multiply the PP results by the exposure after the process variance step
 
-### Parametric Bootstrapping
+### Parametric Bootstrapping {#prac-issue-9}
 
 Might not have enough data to sufficiently represent the tail
 
 Fit a distribution to the residual and sample from the distribution instead
+
+### Fitting a Distribution to ODP Bootstrap Residuals {#prac-issue-10}
+
+new?
 
 ## Diagnostics {#odp-diagnostics}
 
