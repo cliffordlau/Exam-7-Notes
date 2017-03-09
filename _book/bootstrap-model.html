@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CAS Exam 7 Study Notes</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="CAS exam 7 study notes for 2017 Spring sitting.">
+  <meta name="generator" content="bookdown 0.3.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="CAS Exam 7 Study Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="CAS exam 7 study notes for 2017 Spring sitting." />
+  <meta name="github-repo" content="cliffordlau/Exam-7-2016-Notes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CAS Exam 7 Study Notes" />
+  
+  <meta name="twitter:description" content="CAS exam 7 study notes for 2017 Spring sitting." />
+  
+
+<meta name="author" content="Cliff Lau">
+
+
+<meta name="date" content="2017-03-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="notations.html">
+<link rel="next" href="bootstrap-simulation-procedure.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CAS Exam 7 Study Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="part"><span><b>I Estimation of Policy Liabilities</b></span></li>
+<li class="chapter" data-level="1" data-path="loss-development-using-credibility-e-brosius.html"><a href="loss-development-using-credibility-e-brosius.html"><i class="fa fa-check"></i><b>1</b> Loss Development Using Credibility - E. Brosius</a></li>
+<li class="chapter" data-level="2" data-path="credible-claims-reserve-the-benktander-method-t-mack.html"><a href="credible-claims-reserve-the-benktander-method-t-mack.html"><i class="fa fa-check"></i><b>2</b> Credible Claims Reserve: The Benktander Method - T. Mack</a></li>
+<li class="chapter" data-level="3" data-path="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html"><a href="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html"><i class="fa fa-check"></i><b>3</b> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</a></li>
+<li class="chapter" data-level="4" data-path="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><a href="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><i class="fa fa-check"></i><b>4</b> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</a></li>
+<li class="chapter" data-level="5" data-path="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><a href="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><i class="fa fa-check"></i><b>5</b> Testing the Assumptions of Age-to-Age Factors - G. Venter</a></li>
+<li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a></li>
+<li class="chapter" data-level="7" data-path="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><i class="fa fa-check"></i><b>7</b> A Model for Reserving Workers Compensation High Deductibles - J. Siewert</a></li>
+<li class="chapter" data-level="8" data-path="claims-development-by-layer-r-sahasrabuddhe.html"><a href="claims-development-by-layer-r-sahasrabuddhe.html"><i class="fa fa-check"></i><b>8</b> Claims Development by Layer - R. Sahasrabuddhe</a></li>
+<li class="chapter" data-level="9" data-path="using-the-odp-bootstrap-model-a-practitioners-guide.html"><a href="using-the-odp-bootstrap-model-a-practitioners-guide.html"><i class="fa fa-check"></i><b>9</b> Using the ODP Bootstrap Model: A Practitioner’s Guide</a><ul>
+<li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="introduction.html"><a href="introduction.html#stochastic-vs-static-model"><i class="fa fa-check"></i><b>9.1.1</b> Stochastic vs Static Model</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="notations.html"><a href="notations.html"><i class="fa fa-check"></i><b>9.2</b> Notations</a></li>
+<li class="chapter" data-level="9.3" data-path="bootstrap-model.html"><a href="bootstrap-model.html"><i class="fa fa-check"></i><b>9.3</b> Bootstrap Model</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="bootstrap-model.html"><a href="bootstrap-model.html#odp-glm-para"><i class="fa fa-check"></i><b>9.3.1</b> GLM Parameters</a></li>
+<li class="chapter" data-level="9.3.2" data-path="bootstrap-model.html"><a href="bootstrap-model.html#fitted-tri-odp"><i class="fa fa-check"></i><b>9.3.2</b> Fitted Triangle</a></li>
+<li class="chapter" data-level="9.3.3" data-path="bootstrap-model.html"><a href="bootstrap-model.html#odp-res"><i class="fa fa-check"></i><b>9.3.3</b> Residuals</a></li>
+<li class="chapter" data-level="9.3.4" data-path="bootstrap-model.html"><a href="bootstrap-model.html#odp-dispersion"><i class="fa fa-check"></i><b>9.3.4</b> Dispersion Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="bootstrap-simulation-procedure.html"><a href="bootstrap-simulation-procedure.html"><i class="fa fa-check"></i><b>9.4</b> Bootstrap Simulation Procedure</a></li>
+<li class="chapter" data-level="9.5" data-path="variations-on-the-odp-bootstrap.html"><a href="variations-on-the-odp-bootstrap.html"><i class="fa fa-check"></i><b>9.5</b> Variations on the ODP Bootstrap</a></li>
+<li class="chapter" data-level="9.6" data-path="practical-issues.html"><a href="practical-issues.html"><i class="fa fa-check"></i><b>9.6</b> Practical Issues</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="practical-issues.html"><a href="practical-issues.html#negative-incremental-values"><i class="fa fa-check"></i><b>9.6.1</b> Negative Incremental Values</a></li>
+<li class="chapter" data-level="9.6.2" data-path="practical-issues.html"><a href="practical-issues.html#non-zero-sum-of-residuals"><i class="fa fa-check"></i><b>9.6.2</b> Non-Zero Sum of Residuals</a></li>
+<li class="chapter" data-level="9.6.3" data-path="practical-issues.html"><a href="practical-issues.html#using-n-year-weighted-average"><i class="fa fa-check"></i><b>9.6.3</b> Using N-year Weighted Average</a></li>
+<li class="chapter" data-level="9.6.4" data-path="practical-issues.html"><a href="practical-issues.html#missing-value"><i class="fa fa-check"></i><b>9.6.4</b> Missing Value</a></li>
+<li class="chapter" data-level="9.6.5" data-path="practical-issues.html"><a href="practical-issues.html#outliers"><i class="fa fa-check"></i><b>9.6.5</b> Outliers</a></li>
+<li class="chapter" data-level="9.6.6" data-path="practical-issues.html"><a href="practical-issues.html#heteroskedasticity"><i class="fa fa-check"></i><b>9.6.6</b> Heteroskedasticity</a></li>
+<li class="chapter" data-level="9.6.7" data-path="practical-issues.html"><a href="practical-issues.html#heteroecthesious-data"><i class="fa fa-check"></i><b>9.6.7</b> Heteroecthesious Data</a></li>
+<li class="chapter" data-level="9.6.8" data-path="practical-issues.html"><a href="practical-issues.html#exposure-adjustment"><i class="fa fa-check"></i><b>9.6.8</b> Exposure Adjustment</a></li>
+<li class="chapter" data-level="9.6.9" data-path="practical-issues.html"><a href="practical-issues.html#parametric-bootstrapping"><i class="fa fa-check"></i><b>9.6.9</b> Parametric Bootstrapping</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html"><i class="fa fa-check"></i><b>9.7</b> Diagnostics</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#residual-graphs"><i class="fa fa-check"></i><b>9.7.1</b> Residual Graphs</a></li>
+<li class="chapter" data-level="9.7.2" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#normality-test"><i class="fa fa-check"></i><b>9.7.2</b> Normality Test</a></li>
+<li class="chapter" data-level="9.7.3" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#outlier"><i class="fa fa-check"></i><b>9.7.3</b> Outlier</a></li>
+<li class="chapter" data-level="9.7.4" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#parameter-adjustments"><i class="fa fa-check"></i><b>9.7.4</b> Parameter Adjustments</a></li>
+<li class="chapter" data-level="9.7.5" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#review-model-results"><i class="fa fa-check"></i><b>9.7.5</b> Review Model Results</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="using-multiple-models.html"><a href="using-multiple-models.html"><i class="fa fa-check"></i><b>9.8</b> Using Multiple Models</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="using-multiple-models.html"><a href="using-multiple-models.html#other-model-outputs"><i class="fa fa-check"></i><b>9.8.1</b> Other Model Outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>9.9</b> Correlation</a></li>
+<li class="chapter" data-level="9.10" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i><b>9.10</b> Miscellaneous</a></li>
+<li class="chapter" data-level="9.11" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>9.11</b> Past Exam Questions</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>9.11.1</b> Question Highlights</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="a11-obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><a href="a11-obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><i class="fa fa-check"></i><b>10</b> A11 Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</a></li>
+<li class="chapter" data-level="11" data-path="a14-stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html"><a href="a14-stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html"><i class="fa fa-check"></i><b>11</b> A14 Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer</a></li>
+<li class="chapter" data-level="12" data-path="a9-a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><a href="a9-a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><i class="fa fa-check"></i><b>12</b> A9 A Framework for Assessing Risk Margins - K. Marshall et al.</a></li>
+<li class="chapter" data-level="13" data-path="reinsurance-loss-reserving-patrik.html"><a href="reinsurance-loss-reserving-patrik.html"><i class="fa fa-check"></i><b>13</b> Reinsurance Loss Reserving - Patrik</a></li>
+<li class="chapter" data-level="14" data-path="a13-estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><a href="a13-estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><i class="fa fa-check"></i><b>14</b> A13 Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins</a></li>
+<li class="part"><span><b>II Insurance Company Valuation</b></span></li>
+<li class="chapter" data-level="15" data-path="b1-pc-insurance-company-valuation-r-goldfarb.html"><a href="b1-pc-insurance-company-valuation-r-goldfarb.html"><i class="fa fa-check"></i><b>15</b> B1 P&amp;C Insurance Company Valuation - R. Goldfarb</a></li>
+<li class="part"><span><b>III Enterprise Risk Management</b></span></li>
+<li class="chapter" data-level="16" data-path="c1-era-1-1-1-3-introduction-brehm-et-al-.html"><a href="c1-era-1-1-1-3-introduction-brehm-et-al-.html"><i class="fa fa-check"></i><b>16</b> C1 ERA 1.1 - 1.3 Introduction - Brehm, et al.</a></li>
+<li class="chapter" data-level="17" data-path="c2-era-2-1-corporate-decision-making-using-an-enterprise-risk-model-don-mango.html"><a href="c2-era-2-1-corporate-decision-making-using-an-enterprise-risk-model-don-mango.html"><i class="fa fa-check"></i><b>17</b> C2 ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango</a></li>
+<li class="chapter" data-level="18" data-path="c2-era-2-2-risk-measures-and-capital-allocation-g-venter.html"><a href="c2-era-2-2-risk-measures-and-capital-allocation-g-venter.html"><i class="fa fa-check"></i><b>18</b> C2 ERA 2.2 Risk Measures and Capital Allocation - G. Venter</a></li>
+<li class="chapter" data-level="19" data-path="c2-era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><a href="c2-era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><i class="fa fa-check"></i><b>19</b> C2 ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft</a></li>
+<li class="chapter" data-level="20" data-path="c2-era-2-4-asset-liability-management-brehm.html"><a href="c2-era-2-4-asset-liability-management-brehm.html"><i class="fa fa-check"></i><b>20</b> C2 ERA 2.4 Asset-Liability Management - Brehm</a></li>
+<li class="chapter" data-level="21" data-path="c2-era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><a href="c2-era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><i class="fa fa-check"></i><b>21</b> C2 ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</a></li>
+<li class="chapter" data-level="22" data-path="c3-era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><a href="c3-era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><i class="fa fa-check"></i><b>22</b> C3 ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</a></li>
+<li class="chapter" data-level="23" data-path="c3-era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><a href="c3-era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><i class="fa fa-check"></i><b>23</b> C3 ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</a></li>
+<li class="chapter" data-level="24" data-path="c3-era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><a href="c3-era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><i class="fa fa-check"></i><b>24</b> C3 ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</a></li>
+<li class="chapter" data-level="25" data-path="c4-era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html"><a href="c4-era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html"><i class="fa fa-check"></i><b>25</b> C4 ERA 4.1 &amp; 4.2 Operational and Strategic Risk - D. Mango, G. Venter</a></li>
+<li class="chapter" data-level="26" data-path="c5-era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><a href="c5-era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><i class="fa fa-check"></i><b>26</b> C5 ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major</a></li>
+<li class="part"><span><b>IV Overall Summary</b></span></li>
+<li class="chapter" data-level="27" data-path="exam-7-2016-overall-summary.html"><a href="exam-7-2016-overall-summary.html"><i class="fa fa-check"></i><b>27</b> Exam 7 2016 Overall Summary</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAS Exam 7 Study Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bootstrap-model" class="section level2">
+<h2><span class="header-section-number">9.3</span> Bootstrap Model</h2>
+<p><strong>Benefits</strong> of the bootstrap model:</p>
+<ul>
+<li><p>Allows us to estimate the distribution with very little data</p></li>
+<li><p>We don’t have to make any assumptions about the underlying distribution (non-parametric)</p>
+<ul>
+<li>The <strong>ODP</strong> part is the error distribution</li>
+</ul></li>
+</ul>
+<p>ODP bootstrap models:</p>
+<ul>
+<li><p>Incremental claims diretly as the response</p></li>
+<li><p>With the same linear predictor as Kremer (1982)</p></li>
+<li><p>Using a GLM with log-link function and an ODP poisson error</p></li>
+<li><p>Where a specific form of this model is identical to the volume weighted chain ladder</p></li>
+<li><p>Using bootstrap (sampling residuals with replacement) to estimate the distribution of point estimates</p>
+<p>(Instead of simulating from a multivariate normal for a GLM)</p></li>
+</ul>
+<div id="odp-glm-para" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> GLM Parameters</h3>
+<p>Mean and variance for each <span class="math inline">\(q(w,d)\)</span> in the triangle (per fig. <a href="notations.html#fig:bootstrap-tri">9.2</a>)</p>
+<div id="mean-and-log-mean-for-qwd" class="section level4">
+<h4><span class="header-section-number">9.3.1.1</span> Mean and log-mean for <span class="math inline">\(q(w,d)\)</span></h4>
+<span class="math display" id="eq:odp-mean">\[\begin{equation}
+  \mathrm{E}[q(w,d)] = m_{wd} = \exp \left [\alpha_w + \sum_{i=2}^d \beta_i \right] \:\: : \: \: w \in [2, n]
+  \tag{9.1}
+\end{equation}\]</span>
+<span class="math display" id="eq:odp-log-mean">\[\begin{equation}
+  \ln \left( \mathrm{E}[q(w,d)] \right) = \ln(m_{w,d}) = \eta_{w,d} = \alpha_w + \sum_{i=2}^d \beta_i \:\: : \: \: w \in [2, n]
+  \tag{9.2}
+\end{equation}\]</span>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
+<ul>
+<li><p><span class="math inline">\(\alpha\)</span>’s are the individual level parameters</p></li>
+<li><p><span class="math inline">\(\beta\)</span>’s adjust for the development trends after the first development period</p>
+<ul>
+<li>We don’t use <span class="math inline">\(\beta_1\)</span> which effectively means <span class="math inline">\(\beta_1 = 0\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(\beta_j\)</span> are selected to minimize error between <span class="math inline">\(\operatorname{ln}(actual) - \operatorname{ln}(forecast)\)</span>
+</div>
+<p></p></li>
+</ul>
+<p>Equivalence for using <a href="#venter-def">Venter</a> notation:</p>
+<ul>
+<li><p><span class="math inline">\(h(w) = e^{\alpha}\)</span></p></li>
+<li><p><span class="math inline">\(f(d) = e^{\sum \beta}\)</span></p></li>
+</ul>
+</div>
+<div id="variance-for-qwd" class="section level4">
+<h4><span class="header-section-number">9.3.1.2</span> Variance for <span class="math inline">\(q(w,d)\)</span></h4>
+<span class="math display" id="eq:odp-var">\[\begin{equation}
+  \operatorname{Var}[q(w,d)] = \phi m_{wd}^z
+  \tag{9.3}
+\end{equation}\]</span>
+<ul>
+<li><p><span class="math inline">\(\phi\)</span>: <a href="bootstrap-model.html#odp-dispersion">Dispersion factor</a></p>
+<ul>
+<li><p>Scale factor estimated as part of the fitting procedure while setting the variance proportional to the mean</p></li>
+<li><p>Estimated from the residuals</p></li>
+</ul></li>
+<li><p><span class="math inline">\(z\)</span>: Error distribution</p>
+<ul>
+<li><p>Paper focus on <span class="math inline">\(z = 1\)</span> for Over Dispersed Poisson (ODP)</p></li>
+<li><p>Specifies the whole mean-variance relationship (not only the first 2 moments)</p></li>
+</ul></li>
+</ul>
+<table>
+<caption><span id="tab:odp-error-dist">Table 9.1: </span> Distribution with corresponding <span class="math inline">\(z\)</span></caption>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(z\)</span></th>
+<th align="center">Distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">Normal</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">Poisson</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">Gamma</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">Inverse Gaussian</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="fitted-tri-odp" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> Fitted Triangle</h3>
+<p>We can fit the <span class="math inline">\(\alpha\)</span>’s and <span class="math inline">\(\beta\)</span>’s defined <a href="bootstrap-model.html#odp-glm-para">above</a> using the <a href="bootstrap-model.html#ODP-GLM-fit"><em>GLM framework</em></a>, or the <a href="bootstrap-model.html#simplified-glm"><em>simplified GLM</em></a> method</p>
+<div id="ODP-GLM-fit" class="section level4">
+<h4><span class="header-section-number">9.3.2.1</span> Parameterize with GLM Framework</h4>
+<p>Start with a <span class="math inline">\(3 \times 3\)</span> incremental triangle</p>
+<table>
+<caption><span id="tab:odp-glm-1">Table 9.2: </span> <span class="math inline">\(3\times 3\)</span> incremental triangle:</caption>
+<thead>
+<tr class="header">
+<th align="center">w/d</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>1</strong></td>
+<td align="center"><span class="math inline">\(q(1,1)\)</span></td>
+<td align="center"><span class="math inline">\(q(1,2)\)</span></td>
+<td align="center"><span class="math inline">\(q(1,3)\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>2</strong></td>
+<td align="center"><span class="math inline">\(q(2,1)\)</span></td>
+<td align="center"><span class="math inline">\(q(2,2)\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>3</strong></td>
+<td align="center"><span class="math inline">\(q(3,1)\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Log transform of the triangle</p>
+<table>
+<caption><span id="tab:odp-glm-2">Table 9.3: </span> <span class="math inline">\(3\times 3\)</span> log incremental triangle:</caption>
+<thead>
+<tr class="header">
+<th align="center">w/d</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>1</strong></td>
+<td align="center"><span class="math inline">\(\ln[q(1,1)]\)</span></td>
+<td align="center"><span class="math inline">\(\ln[q(1,2)]\)</span></td>
+<td align="center"><span class="math inline">\(\ln[q(1,3)]\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>2</strong></td>
+<td align="center"><span class="math inline">\(\ln[q(2,1)]\)</span></td>
+<td align="center"><span class="math inline">\(\ln[q(2,2)]\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>3</strong></td>
+<td align="center"><span class="math inline">\(\ln[q(3,1)]\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Create a system of equations based on equation <a href="bootstrap-model.html#eq:odp-log-mean">(9.2)</a></p>
+<span class="math display" id="eq:odp-sys-eq">\[\begin{equation}
+\begin{split}
+  \ln[q(1,1)] &amp;= 1\alpha_1 + 0\alpha_2 + 0\alpha_3 + 0\beta_2 + 0\beta_3 \\
+  \ln[q(2,1)] &amp;= 0\alpha_1 + 1\alpha_2 + 0\alpha_3 + 0\beta_2 + 0\beta_3 \\
+  \ln[q(3,1)] &amp;= 0\alpha_1 + 0\alpha_2 + 1\alpha_3 + 0\beta_2 + 0\beta_3 \\
+  \ln[q(1,2)] &amp;= 1\alpha_1 + 0\alpha_2 + 0\alpha_3 + 1\beta_2 + 0\beta_3 \\
+  \ln[q(2,2)] &amp;= 0\alpha_1 + 1\alpha_2 + 0\alpha_3 + 1\beta_2 + 0\beta_3 \\
+  \ln[q(1,3)] &amp;= 0\alpha_1 + 0\alpha_2 + 1\alpha_3 + 1\beta_2 + 1\beta_3 \\
+\end{split}
+\tag{9.4}
+\end{equation}\]</span>
+<p>Express the above in matrix form</p>
+<span class="math display" id="eq:odp-sys-eq-matrix">\[\begin{equation}
+\begin{array}{ccccc}
+  \mathbf{Y} &amp; = &amp; \mathbf{X} &amp;\times &amp; \mathbf{A} \\
+  &amp; &amp; \alpha_1 \:\:\: \alpha_2 \:\:\: \alpha_3 \:\:\: \beta_2 \:\:\: \beta_3 &amp; &amp;\\
+  \begin{bmatrix}
+    ln[q(1,1)] \\
+    ln[q(2,1)] \\
+    ln[q(3,1)] \\
+    ln[q(1,2)] \\
+    ln[q(2,2)] \\
+    ln[q(1,3)] \\
+  \end{bmatrix}
+    &amp; =
+      &amp;
+      \begin{bmatrix}
+        1 &amp; - &amp; - &amp; - &amp; - \\
+        - &amp; 1 &amp; - &amp; - &amp; - \\
+        - &amp; - &amp; 1 &amp; - &amp; - \\
+        1 &amp; - &amp; - &amp; 1 &amp; - \\
+        - &amp; 1 &amp; - &amp; 1 &amp; - \\
+        1 &amp; - &amp; - &amp; 1 &amp; 1 \\
+      \end{bmatrix}
+        &amp; \times
+          &amp;
+          \begin{bmatrix}
+            \alpha_1 \\
+            \alpha_2 \\
+            \alpha_3 \\
+            \beta_2 \\
+            \beta_3 \\
+          \end{bmatrix}
+\end{array}
+\tag{9.5}
+\end{equation}\]</span>
+
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> <span class="math inline">\(\mathbf{X}\)</span> is the design matrix that defines the parameters used to estimate the losses in each cell
+</div>
+<p></p>
+<p>Use iteratively weighted least squares or MLE<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> to solve for the parameters in the in <span class="math inline">\(\mathbf{A}\)</span> that minimize the squared difference between <span class="math inline">\(\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{S}\)</span>, the solution matrix</p>
+<span class="math display" id="eq:odp-sys-sol-matrix">\[\begin{equation}
+\mathbf{S} = \begin{bmatrix}
+    ln[m_{1,1}] \\
+    ln[m_{2,1}] \\
+    ln[m_{3,1}] \\
+    ln[m_{2,1}] \\
+    ln[m_{2,2}] \\
+    ln[m_{1,3}] \\
+\end{bmatrix}
+\tag{9.6}
+\end{equation}\]</span>
+<p>After solving the sysmte of equations we will have:</p>
+<span class="math display" id="eq:odp-sys-eq-solved">\[\begin{equation}
+\begin{split}
+  \ln[m_{1,1}] &amp;= \eta_{1,1} &amp;= \alpha_1 \\
+  \ln[m_{2,1}] &amp;= \eta_{2,1} &amp;= \alpha_2 \\
+  \ln[m_{3,1}] &amp;= \eta_{3,1} &amp;= \alpha_3 \\
+  \ln[m_{1,2}] &amp;= \eta_{1,2} &amp;= \alpha_1 + \beta_2\\
+  \ln[m_{2,2}] &amp;= \eta_{2,2} &amp;= \alpha_2 + \beta_2\\
+  \ln[m_{1,3}] &amp;= \eta_{1,3} &amp;= \alpha_1 + \beta_2 + \beta_3\\
+\end{split}
+\tag{9.7}
+\end{equation}\]</span>
+<p>The above solution shown as a triangle below</p>
+<table>
+<caption><span id="tab:odp-glm-3">Table 9.4: </span> <span class="math inline">\(3\times 3\)</span> GLM fitted log incremental triangle:</caption>
+<thead>
+<tr class="header">
+<th align="center">w/d</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>1</strong></td>
+<td align="center"><span class="math inline">\(\ln[m_{1,1}]\)</span></td>
+<td align="center"><span class="math inline">\(\ln[m_{1,2}]\)</span></td>
+<td align="center"><span class="math inline">\(\ln[m_{1,3}]\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>2</strong></td>
+<td align="center"><span class="math inline">\(\ln[m_{2,1}]\)</span></td>
+<td align="center"><span class="math inline">\(\ln[m_{2,2}]\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>3</strong></td>
+<td align="center"><span class="math inline">\(\ln[m_{3,1}]\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Exponentiate the triangle above to get our fitted (or expected) incremental results of the GLM model</p>
+<table>
+<caption><span id="tab:odp-glm-4">Table 9.5: </span> <span class="math inline">\(3\times 3\)</span> GLM fitted incremental triangle:</caption>
+<thead>
+<tr class="header">
+<th align="center">w/d</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>1</strong></td>
+<td align="center"><span class="math inline">\(m_{1,1}\)</span></td>
+<td align="center"><span class="math inline">\(m_{1,2}\)</span></td>
+<td align="center"><span class="math inline">\(m_{1,3}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>2</strong></td>
+<td align="center"><span class="math inline">\(m_{2,1}\)</span></td>
+<td align="center"><span class="math inline">\(m_{2,2}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>3</strong></td>
+<td align="center"><span class="math inline">\(m_{3,1}\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="simplified-glm" class="section level4">
+<h4><span class="header-section-number">9.3.2.2</span> Simplified GLM</h4>
+<p>GLM model = Chainladder w/ volume-weighted averages when:</p>
+<ul>
+<li><p>Variance <span class="math inline">\(\propto\)</span> Mean</p></li>
+<li><p><span class="math inline">\(\varepsilon(w,d) \sim\)</span> Poisson</p></li>
+<li><p>A parameter for each row and column (except 1<sup>st</sup> column)</p></li>
+</ul>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li><p>Replace GLM fitting with much simpler calculation</p></li>
+<li><p>LDFs are easier to explain</p></li>
+<li><p>Still works even when there are negative incremental values</p></li>
+</ul>
+<p><strong>Procedure</strong> for fitting incremental triangle:</p>
+<ol style="list-style-type: decimal">
+<li><p>Select LDFs baed on vol-wtd</p></li>
+<li><p>Start from the last <strong>cumulative diagonal</strong> and divide backwards by each incremental LDFs to get the cumulative fitted triangle</p></li>
+<li><p>Subtracting out the cumulative diagonals to get your incremental fitted triangle</p></li>
+</ol>
+</div>
+</div>
+<div id="odp-res" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Residuals</h3>
+
+<div class="rmdnote">
+Important formulas below
+</div>
+<p></p>
+<p><strong><em>Unscaled</em> Pearson residuals</strong></p>
+<span class="math display" id="eq:odp-pear-res">\[\begin{equation}
+\begin{split}
+  r_{w,d} &amp; = &amp; \dfrac{A - E}{\sqrt{\operatorname{Var}(E)}} &amp;\\
+  &amp; = &amp; \dfrac{q(w,d) - m_{wd}}{\sqrt{m^z_{wd}}} &amp;\\
+  &amp; = &amp; \dfrac{q(w,d) - m_{wd}}{\sqrt{m_{wd}}} &amp; \:\:\:\: \text{Recall }z = 1\text{ for ODP Poisson}\\
+\end{split}
+\tag{9.8}
+\end{equation}\]</span>
+<ul>
+<li><p><a href="bootstrap-model.html#odp-glm-para">Mean and variance</a> as defined above</p></li>
+<li><p>Residual for the right and bottom corners of the triangle are going to be 0</p>
+<p>Because a unique parameter is used for those 2 cells</p></li>
+<li><p>Alternatively we can use <em>Anscombe</em> residual</p>
+<p>We prefer Pearson because its calculation is consistent with the scale parameter <span class="math inline">\(\phi\)</span></p></li>
+</ul>
+<p><strong><em>Scaled</em> Pearson residuals</strong> (England &amp; Verrall)</p>
+<span class="math display" id="eq:odp-scaled-res">\[\begin{equation}
+  r^S_{w,d} = r_{w,d} \times \underbrace{\sqrt{\dfrac{N}{N-p}}}_{f^{DoF}}
+  \tag{9.9}
+\end{equation}\]</span>
+<ul>
+<li><p>Degrees of freedom adjustment, to effectively allow for over dispersion of the residuals in the sampling process and add process variance to approximate a distribution of possible outcomes</p></li>
+<li><p>Increase the variability of the pseudo triangle</p></li>
+</ul>
+<p><strong><em>Standardized</em> residuals</strong> (Pinheiro et al.)</p>
+<span class="math display" id="eq:odp-std-res">\[\begin{equation}
+  r^H_{w,d} = r_{w,d} \times \underbrace{\sqrt{\dfrac{1}{1-H_{i,i}}}}_{f^H_{w,d}}
+  \tag{9.10}
+\end{equation}\]</span>
+<span class="math display" id="eq:odp-hat-matrix">\[\begin{equation}
+  \mathbf{H} = \mathbf{X}(\mathbf{X}^T\mathbf{WX})^{-1}\mathbf{X}^T\mathbf{W}
+  \tag{9.11}
+\end{equation}\]</span>
+<span class="math display" id="eq:weight-matrix-odp">\[\begin{equation}
+\mathbf{W} = 
+  \begin{bmatrix}
+  m_{1,1} &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; m_{2,1} &amp; 0 &amp; 0 \\
+  \vdots &amp; 0 &amp; \ddots &amp; \vdots\\
+  0 &amp; 0 &amp; \cdots &amp; m_{1,n}\\
+  \end{bmatrix}
+  \tag{9.12}
+\end{equation}\]</span>
+<ul>
+<li><p>Hat matrix adjustment factor <span class="math inline">\(f^H_{w,d}\)</span> is based on the diagonal on the hat matrix <span class="math inline">\(\mathbf{H}\)</span></p>
+<p>(Going down the column of the triangle from left to right)</p></li>
+<li><p><span class="math inline">\(\mathbf{W}\)</span> is a <span class="math inline">\(2n \times 2n\)</span> matrix</p></li>
+<li><p><span class="math inline">\(\mathbf{X}\)</span> is the design matrix from <a href="bootstrap-model.html#eq:odp-sys-eq-matrix">(9.5)</a></p></li>
+<li><p><strong>Benefits</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(f^H_{w,d}\)</span> account forthe exclusion of zero-value residuals</p>
+<ul>
+<li>Or the zero-value residuals will have some variance but we just don’t know what it is yet so we should sample from the remaining residuals but not the zeros</li>
+</ul></li>
+<li><p><span class="math inline">\(f^H_{w,d}\)</span> is an improvement on <span class="math inline">\(f^{DoF}\)</span></p></li>
+</ol></li>
+</ul>
+</div>
+<div id="odp-dispersion" class="section level3">
+<h3><span class="header-section-number">9.3.4</span> Dispersion Factor</h3>
+<p>Dispersion factor</p>
+<span class="math display" id="eq:std-dispersion">\[\begin{equation}
+  \phi = \dfrac{\sum r_{wd}^2}{N-p}
+  \tag{9.13}
+\end{equation}\]</span>
+<p><span class="math display">\[N = \dfrac{n (n+1)}{2}\]</span></p>
+<p><span class="math display">\[p = 2n-1\]</span></p>
+<ul>
+<li><p><span class="math inline">\(N =\)</span> # of data points (<strong>including</strong> first column unlike <a href="#venter-goodness-fit">Ventor</a>)</p>
+<ul>
+<li><span class="math inline">\(N\)</span> can be less than indicated above if the tail incremental developments are all 0’s</li>
+</ul></li>
+<li><p><span class="math inline">\(p =\)</span> # of parameters</p>
+<ul>
+<li><p>One for each row, one for each column minus first column</p></li>
+<li><p><span class="math inline">\(p\)</span> can be less than <span class="math inline">\(2n-1\)</span> if the later incremental values are all 0’s and therefore not needed for fitting</p></li>
+</ul></li>
+</ul>
+<p>Alternate method for <span class="math inline">\(\phi\)</span></p>
+<p><span class="math display">\[\phi \sim \phi^H = \dfrac{\sum (r^H_{w,d})^2}{N}\]</span></p>
+<ul>
+<li>We can still use the same dispersion factor even with the <em>scaled</em> and <em>standardized</em> residuals, this just give us another method to estimate <span class="math inline">\(\phi\)</span></li>
+</ul>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>You can also use other methods such as orthogonal decomposition or Newton-Raphson to solve for the parameters<a href="bootstrap-model.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="notations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bootstrap-simulation-procedure.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/09-Shapland.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

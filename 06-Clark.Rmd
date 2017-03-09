@@ -18,7 +18,7 @@ Other use of the model
 
 ## Expected Loss Emergence
 
-```{block2, type='rmdnote'}
+```{block, type='rmdnote'}
 Important formulas and definition below
 ```
 
@@ -122,7 +122,7 @@ Estimate parameters with MLE
 
 ### Process Variance
 
-```{block2, type='rmdnote'}
+```{block, type='rmdnote'}
 Important formulas below
 ```
 

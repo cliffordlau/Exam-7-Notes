@@ -28,7 +28,7 @@ Know the 6 implications
 
 6) No particularly high or low diagonals
 
-## Definitions and Assumptions
+## Definitions and Assumptions {#venter-def}
 
 Table: (\#tab:venter-mack-def) Tables of Definitions
 
@@ -137,7 +137,7 @@ $\mathrm{E}[q(w,d+1)] = f(d)c(w,d)$
 
     Test for independence
 
-### Goodness of Fit Measurement
+### Goodness of Fit Measurement {#venter-goodness-fit}
 
 Compare different fit of the models based on adjusted $SSE$ (actual vs projected **excluding** 1st column)
 

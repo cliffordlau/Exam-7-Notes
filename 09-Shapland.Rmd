@@ -1,0 +1,964 @@
+# Using the ODP Bootstrap Model: A Practitioner's Guide
+
+Flow of the paper: Parametize $\rightarrow$ Bootstrap $\rightarrow$ Practical Issues $\rightarrow$ Correlations
+
+Remember this uses **incremental** triangles
+
+**Parametize**
+
+$m_{wd} = \operatorname{exp} \left [\alpha_w + \sum_j \beta_j \right]$
+
+$\operatorname{Var}[q(w,d)] = \phi m_{wd}^z$
+
+Parametize with GLM or Wtd average
+
+**Bootstrap**
+
+Create sample trianlge from mean and randomly sampled residuals $\Rightarrow$ Estimate parameters from sampled triangle $\Rightarrow$ Calculate mean and variance of the sampled triangle $\Rightarrow$ Draw losses from gamma
+
+Dispersion factor with standard \@ref(eq:std-dispersion), England & Verrall \@ref(eq:EV-dispersion), and [standardized](#standardized-dispersion)
+
+**Practical Issues**
+
+* Negative incremental values (fit and simulate)
+* Non-zero sum of residuals
+* N-year wtd average
+* Missing values
+* Outliers
+* Heteroskedasticity
+* Partial latest year exposure or partial diagonal
+* Expsoure adjustment
+* Parametric bootstrap
+
+**Diagnostics**
+
+**Other**
+
+* Multiple models
+* Model outputs
+* Correlations
+
+## Introduction
+
+Paper focus on **over-dispersed Poisson** (ODP) **bootstrap**
+
+* *Incremental losses* are modeled as ODP random variable
+
+* Goal is to generate a distribution of possible outcomes
+
+```{block, type='rmdtip'}
+*Just FYI, not important for exam*
+
+Other papers on bootstrap
+
+* Statistics: Bradley Efron (1979)
+
+* Actuarial: England & Verrall (1999; 2002), Pinheiro, et al. (2003), Kirschner, et al. (2008)
+```
+
+Practical **motivation** for modeling loss distribution
+
+* Definition of actuarial estimate in ASOP 43 can be based on a first moment from a distribution
+
+    * While ASOP 36 (SAO) focus on deterministic point estimates
+
+* SEC is looking for more information on reserving risk in the 10-K
+
+* Rating agencies are building dynamic risk models and welcome actuary input
+
+* Companies that use dynamic risk models for internal risk management need unpaid claim distributions
+
+* SII and IFAS are moving towards unpaid claim distribution
+
+***Advantages*** of bootstrap
+
+* Generates a distribution of the estimate of unpaid claims
+
+* Can be tailored to [statistical features](#odp-diagnostics) of our data 
+
+* Reflects that loss dist^n^ are usually skewed to the right
+
+***Disadvantages*** of bootstrap
+
+* Takes more time to create, but okay once set up
+
+### Stochastic vs Static Model
+
+ODP bootstrap is a specific form of GLM
+
+**Benefit** of GLM: It can be specifically tailored to the statistical features found in the data
+
+* Contrast with algorithms that force the data to be fit to a static model (fig. \@ref(fig:stoc-vs-stat))
+
+```{r stoc-vs-stat, echo = FALSE, out.width='50%', fig.show='hold', fig.cap='Stochastic vs Static Model Diagram'}
+knitr::include_graphics(c('figures/Exam-7-Notes-14.png',
+                          'figures/Exam-7-Notes-15.png'))
+```
+
+```{block, type='rmdtip'}
+*Just FYI, not important for exam*
+
+Some authors define a model as having a **defined structure** and **error distribution**, so under this more restrictive definition bootstrapping would be considered to be a *method* or *algorithm* 
+
+However, using a less restrictive definition of a model as an **algorithm that produces a distribution**, bootstrapping would be defined as a model
+```
+
+## Notations
+
+```{definition}
+Same notations as [Venter](#venter-def) for $n \times n$ triangle
+
+* $w$: Accident (exposure) year
+
+* $d$: Development age
+
+* $q(w,d)$: incremental loss for AY $w$ from age $d-1$ to $d$
+
+* $c(w,d)$: cumulative loss
+
+* $F(d)$: Incremental LDF from age $d$ to $d+1$
+
+* $f(d)$: $F(d) - 1$, for forcasting incremental losses
+
+* $G(w)$: Factor relating to accdient (exposure) year $w$; ultimate gross level
+
+* $h(k)$: Factor relating to the diagonal $k$ along which $w+d$ is constant
+```
+
+```{r bootstrap-tri, echo = FALSE, out.width='50%', fig.show='hold', fig.cap='Incremental Triangle'}
+knitr::include_graphics('figures/Exam-7-Notes-1.png')
+```
+
+**Chainladder assumptions:**
+
+1. LDFs are the same for each row
+
+    $F(w,d) = F(d)$
+
+2. Each AY has a parameter representing it's level
+
+    e.g. CL project based on level of *losses to date*
+
+## Bootstrap Model
+
+**Benefits** of the bootstrap model:
+
+* Allows us to estimate the distribution with very little data
+
+* We don't have to make any assumptions about the underlying distribution (non-parametric)
+
+    * The **ODP** part is the error distribution
+    
+ODP bootstrap models:
+
+* Incremental claims diretly as the response
+
+* With the same linear predictor as Kremer (1982)
+
+* Using a GLM with log-link function and an ODP poisson error
+
+* Where a specific form of this model is identical to the volume weighted chain ladder
+
+* Using bootstrap (sampling residuals with replacement) to estimate the distribution of point estimates
+
+    (Instead of simulating from a multivariate normal for a GLM)
+    
+### GLM Parameters {#odp-glm-para}
+
+Mean and variance for each $q(w,d)$ in the triangle (per fig. \@ref(fig:bootstrap-tri))
+
+#### Mean and log-mean for $q(w,d)$
+
+\begin{equation}
+  \mathrm{E}[q(w,d)] = m_{wd} = \exp \left [\alpha_w + \sum_{i=2}^d \beta_i \right] \:\: : \: \: w \in [2, n]
+  (\#eq:odp-mean)
+\end{equation}
+
+\begin{equation}
+  \ln \left( \mathrm{E}[q(w,d)] \right) = \ln(m_{w,d}) = \eta_{w,d} = \alpha_w + \sum_{i=2}^d \beta_i \:\: : \: \: w \in [2, n]
+  (\#eq:odp-log-mean)
+\end{equation}
+
+```{remark}
+
+
+* $\alpha$'s are the individual level parameters
+
+* $\beta$'s adjust for the development trends after the first development period
+
+    * We don't use $\beta_1$ which effectively means $\beta_1 = 0$
+
+* $\alpha_i$ and $\beta_j$ are selected to minimize error between $\operatorname{ln}(actual) - \operatorname{ln}(forecast)$
+```
+
+Equivalence for using [Venter](#venter-def) notation:
+
+* $h(w) = e^{\alpha}$
+
+* $f(d) = e^{\sum \beta}$
+
+#### Variance for $q(w,d)$
+
+\begin{equation}
+  \operatorname{Var}[q(w,d)] = \phi m_{wd}^z
+  (\#eq:odp-var)
+\end{equation}
+
+* $\phi$: [Dispersion factor](#odp-dispersion)
+    
+    * Scale factor estimated as part of the fitting procedure while setting the variance proportional to the mean
+    
+    * Estimated from the residuals
+    
+* $z$: Error distribution
+
+    * Paper focus on $z = 1$ for Over Dispersed Poisson (ODP)
+    
+    * Specifies the whole mean-variance relationship (not only the first 2 moments)
+
+Table: (\#tab:odp-error-dist) Distribution with corresponding $z$
+
+| $z$ | Distribution     |
+| :-: | :---------------: |
+| 0 | Normal           |
+| 1 | Poisson          |
+| 2 | Gamma            |
+| 3 | Inverse Gaussian |
+
+### Fitted Triangle {#fitted-tri-odp}
+
+We can fit the $\alpha$'s and $\beta$'s defined [above](#odp-glm-para) using the [*GLM framework*](#ODP-GLM-fit), or the [*simplified GLM*](#simplified-glm) method
+
+#### Parameterize with GLM Framework {#ODP-GLM-fit}
+
+Start with a $3 \times 3$ incremental triangle
+
+Table: (\#tab:odp-glm-1) $3\times 3$ incremental triangle:
+
+|    w/d    |     1    |      2   |     3    |
+|:------:|:--------:|:--------:|:--------:|
+| **1**  | $q(1,1)$ | $q(1,2)$ | $q(1,3)$ |  
+| **2**  | $q(2,1)$ | $q(2,2)$ |          |
+| **3**  | $q(3,1)$ |          |          |
+
+Log transform of the triangle
+
+Table: (\#tab:odp-glm-2) $3\times 3$ log incremental triangle:
+
+|   w/d     |     1    |      2   |     3    |
+|:------:|:--------:|:--------:|:--------:|
+| **1**  | $\ln[q(1,1)]$ | $\ln[q(1,2)]$ | $\ln[q(1,3)]$ |  
+| **2**  | $\ln[q(2,1)]$ | $\ln[q(2,2)]$ |          |
+| **3**  | $\ln[q(3,1)]$ |          |          |
+
+
+Create a system of equations based on equation \@ref(eq:odp-log-mean)
+
+\begin{equation}
+\begin{split}
+  \ln[q(1,1)] &= 1\alpha_1 + 0\alpha_2 + 0\alpha_3 + 0\beta_2 + 0\beta_3 \\
+  \ln[q(2,1)] &= 0\alpha_1 + 1\alpha_2 + 0\alpha_3 + 0\beta_2 + 0\beta_3 \\
+  \ln[q(3,1)] &= 0\alpha_1 + 0\alpha_2 + 1\alpha_3 + 0\beta_2 + 0\beta_3 \\
+  \ln[q(1,2)] &= 1\alpha_1 + 0\alpha_2 + 0\alpha_3 + 1\beta_2 + 0\beta_3 \\
+  \ln[q(2,2)] &= 0\alpha_1 + 1\alpha_2 + 0\alpha_3 + 1\beta_2 + 0\beta_3 \\
+  \ln[q(1,3)] &= 0\alpha_1 + 0\alpha_2 + 1\alpha_3 + 1\beta_2 + 1\beta_3 \\
+\end{split}
+(\#eq:odp-sys-eq)
+\end{equation}
+
+Express the above in matrix form
+
+\begin{equation}
+\begin{array}{ccccc}
+  \mathbf{Y} & = & \mathbf{X} &\times & \mathbf{A} \\
+  & & \alpha_1 \:\:\: \alpha_2 \:\:\: \alpha_3 \:\:\: \beta_2 \:\:\: \beta_3 & &\\
+  \begin{bmatrix}
+    ln[q(1,1)] \\
+    ln[q(2,1)] \\
+    ln[q(3,1)] \\
+    ln[q(1,2)] \\
+    ln[q(2,2)] \\
+    ln[q(1,3)] \\
+  \end{bmatrix}
+    & =
+      &
+      \begin{bmatrix}
+        1 & - & - & - & - \\
+        - & 1 & - & - & - \\
+        - & - & 1 & - & - \\
+        1 & - & - & 1 & - \\
+        - & 1 & - & 1 & - \\
+        1 & - & - & 1 & 1 \\
+      \end{bmatrix}
+        & \times
+          &
+          \begin{bmatrix}
+            \alpha_1 \\
+            \alpha_2 \\
+            \alpha_3 \\
+            \beta_2 \\
+            \beta_3 \\
+          \end{bmatrix}
+\end{array}
+(\#eq:odp-sys-eq-matrix)
+\end{equation}
+
+```{remark}
+$\mathbf{X}$ is the design matrix that defines the parameters used to estimate the losses in each cell
+```
+
+Use iteratively weighted least squares or MLE[^1] to solve for the parameters in the in $\mathbf{A}$ that minimize the squared difference between $\mathbf{Y}$ and $\mathbf{S}$, the solution matrix
+
+[^1]: You can also use other methods such as orthogonal decomposition or Newton-Raphson to solve for the parameters
+
+\begin{equation}
+\mathbf{S} = \begin{bmatrix}
+    ln[m_{1,1}] \\
+    ln[m_{2,1}] \\
+    ln[m_{3,1}] \\
+    ln[m_{2,1}] \\
+    ln[m_{2,2}] \\
+    ln[m_{1,3}] \\
+\end{bmatrix}
+(\#eq:odp-sys-sol-matrix)
+\end{equation}
+
+After solving the sysmte of equations we will have:
+
+\begin{equation}
+\begin{split}
+  \ln[m_{1,1}] &= \eta_{1,1} &= \alpha_1 \\
+  \ln[m_{2,1}] &= \eta_{2,1} &= \alpha_2 \\
+  \ln[m_{3,1}] &= \eta_{3,1} &= \alpha_3 \\
+  \ln[m_{1,2}] &= \eta_{1,2} &= \alpha_1 + \beta_2\\
+  \ln[m_{2,2}] &= \eta_{2,2} &= \alpha_2 + \beta_2\\
+  \ln[m_{1,3}] &= \eta_{1,3} &= \alpha_1 + \beta_2 + \beta_3\\
+\end{split}
+(\#eq:odp-sys-eq-solved)
+\end{equation}
+
+The above solution shown as a triangle below
+
+Table: (\#tab:odp-glm-3) $3\times 3$ GLM fitted log incremental triangle:
+
+|   w/d     |     1    |      2   |     3    |
+|:------:|:--------:|:--------:|:--------:|
+| **1**  | $\ln[m_{1,1}]$ | $\ln[m_{1,2}]$ | $\ln[m_{1,3}]$ |  
+| **2**  | $\ln[m_{2,1}]$ | $\ln[m_{2,2}]$ |          |
+| **3**  | $\ln[m_{3,1}]$ |          |          |
+
+Exponentiate the triangle above to get our fitted (or expected) incremental results of the GLM model
+
+Table: (\#tab:odp-glm-4) $3\times 3$ GLM fitted incremental triangle:
+
+|   w/d     |     1    |      2   |     3    |
+|:------:|:--------:|:--------:|:--------:|
+| **1**  | $m_{1,1}$ | $m_{1,2}$ | $m_{1,3}$ |  
+| **2**  | $m_{2,1}$ | $m_{2,2}$ |          |
+| **3**  | $m_{3,1}$ |          |          |
+
+#### Simplified GLM {#simplified-glm}
+
+GLM model = Chainladder w/ volume-weighted averages when:
+
+* Variance $\propto$ Mean
+
+* $\varepsilon(w,d) \sim$ Poisson
+
+* A parameter for each row and column (except 1^st^ column)
+
+**Benefits**:
+
+* Replace GLM fitting with much simpler calculation
+
+* LDFs are easier to explain
+
+* Still works even when there are negative incremental values
+
+**Procedure** for fitting incremental triangle:
+
+1. Select LDFs baed on vol-wtd
+
+2. Start from the last **cumulative diagonal** and divide backwards by each incremental LDFs to get the cumulative fitted triangle
+
+3. Subtracting out the cumulative diagonals to get your incremental fitted triangle
+
+### Residuals {#odp-res}
+
+```{block2, type='rmdnote'}
+Important formulas below
+```
+
+***Unscaled* Pearson residuals**
+
+\begin{equation}
+\begin{split}
+  r_{w,d} & = & \dfrac{A - E}{\sqrt{\operatorname{Var}(E)}} &\\
+  & = & \dfrac{q(w,d) - m_{wd}}{\sqrt{m^z_{wd}}} &\\
+  & = & \dfrac{q(w,d) - m_{wd}}{\sqrt{m_{wd}}} & \:\:\:\: \text{Recall }z = 1\text{ for ODP Poisson}\\
+\end{split}
+(\#eq:odp-pear-res)
+\end{equation}
+
+* [Mean and variance](#odp-glm-para) as defined above
+
+* Residual for the right and bottom corners of the triangle are going to be 0
+
+    Because a unique parameter is used for those 2 cells
+    
+* Alternatively we can use *Anscombe* residual
+
+    We prefer Pearson because its calculation is consistent with the scale parameter $\phi$
+
+***Scaled* Pearson residuals** (England & Verrall)
+
+\begin{equation}
+  r^S_{w,d} = r_{w,d} \times \underbrace{\sqrt{\dfrac{N}{N-p}}}_{f^{DoF}}
+  (\#eq:odp-scaled-res)
+\end{equation}
+
+* Degrees of freedom adjustment, to effectively allow for over dispersion of the residuals in the sampling process and add process variance to approximate a distribution of possible outcomes
+
+* Increase the variability of the pseudo triangle
+
+***Standardized* residuals** (Pinheiro et al.)
+
+\begin{equation}
+  r^H_{w,d} = r_{w,d} \times \underbrace{\sqrt{\dfrac{1}{1-H_{i,i}}}}_{f^H_{w,d}}
+  (\#eq:odp-std-res)
+\end{equation}
+
+\begin{equation}
+  \mathbf{H} = \mathbf{X}(\mathbf{X}^T\mathbf{WX})^{-1}\mathbf{X}^T\mathbf{W}
+  (\#eq:odp-hat-matrix)
+\end{equation}
+
+\begin{equation}
+\mathbf{W} = 
+  \begin{bmatrix}
+  m_{1,1} & 0 & \cdots & 0 \\
+  0 & m_{2,1} & 0 & 0 \\
+  \vdots & 0 & \ddots & \vdots\\
+  0 & 0 & \cdots & m_{1,n}\\
+  \end{bmatrix}
+  (\#eq:weight-matrix-odp)
+\end{equation}
+
+* Hat matrix adjustment factor $f^H_{w,d}$ is based on the diagonal on the hat matrix $\mathbf{H}$
+
+    (Going down the column of the triangle from left to right)
+    
+* $\mathbf{W}$ is a $2n \times 2n$ matrix
+
+* $\mathbf{X}$ is the design matrix from \@ref(eq:odp-sys-eq-matrix)
+
+* **Benefits**:
+
+    1. $f^H_{w,d}$ account forthe exclusion of zero-value residuals
+    
+        * Or the zero-value residuals will have some variance but we just don't know what it is yet so we should sample from the remaining residuals but not the zeros
+        
+    2. $f^H_{w,d}$ is an improvement on $f^{DoF}$
+
+### Dispersion Factor {#odp-dispersion}
+
+Dispersion factor
+
+\begin{equation}
+  \phi = \dfrac{\sum r_{wd}^2}{N-p}
+  (\#eq:std-dispersion)
+\end{equation}
+
+$$N = \dfrac{n (n+1)}{2}$$
+
+$$p = 2n-1$$
+
+* $N =$ # of data points (**including** first column unlike [Ventor](#venter-goodness-fit))
+
+    * $N$ can be less than indicated above if the tail incremental developments are all 0's
+
+* $p =$ # of parameters
+
+    * One for each row, one for each column minus first column
+    
+    * $p$ can be less than $2n-1$ if the later incremental values are all 0's and therefore not needed for fitting
+
+Alternate method for $\phi$
+
+$$\phi \sim \phi^H = \dfrac{\sum (r^H_{w,d})^2}{N}$$
+
+* We can still use the same dispersion factor even with the *scaled* and *standardized* residuals, this just give us another method to estimate $\phi$
+
+## Bootstrap Simulation Procedure
+
+Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
+
+0) Model our losses, determine [mean](#fitted-tri-odp) and [residual](#odp-res) for each cell
+
+1) Create a sampled $triangle^*$ from the residuals and the means
+
+    i. **Sample** with replacement on the Pearson residuals \@ref(eq:odp-pear-res) from our original triangle from Step 0.
+    
+        (Since data needs to be $iid$ for bootstrap)
+        
+        (Note the distribution of the residual will be purely empirical)
+    
+    ii. **Simulated loss**:
+        \begin{equation}
+        q^*(w,d) = m_{wd} + r_p^* \sqrt{m_{wd}^z}
+        (\#eq:odp-sim-loss)
+        \end{equation}
+    
+        ($r^*_p$ is the realized sample from i.)
+    
+    iii. Compile the **sampled cumulative triangle**
+    
+    iv. **Estimate dispersion factor** $\phi$ for Step 3
+        
+        This can vary per [Dispersion Factor](#odp-dispersion) section
+        
+2) **Determine parameters** from $triangle^*$:
+
+    * For [GLM Framework](#ODP-GLM-fit), calculate the $\alpha_w$'s, $\beta_d$'s
+    
+    * For [Simplified GLM](#simplified-glm) calculate the weighted average LDFs and Ultimate Loss
+
+3) Calculate **mean** and **variance**[^2] for the future cells (unpaid): $(m^*_{wd}, \phi m^*_{wd})$
+
+    * For GLM Framework: $m^*_{wd} = \operatorname{exp} \left [\alpha_w + \sum \limits_{i=2}^d \beta_i \right]$
+    
+    * For Simplified GLM, back out the $c^*(w,d)$ by $\dfrac{Ult_w}{CDF_d}$ then get the $m^*_{wd}$
+    
+    * Variance: $\phi m_{wd}^{*}$ (for ODP $z=1$ on the $m^{*z}_{wd}$)
+
+[^2]: Step 3 and 3 were added in England & Verrall (2002), in their 1999 paper it doesn't have this step (stopped at 2) and instead just suggest you to add process variance by multiply the results by $f^{RoF}$
+
+4) Add **process variance**: draw losses[^3] from $Gamma(m_{wd}^*,\phi m_{wd}^*)$ for the future cells (unpaid)
+
+    * Simulate loss from the gamma distribution for each future cells
+    
+    * Use $u \sim U[0,1]$ and $F^{-1}_{gamma}(u)$
+    
+[^3]: Poisson distribution can be used to remain more consistent with the underlying theory of GLM framework, but it is considerably slower to simulate, so gamma is a close substitute that performs much faster in simulation although it can be more skewed than the Poisson. Indeed other distributios could be used as well to better approximate the ovserved "skewness" of the residuals from the diagnostics
+
+5) Calculate simulated **unpaid**: sum the bottom half of triangle
+    
+## Variations on the ODP Bootstrap
+
+**Use incurred loss triangle**
+
+* Convert ultimate from incurred to a payment stream based on paid analysis
+
+* Correlate the simulations from the 2 method so that if we have large payment @ an older age, the incurred should be large as well
+
+**Use BF Ult for recent years**
+
+* Have the a-priori varies based on some $\sigma$
+
+**Generalizing the ODP Model**
+
+* Reduce # of parameters
+
+    * Combine accident years
+    
+    * Use just 1 development year since the column parameters is just a measure of decay and can be used for multiple columns
+    
+* Add calendar year trend parameter $\gamma_k$ for each column except for the first
+
+* Must use GLM to determine the parameters
+
+## Practical Issues
+
+### Negative Incremental Values
+
+How to deal with negative incremental values in the triangle
+
+#### Model Fitting
+
+**Method 1**: $-ln(-q(w,d))$
+
+* Works when there are a few cells with negatives
+
+* Doesn't work when the column sum to a negative value
+
+**Method 2**: Add a constant $\Psi$
+
+* Add $\Psi$ to every cell before running GLM then subtract $\Psi$ from each incremental loss once the means are calculated
+
+* $ln[m_{wd} + \Psi] = \eta_{wd}$
+
+* Can use this method combined with method 1 to take care of the extra large negative ones
+
+**Method 3**: Simplified GLM
+
+* Use Chainladder with volume weighted average LDFs
+
+* Only if the assumptions fit
+
+* Need to make use the absolute value for the residual and re-sampling formula:
+
+    * $r_{wd} = \dfrac{q(w,d)-m_{wd}}{\sqrt{abs(m_{wd})}}$
+
+    * $q^*(w,d) = m_{wd} + r_p \sqrt{abs(m_{wd})}$
+    
+#### Simulating Negative Values
+
+**Adjustment to the *Gamma* Distribution**
+
+Use $Gamma(-m_{wd}, -\phi m_{wd}) + 2m_{wd}$
+
+* Maintaining the right tail but also having the mean of $m_{wd}$
+
+* Just doing $-Gamma(-m_{wd}, -\phi m_{wd})$ doesn't work since the tail would be flipped
+
+**Extreme Outcomes from Negative Values**
+
+Column with negative mean can results in vary large LDFs, 4 options to deal with that:
+
+1) ***Remove the extreme iterations***
+
+    * But beware of understating the the likelihood of extreme outcomes
+
+2) ***Recalibrate*** the Model
+
+    * Review data used and parameter selection (e.g. remove the first AY as it does not represent current behavior)
+
+3) ***Limit Incremental Losses Below 0***
+
+    * Either in the original triangle, sampled or simulated loss (process var step); Replace with 0
+
+    * Can just do it in certain columns
+
+4) **Understand**
+
+    * Understand why this is happening. e.g. if due to S&S then you can just model them separately and then correlated them during simulation
+
+### Non-Zero Sum of Residuals
+
+Since we assume $iid$ and constant $\sigma$, the sum of residuals should be 0
+
+Not necessarily the case since this is just a sample
+
+Consequence is that the simulated outcomes will be higher than the means
+
+2 Options
+
+* Keep it if we believe this to be characteristics of the data set
+
+* Add a constant to each residual so that it sums to 0 and then sample from the adjusted residuals
+
+### Using N-year Weighted Average
+
+**GLM**
+
+* Exclude the older diagonals so that we have $N+1$ diagonals of data to get $N$ diagonals of LDFs
+
+* Will have less CY parameters
+
+**Simplified GLM**
+
+1) Get *N*-year weighted average
+
+2) Exclude the diagonals not used for the LDFs ***when determining the residuals***
+
+3) Sample residuals for the entire triangle ***when sampling for bootstrap*** since you need cumulative losses for each row
+
+***
+
+The 2 methods will results in different results
+
+* GLM: Models the incremental losses in the trapezoid
+
+* Simplified GLM: Model the same losses but in relation to the cumulative losses, which include the non-modeled losses in the diagonals excluded
+
+### Missing Value
+
+Solution
+
+* Estimate from surrounding values
+
+* Modify LDFs to exclude missing value
+
+Won't have residual for this cell
+
+### Outliers
+
+Remove extreme values that are not representative of the variability of the losses
+
+* Remove a whole row or,
+
+* Just remove the value and treat them as missing values or,
+
+* Exclude in LDFs but continue to use them when calculating residuals and use them for the re-sampling
+
+### Heteroskedasticity
+
+Non constant variance (bootstrap assumes residuals are $iid$)
+
+**Stratified Sampling**
+
+Split the triangle into groups with similar variance and only sample residuals that are in the group
+
+*Cons*: each group may not be that large
+
+**Hetero-Adjustment**
+
+Group the residuals then calculate the $\sigma$ of the residuals in each group and scale up
+
+Hetero-adjustment factor: $h^i$ = the largest $\sigma$ $\div$ each group's $\sigma$
+
+$r_{wd}^{i,H} = r_{wd} \times f_{wd}^H \times h^i$
+
+* Residual $\times$ Hat Matrix Factor $\times$ Hetero Factor
+
+Need to divide the sampled residual by $h^i$ to reflect the variability of group $i$
+
+* $q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}$
+
+### Heteroecthesious Data
+
+Accident years have different level of exposures
+
+**Partial First Development Period**
+
+Only want partial accident year
+
+No impact to residuals for bootstrap
+
+2 options:
+
+* Reduce the mean of the incremental cells by pro ration in the process variance step
+
+* Prorate after the process variance step
+
+**Partial Last Calendar Period**
+
+Latest diagonal is partial
+
+* Simplified GLM
+
+    * Determine LDF excluding latest diagonal then interpolate LDFs for ultimate
+    
+* GLM
+
+    * Adjust the exposure in the last diagonal to make them consistent with the rest of the triangle (probably means adjusting annualizing the loss)
+
+Then prorate the losses similar to the first scenario
+
+### Exposure Adjustment
+
+Consider dividing the losses by the exposure in each AY if there are significant changes in exposure and model pure premium
+
+Multiply the PP results by the exposure after the process variance step
+
+### Parametric Bootstrapping
+
+Might not have enough data to sufficiently represent the tail
+
+Fit a distribution to the residual and sample from the distribution instead
+
+## Diagnostics {#odp-diagnostics}
+
+Judge the quality of the model
+
+1) Test Assumptions in model
+
+2) Gauge quality of model fit
+
+3) Guide the adjustments of model parameters
+
+### Residual Graphs
+
+Graph residuals vs CY, AY, Age, forecast loss
+
+Want to see random variability around zero
+
+### Normality Test
+
+Normality is not required, only need this if we're doing parametric bootstrap with normal distribution
+
+Plot residuals against the normal best fit based on the percentiles
+
+Use p-value > 5% as the test
+
+Or use something that penalize number of parameters
+
+* $AIC = 2p + n \left [ 1 + \operatorname{ln}(2\pi\dfrac{RSS}{n})\right]$
+
+* $BIC = n \operatorname{ln}\left( \dfrac{RSS}{n}\right) + p \operatorname{ln}(n)$
+
+* $RSS$ = actual residual - expected residual from normal
+
+### Outlier
+
+Remove true outliers but do not want to remove points that are realistic extreme scenarios
+
+Use box & whisker plot
+
+* Shows 25%ile to 75%ile
+* Whiskers are 3 times the inter quartile range
+
+### Parameter Adjustments
+
+Test model with different sets of parameters
+
+* Don't need unique parameter for each row and column
+
+### Review Model Results
+
+Read summarized output by AYs
+
+* Mean, s.e., CoV, Min, Max, Median
+
+* The all year s.e. should be greater than any individual year
+
+* The all year CoV should be less than the CoV for any individual year
+
+* CoV should be highest for older years due small mean unpaid
+
+* CoV also high for most recent AY due to higher volatility
+
+    * Larger parameter uncertainty or volatility from CL method
+    
+* Check min max for reasonability
+
+For the triangles:
+
+* Check incremental means as well in triangle form
+
+* Check s.d. of incremental values
+
+## Using Multiple Models
+
+Use different methods (Paid/Inc'd Dev, BF, etc) by assigning weights by AYs
+
+**Method 1**:  
+In the process variance step of bootstrap, use the same underlying U(0,1) to draw from each model then weight the models by the %
+
+**Method 2**:  
+Run each model independently for each simulation (i.e. use different U(0,1)) then for each AY use the weights to randomly select one of the modeled results. Results will be a mixture of the various models
+
+Important to review the statistics in the above section for each output
+
+Fit the unpaid claim distribution to Normal, LogNormal, and Gamma. Then compare with the fit based on the actual residuals on various statistics <a name="pearson-res"></a><span style="color:red">Not sure what distribution this is talking about</span>
+
+### Other Model Outputs
+
+**Estimated Cash Flow Results**
+
+Since bootstrap generates simulation for each cell in the bottom half of the triangle we can use this to get cash flow forecasts by CY and the percentiles as well
+
+**Estimated Ultimate Loss Ratio Results**
+
+We can estimate the variability of ultimate loss ratio since we vary and simulate the whole "square"
+
+**Distribution Graphs**
+
+Draw a distribution of the simulated unpaid in a histogram
+
+Can also smooth the histogram with Kernel density function
+
+* For each point it takes a weighted average of the points around it; giving less weight to points further from it
+
+## Correlation
+
+Correlate the loss distribution over several LoB
+
+* Multivariate distribution requires the same underlying distribution which doesn't work here for ODP
+
+**Location Mapping**
+
+When sampling the residuals, sample from the same place in the triangle for all the lines we want to correlate
+
+Disadvantages:
+
+* Requires all LoB to have the same size triangle with no missing values or outliers
+
+* Cannot stress the correlations among the LoBs
+
+**Re-Sorting**
+
+Use Iman-Conover algorithms or Copulas
+
+Advantages:
+
+* Can accommodate different shapes and sizes
+
+* Can make different correlation assumptions
+
+* Can strengthen the correlation for extreme events (e.g. Copulas)
+
+Calculate correlation matrix using Spearman's Rank Order
+
+* Re-sorting based on the ranks of unpaid claims by AYs
+
+***
+
+Using residuals to correlate LoBs (Both location mapping  & re-sorting) are both liable to create correlations close to zero
+
+Reserve Risk:
+
+* Correlate total unpaid by correlating the incremental paid. May or may not be a reasonable approximation
+
+Pricing Risk:
+
+* Correlate loss ratios over time
+
+* Not as likely to be close to zero
+
+* Use different correlation assumption than for reserve risk
+
+## Miscellaneous
+
+**Model Testing**
+
+Based on testing from General Insurance Reserving Oversight Committee, the ODP Bootstrap with England & Verrall residual out perform the Mack model by forecasting the 99%-ile better
+
+* ODP losses only exceed 99%-ile ~3% of the time compare to Mack's 8-13%
+
+**Future Research**
+
+* Test ODP bootstrap on realistic data from CAS loss simulation model
+
+* Expand ODP bootstrap with Munich Chainladder, claim counts and severity
+
+* Research other risk analysis measures and use for ERM
+
+* Use for SII requirements
+
+* Research in correlation matrix (difficult to estimate)
+
+## Past Exam Questions
+
+**Exercises**
+
+1. $\star$ Use simplied GLM and then back out the GLM parameters
+2. Reduce parameters
+3. Minimize square error for GLM
+4. Benefit of simplified GLM
+5. Residuals
+6. Dispersion
+7. Dispersion with hat matrix adj
+8. Simulate loss
+9. Setup GLM
+10. Negative values
+11. Simulat ngative
+12. Partial triangle
+13. Stratified
+14. Dealing with correlation
+15. Outliers
+
+**Practical Issues**
+
+* 2013 #7: negatvie values
+* 2014 #7: List 4 practical issues and solutions
+* 2015 #10: Heteroscedasticity, why important, adjustments description
+* 2015 #11: Negative values, outliers, exposure level
+
+**Diagnostics**
+
+* $\star$ 2014 #9: Evaluate the results given mean unpaid, s.e., CoV by AYs
+
+### Question Highlights
+
+n/a
