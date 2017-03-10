@@ -1025,61 +1025,113 @@ Column with negative mean in the early ages can results in *vary large LDFs* (an
 
 ### Non-Zero Sum of Residuals {#prac-issue-2}
 
-Since we assume $iid$ and constant $\sigma$, the sum of residuals should be 0
+Residuals are supposed to be *iid* with mean zero and constant variance
 
-Not necessarily the case since this is just a sample
+$\therefore$ Sum of our residuals from the triangle should be 0
 
-Consequence is that the simulated outcomes will be higher than the means
+* Not necessarily the case since this is just a sample
 
-2 Options
+**Consequence**: Simulated outcomes will be higher than the mean if sum of residuals are positive (and vice versa)
 
-* Keep it if we believe this to be characteristics of the data set
+**2 options** to address this:
 
-* Add a constant to each residual so that it sums to 0 and then sample from the adjusted residuals
+1. Keep it if we believe this to be characteristics of the data set
 
-### Using N-year Weighted Average {#prac-issue-3}
+2. Add a constant to each non-zero residual so that it sums to 0
 
-**GLM**
+    Then sample from the adjusted residuals
+    
+If residuals are significantly different from zero then the fit of the model should be questioned
 
-* Exclude the older diagonals so that we have $N+1$ diagonals of data to get $N$ diagonals of LDFs
+### Using L-year Weighted Average {#prac-issue-3}
 
-* Will have less CY parameters
+Select LDFs based on the latest $L$ years
+
+**GLM Bootstrap**
+
+* Only use $L+1$ diagonals of data to get $L$ diagonals of LDFs
+
+* Excluded diagonals are given zero weight and we'll have less CY trend parameter (if we're using it)
+
+* In the simulation we'll only sample residuals for the trapezoid used to parameterize the model
+    
+    (since that's all we'll need to estimate parameters)
 
 **Simplified GLM**
 
-1) Get *N*-year weighted average
+1. Get *L*-year weighted average LDFs
 
-2) Exclude the diagonals not used for the LDFs ***when determining the residuals***
+2. Will only have residuals (to sample from) for the most recent *L* + 1 diagonals
 
-3) Sample residuals for the entire triangle ***when sampling for bootstrap*** since you need cumulative losses for each row
+3. In the simulation we'll create the **entire resampled triangle**
 
-***
+    (Since we need the cumulative losses for each row)
+    
+4. For projection using the resampled triangle we'll still only use the *L*-year average LDFs
 
 The 2 methods will results in different results
 
-* GLM: Models the incremental losses in the trapezoid
+* GLM Bootstrap: Models the incremental losses in the trapezoid
 
-* Simplified GLM: Model the same losses but in relation to the cumulative losses, which include the non-modeled losses in the diagonals excluded
+* Simplified GLM: Models the same losses but in relation to the cumulative losses, which include the non-modeled losses in the diagonals excluded
 
 ### Missing Value {#prac-issue-4}
 
-Solution
+**ODP Bootstrap**:
 
-* Estimate from surrounding values
+Missing data impact:
+
+* LDFs
+
+* Fitted triangle (if missing value lies on the most recent diagonal)
+
+* Residuals
+
+* Degree of freedom
+
+**Solutions**:
+
+* Impute from surrounding values
 
 * Modify LDFs to exclude missing value
 
-Won't have residual for this cell
+Similar to the *L*-year weighted average:
+
+* Missing value will be resampled so the cumulative losses can be calculated
+
+* Projection from the resampled triangle will exclude the missing cell for resampled LDF selection
+
+**GLM Bootstrap**
+
+Impact on the is limited, we'll just have less observations
 
 ### Outliers {#prac-issue-5}
 
-Remove extreme values that are not representative of the variability of the losses
+Remove outliers if they are not representative of the variability of the losses, below are the options:
 
-* Remove a whole row or,
+* Remove the entire row (easy if it's the 1st row of the triangle)
 
-* Just remove the value and treat them as missing values or,
+* Remove the values and treat them as missing values
 
-* Exclude in LDFs but continue to use them when calculating residuals and use them for the re-sampling
+* Not use the residual but do create a sampled value in that cell
+
+Significant number of outliers might indicate **bad model fit**
+
+**GLM Bootstrap**
+
+* Pick new parameters (grouping parameters)
+
+* Change the error term distribution from $z=1$
+
+**ODP Bootstrap**
+
+* Use *L*-year weighted average
+
+* Heteroscedasticity may exist
+
+    * See adjustment [next sub section](#prac-issue-6) and [diagnostics](#odp-res-diag)
+
+* Since we dont' make a distribution assumption, the number of outliers could mean the data is quite skewed and it's appropriate that is showing up in the simulation
 
 ### Heteroskedasticity {#prac-issue-6}
 
@@ -1161,7 +1213,7 @@ Judge the quality of the model
 
 3) Guide the adjustments of model parameters
 
-### Residual Graphs
+### Residual Graphs {#odp-res-diag}
 
 Graph residuals vs CY, AY, Age, forecast loss
 

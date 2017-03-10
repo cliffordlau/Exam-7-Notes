@@ -105,7 +105,7 @@
 <li class="chapter" data-level="9.8" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html"><i class="fa fa-check"></i><b>9.8</b> Practical Issues</a><ul>
 <li class="chapter" data-level="9.8.1" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-1"><i class="fa fa-check"></i><b>9.8.1</b> Negative Incremental Values</a></li>
 <li class="chapter" data-level="9.8.2" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-2"><i class="fa fa-check"></i><b>9.8.2</b> Non-Zero Sum of Residuals</a></li>
-<li class="chapter" data-level="9.8.3" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-3"><i class="fa fa-check"></i><b>9.8.3</b> Using N-year Weighted Average</a></li>
+<li class="chapter" data-level="9.8.3" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-3"><i class="fa fa-check"></i><b>9.8.3</b> Using L-year Weighted Average</a></li>
 <li class="chapter" data-level="9.8.4" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-4"><i class="fa fa-check"></i><b>9.8.4</b> Missing Value</a></li>
 <li class="chapter" data-level="9.8.5" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-5"><i class="fa fa-check"></i><b>9.8.5</b> Outliers</a></li>
 <li class="chapter" data-level="9.8.6" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-6"><i class="fa fa-check"></i><b>9.8.6</b> Heteroskedasticity</a></li>
@@ -115,7 +115,7 @@
 <li class="chapter" data-level="9.8.10" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-10"><i class="fa fa-check"></i><b>9.8.10</b> Fitting a Distribution to ODP Bootstrap Residuals</a></li>
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html"><i class="fa fa-check"></i><b>9.9</b> Diagnostics</a><ul>
-<li class="chapter" data-level="9.9.1" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#residual-graphs"><i class="fa fa-check"></i><b>9.9.1</b> Residual Graphs</a></li>
+<li class="chapter" data-level="9.9.1" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#odp-res-diag"><i class="fa fa-check"></i><b>9.9.1</b> Residual Graphs</a></li>
 <li class="chapter" data-level="9.9.2" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#normality-test"><i class="fa fa-check"></i><b>9.9.2</b> Normality Test</a></li>
 <li class="chapter" data-level="9.9.3" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#outlier"><i class="fa fa-check"></i><b>9.9.3</b> Outlier</a></li>
 <li class="chapter" data-level="9.9.4" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#parameter-adjustments"><i class="fa fa-check"></i><b>9.9.4</b> Parameter Adjustments</a></li>
@@ -293,51 +293,89 @@ m_{w,d} = m^+_{w,d} + \Psi
 </div>
 <div id="prac-issue-2" class="section level3">
 <h3><span class="header-section-number">9.8.2</span> Non-Zero Sum of Residuals</h3>
-<p>Since we assume <span class="math inline">\(iid\)</span> and constant <span class="math inline">\(\sigma\)</span>, the sum of residuals should be 0</p>
-<p>Not necessarily the case since this is just a sample</p>
-<p>Consequence is that the simulated outcomes will be higher than the means</p>
-<p>2 Options</p>
+<p>Residuals are supposed to be <em>iid</em> with mean zero and constant variance</p>
+<p><span class="math inline">\(\therefore\)</span> Sum of our residuals from the triangle should be 0</p>
 <ul>
-<li><p>Keep it if we believe this to be characteristics of the data set</p></li>
-<li><p>Add a constant to each residual so that it sums to 0 and then sample from the adjusted residuals</p></li>
+<li>Not necessarily the case since this is just a sample</li>
 </ul>
+<p><strong>Consequence</strong>: Simulated outcomes will be higher than the mean if sum of residuals are positive (and vice versa)</p>
+<p><strong>2 options</strong> to address this:</p>
+<ol style="list-style-type: decimal">
+<li><p>Keep it if we believe this to be characteristics of the data set</p></li>
+<li><p>Add a constant to each non-zero residual so that it sums to 0</p>
+<p>Then sample from the adjusted residuals</p></li>
+</ol>
+<p>If residuals are significantly different from zero then the fit of the model should be questioned</p>
 </div>
 <div id="prac-issue-3" class="section level3">
-<h3><span class="header-section-number">9.8.3</span> Using N-year Weighted Average</h3>
-<p><strong>GLM</strong></p>
+<h3><span class="header-section-number">9.8.3</span> Using L-year Weighted Average</h3>
+<p>Select LDFs based on the latest <span class="math inline">\(L\)</span> years</p>
+<p><strong>GLM Bootstrap</strong></p>
 <ul>
-<li><p>Exclude the older diagonals so that we have <span class="math inline">\(N+1\)</span> diagonals of data to get <span class="math inline">\(N\)</span> diagonals of LDFs</p></li>
-<li><p>Will have less CY parameters</p></li>
+<li><p>Only use <span class="math inline">\(L+1\)</span> diagonals of data to get <span class="math inline">\(L\)</span> diagonals of LDFs</p></li>
+<li><p>Excluded diagonals are given zero weight and we’ll have less CY trend parameter (if we’re using it)</p></li>
+<li><p>In the simulation we’ll only sample residuals for the trapezoid used to parameterize the model</p>
+<p>(since that’s all we’ll need to estimate parameters)</p></li>
 </ul>
 <p><strong>Simplified GLM</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Get <em>N</em>-year weighted average</p></li>
-<li><p>Exclude the diagonals not used for the LDFs <strong><em>when determining the residuals</em></strong></p></li>
-<li><p>Sample residuals for the entire triangle <strong><em>when sampling for bootstrap</em></strong> since you need cumulative losses for each row</p></li>
+<li><p>Get <em>L</em>-year weighted average LDFs</p></li>
+<li><p>Will only have residuals (to sample from) for the most recent <em>L</em> + 1 diagonals</p></li>
+<li><p>In the simulation we’ll create the <strong>entire resampled triangle</strong></p>
+<p>(Since we need the cumulative losses for each row)</p></li>
+<li><p>For projection using the resampled triangle we’ll still only use the <em>L</em>-year average LDFs</p></li>
 </ol>
-<hr />
 <p>The 2 methods will results in different results</p>
 <ul>
-<li><p>GLM: Models the incremental losses in the trapezoid</p></li>
-<li><p>Simplified GLM: Model the same losses but in relation to the cumulative losses, which include the non-modeled losses in the diagonals excluded</p></li>
+<li><p>GLM Bootstrap: Models the incremental losses in the trapezoid</p></li>
+<li><p>Simplified GLM: Models the same losses but in relation to the cumulative losses, which include the non-modeled losses in the diagonals excluded</p></li>
 </ul>
 </div>
 <div id="prac-issue-4" class="section level3">
 <h3><span class="header-section-number">9.8.4</span> Missing Value</h3>
-<p>Solution</p>
+<p><strong>ODP Bootstrap</strong>:</p>
+<p>Missing data impact:</p>
 <ul>
-<li><p>Estimate from surrounding values</p></li>
+<li><p>LDFs</p></li>
+<li><p>Fitted triangle (if missing value lies on the most recent diagonal)</p></li>
+<li><p>Residuals</p></li>
+<li><p>Degree of freedom</p></li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li><p>Impute from surrounding values</p></li>
 <li><p>Modify LDFs to exclude missing value</p></li>
 </ul>
-<p>Won’t have residual for this cell</p>
+<p>Similar to the <em>L</em>-year weighted average:</p>
+<ul>
+<li><p>Missing value will be resampled so the cumulative losses can be calculated</p></li>
+<li><p>Projection from the resampled triangle will exclude the missing cell for resampled LDF selection</p></li>
+</ul>
+<p><strong>GLM Bootstrap</strong></p>
+<p>Impact on the is limited, we’ll just have less observations</p>
 </div>
 <div id="prac-issue-5" class="section level3">
 <h3><span class="header-section-number">9.8.5</span> Outliers</h3>
-<p>Remove extreme values that are not representative of the variability of the losses</p>
+<p>Remove outliers if they are not representative of the variability of the losses, below are the options:</p>
 <ul>
-<li><p>Remove a whole row or,</p></li>
-<li><p>Just remove the value and treat them as missing values or,</p></li>
-<li><p>Exclude in LDFs but continue to use them when calculating residuals and use them for the re-sampling</p></li>
+<li><p>Remove the entire row (easy if it’s the 1st row of the triangle)</p></li>
+<li><p>Remove the values and treat them as missing values</p></li>
+<li><p>Not use the residual but do create a sampled value in that cell</p></li>
+</ul>
+<p>Significant number of outliers might indicate <strong>bad model fit</strong></p>
+<p><strong>GLM Bootstrap</strong></p>
+<ul>
+<li><p>Pick new parameters (grouping parameters)</p></li>
+<li><p>Change the error term distribution from <span class="math inline">\(z=1\)</span></p></li>
+</ul>
+<p><strong>ODP Bootstrap</strong></p>
+<ul>
+<li><p>Use <em>L</em>-year weighted average</p></li>
+<li><p>Heteroscedasticity may exist</p>
+<ul>
+<li>See adjustment <a href="odp-prac-issues.html#prac-issue-6">next sub section</a> and <a href="odp-diagnostics.html#odp-res-diag">diagnostics</a></li>
+</ul></li>
+<li><p>Since we dont’ make a distribution assumption, the number of outliers could mean the data is quite skewed and it’s appropriate that is showing up in the simulation</p></li>
 </ul>
 </div>
 <div id="prac-issue-6" class="section level3">
