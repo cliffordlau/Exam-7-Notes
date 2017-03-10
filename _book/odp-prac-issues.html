@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-03-09">
+<meta name="date" content="2017-03-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -380,21 +380,100 @@ m_{w,d} = m^+_{w,d} + \Psi
 </div>
 <div id="prac-issue-6" class="section level3">
 <h3><span class="header-section-number">9.8.6</span> Heteroskedasticity</h3>
-<p>Non constant variance (bootstrap assumes residuals are <span class="math inline">\(iid\)</span>)</p>
-<p><strong>Stratified Sampling</strong></p>
-<p>Split the triangle into groups with similar variance and only sample residuals that are in the group</p>
-<p><em>Cons</em>: each group may not be that large</p>
-<p><strong>Hetero-Adjustment</strong></p>
-<p>Group the residuals then calculate the <span class="math inline">\(\sigma\)</span> of the residuals in each group and scale up</p>
-<p>Hetero-adjustment factor: <span class="math inline">\(h^i\)</span> = the largest <span class="math inline">\(\sigma\)</span> <span class="math inline">\(\div\)</span> each group’s <span class="math inline">\(\sigma\)</span></p>
-<p><span class="math inline">\(r_{wd}^{i,H} = r_{wd} \times f_{wd}^H \times h^i\)</span></p>
+<p>Issue of non constant variance</p>
 <ul>
-<li>Residual <span class="math inline">\(\times\)</span> Hat Matrix Factor <span class="math inline">\(\times\)</span> Hetero Factor</li>
+<li><p>ODP bootstrap assumes residuals are <span class="math inline">\(iid\)</span> with constant variance</p></li>
+<li><p>No longer possible to sample the residuals from the whole triangle with heteroskedasticity</p></li>
 </ul>
-<p>Need to divide the sampled residual by <span class="math inline">\(h^i\)</span> to reflect the variability of group <span class="math inline">\(i\)</span></p>
+<p><strong>GLM Bootstrap</strong> has the additional flexibility of choosing <em>parameters</em> to alleviate heteroscedasticity</p>
+<p>For <strong>ODP Bootstrap</strong>: 3 ways to deal with heteroscedasticity below</p>
 <ul>
-<li><span class="math inline">\(q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}\)</span></li>
+<li>They also work for <strong>GLM Bootstrap</strong></li>
 </ul>
+<div id="stratified-sample" class="section level4">
+<h4><span class="header-section-number">9.8.6.1</span> Stratified Sampling</h4>
+<p>Stratified Sampling</p>
+<ol style="list-style-type: decimal">
+<li><p>Split the triangle into groups with similar variance</p></li>
+<li><p>Only sample residuals from the same group</p></li>
+</ol>
+<p><strong>Cons</strong></p>
+<ul>
+<li>Each group may not be that large, which limits the amount of variability in the possible outcomes</li>
+</ul>
+</div>
+<div id="hetero-adj-res" class="section level4">
+<h4><span class="header-section-number">9.8.6.2</span> Hetero-Adjustment to the Residuals</h4>
+<p>Calculate a hetero-adjustment factor to scale the residuals to the same level:</p>
+<ol style="list-style-type: decimal">
+<li><p>Group the residuals with similar then calculate the <span class="math inline">\(\sigma\)</span> of the residuals in each group <span class="math inline">\(i\)</span></p></li>
+<li><p>Hetero-adjustment factor: <span class="math inline">\(h^i\)</span></p>
+<p>i.e. The largest <span class="math inline">\(\sigma\)</span> <span class="math inline">\(\div\)</span> each group’s <span class="math inline">\(\sigma\)</span></p></li>
+</ol>
+<span class="math display" id="eq:odp-hetero-adj-factor">\[\begin{equation}
+  h_i = \dfrac{\sigma \left( \bigcup_1^j r^H_{wd} \right)}{\sigma \left( \bigcup_i r^H_{wd} \right)} \:\: : \:\: \text{for each } 1 \leq i \leq j
+  \tag{9.21}
+\end{equation}\]</span>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Scale up the residuals:</p>
+<p>Residual <a href="bootstrap-model.html#eq:odp-pear-res">(9.8)</a> <span class="math inline">\(\times\)</span> Hat Matrix Factor <a href="bootstrap-model.html#eq:odp-std-res">(9.10)</a> <span class="math inline">\(\times\)</span> Hetero Factor <a href="odp-prac-issues.html#eq:odp-hetero-adj-factor">(9.21)</a></p></li>
+</ol>
+<span class="math display" id="eq:odp-hetero-adj">\[\begin{equation}
+  r_{wd}^{iH} = r_{wd} \times f_{wd}^H \times h^i
+  \tag{9.22}
+\end{equation}\]</span>
+<ol start="4" style="list-style-type: decimal">
+<li>Need to divide the sampled residual by <span class="math inline">\(h^i\)</span> to reflect the variability of group <span class="math inline">\(i\)</span></li>
+</ol>
+<span class="math display" id="eq:odp-hetero-adj-rescale">\[\begin{equation}
+  q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}
+  \tag{9.23}
+\end{equation}\]</span>
+<ol start="5" style="list-style-type: decimal">
+<li>Adjust the variance for the process variance step in the simulation</li>
+</ol>
+<span class="math display" id="eq:gamma-adj-odp-hetero">\[\begin{equation}
+  Gamma(m_{wd}, \dfrac{\phi m_{wd}}{h^i})
+  \tag{9.24}
+\end{equation}\]</span>
+
+<div class="remark">
+<span class="remark"><em>Remark. </em></span> The hetero adjustment factors are new parameters and will impact degrees of freedom and will impact the scale parameter <a href="bootstrap-model.html#eq:std-dispersion">(9.13)</a> and the degrees of freedom adjustment factor <a href="bootstrap-model.html#eq:odp-scaled-res">(9.9)</a>
+</div>
+<p></p>
+</div>
+<div id="non-constant-scale-parameters" class="section level4">
+<h4><span class="header-section-number">9.8.6.3</span> Non-constant Scale Parameters</h4>
+<p>Adjust the dispersion factor <span class="math inline">\(\phi\)</span> as well as the residuals (similar to above)</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the hetero adjustment factor <span class="math inline">\(h_i\)</span> using formula <a href="odp-prac-issues.html#eq:non-cont-scale-phi">(9.26)</a> below:</li>
+</ol>
+<span class="math display" id="eq:odp-hetero-adj-factor-2">\[\begin{equation}
+  h_i = \sqrt{\dfrac{\phi}{\phi_i}}
+  \tag{9.25}
+\end{equation}\]</span>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Perform step 3 and 4 from the <a href="odp-prac-issues.html#hetero-adj-res">second method</a> above</p>
+<p>(i.e. Equation <a href="odp-prac-issues.html#eq:odp-hetero-adj">(9.22)</a> and <a href="odp-prac-issues.html#eq:odp-hetero-adj-rescale">(9.23)</a>)</p></li>
+<li><p>Calculate <span class="math inline">\(\phi_i\)</span> for each homogenious residual group <span class="math inline">\(i\)</span> (<span class="math inline">\(n_i\)</span> = number of residuals in group):</p></li>
+</ol>
+<span class="math display" id="eq:non-cont-scale-phi">\[\begin{equation}
+  \phi_i = \dfrac{N}{N-p}\dfrac{\sum_{w,d \in \{i\}}r^2_{w,d}}{n_i}
+  \tag{9.26}
+\end{equation}\]</span>
+<ol start="4" style="list-style-type: decimal">
+<li>Use <span class="math inline">\(\phi_i\)</span> for the process variance step</li>
+</ol>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
+<ul>
+<li><p>The <span class="math inline">\(\phi_i\)</span> here also amount to new parameters that will impact the degrees of freedom adjustment factor <a href="bootstrap-model.html#eq:odp-scaled-res">(9.9)</a></p></li>
+<li>The hetero adjustment factor <a href="odp-prac-issues.html#eq:odp-hetero-adj-factor-2">(9.25)</a> is more theoretically sound but in practice very similar to <a href="odp-prac-issues.html#eq:odp-hetero-adj-factor">(9.21)</a></li>
+</ul>
+</div>
+<p></p>
+</div>
 </div>
 <div id="prac-issue-7" class="section level3">
 <h3><span class="header-section-number">9.8.7</span> Heteroecthesious Data</h3>

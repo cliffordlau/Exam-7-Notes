@@ -1135,27 +1135,104 @@ Significant number of outliers might indicate **bad model fit**
 
 ### Heteroskedasticity {#prac-issue-6}
 
-Non constant variance (bootstrap assumes residuals are $iid$)
+Issue of non constant variance
 
-**Stratified Sampling**
+* ODP bootstrap assumes residuals are $iid$ with constant variance
 
-Split the triangle into groups with similar variance and only sample residuals that are in the group
+* No longer possible to sample the residuals from the whole triangle with heteroskedasticity
 
-*Cons*: each group may not be that large
+**GLM Bootstrap** has the additional flexibility of choosing *parameters* to alleviate heteroscedasticity
 
-**Hetero-Adjustment**
+For **ODP Bootstrap**: 3 ways to deal with heteroscedasticity below
 
-Group the residuals then calculate the $\sigma$ of the residuals in each group and scale up
+* They also work for **GLM Bootstrap**
 
-Hetero-adjustment factor: $h^i$ = the largest $\sigma$ $\div$ each group's $\sigma$
+#### Stratified Sampling {#stratified-sample}
 
-$r_{wd}^{i,H} = r_{wd} \times f_{wd}^H \times h^i$
+Stratified Sampling
 
-* Residual $\times$ Hat Matrix Factor $\times$ Hetero Factor
+1. Split the triangle into groups with similar variance
 
-Need to divide the sampled residual by $h^i$ to reflect the variability of group $i$
+2. Only sample residuals from the same group
 
-* $q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}$
+**Cons**
+
+* Each group may not be that large, which limits the amount of variability in the possible outcomes
+
+#### Hetero-Adjustment to the Residuals {#hetero-adj-res}
+
+Calculate a hetero-adjustment factor to scale the residuals to the same level:
+
+1. Group the residuals with similar then calculate the $\sigma$ of the residuals in each group $i$
+
+2. Hetero-adjustment factor: $h^i$
+
+    i.e. The largest $\sigma$ $\div$ each group's $\sigma$
+
+\begin{equation}
+  h_i = \dfrac{\sigma \left( \bigcup_1^j r^H_{wd} \right)}{\sigma \left( \bigcup_i r^H_{wd} \right)} \:\: : \:\: \text{for each } 1 \leq i \leq j
+  (\#eq:odp-hetero-adj-factor)
+\end{equation}
+
+3. Scale up the residuals:
+
+    Residual \@ref(eq:odp-pear-res) $\times$ Hat Matrix Factor \@ref(eq:odp-std-res) $\times$ Hetero Factor \@ref(eq:odp-hetero-adj-factor)
+
+\begin{equation}
+  r_{wd}^{iH} = r_{wd} \times f_{wd}^H \times h^i
+  (\#eq:odp-hetero-adj)
+\end{equation}
+
+4. Need to divide the sampled residual by $h^i$ to reflect the variability of group $i$
+
+\begin{equation}
+  q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}
+  (\#eq:odp-hetero-adj-rescale)
+\end{equation}
+
+5. Adjust the variance for the process variance step in the simulation
+
+\begin{equation}
+  Gamma(m_{wd}, \dfrac{\phi m_{wd}}{h^i})
+  (\#eq:gamma-adj-odp-hetero)
+\end{equation}
+
+```{remark}
+The hetero adjustment factors are new parameters and will impact degrees of freedom and will impact the scale parameter \@ref(eq:std-dispersion) and the degrees of freedom adjustment factor \@ref(eq:odp-scaled-res)
+```
+
+#### Non-constant Scale Parameters
+
+Adjust the dispersion factor $\phi$ as well as the residuals (similar to above)
+
+1. Calculate the hetero adjustment factor $h_i$ using formula \@ref(eq:non-cont-scale-phi) below:
+
+\begin{equation}
+  h_i = \sqrt{\dfrac{\phi}{\phi_i}}
+  (\#eq:odp-hetero-adj-factor-2)
+\end{equation}
+
+2. Perform step 3 and 4 from the [second method](#hetero-adj-res) above
+
+    (i.e. Equation \@ref(eq:odp-hetero-adj) and \@ref(eq:odp-hetero-adj-rescale))
+
+3. Calculate $\phi_i$ for each homogenious residual group $i$ ($n_i$ = number of residuals in group):
+
+\begin{equation}
+  \phi_i = \dfrac{N}{N-p}\dfrac{\sum_{w,d \in \{i\}}r^2_{w,d}}{n_i}
+  (\#eq:non-cont-scale-phi)
+\end{equation}
+
+4. Use $\phi_i$ for the process variance step
+
+```{remark}
+
+
+* The $\phi_i$ here also amount to new parameters that will impact the degrees of freedom adjustment factor \@ref(eq:odp-scaled-res)
+
+* The hetero adjustment factor \@ref(eq:odp-hetero-adj-factor-2) is more theoretically sound but in practice very similar to \@ref(eq:odp-hetero-adj-factor)
+
+```
 
 ### Heteroecthesious Data {#prac-issue-7}
 
