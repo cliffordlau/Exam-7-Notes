@@ -1201,7 +1201,7 @@ Calculate a hetero-adjustment factor to scale the residuals to the same level:
 The hetero adjustment factors are new parameters and will impact degrees of freedom and will impact the scale parameter \@ref(eq:std-dispersion) and the degrees of freedom adjustment factor \@ref(eq:odp-scaled-res)
 ```
 
-#### Non-constant Scale Parameters
+#### Non-constant Scale Parameters {#non-constant-scale-para}
 
 Adjust the dispersion factor $\phi$ as well as the residuals (similar to above)
 
@@ -1236,49 +1236,119 @@ Adjust the dispersion factor $\phi$ as well as the residuals (similar to above)
 
 ### Heteroecthesious Data {#prac-issue-7}
 
-Accident years have different level of exposures
+ODP bootstrap requirements:
 
-**Partial First Development Period**
+1. Symmetrical shape (annual by annual, quarter by quartery, etc triangles)
 
-Only want partial accident year
+2. Homoecthesious data (similar exposure)
 
-No impact to residuals for bootstrap
+**Heteroecthesious** = Accident years have different level of exposures
 
-2 options:
+Here we are focusing on heteroecthesious due to interim evaluation dates:
 
-* Reduce the mean of the incremental cells by pro ration in the process variance step
+1. [Partial first development period](#prac-issue-7.1)
 
-* Prorate after the process variance step
+2. [Partial latest calendar period](#prac-issue-7.2)
 
-**Partial Last Calendar Period**
+#### Partial First Development Period {#prac-issue-7.1}
 
-Latest diagonal is partial
+This means the entire first development period is shorter than the rest
 
-* Simplified GLM
+* e.g. Annual data evaluated as of 6/30 with 1/1-12/31 AYs
 
-    * Determine LDF excluding latest diagonal then interpolate LDFs for ultimate
+    We'll have a triangle with development periods @6, 18, 30, 42, etc
+
+Pearson residuals use the square root of the fitted value to make them all exposure independent (debatable...)
+
+* $\therefore$ **No impact to residuals**
+
+**Adjustment**: Scale down the most recent AY projection to the appropriate exposure period (e.g. half the exposure based on example above), we have *2 options*:
+
+* Prorate the mean of the incremental cells for the latest AY between step 3 and 4 of the [bootstrap process](#odp-boot-sim) and then proceed to Step 4 for the process variance as usual
+
+* Prorate the simulated incremental cells for the latest AY *after* the process variance step (Step 4)
+
+#### Partial Latest Calendar Period {#prac-issue-7.2}
+
+This is where the latest diagonal is partial diagonal
+
+* e.g. Evaluate in between typical data evaluaton date
+
+    Evaluation @6/30 for a 1/1-12/31 AYs and 12-24-36 triangle
     
-* GLM
+* Similar problem as partial first development period + partial data in most recent diagonal
 
-    * Adjust the exposure in the last diagonal to make them consistent with the rest of the triangle (probably means adjusting annualizing the loss)
+**ODP Bootstrap**
 
-Then prorate the losses similar to the first scenario
+Select LDF by excluding latest diagonal or prorating the latest diagonal to full year
+
+Adjusted [simulation process](#odp-boot-sim)
+
+1. Calculate sampled triangle as usual (diagonal will be of full year)
+
+2. Calculate full year LDFs and Ultimate as usual
+
+3. *Additional steps*:
+
+  * De-annualize the diagonal
+  
+  * Interpolate the full year LDFs to match the diagonal
+  
+  * Forecast loss
+  
+  * Scale down the latest AY similar to the [partial AY adjustment](#prac-issue-7.1)
+  
+4. No change
+
+**GLM Bootstrap**
+
+* Should be something similar
 
 ### Exposure Adjustment {#prac-issue-8}
 
-Consider dividing the losses by the exposure in each AY if there are significant changes in exposure and model pure premium
+Ajustment for when exposure changed dramatically over the years (e.g. rapid growth or run off)
 
-Multiply the PP results by the exposure after the process variance step
+**ODP Bootstrap**
+
+* Divide losses by exposure (model loss cost)
+
+* Need to multipy the simlulated results by the exposure (after the process varianec step)
+
+**GLM Bootstrap**
+
+* Adjust losses by exposure similar to above
+
+* Fit to the exposure adjusted losses should be exposured weighted
+
+    (i.e. exposure adjusted losses with higher exposure are assumed to have lower variance, see Anderson et al. (2007))
+
+* This will need fewer AY parameters since the exposure adjustment should capture a lot of the difference between AYs
 
 ### Parametric Bootstrapping {#prac-issue-9}
 
-Might not have enough data to sufficiently represent the tail
+***ODP Bootstrap**
 
-Fit a distribution to the residual and sample from the distribution instead
+* See CAS Tail Factor Working Party Report (2013)
+
+* Add tail factor to the algorithm by assuming the factor follows a distribution (other considerations such as process variance, hetero-adj can all be extended to include the tail factors)
+
+* Should be an extrapolation of the incremental tail factors (instead of a single tail factor to ultimate)
+
+* Tail factors typically have $\sigma <$ 50% of the tail facto - 1
+
+    (But should compare to the $\sigma$ of the AtA factors leading up to the tail in both the actual and simulated data)
+
+**GLM Bootstrap**
+
+* Continue to use the last $\beta_d$ to estimate the tail by continuing to apply it (similarly for CY parameter)
 
 ### Fitting a Distribution to ODP Bootstrap Residuals {#prac-issue-10}
 
-new?
+Data points from triangle may not be representative of the underlying distribution
+
+* Whether the most extreme observation is a 1-in-100, 1-in-1000 event
+
+Alternative is to fit a distribution to the residuals and sample from the distribution instead i.e. parametric bootstrapping
 
 ## Diagnostics {#odp-diagnostics}
 

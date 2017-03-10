@@ -442,7 +442,7 @@ m_{w,d} = m^+_{w,d} + \Psi
 </div>
 <p></p>
 </div>
-<div id="non-constant-scale-parameters" class="section level4">
+<div id="non-constant-scale-para" class="section level4">
 <h4><span class="header-section-number">9.8.6.3</span> Non-constant Scale Parameters</h4>
 <p>Adjust the dispersion factor <span class="math inline">\(\phi\)</span> as well as the residuals (similar to above)</p>
 <ol style="list-style-type: decimal">
@@ -477,42 +477,103 @@ m_{w,d} = m^+_{w,d} + \Psi
 </div>
 <div id="prac-issue-7" class="section level3">
 <h3><span class="header-section-number">9.8.7</span> Heteroecthesious Data</h3>
-<p>Accident years have different level of exposures</p>
-<p><strong>Partial First Development Period</strong></p>
-<p>Only want partial accident year</p>
-<p>No impact to residuals for bootstrap</p>
-<p>2 options:</p>
+<p>ODP bootstrap requirements:</p>
+<ol style="list-style-type: decimal">
+<li><p>Symmetrical shape (annual by annual, quarter by quartery, etc triangles)</p></li>
+<li><p>Homoecthesious data (similar exposure)</p></li>
+</ol>
+<p><strong>Heteroecthesious</strong> = Accident years have different level of exposures</p>
+<p>Here we are focusing on heteroecthesious due to interim evaluation dates:</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="odp-prac-issues.html#prac-issue-7.1">Partial first development period</a></p></li>
+<li><p><a href="odp-prac-issues.html#prac-issue-7.2">Partial latest calendar period</a></p></li>
+</ol>
+<div id="prac-issue-7.1" class="section level4">
+<h4><span class="header-section-number">9.8.7.1</span> Partial First Development Period</h4>
+<p>This means the entire first development period is shorter than the rest</p>
 <ul>
-<li><p>Reduce the mean of the incremental cells by pro ration in the process variance step</p></li>
-<li><p>Prorate after the process variance step</p></li>
+<li><p>e.g. Annual data evaluated as of 6/30 with 1/1-12/31 AYs</p>
+<p>We’ll have a triangle with development periods <span class="citation">@6</span>, 18, 30, 42, etc</p></li>
 </ul>
-<p><strong>Partial Last Calendar Period</strong></p>
-<p>Latest diagonal is partial</p>
+<p>Pearson residuals use the square root of the fitted value to make them all exposure independent (debatable…)</p>
 <ul>
-<li><p>Simplified GLM</p>
-<ul>
-<li>Determine LDF excluding latest diagonal then interpolate LDFs for ultimate</li>
-</ul></li>
-<li><p>GLM</p>
-<ul>
-<li>Adjust the exposure in the last diagonal to make them consistent with the rest of the triangle (probably means adjusting annualizing the loss)</li>
-</ul></li>
+<li><span class="math inline">\(\therefore\)</span> <strong>No impact to residuals</strong></li>
 </ul>
-<p>Then prorate the losses similar to the first scenario</p>
+<p><strong>Adjustment</strong>: Scale down the most recent AY projection to the appropriate exposure period (e.g. half the exposure based on example above), we have <em>2 options</em>:</p>
+<ul>
+<li><p>Prorate the mean of the incremental cells for the latest AY between step 3 and 4 of the <a href="odp-boot-sim.html#odp-boot-sim">bootstrap process</a> and then proceed to Step 4 for the process variance as usual</p></li>
+<li><p>Prorate the simulated incremental cells for the latest AY <em>after</em> the process variance step (Step 4)</p></li>
+</ul>
+</div>
+<div id="prac-issue-7.2" class="section level4">
+<h4><span class="header-section-number">9.8.7.2</span> Partial Latest Calendar Period</h4>
+<p>This is where the latest diagonal is partial diagonal</p>
+<ul>
+<li><p>e.g. Evaluate in between typical data evaluaton date</p>
+<p>Evaluation <span class="citation">@6/30</span> for a 1/1-12/31 AYs and 12-24-36 triangle</p></li>
+<li><p>Similar problem as partial first development period + partial data in most recent diagonal</p></li>
+</ul>
+<p><strong>ODP Bootstrap</strong></p>
+<p>Select LDF by excluding latest diagonal or prorating the latest diagonal to full year</p>
+<p>Adjusted <a href="odp-boot-sim.html#odp-boot-sim">simulation process</a></p>
+<ol style="list-style-type: decimal">
+<li><p>Calculate sampled triangle as usual (diagonal will be of full year)</p></li>
+<li><p>Calculate full year LDFs and Ultimate as usual</p></li>
+<li><p><em>Additional steps</em>:</p></li>
+</ol>
+<ul>
+<li><p>De-annualize the diagonal</p></li>
+<li><p>Interpolate the full year LDFs to match the diagonal</p></li>
+<li><p>Forecast loss</p></li>
+<li><p>Scale down the latest AY similar to the <a href="odp-prac-issues.html#prac-issue-7.1">partial AY adjustment</a></p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>No change</li>
+</ol>
+<p><strong>GLM Bootstrap</strong></p>
+<ul>
+<li>Should be something similar</li>
+</ul>
+</div>
 </div>
 <div id="prac-issue-8" class="section level3">
 <h3><span class="header-section-number">9.8.8</span> Exposure Adjustment</h3>
-<p>Consider dividing the losses by the exposure in each AY if there are significant changes in exposure and model pure premium</p>
-<p>Multiply the PP results by the exposure after the process variance step</p>
+<p>Ajustment for when exposure changed dramatically over the years (e.g. rapid growth or run off)</p>
+<p><strong>ODP Bootstrap</strong></p>
+<ul>
+<li><p>Divide losses by exposure (model loss cost)</p></li>
+<li><p>Need to multipy the simlulated results by the exposure (after the process varianec step)</p></li>
+</ul>
+<p><strong>GLM Bootstrap</strong></p>
+<ul>
+<li><p>Adjust losses by exposure similar to above</p></li>
+<li><p>Fit to the exposure adjusted losses should be exposured weighted</p>
+<p>(i.e. exposure adjusted losses with higher exposure are assumed to have lower variance, see Anderson et al. (2007))</p></li>
+<li><p>This will need fewer AY parameters since the exposure adjustment should capture a lot of the difference between AYs</p></li>
+</ul>
 </div>
 <div id="prac-issue-9" class="section level3">
 <h3><span class="header-section-number">9.8.9</span> Parametric Bootstrapping</h3>
-<p>Might not have enough data to sufficiently represent the tail</p>
-<p>Fit a distribution to the residual and sample from the distribution instead</p>
+<p>*<strong>ODP Bootstrap</strong></p>
+<ul>
+<li><p>See CAS Tail Factor Working Party Report (2013)</p></li>
+<li><p>Add tail factor to the algorithm by assuming the factor follows a distribution (other considerations such as process variance, hetero-adj can all be extended to include the tail factors)</p></li>
+<li><p>Should be an extrapolation of the incremental tail factors (instead of a single tail factor to ultimate)</p></li>
+<li><p>Tail factors typically have <span class="math inline">\(\sigma &lt;\)</span> 50% of the tail facto - 1</p>
+<p>(But should compare to the <span class="math inline">\(\sigma\)</span> of the AtA factors leading up to the tail in both the actual and simulated data)</p></li>
+</ul>
+<p><strong>GLM Bootstrap</strong></p>
+<ul>
+<li>Continue to use the last <span class="math inline">\(\beta_d\)</span> to estimate the tail by continuing to apply it (similarly for CY parameter)</li>
+</ul>
 </div>
 <div id="prac-issue-10" class="section level3">
 <h3><span class="header-section-number">9.8.10</span> Fitting a Distribution to ODP Bootstrap Residuals</h3>
-<p>new?</p>
+<p>Data points from triangle may not be representative of the underlying distribution</p>
+<ul>
+<li>Whether the most extreme observation is a 1-in-100, 1-in-1000 event</li>
+</ul>
+<p>Alternative is to fit a distribution to the residuals and sample from the distribution instead i.e. parametric bootstrapping</p>
 </div>
 </div>
             </section>
