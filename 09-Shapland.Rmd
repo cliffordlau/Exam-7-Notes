@@ -607,7 +607,7 @@ ii. For each iteration and each AY individually:
 
 * More complicated approach is to modify the underlying assumptions of the GLM framework which would results in a completely different set of residuals (this is beyond scope)
 
-## GLM Bootstrap Model
+## GLM Bootstrap Model {#GLM-bootstrap}
 
 **Limitations** of *ODP Bootstrap* carry over from chainladder
 
@@ -1352,74 +1352,154 @@ Alternative is to fit a distribution to the residuals and sample from the distri
 
 ## Diagnostics {#odp-diagnostics}
 
-Judge the quality of the model
+Use diagnostics to judge the quality of the model:
 
-1) Test Assumptions in model
+1) Test model assumptions
 
 2) Gauge quality of model fit
 
 3) Guide the adjustments of model parameters
 
+5 diagnostics
+
+1. [Residual graphs](#odp-res-diag)
+
+2. [Normality test](#odp-norm-test)
+
+3. [Outliers](#odp-diag-outlier)
+
+4. [Parameter adjustment](#odp-diag-para)
+
+5. [Model results](#odp-diag-results-review)
+
 ### Residual Graphs {#odp-res-diag}
 
-Graph residuals vs CY, AY, Age, forecast loss
+Plot **residuals** versus
 
-Want to see random variability around zero
+* CY, AY, Age, forecast loss (on x-axis)
 
-### Normality Test
+* Want to see random variability around zero
+
+* Bare in mind that we don't have the same number of residuals at each point (helpful to plot the line for average as well)
+
+Test assumption of *iid* residuals across the entire triangle
+
+This helps with grouping for [hetero adjustment](#prac-issue-6)
+
+* Plot the relative $\sigma(r_{wd})$ for each group to further help with the groupings
+
+* Do all the plots again after adjustment
+
+### Normality Test {#odp-norm-test}
 
 Normality is not required, only need this if we're doing parametric bootstrap with normal distribution
 
 Plot residuals against the normal best fit based on the percentiles
 
-Use p-value > 5% as the test
+* QQ-plot
 
-Or use something that penalize number of parameters
+Statistical tests:
 
-* $AIC = 2p + n \left [ 1 + \operatorname{ln}(2\pi\dfrac{RSS}{n})\right]$
+* Check if p-value > 5%
 
-* $BIC = n \operatorname{ln}\left( \dfrac{RSS}{n}\right) + p \operatorname{ln}(n)$
+* $R^2$
 
-* $RSS$ = actual residual - expected residual from normal
+* AIC
 
-### Outlier
+$$2p + n \left [ 1 + \operatorname{ln}(2\pi\dfrac{RSS}{n})\right]$$
 
-Remove true outliers but do not want to remove points that are realistic extreme scenarios
+* BIC
+
+$$n \operatorname{ln}\left( \dfrac{RSS}{n}\right) + p \operatorname{ln}(n)$$
+
+* $RSS$ = actual residual - expected residual from normal then squred and summed
+
+### Outlier {#odp-diag-outlier}
+
+Remove true outliers *but* do not remove points that are realistic extreme scenarios
 
 Use box & whisker plot
 
-* Shows 25%ile to 75%ile
-* Whiskers are 3 times the inter quartile range
+* Box hows 25%-tile to 75%-tile
 
-### Parameter Adjustments
+* Whiskers are 3 times the inter quartile range (both side total)
 
-Test model with different sets of parameters
+* Residuals outside the range are graphed
 
-* Don't need unique parameter for each row and column
+### Parameter Adjustments {#odp-diag-para}
 
-### Review Model Results
+Test model with different sets of parameters using [GLM bootstrap](#GLM-bootstrap)
 
-Read summarized output by AYs
+* Check parameter significance based on *t*-statistics (>2)
 
-* Mean, s.e., CoV, Min, Max, Median
+Parameter selection process:
 
-* The all year s.e. should be greater than any individual year
+1. Start with all the AY and Age parameters ($\alpha_w$ and $\beta_d$) and remove the insignificant ones until only significant parameters are left
 
-* The all year CoV should be less than the CoV for any individual year
+2. Add CY parameter ($\gamma$) and check for signifiance
 
-* CoV should be highest for older years due small mean unpaid
+After selecting parameters:
 
-* CoV also high for most recent AY due to higher volatility
+3. Check the diagnostics discussed above (e.g. [residuals](#odp-res-diag) and [normality](#odp-norm-test))
 
-    * Larger parameter uncertainty or volatility from CL method
+4. Make hetero adjustment if necessary 
+
+5. Compare implied development with ODP
+
+### Review Model Results {#odp-diag-results-review}
+
+Review outputs once we have decided on a model and run the bootstrap
+
+* Table values below \@ref(tab:odp-output-table)
+
+* Incremental fitted mean, s.e. and CoV for each cell in the triangle
+
+Table: (\#tab:odp-output-table) Model output review format 
+
+| AY | Mean Unpaid | Standard Error | CoV | Min | Max | 50%-tile | 75%-tile | 95%-tile | 99%-tile |
+|:---:|:------:|:------:|:------------------:|:------:|:------:|:------:|:------:|:------:|:------:|
+|  | (1) | (2) | (3) = (2) / (1) | (4) | (5) | (6) | (7) | (8) | (9) |
+| 1 | - | - | - | - | - | - | - | - | - |
+| $\vdots$ | - | - | - | - | - | - | - | - | - |
+| $w$ | - | - | - | - | - | - | - | - | - |
+| Total | $\sum$ | - | - | - | - | - | - | - | - |
+
+```{remark}
+
+***Standard Error***: Col (2)
+
+* Total s.e. should be **greater than** any individual year but less than the straight sum of each AY's s.e.
+
+* Expect s.e. to **increase** going down the column
+```
+
+```{remark}
+
+***Coefficient of Variation***: Col (3)
+
+* Total CoV should be **less than** any individual year (due to diversification of results across AYs)
+
+* Except for the most recent AYs, CoV should **decrease** going down the column (due to larger based of unpaid losses for the more recent AYs)
     
-* Check min max for reasonability
+* Higher CoV for the most recent AYs due to:
+    
+    i. More parameters used to forcase for the most recent AYs $\therefore$ parameter uncertainty $gg$ process variance
+    
+    ii. Model maybe overestimating the uncertainty $\Rightarrow$ Use *BF* of Cape Cod
+```
 
-For the triangles:
+```{remark}
 
-* Check incremental means as well in triangle form
+***Min & Max*** Col (4) - (5)
+    
+* Check for reasonability (e.g. [extreme outcomes from negative values](#prac-issues-1.3))
 
-* Check s.d. of incremental values
+* Implausible results can affect the mean
+```
+
+Incremental fitted mean, s.e. and CoV
+
+* Check for reasonability and consistency
 
 ## Using Multiple Models
 
