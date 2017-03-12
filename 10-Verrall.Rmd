@@ -1,6 +1,4 @@
-# A11 Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall
-
-## Cliff's Summary
+# Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall
 
 Know how the model is defined with ODP and stochastic row parameters
 
@@ -11,22 +9,6 @@ Know the Bayesian BF calculation and assumptions
 * $Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}$
 
 Know the Stochastic column parameters calculation
-
-### Types of Exam Questions
-
-<span style="color:red">Haven't done TIA practice questions</span>
-
-**Concepts**
-
-* 2012 #8: Explain model as trade off between standard CL and BF
-* 2013 #9: Model specification stuff on variance of the prior, BF bayesian
-    * Bayesian vs Bootstrap: Provide expert opinion while maintaining the integrity of the variance estimates
-    * Bayesian vs Mack: Provides full distribution of unpaid losses and not just the first 2 moments
-* 2014 #10: Expert opinions in LDFs or row parameters; $\beta$ impact on the bayesian model
-
-**Full Calculation**
-
-* $\star$ [2012 #8](#2012-8): Bayesian model for BF method
 
 ## Introduction
 
@@ -209,7 +191,29 @@ Note that in step 4 above if you don't need the individual cells you can just ta
 
 ## Past Exam Questions
 
-<a name="2012-8"></a>
-![](questions/2012-8Q1.png)
-![](questions/2012-8Q2.png)
-![](questions/2012-8A.png)
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
+
+**Concepts**
+
+* 2012 #8: Explain model as trade off between standard CL and BF
+
+* 2013 #9: Model specification stuff on variance of the prior, BF bayesian
+
+    * Bayesian vs Bootstrap: Provide expert opinion while maintaining the integrity of the variance estimates
+
+    * Bayesian vs Mack: Provides full distribution of unpaid losses and not just the first 2 moments
+
+* 2014 #10: Expert opinions in LDFs or row parameters; $\beta$ impact on the bayesian model
+
+**Full Calculation**
+
+* $\star$ 2012 #8 \@ref(fig:2012-8): Bayesian model for BF method
+
+### Question Highlights
+
+```{r 2012-8, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2012 Question 8'}
+knitr::include_graphics('questions/2012-8Q.png')
+knitr::include_graphics('questions/2012-8A.png')
+```

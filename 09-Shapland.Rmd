@@ -16,18 +16,26 @@ Parameterize with GLM or Wtd average
 
 Create sample triangle from mean and randomly sampled residuals $\Rightarrow$ Estimate parameters from sampled triangle $\Rightarrow$ Calculate mean and variance of the sampled triangle $\Rightarrow$ Draw losses from gamma
 
-Dispersion factor with standard \@ref(eq:std-dispersion), England & Verrall \@ref(eq:EV-dispersion), and [standardized](#standardized-dispersion)
+Dispersion factor with standard \@ref(eq:std-dispersion)
 
 **Practical Issues**
 
 * Negative incremental values (fit and simulate)
+
 * Non-zero sum of residuals
+
 * N-year wtd average
+
 * Missing values
+
 * Outliers
+
 * Heteroskedasticity
+
 * Partial latest year exposure or partial diagonal
+
 * Exposure adjustment
+
 * Parametric bootstrap
 
 **Diagnostics**
@@ -35,7 +43,9 @@ Dispersion factor with standard \@ref(eq:std-dispersion), England & Verrall \@re
 **Other**
 
 * Multiple models
+
 * Model outputs
+
 * Correlations
 
 ## Introduction
