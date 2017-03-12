@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="data-set.html">
-<link rel="next" href="models-comparison-summary.html">
+<link rel="prev" href="a11-obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html">
+<link rel="next" href="introduction-synopsis.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -84,10 +84,10 @@
 <li class="chapter" data-level="11.0.1" data-path="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html"><a href="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html#types-of-exam-questions"><i class="fa fa-check"></i><b>11.0.1</b> Types of Exam Questions</a></li>
 <li class="chapter" data-level="11.1" data-path="introduction-synopsis.html"><a href="introduction-synopsis.html"><i class="fa fa-check"></i><b>11.1</b> Introduction &amp; Synopsis</a></li>
 <li class="chapter" data-level="11.2" data-path="data-set.html"><a href="data-set.html"><i class="fa fa-check"></i><b>11.2</b> Data Set</a></li>
-<li class="chapter" data-level="11.3" data-path="testing-procedure.html"><a href="testing-procedure.html"><i class="fa fa-check"></i><b>11.3</b> Testing Procedure</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="testing-procedure.html"><a href="testing-procedure.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>11.3.1</b> Kolmogorov-Smirnov Test</a></li>
-<li class="chapter" data-level="11.3.2" data-path="testing-procedure.html"><a href="testing-procedure.html#p-p-plot"><i class="fa fa-check"></i><b>11.3.2</b> <em>p-p</em> Plot</a></li>
-<li class="chapter" data-level="11.3.3" data-path="testing-procedure.html"><a href="testing-procedure.html#frequency-vs-percentile"><i class="fa fa-check"></i><b>11.3.3</b> frequency vs percentile</a></li>
+<li class="chapter" data-level="11.3" data-path="meyers-test.html"><a href="meyers-test.html"><i class="fa fa-check"></i><b>11.3</b> Testing Procedure</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="meyers-test.html"><a href="meyers-test.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>11.3.1</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="11.3.2" data-path="meyers-test.html"><a href="meyers-test.html#p-p-plot"><i class="fa fa-check"></i><b>11.3.2</b> <em>p-p</em> Plot</a></li>
+<li class="chapter" data-level="11.3.3" data-path="meyers-test.html"><a href="meyers-test.html#frequency-vs-percentile"><i class="fa fa-check"></i><b>11.3.3</b> frequency vs percentile</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="models-comparison-summary.html"><a href="models-comparison-summary.html"><i class="fa fa-check"></i><b>11.4</b> Models Comparison Summary</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="models-comparison-summary.html"><a href="models-comparison-summary.html#mack-model"><i class="fa fa-check"></i><b>11.4.1</b> Mack Model</a></li>
@@ -153,61 +153,22 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="testing-procedure" class="section level2">
-<h2><span class="header-section-number">11.3</span> Testing Procedure</h2>
-<p>We are testing the procedure of each method and not the results of any one distribution generated from the method</p>
-<ul>
-<li><p>Generate 50 sets of distribution and determine the actual percentile based on the predicted distribution</p></li>
-<li><p>The distribution of the 50 predicted percentiles (<span class="math inline">\(p_i\)</span>) should follow a uniform distribution if the model is accurate</p>
-<ul>
-<li>Expected percentiles <span class="math inline">\(e_i\)</span> run from <span class="math inline">\(\frac{1}{n+1}\)</span> to <span class="math inline">\(\frac{n}{n+1}\)</span></li>
-</ul></li>
-</ul>
-<div id="kolmogorov-smirnov-test" class="section level3">
-<h3><span class="header-section-number">11.3.1</span> Kolmogorov-Smirnov Test</h3>
-<p><span class="math inline">\(H_0\)</span>: Distribution of <span class="math inline">\(p_i\)</span> is uniform</p>
-<p><span class="math inline">\(D = \operatorname{max} \limits_i \mid p_i - e_i \mid\)</span></p>
-<ul>
-<li>Maximum difference between the predicted and expected percentiles</li>
-</ul>
-<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(D &gt; \dfrac{136}{\sqrt{n}}\%\)</span> <span class="citation">@5</span>% confidence level</p>
-<ul>
-<li>e.g. for <span class="math inline">\(n = 50\)</span>: 19.2%; <span class="math inline">\(n=200\)</span>: 9.6%</li>
-</ul>
-<p>Anderson-Darling focuses on the tail and failed all the models therefore we do not use it as it does not help in model comparison</p>
-</div>
-<div id="p-p-plot" class="section level3">
-<h3><span class="header-section-number">11.3.2</span> <em>p-p</em> Plot</h3>
-<p>We plot the <span class="math inline">\(p-p\)</span> plot with <span class="math inline">\(e_i\)</span> vs <span class="math inline">\(p_i\)</span> to diagnosis</p>
-<p>Light blueline is the critical value for a given <span class="math inline">\(n\)</span></p>
-<div class="figure">
-<img src="figures/Exam-7-Notes-10.png" />
-
-</div>
-<ul>
-<li>Model is too light tailed: Shallow slope near corner and steep in the middle</li>
-<li>Model is too heavy tailed: Steep slope near corner and shallow in the middle</li>
-<li>Model is biased upwards: Bow down</li>
-</ul>
-</div>
-<div id="frequency-vs-percentile" class="section level3">
-<h3><span class="header-section-number">11.3.3</span> frequency vs percentile</h3>
-<div class="figure">
-<img src="figures/Exam-7-Notes-12.png" />
-
-</div>
-<ul>
-<li>Blue line is based on the uniform <span class="math inline">\(e_i\)</span> set at <span class="math inline">\(\frac{n}{10}\)</span> for the 10 deciles</li>
-</ul>
-</div>
+<div id="stochastic-loss-reserving-using-bayesian-mcmc-models---g.-meyer" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer</h1>
+<p>Know how to read KS-test, <span class="math inline">\(p-p\)</span> plot and Freq vs Count plot</p>
+<p>Know the form of all the methods in the model</p>
+<div id="types-of-exam-questions" class="section level3">
+<h3><span class="header-section-number">11.0.1</span> Types of Exam Questions</h3>
+<p>n/a</p>
+</div> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-set.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="models-comparison-summary.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="a11-obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-synopsis.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

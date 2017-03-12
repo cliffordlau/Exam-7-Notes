@@ -1,6 +1,6 @@
 # Using the ODP Bootstrap Model: A Practitioner's Guide
 
-Flow of the paper: Parametize $\rightarrow$ Bootstrap $\rightarrow$ Practical Issues $\rightarrow$ Correlations
+Flow of the paper: Parameterize $\rightarrow$ Bootstrap $\rightarrow$ Practical Issues $\rightarrow$ Correlations
 
 Remember this uses **incremental** triangles
 
@@ -10,11 +10,11 @@ $m_{wd} = \operatorname{exp} \left [\alpha_w + \sum_j \beta_j \right]$
 
 $\operatorname{Var}[q(w,d)] = \phi m_{wd}^z$
 
-Parametize with GLM or Wtd average
+Parameterize with GLM or Wtd average
 
 **Bootstrap**
 
-Create sample trianlge from mean and randomly sampled residuals $\Rightarrow$ Estimate parameters from sampled triangle $\Rightarrow$ Calculate mean and variance of the sampled triangle $\Rightarrow$ Draw losses from gamma
+Create sample triangle from mean and randomly sampled residuals $\Rightarrow$ Estimate parameters from sampled triangle $\Rightarrow$ Calculate mean and variance of the sampled triangle $\Rightarrow$ Draw losses from gamma
 
 Dispersion factor with standard \@ref(eq:std-dispersion), England & Verrall \@ref(eq:EV-dispersion), and [standardized](#standardized-dispersion)
 
@@ -27,7 +27,7 @@ Dispersion factor with standard \@ref(eq:std-dispersion), England & Verrall \@re
 * Outliers
 * Heteroskedasticity
 * Partial latest year exposure or partial diagonal
-* Expsoure adjustment
+* Exposure adjustment
 * Parametric bootstrap
 
 **Diagnostics**
@@ -151,11 +151,11 @@ knitr::include_graphics('figures/Exam-7-Notes-1.png')
     
 ODP bootstrap models:
 
-* Incremental claims diretly as the response
+* Incremental claims directly as the response
 
 * With the same linear predictor as Kremer (1982)
 
-* Using a GLM with log-link function and an ODP poisson error
+* Using a GLM with log-link function and an ODP Poisson error
 
 * Where a specific form of this model is identical to the volume weighted chain ladder
 
@@ -323,7 +323,7 @@ Use iteratively weighted least squares or MLE[^1] to solve for the parameters in
 (\#eq:odp-sys-sol-matrix)
 \end{equation}
 
-After solving the sysmte of equations we will have:
+After solving the system of equations we will have:
 
 \begin{equation}
 \begin{split}
@@ -377,7 +377,7 @@ GLM model = Chainladder w/ volume-weighted averages when:
 
 **Procedure** for fitting incremental triangle:
 
-1. Select LDFs baed on vol-wtd
+1. Select LDFs based on vol-wtd
 
 2. Start from the last **cumulative diagonal** and divide backwards by each incremental LDFs to get the cumulative fitted triangle
 
@@ -539,7 +539,7 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
     
     * Use $u \sim U[0,1]$ and $F^{-1}_{gamma}(u)$
     
-[^3]: Poisson distribution can be used to remain more consistent with the underlying theory of GLM framework, but it is considerably slower to simulate, so gamma is a close substitute that performs much faster in simulation although it can be more skewed than the Poisson. Indeed other distributios could be used as well to better approximate the ovserved "skewness" of the residuals from the diagnostics
+[^3]: Poisson distribution can be used to remain more consistent with the underlying theory of GLM framework, but it is considerably slower to simulate, so gamma is a close substitute that performs much faster in simulation although it can be more skewed than the Poisson. Indeed other distributions could be used as well to better approximate the observed "skewness" of the residuals from the diagnostics
 
 5) Calculate simulated **unpaid**: sum the bottom half of triangle
     
@@ -585,7 +585,7 @@ ii. For each iteration and each AY individually:
     
 **Method 2**: Applying the ODP bootstrap to the Munich chain ladder model
 
-* See Liu and Verral (2010)
+* See Liu and Verrall (2010)
 
 *Method 2* **Advantages**:
 
@@ -621,7 +621,7 @@ We can solve the above by going back to the [GLM framework](#ODP-GLM-fit) instea
 
 1. Not forced to use a specific number of parameters (e.g. GLM Variation [1](#GLM-variation-1) and [2](#GLM-variation-2))
 
-2. Allos for [CY trend](#GLM-variation-4)
+2. Allows for [CY trend](#GLM-variation-4)
 
 3. Can work with shapes that are non triangles (e.g. data with only the last $x$ diagonals)
     
@@ -947,7 +947,7 @@ q^+(w,d) = q(w,d) - \Psi \\
 
 * Apply \@ref(eq:method-2-inc-neg-fit) before solving the GLM system of equations (e.g. \@ref(eq:odp-log-mean) and \@ref(eq:odp-sys-eq))
 
-* Then adjust the fitted values by additing back $\Phi$ to reduce each fitted incremental value
+* Then adjust the fitted values by adding back $\Phi$ to reduce each fitted incremental value
 
 \begin{equation}
 m_{w,d} = m^+_{w,d} + \Psi
@@ -968,7 +968,7 @@ m_{w,d} = m^+_{w,d} + \Psi
   (\#eq:odp-sim-loss-adj-neg)
 \end{equation}
 
-**Method 3**: USe [simplified GLM](#simplified-glm)
+**Method 3**: Use [simplified GLM](#simplified-glm)
 
 * Use ODP bootstrap (i.e. Chainladder with volume weighted average LDFs)
 
@@ -1238,7 +1238,7 @@ Adjust the dispersion factor $\phi$ as well as the residuals (similar to above)
 
 ODP bootstrap requirements:
 
-1. Symmetrical shape (annual by annual, quarter by quartery, etc triangles)
+1. Symmetrical shape (annual by annual, quarter by quarterly, etc triangles)
 
 2. Homoecthesious data (similar exposure)
 
@@ -1272,7 +1272,7 @@ Pearson residuals use the square root of the fitted value to make them all expos
 
 This is where the latest diagonal is partial diagonal
 
-* e.g. Evaluate in between typical data evaluaton date
+* e.g. Evaluate in between typical data evaluation date
 
     Evaluation @6/30 for a 1/1-12/31 AYs and 12-24-36 triangle
     
@@ -1306,19 +1306,19 @@ Adjusted [simulation process](#odp-boot-sim)
 
 ### Exposure Adjustment {#prac-issue-8}
 
-Ajustment for when exposure changed dramatically over the years (e.g. rapid growth or run off)
+Adjustment for when exposure changed dramatically over the years (e.g. rapid growth or run off)
 
 **ODP Bootstrap**
 
 * Divide losses by exposure (model loss cost)
 
-* Need to multipy the simlulated results by the exposure (after the process varianec step)
+* Need to multiply the simulated results by the exposure (after the process variance step)
 
 **GLM Bootstrap**
 
 * Adjust losses by exposure similar to above
 
-* Fit to the exposure adjusted losses should be exposured weighted
+* Fit to the exposure adjusted losses should be exposure weighted
 
     (i.e. exposure adjusted losses with higher exposure are assumed to have lower variance, see Anderson et al. (2007))
 
@@ -1334,7 +1334,7 @@ Ajustment for when exposure changed dramatically over the years (e.g. rapid grow
 
 * Should be an extrapolation of the incremental tail factors (instead of a single tail factor to ultimate)
 
-* Tail factors typically have $\sigma <$ 50% of the tail facto - 1
+* Tail factors typically have $\sigma <$ 50% of the tail factor - 1
 
     (But should compare to the $\sigma$ of the AtA factors leading up to the tail in both the actual and simulated data)
 
@@ -1412,7 +1412,7 @@ $$2p + n \left [ 1 + \operatorname{ln}(2\pi\dfrac{RSS}{n})\right]$$
 
 $$n \operatorname{ln}\left( \dfrac{RSS}{n}\right) + p \operatorname{ln}(n)$$
 
-* $RSS$ = actual residual - expected residual from normal then squred and summed
+* $RSS$ = actual residual - expected residual from normal then squared and summed
 
 ### Outlier {#odp-diag-outlier}
 
@@ -1436,7 +1436,7 @@ Parameter selection process:
 
 1. Start with all the AY and Age parameters ($\alpha_w$ and $\beta_d$) and remove the insignificant ones until only significant parameters are left
 
-2. Add CY parameter ($\gamma$) and check for signifiance
+2. Add CY parameter ($\gamma$) and check for significance
 
 After selecting parameters:
 
@@ -1450,9 +1450,11 @@ After selecting parameters:
 
 Review outputs once we have decided on a model and run the bootstrap
 
-* Table values below \@ref(tab:odp-output-table)
+* Mean, s.e., CoV, Min/Max, and percentiles by AYs
 
 * Incremental fitted mean, s.e. and CoV for each cell in the triangle
+
+    * Check for reasonability and consistency
 
 Table: (\#tab:odp-output-table) Model output review format 
 
@@ -1497,107 +1499,165 @@ Table: (\#tab:odp-output-table) Model output review format
 * Implausible results can affect the mean
 ```
 
-Incremental fitted mean, s.e. and CoV
-
-* Check for reasonability and consistency
-
 ## Using Multiple Models
 
-Use different methods (Paid/Inc'd Dev, BF, etc) by assigning weights by AYs
+Use different methods (Paid/Inc'd Dev, BF, etc) and assigning weights by AYs
+
+* Models should be reviewed and finalize individually before blending with weights
 
 **Method 1**:  
-In the process variance step of bootstrap, use the same underlying U(0,1) to draw from each model then weight the models by the %
+In the process variance step of bootstrap, use the same underlying $u \sim U(0,1)$ to draw from each model then weight the models by a set of deterministic %'s
+
+* Use the same random variable or else we would reduce the variability of the outcomes
 
 **Method 2**:  
-Run each model independently for each simulation (i.e. use different U(0,1)) then for each AY use the weights to randomly select one of the modeled results. Results will be a mixture of the various models
+Run each model independently for each simulation (i.e. use different $u \sim U(0,1)$) then for each AY use the weights to randomly select one of the modeled results
 
-Important to review the statistics in the above section for each output
+* Results will be a mixture of the various models
 
-Fit the unpaid claim distribution to Normal, LogNormal, and Gamma. Then compare with the fit based on the actual residuals on various statistics <a name="pearson-res"></a><span style="color:red">Not sure what distribution this is talking about</span>
+**Other considerations**:
 
-### Other Model Outputs
+* Should consider both the mean and standard deviation (or CoV) in each model result when selecting weights
 
-**Estimated Cash Flow Results**
+* Can also select the weights using Bayesian methods to account for the quality of each model's forecast
 
-Since bootstrap generates simulation for each cell in the bottom half of the triangle we can use this to get cash flow forecasts by CY and the percentiles as well
+* Perform the same [model output review](#odp-diag-results-review) as in the above section for the best estimate
 
-**Estimated Ultimate Loss Ratio Results**
+* Also review the IBNR by AYs to look for inconsistencies (e.g. negative IBNR) and compare to deterministic results
 
-We can estimate the variability of ultimate loss ratio since we vary and simulate the whole "square"
+### Additional Useful Output
 
-**Distribution Graphs**
+Using the best estimate total unpaid *mean*, *s.e.*, and *CoV* from above to fit to Normal, LogNormal, and Gamma distribution.
 
-Draw a distribution of the simulated unpaid in a histogram
+We can use these fitted distribution to:
 
-Can also smooth the histogram with Kernel density function
+1. Assess quality of ti
+
+2. Parameterize a DFA model
+
+3. Smooth out extreme values
+
+### Estimated Cash Flow Results
+
+Since bootstrap generates simulation for each cell in the bottom half of the triangle we can use this to get cash flow forecasts by CY and their variability as well
+
+We can review the s.e. and CoV similar what we did in the [diagnostics](#odp-diag-results-review) section
+
+### Estimated Ultimate Loss Ratio Results
+
+We can estimate mean and the variability of ultimate loss ratios by AYs
+
+Compile a similar table as before \@ref(tab:odp-output-table but for loss ratio
+
+Useful for projecting pricing risk in a risk model
+
+### Estimated Unpaid Claims Runoff Results
+
+Project unpaid claims out by CY similar to the cash flow projection
+
+Useful for calculating risk margins using the cost of capital method
+
+### Distribution Graphs
+
+Plot the distribution of the simulated unpaid in a histogram
+
+* Or smooth the histogram with a Kernel density function (for each point it takes a weighted average of the points around it, giving less weight to points further from it)
 
 * For each point it takes a weighted average of the points around it; giving less weight to points further from it
 
-## Correlation
+### Correlation
 
 Correlate the loss distribution over several LoB
 
 * Multivariate distribution requires the same underlying distribution which doesn't work here for ODP
 
-**Location Mapping**
+Method 1: **Location Mapping**
 
-When sampling the residuals, sample from the same place in the triangle for all the lines we want to correlate
+* When sampling the residuals, sample from the same place in the triangle for all the lines we want to correlate
 
-Disadvantages:
+* **Disadvantages**:
 
-* Requires all LoB to have the same size triangle with no missing values or outliers
+    * Requires all LoB to have the same size triangle with no missing values or outliers
 
-* Cannot stress the correlations among the LoBs
+    * Cannot stress the correlations among the LoBs (Can only use the historical correlations)
 
-**Re-Sorting**
+Method 2: **Re-Sorting**
 
-Use Iman-Conover algorithms or Copulas
+* Use Iman-Conover algorithms or Copulas (Not explained in paper)
 
-Advantages:
+* **Advantages**:
 
-* Can accommodate different shapes and sizes
+    * Can accommodate different shapes and sizes
 
-* Can make different correlation assumptions
+    * Can make different correlation assumptions
 
-* Can strengthen the correlation for extreme events (e.g. Copulas)
+    * Can strengthen the correlation for extreme events (e.g. *t* Copula vs normal Copula)
 
-Calculate correlation matrix using Spearman's Rank Order
+* Calculate correlation matrix using Spearman's Rank Order and re-sorting based on the ranks of unpaid claims by AYs
 
-* Re-sorting based on the ranks of unpaid claims by AYs
+    * Look at p-value for each correlation parameter to see that they're significantly different from zero
 
-***
+Additional comments:
 
-Using residuals to correlate LoBs (Both location mapping  & re-sorting) are both liable to create correlations close to zero
+* Using residuals to correlate LoBs (both location mapping& re-sorting) are liable to create correlations close to zero
 
-Reserve Risk:
+* Reserve Risk: Correlate **total unpaid** by correlating the incremental paid
+    
+    May or may not be a reasonable approximation
+    
+    Risk not modeled is contagion risk, where a single event results in claims in multiple lines of business (can change correlation assumptions to address this)
 
-* Correlate total unpaid by correlating the incremental paid. May or may not be a reasonable approximation
+* Pricing Risk: Correlate **loss ratios** over time
 
-Pricing Risk:
+    Not as likely to be close to zero
 
-* Correlate loss ratios over time
+    Use different correlation assumption than for reserve risk
 
-* Not as likely to be close to zero
+## Model Testing
 
-* Use different correlation assumption than for reserve risk
+Important to test the model results against actual (see [Meyers](#meyers-test))
 
-## Miscellaneous
+**Challenges**:
 
-**Model Testing**
+* Don't have underlying distribution to compare with
 
-Based on testing from General Insurance Reserving Oversight Committee, the ODP Bootstrap with England & Verrall residual out perform the Mack model by forecasting the 99%-ile better
+* Can't wait for 10 years to see how it forecast
 
-* ODP losses only exceed 99%-ile ~3% of the time compare to Mack's 8-13%
+**General Insurance Reserving Oversight Committee test**:
 
-**Future Research**
+* GIROC created triangles that met the assumptions of Mack and ODP
+
+* 30K 10 $\times$ 10 triangles were created
+
+* Mack: losses were above the 99^th^ percentile about 8-13% of the time $\Rightarrow$ Mack underestimates tail events
+
+* ODP from England & Verrall: losses were above the 99^th^ percentile about 3% of the time
+
+    * This does not include the residual adjustments
+    
+Future testing:
+
+* Create datasets from claims transaction data and use them for model testing
+
+### Future Research
 
 * Test ODP bootstrap on realistic data from CAS loss simulation model
 
-* Expand ODP bootstrap with Munich Chainladder, claim counts and severity
+* See how adjustments discussed here improve predictive power
 
-* Research other risk analysis measures and use for ERM
+* Expand ODP bootstrap with
 
-* Use for SII requirements
+    * Munich Chainladder for incurred/paid
+    
+    * Claim counts and average severity
+    
+    * Different residuals (e.g. deviance or Anscombe residuals)
+
+* Select weights using Bayesian methods by AYs
+
+* Other risk analysis measures and use for ERM
+
+* SII requirements
 
 * Research in correlation matrix (difficult to estimate)
 
@@ -1605,7 +1665,7 @@ Based on testing from General Insurance Reserving Oversight Committee, the ODP B
 
 **Exercises**
 
-1. $\star$ Use simplied GLM and then back out the GLM parameters
+1. $\star$ Use simplified GLM and then back out the GLM parameters
 2. Reduce parameters
 3. Minimize square error for GLM
 4. Benefit of simplified GLM
@@ -1615,7 +1675,7 @@ Based on testing from General Insurance Reserving Oversight Committee, the ODP B
 8. Simulate loss
 9. Setup GLM
 10. Negative values
-11. Simulat ngative
+11. Simulate negative
 12. Partial triangle
 13. Stratified
 14. Dealing with correlation
@@ -1623,7 +1683,7 @@ Based on testing from General Insurance Reserving Oversight Committee, the ODP B
 
 **Practical Issues**
 
-* 2013 #7: negatvie values
+* 2013 #7: negative values
 * 2014 #7: List 4 practical issues and solutions
 * 2015 #10: Heteroscedasticity, why important, adjustments description
 * 2015 #11: Negative values, outliers, exposure level

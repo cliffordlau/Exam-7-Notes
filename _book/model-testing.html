@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="notations.html">
-<link rel="next" href="odp-boot-sim.html">
+<link rel="prev" href="using-multiple-models.html">
+<link rel="next" href="past-exam-questions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -178,442 +178,53 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bootstrap-model" class="section level2">
-<h2><span class="header-section-number">9.3</span> Bootstrap Model</h2>
-<p><strong>Benefits</strong> of the bootstrap model:</p>
+<div id="model-testing" class="section level2">
+<h2><span class="header-section-number">9.11</span> Model Testing</h2>
+<p>Important to test the model results against actual (see <a href="#meyers-test">Meyers</a>)</p>
+<p><strong>Challenges</strong>:</p>
 <ul>
-<li><p>Allows us to estimate the distribution with very little data</p></li>
-<li><p>We don’t have to make any assumptions about the underlying distribution (non-parametric)</p>
+<li><p>Don’t have underlying distribution to compare with</p></li>
+<li><p>Can’t wait for 10 years to see how it forecast</p></li>
+</ul>
+<p><strong>General Insurance Reserving Oversight Committee test</strong>:</p>
 <ul>
-<li>The <strong>ODP</strong> part is the error distribution</li>
+<li><p>GIROC created triangles that met the assumptions of Mack and ODP</p></li>
+<li><p>30K 10 <span class="math inline">\(\times\)</span> 10 triangles were created</p></li>
+<li><p>Mack: losses were above the 99<sup>th</sup> percentile about 8-13% of the time <span class="math inline">\(\Rightarrow\)</span> Mack underestimates tail events</p></li>
+<li><p>ODP from England &amp; Verrall: losses were above the 99<sup>th</sup> percentile about 3% of the time</p>
+<ul>
+<li>This does not include the residual adjustments</li>
 </ul></li>
 </ul>
-<p>ODP bootstrap models:</p>
+<p>Future testing:</p>
 <ul>
-<li><p>Incremental claims directly as the response</p></li>
-<li><p>With the same linear predictor as Kremer (1982)</p></li>
-<li><p>Using a GLM with log-link function and an ODP Poisson error</p></li>
-<li><p>Where a specific form of this model is identical to the volume weighted chain ladder</p></li>
-<li><p>Using bootstrap (sampling residuals with replacement) to estimate the distribution of point estimates</p>
-<p>(Instead of simulating from a multivariate normal for a GLM)</p></li>
+<li>Create datasets from claims transaction data and use them for model testing</li>
 </ul>
-<div id="odp-glm-para" class="section level3">
-<h3><span class="header-section-number">9.3.1</span> GLM Parameters</h3>
-<p>Mean and variance for each <span class="math inline">\(q(w,d)\)</span> in the triangle (per fig. <a href="notations.html#fig:bootstrap-tri">9.2</a>)</p>
-<div id="mean-and-log-mean-for-qwd" class="section level4">
-<h4><span class="header-section-number">9.3.1.1</span> Mean and log-mean for <span class="math inline">\(q(w,d)\)</span></h4>
-<span class="math display" id="eq:odp-mean">\[\begin{equation}
-  \mathrm{E}[q(w,d)] = m_{wd} = \exp \left [\alpha_w + \sum_{i=2}^d \beta_i \right] \:\: : \: \: w \in [2, n]
-  \tag{9.1}
-\end{equation}\]</span>
-<span class="math display" id="eq:odp-log-mean">\[\begin{equation}
-  \ln \left( \mathrm{E}[q(w,d)] \right) = \ln(m_{w,d}) = \eta_{w,d} = \alpha_w + \sum_{i=2}^d \beta_i \:\: : \: \: w \in [2, n]
-  \tag{9.2}
-\end{equation}\]</span>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
+<div id="future-research" class="section level3">
+<h3><span class="header-section-number">9.11.1</span> Future Research</h3>
 <ul>
-<li><p><span class="math inline">\(\alpha\)</span>’s are the individual level parameters</p></li>
-<li><p><span class="math inline">\(\beta\)</span>’s adjust for the development trends after the first development period</p>
+<li><p>Test ODP bootstrap on realistic data from CAS loss simulation model</p></li>
+<li><p>See how adjustments discussed here improve predictive power</p></li>
+<li><p>Expand ODP bootstrap with</p>
 <ul>
-<li>We don’t use <span class="math inline">\(\beta_1\)</span> which effectively means <span class="math inline">\(\beta_1 = 0\)</span></li>
+<li><p>Munich Chainladder for incurred/paid</p></li>
+<li><p>Claim counts and average severity</p></li>
+<li><p>Different residuals (e.g. deviance or Anscombe residuals)</p></li>
 </ul></li>
-<li><span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(\beta_j\)</span> are selected to minimize error between <span class="math inline">\(\operatorname{ln}(actual) - \operatorname{ln}(forecast)\)</span>
-</div>
-<p></p></li>
-</ul>
-<p>Equivalence for using <a href="#venter-def">Venter</a> notation:</p>
-<ul>
-<li><p><span class="math inline">\(h(w) = e^{\alpha}\)</span></p></li>
-<li><p><span class="math inline">\(f(d) = e^{\sum \beta}\)</span></p></li>
+<li><p>Select weights using Bayesian methods by AYs</p></li>
+<li><p>Other risk analysis measures and use for ERM</p></li>
+<li><p>SII requirements</p></li>
+<li><p>Research in correlation matrix (difficult to estimate)</p></li>
 </ul>
 </div>
-<div id="variance-for-qwd" class="section level4">
-<h4><span class="header-section-number">9.3.1.2</span> Variance for <span class="math inline">\(q(w,d)\)</span></h4>
-<span class="math display" id="eq:odp-var">\[\begin{equation}
-  \operatorname{Var}[q(w,d)] = \phi m_{wd}^z
-  \tag{9.3}
-\end{equation}\]</span>
-<ul>
-<li><p><span class="math inline">\(\phi\)</span>: <a href="bootstrap-model.html#odp-dispersion">Dispersion factor</a></p>
-<ul>
-<li><p>Scale factor estimated as part of the fitting procedure while setting the variance proportional to the mean</p></li>
-<li><p>Estimated from the residuals</p></li>
-</ul></li>
-<li><p><span class="math inline">\(z\)</span>: Error distribution</p>
-<ul>
-<li><p>Paper focus on <span class="math inline">\(z = 1\)</span> for Over Dispersed Poisson (ODP)</p></li>
-<li><p>Specifies the whole mean-variance relationship (not only the first 2 moments)</p></li>
-</ul></li>
-</ul>
-<table>
-<caption><span id="tab:odp-error-dist">Table 9.1: </span> Distribution with corresponding <span class="math inline">\(z\)</span></caption>
-<thead>
-<tr class="header">
-<th align="center"><span class="math inline">\(z\)</span></th>
-<th align="center">Distribution</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">Normal</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">Poisson</td>
-</tr>
-<tr class="odd">
-<td align="center">2</td>
-<td align="center">Gamma</td>
-</tr>
-<tr class="even">
-<td align="center">3</td>
-<td align="center">Inverse Gaussian</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="fitted-tri-odp" class="section level3">
-<h3><span class="header-section-number">9.3.2</span> Fitted Triangle</h3>
-<p>We can fit the <span class="math inline">\(\alpha\)</span>’s and <span class="math inline">\(\beta\)</span>’s defined <a href="bootstrap-model.html#odp-glm-para">above</a> using the <a href="bootstrap-model.html#ODP-GLM-fit"><em>GLM framework</em></a>, or the <a href="bootstrap-model.html#simplified-glm"><em>simplified GLM</em></a> method</p>
-<div id="ODP-GLM-fit" class="section level4">
-<h4><span class="header-section-number">9.3.2.1</span> Parameterize with GLM Framework</h4>
-<p>Start with a <span class="math inline">\(3 \times 3\)</span> incremental triangle</p>
-<table>
-<caption><span id="tab:odp-glm-1">Table 9.2: </span> <span class="math inline">\(3\times 3\)</span> incremental triangle:</caption>
-<thead>
-<tr class="header">
-<th align="center">w/d</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>1</strong></td>
-<td align="center"><span class="math inline">\(q(1,1)\)</span></td>
-<td align="center"><span class="math inline">\(q(1,2)\)</span></td>
-<td align="center"><span class="math inline">\(q(1,3)\)</span></td>
-</tr>
-<tr class="even">
-<td align="center"><strong>2</strong></td>
-<td align="center"><span class="math inline">\(q(2,1)\)</span></td>
-<td align="center"><span class="math inline">\(q(2,2)\)</span></td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>3</strong></td>
-<td align="center"><span class="math inline">\(q(3,1)\)</span></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p>Log transform of the triangle</p>
-<table>
-<caption><span id="tab:odp-glm-2">Table 9.3: </span> <span class="math inline">\(3\times 3\)</span> log incremental triangle:</caption>
-<thead>
-<tr class="header">
-<th align="center">w/d</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>1</strong></td>
-<td align="center"><span class="math inline">\(\ln[q(1,1)]\)</span></td>
-<td align="center"><span class="math inline">\(\ln[q(1,2)]\)</span></td>
-<td align="center"><span class="math inline">\(\ln[q(1,3)]\)</span></td>
-</tr>
-<tr class="even">
-<td align="center"><strong>2</strong></td>
-<td align="center"><span class="math inline">\(\ln[q(2,1)]\)</span></td>
-<td align="center"><span class="math inline">\(\ln[q(2,2)]\)</span></td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>3</strong></td>
-<td align="center"><span class="math inline">\(\ln[q(3,1)]\)</span></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p>Create a system of equations based on equation <a href="bootstrap-model.html#eq:odp-log-mean">(9.2)</a></p>
-<span class="math display" id="eq:odp-sys-eq">\[\begin{equation}
-\begin{split}
-  \ln[q(1,1)] &amp;= 1\alpha_1 + 0\alpha_2 + 0\alpha_3 + 0\beta_2 + 0\beta_3 \\
-  \ln[q(2,1)] &amp;= 0\alpha_1 + 1\alpha_2 + 0\alpha_3 + 0\beta_2 + 0\beta_3 \\
-  \ln[q(3,1)] &amp;= 0\alpha_1 + 0\alpha_2 + 1\alpha_3 + 0\beta_2 + 0\beta_3 \\
-  \ln[q(1,2)] &amp;= 1\alpha_1 + 0\alpha_2 + 0\alpha_3 + 1\beta_2 + 0\beta_3 \\
-  \ln[q(2,2)] &amp;= 0\alpha_1 + 1\alpha_2 + 0\alpha_3 + 1\beta_2 + 0\beta_3 \\
-  \ln[q(1,3)] &amp;= 0\alpha_1 + 0\alpha_2 + 1\alpha_3 + 1\beta_2 + 1\beta_3 \\
-\end{split}
-\tag{9.4}
-\end{equation}\]</span>
-<p>Express the above in matrix form</p>
-<span class="math display" id="eq:odp-sys-eq-matrix">\[\begin{equation}
-\begin{array}{ccccc}
-  \mathbf{Y} &amp; = &amp; \mathbf{X} &amp;\times &amp; \mathbf{A} \\
-  &amp; &amp; \alpha_1 \:\:\: \alpha_2 \:\:\: \alpha_3 \:\:\: \beta_2 \:\:\: \beta_3 &amp; &amp;\\
-  \begin{bmatrix}
-    ln[q(1,1)] \\
-    ln[q(2,1)] \\
-    ln[q(3,1)] \\
-    ln[q(1,2)] \\
-    ln[q(2,2)] \\
-    ln[q(1,3)] \\
-  \end{bmatrix}
-    &amp; =
-      &amp;
-      \begin{bmatrix}
-        1 &amp; - &amp; - &amp; - &amp; - \\
-        - &amp; 1 &amp; - &amp; - &amp; - \\
-        - &amp; - &amp; 1 &amp; - &amp; - \\
-        1 &amp; - &amp; - &amp; 1 &amp; - \\
-        - &amp; 1 &amp; - &amp; 1 &amp; - \\
-        1 &amp; - &amp; - &amp; 1 &amp; 1 \\
-      \end{bmatrix}
-        &amp; \times
-          &amp;
-          \begin{bmatrix}
-            \alpha_1 \\
-            \alpha_2 \\
-            \alpha_3 \\
-            \beta_2 \\
-            \beta_3 \\
-          \end{bmatrix}
-\end{array}
-\tag{9.5}
-\end{equation}\]</span>
-
-<div class="remark">
-<span class="remark"><em>Remark. </em></span> <span class="math inline">\(\mathbf{X}\)</span> is the design matrix that defines the parameters used to estimate the losses in each cell
-</div>
-<p></p>
-<p>Use iteratively weighted least squares or MLE<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> to solve for the parameters in the in <span class="math inline">\(\mathbf{A}\)</span> that minimize the squared difference between <span class="math inline">\(\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{S}\)</span>, the solution matrix</p>
-<span class="math display" id="eq:odp-sys-sol-matrix">\[\begin{equation}
-\mathbf{S} = \begin{bmatrix}
-    ln[m_{1,1}] \\
-    ln[m_{2,1}] \\
-    ln[m_{3,1}] \\
-    ln[m_{2,1}] \\
-    ln[m_{2,2}] \\
-    ln[m_{1,3}] \\
-\end{bmatrix}
-\tag{9.6}
-\end{equation}\]</span>
-<p>After solving the system of equations we will have:</p>
-<span class="math display" id="eq:odp-sys-eq-solved">\[\begin{equation}
-\begin{split}
-  \ln[m_{1,1}] &amp;= \eta_{1,1} &amp;= \alpha_1 \\
-  \ln[m_{2,1}] &amp;= \eta_{2,1} &amp;= \alpha_2 \\
-  \ln[m_{3,1}] &amp;= \eta_{3,1} &amp;= \alpha_3 \\
-  \ln[m_{1,2}] &amp;= \eta_{1,2} &amp;= \alpha_1 + \beta_2\\
-  \ln[m_{2,2}] &amp;= \eta_{2,2} &amp;= \alpha_2 + \beta_2\\
-  \ln[m_{1,3}] &amp;= \eta_{1,3} &amp;= \alpha_1 + \beta_2 + \beta_3\\
-\end{split}
-\tag{9.7}
-\end{equation}\]</span>
-<p>The above solution shown as a triangle below</p>
-<table>
-<caption><span id="tab:odp-glm-3">Table 9.4: </span> <span class="math inline">\(3\times 3\)</span> GLM fitted log incremental triangle:</caption>
-<thead>
-<tr class="header">
-<th align="center">w/d</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>1</strong></td>
-<td align="center"><span class="math inline">\(\ln[m_{1,1}]\)</span></td>
-<td align="center"><span class="math inline">\(\ln[m_{1,2}]\)</span></td>
-<td align="center"><span class="math inline">\(\ln[m_{1,3}]\)</span></td>
-</tr>
-<tr class="even">
-<td align="center"><strong>2</strong></td>
-<td align="center"><span class="math inline">\(\ln[m_{2,1}]\)</span></td>
-<td align="center"><span class="math inline">\(\ln[m_{2,2}]\)</span></td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>3</strong></td>
-<td align="center"><span class="math inline">\(\ln[m_{3,1}]\)</span></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p>Exponentiate the triangle above to get our fitted (or expected) incremental results of the GLM model</p>
-<table>
-<caption><span id="tab:odp-glm-4">Table 9.5: </span> <span class="math inline">\(3\times 3\)</span> GLM fitted incremental triangle:</caption>
-<thead>
-<tr class="header">
-<th align="center">w/d</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>1</strong></td>
-<td align="center"><span class="math inline">\(m_{1,1}\)</span></td>
-<td align="center"><span class="math inline">\(m_{1,2}\)</span></td>
-<td align="center"><span class="math inline">\(m_{1,3}\)</span></td>
-</tr>
-<tr class="even">
-<td align="center"><strong>2</strong></td>
-<td align="center"><span class="math inline">\(m_{2,1}\)</span></td>
-<td align="center"><span class="math inline">\(m_{2,2}\)</span></td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>3</strong></td>
-<td align="center"><span class="math inline">\(m_{3,1}\)</span></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="simplified-glm" class="section level4">
-<h4><span class="header-section-number">9.3.2.2</span> Simplified GLM</h4>
-<p>GLM model = Chainladder w/ volume-weighted averages when:</p>
-<ul>
-<li><p>Variance <span class="math inline">\(\propto\)</span> Mean</p></li>
-<li><p><span class="math inline">\(\varepsilon(w,d) \sim\)</span> Poisson</p></li>
-<li><p>A parameter for each row and column (except 1<sup>st</sup> column)</p></li>
-</ul>
-<p><strong>Benefits</strong>:</p>
-<ul>
-<li><p>Replace GLM fitting with much simpler calculation</p></li>
-<li><p>LDFs are easier to explain</p></li>
-<li><p>Still works even when there are negative incremental values</p></li>
-</ul>
-<p><strong>Procedure</strong> for fitting incremental triangle:</p>
-<ol style="list-style-type: decimal">
-<li><p>Select LDFs based on vol-wtd</p></li>
-<li><p>Start from the last <strong>cumulative diagonal</strong> and divide backwards by each incremental LDFs to get the cumulative fitted triangle</p></li>
-<li><p>Subtracting out the cumulative diagonals to get your incremental fitted triangle</p></li>
-</ol>
-</div>
-</div>
-<div id="odp-res" class="section level3">
-<h3><span class="header-section-number">9.3.3</span> Residuals</h3>
-
-<div class="rmdnote">
-Important formulas below
-</div>
-<p></p>
-<p><strong><em>Unscaled</em> Pearson residuals</strong></p>
-<span class="math display" id="eq:odp-pear-res">\[\begin{equation}
-\begin{split}
-  r_{w,d} &amp; = &amp; \dfrac{A - E}{\sqrt{\operatorname{Var}(E)}} &amp;\\
-  &amp; = &amp; \dfrac{q(w,d) - m_{wd}}{\sqrt{m^z_{wd}}} &amp;\\
-  &amp; = &amp; \dfrac{q(w,d) - m_{wd}}{\sqrt{m_{wd}}} &amp; \:\:\:\: \text{Recall }z = 1\text{ for ODP Poisson}\\
-\end{split}
-\tag{9.8}
-\end{equation}\]</span>
-<ul>
-<li><p><a href="bootstrap-model.html#odp-glm-para">Mean and variance</a> as defined above</p></li>
-<li><p>Residual for the right and bottom corners of the triangle are going to be 0</p>
-<p>Because a unique parameter is used for those 2 cells</p></li>
-<li><p>Alternatively we can use <em>Anscombe</em> residual</p>
-<p>We prefer Pearson because its calculation is consistent with the scale parameter <span class="math inline">\(\phi\)</span></p></li>
-</ul>
-<p><strong><em>Scaled</em> Pearson residuals</strong> (England &amp; Verrall)</p>
-<span class="math display" id="eq:odp-scaled-res">\[\begin{equation}
-  r^S_{w,d} = r_{w,d} \times \underbrace{\sqrt{\dfrac{N}{N-p}}}_{f^{DoF}}
-  \tag{9.9}
-\end{equation}\]</span>
-<ul>
-<li><p>Degrees of freedom adjustment, to effectively allow for over dispersion of the residuals in the sampling process and add process variance to approximate a distribution of possible outcomes</p></li>
-<li><p>Increase the variability of the pseudo triangle</p></li>
-</ul>
-<p><strong><em>Standardized</em> residuals</strong> (Pinheiro et al.)</p>
-<span class="math display" id="eq:odp-std-res">\[\begin{equation}
-  r^H_{w,d} = r_{w,d} \times \underbrace{\sqrt{\dfrac{1}{1-H_{i,i}}}}_{f^H_{w,d}}
-  \tag{9.10}
-\end{equation}\]</span>
-<span class="math display" id="eq:odp-hat-matrix">\[\begin{equation}
-  \mathbf{H} = \mathbf{X}(\mathbf{X}^T\mathbf{WX})^{-1}\mathbf{X}^T\mathbf{W}
-  \tag{9.11}
-\end{equation}\]</span>
-<span class="math display" id="eq:weight-matrix-odp">\[\begin{equation}
-\mathbf{W} = 
-  \begin{bmatrix}
-  m_{1,1} &amp; 0 &amp; \cdots &amp; 0 \\
-  0 &amp; m_{2,1} &amp; 0 &amp; 0 \\
-  \vdots &amp; 0 &amp; \ddots &amp; \vdots\\
-  0 &amp; 0 &amp; \cdots &amp; m_{1,n}\\
-  \end{bmatrix}
-  \tag{9.12}
-\end{equation}\]</span>
-<ul>
-<li><p>Hat matrix adjustment factor <span class="math inline">\(f^H_{w,d}\)</span> is based on the diagonal on the hat matrix <span class="math inline">\(\mathbf{H}\)</span></p>
-<p>(Going down the column of the triangle from left to right)</p></li>
-<li><p><span class="math inline">\(\mathbf{W}\)</span> is a <span class="math inline">\(2n \times 2n\)</span> matrix</p></li>
-<li><p><span class="math inline">\(\mathbf{X}\)</span> is the design matrix from <a href="bootstrap-model.html#eq:odp-sys-eq-matrix">(9.5)</a></p></li>
-<li><p><strong>Benefits</strong>:</p>
-<ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(f^H_{w,d}\)</span> account forthe exclusion of zero-value residuals</p>
-<ul>
-<li>Or the zero-value residuals will have some variance but we just don’t know what it is yet so we should sample from the remaining residuals but not the zeros</li>
-</ul></li>
-<li><p><span class="math inline">\(f^H_{w,d}\)</span> is an improvement on <span class="math inline">\(f^{DoF}\)</span></p></li>
-</ol></li>
-</ul>
-</div>
-<div id="odp-dispersion" class="section level3">
-<h3><span class="header-section-number">9.3.4</span> Dispersion Factor</h3>
-<p>Dispersion factor</p>
-<span class="math display" id="eq:std-dispersion">\[\begin{equation}
-  \phi = \dfrac{\sum r_{wd}^2}{N-p}
-  \tag{9.13}
-\end{equation}\]</span>
-<p><span class="math display">\[N = \dfrac{n (n+1)}{2}\]</span></p>
-<p><span class="math display">\[p = 2n-1\]</span></p>
-<ul>
-<li><p><span class="math inline">\(N =\)</span> # of data points (<strong>including</strong> first column unlike <a href="#venter-goodness-fit">Ventor</a>)</p>
-<ul>
-<li><span class="math inline">\(N\)</span> can be less than indicated above if the tail incremental developments are all 0’s</li>
-</ul></li>
-<li><p><span class="math inline">\(p =\)</span> # of parameters</p>
-<ul>
-<li><p>One for each row, one for each column minus first column</p></li>
-<li><p><span class="math inline">\(p\)</span> can be less than <span class="math inline">\(2n-1\)</span> if the later incremental values are all 0’s and therefore not needed for fitting</p></li>
-</ul></li>
-</ul>
-<p>Alternate method for <span class="math inline">\(\phi\)</span></p>
-<p><span class="math display">\[\phi \sim \phi^H = \dfrac{\sum (r^H_{w,d})^2}{N}\]</span></p>
-<ul>
-<li>We can still use the same dispersion factor even with the <em>scaled</em> and <em>standardized</em> residuals, this just give us another method to estimate <span class="math inline">\(\phi\)</span></li>
-</ul>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>You can also use other methods such as orthogonal decomposition or Newton-Raphson to solve for the parameters<a href="bootstrap-model.html#fnref1">↩</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="notations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="odp-boot-sim.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="using-multiple-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="past-exam-questions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

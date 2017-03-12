@@ -1,6 +1,4 @@
-# A14 Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
-
-## Cliff's Summary
+# Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
 
 Know how to read KS-test, $p-p$ plot and Freq vs Count plot
 
@@ -47,7 +45,7 @@ If we review many models and none of them validate it gives 1) credence but does
 
 Losses are considered fully developed at 10 years so in practice the paid and incurred ultimate is slightly different
 
-## Testing Procedure
+## Testing Procedure {#meyers-test}
 
 We are testing the procedure of each method and not the results of any one distribution generated from the method
 
