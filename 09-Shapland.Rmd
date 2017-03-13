@@ -135,9 +135,13 @@ Same notations as [Venter](#venter-def) for $n \times n$ triangle
 * $h(k)$: Factor relating to the diagonal $k$ along which $w+d$ is constant
 ```
 
-```{r bootstrap-tri, echo = FALSE, out.width='50%', fig.show='hold', fig.cap='Incremental Triangle'}
-knitr::include_graphics('figures/Exam-7-Notes-1.png')
-```
+Table: (\#tab:odp-glm-para-tri) Incremental triangle with corresponding row and column parameters
+
+|   | - | $\beta_2$ | $\beta_3$ |
+|:------:|:--------:|:--------:|:--------:|
+| $\alpha_1$ | $q(1,1)$ | $q(1,2)$ | $q(1,3)$ |  
+| $\alpha_2$ | $q(2,1)$ | $q(2,2)$ |          |
+| $\alpha_3$ | $q(3,1)$ |          |          |
 
 **Chainladder assumptions:**
 
@@ -175,7 +179,7 @@ ODP bootstrap models:
     
 ### GLM Parameters {#odp-glm-para}
 
-Mean and variance for each $q(w,d)$ in the triangle (per fig. \@ref(fig:bootstrap-tri))
+Mean and variance for each $q(w,d)$ in the triangle (per table \@ref(tab:odp-glm-para-tri))
 
 #### Mean and log-mean for $q(w,d)$
 
