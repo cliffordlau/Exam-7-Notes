@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html">
-<link rel="next" href="stochastic-models-for-the-chainladder.html">
+<link rel="prev" href="introduction.html">
+<link rel="next" href="incorporating-expert-opinion-about-the-development-factors.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -142,69 +142,161 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">10.1</span> Introduction</h2>
-<p>Uses Bayesian techniques to allow incorporation of expert opinion and also maintain the integrity of the prediction error</p>
-<ul>
-<li><p>i.e. how expert opinion from sources other than the specific data set under consideration can be incorporated into the predictive distributions of the reserves</p></li>
-<li><p>Take into account prior knowledge in setting reserves</p>
-<p>e.g. Adjusting data to reflect changes in benefits or claims handling, or select <em>L</em>-year average LDFs</p></li>
-<li><p>Calculating prediction error using prior knowledge</p></li>
-<li><p>Use Bayesian to take into account our a-priori and the strength of that a-priori (credibility)</p></li>
-</ul>
-<p>Paper focus on use of a-priori knowledge for LDF selection and <em>BF</em> Method</p>
-<p>Development of MCMC techniques has made Bayesian methods much easier</p>
-<ul>
-<li><p>Makes it easier to find the <strong>posterior distributions</strong> for future observations (defining the Bayesian model is always easy)</p></li>
-<li><p>MCMC breaks down the simulation process into a number of simulations that are easy to carry out</p>
-<p><span class="math inline">\(\therefore\)</span> This solves the common Bayesian problem of difficulty in finding the posterior distribution (as they can be multidimensional)</p></li>
-<li><p>MCMC doesn’t simulate all the parameters at once, it use the conditional distribution of each parameter, given all the others</p>
-<p><span class="math inline">\(\therefore\)</span> Reducing the simulation to a univariate distribution</p></li>
-<li><p>Markov chain is formed because each parameter is considered in turn, and it is a simulation-based method</p>
-<p><span class="math inline">\(\therefore\)</span> MCMC</p></li>
-</ul>
-<div id="verrall-notation" class="section level3">
-<h3><span class="header-section-number">10.1.1</span> Notation</h3>
-<p>For a <span class="math inline">\(n \times n\)</span> triangle</p>
-<p><strong>Claims</strong></p>
-<ul>
-<li>Incremental claims for AY <span class="math inline">\(i\)</span> and age <span class="math inline">\(j\)</span>: <span class="math inline">\(c_{ij}\)</span></li>
-</ul>
-<p><span class="math display">\[\{ c_{ij} \: : \: j=1,...,n-i+1 \: ; \: i = 1,...,n \}\]</span></p>
-<ul>
-<li>Cumulative claims</li>
-</ul>
-<p><span class="math display">\[D_{ij} = \sum_{k=1}^j c_{ik}\]</span></p>
-<ul>
-<li>Ultimate losses</li>
-</ul>
-<p><span class="math display">\[D_{in} = \sum_{k=1}^n c_{ik}\]</span></p>
+<div id="stochastic-models-for-the-chainladder" class="section level2">
+<h2><span class="header-section-number">10.2</span> Stochastic Models for the Chainladder</h2>
+<p>Stochastic models that have the same estimate of Unpaid losses as the Chainladder</p>
+<p>For each model, we can calculate the MSE of prediction and therefore a prediction interval</p>
+
+<div class="proposition">
+<span id="prp:unnamed-chunk-2" class="proposition"><strong>Proposition 10.1 </strong></span>Prediction variance = process variance + estimation variance
+</div>
+<p></p>
+
+<div class="proof">
+<span class="proof"><em>Proof. </em></span> <span class="math display">\[\begin{array}
+\text{MSEP} &amp;= &amp;\mathrm{E}[(y - \hat{y})^2] \\
+&amp;= &amp;\mathrm{E}[((y-\mathrm{E}[y]) - (\hat{y} - \mathrm{E}[y]))^2] \\
+&amp;\approx &amp;\mathrm{E}[((y-\mathrm{E}[y]) - (\hat{y} - \mathrm{E}[\hat{y}]))^2] \\
+&amp;= &amp;\mathrm{E}[(y - \mathrm{E}[y])^2] \\
+&amp; &amp;-2\mathrm{E}[(y-\mathrm{E}[y])(\hat{y} - \mathrm{E}[\hat{y}])] \\
+&amp; &amp;+ \mathrm{E}[(\hat{y} - \mathrm{E}[\hat{y}])^2]\\
+&amp;= &amp;\underbrace{\mathrm{E}[(y - \mathrm{E}[y])^2]}_{\text{Process Variance}}+ \underbrace{\mathrm{E}[(\hat{y} - \mathrm{E}[\hat{y}])^2]}_{\text{Estimation Variance}}\\
+\end{array}\]</span>
+</div>
+<p></p>
 
 <div class="remark">
-<p><span class="remark"><em>Remark. </em></span> We only consider forecasting losses up to the latest development year <span class="math inline">\(n\)</span></p>
+<p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
-<li>It is possible to extend this to allow a tail factor but not in this paper
+<li><p>Assume future observations are independent of past observations and the -2 term above goes to 0</p></li>
+<li><p>S.e. = <span class="math inline">\(\sqrt{\text{Estimation Variance}}\)</span></p></li>
+<li><p>Prediction error includes both the error in estimating our parameters and the process variance (inherent variability in the data being forecast)</p></li>
+<li>Both bootstrap and MCMC allows us to calculate the prediction error
 </div>
-</li>
+<p></p></li>
 </ul>
-<p><strong>Row Parameters</strong></p>
+<div id="mack-1993-non-parametric" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> Mack-1993 (Non-parametric)</h3>
+<p>Only the first 2 moments of <strong>cumulative claims</strong> are specified</p>
+<span class="math display" id="eq:verrall-mack-mean">\[\begin{equation}
+  \mathrm{E}[D_{ij}] = \lambda_j D_{ij-1}
+  \tag{10.1}
+\end{equation}\]</span>
+<span class="math display" id="eq:verrall-mack-var">\[\begin{equation}
+  \mathrm{Var}(D_{ij}) = \sigma^2_j D_{ij-1}
+  \tag{10.2}
+\end{equation}\]</span>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
-<li>Expected ultimate losses for AY <span class="math inline">\(i\)</span>: <span class="math inline">\(x_i\)</span></li>
+<li><p>Mean is the same as the Chainladder</p></li>
+<li><p>Variance is <span class="math inline">\(\propto\)</span> claims reported to date <span class="math inline">\(D_{ij-1}\)</span></p>
+<p><span class="math inline">\(\sigma^2_j\)</span> has to be estimated separately from the development factors</p></li>
+<li><p>The simplicity of this allows the parameter estimate and prediction errors to be obtained from a spreadsheet</p></li>
+<li>Downside is that without specifying a distribution we don’t get a predictive distribution
+</div>
+<p></p></li>
 </ul>
-<p><span class="math display">\[x_i = \mathrm{E}[D_{in}]\]</span></p>
-<p><strong>Column Parameters</strong></p>
+</div>
+<div id="over-dispersed-poisson-and-negative-binomial" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> Over-dispersed Poisson and Negative Binomial</h3>
+<p>Separate stream of research that focused on the use of GLM</p>
+<p><strong>Incremental claims</strong> distribution <strong>OD Poisson</strong>:</p>
+<span class="math display" id="eq:verall-odp">\[\begin{equation}
+\begin{split}
+&amp; c_{ij} \mid c, \alpha, \beta, \varphi \sim  ODP(m_{ij}, \varphi m_{ij}) \\
+&amp; \mathrm{E}[c_{ij}] = m_{ij} \\
+&amp; \mathrm{Var}(c_ij) = \varphi m_{ij} \\
+&amp; \ln(m_{ij}) = c + \alpha_i + \beta_j \: ; \: \alpha_1 = \beta_1 = 0 
+\end{split}
+\tag{10.3}
+\end{equation}\]</span>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
-<li><p>Expected % reported in each period: <span class="math inline">\(y_j\)</span></p>
-<p><span class="math inline">\(\sum y_i = 1\)</span></p></li>
-<li><p>Expected reported to date: <span class="math inline">\(p_j\)</span></p>
-<p><span class="math inline">\(\sum_{k=1}^j y_k\)</span></p></li>
-<li><p>Expected development from <span class="math inline">\(D_{ij-1}\)</span> to <span class="math inline">\(D_{ij}\)</span>: <span class="math inline">\(\lambda_j\)</span> (<span class="math inline">\(= \dfrac{p_j}{p_{j-1}}\)</span>?)</p></li>
+<li><p>Model result is the same as Chainladder</p></li>
+<li><p><span class="math inline">\(m_{ij}\)</span> mathematically the same as the one defined in <a href="#odp-glm-para">Shapland</a>, we can not include the <span class="math inline">\(c\)</span> term and just use <span class="math inline">\(\alpha_i\)</span>’s as the individual level parameters instead of having <span class="math inline">\(\alpha_1 = 0\)</span> and use the <span class="math inline">\(alpha_i\)</span>’s as adjustments to the level parameter constant <span class="math inline">\(c\)</span></p></li>
+<li>This allows for calculating prediction error</li>
 </ul>
-<p><span class="math display">\[\{\lambda_j \: : \: j = 2 ,...,n\}\]</span></p>
+</div>
+<p></p>
+<p><strong>Alternative way</strong> of writing ODP</p>
+<span class="math display" id="eq:verall-odp">\[\begin{equation}
+\begin{split}
+&amp; c_{ij} \mid x,y, \varphi \sim  ODP(x_i y_j, \varphi x_i y_j) \\
+&amp; \sum_{k=1}^n y_k = 1 \\
+&amp; x = \{x_1, x_2,...,x_n\} \:\: \text{row parameters}\\
+&amp;x_i = \mathrm{E}[D_{in}] \:\: \text{Expected ultimate cumulative losses up to }n\\
+&amp; y = \{y_1, y_2,...,y_n\} \:\: \text{col parameters}\\
+&amp; y_i \:\: \text{Proportions of ultimate losses that emerge in each development year}
+\end{split}
+\tag{10.3}
+\end{equation}\]</span>
+<p><em>Recall</em>:</p>
+<span class="math display" id="eq:verall-odp-recall">\[\begin{equation}
+\begin{split}
+&amp;X \sim \text{Poisson}(\mu) \\
+&amp;Y = \varphi X \sim ODP(\varphi \mu, \varphi^2 \mu)\\
+\end{split}
+\tag{10.4}
+\end{equation}\]</span>
 <ul>
-<li>Weighted average LDFs: <span class="math inline">\(\hat{\lambda}_j\)</span></li>
+<li><p>Where <span class="math inline">\(\varphi\)</span> is typically &gt; 1 <span class="math inline">\(\therefore\)</span> over-dispersed</p></li>
+<li><p>This can be extend to other distribution beyond Poisson</p>
+<p>e.g. see over-dispersed negative binomial below</p></li>
 </ul>
-<p><span class="math display">\[\hat{\lambda}_j = \dfrac{\sum_{i=1}^{n-j+1} D_{ij}}{\sum_{i=1}^{n-j+1} D_{ij-1}}\]</span></p>
+<p>We can get the same predictive distribution (as ODP) with ODNB</p>
+<ul>
+<li>ODNB also make the connection between ODP and Chainladder more apparent</li>
+</ul>
+<p><strong>Incremental claims</strong> distribution for <strong>OD Negative Binomial</strong>:</p>
+<span class="math display" id="eq:verall-odnb">\[\begin{equation}
+\begin{split}
+&amp; c_{ij} \mid \lambda_j, \varphi \sim  ODNB \\
+&amp; \mathrm{E}[c_{ij}] = (\lambda_j - 1)D_{ij-1} \\
+&amp; \mathrm{Var}(c_ij) = \varphi \lambda_j \mathrm{E}[c_{ij}] \\
+\end{split}
+\tag{10.5}
+\end{equation}\]</span>
+<p><strong>Cumulative claims</strong> distribution for <strong>OD Negative Binomial</strong>:</p>
+<span class="math display" id="eq:verall-odnb-cum">\[\begin{equation}
+\begin{split}
+&amp; D_{ij} \mid D_{ij-1}, \lambda_j, \varphi \sim  ODNB \\
+&amp; \mathrm{E}[c_{ij}] = \lambda_j D_{ij-1} \\
+&amp; \mathrm{Var}(c_ij) = \varphi (\lambda_j - 1) \mathrm{E}[c_{ij}] \\
+\end{split}
+\tag{10.6}
+\end{equation}\]</span>
+
+<div class="remark">
+<p><span class="remark"><em>Remark. </em></span> For both ODP and ODNB</p>
+<ul>
+<li><p>Use a quasi-likelihood approach so that the loss data are not restricted to the positive integers</p></li>
+<li><p>Reserve estimates are the same as Chainladder</p></li>
+<li><p>Both are subject to the positivity constraints</p>
+<ul>
+<li>It’s apparent in the ODNB formula that the column sums must be positive or else we’ll have development factor <span class="math inline">\(\lambda_j &lt; 1\)</span> <span class="math inline">\(\Rightarrow\)</span> Varaiance to be negative</li>
+</ul></li>
+<li><p>Advantages (over Kremer):</p>
+<ul>
+<li><p>Does not necessarily break down if there are negative incremental loss values</p>
+<ul>
+<li>In a strick sense, the model requires the incremental losses in a column to be positive otherwise it is more difficult to justify and interpret the inferences (but it doesn’t necessarily break the model)</li>
+</ul></li>
+<li><p>Gives the same reserve estimate as Chainladder</p></li>
+<li><p>More stable than the log-normal model of Kremer</p></li>
+</ul></li>
+<li><p>Verrall suggest that model can be specified for either incremental or cumulative loss</p></li>
+<li><p>Advantage of the NB:</p>
+<ul>
+<li>Form of the mean is the same as chainladder</li>
+</ul></li>
+<li>If we replace the NB and use normal instead we can deal with the problem of negative incremental claims (not discussed in paper)</li>
+</ul>
+</div>
+<p></p>
 </div>
 </div>
             </section>
@@ -212,8 +304,8 @@
           </div>
         </div>
       </div>
-<a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="stochastic-models-for-the-chainladder.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="incorporating-expert-opinion-about-the-development-factors.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

@@ -50,12 +50,18 @@ I. **Estimation of Policy Liabilities** (14 chapters)
     
     7. Siewert
     
+        *A Model for Reserving Workers Compensation High Deductibles - J. Siewert*
+    
     8. Sahasrabuddhe
+    
+        *Claims Development by Layer - R. Sahasrabuddhe*
     
 * Learning Objectives 5-10: **22-24%**
     
     9. Shapland (new 2017)
-
+    
+        *Using the ODP Bootstrap Model: A Practitioner's Guide*
+        
     10. Verall
     
     11. Meyers (new 2016)
