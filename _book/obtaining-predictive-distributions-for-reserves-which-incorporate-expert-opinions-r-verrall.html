@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-03-13">
+<meta name="date" content="2017-03-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -87,16 +87,18 @@
 <li class="chapter" data-level="10.2.1" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html#mack-1993-non-parametric"><i class="fa fa-check"></i><b>10.2.1</b> Mack-1993 (Non-parametric)</a></li>
 <li class="chapter" data-level="10.2.2" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html#over-dispersed-poisson-and-negative-binomial"><i class="fa fa-check"></i><b>10.2.2</b> Over-dispersed Poisson and Negative Binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html"><i class="fa fa-check"></i><b>10.3</b> Incorporating Expert Opinion about the Development Factors</a></li>
-<li class="chapter" data-level="10.4" data-path="model-specification.html"><a href="model-specification.html"><i class="fa fa-check"></i><b>10.4</b> Model Specification</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="model-specification.html"><a href="model-specification.html#chain-ladder-intervention"><i class="fa fa-check"></i><b>10.4.1</b> Chain Ladder Intervention</a></li>
-<li class="chapter" data-level="10.4.2" data-path="model-specification.html"><a href="model-specification.html#last-3-diagonals-for-ldfs"><i class="fa fa-check"></i><b>10.4.2</b> Last 3 Diagonals for LDFs</a></li>
-<li class="chapter" data-level="10.4.3" data-path="model-specification.html"><a href="model-specification.html#bf-intervention"><i class="fa fa-check"></i><b>10.4.3</b> BF Intervention</a></li>
+<li class="chapter" data-level="10.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html"><i class="fa fa-check"></i><b>10.3</b> Incorporating Expert Opinion about the Development Factors</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#reproduce-the-chainladder"><i class="fa fa-check"></i><b>10.3.1</b> Reproduce the Chainladder</a></li>
+<li class="chapter" data-level="10.3.2" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#intervention-in-a-development-factor-in-particular-rows"><i class="fa fa-check"></i><b>10.3.2</b> Intervention in a development factor in particular rows</a></li>
+<li class="chapter" data-level="10.3.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#intervention-in-using-l-years-average"><i class="fa fa-check"></i><b>10.3.3</b> Intervention in using L-years average</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="bayesian-model-for-bf-method.html"><a href="bayesian-model-for-bf-method.html"><i class="fa fa-check"></i><b>10.5</b> Bayesian Model for BF Method</a></li>
-<li class="chapter" data-level="10.6" data-path="stochastic-column-parameters.html"><a href="stochastic-column-parameters.html"><i class="fa fa-check"></i><b>10.6</b> Stochastic Column Parameters</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="stochastic-column-parameters.html"><a href="stochastic-column-parameters.html#calculate-gamma"><i class="fa fa-check"></i><b>10.6.1</b> Calculate Gamma</a></li>
+<li class="chapter" data-level="10.4" data-path="bayesian-model-for-the-bornhuetter-ferguson-method.html"><a href="bayesian-model-for-the-bornhuetter-ferguson-method.html"><i class="fa fa-check"></i><b>10.4</b> Bayesian Model for the Bornhuetter-Ferguson Method</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="bayesian-model-for-the-bornhuetter-ferguson-method.html"><a href="bayesian-model-for-the-bornhuetter-ferguson-method.html#calculation-example"><i class="fa fa-check"></i><b>10.4.1</b> Calculation Example</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="stoch-col-bf.html"><a href="stoch-col-bf.html"><i class="fa fa-check"></i><b>10.5</b> Stochastic Column Parameters for Bayesian BF</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="stoch-col-bf.html"><a href="stoch-col-bf.html#verrall-gamma-calc"><i class="fa fa-check"></i><b>10.5.1</b> Calculate Gamma</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>10.6</b> Implementation</a></li>
 <li class="chapter" data-level="10.7" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>10.7</b> Past Exam Questions</a><ul>
 <li class="chapter" data-level="10.7.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>10.7.1</b> Question Highlights</a></li>
 </ul></li>
@@ -144,13 +146,9 @@
             <section class="normal" id="section-">
 <div id="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions---r.-verrall" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</h1>
-<p>Know how the model is defined with ODP and stochastic row parameters</p>
-<p>Know the Bayesian BF calculation and assumptions</p>
-<ul>
-<li><p><span class="math inline">\(\operatorname{E}[c_{ij}] = Z_{ij} \overbrace{[(\lambda_j - 1) \underbrace{D_{ij-1}}_{\text{Actual up to }j-1}]}^{\text{CL Results}} + (1- Z_{ij}) \overbrace{[(\lambda_j - 1) \underbrace{M_i p_{j-1}}_{\text{Expected up to }j-1}]}^{\text{BF Results}}\)</span></p></li>
-<li><p><span class="math inline">\(Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}\)</span></p></li>
-</ul>
-<p>Know the Stochastic column parameters calculation</p> 
+<p>Know how the model is defined with ODP and ODNB and stochastic row parameters</p>
+<p>Know the Bayesian BF calculation and assumptions <a href="bayesian-model-for-the-bornhuetter-ferguson-method.html#eq:bayesian-bf-verrall">(10.11)</a> and <a href="bayesian-model-for-the-bornhuetter-ferguson-method.html#eq:verall-bf-cred-fact">(10.12)</a></p>
+<p>Know how to <a href="stoch-col-bf.html#stoch-col-bf">use</a> and <a href="stoch-col-bf.html#verrall-gamma-calc">calculate</a> the stochastic column parameters</p> 
 </div>
             </section>
 

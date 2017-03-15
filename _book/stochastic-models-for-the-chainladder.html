@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-03-13">
+<meta name="date" content="2017-03-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -87,16 +87,18 @@
 <li class="chapter" data-level="10.2.1" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html#mack-1993-non-parametric"><i class="fa fa-check"></i><b>10.2.1</b> Mack-1993 (Non-parametric)</a></li>
 <li class="chapter" data-level="10.2.2" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html#over-dispersed-poisson-and-negative-binomial"><i class="fa fa-check"></i><b>10.2.2</b> Over-dispersed Poisson and Negative Binomial</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html"><i class="fa fa-check"></i><b>10.3</b> Incorporating Expert Opinion about the Development Factors</a></li>
-<li class="chapter" data-level="10.4" data-path="model-specification.html"><a href="model-specification.html"><i class="fa fa-check"></i><b>10.4</b> Model Specification</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="model-specification.html"><a href="model-specification.html#chain-ladder-intervention"><i class="fa fa-check"></i><b>10.4.1</b> Chain Ladder Intervention</a></li>
-<li class="chapter" data-level="10.4.2" data-path="model-specification.html"><a href="model-specification.html#last-3-diagonals-for-ldfs"><i class="fa fa-check"></i><b>10.4.2</b> Last 3 Diagonals for LDFs</a></li>
-<li class="chapter" data-level="10.4.3" data-path="model-specification.html"><a href="model-specification.html#bf-intervention"><i class="fa fa-check"></i><b>10.4.3</b> BF Intervention</a></li>
+<li class="chapter" data-level="10.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html"><i class="fa fa-check"></i><b>10.3</b> Incorporating Expert Opinion about the Development Factors</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#reproduce-the-chainladder"><i class="fa fa-check"></i><b>10.3.1</b> Reproduce the Chainladder</a></li>
+<li class="chapter" data-level="10.3.2" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#intervention-in-a-development-factor-in-particular-rows"><i class="fa fa-check"></i><b>10.3.2</b> Intervention in a development factor in particular rows</a></li>
+<li class="chapter" data-level="10.3.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#intervention-in-using-l-years-average"><i class="fa fa-check"></i><b>10.3.3</b> Intervention in using L-years average</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="bayesian-model-for-bf-method.html"><a href="bayesian-model-for-bf-method.html"><i class="fa fa-check"></i><b>10.5</b> Bayesian Model for BF Method</a></li>
-<li class="chapter" data-level="10.6" data-path="stochastic-column-parameters.html"><a href="stochastic-column-parameters.html"><i class="fa fa-check"></i><b>10.6</b> Stochastic Column Parameters</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="stochastic-column-parameters.html"><a href="stochastic-column-parameters.html#calculate-gamma"><i class="fa fa-check"></i><b>10.6.1</b> Calculate Gamma</a></li>
+<li class="chapter" data-level="10.4" data-path="bayesian-model-for-the-bornhuetter-ferguson-method.html"><a href="bayesian-model-for-the-bornhuetter-ferguson-method.html"><i class="fa fa-check"></i><b>10.4</b> Bayesian Model for the Bornhuetter-Ferguson Method</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="bayesian-model-for-the-bornhuetter-ferguson-method.html"><a href="bayesian-model-for-the-bornhuetter-ferguson-method.html#calculation-example"><i class="fa fa-check"></i><b>10.4.1</b> Calculation Example</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="stoch-col-bf.html"><a href="stoch-col-bf.html"><i class="fa fa-check"></i><b>10.5</b> Stochastic Column Parameters for Bayesian BF</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="stoch-col-bf.html"><a href="stoch-col-bf.html#verrall-gamma-calc"><i class="fa fa-check"></i><b>10.5.1</b> Calculate Gamma</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>10.6</b> Implementation</a></li>
 <li class="chapter" data-level="10.7" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>10.7</b> Past Exam Questions</a><ul>
 <li class="chapter" data-level="10.7.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>10.7.1</b> Question Highlights</a></li>
 </ul></li>
@@ -223,7 +225,7 @@
 </div>
 <p></p>
 <p><strong>Alternative way</strong> of writing ODP</p>
-<span class="math display" id="eq:verall-odp">\[\begin{equation}
+<span class="math display" id="eq:verall-odp-2">\[\begin{equation}
 \begin{split}
 &amp; c_{ij} \mid x,y, \varphi \sim  ODP(x_i y_j, \varphi x_i y_j) \\
 &amp; \sum_{k=1}^n y_k = 1 \\
@@ -232,7 +234,7 @@
 &amp; y = \{y_1, y_2,...,y_n\} \:\: \text{col parameters}\\
 &amp; y_i \:\: \text{Proportions of ultimate losses that emerge in each development year}
 \end{split}
-\tag{10.3}
+\tag{10.4}
 \end{equation}\]</span>
 <p><em>Recall</em>:</p>
 <span class="math display" id="eq:verall-odp-recall">\[\begin{equation}
@@ -240,7 +242,7 @@
 &amp;X \sim \text{Poisson}(\mu) \\
 &amp;Y = \varphi X \sim ODP(\varphi \mu, \varphi^2 \mu)\\
 \end{split}
-\tag{10.4}
+\tag{10.5}
 \end{equation}\]</span>
 <ul>
 <li><p>Where <span class="math inline">\(\varphi\)</span> is typically &gt; 1 <span class="math inline">\(\therefore\)</span> over-dispersed</p></li>
@@ -254,11 +256,11 @@
 <p><strong>Incremental claims</strong> distribution for <strong>OD Negative Binomial</strong>:</p>
 <span class="math display" id="eq:verall-odnb">\[\begin{equation}
 \begin{split}
-&amp; c_{ij} \mid \lambda_j, \varphi \sim  ODNB \\
+&amp; c_{ij} \mid D_{ij-1}, \lambda_j, \varphi \sim  ODNB \\
 &amp; \mathrm{E}[c_{ij}] = (\lambda_j - 1)D_{ij-1} \\
 &amp; \mathrm{Var}(c_ij) = \varphi \lambda_j \mathrm{E}[c_{ij}] \\
 \end{split}
-\tag{10.5}
+\tag{10.6}
 \end{equation}\]</span>
 <p><strong>Cumulative claims</strong> distribution for <strong>OD Negative Binomial</strong>:</p>
 <span class="math display" id="eq:verall-odnb-cum">\[\begin{equation}
@@ -267,7 +269,7 @@
 &amp; \mathrm{E}[c_{ij}] = \lambda_j D_{ij-1} \\
 &amp; \mathrm{Var}(c_ij) = \varphi (\lambda_j - 1) \mathrm{E}[c_{ij}] \\
 \end{split}
-\tag{10.6}
+\tag{10.7}
 \end{equation}\]</span>
 
 <div class="remark">
