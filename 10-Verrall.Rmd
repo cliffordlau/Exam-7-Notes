@@ -386,7 +386,7 @@ Now consider the effect of using these prior distributions on the model for the 
 
 <!-- $$f(c_{ij} \mid y; data) = \int f(c_{ij}\mid x_i, y)\:f(x_i \mid y; data) dx_i$$ -->
 
-```{block2, type='rmdnote'}
+```{block, type='rmdnote'}
 Important formulas below
 ```
 

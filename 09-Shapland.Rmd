@@ -113,7 +113,7 @@ Some authors define a model as having a **defined structure** and **error distri
 However, using a less restrictive definition of a model as an **algorithm that produces a distribution**, bootstrapping would be defined as a model
 ```
 
-## Notations
+## Notations {#shapland-notations}
 
 ```{definition}
 Same notations as [Venter](#venter-def) for $n \times n$ triangle

@@ -1,27 +1,36 @@
 # Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
 
-Know how to read KS-test, $p-p$ plot and Freq vs Count plot
+Know how to read all the [test](#meyers-test): KS-test, $p-p$ plot and Freq vs Count plot
 
-Know the form of all the methods in the model
-
-### Types of Exam Questions
-
-n/a
+Know the form of all the methods in the [model](#model-summary-meyers)
 
 ## Introduction & Synopsis
 
-Estimate from Mack and ODP do not have enough variability
+Applying different estimate methods to 200 triangles and comparing the actual outcomes to the predicted distribution to see if the models accurately estimates the distribution of outcomes
 
-Incurred losses with variable row parameters and AY correlation $\rho$ is sufficient
+Models examined:
 
-Paid losses requires variable row parameters and change in settlement rate parameter $\gamma$
+* Estimate from Mack and ODP do not have enough variability
 
-Two reasons model doesn't fit:
+* Incurred losses with variable row parameters and AY correlation $\rho$ is sufficient
+
+* Paid losses requires variable row parameters and change in settlement rate parameter $\gamma$
+
+**Three reasons model doesn't predict well**:
 
 1) Insurance loss environment has experienced changes that are not observable at the valuation date
-2) Other models can validate
 
-If we review many models and none of them validate it gives 1) credence but does not confirm
+    i.e. There would be different "black swan" events that invalidate any attempt to model loss reserves
+
+2) There could be other models that better fit the existing data
+
+3) Data used to calibrate the model is missing crucial information needed to make a reliable prediction
+
+    e.g. Changes in the way the underlying business is conducted, like changes in claim processes of changes in the direct/ceded/assumed reinsurance composition of the claims triangle
+
+If we can find better model and/or better data we can rule out 1)
+
+* If we review many models and none of them validate it gives 1) credence but does not confirm
 
 ## Data Set
 
@@ -36,7 +45,9 @@ If we review many models and none of them validate it gives 1) credence but does
 1) Insurer with significant changes to their books over the exposure period would violate the assumptions of the model and should be excluded
 
     * **Solution**: Use consisteny of NEP and Net:Gross Premium to establish stability in book
+    
     * Use CoV to establish consistency
+    
     * Pick triangles with CoV below a threshold
 
 2) Need to avoid selecting datasets that best suit the model e.g. removing "outliers" from the data
@@ -47,54 +58,153 @@ Losses are considered fully developed at 10 years so in practice the paid and in
 
 ## Testing Procedure {#meyers-test}
 
-We are testing the procedure of each method and not the results of any one distribution generated from the method
+We are testing the **process** of each method and not the results of any one distribution generated from the method
 
-* Generate 50 sets of distribution and determine the actual percentile based on the predicted distribution
+* Since there's only 1 actual outcome for each triangle we test
 
-* The distribution of the 50 predicted percentiles ($p_i$) should follow a uniform distribution if the model is accurate
+* Focus on the process (the different methods) that gives us the distribution
 
-    * Expected percentiles $e_i$ run from $\frac{1}{n+1}$ to $\frac{n}{n+1}$
+* Compare the predicted percentiles (from the methods) against the expected percentile
 
-### Kolmogorov-Smirnov Test
+**Testing Procedure**
+
+* Given $N$ triangles and their actual outcome in 10 years
+
+* Generate $N$ sets of distribution (from the $N$ triangles using one of the methods) and determine the predicted percentile $p_i$ based on the predicted distribution
+
+    * i.e. see where the actual outcome lands on our predicted distribution
+
+* The distribution of the $N$ predicted percentiles $p_i$ should follow a uniform distribution if the model is accurate, so we rank them to form $\{p_i\}$
+
+$$\{p_i\} = \{p_1,...,p_n\}$$
+
+* The expected percentiles $\{e_i\}$ should run from $\frac{1}{n+1}$ to $\frac{n}{n+1}$
+    
+$$\{e_i\} = \left\{ \dfrac{1}{n+1}, \dfrac{2}{n+1},...,\dfrac{n}{n+1} \right\}$$
+
+### Kolmogorov-Smirnov Test {#meyers-ks-test}
+
+For the *KS* test we'll compare $\{ p_i \}$ with $\{ f_i \}$
+
+$$\{f_i\} = \left\{ \dfrac{1}{n}, \dfrac{2}{n},...,\dfrac{n}{n} \right\}$$
 
 $H_0$: Distribution of $p_i$ is uniform
 
-$D = \operatorname{max} \limits_i \mid p_i - e_i \mid$
+**Test statistics** for maximum difference between the predicted and expected percentiles
 
-* Maximum difference between the predicted and expected percentiles
+\begin{equation}
+  D = \max \limits_i \mid p_i - e_i \mid
+  (\#eq:ks-test-meyers-diff)
+\end{equation}
 
-Reject $H_0$ if $D > \dfrac{136}{\sqrt{n}}\%$ @5% confidence level
+**Reject** $H_0$ @5% confidence level if:
 
-* e.g. for $n = 50$: 19.2%; $n=200$: 9.6%
+\begin{equation}
+  D > \dfrac{136}{\sqrt{n}}\%
+  (\#eq:ks-test-meyers-criteria)
+\end{equation}
 
-Anderson-Darling focuses on the tail and failed all the models therefore we do not use it as it does not help in model comparison
+* i.e. For $n = 50$ $\Rightarrow$ 19.2%; $n=200$ $\Rightarrow$ 9.6%
+
+**Examples**
+
+Table: (\#tab:ks-test-example) Kolmogorov-Smirnov test example
+
+| $f_i$ | $p_i$ | $abs\{ p_i - f_i \}$ |
+|:---------:|:---------:|:------------------:|
+| (1) | (2) | (3) |
+
+1. Col (1): $\{f_i\} = \left\{ \dfrac{1}{n},...,\dfrac{n}{n}\right\}$
+
+2. Col (2): $\{p_i\}$ = $p_i$ from each realization of the triangles sorted in ascending order
+
+3. Col(3) = Absoluate difference between the first two columns
+
+4. $D$ is the maximum value from column (3)
+
+5. Compare $D$ with $\dfrac{136}{\sqrt{N}}$
+
+    If $D$ is less than the critical value we do not reject the $H_0$ that $\{ p_i \}$ is uniform
+
+```{remark}
+Technically based on Klugman you test against both:
+
+$$\{f^+_i\} = \left\{ \dfrac{1}{n}, \dfrac{2}{n},...,\dfrac{n}{n} \right\}$$
+
+and 
+
+$$\{f^-_i\} = \left\{ \dfrac{0}{n}, \dfrac{2}{1},...,\dfrac{n-1}{n} \right\}$$
+```
+
+Alternatively, we can use *Anderson-Darling* test that focuses on the tail
+
+* But it failed all the models therefore we do not use it as it does not help in model comparison
 
 ### *p-p* Plot
 
 We plot the $p-p$ plot with $e_i$ vs $p_i$ to diagnosis
 
-Light blueline is the critical value for a given $n$
+* Dark blueline is what is expected from uniform distribution
 
-![](figures/Exam-7-Notes-10.png)
+* Light blueline is the critical value for a given $n$ from the [*KS* test](#meyers-ks-test) above
+
+```{r meyers-p-p-plot, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='p-p plot'}
+knitr::include_graphics('figures/Exam-7-Notes-10.png')
+```
 
 * Model is too light tailed: Shallow slope near corner and steep in the middle
+
 * Model is too heavy tailed: Steep slope near corner and shallow in the middle
+
 * Model is biased upwards: Bow down
 
-### frequency vs percentile
+### Percentile Histogram
 
-![](figures/Exam-7-Notes-12.png)
+We plot a (flipped) histogram
 
-* Blue line is based on the uniform $e_i$ set at $\frac{n}{10}$ for the 10 deciles
+* y-axis being the predicted percentile
 
-## Models Comparison Summary
+* x-axis is the frequency
 
-![](figures/Exam-7-Notes-9.png)
+* Bins with width 0.1 (so 10 bins)
+
+* Verticle blue line represent the expected freqency based on uniform $\{e_i\}$
+
+    * Expected frequency = $\dfrac{\text{# of points}}{\text{# of bins}}$= $\dfrac{n}{10}$
+
+```{r meyers-freq-perc-plot, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Percentile Histogram'}
+knitr::include_graphics('figures/Exam-7-Notes-12.png')
+```
+
+## Models Comparison Summary {#model-summary-meyers}
+
+7 models:
+
+* [Mack](#meyers-mack): See [Mack-1994](#cl-ass)
+
+* [England & Verall ODP](#meyers-odp): See [Shapland](#odp-glm-para), but doesn't have the [residual adjustments](#odp-res)
+
+* [Leveled Chain-Ladder](#meyers-lcl) (LCL): Add variability to the row parameter
+
+* [Correlated Chain-Ladder](#meyers-ccl) (CCL): Add AY correlation $\rho$
+
+* [Leveled Incremental Trend](#meyers-lit) (LIT): Use skewed distribution and CY trend $\tau$
+
+* [Correlated Incremental Trend](#meyers-cit) (CIT): LIT with added AY correlation $rho$
+
+* [Changing Settlement Rate](#meyers-csr) (CSR): LCL with speed up claims closure $\gamma$
+
+```{r meyers-models-overview, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Overview of models'}
+knitr::include_graphics('figures/Exam-7-Notes-9.png')
+```
 
 * Mack is the only one that does not have a base form of $\mu_{wd} = \alpha_w + \beta_d$
+
 * ODP is the England & Verall Bootstrap
 
-### Mack Model
+### Mack Model {#meyers-mack}
+
+See procedure from Mack-1994 on the [log-normal CI](#mack-CI-methods)
 
 Variance is the product of mean in the cell and a constant that varies by column $\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
 
@@ -106,7 +216,7 @@ Light on both tail $\Rightarrow$ Does not have enough variability in it's predic
 
 Similar to ODP, biased high on personal auto and light left tail on WC
 
-### ODP Bootstrap
+### ODP Bootstrap {#meyers-odp}
 
 EV ODP forecasts log incremental losses $\Rightarrow$ Only suitable for paid losses
 
@@ -139,7 +249,7 @@ Data: Paid or incurred Triangle
 
 The posterior distribution of the parameters is expressed as simulated outputs (not closed form distribution)
 
-### Leveled Chain Ladder
+### Leveled Chain Ladder {#meyers-lcl}
 
 LCL with incurred data
 
@@ -171,7 +281,7 @@ Can compare the variability (s.d.) with Mack by plotting the log(s.d.) of the 2 
 
 Model still does not capture the tail appropriately
 
-### Correlated Chain-Ladder
+### Correlated Chain-Ladder {#meyers-ccl}
 
 Build upon the Leveled Chain-Ladder by adding $\rho$ to create correlation of losses in one AY and the **previous** AY
 
@@ -193,7 +303,7 @@ Results and k-s test show that this model is sufficient
 
 Worst than ODP and Mack, biased high for all lines
 
-### Changing Settlement Rate
+### Changing Settlement Rate {#meyers-csr}
 
 Based on LCL with $\gamma$ that allows for speed up in claim payments
 
@@ -253,7 +363,7 @@ Correlated Incremental Trend Model
 
 Changing Settlement Rate Model
 
-### Correlated Incremental Trend
+### Correlated Incremental Trend {#meyers-cit}
 
 Single CY trend parameter $\tau$
 
@@ -302,7 +412,7 @@ Strong negative correlation between trend $\tau$ and level parameters $\alpha_w 
 
 Model showed no improvement over Mack or ODP
 
-### Leveled Incremental Trend
+### Leveled Incremental Trend {#meyers-lit}
 
 Same as CIT but with $\rho = 0$
 
@@ -356,6 +466,163 @@ Results were for specific annual statement year 1997
 
 Could use more narrow prior to incorporate knowledge of insurer's business operation and obtain superior results
 
+## Appendix B: Intro to Bayesian MCMC Models
+
+```{block, type='rmdtip'}
+Just additional background information, not part of exam syllabus
+```
+
+```{definition, markov-chain-meyers}
+Markov Chain
+
+Random process where the transition to the next state depends only on its current state and not on prior states
+
+A Markov chain $X_t$ for $t=1,2,...$ is a sequence of vectors satisfying the property that
+
+$$\Pr(X_{t+1} = x \mid X_1 = x_1, X_2 = x_2,...,X_t = x_t) = \Pr(X_{t+1} \mid X_t = x_t)$$
+
+```
+
+Key properties of Markov chain ofr Bayesian MCMC
+
+* Ergodic class of Markov chain, for which vectors $\{X_t\}$ approaches a limiting distribution
+
+    As $T$ increases, the distribution of $\{X_t\}$ for all $t>T$ approaches a unique limiting distribution
+    
+* Markov chains used in Bayesian MCMC (e.g. Metropolis Hastings algorithm) are members of Ergodic class
+
+Let $x$ be a vector of observations and let $y$ be a vector of parameters in a model
+
+* In Bayesian MCMC, the Markov chain is defined in terms of the prior distribution $p(y)$ and the conditional distribution $f(x \mid y)$
+
+* The limiting distribtuion is the posterior distribution $f(y \mid x)$
+
+* If we let the chain run *long enough*, the chain will randomly visit all states with frequency that is proportional to their posterior probabilities
+
+The operative phrase above is **long enough**, which means in practice:
+
+1. Develop algorithm for obtaining a chain that is *long enough* as quickly as possible
+
+2. Develop criteria for being *long enough*
+
+### How Bayesian MCMC works in practice
+
+1. User specifies $p(y)$ and $f(x \mid y)$
+
+2. User selects a starting vector $x_1$
+
+    Using computer simulation, runs the Markov chain through a sufficiently large number, $t_1$, of iterations
+    
+    This first phase of the simulation is called the "adaptive" phase
+    
+    * The algorithm is automatically modified to increase its efficiency
+    
+    * See below on the [Metropolis-Hasting alogrithm](#meyers-mh-algo)
+    
+3. User runs an additional $t_2$ iterations
+
+    This is the "burn-in" phase
+    
+    $t_2$ is selected to be high enough so that a sample taken from subsequent $t_3$ periods represents the posterior distribution
+    
+4. User then runs an additional $t_3$ iterations and then takes a sample, $\{ x_t \}$ from the $(t_2 + 1)$^th^ step to the $(t_2 + t_3)$^th^ step to represent the posterior distribution $f(y \mid x)$
+
+5. From the sample, we can constructs various statistics of interest that are relevant to the problem addressed by the analysis
+
+### Metropolis-Hastings Algorithm {#meyers-mh-algo}
+
+Most common algorithms for generating Bayesian Markov chains are variants of the Metropolis-Hastings algorithm
+
+*Given*: $p(y)$ and $f(x \mid y)$
+
+The algorithm introduces a 3^rd^ distribution $J(y_t \mid y_{t-1})$:
+
+* "Proposal" or "jumping" distribution
+
+Given a parameter vector $y_{t-1}$ the algorithm generates a Markov chain by the following steps:
+
+1. Select a candiate value $y^*$, at random from the proposal distribution $J(y_t \mid y_{t-1})$
+
+2. Computer the ratio
+
+$$R \equiv R_1 \times R_2 = \dfrac{f(x \mid y^*) \cdot p(y^*)}{f(x \mid y_{t-1}) \cdot p(y_{t-1})} \times \dfrac{J(y_{t-1} \mid y^*)}{J(y^* \mid y_{t-1})}$$
+
+3. Select $U$ at random from $U(0,1)$ distribution
+
+4. If $U < R$ then set $y_t = y^*$, else $y_t = y_{t-1}$
+
+```{remark}
+
+
+* $R_1$ represents the ratio of the posterior probability of the proposal $y^*$ to the posterior probability of $y_{t-1}$
+
+* The higher the value of $R_1$, the more likely will be accepted into the chain
+
+* Regardless of how the proposal density distribution is chosen, the distribution of $y_t$ can be regarded as a sample from the posterior distribution, after a suitable burn-in period
+```
+
+**Example**
+
+* We can look at *trace plots* to look at the value of the parameter as the chain progresses
+
+* More on how it might break in the paper...
+
+* The key is to be able to scale the proposal distribution to minimize autocorrelation
+
+    * This is difficult with many parameters
+
+**Minimizing autocorrelation** in Metropolis-Hasting
+
+* A good statistics to look at is the acceptance rate of $y^*$
+
+* 50% is near optimal for a one parameter model and the rate decreases to about 25% as we increase the number of parameters in the model
+
+* There are methods to automatically adjust the proposal density function in Metropolis-Hastins
+
+* All these have been mechanized in software like JAGS and STAN
+
+* The phase of generating the Markov chain where the proposal density function is optimized is called the "adaptive" state (as discussed above)
+
+As models become more complex, adaptive MCMC may not be good enough to eliminate the autocorrelation
+
+* Theory on Markov chain convergence will still hold but there is no guarantee on how fast it will converge
+
+* If there is significance autocorrelation after the best scaling effort, the next best practice is to increase $t_3$ until there are sufficient number of ups and downs in the trace plot and then take a sample of the $(t_1 + t_2 +1)$^th^ to $(t_1 + t_2 + t_3)$^th^ iterations
+
+    * This process is known as "thinning"
+
+### Usecase Example for Actuaries
+
+Look at how the posterior distribution of $\mu$ might be of interest
+
+Consider a fitted lognormal distribution for a set of claims to determine the cost of an XS layer
+
+Given $\mu$ and $\sigma$ of the lognormal we can determine the cost of an XS layer (see Klugman, Panjer, and Willmot and the actuar package)
+
+As the posterior distribution of $\mu$ reflects the parameter risk in the model, it is also possible to reflect the parameter risk in the expected cost of a layer by calculating the expected cost of the layer for each $\mu$ in the simulated posterior distribution
+
+It is possible to simulate an actual outcome of a loss $X$ in a layer given $\mu$ in the posterior distribution
+
+The distribution $X$ calculated this way reflects both the parameter risk and process risk in the model
+
+### Bayesian interence Using Gibbs Sampling (BUGS)
+
+WinBUGS, JAGS are examples of software using Gibbs sampling
+
+Sample work process:
+
+1. Read data into R and call JAGS script with R package "runjags"
+
+2. Fetch the sample of the posterior back into R to calculate statistics of interest
+
+JAGS perform the Metropolis-Hasting algorithm we described above
+
+It also has a number of convergence diagnostics
+
 ## Past Exam Questions
+
+n/a
+
+### Question Highlights
 
 n/a

@@ -26,15 +26,15 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-03-14">
+<meta name="date" content="2017-03-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html">
-<link rel="next" href="stochastic-models-for-the-chainladder.html">
+<link rel="prev" href="using-the-odp-bootstrap-model-a-practitioners-guide.html">
+<link rel="next" href="shapland-notations.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -78,31 +78,65 @@
 <li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a></li>
 <li class="chapter" data-level="7" data-path="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><i class="fa fa-check"></i><b>7</b> A Model for Reserving Workers Compensation High Deductibles - J. Siewert</a></li>
 <li class="chapter" data-level="8" data-path="claims-development-by-layer-r-sahasrabuddhe.html"><a href="claims-development-by-layer-r-sahasrabuddhe.html"><i class="fa fa-check"></i><b>8</b> Claims Development by Layer - R. Sahasrabuddhe</a></li>
-<li class="chapter" data-level="9" data-path="using-the-odp-bootstrap-model-a-practitioners-guide.html"><a href="using-the-odp-bootstrap-model-a-practitioners-guide.html"><i class="fa fa-check"></i><b>9</b> Using the ODP Bootstrap Model: A Practitioner’s Guide</a></li>
-<li class="chapter" data-level="10" data-path="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><i class="fa fa-check"></i><b>10</b> Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</a><ul>
-<li class="chapter" data-level="10.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="introduction.html"><a href="introduction.html#verrall-notation"><i class="fa fa-check"></i><b>10.1.1</b> Notation</a></li>
+<li class="chapter" data-level="9" data-path="using-the-odp-bootstrap-model-a-practitioners-guide.html"><a href="using-the-odp-bootstrap-model-a-practitioners-guide.html"><i class="fa fa-check"></i><b>9</b> Using the ODP Bootstrap Model: A Practitioner’s Guide</a><ul>
+<li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="introduction.html"><a href="introduction.html#stochastic-vs-static-model"><i class="fa fa-check"></i><b>9.1.1</b> Stochastic vs Static Model</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html"><i class="fa fa-check"></i><b>10.2</b> Stochastic Models for the Chainladder</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html#mack-1993-non-parametric"><i class="fa fa-check"></i><b>10.2.1</b> Mack-1993 (Non-parametric)</a></li>
-<li class="chapter" data-level="10.2.2" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html#over-dispersed-poisson-and-negative-binomial"><i class="fa fa-check"></i><b>10.2.2</b> Over-dispersed Poisson and Negative Binomial</a></li>
+<li class="chapter" data-level="9.2" data-path="shapland-notations.html"><a href="shapland-notations.html"><i class="fa fa-check"></i><b>9.2</b> Notations</a></li>
+<li class="chapter" data-level="9.3" data-path="bootstrap-model.html"><a href="bootstrap-model.html"><i class="fa fa-check"></i><b>9.3</b> Bootstrap Model</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="bootstrap-model.html"><a href="bootstrap-model.html#odp-glm-para"><i class="fa fa-check"></i><b>9.3.1</b> GLM Parameters</a></li>
+<li class="chapter" data-level="9.3.2" data-path="bootstrap-model.html"><a href="bootstrap-model.html#fitted-tri-odp"><i class="fa fa-check"></i><b>9.3.2</b> Fitted Triangle</a></li>
+<li class="chapter" data-level="9.3.3" data-path="bootstrap-model.html"><a href="bootstrap-model.html#odp-res"><i class="fa fa-check"></i><b>9.3.3</b> Residuals</a></li>
+<li class="chapter" data-level="9.3.4" data-path="bootstrap-model.html"><a href="bootstrap-model.html#odp-dispersion"><i class="fa fa-check"></i><b>9.3.4</b> Dispersion Factor</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html"><i class="fa fa-check"></i><b>10.3</b> Incorporating Expert Opinion about the Development Factors</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#reproduce-the-chainladder"><i class="fa fa-check"></i><b>10.3.1</b> Reproduce the Chainladder</a></li>
-<li class="chapter" data-level="10.3.2" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#intervention-in-a-development-factor-in-particular-rows"><i class="fa fa-check"></i><b>10.3.2</b> Intervention in a development factor in particular rows</a></li>
-<li class="chapter" data-level="10.3.3" data-path="incorporating-expert-opinion-about-the-development-factors.html"><a href="incorporating-expert-opinion-about-the-development-factors.html#intervention-in-using-l-years-average"><i class="fa fa-check"></i><b>10.3.3</b> Intervention in using L-years average</a></li>
+<li class="chapter" data-level="9.4" data-path="odp-boot-sim.html"><a href="odp-boot-sim.html"><i class="fa fa-check"></i><b>9.4</b> Bootstrap Simulation Procedure</a></li>
+<li class="chapter" data-level="9.5" data-path="variations-on-the-odp-bootstrap.html"><a href="variations-on-the-odp-bootstrap.html"><i class="fa fa-check"></i><b>9.5</b> Variations on the ODP Bootstrap</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="variations-on-the-odp-bootstrap.html"><a href="variations-on-the-odp-bootstrap.html#bootstrapping-the-incurred-loss-triangle"><i class="fa fa-check"></i><b>9.5.1</b> Bootstrapping the Incurred Loss Triangle</a></li>
+<li class="chapter" data-level="9.5.2" data-path="variations-on-the-odp-bootstrap.html"><a href="variations-on-the-odp-bootstrap.html#bootstrapping-the-bf-and-cape-cod-method"><i class="fa fa-check"></i><b>9.5.2</b> Bootstrapping the BF and Cape Cod Method</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="bayesian-model-for-the-bornhuetter-ferguson-method.html"><a href="bayesian-model-for-the-bornhuetter-ferguson-method.html"><i class="fa fa-check"></i><b>10.4</b> Bayesian Model for the Bornhuetter-Ferguson Method</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="bayesian-model-for-the-bornhuetter-ferguson-method.html"><a href="bayesian-model-for-the-bornhuetter-ferguson-method.html#calculation-example"><i class="fa fa-check"></i><b>10.4.1</b> Calculation Example</a></li>
+<li class="chapter" data-level="9.6" data-path="GLM-bootstrap.html"><a href="GLM-bootstrap.html"><i class="fa fa-check"></i><b>9.6</b> GLM Bootstrap Model</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="GLM-bootstrap.html"><a href="GLM-bootstrap.html#GLM-variation-1"><i class="fa fa-check"></i><b>9.6.1</b> GLM Variation 1: Reduce Row Parameters</a></li>
+<li class="chapter" data-level="9.6.2" data-path="GLM-bootstrap.html"><a href="GLM-bootstrap.html#GLM-variation-2"><i class="fa fa-check"></i><b>9.6.2</b> GLM Variation 2: Reduce Column Parameters</a></li>
+<li class="chapter" data-level="9.6.3" data-path="GLM-bootstrap.html"><a href="GLM-bootstrap.html#GLM-variation-3"><i class="fa fa-check"></i><b>9.6.3</b> GLM Variation 3: Reduce Row and Column Parameters</a></li>
+<li class="chapter" data-level="9.6.4" data-path="GLM-bootstrap.html"><a href="GLM-bootstrap.html#GLM-variation-4"><i class="fa fa-check"></i><b>9.6.4</b> GLM Variation 4: Calendar Year Parameter</a></li>
+<li class="chapter" data-level="9.6.5" data-path="GLM-bootstrap.html"><a href="GLM-bootstrap.html#GLM-variation-5"><i class="fa fa-check"></i><b>9.6.5</b> GLM Variation 5: One Parameter for Each Dimension</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="stoch-col-bf.html"><a href="stoch-col-bf.html"><i class="fa fa-check"></i><b>10.5</b> Stochastic Column Parameters for Bayesian BF</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="stoch-col-bf.html"><a href="stoch-col-bf.html#verrall-gamma-calc"><i class="fa fa-check"></i><b>10.5.1</b> Calculate Gamma</a></li>
+<li class="chapter" data-level="9.7" data-path="odp-vs-glm-bootstrap-summary.html"><a href="odp-vs-glm-bootstrap-summary.html"><i class="fa fa-check"></i><b>9.7</b> ODP vs GLM Bootstrap Summary</a></li>
+<li class="chapter" data-level="9.8" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html"><i class="fa fa-check"></i><b>9.8</b> Practical Issues</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-1"><i class="fa fa-check"></i><b>9.8.1</b> Negative Incremental Values</a></li>
+<li class="chapter" data-level="9.8.2" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-2"><i class="fa fa-check"></i><b>9.8.2</b> Non-Zero Sum of Residuals</a></li>
+<li class="chapter" data-level="9.8.3" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-3"><i class="fa fa-check"></i><b>9.8.3</b> Using L-year Weighted Average</a></li>
+<li class="chapter" data-level="9.8.4" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-4"><i class="fa fa-check"></i><b>9.8.4</b> Missing Value</a></li>
+<li class="chapter" data-level="9.8.5" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-5"><i class="fa fa-check"></i><b>9.8.5</b> Outliers</a></li>
+<li class="chapter" data-level="9.8.6" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-6"><i class="fa fa-check"></i><b>9.8.6</b> Heteroskedasticity</a></li>
+<li class="chapter" data-level="9.8.7" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-7"><i class="fa fa-check"></i><b>9.8.7</b> Heteroecthesious Data</a></li>
+<li class="chapter" data-level="9.8.8" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-8"><i class="fa fa-check"></i><b>9.8.8</b> Exposure Adjustment</a></li>
+<li class="chapter" data-level="9.8.9" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-9"><i class="fa fa-check"></i><b>9.8.9</b> Parametric Bootstrapping</a></li>
+<li class="chapter" data-level="9.8.10" data-path="odp-prac-issues.html"><a href="odp-prac-issues.html#prac-issue-10"><i class="fa fa-check"></i><b>9.8.10</b> Fitting a Distribution to ODP Bootstrap Residuals</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>10.6</b> Implementation</a></li>
-<li class="chapter" data-level="10.7" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>10.7</b> Past Exam Questions</a><ul>
-<li class="chapter" data-level="10.7.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>10.7.1</b> Question Highlights</a></li>
+<li class="chapter" data-level="9.9" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html"><i class="fa fa-check"></i><b>9.9</b> Diagnostics</a><ul>
+<li class="chapter" data-level="9.9.1" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#odp-res-diag"><i class="fa fa-check"></i><b>9.9.1</b> Residual Graphs</a></li>
+<li class="chapter" data-level="9.9.2" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#odp-norm-test"><i class="fa fa-check"></i><b>9.9.2</b> Normality Test</a></li>
+<li class="chapter" data-level="9.9.3" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#odp-diag-outlier"><i class="fa fa-check"></i><b>9.9.3</b> Outlier</a></li>
+<li class="chapter" data-level="9.9.4" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#odp-diag-para"><i class="fa fa-check"></i><b>9.9.4</b> Parameter Adjustments</a></li>
+<li class="chapter" data-level="9.9.5" data-path="odp-diagnostics.html"><a href="odp-diagnostics.html#odp-diag-results-review"><i class="fa fa-check"></i><b>9.9.5</b> Review Model Results</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="using-multiple-models.html"><a href="using-multiple-models.html"><i class="fa fa-check"></i><b>9.10</b> Using Multiple Models</a><ul>
+<li class="chapter" data-level="9.10.1" data-path="using-multiple-models.html"><a href="using-multiple-models.html#additional-useful-output"><i class="fa fa-check"></i><b>9.10.1</b> Additional Useful Output</a></li>
+<li class="chapter" data-level="9.10.2" data-path="using-multiple-models.html"><a href="using-multiple-models.html#estimated-cash-flow-results"><i class="fa fa-check"></i><b>9.10.2</b> Estimated Cash Flow Results</a></li>
+<li class="chapter" data-level="9.10.3" data-path="using-multiple-models.html"><a href="using-multiple-models.html#estimated-ultimate-loss-ratio-results"><i class="fa fa-check"></i><b>9.10.3</b> Estimated Ultimate Loss Ratio Results</a></li>
+<li class="chapter" data-level="9.10.4" data-path="using-multiple-models.html"><a href="using-multiple-models.html#estimated-unpaid-claims-runoff-results"><i class="fa fa-check"></i><b>9.10.4</b> Estimated Unpaid Claims Runoff Results</a></li>
+<li class="chapter" data-level="9.10.5" data-path="using-multiple-models.html"><a href="using-multiple-models.html#distribution-graphs"><i class="fa fa-check"></i><b>9.10.5</b> Distribution Graphs</a></li>
+<li class="chapter" data-level="9.10.6" data-path="using-multiple-models.html"><a href="using-multiple-models.html#correlation"><i class="fa fa-check"></i><b>9.10.6</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.11" data-path="model-testing.html"><a href="model-testing.html"><i class="fa fa-check"></i><b>9.11</b> Model Testing</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="model-testing.html"><a href="model-testing.html#future-research"><i class="fa fa-check"></i><b>9.11.1</b> Future Research</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>9.12</b> Past Exam Questions</a><ul>
+<li class="chapter" data-level="9.12.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>9.12.1</b> Question Highlights</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><i class="fa fa-check"></i><b>10</b> Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</a></li>
 <li class="chapter" data-level="11" data-path="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html"><a href="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html"><i class="fa fa-check"></i><b>11</b> Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer</a></li>
 <li class="chapter" data-level="12" data-path="a9-a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><a href="a9-a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><i class="fa fa-check"></i><b>12</b> A9 A Framework for Assessing Risk Margins - K. Marshall et al.</a></li>
 <li class="chapter" data-level="13" data-path="reinsurance-loss-reserving-patrik.html"><a href="reinsurance-loss-reserving-patrik.html"><i class="fa fa-check"></i><b>13</b> Reinsurance Loss Reserving - Patrik</a></li>
@@ -145,68 +179,77 @@
 
             <section class="normal" id="section-">
 <div id="introduction" class="section level2">
-<h2><span class="header-section-number">10.1</span> Introduction</h2>
-<p>Uses Bayesian techniques to allow incorporation of expert opinion and also maintain the integrity of the prediction error</p>
+<h2><span class="header-section-number">9.1</span> Introduction</h2>
+<p>Paper focus on <strong>over-dispersed Poisson</strong> (ODP) <strong>bootstrap</strong></p>
 <ul>
-<li><p>i.e. how expert opinion from sources other than the specific data set under consideration can be incorporated into the predictive distributions of the reserves</p></li>
-<li><p>Take into account prior knowledge in setting reserves</p>
-<p>e.g. Adjusting data to reflect changes in benefits or claims handling, or select <em>L</em>-year average LDFs</p></li>
-<li><p>Calculating prediction error using prior knowledge</p></li>
-<li><p>Use Bayesian to take into account our a-priori and the strength of that a-priori (credibility)</p></li>
+<li><p><em>Incremental losses</em> are modeled as ODP random variable</p></li>
+<li><p>Goal is to generate a distribution of possible outcomes</p></li>
 </ul>
-<p>Paper focus on use of a-priori knowledge for LDF selection and <em>BF</em> Method</p>
-<p>Development of MCMC techniques has made Bayesian methods much easier</p>
+<div class="rmdtip">
+<p>
+<em>Just FYI, not important for exam</em>
+</p>
+<p>
+Other papers on bootstrap
+</p>
 <ul>
-<li><p>Makes it easier to find the <strong>posterior distributions</strong> for future observations (defining the Bayesian model is always easy)</p></li>
-<li><p>MCMC breaks down the simulation process into a number of simulations that are easy to carry out</p>
-<p><span class="math inline">\(\therefore\)</span> This solves the common Bayesian problem of difficulty in finding the posterior distribution (as they can be multidimensional)</p></li>
-<li><p>MCMC doesn’t simulate all the parameters at once, it use the conditional distribution of each parameter, given all the others</p>
-<p><span class="math inline">\(\therefore\)</span> Reducing the simulation to a univariate distribution</p></li>
-<li><p>Markov chain is formed because each parameter is considered in turn, and it is a simulation-based method</p>
-<p><span class="math inline">\(\therefore\)</span> MCMC</p></li>
-</ul>
-<div id="verrall-notation" class="section level3">
-<h3><span class="header-section-number">10.1.1</span> Notation</h3>
-<p>For a <span class="math inline">\(n \times n\)</span> triangle</p>
-<p><strong>Claims</strong></p>
-<ul>
-<li>Incremental claims for AY <span class="math inline">\(i\)</span> and age <span class="math inline">\(j\)</span>: <span class="math inline">\(c_{ij}\)</span></li>
-</ul>
-<p><span class="math display">\[\{ c_{ij} \: : \: j=1,...,n-i+1 \: ; \: i = 1,...,n \}\]</span></p>
-<ul>
-<li>Cumulative claims</li>
-</ul>
-<p><span class="math display">\[D_{ij} = \sum_{k=1}^j c_{ik}\]</span></p>
-<ul>
-<li>Ultimate losses</li>
-</ul>
-<p><span class="math display">\[D_{in} = \sum_{k=1}^n c_{ik}\]</span></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> We only consider forecasting losses up to the latest development year <span class="math inline">\(n\)</span></p>
-<ul>
-<li>It is possible to extend this to allow a tail factor but not in this paper
-</div>
+<li>
+<p>
+Statistics: Bradley Efron (1979)
+</p>
+</li>
+<li>
+<p>
+Actuarial: England &amp; Verrall (1999; 2002), Pinheiro, et al. (2003), Kirschner, et al. (2008)
+</p>
 </li>
 </ul>
-<p><strong>Row Parameters</strong></p>
+</div>
+<p>Practical <strong>motivation</strong> for modeling loss distribution</p>
 <ul>
-<li>Expected ultimate losses for AY <span class="math inline">\(i\)</span>: <span class="math inline">\(x_i\)</span></li>
-</ul>
-<p><span class="math display">\[x_i = \mathrm{E}[D_{in}]\]</span></p>
-<p><strong>Column Parameters</strong></p>
+<li><p>Definition of actuarial estimate in ASOP 43 can be based on a first moment from a distribution</p>
 <ul>
-<li><p>Expected % reported in each period: <span class="math inline">\(y_j\)</span></p>
-<p><span class="math inline">\(\sum y_i = 1\)</span></p></li>
-<li><p>Expected reported to date: <span class="math inline">\(p_j\)</span></p>
-<p><span class="math inline">\(\sum_{k=1}^j y_k\)</span></p></li>
-<li><p>Expected development from <span class="math inline">\(D_{ij-1}\)</span> to <span class="math inline">\(D_{ij}\)</span>: <span class="math inline">\(\lambda_j\)</span> (<span class="math inline">\(= \dfrac{p_j}{p_{j-1}}\)</span>?)</p></li>
+<li>While ASOP 36 (SAO) focus on deterministic point estimates</li>
+</ul></li>
+<li><p>SEC is looking for more information on reserving risk in the 10-K</p></li>
+<li><p>Rating agencies are building dynamic risk models and welcome actuary input</p></li>
+<li><p>Companies that use dynamic risk models for internal risk management need unpaid claim distributions</p></li>
+<li><p>SII and IFAS are moving towards unpaid claim distribution</p></li>
 </ul>
-<p><span class="math display">\[\{\lambda_j \: : \: j = 2 ,...,n\}\]</span></p>
+<p><strong><em>Advantages</em></strong> of bootstrap</p>
 <ul>
-<li>Weighted average LDFs: <span class="math inline">\(\hat{\lambda}_j\)</span></li>
+<li><p>Generates a distribution of the estimate of unpaid claims</p></li>
+<li><p>Can be tailored to <a href="odp-diagnostics.html#odp-diagnostics">statistical features</a> of our data</p></li>
+<li><p>Reflects that loss dist<sup>n</sup> are usually skewed to the right</p></li>
 </ul>
-<p><span class="math display">\[\hat{\lambda}_j = \dfrac{\sum_{i=1}^{n-j+1} D_{ij}}{\sum_{i=1}^{n-j+1} D_{ij-1}}\]</span></p>
+<p><strong><em>Disadvantages</em></strong> of bootstrap</p>
+<ul>
+<li>Takes more time to create, but okay once set up</li>
+</ul>
+<div id="stochastic-vs-static-model" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Stochastic vs Static Model</h3>
+<p>ODP bootstrap is a specific form of GLM</p>
+<p><strong>Benefit</strong> of GLM: It can be specifically tailored to the statistical features found in the data</p>
+<ul>
+<li>Contrast with algorithms that force the data to be fit to a static model (fig. <a href="introduction.html#fig:stoc-vs-stat">9.1</a>)</li>
+</ul>
+<div class="figure"><span id="fig:stoc-vs-stat"></span>
+<img src="figures/Exam-7-Notes-14.png" alt="Stochastic vs Static Model Diagram" width="50%" /><img src="figures/Exam-7-Notes-15.png" alt="Stochastic vs Static Model Diagram" width="50%" />
+<p class="caption">
+Figure 9.1: Stochastic vs Static Model Diagram
+</p>
+</div>
+<div class="rmdtip">
+<p>
+<em>Just FYI, not important for exam</em>
+</p>
+<p>
+Some authors define a model as having a <strong>defined structure</strong> and <strong>error distribution</strong>, so under this more restrictive definition bootstrapping would be considered to be a <em>method</em> or <em>algorithm</em>
+</p>
+<p>
+However, using a less restrictive definition of a model as an <strong>algorithm that produces a distribution</strong>, bootstrapping would be defined as a model
+</p>
+</div>
 </div>
 </div>
             </section>
@@ -214,8 +257,8 @@
           </div>
         </div>
       </div>
-<a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="stochastic-models-for-the-chainladder.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="using-the-odp-bootstrap-model-a-practitioners-guide.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="shapland-notations.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -243,7 +286,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/10-Verrall.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/09-Shapland.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -425,7 +425,7 @@ Also note that if we believe the claims development have stopped at some age $j$
 Finally, you can also fit a logarithmic curve to the $\alpha^2_k$'s to estimate $\alpha^2_{I-1}$
 ```
 
-## Confidence Intervals
+## Confidence Intervals {#mack-CI-methods}
 
 Can have different assumptions on the distribution of the unpaid
 
