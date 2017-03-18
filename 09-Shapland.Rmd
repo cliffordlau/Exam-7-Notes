@@ -399,7 +399,7 @@ GLM model = Chainladder w/ volume-weighted averages when:
 
 ### Residuals {#odp-res}
 
-```{block2, type='rmdnote'}
+```{block, type='rmdnote'}
 Important formulas below
 ```
 
