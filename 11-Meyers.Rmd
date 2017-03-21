@@ -44,7 +44,7 @@ If we can find better model and/or better data we can rule out 1)
 
 1) Insurer with significant changes to their books over the exposure period would violate the assumptions of the model and should be excluded
 
-    * **Solution**: Use consisteny of NEP and Net:Gross Premium to establish stability in book
+    * **Solution**: Use consisteny of *NEP** and **Net:Gross Premium** to establish stability in book
     
     * Use CoV to establish consistency
     
@@ -65,6 +65,8 @@ We are testing the **process** of each method and not the results of any one dis
 * Focus on the process (the different methods) that gives us the distribution
 
 * Compare the predicted percentiles (from the methods) against the expected percentile
+
+* Typically we can compare distributions by comparing the density function, but we can not in this case because 1) We have a small data sets (50 points) 2) Each data point comes from a different distribution
 
 **Testing Procedure**
 
@@ -106,7 +108,7 @@ $H_0$: Distribution of $p_i$ is uniform
 
 * i.e. For $n = 50$ $\Rightarrow$ 19.2%; $n=200$ $\Rightarrow$ 9.6%
 
-**Examples**
+**Example**
 
 Table: (\#tab:ks-test-example) Kolmogorov-Smirnov test example
 
@@ -118,7 +120,7 @@ Table: (\#tab:ks-test-example) Kolmogorov-Smirnov test example
 
 2. Col (2): $\{p_i\}$ = $p_i$ from each realization of the triangles sorted in ascending order
 
-3. Col(3) = Absoluate difference between the first two columns
+3. Col(3) = Absolute difference between the first two columns
 
 4. $D$ is the maximum value from column (3)
 
@@ -158,6 +160,12 @@ knitr::include_graphics('figures/Exam-7-Notes-10.png')
 
 * Model is biased upwards: Bow down
 
+    * Biased upwards: predicted mean > true mean while the s.d. is correct
+    
+* If we look at lognormal data fitted to normal, we'll see a mix of light and heavy tailed model
+
+    * i.e. The right tail will be too light so we'll see a shallow slope in the right and the left tail will be too light so we'll see a steep slope at the left
+
 ### Percentile Histogram
 
 We plot a (flipped) histogram
@@ -168,7 +176,7 @@ We plot a (flipped) histogram
 
 * Bins with width 0.1 (so 10 bins)
 
-* Verticle blue line represent the expected freqency based on uniform $\{e_i\}$
+* Vertical blue line represent the expected frequency based on uniform $\{e_i\}$
 
     * Expected frequency = $\dfrac{\text{# of points}}{\text{# of bins}}$= $\dfrac{n}{10}$
 
@@ -176,13 +184,21 @@ We plot a (flipped) histogram
 knitr::include_graphics('figures/Exam-7-Notes-12.png')
 ```
 
-## Models Comparison Summary {#model-summary-meyers}
+## Models Overview {#model-summary-meyers}
 
-7 models:
+Starting point for the Bayesian models were to relax some of the [assumptions of the Mack method](#cl-ass):
 
-* [Mack](#meyers-mack): See [Mack-1994](#cl-ass)
+* [LCL](#meyers-lcl): Relaxes the first assumption where Mack treats loss to date as a fixed level parameters
 
-* [England & Verall ODP](#meyers-odp): See [Shapland](#odp-glm-para), but doesn't have the [residual adjustments](#odp-res)
+* [CCL](#meyers-ccl): Builds on top of LCL and allows for AY correlations, which relaxes the 2^nd^ assumption of Mack
+
+Prior distributions
+
+* Paper uses diffuse prior for the most part since the author doesn't have direct knowledge of the business
+
+* Given more direct knowledge of the underlying business, we can specify more restrictive priors for $\{\alpha_w\}$ and $logelr$
+
+**Bayesian Models**:
 
 * [Leveled Chain-Ladder](#meyers-lcl) (LCL): Add variability to the row parameter
 
@@ -198,15 +214,29 @@ knitr::include_graphics('figures/Exam-7-Notes-12.png')
 knitr::include_graphics('figures/Exam-7-Notes-9.png')
 ```
 
+**Non-Bayesian Models**:
+
+* [Mack](#meyers-mack): See [Mack-1994](#cl-ass)
+
+* [England & Verall ODP](#meyers-odp): See [Shapland](#odp-glm-para), but doesn't have the [residual adjustments](#odp-res)
+
+```{remark}
+Non-Bayesian Models
+
 * Mack is the only one that does not have a base form of $\mu_{wd} = \alpha_w + \beta_d$
 
 * ODP is the England & Verall Bootstrap
+```
+
+## Non-Bayesian Model
+
+This paper doesn't go into much details about them, they are mostly presented to demonstrate their shortcomings and as a motivation to develop the Bayesian methods
 
 ### Mack Model {#meyers-mack}
 
 See procedure from Mack-1994 on the [log-normal CI](#mack-CI-methods)
 
-Variance is the product of mean in the cell and a constant that varies by column $\operatorname{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
+Recall the [Chainladder assumptions](#cl-ass)
 
 **Incurred**
 
@@ -214,164 +244,370 @@ Light on both tail $\Rightarrow$ Does not have enough variability in it's predic
 
 **Paid**
 
-Similar to ODP, biased high on personal auto and light left tail on WC
+Similar to ODP, **biased high** on personal auto and light left tail on WC
 
 ### ODP Bootstrap {#meyers-odp}
 
-EV ODP forecasts log incremental losses $\Rightarrow$ Only suitable for paid losses
+England & Verall ODP forecasts log incremental losses $\Rightarrow$ Only suitable for paid losses
 
 * Can handle occasional negative losses as long as the $\sum$ column is positive
 
-Same procedure as Shapland Leong paper
+Same procedure as Shapland paper but without all the [residual adjustments](#odp-res)
 
-Overall shows biased high
+Overall shows **biased high**
 
 ## Bayesian Models (Cumulative)
 
-**Inputs**
+***Inputs***
 
-Prior distribution is needed for each parameters
+1. **Prior distribution** is needed for each parameters (similar to [Verall](#Verall-intro))
 
-* **Wide** priors (diffuse)
-* **Narrow** priors: Use expert knowledge in selecting mean and variance of the parameters
+    * **Wide** priors (diffuse)
 
-Parameters:
+    * **Narrow** priors: Use expert knowledge in selecting mean and variance of the parameters
 
-* $\alpha_w$: row parameters
-* $\beta_d$: column parameters
-* $\sigma_d$: variance parameters (mostly constant across columns)
-* $\tau$: trend
-* $\gamma$: change in closure rate
+2. **Parameters**:
 
-Data: Paid or incurred Triangle
+    * $\alpha_w$: row parameters
+    
+    * $\beta_d$: column parameters
+    
+    * $\sigma_d$: variance parameters (mostly constant across columns)
+    
+    * $\tau$: trend
+    
+    * $\gamma$: change in closure rate
+    
+3. **Data**: Paid or incurred Triangle
 
-**Output**
+***Output***
 
-The posterior distribution of the parameters is expressed as simulated outputs (not closed form distribution)
+* The **posterior distribution** of the **parameters** is expressed as *simulated outputs* (not closed form distribution)
 
 ### Leveled Chain Ladder {#meyers-lcl}
 
-LCL with incurred data
+**Data**: Cumulative incurred
 
-**Multiplicative** model (based on additive exponential)
+***Model Specification***
 
-Each cell is $e^{\mu_{wd}} = e^{\alpha_w}e^{\beta_d}$
+$C_{wd}$ has a **lognormal distribution** with log means $\mu_{wd}$ and log standard deviation $\sigma_d$
 
-* Log mean of each cell is $\mu_{wd} = \alpha_w + \beta_d$
+\begin{equation}
+  C_{wd} \sim \ln \mathcal{N}(\mu_{wd} , \sigma_d)
+  (\#eq:meyers-loss-dist-lcl)
+\end{equation}
 
-* $\beta_{10} = 0$ so we have 100% at 10 years
+\begin{equation}
+  \mu_{wd} = \alpha_w + \beta_d
+  (\#eq:meyers-lcl-mean)
+\end{equation}
 
-* $\beta_d < 0$ most of the time, represents % paid to date
+```{remark}
+$\alpha_w$
 
-Uses **cumulative** data $C_{wd}$
-
-Same variance parameter ($\sigma_d$) for each column of *cumulative* loss
-
-$\hookrightarrow$ Highest variability @ early ages $\sigma_1 > \sigma_2 > \cdots > \sigma_{10}$
-
-* Variance varies by column only (not by AYs)
-
-$\alpha_w$ is a random variable
+* Is a random variable
 
 * Not value on the diagonal (incurred to date)
+
 * Model select an $\alpha_w$ for each instance of the simulation based on wide priors
+
 * Main feature of this model for adding variability
+```
 
-Can compare the variability (s.d.) with Mack by plotting the log(s.d.) of the 2 models
+```{remark}
+$\beta_d$
 
-Model still does not capture the tail appropriately
+* $\beta_{10} = 0$ so we have 100% at 10 years and not overdetermining the model
+
+* $\beta_d < 100\%$ most of the time, represents % paid (incurred) to date
+```
+
+```{remark}
+$\sigma_d$
+
+* Subject to the following constraints:
+
+\begin{equation}
+  \sigma_1 > \sigma_2 > \cdots > \sigma_{10}
+  (\#eq:meyers-sigm-dist-lcl)
+\end{equation}
+
+* Highest variability @ early ages
+
+* Variance only varies by column ($d$) (not by AYs)
+
+* Since as $d$ increases there are fewer claims that are open and subject to random outcomes
+```
+
+**Priors** for $\{\alpha_w\}$, $\{\sigma_d\}$, and $\{\beta_d\}$
+
+* *Wide prior* distribution (all you need to know for exam, below is just FYI)
+
+* Each $\alpha_w \sim \mathcal{N}(\ln(Premium_w) + logelr, \sqrt{10})$
+
+    * $logelr \sim U(-1,0.5)$
+    
+    * JAGS expression for a normal distribution uses a precision parameter equal to the reciprocal of the variance $\Rightarrow$ $\sqrt{10}$ corresponds to a low precision of 0.1
+    
+* Each $\beta_d \sim U(-5,5)$ for $d<10$
+
+* Each $\sigma_d = \sum_{i=d}^{10} \alpha_i$ where $\alpha_i \sim U(0,1)$
+
+***Test Results***
+
+* Can compare the variability (s.d.) with Mack by plotting the log(s.d.) of the 2 models
+
+* Model still does not capture the tail appropriately
 
 ### Correlated Chain-Ladder {#meyers-ccl}
 
-Build upon the Leveled Chain-Ladder by adding $\rho$ to create correlation of losses in one AY and the **previous** AY
+Build upon the [Leveled Chain-Ladder](#meyers-lcl) by adding $\rho$ to create correlation of losses in one AY and the **previous** AY
 
-Uses **cumulative** data $C_{wd}$
+**Data**: Cumulative incurred & paid
 
-$\mu_{wd} = \alpha_w + \beta_p + \rho \cdot \left[ \operatorname{ln}\left(C_{w-1, d}\right) - \mu_{w-1,d} \right]$
+***Model Specification***
 
-* Higher losses in one row $\rightarrow$ higher expected losses in the following row
+$C_{wd}$ follows a lognormal distribution similar to CCL \@ref(eq:meyers-loss-dist-lcl), but with log means:
+
+\begin{equation}
+\mu_{wd} =
+\begin{cases}
+\alpha_1 + \beta_d & \text{if } w = 1\\
+\alpha_w + \beta_d + \rho \cdot \left[ \mathrm{ln}\left(C_{w-1, d}\right) - \mu_{w-1,d} \right] & \text{if } w > 1\\
+\end{cases}
+(\#eq:meyers-ccl-mean)
+\end{equation}
+
+```{remark}
+$\rho \cdot \left[ \mathrm{ln}\left(C_{w-1, d}\right) - \mu_{w-1,d} \right]$
+
+* If parameters $\{\alpha_w\}$, $\{\alpha_d\}$ and $\rho$ are given:
+
+    $\rho$ is the correlation coefficient between $\ln(C_{w-1,d})$ and $\ln(C_{wd})$
+
+* $\rho$ is applied to the difference between the log of actual losses and the log mean of the expected loss from the prior AY
+
+* Higher losses in one row $\Rightarrow$ higher expected losses in the following row
+
+* The correlation $\rho$ here is what drives the additional variability
+
+* Model reduces to LCL when $\rho = 0$
+```
+
+$C_{wd}$ has the same distribution as in LCL
+
+**Priors** for $\{\alpha_w\}$, $\{\sigma_d\}$, $\{\beta_d\}$ and $\rho$
 
 * Prior is still wide priors
 
-* The correlation here is what drives the additional variability
+* $\{\alpha_w\}$, $\{\sigma_d\}$, $\{\beta_d\}$ has the same distribution as in LCL
+
+* $\rho \sim U(-1 ,1)$, the full permissible range
+
+***Test Results***
 
 **Incurred**
 
-Results and k-s test show that this model is sufficient
+Results and K-S test show that this model is sufficient
 
 **Paid**
 
 Worst than ODP and Mack, biased high for all lines
 
+#### Predictive Distribution Simulation Process Example
+
+```{block, type='rmdnote'}
+This section is still work in progress, and it is not important for the exam
+```
+
+Predictive distribution of outcomes is a mixed distribution
+
+* Mixing is specified by the posterior distribution of parameters
+
+Below is a summary for the CCL R script provided by Meyers
+
+Predictive distribution for $\sum_{w=1}^{10} C_{w,10}$ (ultimate loss for all AYs @ age 10) is generated by a simulation
+
+For each of parameter set $\{\alpha_w\}$, $\{\sigma_d\}$, $\{\beta_d\}$ and $\{\rho\}$, start with the given $C_{1,10}$ and calculate the mean $\mu_{2,10}$. Then simulate $C_{2,10}$ from a lognormal distribution with log mean $\mu_{2,10}$ and log standard deviation $\sigma_{10}$
+
+Similarly, use the result of this simulation to simulate $C_{2,10},...C_{10,10}$ Then form the sum $C_{1,10} + \sum_{w=2}^{10} C_{w,10}$
+
 ### Changing Settlement Rate {#meyers-csr}
 
-Based on LCL with $\gamma$ that allows for speed up in claim payments
+Based on LCL with $\gamma$ that allows for speed up in claim payments (likely from claims being reported and settled faster due to technology)
 
-Uses **cumulative** losses
+**Data**: Cumulative paid
 
-Logmean for each cell:  
-$\mu_{wd} = \alpha_w + \left[ \beta_d \cdot (1-\gamma)^{w-1}\right]$
+***Model Specification***
 
-$\gamma >0$ reflects increase in payment speed as $(1-\gamma)^{w-1} < 1$
+$C_{wd}$ follows a lognormal distribution similar to CCL \@ref(eq:meyers-loss-dist-lcl), but with log means:
 
-$\gamma$ has less impact further out in the tail as there are less payments happening out there
+\begin{equation}
+\mu_{wd} = \alpha_w + \left[ \beta_d \cdot (1-\gamma)^{w-1}\right]
+(\#eq:meyers-csr-mean)
+\end{equation}
 
-Model fits one $\gamma$ for the whole triangle
+```{remark}
+$\gamma$
 
-**Results**
+* $\gamma >0$ reflects increase in payment speed as $(1-\gamma)^{w-1} < 1$
+
+    * A positive $\gamma$ will cause $\beta_d \cdot (1 - \gamma)^{w-1}$ to increase with $w$ $\Rightarrow$ indicate speedup in claim settlement
+    
+    * Negative $\gamma$ will indicate a slow down in claim settlement rate
+
+* $\gamma$ has less impact further out in the tail as there are less payments happening out there
+
+* Model fits one $\gamma$ for the whole triangle
+```
+
+**Priors** for $\{\alpha_w\}$, $\{\sigma_d\}$, $\{\beta_d\}$ and $\rho$
+
+* *Wide prior* similar to LCL and CCL
+
+* $\gamma \sim \mathcal{N}(0, 0.025)
+
+***Test Results***
 
 Overall fits well, slightly biased high on Personal Auto but is a big improvement over the other models
 
 ## Skewed Distribution
 
-Use incremental data as trends act on incremental loss, which has the following properties:
+**Motivations**:  
+Incremental data has the following properties:
 
 * Skewed right
+
 * Occasionally negative
 
 ### Skewed Normal Distribution
 
-Blend of normal and truncated normal
+From Frühwirth-Schnatter and Pyne (2000)
 
-$X = \mu + (\omega \cdot Z) \cdot \delta + (\omega \cdot \varepsilon) \cdot \sqrt{1 - \delta^2}$
+\begin{equation}
+X = \mu + (\omega \cdot Z) \cdot \delta + (\omega \cdot \varepsilon) \cdot \sqrt{1 - \delta^2}
+(\#eq:meyers-skewed-normal)
+\end{equation}
 
-* $\varepsilon \sim Normal(0,1)$
+* $\varepsilon \sim \mathcal{N}(0,1)$
 
 * $Z \sim Truncated \: Normal_{[0,\infty]} (0,1)$
 
-* $\delta$ is the weight between $\varepsilon$ and $Z$
+* $\mu$ is the location parameter
 
-* $\omega$ is the standard deviation
+* $\omega$ is the scale parameter, with $\omega >0$
 
-Skewness = 0.995; Not used by the Meyers as it is not skewed enough
+* $\delta$ is the shape parameter, with $\delta \in (-1,1)$
+
+    Also weight between $\varepsilon$ and $Z$
+
+Max skewness = 0.995 from the truncated normal
+
+$\therefore$ **Not used** by the Meyers as it is not skewed enough
 
 ### Mixed Lognormal-Normal
 
-$X \sim Normal(Z,\delta)$
+Mixed ln-n distribution with parameters $\delta$, $\mu$ and $\sigma$
 
-* $Z \sim Lognormal(\mu,\sigma)$
+\begin{equation}
+\begin{split}
+  X \sim \mathcal{N}(Z, \delta) \\
+  Z \sim \ln \mathcal{N}(\mu, \sigma) \\
+\end{split}
+(\#eq:meyers-mix-log-norm-norm)
+\end{equation}
 
-* Mixed $ln - n$ Distribution
+**Pros**
 
-This can create distribution more skew than the skewed normal and can also have negative values
+* Can create distribution more skew than the skewed normal
+
+* Can also have negative values
 
 ## Bayesian Models (Incremental)
 
-Model applies trend and therefore uses incremental data
+Model applies CY trend and therefore uses **incremental** data $I_{wd}$
 
-Correlated Incremental Trend Model
+* Correlated Incremental Trend Model
 
-Changing Settlement Rate Model
+* Level Incremental Trend Model
 
 ### Correlated Incremental Trend {#meyers-cit}
 
-Single CY trend parameter $\tau$
+$I_{wd}$ has a mixed ln-n distribution \@ref(eq:meyers-mix-log-norm-norm)
 
-* Mixed lognormal-normal distribution
+\begin{equation}
+\begin{array}.
+I_{wd} \sim
+\begin{cases}
+  \mathcal{N}(Z_{1,d}, \delta) & \text{if }w = 1 \\
+  \mathcal{N}(Z_{w,d} + \rho \cdot (I_{w-1,d} - Z_{w-1,d}) \cdot e^{\tau}, \delta) & \text{if } w > 1\\
+\end{cases} \\
+Z_{w,d} \sim \ln \mathcal{N}(\mu_{w,d}, \sigma_d) \\
+\end{array}
+(\#eq:meyers-CIT-distribution)
+\end{equation}
 
-Include correlation between AY similar to CCL method
+With log-normal mean:
 
-Steps for the method:
+\begin{equation}
+\mu_{wd} = \alpha_w + \beta_d + \tau \cdot (w+d-1) \\
+(\#eq:meyers-CIT-mean)
+\end{equation}
+
+```{remark}
+$\tau$
+
+* CY trend parameter
+
+* Note the $\tau$ is applied additively in the "log" space \@ref(eq:meyers-CIT-mean), therefore in the autocorrelation step \@ref(eq:meyers-CIT-distribution) it is applied by $e^{\tau}$ 
+```
+
+```{remark}
+$\sigma_d$
+
+* Subject to the following constaints **different** from LCL and CCL
+
+\begin{equation}
+  \sigma_1 < \sigma_2 < \cdots < \sigma_{10}
+  (\#eq:meyers-sigm-dist-cit)
+\end{equation}
+
+* Since we're looking at *incremental* data, smaller less volatile claims should be settled early
+```
+
+```{remark}
+$\rho$
+
+* Include correlation between AYs similar to CCL method
+
+* $\rho$ is the coefficient of correlation between $I_{w-1,d}$ and $I_{w,d}$
+
+    * Note $\rho$ is applied outside of the "log" space here to the **incremental** loss (not log)
+    
+    * Recall for CCL we apply $\rho$ to the $\ln(C_{w-1,d})$ but we can't do that here due to the chance of negative incremental losses
+```
+
+**Priors** for $\{\alpha_w\}$, $\{\sigma_d\}$, $\{\beta_d\}$, $\rho$, and $\tau$
+
+* *Disperse* priors similar to LCL and CCL unless mentioned below
+
+* Each $\beta_d \sim \begin{cases} U(0, 10) & \text{if } d \leq 4 \\ U(0, \beta_{d-1}) &\text{if } d > 4 \\ \end{cases}$
+
+    * This assure $\beta_d$ decreases for $d>4$
+
+* $\tau \sim \mathcal{N}(0,3.2\%)$, which correspond to a precision parameter by JAGs of 1000
+
+    * Without restriction it was forecasting very negative trend which is offset by higher $\alpha$ and $\beta$
+    
+    * Meyers expected this to be predominantly negative since the other paid method we've tried so far were biased high
+
+* Each $\sigma_d \sim \begin{cases} U(0,0.5) & \text{if } d = 1 \\ U(\sigma^2_{d-1},\sigma^2_{d-1} +0.1) & \text{else} \\ \end{cases}$
+
+    * Limit the speed $\sigma_d$ can increase, very high $\sigma_d$ can lead to unreasonably high simulate results
+
+* $\delta \sim U(0, \text{Avg Premium})$
+
+***Steps for the method:***
 
 1) Uncorrelated log mean of each cell with CY trend  
 $\mu_{wd} = \alpha_w + \beta_d + \tau \cdot(w+d-1)$
@@ -387,30 +623,21 @@ $\mu_{wd} = \alpha_w + \beta_d + \tau \cdot(w+d-1)$
 4) Add correlation between AYs for rows after the first  
 $\tilde{I}_{wd} \sim Normal(Z_{wd} + \rho \cdot (\tilde{I}_{w-1,d} - Z_{w-1,d})\cdot e^{\tau},\delta)$
 
-**Parameters restrictions**
+***Test Results***
 
-$\tau$:
+* Losses not much smaller than CCL while we would like it to be much smaller as CCL was biased high
 
-* Prior $\sim Normal(0,3.2%)$
-* Without restriction it was forecasting very negative trend which is offset by higher $\alpha$ and $\beta$
+* $\rho$ is lower than from CCL
 
-$\sigma_d$:
+* Strong negative correlation between trend $\tau$ and level parameters $\alpha_w + \beta_d$
 
-* Prior $\sigma_1 \sim Uniform(0,0.5)$
-* Prior $\sigma_d \sim Uniform(\sigma^2_{d-1},\sigma^2_{d-1} +0.1)$
-* Limit the speed $\sigma_d$ can increase, very high $\sigma_d$ can lead to unreasonably high simulate results
+    * With small data set it is hard for the model to distinguish the AY level + development vs trend
+    
+    * Based on scatter plot of $\tau$ vs $\alpha_w + \beta_d$ for several $d$ and $w=6$
+    
+* Average $\tau$ is negative
 
-**Results**
-
-Losses not much smaller than CCL while we would like it to be much smaller as CCL was biased high
-
-$\rho$ is lower than from CCL
-
-Strong negative correlation between trend $\tau$ and level parameters $\alpha_w + \beta_d$
-
-* With small data set it is hard for the model to distinguish the AY level + development vs trend
-
-Model showed no improvement over Mack or ODP
+* Model showed no improvement over Mack or ODP
 
 ### Leveled Incremental Trend {#meyers-lit}
 
@@ -418,26 +645,49 @@ Same as CIT but with $\rho = 0$
 
 Results similar to CIT with lower standard deviation
 
-
 ## Process, Parameter, and Model Risk
 
-$\underbrace{\text{Variance}}_{\operatorname{Var}(X)} = \underbrace{\operatorname{E}[\text{Process Variance}]}_{\operatorname{E}_{\theta}[\operatorname{Var}[X|\theta]]}+\underbrace{\operatorname{Var}[\text{Hypothetical Mean}]}_{\operatorname{Var}_{\theta}[\operatorname{E}[X|\theta]]}$
+**Process & Parameter Risk**
 
-Typically the parameter risk is much larger than process risk
+$$\underbrace{\text{Variance}}_{\mathrm{Var}(X)} = \underbrace{\mathrm{E}[\text{Process Variance}]}_{\mathrm{E}_{\theta}[\mathrm{Var}[X|\theta]]}+\underbrace{\mathrm{Var}[\text{Hypothetical Mean}]}_{\mathrm{Var}_{\theta}[\mathrm{E}[X|\theta]]}$$
 
-Model risk is the risk of not selecting the right model
+* Process risk: average variance of the outcomes from the expected result
 
-* For known unknown, weight average of multiple models
-* If the weight vary a lot in the posterior distribution than this could be an indication of model risk
-    * This turns into more or less parameter risk
+* Parameter risk: variance due to the many possible parameters in the posterior distribution
+
+    * Similar to the idea of "range of reasonable estimates"
+
+* Typically the parameter risk is much larger than process risk
+
+    * e.g. Total Risk = $\mathrm{Var}\left[ \sum \limits_{w=1}^{10} C_{w,10} \right]$
     
-Should focus on the total risk
+        Parameter Risk = $\mathrm{Var}_{\theta}\left[\mathrm{E}\left[\sum \limits_{w=1}^{10} C_{w,10}|\theta\right]\right] = \mathrm{Var}\left[ \sum \limits_{w=1}^{10} e^{\mu_{w,10} + \frac{\sigma^2_{10}}{2}} \right]$
+
+**Model Risk**: Risk of not selecting the right model
+
+* If possible models are "know unknowns", we can turn the model risk into parameter risk
+
+    * Formulate a model as a weighted average of the candidate models with the weights as parameters
+    
+    * If posterior distribution of the weights assigned to each model has significant variability, this indicates of model risk
+    
+    * And in this case, just a special case of parameter risk
+    
+* If we have a very large dataset to run this model on, the parameter risk will shrink towards 0 and any remaining risk such as model risk will be interpreted as process risk
+
+    * This is mostly a academia thought experiment as most aggregated loss triangles are small datasets
+    
+    * This serves to illustrate the theoretical difficulties that occur when we try to work with parameter/process/model classification of risk
+    
+    $\therefore$ Should focus on the total risk
 
 ## Conclusion
 
 Goal of the paper was to test the predictive accuracy of various models, both mean and distribution of outcomes
 
 * Not on the reserve estimate for individual insurers
+
+Bayesian MCMC models can be developed to overcome shortcomings in existing models (e.g. how LCL and CCL loosens some of Mack Chainladder's key assumptions)
 
 ### Results Summary
 
@@ -454,6 +704,7 @@ Mack and ODP were biased high as well as CCL
 There were change in environment that is not captured
 
 * Calendar year trend: LIT and CIT still biased high
+
 * CSR: significantly less bias than LIT and CIT (except for PA still failed)
 
 Mack and ODP did better than CCL, LIT and CIT
@@ -462,9 +713,9 @@ Mack and ODP did better than CCL, LIT and CIT
 
 Results were for specific annual statement year 1997
 
-* Possible the speed up was specific to the period $\Rightarrow$ CSR could potentially useless for another year
+* Possible the speed up of claims settlement was specific to the period $\Rightarrow$ CSR could potentially useless for another year
 
-Could use more narrow prior to incorporate knowledge of insurer's business operation and obtain superior results
+Could use more narrow priors to incorporate knowledge of insurer's business operation and obtain superior results
 
 ## Appendix B: Intro to Bayesian MCMC Models
 
@@ -483,7 +734,7 @@ $$\Pr(X_{t+1} = x \mid X_1 = x_1, X_2 = x_2,...,X_t = x_t) = \Pr(X_{t+1} \mid X_
 
 ```
 
-Key properties of Markov chain ofr Bayesian MCMC
+Key properties of Markov chain for Bayesian MCMC
 
 * Ergodic class of Markov chain, for which vectors $\{X_t\}$ approaches a limiting distribution
 
@@ -495,7 +746,7 @@ Let $x$ be a vector of observations and let $y$ be a vector of parameters in a m
 
 * In Bayesian MCMC, the Markov chain is defined in terms of the prior distribution $p(y)$ and the conditional distribution $f(x \mid y)$
 
-* The limiting distribtuion is the posterior distribution $f(y \mid x)$
+* The limiting distribution is the posterior distribution $f(y \mid x)$
 
 * If we let the chain run *long enough*, the chain will randomly visit all states with frequency that is proportional to their posterior probabilities
 
@@ -541,7 +792,7 @@ The algorithm introduces a 3^rd^ distribution $J(y_t \mid y_{t-1})$:
 
 Given a parameter vector $y_{t-1}$ the algorithm generates a Markov chain by the following steps:
 
-1. Select a candiate value $y^*$, at random from the proposal distribution $J(y_t \mid y_{t-1})$
+1. Select a candidate value $y^*$, at random from the proposal distribution $J(y_t \mid y_{t-1})$
 
 2. Computer the ratio
 
@@ -567,7 +818,7 @@ $$R \equiv R_1 \times R_2 = \dfrac{f(x \mid y^*) \cdot p(y^*)}{f(x \mid y_{t-1})
 
 * More on how it might break in the paper...
 
-* The key is to be able to scale the proposal distribution to minimize autocorrelation
+* The key is to be able to scale the proposal distribution to minimize auto correlation
 
     * This is difficult with many parameters
 
@@ -583,11 +834,11 @@ $$R \equiv R_1 \times R_2 = \dfrac{f(x \mid y^*) \cdot p(y^*)}{f(x \mid y_{t-1})
 
 * The phase of generating the Markov chain where the proposal density function is optimized is called the "adaptive" state (as discussed above)
 
-As models become more complex, adaptive MCMC may not be good enough to eliminate the autocorrelation
+As models become more complex, adaptive MCMC may not be good enough to eliminate the auto correlation
 
 * Theory on Markov chain convergence will still hold but there is no guarantee on how fast it will converge
 
-* If there is significance autocorrelation after the best scaling effort, the next best practice is to increase $t_3$ until there are sufficient number of ups and downs in the trace plot and then take a sample of the $(t_1 + t_2 +1)$^th^ to $(t_1 + t_2 + t_3)$^th^ iterations
+* If there is significance auto correlation after the best scaling effort, the next best practice is to increase $t_3$ until there are sufficient number of ups and downs in the trace plot and then take a sample of the $(t_1 + t_2 +1)$^th^ to $(t_1 + t_2 + t_3)$^th^ iterations
 
     * This process is known as "thinning"
 
@@ -620,6 +871,10 @@ JAGS perform the Metropolis-Hasting algorithm we described above
 It also has a number of convergence diagnostics
 
 ## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
 
 n/a
 

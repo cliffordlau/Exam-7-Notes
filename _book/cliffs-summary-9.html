@@ -26,14 +26,14 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-03-15">
+<meta name="date" content="2017-03-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="c3-era-3-1-considerations-on-implementing-internal-risk-model-mango.html">
+<link rel="prev" href="c3-era-3-2-modeling-parameter-uncertainty-venter-gluck.html">
 <link rel="next" href="introduction-10.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -121,9 +121,9 @@
 <li class="chapter" data-level="4.2" data-path="mean-squared-error.html"><a href="mean-squared-error.html"><i class="fa fa-check"></i><b>4.2</b> Mean Squared Error</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="mean-squared-error.html"><a href="mean-squared-error.html#applying-the-mse-formula"><i class="fa fa-check"></i><b>4.2.1</b> Applying the MSE Formula</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>4.3</b> Confidence Intervals</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#ci-for-all-years-reserves"><i class="fa fa-check"></i><b>4.3.1</b> CI for All Years Reserves</a></li>
-<li class="chapter" data-level="4.3.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#ci-application-range"><i class="fa fa-check"></i><b>4.3.2</b> CI Application &amp; Range</a></li>
+<li class="chapter" data-level="4.3" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html"><i class="fa fa-check"></i><b>4.3</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#ci-for-all-years-reserves"><i class="fa fa-check"></i><b>4.3.1</b> CI for All Years Reserves</a></li>
+<li class="chapter" data-level="4.3.2" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#ci-application-range"><i class="fa fa-check"></i><b>4.3.2</b> CI Application &amp; Range</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html"><i class="fa fa-check"></i><b>4.4</b> Chain Ladder Assumptions Test</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#intercept"><i class="fa fa-check"></i><b>4.4.1</b> Intercept</a></li>
@@ -220,7 +220,7 @@
 <li class="chapter" data-level="9.1" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="introduction-2.html"><a href="introduction-2.html#stochastic-vs-static-model"><i class="fa fa-check"></i><b>9.1.1</b> Stochastic vs Static Model</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="notations.html"><a href="notations.html"><i class="fa fa-check"></i><b>9.2</b> Notations</a></li>
+<li class="chapter" data-level="9.2" data-path="shapland-notations.html"><a href="shapland-notations.html"><i class="fa fa-check"></i><b>9.2</b> Notations</a></li>
 <li class="chapter" data-level="9.3" data-path="bootstrap-model.html"><a href="bootstrap-model.html"><i class="fa fa-check"></i><b>9.3</b> Bootstrap Model</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="bootstrap-model.html"><a href="bootstrap-model.html#odp-glm-para"><i class="fa fa-check"></i><b>9.3.1</b> GLM Parameters</a></li>
 <li class="chapter" data-level="9.3.2" data-path="bootstrap-model.html"><a href="bootstrap-model.html#fitted-tri-odp"><i class="fa fa-check"></i><b>9.3.2</b> Fitted Triangle</a></li>
@@ -275,8 +275,8 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><i class="fa fa-check"></i><b>10</b> Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</a><ul>
-<li class="chapter" data-level="10.1" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="introduction-3.html"><a href="introduction-3.html#verrall-notation"><i class="fa fa-check"></i><b>10.1.1</b> Notation</a></li>
+<li class="chapter" data-level="10.1" data-path="Verall-intro.html"><a href="Verall-intro.html"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="Verall-intro.html"><a href="Verall-intro.html#verrall-notation"><i class="fa fa-check"></i><b>10.1.1</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html"><i class="fa fa-check"></i><b>10.2</b> Stochastic Models for the Chainladder</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="stochastic-models-for-the-chainladder.html"><a href="stochastic-models-for-the-chainladder.html#mack-1993-non-parametric"><i class="fa fa-check"></i><b>10.2.1</b> Mack-1993 (Non-parametric)</a></li>
@@ -302,45 +302,48 @@
 <li class="chapter" data-level="11.1" data-path="introduction-synopsis.html"><a href="introduction-synopsis.html"><i class="fa fa-check"></i><b>11.1</b> Introduction &amp; Synopsis</a></li>
 <li class="chapter" data-level="11.2" data-path="data-set.html"><a href="data-set.html"><i class="fa fa-check"></i><b>11.2</b> Data Set</a></li>
 <li class="chapter" data-level="11.3" data-path="meyers-test.html"><a href="meyers-test.html"><i class="fa fa-check"></i><b>11.3</b> Testing Procedure</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="meyers-test.html"><a href="meyers-test.html#kolmogorov-smirnov-test"><i class="fa fa-check"></i><b>11.3.1</b> Kolmogorov-Smirnov Test</a></li>
+<li class="chapter" data-level="11.3.1" data-path="meyers-test.html"><a href="meyers-test.html#meyers-ks-test"><i class="fa fa-check"></i><b>11.3.1</b> Kolmogorov-Smirnov Test</a></li>
 <li class="chapter" data-level="11.3.2" data-path="meyers-test.html"><a href="meyers-test.html#p-p-plot"><i class="fa fa-check"></i><b>11.3.2</b> <em>p-p</em> Plot</a></li>
-<li class="chapter" data-level="11.3.3" data-path="meyers-test.html"><a href="meyers-test.html#frequency-vs-percentile"><i class="fa fa-check"></i><b>11.3.3</b> frequency vs percentile</a></li>
+<li class="chapter" data-level="11.3.3" data-path="meyers-test.html"><a href="meyers-test.html#percentile-histogram"><i class="fa fa-check"></i><b>11.3.3</b> Percentile Histogram</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="models-comparison-summary.html"><a href="models-comparison-summary.html"><i class="fa fa-check"></i><b>11.4</b> Models Comparison Summary</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="models-comparison-summary.html"><a href="models-comparison-summary.html#mack-model"><i class="fa fa-check"></i><b>11.4.1</b> Mack Model</a></li>
-<li class="chapter" data-level="11.4.2" data-path="models-comparison-summary.html"><a href="models-comparison-summary.html#odp-bootstrap"><i class="fa fa-check"></i><b>11.4.2</b> ODP Bootstrap</a></li>
+<li class="chapter" data-level="11.4" data-path="model-summary-meyers.html"><a href="model-summary-meyers.html"><i class="fa fa-check"></i><b>11.4</b> Models Overview</a></li>
+<li class="chapter" data-level="11.5" data-path="non-bayesian-model.html"><a href="non-bayesian-model.html"><i class="fa fa-check"></i><b>11.5</b> Non-Bayesian Model</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="non-bayesian-model.html"><a href="non-bayesian-model.html#meyers-mack"><i class="fa fa-check"></i><b>11.5.1</b> Mack Model</a></li>
+<li class="chapter" data-level="11.5.2" data-path="non-bayesian-model.html"><a href="non-bayesian-model.html#meyers-odp"><i class="fa fa-check"></i><b>11.5.2</b> ODP Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html"><i class="fa fa-check"></i><b>11.5</b> Bayesian Models (Cumulative)</a><ul>
-<li class="chapter" data-level="11.5.1" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html#leveled-chain-ladder"><i class="fa fa-check"></i><b>11.5.1</b> Leveled Chain Ladder</a></li>
-<li class="chapter" data-level="11.5.2" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html#correlated-chain-ladder"><i class="fa fa-check"></i><b>11.5.2</b> Correlated Chain-Ladder</a></li>
-<li class="chapter" data-level="11.5.3" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html#changing-settlement-rate"><i class="fa fa-check"></i><b>11.5.3</b> Changing Settlement Rate</a></li>
+<li class="chapter" data-level="11.6" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html"><i class="fa fa-check"></i><b>11.6</b> Bayesian Models (Cumulative)</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html#meyers-lcl"><i class="fa fa-check"></i><b>11.6.1</b> Leveled Chain Ladder</a></li>
+<li class="chapter" data-level="11.6.2" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html#meyers-ccl"><i class="fa fa-check"></i><b>11.6.2</b> Correlated Chain-Ladder</a></li>
+<li class="chapter" data-level="11.6.3" data-path="bayesian-models-cumulative.html"><a href="bayesian-models-cumulative.html#meyers-csr"><i class="fa fa-check"></i><b>11.6.3</b> Changing Settlement Rate</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="skewed-distribution.html"><a href="skewed-distribution.html"><i class="fa fa-check"></i><b>11.6</b> Skewed Distribution</a><ul>
-<li class="chapter" data-level="11.6.1" data-path="skewed-distribution.html"><a href="skewed-distribution.html#skewed-normal-distribution"><i class="fa fa-check"></i><b>11.6.1</b> Skewed Normal Distribution</a></li>
-<li class="chapter" data-level="11.6.2" data-path="skewed-distribution.html"><a href="skewed-distribution.html#mixed-lognormal-normal"><i class="fa fa-check"></i><b>11.6.2</b> Mixed Lognormal-Normal</a></li>
+<li class="chapter" data-level="11.7" data-path="skewed-distribution.html"><a href="skewed-distribution.html"><i class="fa fa-check"></i><b>11.7</b> Skewed Distribution</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="skewed-distribution.html"><a href="skewed-distribution.html#skewed-normal-distribution"><i class="fa fa-check"></i><b>11.7.1</b> Skewed Normal Distribution</a></li>
+<li class="chapter" data-level="11.7.2" data-path="skewed-distribution.html"><a href="skewed-distribution.html#mixed-lognormal-normal"><i class="fa fa-check"></i><b>11.7.2</b> Mixed Lognormal-Normal</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="bayesian-models-incremental.html"><a href="bayesian-models-incremental.html"><i class="fa fa-check"></i><b>11.7</b> Bayesian Models (Incremental)</a><ul>
-<li class="chapter" data-level="11.7.1" data-path="bayesian-models-incremental.html"><a href="bayesian-models-incremental.html#correlated-incremental-trend"><i class="fa fa-check"></i><b>11.7.1</b> Correlated Incremental Trend</a></li>
-<li class="chapter" data-level="11.7.2" data-path="bayesian-models-incremental.html"><a href="bayesian-models-incremental.html#leveled-incremental-trend"><i class="fa fa-check"></i><b>11.7.2</b> Leveled Incremental Trend</a></li>
+<li class="chapter" data-level="11.8" data-path="bayesian-models-incremental.html"><a href="bayesian-models-incremental.html"><i class="fa fa-check"></i><b>11.8</b> Bayesian Models (Incremental)</a><ul>
+<li class="chapter" data-level="11.8.1" data-path="bayesian-models-incremental.html"><a href="bayesian-models-incremental.html#meyers-cit"><i class="fa fa-check"></i><b>11.8.1</b> Correlated Incremental Trend</a></li>
+<li class="chapter" data-level="11.8.2" data-path="bayesian-models-incremental.html"><a href="bayesian-models-incremental.html#meyers-lit"><i class="fa fa-check"></i><b>11.8.2</b> Leveled Incremental Trend</a></li>
 </ul></li>
-<li class="chapter" data-level="11.8" data-path="process-parameter-and-model-risk.html"><a href="process-parameter-and-model-risk.html"><i class="fa fa-check"></i><b>11.8</b> Process, Parameter, and Model Risk</a></li>
-<li class="chapter" data-level="11.9" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>11.9</b> Conclusion</a><ul>
-<li class="chapter" data-level="11.9.1" data-path="conclusion.html"><a href="conclusion.html#results-summary"><i class="fa fa-check"></i><b>11.9.1</b> Results Summary</a></li>
-<li class="chapter" data-level="11.9.2" data-path="conclusion.html"><a href="conclusion.html#final-comments"><i class="fa fa-check"></i><b>11.9.2</b> Final Comments</a></li>
+<li class="chapter" data-level="11.9" data-path="process-parameter-and-model-risk.html"><a href="process-parameter-and-model-risk.html"><i class="fa fa-check"></i><b>11.9</b> Process, Parameter, and Model Risk</a></li>
+<li class="chapter" data-level="11.10" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>11.10</b> Conclusion</a><ul>
+<li class="chapter" data-level="11.10.1" data-path="conclusion.html"><a href="conclusion.html#results-summary"><i class="fa fa-check"></i><b>11.10.1</b> Results Summary</a></li>
+<li class="chapter" data-level="11.10.2" data-path="conclusion.html"><a href="conclusion.html#final-comments"><i class="fa fa-check"></i><b>11.10.2</b> Final Comments</a></li>
 </ul></li>
-<li class="chapter" data-level="11.10" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html"><i class="fa fa-check"></i><b>11.10</b> Appendix B: Intro to Bayesian MCMC Models</a><ul>
-<li class="chapter" data-level="11.10.1" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html#how-bayesian-mcmc-works-in-practice"><i class="fa fa-check"></i><b>11.10.1</b> How Bayesian MCMC works in practice</a></li>
-<li class="chapter" data-level="11.10.2" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html#meyers-mh-algo"><i class="fa fa-check"></i><b>11.10.2</b> Metropolis-Hastings Algorithm</a></li>
+<li class="chapter" data-level="11.11" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html"><i class="fa fa-check"></i><b>11.11</b> Appendix B: Intro to Bayesian MCMC Models</a><ul>
+<li class="chapter" data-level="11.11.1" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html#how-bayesian-mcmc-works-in-practice"><i class="fa fa-check"></i><b>11.11.1</b> How Bayesian MCMC works in practice</a></li>
+<li class="chapter" data-level="11.11.2" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html#meyers-mh-algo"><i class="fa fa-check"></i><b>11.11.2</b> Metropolis-Hastings Algorithm</a></li>
+<li class="chapter" data-level="11.11.3" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html#usecase-example-for-actuaries"><i class="fa fa-check"></i><b>11.11.3</b> Usecase Example for Actuaries</a></li>
+<li class="chapter" data-level="11.11.4" data-path="appendix-b-intro-to-bayesian-mcmc-models.html"><a href="appendix-b-intro-to-bayesian-mcmc-models.html#bayesian-interence-using-gibbs-sampling-bugs"><i class="fa fa-check"></i><b>11.11.4</b> Bayesian interence Using Gibbs Sampling (BUGS)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.11" data-path="past-exam-questions-10.html"><a href="past-exam-questions-10.html"><i class="fa fa-check"></i><b>11.11</b> Past Exam Questions</a><ul>
-<li class="chapter" data-level="11.11.1" data-path="past-exam-questions-10.html"><a href="past-exam-questions-10.html#question-highlights-10"><i class="fa fa-check"></i><b>11.11.1</b> Question Highlights</a></li>
+<li class="chapter" data-level="11.12" data-path="past-exam-questions-10.html"><a href="past-exam-questions-10.html"><i class="fa fa-check"></i><b>11.12</b> Past Exam Questions</a><ul>
+<li class="chapter" data-level="11.12.1" data-path="past-exam-questions-10.html"><a href="past-exam-questions-10.html#question-highlights-10"><i class="fa fa-check"></i><b>11.12.1</b> Question Highlights</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="a9-a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><a href="a9-a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><i class="fa fa-check"></i><b>12</b> A9 A Framework for Assessing Risk Margins - K. Marshall et al.</a><ul>
 <li class="chapter" data-level="12.1" data-path="cliffs-summary.html"><a href="cliffs-summary.html"><i class="fa fa-check"></i><b>12.1</b> Cliff’s Summary</a><ul>
 <li class="chapter" data-level="12.1.1" data-path="cliffs-summary.html"><a href="cliffs-summary.html#types-of-exam-questions"><i class="fa fa-check"></i><b>12.1.1</b> Types of Exam Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
 <li class="chapter" data-level="12.3" data-path="three-sources-of-uncertainty.html"><a href="three-sources-of-uncertainty.html"><i class="fa fa-check"></i><b>12.3</b> Three Sources of Uncertainty</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="three-sources-of-uncertainty.html"><a href="three-sources-of-uncertainty.html#independent-risk"><i class="fa fa-check"></i><b>12.3.1</b> Independent Risk</a></li>
 <li class="chapter" data-level="12.3.2" data-path="three-sources-of-uncertainty.html"><a href="three-sources-of-uncertainty.html#internal-systemic-risk"><i class="fa fa-check"></i><b>12.3.2</b> Internal Systemic Risk</a></li>
@@ -368,16 +371,14 @@
 <li class="chapter" data-level="13.4.1" data-path="past-exam-questions-12.html"><a href="past-exam-questions-12.html#question-highlights-11"><i class="fa fa-check"></i><b>13.4.1</b> Question Highlights</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="a13-estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><a href="a13-estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><i class="fa fa-check"></i><b>14</b> A13 Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins</a><ul>
-<li class="chapter" data-level="14.1" data-path="cliffs-summary-1.html"><a href="cliffs-summary-1.html"><i class="fa fa-check"></i><b>14.1</b> Cliff’s Summary</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="cliffs-summary-1.html"><a href="cliffs-summary-1.html#types-of-exam-questions-1"><i class="fa fa-check"></i><b>14.1.1</b> Types of Exam Questions</a></li>
+<li class="chapter" data-level="14" data-path="estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><a href="estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><i class="fa fa-check"></i><b>14</b> Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins</a><ul>
+<li class="chapter" data-level="14.1" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>14.1</b> Introduction</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="introduction-4.html"><a href="introduction-4.html#discussion-of-berry-and-fitzgibbon-method"><i class="fa fa-check"></i><b>14.1.1</b> Discussion of Berry and Fitzgibbon Method</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>14.2</b> Introduction</a></li>
+<li class="chapter" data-level="14.2" data-path="teng-perkin-methods-overview.html"><a href="teng-perkin-methods-overview.html"><i class="fa fa-check"></i><b>14.2</b> Teng Perkin Methods Overview</a></li>
 <li class="chapter" data-level="14.3" data-path="formula-approach-for-pdld.html"><a href="formula-approach-for-pdld.html"><i class="fa fa-check"></i><b>14.3</b> Formula Approach for PDLD</a><ul>
 <li class="chapter" data-level="14.3.1" data-path="formula-approach-for-pdld.html"><a href="formula-approach-for-pdld.html#retro-premium-formulas"><i class="fa fa-check"></i><b>14.3.1</b> Retro Premium Formulas</a></li>
 <li class="chapter" data-level="14.3.2" data-path="formula-approach-for-pdld.html"><a href="formula-approach-for-pdld.html#calculating-pdld"><i class="fa fa-check"></i><b>14.3.2</b> Calculating PDLD</a></li>
-<li class="chapter" data-level="14.3.3" data-path="formula-approach-for-pdld.html"><a href="formula-approach-for-pdld.html#estimating-first-period-pdld"><i class="fa fa-check"></i><b>14.3.3</b> Estimating First Period PDLD</a></li>
-<li class="chapter" data-level="14.3.4" data-path="formula-approach-for-pdld.html"><a href="formula-approach-for-pdld.html#estimating-subsequent-pdld"><i class="fa fa-check"></i><b>14.3.4</b> Estimating Subsequent PDLD</a></li>
 </ul></li>
 <li class="chapter" data-level="14.4" data-path="empirical-approach-for-pdld.html"><a href="empirical-approach-for-pdld.html"><i class="fa fa-check"></i><b>14.4</b> Empirical Approach for PDLD</a><ul>
 <li class="chapter" data-level="14.4.1" data-path="empirical-approach-for-pdld.html"><a href="empirical-approach-for-pdld.html#pdld-ratios-selection"><i class="fa fa-check"></i><b>14.4.1</b> PDLD Ratios Selection</a></li>
@@ -386,12 +387,14 @@
 </ul></li>
 <li class="chapter" data-level="14.5" data-path="further-issues.html"><a href="further-issues.html"><i class="fa fa-check"></i><b>14.5</b> Further Issues</a></li>
 <li class="chapter" data-level="14.6" data-path="feldblums-discussion.html"><a href="feldblums-discussion.html"><i class="fa fa-check"></i><b>14.6</b> Feldblum’s Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="past-exam-questions-13.html"><a href="past-exam-questions-13.html"><i class="fa fa-check"></i><b>14.7</b> Past Exam Questions</a></li>
+<li class="chapter" data-level="14.7" data-path="past-exam-questions-13.html"><a href="past-exam-questions-13.html"><i class="fa fa-check"></i><b>14.7</b> Past Exam Questions</a><ul>
+<li class="chapter" data-level="14.7.1" data-path="past-exam-questions-13.html"><a href="past-exam-questions-13.html#question-highlights-12"><i class="fa fa-check"></i><b>14.7.1</b> Question Highlights</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>II Insurance Company Valuation</b></span></li>
 <li class="chapter" data-level="15" data-path="b1-pc-insurance-company-valuation-r-goldfarb.html"><a href="b1-pc-insurance-company-valuation-r-goldfarb.html"><i class="fa fa-check"></i><b>15</b> B1 P&amp;C Insurance Company Valuation - R. Goldfarb</a><ul>
-<li class="chapter" data-level="15.1" data-path="cliffs-summary-2.html"><a href="cliffs-summary-2.html"><i class="fa fa-check"></i><b>15.1</b> Cliff’s Summary</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="cliffs-summary-2.html"><a href="cliffs-summary-2.html#types-of-exam-questions-2"><i class="fa fa-check"></i><b>15.1.1</b> Types of Exam Questions</a></li>
+<li class="chapter" data-level="15.1" data-path="cliffs-summary-1.html"><a href="cliffs-summary-1.html"><i class="fa fa-check"></i><b>15.1</b> Cliff’s Summary</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="cliffs-summary-1.html"><a href="cliffs-summary-1.html#types-of-exam-questions-1"><i class="fa fa-check"></i><b>15.1.1</b> Types of Exam Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="assumptions.html"><a href="assumptions.html"><i class="fa fa-check"></i><b>15.2</b> Assumptions</a><ul>
 <li class="chapter" data-level="15.2.1" data-path="assumptions.html"><a href="assumptions.html#risk-adjusted-discount-rate"><i class="fa fa-check"></i><b>15.2.1</b> Risk Adjusted Discount Rate</a></li>
@@ -410,7 +413,7 @@
 </ul></li>
 <li class="part"><span><b>III Enterprise Risk Management</b></span></li>
 <li class="chapter" data-level="16" data-path="c1-era-1-1-1-3-introduction-brehm-et-al-.html"><a href="c1-era-1-1-1-3-introduction-brehm-et-al-.html"><i class="fa fa-check"></i><b>16</b> C1 ERA 1.1 - 1.3 Introduction - Brehm, et al.</a><ul>
-<li class="chapter" data-level="16.1" data-path="cliffs-summary-3.html"><a href="cliffs-summary-3.html"><i class="fa fa-check"></i><b>16.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="16.1" data-path="cliffs-summary-2.html"><a href="cliffs-summary-2.html"><i class="fa fa-check"></i><b>16.1</b> Cliff’s Summary</a></li>
 <li class="chapter" data-level="16.2" data-path="historical-context.html"><a href="historical-context.html"><i class="fa fa-check"></i><b>16.2</b> 1.1 Historical Context</a></li>
 <li class="chapter" data-level="16.3" data-path="overview-of-erm.html"><a href="overview-of-erm.html"><i class="fa fa-check"></i><b>16.3</b> 1.2 Overview of ERM</a><ul>
 <li class="chapter" data-level="16.3.1" data-path="overview-of-erm.html"><a href="overview-of-erm.html#key-aspects-of-erm"><i class="fa fa-check"></i><b>16.3.1</b> Key aspects of ERM</a></li>
@@ -426,7 +429,7 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="c2-era-2-1-corporate-decision-making-using-an-enterprise-risk-model-don-mango.html"><a href="c2-era-2-1-corporate-decision-making-using-an-enterprise-risk-model-don-mango.html"><i class="fa fa-check"></i><b>17</b> C2 ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango</a><ul>
-<li class="chapter" data-level="17.1" data-path="cliffs-summary-4.html"><a href="cliffs-summary-4.html"><i class="fa fa-check"></i><b>17.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="17.1" data-path="cliffs-summary-3.html"><a href="cliffs-summary-3.html"><i class="fa fa-check"></i><b>17.1</b> Cliff’s Summary</a></li>
 <li class="chapter" data-level="17.2" data-path="evoluation-of-corporate-decision-making-under-uncertainty.html"><a href="evoluation-of-corporate-decision-making-under-uncertainty.html"><i class="fa fa-check"></i><b>17.2</b> Evoluation of Corporate Decision Making Under Uncertainty</a><ul>
 <li class="chapter" data-level="17.2.1" data-path="evoluation-of-corporate-decision-making-under-uncertainty.html"><a href="evoluation-of-corporate-decision-making-under-uncertainty.html#deterministic-project-analysis"><i class="fa fa-check"></i><b>17.2.1</b> Deterministic Project Analysis</a></li>
 <li class="chapter" data-level="17.2.2" data-path="evoluation-of-corporate-decision-making-under-uncertainty.html"><a href="evoluation-of-corporate-decision-making-under-uncertainty.html#risk-analysis"><i class="fa fa-check"></i><b>17.2.2</b> Risk Analysis</a></li>
@@ -440,8 +443,8 @@
 <li class="chapter" data-level="17.4" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i><b>17.4</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="c2-era-2-2-risk-measures-and-capital-allocation-g-venter.html"><a href="c2-era-2-2-risk-measures-and-capital-allocation-g-venter.html"><i class="fa fa-check"></i><b>18</b> C2 ERA 2.2 Risk Measures and Capital Allocation - G. Venter</a><ul>
-<li class="chapter" data-level="18.1" data-path="cliffs-summary-5.html"><a href="cliffs-summary-5.html"><i class="fa fa-check"></i><b>18.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="18.2" data-path="introduction-6.html"><a href="introduction-6.html"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
+<li class="chapter" data-level="18.1" data-path="cliffs-summary-4.html"><a href="cliffs-summary-4.html"><i class="fa fa-check"></i><b>18.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="18.2" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
 <li class="chapter" data-level="18.3" data-path="risk-measures.html"><a href="risk-measures.html"><i class="fa fa-check"></i><b>18.3</b> Risk Measures</a><ul>
 <li class="chapter" data-level="18.3.1" data-path="risk-measures.html"><a href="risk-measures.html#moment-based-measures"><i class="fa fa-check"></i><b>18.3.1</b> Moment-Based Measures</a></li>
 <li class="chapter" data-level="18.3.2" data-path="risk-measures.html"><a href="risk-measures.html#tail-based-measures-at-alpha-percentile"><i class="fa fa-check"></i><b>18.3.2</b> Tail-Based Measures at <span class="math inline">\(\alpha\)</span> Percentile</a></li>
@@ -460,8 +463,8 @@
 <li class="chapter" data-level="18.7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>18.7</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="c2-era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><a href="c2-era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><i class="fa fa-check"></i><b>19</b> C2 ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft</a><ul>
-<li class="chapter" data-level="19.1" data-path="cliffs-summary-6.html"><a href="cliffs-summary-6.html"><i class="fa fa-check"></i><b>19.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="19.2" data-path="introduction-7.html"><a href="introduction-7.html"><i class="fa fa-check"></i><b>19.2</b> Introduction</a></li>
+<li class="chapter" data-level="19.1" data-path="cliffs-summary-5.html"><a href="cliffs-summary-5.html"><i class="fa fa-check"></i><b>19.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="19.2" data-path="introduction-6.html"><a href="introduction-6.html"><i class="fa fa-check"></i><b>19.2</b> Introduction</a></li>
 <li class="chapter" data-level="19.3" data-path="leverage-ratios.html"><a href="leverage-ratios.html"><i class="fa fa-check"></i><b>19.3</b> Leverage Ratios</a></li>
 <li class="chapter" data-level="19.4" data-path="risk-based-capital-models.html"><a href="risk-based-capital-models.html"><i class="fa fa-check"></i><b>19.4</b> Risk-Based Capital Models</a><ul>
 <li class="chapter" data-level="19.4.1" data-path="risk-based-capital-models.html"><a href="risk-based-capital-models.html#credit-risk"><i class="fa fa-check"></i><b>19.4.1</b> Credit Risk</a></li>
@@ -472,8 +475,8 @@
 <li class="chapter" data-level="19.6" data-path="evaluating-capital-structure-strategies.html"><a href="evaluating-capital-structure-strategies.html"><i class="fa fa-check"></i><b>19.6</b> Evaluating Capital Structure Strategies</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="c2-era-2-4-asset-liability-management-brehm.html"><a href="c2-era-2-4-asset-liability-management-brehm.html"><i class="fa fa-check"></i><b>20</b> C2 ERA 2.4 Asset-Liability Management - Brehm</a><ul>
-<li class="chapter" data-level="20.1" data-path="cliffs-summary-7.html"><a href="cliffs-summary-7.html"><i class="fa fa-check"></i><b>20.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="20.2" data-path="introduction-8.html"><a href="introduction-8.html"><i class="fa fa-check"></i><b>20.2</b> Introduction</a></li>
+<li class="chapter" data-level="20.1" data-path="cliffs-summary-6.html"><a href="cliffs-summary-6.html"><i class="fa fa-check"></i><b>20.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="20.2" data-path="introduction-7.html"><a href="introduction-7.html"><i class="fa fa-check"></i><b>20.2</b> Introduction</a></li>
 <li class="chapter" data-level="20.3" data-path="optimal-porfolio-under-4-scenarios.html"><a href="optimal-porfolio-under-4-scenarios.html"><i class="fa fa-check"></i><b>20.3</b> Optimal Porfolio Under 4 Scenarios</a><ul>
 <li class="chapter" data-level="20.3.1" data-path="optimal-porfolio-under-4-scenarios.html"><a href="optimal-porfolio-under-4-scenarios.html#additional-considerations"><i class="fa fa-check"></i><b>20.3.1</b> Additional Considerations</a></li>
 </ul></li>
@@ -481,8 +484,8 @@
 <li class="chapter" data-level="20.5" data-path="future-research-1.html"><a href="future-research-1.html"><i class="fa fa-check"></i><b>20.5</b> Future Research</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="c2-era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><a href="c2-era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><i class="fa fa-check"></i><b>21</b> C2 ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</a><ul>
-<li class="chapter" data-level="21.1" data-path="cliffs-summary-8.html"><a href="cliffs-summary-8.html"><i class="fa fa-check"></i><b>21.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="21.2" data-path="introduction-9.html"><a href="introduction-9.html"><i class="fa fa-check"></i><b>21.2</b> Introduction</a></li>
+<li class="chapter" data-level="21.1" data-path="cliffs-summary-7.html"><a href="cliffs-summary-7.html"><i class="fa fa-check"></i><b>21.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="21.2" data-path="introduction-8.html"><a href="introduction-8.html"><i class="fa fa-check"></i><b>21.2</b> Introduction</a></li>
 <li class="chapter" data-level="21.3" data-path="quantifying-stability-and-its-value.html"><a href="quantifying-stability-and-its-value.html"><i class="fa fa-check"></i><b>21.3</b> 1. Quantifying Stability and Its Value</a><ul>
 <li class="chapter" data-level="21.3.1" data-path="quantifying-stability-and-its-value.html"><a href="quantifying-stability-and-its-value.html#reinsurance-premium-and-expected-recoveries"><i class="fa fa-check"></i><b>21.3.1</b> Reinsurance Premium and Expected Recoveries</a></li>
 <li class="chapter" data-level="21.3.2" data-path="quantifying-stability-and-its-value.html"><a href="quantifying-stability-and-its-value.html#amount-of-protection"><i class="fa fa-check"></i><b>21.3.2</b> Amount of Protection</a></li>
@@ -499,16 +502,16 @@
 <li class="chapter" data-level="21.6" data-path="conclusion-2.html"><a href="conclusion-2.html"><i class="fa fa-check"></i><b>21.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="c3-era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><a href="c3-era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><i class="fa fa-check"></i><b>22</b> C3 ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</a><ul>
-<li class="chapter" data-level="22.1" data-path="cliffs-summary-9.html"><a href="cliffs-summary-9.html"><i class="fa fa-check"></i><b>22.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="22.2" data-path="introduction-10.html"><a href="introduction-10.html"><i class="fa fa-check"></i><b>22.2</b> Introduction</a></li>
+<li class="chapter" data-level="22.1" data-path="cliffs-summary-8.html"><a href="cliffs-summary-8.html"><i class="fa fa-check"></i><b>22.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="22.2" data-path="introduction-9.html"><a href="introduction-9.html"><i class="fa fa-check"></i><b>22.2</b> Introduction</a></li>
 <li class="chapter" data-level="22.3" data-path="startup-staffing-and-scope.html"><a href="startup-staffing-and-scope.html"><i class="fa fa-check"></i><b>22.3</b> Startup: Staffing and Scope</a></li>
 <li class="chapter" data-level="22.4" data-path="irm-parameter-development.html"><a href="irm-parameter-development.html"><i class="fa fa-check"></i><b>22.4</b> IRM Parameter Development</a></li>
 <li class="chapter" data-level="22.5" data-path="implementation-1.html"><a href="implementation-1.html"><i class="fa fa-check"></i><b>22.5</b> Implementation</a></li>
 <li class="chapter" data-level="22.6" data-path="integration-and-mainteneance.html"><a href="integration-and-mainteneance.html"><i class="fa fa-check"></i><b>22.6</b> Integration and Mainteneance</a></li>
 </ul></li>
 <li class="chapter" data-level="23" data-path="c3-era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><a href="c3-era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><i class="fa fa-check"></i><b>23</b> C3 ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</a><ul>
-<li class="chapter" data-level="23.1" data-path="cliffs-summary-10.html"><a href="cliffs-summary-10.html"><i class="fa fa-check"></i><b>23.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="23.2" data-path="introduction-11.html"><a href="introduction-11.html"><i class="fa fa-check"></i><b>23.2</b> Introduction</a></li>
+<li class="chapter" data-level="23.1" data-path="cliffs-summary-9.html"><a href="cliffs-summary-9.html"><i class="fa fa-check"></i><b>23.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="23.2" data-path="introduction-10.html"><a href="introduction-10.html"><i class="fa fa-check"></i><b>23.2</b> Introduction</a></li>
 <li class="chapter" data-level="23.3" data-path="impact-of-parameter-risk.html"><a href="impact-of-parameter-risk.html"><i class="fa fa-check"></i><b>23.3</b> Impact of Parameter Risk</a></li>
 <li class="chapter" data-level="23.4" data-path="projection-risk.html"><a href="projection-risk.html"><i class="fa fa-check"></i><b>23.4</b> Projection Risk</a><ul>
 <li class="chapter" data-level="23.4.1" data-path="projection-risk.html"><a href="projection-risk.html#simple-trend"><i class="fa fa-check"></i><b>23.4.1</b> Simple Trend</a></li>
@@ -521,8 +524,8 @@
 <li class="chapter" data-level="23.8" data-path="conclusion-3.html"><a href="conclusion-3.html"><i class="fa fa-check"></i><b>23.8</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="c3-era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><a href="c3-era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><i class="fa fa-check"></i><b>24</b> C3 ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</a><ul>
-<li class="chapter" data-level="24.1" data-path="cliffs-summary-11.html"><a href="cliffs-summary-11.html"><i class="fa fa-check"></i><b>24.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="24.2" data-path="introduction-12.html"><a href="introduction-12.html"><i class="fa fa-check"></i><b>24.2</b> Introduction</a></li>
+<li class="chapter" data-level="24.1" data-path="cliffs-summary-10.html"><a href="cliffs-summary-10.html"><i class="fa fa-check"></i><b>24.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="24.2" data-path="introduction-11.html"><a href="introduction-11.html"><i class="fa fa-check"></i><b>24.2</b> Introduction</a></li>
 <li class="chapter" data-level="24.3" data-path="pearsons-correlation.html"><a href="pearsons-correlation.html"><i class="fa fa-check"></i><b>24.3</b> Pearson’s Correlation</a></li>
 <li class="chapter" data-level="24.4" data-path="kendalls-tau.html"><a href="kendalls-tau.html"><i class="fa fa-check"></i><b>24.4</b> Kendall’s Tau</a></li>
 <li class="chapter" data-level="24.5" data-path="motivations-for-using-copulas.html"><a href="motivations-for-using-copulas.html"><i class="fa fa-check"></i><b>24.5</b> Motivations for Using Copulas</a></li>
@@ -542,9 +545,9 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="c4-era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html"><a href="c4-era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html"><i class="fa fa-check"></i><b>25</b> C4 ERA 4.1 &amp; 4.2 Operational and Strategic Risk - D. Mango, G. Venter</a><ul>
-<li class="chapter" data-level="25.1" data-path="cliffs-summary-12.html"><a href="cliffs-summary-12.html"><i class="fa fa-check"></i><b>25.1</b> Cliff’s Summary</a><ul>
-<li class="chapter" data-level="25.1.1" data-path="cliffs-summary-12.html"><a href="cliffs-summary-12.html#op-risk"><i class="fa fa-check"></i><b>25.1.1</b> Op risk</a></li>
-<li class="chapter" data-level="25.1.2" data-path="cliffs-summary-12.html"><a href="cliffs-summary-12.html#strategic-risk"><i class="fa fa-check"></i><b>25.1.2</b> Strategic risk</a></li>
+<li class="chapter" data-level="25.1" data-path="cliffs-summary-11.html"><a href="cliffs-summary-11.html"><i class="fa fa-check"></i><b>25.1</b> Cliff’s Summary</a><ul>
+<li class="chapter" data-level="25.1.1" data-path="cliffs-summary-11.html"><a href="cliffs-summary-11.html#op-risk"><i class="fa fa-check"></i><b>25.1.1</b> Op risk</a></li>
+<li class="chapter" data-level="25.1.2" data-path="cliffs-summary-11.html"><a href="cliffs-summary-11.html#strategic-risk"><i class="fa fa-check"></i><b>25.1.2</b> Strategic risk</a></li>
 </ul></li>
 <li class="chapter" data-level="25.2" data-path="operational-risk.html"><a href="operational-risk.html"><i class="fa fa-check"></i><b>25.2</b> 4.1 Operational Risk</a><ul>
 <li class="chapter" data-level="25.2.1" data-path="operational-risk.html"><a href="operational-risk.html#operational-risk-to-insurers"><i class="fa fa-check"></i><b>25.2.1</b> Operational Risk to Insurers</a></li>
@@ -561,9 +564,9 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="26" data-path="c5-era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><a href="c5-era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><i class="fa fa-check"></i><b>26</b> C5 ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major</a><ul>
-<li class="chapter" data-level="26.1" data-path="cliffs-summary-13.html"><a href="cliffs-summary-13.html"><i class="fa fa-check"></i><b>26.1</b> Cliff’s Summary</a></li>
-<li class="chapter" data-level="26.2" data-path="introduction-13.html"><a href="introduction-13.html"><i class="fa fa-check"></i><b>26.2</b> Introduction</a><ul>
-<li class="chapter" data-level="26.2.1" data-path="introduction-13.html"><a href="introduction-13.html#stages-insurance-business"><i class="fa fa-check"></i><b>26.2.1</b> 4 Stages Insurance Business</a></li>
+<li class="chapter" data-level="26.1" data-path="cliffs-summary-12.html"><a href="cliffs-summary-12.html"><i class="fa fa-check"></i><b>26.1</b> Cliff’s Summary</a></li>
+<li class="chapter" data-level="26.2" data-path="introduction-12.html"><a href="introduction-12.html"><i class="fa fa-check"></i><b>26.2</b> Introduction</a><ul>
+<li class="chapter" data-level="26.2.1" data-path="introduction-12.html"><a href="introduction-12.html#stages-insurance-business"><i class="fa fa-check"></i><b>26.2.1</b> 4 Stages Insurance Business</a></li>
 </ul></li>
 <li class="chapter" data-level="26.3" data-path="theories-of-the-cycle.html"><a href="theories-of-the-cycle.html"><i class="fa fa-check"></i><b>26.3</b> Theories of the Cycle</a></li>
 <li class="chapter" data-level="26.4" data-path="approaches-to-modeling-the-cycle.html"><a href="approaches-to-modeling-the-cycle.html"><i class="fa fa-check"></i><b>26.4</b> Approaches to Modeling the Cycle</a><ul>
@@ -600,8 +603,8 @@
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="not-in-2017-syllabus-bootstrap-modeling-beyond-the-basics-shapland-leong.html"><a href="not-in-2017-syllabus-bootstrap-modeling-beyond-the-basics-shapland-leong.html"><i class="fa fa-check"></i><b>A</b> (Not in 2017 Syllabus) Bootstrap Modeling: Beyond the Basics - Shapland Leong</a><ul>
-<li class="chapter" data-level="A.1" data-path="introduction-14.html"><a href="introduction-14.html"><i class="fa fa-check"></i><b>A.1</b> Introduction</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="introduction-14.html"><a href="introduction-14.html#loss-distribution"><i class="fa fa-check"></i><b>A.1.1</b> Loss Distribution</a></li>
+<li class="chapter" data-level="A.1" data-path="introduction-13.html"><a href="introduction-13.html"><i class="fa fa-check"></i><b>A.1</b> Introduction</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="introduction-13.html"><a href="introduction-13.html#loss-distribution"><i class="fa fa-check"></i><b>A.1.1</b> Loss Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="parameterize-with-glm.html"><a href="parameterize-with-glm.html"><i class="fa fa-check"></i><b>A.2</b> Parameterize with GLM</a></li>
 <li class="chapter" data-level="A.3" data-path="bootstrap-model.html"><a href="bootstrap-model.html#simplified-glm"><i class="fa fa-check"></i><b>A.3</b> Simplified GLM</a><ul>
@@ -634,7 +637,7 @@
 <li class="chapter" data-level="A.10" data-path="correlation-1.html"><a href="correlation-1.html"><i class="fa fa-check"></i><b>A.10</b> Correlation</a></li>
 <li class="chapter" data-level="A.11" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i><b>A.11</b> Miscellaneous</a></li>
 <li class="chapter" data-level="A.12" data-path="past-exam-questions-15.html"><a href="past-exam-questions-15.html"><i class="fa fa-check"></i><b>A.12</b> Past Exam Questions</a><ul>
-<li class="chapter" data-level="A.12.1" data-path="past-exam-questions-15.html"><a href="past-exam-questions-15.html#question-highlights-12"><i class="fa fa-check"></i><b>A.12.1</b> Question Highlights</a></li>
+<li class="chapter" data-level="A.12.1" data-path="past-exam-questions-15.html"><a href="past-exam-questions-15.html#question-highlights-13"><i class="fa fa-check"></i><b>A.12.1</b> Question Highlights</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -658,15 +661,34 @@
 
             <section class="normal" id="section-">
 <div id="cliffs-summary-9" class="section level2">
-<h2><span class="header-section-number">22.1</span> Cliff’s Summary</h2>
-<p>Just know the 4 sections and have an idea of what it covers</p>
+<h2><span class="header-section-number">23.1</span> Cliff’s Summary</h2>
+<p>Parameter risk is more important as the process risk is smaller</p>
+<p>Different ways to model the severity trend</p>
+<ul>
+<li>Model the trend indepedently or adjust the general inflation then model the superimposed inflation</li>
+<li>Model with AR(1)</li>
+</ul>
+<p>Estimation risk in selecting the parameters and the downstream impact</p>
+<ul>
+<li>Use MLE working with negative log likelihood</li>
+<li>Slope of the negative log likelihood determines our confidence in the selection</li>
+</ul>
+<p>Use HQIC to adjust the loglikelihood with a penalty for # of parameters</p>
+<ul>
+<li>Also use a pool of distribution of reasonable parameters</li>
+</ul>
+<p>Form of the mdoel we use to do the modeling e.g. expected parameters vs pool of distribution of parameters</p>
+<p>Should focuse on the spread of potential outcomes instead of best estimate</p>
+<ul>
+<li>Add flexibility and let the parameters reflect the uncertainty in the assumptions</li>
+</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="c3-era-3-1-considerations-on-implementing-internal-risk-model-mango.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="c3-era-3-2-modeling-parameter-uncertainty-venter-gluck.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="introduction-10.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -695,7 +717,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/22-ERA-3.1.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/23-ERA-3.2.Rmd",
 "text": "Edit"
 },
 "download": null,

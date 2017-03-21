@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="venter-def.html">
-<link rel="next" href="past-exam-questions-4.html">
+<link rel="prev" href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html">
+<link rel="next" href="stochastic-models-for-the-chainladder.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -660,342 +660,69 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="testable-implications" class="section level2">
-<h2><span class="header-section-number">5.2</span> 6 Testable Implications</h2>
-<p><strong>6 Testable Implications</strong></p>
-<ol style="list-style-type: decimal">
-<li><p><a href="testable-implications.html#venter-imp-1">Statistical significance of <span class="math inline">\(f(d)\)</span></a></p></li>
-<li><p><a href="testable-implications.html#venter-imp-2">Is there a better estimate for <span class="math inline">\(q\)</span> than <span class="math inline">\(f \times c\)</span></a></p></li>
-<li><p><a href="testable-implications.html#venter-imp-3">Check residuals against <span class="math inline">\(c(w,d)\)</span></a></p></li>
-<li><p><a href="testable-implications.html#venter-imp-4">Stability of <span class="math inline">\(f(d)\)</span> down the column</a></p></li>
-<li><p><a href="testable-implications.html#venter-imp-5">No correlation among columns</a></p>
-<p>Test for independence</p></li>
-<li><p><a href="testable-implications.html#venter-imp-6">No particularly high or low diagonals</a></p>
-<p>Test for independence</p></li>
-</ol>
-<div id="venter-goodness-fit" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Goodness of Fit Measurement</h3>
-<p>Compare different fit of the models based on adjusted <span class="math inline">\(SSE\)</span> (actual vs projected <strong>excluding</strong> 1st column)</p>
-<p>Adjusted <em>SSE</em></p>
-<span class="math display" id="eq:adj-sse-venter">\[\begin{equation}
-  \dfrac{SSE}{(n-p^2)}
-  \tag{5.1}
-\end{equation}\]</span>
-<p>Akaike Information Criterion</p>
-<span class="math display" id="eq:aic-venter">\[\begin{equation}
-  AIC \approx SSE \times e^{2p/n}
-  \tag{5.2}
-\end{equation}\]</span>
-<p>Bayesian Information Criterion</p>
-<span class="math display" id="eq:bic-venter">\[\begin{equation}
-  BIC \approx SSE \times n^{p/n}
-  \tag{5.3}
-\end{equation}\]</span>
+<div id="Verall-intro" class="section level2">
+<h2><span class="header-section-number">10.1</span> Introduction</h2>
+<p>Uses Bayesian techniques to allow incorporation of expert opinion and also maintain the integrity of the prediction error</p>
+<ul>
+<li><p>i.e. how expert opinion from sources other than the specific data set under consideration can be incorporated into the predictive distributions of the reserves</p></li>
+<li><p>Take into account prior knowledge in setting reserves</p>
+<p>e.g. Adjusting data to reflect changes in benefits or claims handling, or select <em>L</em>-year average LDFs</p></li>
+<li><p>Calculating prediction error using prior knowledge</p></li>
+<li><p>Use Bayesian to take into account our a-priori and the strength of that a-priori (credibility)</p></li>
+</ul>
+<p>Paper focus on use of a-priori knowledge for LDF selection and <em>BF</em> Method</p>
+<p>Development of MCMC techniques has made Bayesian methods much easier</p>
+<ul>
+<li><p>Makes it easier to find the <strong>posterior distributions</strong> for future observations (defining the Bayesian model is always easy)</p></li>
+<li><p>MCMC breaks down the simulation process into a number of simulations that are easy to carry out</p>
+<p><span class="math inline">\(\therefore\)</span> This solves the common Bayesian problem of difficulty in finding the posterior distribution (as they can be multidimensional)</p></li>
+<li><p>MCMC doesn’t simulate all the parameters at once, it use the conditional distribution of each parameter, given all the others</p>
+<p><span class="math inline">\(\therefore\)</span> Reducing the simulation to a univariate distribution</p></li>
+<li><p>Markov chain is formed because each parameter is considered in turn, and it is a simulation-based method</p>
+<p><span class="math inline">\(\therefore\)</span> MCMC</p></li>
+</ul>
+<div id="verrall-notation" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> Notation</h3>
+<p>For a <span class="math inline">\(n \times n\)</span> triangle</p>
+<p><strong>Claims</strong></p>
+<ul>
+<li>Incremental claims for AY <span class="math inline">\(i\)</span> and age <span class="math inline">\(j\)</span>: <span class="math inline">\(c_{ij}\)</span></li>
+</ul>
+<p><span class="math display">\[\{ c_{ij} \: : \: j=1,...,n-i+1 \: ; \: i = 1,...,n \}\]</span></p>
+<ul>
+<li>Cumulative claims</li>
+</ul>
+<p><span class="math display">\[D_{ij} = \sum_{k=1}^j c_{ik}\]</span></p>
+<ul>
+<li>Ultimate losses</li>
+</ul>
+<p><span class="math display">\[D_{in} = \sum_{k=1}^n c_{ik}\]</span></p>
 
 <div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
+<p><span class="remark"><em>Remark. </em></span> We only consider forecasting losses up to the latest development year <span class="math inline">\(n\)</span></p>
 <ul>
-<li><p><span class="math inline">\(n =\)</span> # of predicted data points <strong>EXCLUDING 1st column</strong></p>
-<ul>
-<li><p>Exclude because when we do reserving we don’t predict anything from the first column</p></li>
-<li><p>Usually the triangle excluding the first column</p></li>
-</ul></li>
-<li><p><span class="math inline">\(p =\)</span> # of parameters</p></li>
-<li><p><span class="math inline">\(SSE = \sum (A - E)^2\)</span></p>
-<ul>
-<li>Here you exclude the first column when calculating the difference</li>
-</ul></li>
-<li>Venter use the adjusted SSE as the AIC can be too permissive of over parameterization for large data sets
-</div>
-<p></p></li>
-</ul>
-</div>
-<div id="venter-imp-1" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Implication 1: Significance of Factors</h3>
-<p>Check if the parameter coefficient is <span class="math inline">\(&gt; 2 \sigma\)</span> for 95% sure that the parameters are <span class="math inline">\(\neq 0\)</span></p>
-<ul>
-<li><p>Can do <span class="math inline">\(1.65 \sigma\)</span> for 90% confidence</p></li>
-<li><p>Remember <span class="math inline">\(f(d)\)</span> is LDF - 1</p></li>
-<li><p>LDFs tend to fail towards the tail</p></li>
-</ul>
-</div>
-<div id="venter-imp-2" class="section level3">
-<h3><span class="header-section-number">5.2.3</span> Implication 2: Superiority of Alternative Emergence Patterns</h3>
-<p>If an alternative emergence pattern provides a better explanation of the triangle, maybe it should be used</p>
-<ol style="list-style-type: decimal">
-<li><p>Calculate <span class="math inline">\(q(w,d)\)</span> under various emergence patterns (See Table <a href="testable-implications.html#tab:venter-alt-pattern">5.3</a>)</p></li>
-<li><p>Calculate the Adjusted SSE <a href="testable-implications.html#eq:adj-sse-venter">(5.1)</a> (based on every cell except the age 0 column)</p></li>
-</ol>
-<div id="parameters-alternative-emergence-pattern" class="section level4">
-<h4><span class="header-section-number">5.2.3.1</span> Parameters: Alternative Emergence Pattern</h4>
-<table style="width:93%;">
-<caption><span id="tab:venter-alt-pattern">Table 5.3: </span> Alternative emergence pattern on a <span class="math inline">\(m \times m\)</span> triangle</caption>
-<colgroup>
-<col width="43%" />
-<col width="15%" />
-<col width="34%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Emergence Patterns</th>
-<th># of Parameters <span class="math inline">\(p\)</span></th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d)\)</span></td>
-<td><span class="math inline">\(m - 1\)</span></td>
-<td>e.g. Chainladder</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d) + g(d)\)</span></td>
-<td><span class="math inline">\(2m - 2\)</span></td>
-<td>e.g. Least Squares</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)\)</span></td>
-<td><span class="math inline">\(2m-2\)</span></td>
-<td>e.g. BF</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h\)</span></td>
-<td><span class="math inline">\(m-1\)</span></td>
-<td>e.g. Cape Cod</td>
-</tr>
-</tbody>
-</table>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> <span class="math inline">\(f(d) c(w,d) + g(d)\)</span></p>
-<ul>
-<li>Often significant in forecasting age 1
+<li>It is possible to extend this to allow a tail factor but not in this paper
 </div>
 </li>
 </ul>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> <span class="math inline">\(f(d)h(w)\)</span></p>
+<p><strong>Row Parameters</strong></p>
 <ul>
-<li><p>Here <span class="math inline">\(f(d)\)</span> is related to the % of losses emerged in period <span class="math inline">\(d\)</span></p>
-<p>Not LDF -1</p></li>
-<li><p><span class="math inline">\(h(w)\)</span> can be think of as an estimate of ultimate losses for AY <span class="math inline">\(w\)</span></p>
-<p>Like an a-priori</p></li>
-<li><p>The -2 for the BF is due to <span class="math inline">\(f(0)\)</span> and constant</p></li>
-<li><p>If BF is better <span class="math inline">\(\Rightarrow\)</span> Loss emergence is more accurately represented as fluctuating around a proportion of expected ultimate losses (rather than proportion of reported losses)</p></li>
-<li><p>Cape Cod works when the loss ratio is stable (stable book of business)</p>
-<ul>
-<li><p>Use <span class="math inline">\(h(w) = h \times Premium(w)\)</span>, so we only need stable ELR</p></li>
-<li><p>Cape Cod works out to an additive model <span class="math inline">\(q(w,d) = h \times f(d)\)</span></p></li>
-</ul></li>
-<li><p>Can further reduce parameters by <strong>combining</strong> some row and column parameters</p>
-<ul>
-<li>Might be intuitively appealing to sum up the recent and tail years of the <span class="math inline">\(h(w)\)</span> since there’s little empirical data to support different estimates</li>
-</ul></li>
-<li>We’ll be mostly focusing on this form
-</div>
-<p></p></li>
+<li>Expected ultimate losses for AY <span class="math inline">\(i\)</span>: <span class="math inline">\(x_i\)</span></li>
 </ul>
-</div>
-<div id="variance-assumptions-alternative-emergence-pattern" class="section level4">
-<h4><span class="header-section-number">5.2.3.2</span> Variance Assumptions: Alternative Emergence Pattern</h4>
-<p>Consider <span class="math inline">\(\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)\)</span> from Table <a href="testable-implications.html#tab:venter-alt-pattern">5.3</a></p>
-<p>We need to minimize the sum of squared residuals to get the optimal <span class="math inline">\(f(d)\)</span> and <span class="math inline">\(h(w)\)</span>:</p>
-<p><span class="math display">\[\sum_{w,d} \varepsilon^2(w,d) = \sum_{w,d} [q(w,d) - \underbrace{f(d)h(w)}_{\mathrm{E}[q(w,d)]}]^2\]</span></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
+<p><span class="math display">\[x_i = \mathrm{E}[D_{in}]\]</span></p>
+<p><strong>Column Parameters</strong></p>
 <ul>
-<li><p>Since this is a non-linear model, we need an iterative method to minimize to <em>SSE</em></p></li>
-<li>We can use weighted least squares if the variances of the residuals are not constant over the triangle
-</div>
-<p></p></li>
+<li><p>Expected % reported in each period: <span class="math inline">\(y_j\)</span></p>
+<p><span class="math inline">\(\sum y_i = 1\)</span></p></li>
+<li><p>Expected reported to date: <span class="math inline">\(p_j\)</span></p>
+<p><span class="math inline">\(\sum_{k=1}^j y_k\)</span></p></li>
+<li><p>Expected development from <span class="math inline">\(D_{ij-1}\)</span> to <span class="math inline">\(D_{ij}\)</span>: <span class="math inline">\(\lambda_j\)</span> (<span class="math inline">\(= \dfrac{p_j}{p_{j-1}}\)</span>?)</p></li>
 </ul>
-<p>We need to minimize the variance of each residual <span class="math inline">\(\varepsilon(w,d)\)</span></p>
-<p><span class="math display">\[\mathrm{Var}(\varepsilon(w,d)) \propto f(d)^p h(w)^q\]</span></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
+<p><span class="math display">\[\{\lambda_j \: : \: j = 2 ,...,n\}\]</span></p>
 <ul>
-<li><p><span class="math inline">\(p\)</span> &amp; <span class="math inline">\(q\)</span> typically <span class="math inline">\(\in [0,1,2]\)</span></p></li>
-<li><p>And regression weights (applied to each <span class="math inline">\(f(d)\)</span> or <span class="math inline">\(h(w)\)</span>) will be <span class="math inline">\(\dfrac{1}{f(d)^p h(w)^q}\)</span> (inversely proportional to variance, similar to <a href="cl-ass.html#cl-ass-3-proof">Mack 1994</a>)</p></li>
+<li>Weighted average LDFs: <span class="math inline">\(\hat{\lambda}_j\)</span></li>
 </ul>
-<p>Since <span class="math inline">\(\mathrm{E}[q(w,d)] = f(d)h(w)\)</span></p>
-<ul>
-<li><p><span class="math inline">\(f(d) = \dfrac{\mathrm{E}[q(w,d)]}{h(w)}\)</span>, and</p></li>
-<li><p><span class="math inline">\(h(w) = \dfrac{\mathrm{E}[q(w,d)]}{f(d)}\)</span></p></li>
-<li><p>So the actual <span class="math inline">\(\dfrac{q(w,d)}{h(w)}\)</span> is an estimate of <span class="math inline">\(f(d)\)</span> and vice versa</p></li>
-<li>And we can estimate <span class="math inline">\(f(d)\)</span> based on a weighted average of each observation</li>
-</ul>
-</div>
-<p></p>
-<p>Different variance assumption for <span class="math inline">\(\varepsilon\)</span> <span class="math inline">\(\Rightarrow\)</span> different parameters (weight) similar to the Chainladder method in table <a href="venter-def.html#tab:venter-var-weight">5.2</a></p>
-<table>
-<caption><span id="tab:venter-var-weight-BF">Table 5.4: </span> Variance and parameters for various form of <span class="math inline">\(\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)\)</span></caption>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Method</th>
-<th><span class="math inline">\(\mathrm{Var}(\varepsilon(w,d)) \propto f(d)^p h(w)^q\)</span></th>
-<th><span class="math inline">\(\mathbf{f(d)}\)</span>: Col Parameters</th>
-<th><span class="math inline">\(\mathbf{h(w)}\)</span>: Row Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><em>BF</em><sup>1</sup></td>
-<td><span class="math inline">\(p=q=0\)</span></td>
-<td><span class="math inline">\(f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}\)</span></td>
-<td><span class="math inline">\(h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}\)</span></td>
-</tr>
-<tr class="even">
-<td>Cape Cod<sup>2</sup></td>
-<td><span class="math inline">\(p=q=0\)</span></td>
-<td><span class="math inline">\(f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}\)</span></td>
-<td><span class="math inline">\(h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}\)</span></td>
-</tr>
-<tr class="odd">
-<td><em>BF</em> (Var <span class="math inline">\(\propto\)</span> <span class="math inline">\(fh\)</span>)</td>
-<td><span class="math inline">\(p=q=1\)</span></td>
-<td><span class="math inline">\(f^2(d) = \dfrac{\sum_w h \left( \frac{q}{h} \right) ^2}{\sum_w h}\)</span></td>
-<td><span class="math inline">\(h^2(w) = \dfrac{\sum_d f \left( \frac{q}{f} \right)^2}{\sum_d f}\)</span></td>
-</tr>
-</tbody>
-</table>
-<ol style="list-style-type: decimal">
-<li><p><em>BF</em>: assumes each <span class="math inline">\(q(w,d)\)</span> have constant variance (least square, standard regression)</p>
-<p>For <span class="math inline">\(h(w)\)</span> weight is <span class="math inline">\(f(d)^2\)</span> and cells with higher expectes loss get higher weight</p>
-<p>For <span class="math inline">\(f(d)\)</span> weight is expected ultimate losses squared, years with higher expected losses get higher weight</p></li>
-<li><p>Cape Cod: also assumes constant variance</p></li>
-</ol>
-<p>Recall from <a href="chain-ladder-assumptions-test.html#residuals">Mack 1994</a>, we need to look at the residual graphs to determine which variance assumption is appropriate</p>
-</div>
-<div id="iteration-process" class="section level4">
-<h4><span class="header-section-number">5.2.3.3</span> Iteration Process</h4>
-<div class="rmdcaution">
-<p>
-Work in progress section
-</p>
-</div>
-<p>Need to seed one of them and iterate until convergence</p>
-<ul>
-<li><p><span class="math inline">\(f(d)\)</span> <span class="math inline">\(\sum \downarrow\)</span>; <span class="math inline">\(h(w)\)</span> <span class="math inline">\(\sum \rightarrow\)</span> (for the constant var BF)</p></li>
-<li><p>Use the above to estimate the parameters and then calculate the unpaid</p></li>
-<li><p>When combining parameters, don’t count the <span class="math inline">\(f(0)\)</span> and always subtract 1</p></li>
-</ul>
-<p>Step 1) Start iteration with the <span class="math inline">\(f(d)\)</span> from Chainladder</p>
-<ul>
-<li><p>For age greater than 0, these are the incremental ATA factors <span class="math inline">\(\div\)</span> ATU factors</p></li>
-<li><p>For age 0, subtract the sum of the other factors from unity</p></li>
-</ul>
-<p>Step 2) Find <span class="math inline">\(h(w)\)</span>’s that minimize the SSE</p>
-<ul>
-<li>One regression for each <span class="math inline">\(w\)</span></li>
-</ul>
-<p>Step 3) Find <span class="math inline">\(f(d)\)</span>’s that minimize the SSE based on the <span class="math inline">\(h(w)\)</span> above</p>
-<p>Step 4) Do this till convergence</p>
-</div>
-<div id="venter-count-para" class="section level4">
-<h4><span class="header-section-number">5.2.3.4</span> Counting <em>n</em> and <em>p</em> for SSE</h4>
-<p><strong>For <em>n</em></strong></p>
-<ul>
-<li><p>For reserving: number of cell in the triangle minus the first column <span class="math inline">\(\dfrac{m(m-1)}{2}\)</span></p>
-<p>Since we don’t need to forecast the first column to calculate the unpaid</p></li>
-<li><p>For pricing: number of cell in the triangle</p></li>
-</ul>
-<p><strong>For <em>p</em></strong> (Just a walk through of how we get the <span class="math inline">\(m\)</span> in Table @ref(#tab:venter-alt-pattern))</p>
-<ul>
-<li><p><strong><em>BF</em></strong>: Start with <span class="math inline">\(2m\)</span> parameters all the <span class="math inline">\(f(d)\)</span>’s and <span class="math inline">\(h(w)\)</span>’s</p>
-<ol style="list-style-type: decimal">
-<li><p>We don’t need <span class="math inline">\(f(0)\)</span> for reserves again since we don’t need to forcast the first column</p></li>
-<li><p>Less one more due to degree of freedom (?)</p>
-<p>Since you can fix any one of the parameters and still get the same results</p></li>
-<li><p>So we have <span class="math inline">\(p = 2m-2\)</span></p></li>
-</ol></li>
-<li><p>Similarly for <strong>Cape Cod</strong> but we only start with <span class="math inline">\(m + 1\)</span> so we ended up with <span class="math inline">\(m-1\)</span> taking out the <span class="math inline">\(f(d)\)</span> and the degree of freedom</p></li>
-<li><p><strong>Grouped <em>BF</em></strong> is similar as well if you don’t group the <span class="math inline">\(f(0)\)</span></p>
-<p>If you group the <span class="math inline">\(f(0)\)</span> you can’t subtract one for that as you’ll be using the parameter</p></li>
-<li><p><strong>Chainladder</strong> you have <span class="math inline">\(m\)</span> for all the <span class="math inline">\(f(d)\)</span>’s to start with and less the <span class="math inline">\(f(d)\)</span></p></li>
-</ul>
-</div>
-</div>
-<div id="venter-imp-3" class="section level3">
-<h3><span class="header-section-number">5.2.4</span> Implication 3: Linearity</h3>
-<p>The forecast incremental losses might not be a linear function (e.g. <span class="math inline">\(q(w,d) = a\sqrt{c(w,d)}\)</span>)</p>
-<p>Look at residuals as function of previous</p>
-<ul>
-<li><p>Test for linearity by making sure the residuals are not a sequence of positive then negative and vice versa</p></li>
-<li><p>Do this for each regression (i.e. every <span class="math inline">\(d\)</span>)</p></li>
-</ul>
-</div>
-<div id="venter-imp-4" class="section level3">
-<h3><span class="header-section-number">5.2.5</span> Implication 4: Stability</h3>
-<p>Look at empirical LDFs <span class="math inline">\(f(d)\)</span> down a column</p>
-<ul>
-<li><p>Use the entire history if factors are stable</p></li>
-<li><p>Take more recent average if unstable or follow a trend</p></li>
-<li><p>Can compare rolling 5 year averages as well</p></li>
-</ul>
-</div>
-<div id="venter-imp-5" class="section level3">
-<h3><span class="header-section-number">5.2.6</span> Implication 5: No Correlation on Columns (Test for independence)</h3>
-<p>Calculate Pearson correlation for every pair of columns with at <strong>least 3 LDFs</strong></p>
-<ul>
-<li><p>This is a test on the LDFs</p></li>
-<li><p>Test with only 2 LDFs will either be 1 or -1</p></li>
-<li><p>Not just adjacent LDF pairs like in <a href="chain-ladder-assumptions-test.html#adjacent-ldf">Mack-1994</a></p>
-<p><span class="math inline">\(\therefore\)</span> For a <span class="math inline">\(m \times m\)</span> triangle we have <span class="math inline">\({7 \choose 2}\)</span> pairs (7 because only 9 columns of LDFs and we take out the 2 columns with less than 3 LDFs)</p></li>
-</ul>
-<p><strong><em>Correlation</em></strong>:</p>
-<p><span class="math display">\[r = \dfrac{\sum \tilde{x} \tilde{y}}{\sqrt{\sum \tilde{x}^2\sum \tilde{y}^2}}\]</span></p>
-<p>Where <span class="math inline">\(\tilde{x} = x - \bar{x}\)</span> and <span class="math inline">\(\tilde{y} = y - \bar{y}\)</span></p>
-<ul>
-<li><p><span class="math inline">\(x\)</span>’s and <span class="math inline">\(y\)</span>’s are <strong>incremental LDFs - 1</strong></p></li>
-<li><p>But actually not necessary since -1 doesn’t affect the correlation</p></li>
-</ul>
-<p><strong><em>Test statistics</em></strong> for significance is <span class="math inline">\(T \sim t_{n-2}\)</span></p>
-<p><span class="math display">\[T = r \sqrt{ \dfrac{n-2}{1-r^2} }\]</span></p>
-<ul>
-<li><p>Look up the t-value from table for 90%</p></li>
-<li><p>If <span class="math inline">\(|T| &lt;\)</span> table value <span class="math inline">\(\Rightarrow\)</span> Not correlated</p></li>
-</ul>
-<p>Perform test for all columns</p>
-<ul>
-<li><p>We deem the triangle have significant correlations if more than <span class="math inline">\(0.1 x + \sqrt{x}\)</span> pairs are correlated</p></li>
-<li><p>x = # of pair tested = <span class="math inline">\({m - 3 \choose 2}\)</span> for a <span class="math inline">\(m \times m\)</span> triangle</p></li>
-</ul>
-</div>
-<div id="venter-imp-6" class="section level3">
-<h3><span class="header-section-number">5.2.7</span> Implication 6: No High of Low Diagonals (Test for independence)</h3>
-<p>Similar to <a href="chain-ladder-assumptions-test.html#cy-test">Mack</a>’s CY Test</p>
-<p><strong>Key Idea</strong>: Run regression on the triangle with a dummy variable for each diagonal</p>
-<p>Each <span class="math inline">\(q(w,d)\)</span> is regressed against the prior cumulative losses + dummy variable for which diagonal it is in</p>
-<ul>
-<li><p><span class="math inline">\(q(w,d) \sim c(w,d-1) + dummy_{CY}\)</span></p></li>
-<li><p>If losses are significantly higher or lower in a diagonal <span class="math inline">\(\Rightarrow\)</span> The coefficient of the dummy variable would be statistically significant (i.e. coefficient is double the <span class="math inline">\(\sigma\)</span>)</p></li>
-<li><p>Only includes diagonals that <strong>forcast</strong> at least 2 elements</p></li>
-</ul>
-<p><strong>Caveat</strong>: Diagonal effect is additive</p>
-<ul>
-<li><p>More likely to see multiplicative impact. e.g. from inflation</p></li>
-<li><p>This can be implement with a regression on the logarithm of the losses</p></li>
-</ul>
-<div id="diagonal-trend-as-inflation" class="section level4">
-<h4><span class="header-section-number">5.2.7.1</span> Diagonal Trend as Inflation</h4>
-<p>Consider CY trend as inflation and model <span class="math inline">\(q(w,d)\)</span> with a diagonal parameter <span class="math inline">\(g(w+d)\)</span>, where <span class="math inline">\(w+d\)</span> is the diagonal</p>
-<p><span class="math display">\[\mathrm{E}[q(w,d)] = f(d)h(w)g(w+d)\]</span></p>
-<p>This will have parameters for each row, column, and diagonal</p>
-<ul>
-<li><p>Can be reduce similar to the grouped BF</p></li>
-<li><p>We can model a constant CY trend to reduce the parameters</p>
-<p>e.g. <span class="math inline">\(g(w+d) = (1+j)^{w+d}\)</span></p></li>
-</ul>
-</div>
+<p><span class="math display">\[\hat{\lambda}_j = \dfrac{\sum_{i=1}^{n-j+1} D_{ij}}{\sum_{i=1}^{n-j+1} D_{ij-1}}\]</span></p>
 </div>
 </div>
             </section>
@@ -1003,8 +730,8 @@ Work in progress section
           </div>
         </div>
       </div>
-<a href="venter-def.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="past-exam-questions-4.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stochastic-models-for-the-chainladder.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -1032,7 +759,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/05-Venter-Factors.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/10-Verrall.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -6,7 +6,7 @@ Know the Bayesian BF calculation and assumptions \@ref(eq:bayesian-bf-verrall) a
 
 Know how to [use](#stoch-col-bf) and [calculate](#verrall-gamma-calc) the stochastic column parameters
 
-## Introduction
+## Introduction {#Verall-intro}
 
 Uses Bayesian techniques to allow incorporation of expert opinion and also maintain the integrity of the prediction error
 
