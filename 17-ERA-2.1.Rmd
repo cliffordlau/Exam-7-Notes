@@ -1,7 +1,7 @@
 # ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango
 
 3 evolutionary steps in [decision analysis](#era2-1-project-analysis):  
-Deterministic $\Rightarrow$ Risk Analysis $\Rightarrow$ Cetainty Equivalent
+Deterministic $\Rightarrow$ Risk Analysis $\Rightarrow$ Certainty Equivalent
 
 * [Argument](#argument-for-5) that 2^nd^ step is sufficient and [reasons](#step3-reason) to move to the 3^rd^ step
 
@@ -13,7 +13,7 @@ Attribute cost back to source of risk for decision making
 
 * [Walla](#walls): Calculates efficient frontier $\Rightarrow$ Estimate risk tolerance $\Rightarrow$ Where on the frontier to select the best portfolio based on $R$, utility curve and CE
 
-[Allocating](#allocation) risk captial
+[Allocating](#era2-1-5b) risk capital
 
 Cost benefit analysis with EVA or capital allocation
 
@@ -25,13 +25,13 @@ Decision making under uncertainty
 
 3 evolutionary steps:
 
-1) Deterministic Project Analysis:  
-Forecast CF, return metric (e.g. NPV) and sensitivity
+1) [Deterministic Project Analysis](#era2-1-project-analysis):  
+Forecast cashflow, return metric (e.g. NPV) and sensitivity
 
-2) Risk Analysis:  
-Disbtribution of inputs (e.g. Revenue) and distribution of outcome
+2) [Risk Analysis](#era2-1-risk-analysis-sec):  
+Distribution of inputs (e.g. Revenue) and distribution of outcome
 
-3) Certainty Equivalent:  
+3) [Certainty Equivalent](#era2-1-ce-sec):  
 From 2) run the outcomes through a risk preference function of the company
 
 ### Deterministic Project Analysis {#era2-1-project-analysis}
@@ -40,15 +40,19 @@ From 2) run the outcomes through a risk preference function of the company
 knitr::include_graphics('figures/FullSizeRender1.jpg')
 ```
 
-Single deterministic forecast of cash flow  
+```{remark}
 
-Return metric using NPV or IRR  
 
-Sensitivity on inputs (Rev, exp, CoC)
+* Single deterministic forecast of cash flow  
 
-* Sensitivity doesn't have any probabilities for each scenarios
+* Return metric using NPV or IRR  
 
-Uncertainty is handled judgmentally
+* Sensitivity test on inputs (e.g. revenue, expense, cost of capital)
+
+    * Sensitivity doesn't have any probabilities assigned for each scenarios
+
+* Uncertainty is handled judgmentally
+```
 
 ### Risk Analysis {#era2-1-risk-analysis-sec}
 
@@ -56,30 +60,40 @@ Uncertainty is handled judgmentally
 knitr::include_graphics('figures/FullSizeRender2.jpg')
 ```
 
-Critical inputs have a distribution (w/ correlations)  
-$\hookrightarrow$ Output also a distribution of NPV or IRR
+```{remark}
 
-Uncertainty is handled judgmentally; *Good portion has been moved into the dist^n^*
 
-Argument that step 2 is sufficient (Current best practice 2007):
+* Critical inputs have a distribution (w/ correlations)  
+$\hookrightarrow$ Output is a distribution of NPV or IRR
+
+* Uncertainty is handled judgmentally
+
+    (*Good portion has been moved into the dist^n^*)
+```
+
+#### Reason to Stay in Step 2
+
+Argument that **step 2 is sufficient** (Current best practice 2007):
 
 * Since investors are only compensated for systemic risk and not firm specific risk, no need to focus on firm specific risk
 
 * Based on portfolio theory where investors holds many different firm so the firm specific risk are diversified away
 
-$\hookrightarrow$ Only need to manage systemic risk
+$\therefore$ Only need to manage systemic risk
 
-Counter argument:
+**Counter argument**:
 
-* Management can't distinguish between systemic and firm risk
+* Management can't distinguish between *systemic* and *firm* risk
 
-* Instantaneous risk (jump risk) is still present as information have a time lag
+* Risk-adjusted discount rate reflect risk only if there is a time lag
 
-    * I.e. some risk has no time lage
+    * For many kinds of risk the time aspect is unimportant
+    
+        (Risk is instantaneous - jump risk)
 
-    * Portfolio theory manages risk through discounting
+    * Jump risk is still present as information have a time lag
 
-* Market based information is too noisy for management to be able to do proper cost-benefit analysis and make trade off decisions
+* Market based information is lack the refinement and discriminatory power (too noisy) for management to be able to do proper cost-benefit analysis and make trade off decisions
 
 ### Certainty Equivalent {#era2-1-ce-sec}
 
@@ -87,29 +101,36 @@ Counter argument:
 knitr::include_graphics('figures/FullSizeRender3.jpg')
 ```
 
-Distribution output from risk analysis is input to a utility function for the firm
+```{remark}
 
-* Utility function is based on corporate risk policy
 
-* Purpose is to express preference in a transparent and consistent manner
+* Distribution output from risk analysis is input to a utility function for the firm
 
-$\hookrightarrow$ Automate and formalizes some of the risk assessment, while risk judgement is still required
+    * Utility function is based on corporate risk policy
 
-Reasons to move to step 3:
+    * Purpose is to express preference in a transparent and consistent manner
 
-Risk managers and owners are both interested in preserving franchise value  
-$\hookrightarrow$ Want RM in place to protect FV  
-$\hookrightarrow$ Both are interested in policy to help make risk management more **objective**, **consistent**, **repeatable**, and **transaparent**
+    $\hookrightarrow$ Automate and formalizes some of the risk assessment, while risk judgement is still required
+```
+
+#### Reason to Move to Step 3
+
+Risk managers and shareholders are both interested in preserving franchise value  
+$\hookrightarrow$ Want risk management in place to protect franchise value  
+$\hookrightarrow$ Both should support policies to help make risk management more **objective**, **consistent**, **repeatable**, and **transaparent**  
+$\therefore$ Provides some degree of support for evolution to step 3
 
 * Market Value = Book Value + Franchise Value
 
 * Franchise Value = Value of future earnings growth
 
-## Decision Making with an IRM
+## Decision Making with an Internal Risk Model (IRM)
 
 Focus on Element 5 below, 1-4 discussed else where
 
-![](figures/FullSizeRender4.jpg)
+```{r era2-1-decision-making, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Risk Model Components'}
+knitr::include_graphics('figures/FullSizeRender4.jpg')
+```
 
 **Attribute Cost Back to Source of Risk**
 
@@ -118,49 +139,86 @@ Focus on Element 5 below, 1-4 discussed else where
     * Distribution of outcomes for each LoB $\Rightarrow$ Correlate outcomes $\Rightarrow$ Correlate on external sources
     
 2) Quantify the impact of the loss outcomes on the organization
-    * Amount of P&L or level of PHS; Can be a distribution
+    
+    * Amount of P&L or level of PHS
+    
+    * Can be a distribution
     
 3) Assign a cost to each amount of impact
 
-    * Utility function will be non linear $\Rightarrow$ Higher cost to events further out in the tail
+    * Utility function will be non linear $\Rightarrow$ Higher cost to events further out in the tail (e.g. $20m loss is more than twice as bad as a $10m loss)
     
 4) Attribute cost to source (e.g. BUs)
 
 ### 5a - Corporate Risk Tolerance
 
+```{definition}
 Corporate risk tolerance
 
 * How much risk a company is willing to take
-* How much fluctuation in annual results it is willing to bear
-* Needed in Steps 2 and 3 above
 
-<a name="risk-t-dep"></a> Corporate risk tolerance is dependent on:
+* What tradeoffs the company is willing to make in terms of reduction in expected profits to reduce risk
+
+* How much fluctuation in annual results it is willing to bear
+
+* Needed in Steps 2 and 3 above
+```
+
+Corporate risk tolerance is a combination of the following factors:
 
 * **Organization Size**: Depending how much capital a firm have to deploy to invest in project each year changes how big an investment is
 
 * **Capital**: The % impact to the firm's total capital is more telling than the nominal value $\Rightarrow$ Firm with higher capital can tolerate bigger nominal value volatility
 
 * **Volatility**:
+
     * Investors might want steady stream of dividend paid $\Rightarrow$ Lower risk tolerance
+
     * Public firms with quarterly earnings are rewarded for having consistent predictable profits $\Rightarrow$ Lower risk tolerance
+
     * Private firm can afford to have more volatile results
     
-<a name="quantify-risk-t"></a> **Risk Tolerance**
+#### Risk Preference Function
 
-* Important to define firm's risk tolerance
-* Can be defined by *Risk Preference Function* aka **Utility Function**
-    * Non linear e.g. $U(x) = A + B \cdot \operatorname{ln}[x+c]$ or $U(x) = A - e^{ -x / R }$
-    * Slope decrease further into profit while increases further into losses
+Risk tolerance can be defined by a **risk preference function** (or **utility function**)
+
+* Translation of impact into cost requires a risk preference function
+
+**Properties** of risk preference function
+
+* Non linear e.g. $U(x) = A + B \cdot \operatorname{ln}[x+c]$ or $U(x) = A - e^{ -x / R }$
+
+* Slope decrease further into profit while increases further into losses
     
-#### Spetzler
+    * A linear straight line represents risk neutral utility
+    
+**Source** of risk preference function
 
-<a name="spetzler"></a>
+1. Implicitly taken from an outside source (e.g. capital market)
+
+2. Explicitly derived from firm management attitudes
+
+    * See section below from [Spetzler](#spetzler)
+    
+    * Spetzler's process output a transparent, objective, mathematical expression of the corporation's acceptable risk-reward tradeoff
+    
+    * This can improve cost-benefit analysis (CBA) by quantifying the minimum decrease in risk sufficient to justify a certain mitigation cost
+    
+    * Without such a function, CBA can still be made but will be inconsistent and opaque driven by the individual decision makers' intuitions and preferences
+    
+[Walls](#walls) show how to select projects with the efficient frontier and utility curve
+    
+#### Spetzler {#spetzler}
 
 "The Development of Corporate Risk Policy for Capital Investment Decisions" - Spetzler 1968
 
 Paper found that managers have very different risk tolerate and found that they are likely to be too conservative for small projects (damages not meaningful to the firm as a whole)
 
-Useful for management to 1) see the different utility curves for different managers 2) make decisions on where the company utility curve should be and communicate that to the day to day decision makers
+Useful for management to:
+
+1. see the different utility curves for different managers
+
+2. make decisions on where the company utility curve should be and communicate that to the day to day decision makers
 
 **Benefits of Utility Curve**:
 
@@ -168,9 +226,7 @@ Useful for management to 1) see the different utility curves for different manag
 
 * Without, risk/reward decisions criteria will be inconsistent and opaque and driven by individuals
 
-#### Walls
-
-<a name="walls"></a>
+#### Walls {#walls}
 
 "Combining decision analysis and portfolio management to improve project selection in the exploration and production firm" - Walls 2004
 
@@ -190,13 +246,17 @@ The next 3 point is to decide where on the efficient frontier to be on
 
 Risk tolerance level $R$ and utility function tells you where the firm choose to be on the efficient frontier
 
-* $R$ is estimated based on where the decision maker is indifferent from a gamble of 50% of $R$ and 50% of $-R/2$ and not taking it
+* $R$ is estimated based on where the decision maker is indifferent from a gamble of 50% of $R$ and 50% of $-R/2$ and not taking it (take the expected value?)
+
+* Expected value is $\dfrac{R}{$}$
 
 **Utility Function**
 
 $U(x) = 1 - e^{ - x / R}$
 
-* Tell us how much risk is the firm willing to tolerate; How much reward are we willing to give up for a given reduction in risk and vice versa
+* Tell us how much risk is the firm willing to tolerate
+
+* How much reward are we willing to give up for a given reduction in risk and vice versa
 
 **Certainty Equivalent**
 
@@ -207,6 +267,7 @@ With the above, calculate Certainty Equivalent (CE) of a given *portfolio*:
 CE changes based on the $R$ selected
 
 * Pick the portfolio with the highest CE
+
 * Negative CE means the firm would be better of not investing in it
 
 ***
@@ -214,39 +275,48 @@ CE changes based on the $R$ selected
 Firm must answer these questions:
 
 * How much risk are we willing to tolerate (Picking $R$)
-* How much reward are we willing to give up for a given reduction of risk and vice versa (Selection of utility curve)
+
+* How much reward are we willing to give up for a given reduction of risk and vice versa (Expressing its risk preference, utility curve)
+
 * Are the risk-reward trade offs available along the efficient frontier acceptable to us (Answer by the first 2 points)
 
-### 5b - Cost of Capital Allocated
+### 5b - Cost of Capital Allocated {#era2-1-5b}
 
-<a name="allocation"></a>
+```{definition}
+Risk capital is a measure of firm's total risk bearing capacity
 
-Still an open question
+* It is only an aggregate measure
 
-*Risk Capital**
+* It gives counterparty confidence that the financial firm can perform
 
-Risk capital is a measure of firm's total risk bearing capacity and is only an aggregate measure. It gives counterparty confidence that the financial firm can perform
+* Still an open question in actuarial science
+```
 
-**Allocation**
+#### Allocation
 
-Cost of risk capital is being allocated, not the capital itself
+**Cost of risk capital** is being allocated, not the capital itself
 
-Allocation of risk capital is theoretical since no capital is actually transferred to the policy
+* Allocation of risk capital is theoretical since no capital is actually transferred to the policy
 
-Useful to allocate risk capital to risk-taking units (and non risk-taking units too maybe)
+* Useful to allocate risk capital to risk-taking units
 
-* Total risk capital required is reduced by diversification benefits and the contributions to risk are not linear (See ERA 2.2)
+    (And non risk-taking units too maybe)
 
-Difficult to allocate risk measure to different units, one method below:
+* Total risk capital required is reduced by diversification benefits and the contributions to risk are not linear (See [ERA 2.2](#era2-2-intro))
 
-* Return on Risk Adjusted Capital (RORAC)
+**Return on Risk Adjusted Capital** (RORAC)
+
+* Risk capital allocation is use as an interim step in assigning the cost of risk capital to portfolio elements
+
 * Allocate capital in a risk adjusted way $\Rightarrow$ Riskier sources require more capital
-* Apply firm wide hurdle rate to determine cost of capital for each BU
-* $\neq$ RAROC as RAROC adjusts the hurdle rate and does not risk adjust capital
+
+* Apply firm wide hurdle rate to determine cost of capital for each portfolio elements (e.g. BU)
+
+* $\neq$ RAROC as RAROC adjusts the hurdle rate and does not allocate  capital in a risk adjusted way
 
 **Bypassing Allocation**
 
-Mango argues that concept of allocating capital is meaningless as each risk source has access to the capital of the firm
+Mango argues that concept of allocating capital is meaningless as each risk source has access to the capital of the firm (i.e. the entire pool of risk capital is a shared asset)
 
 * Focus on cost of capital the risk source uses we get a direct answer
 
@@ -254,7 +324,13 @@ Mango argues that concept of allocating capital is meaningless as each risk sour
 
 * How to determine the cost is the difficult part
 
-**EVA**
+* Idea is based on Merton and Perold where they define risk capital as the amount needed to guarantee the performance of the intermediary's contractual obligations at the default-free level
+
+    * The cost of purchasing this protection in the market is the cost of risk capital
+
+A good candidate for decision variable is EVA if we only have cost of risk capital:
+
+***EVA***
 
 EVA = Economic Value Added = NPV - Cost of Capital
 
@@ -262,13 +338,15 @@ EVA > 0 means BU is adding value
 
 ### 5c - CBA for Mitigation
 
-Cost-benefit analysis (CBA)
+Cost-benefit analysis (CBA):
 
-EVA
+* We can do this once we have the corporate risk tolerance and capital cost allocation
+
+CBA with **EVA**
 
 * Mitigation effort that has positive EVA should be done
 
-Capital Allocation
+CBA with **Capital Allocation**
 
 * Projects that reduce capital cost by more than the cost of the project should be undertaken
 
@@ -276,8 +354,16 @@ Capital Allocation
 
 Difficult to perform risk management for a firm based on a single metric
 
-Recommend a suite of decision metrics that are distinct and independent (to give different perspectives) and are responsive to different dynamics
+**Recommendation**:
 
-Parsimony dictates that reduce complexity as much as possible, but not more so
+* A **suite of decision metrics**
 
-$\therefore$ using a handful of risk metrics is acceptable
+* That are **distinct** and **independent** (to give different perspectives, reflecting different dimensions of the space)
+
+* And are responsive to **different dynamics**
+
+However corporate realities often mandate a compromise be struck in the interest of parsimony
+
+* We should reduce complexity as much as possible, but not more so
+
+$\therefore$ Using a handful of risk metrics is acceptable

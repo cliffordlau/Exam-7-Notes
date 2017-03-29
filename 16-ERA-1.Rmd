@@ -606,3 +606,17 @@ Can also allocate risk capital to investments $\Rightarrow$ Compare riskiness of
 * Validity of such a comparison will depend on the consistency of the risk measures that are developed
 
 * See [ERA 2.2](#era2-2-intro) for more detail
+
+## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
+
+```{block, type='rmdcaution'}
+Haven't done past exam questions
+```
+
+### Question Highlights
+
+n/a
