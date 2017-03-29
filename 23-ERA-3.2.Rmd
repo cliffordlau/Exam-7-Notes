@@ -22,7 +22,7 @@ Should focuse on the spread of potential outcomes instead of best estimate
 
 * Add flexibility and let the parameters reflect the uncertainty in the assumptions
 
-## Introduction {#era-3.2-intro}
+## Introduction {#era3-2-intro}
 
 Parameter risk is key for large companies since process risk is reduced with a large book
 

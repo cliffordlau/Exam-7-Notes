@@ -1,10 +1,8 @@
-# C3 ERA 3.1 Considerations on Implementing Internal Risk Model - Mango
-
-## Cliff's Summary
+# ERA 3.1 Considerations on Implementing Internal Risk Model - Mango
 
 Just know the 4 sections and have an idea of what it covers
 
-## Introduction
+## Introduction {#era3-1-intro}
 
 Creation of internal risk model
 

@@ -1,6 +1,4 @@
-# C2 ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft
-
-## Cliff's Summary
+# ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft
 
 Talks about different ways regulator regulates company's capitla adequacy
 
@@ -22,7 +20,7 @@ Scenario testing
 * Purchase reinsurance
 * Issue surplus notes
 
-## Introduction
+## Introduction {#era2-3-intro}
 
 Prior to 1990: Leverage Ratios
 

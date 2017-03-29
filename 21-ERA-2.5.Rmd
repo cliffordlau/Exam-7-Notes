@@ -1,6 +1,4 @@
-# C2 ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm
-
-## Cliff's Summary
+# ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm
 
 Value of reinsurance
 
@@ -31,7 +29,7 @@ Measure the impact on the value of the firm
 
 * Difficult to do but some [recent study](#study) results
 
-## Introduction
+## Introduction {#era2-5-intro}
 
 Value of reinsurance
 

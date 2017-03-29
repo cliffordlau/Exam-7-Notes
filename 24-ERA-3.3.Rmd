@@ -56,7 +56,7 @@ Using the $J(z)$ and $\chi(z)$
 
 Graph the possible $J(z)$ with empirical $J(z)$ to see which fits best; Similarly for $\chi(z)$
 
-## Introduction {#era3.3-intro}
+## Introduction {#era3-3-intro}
 
 We need loss distribution for the whole group
 

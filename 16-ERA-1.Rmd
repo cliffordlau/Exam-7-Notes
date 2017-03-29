@@ -399,7 +399,7 @@ Causal link between a large unpredictable event and losses to an insurer
 
     * e.g. macro factors such as inflation
     
-* See additional detail in [ERA 3.2](#era-3.2-intro)
+* See additional detail in [ERA 3.2](#era3-2-intro)
 
 ***Catastrophe Modeling Uncertainty***  
 Exposure to natural and man-made cat
@@ -470,7 +470,7 @@ Efficient Frontier: $\sigma$ vs $\operatorname{E}[Return]$
 
 * See how it changes by modifying reinsurance structure or asset mix
 
-* More details in [ERA 2.4](#era2.4-intro)
+* More details in [ERA 2.4](#era2-4-intro)
 
 ***Modeling Considerations***
 
@@ -536,7 +536,7 @@ Important to capture dependencies or else the model will be unrealistically stab
 
 * Use copulas to capture different forms of dependency
 
-    * See [ERA 3.3](#era3.3-intro) for more details
+    * See [ERA 3.3](#era3-3-intro) for more details
 
 ### Setting Capital Requirements {#setting-cap-era1}
 
@@ -548,7 +548,7 @@ ERM help insurer fin the optimum level of capital that balances efficiency and p
 
 Set capital to maximize insurer's value creates a conceptual framework that unifies the competing requirements of prudence and efficiency
 
-* See [ERA 2.2](#era2.2-intro) for more detail
+* See [ERA 2.2](#era2-2-intro) for more detail
 
 Approaches to setting capital requirements:
 
@@ -605,4 +605,4 @@ Can also allocate risk capital to investments $\Rightarrow$ Compare riskiness of
 
 * Validity of such a comparison will depend on the consistency of the risk measures that are developed
 
-* See [ERA 2.2](#era2.2-intro) for more detail
+* See [ERA 2.2](#era2-2-intro) for more detail

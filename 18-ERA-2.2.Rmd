@@ -22,7 +22,7 @@ Allocation is [marginal](#marginal) if the change to the company’s risk measur
 
 Can bypass the above if we can just allocate the cost of capital
 
-## Introduction {#era2.2-intro}
+## Introduction {#era2-2-intro}
 
 VaR is too simplistic for insurance companies due to risk from reserves and u/w losses
 

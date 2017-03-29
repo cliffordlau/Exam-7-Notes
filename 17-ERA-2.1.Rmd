@@ -1,9 +1,7 @@
-# C2 ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango
+# ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango
 
-## Cliff's Summary
-
-3 evolutionary steps in decision analysis:  
-[Deterministic](#deterministic) $\Rightarrow$ [Risk Analysis](#risk-analysis) $\Rightarrow$ [Cetainty Equivalent](#CE)
+3 evolutionary steps in [decision analysis](#era2-1-project-analysis):  
+Deterministic $\Rightarrow$ Risk Analysis $\Rightarrow$ Cetainty Equivalent
 
 * [Argument](#argument-for-5) that 2^nd^ step is sufficient and [reasons](#step3-reason) to move to the 3^rd^ step
 
@@ -12,6 +10,7 @@ Attribute cost back to source of risk for decision making
 [Quantify](#quantify-risk-t) corporate risk tolerance and what it is [dependent](#risk-t-dep) on
 
 * [Spetzler](#spetzler): Benefits of utility curve
+
 * [Walla](#walls): Calculates efficient frontier $\Rightarrow$ Estimate risk tolerance $\Rightarrow$ Where on the frontier to select the best portfolio based on $R$, utility curve and CE
 
 [Allocating](#allocation) risk captial
@@ -35,11 +34,11 @@ Disbtribution of inputs (e.g. Revenue) and distribution of outcome
 3) Certainty Equivalent:  
 From 2) run the outcomes through a risk preference function of the company
 
-### Deterministic Project Analysis
+### Deterministic Project Analysis {#era2-1-project-analysis}
 
-<a name="deterministic"></a>
-
-![](figures/FullSizeRender1.jpg)
+```{r era2-1-det, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Deterministic'}
+knitr::include_graphics('figures/FullSizeRender1.jpg')
+```
 
 Single deterministic forecast of cash flow  
 
@@ -51,20 +50,18 @@ Sensitivity on inputs (Rev, exp, CoC)
 
 Uncertainty is handled judgmentally
 
-### Risk Analysis
+### Risk Analysis {#era2-1-risk-analysis-sec}
 
-<a name="risk-analysis"></a>
-
-![](figures/FullSizeRender2.jpg)
+```{r era2-1-risk-analysis, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Risk Analysis'}
+knitr::include_graphics('figures/FullSizeRender2.jpg')
+```
 
 Critical inputs have a distribution (w/ correlations)  
 $\hookrightarrow$ Output also a distribution of NPV or IRR
 
 Uncertainty is handled judgmentally; *Good portion has been moved into the dist^n^*
 
-***
-
-<a name="argument-for-5"></a> Argument that step 2 is sufficient (Current best practice 2007):
+Argument that step 2 is sufficient (Current best practice 2007):
 
 * Since investors are only compensated for systemic risk and not firm specific risk, no need to focus on firm specific risk
 
@@ -75,16 +72,20 @@ $\hookrightarrow$ Only need to manage systemic risk
 Counter argument:
 
 * Management can't distinguish between systemic and firm risk
+
 * Instantaneous risk (jump risk) is still present as information have a time lag
+
     * I.e. some risk has no time lage
+
     * Portfolio theory manages risk through discounting
+
 * Market based information is too noisy for management to be able to do proper cost-benefit analysis and make trade off decisions
 
-### Certainty Equivalent
+### Certainty Equivalent {#era2-1-ce-sec}
 
-<a name="CE"></a>
-
-![](figures/FullSizeRender3.jpg)
+```{r era2-1-ce, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Certainty Equivalent'}
+knitr::include_graphics('figures/FullSizeRender3.jpg')
+```
 
 Distribution output from risk analysis is input to a utility function for the firm
 
@@ -94,15 +95,14 @@ Distribution output from risk analysis is input to a utility function for the fi
 
 $\hookrightarrow$ Automate and formalizes some of the risk assessment, while risk judgement is still required
 
-***
-
-<a name="step3-reason"></a> Reasons to move to step 3:
+Reasons to move to step 3:
 
 Risk managers and owners are both interested in preserving franchise value  
 $\hookrightarrow$ Want RM in place to protect FV  
 $\hookrightarrow$ Both are interested in policy to help make risk management more **objective**, **consistent**, **repeatable**, and **transaparent**
 
 * Market Value = Book Value + Franchise Value
+
 * Franchise Value = Value of future earnings growth
 
 ## Decision Making with an IRM
