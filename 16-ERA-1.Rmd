@@ -12,9 +12,9 @@ Definition of ERM \@ref(def:erm-def-era1)
 
 Enterprise risk model process
 
-1. [Diagnose](#era1-diagnose): Assess all risk and considergeneral environment, industry, and firm specific items
+1. [Diagnose](#era1-diagnose): Assess all risk and consider general environment, industry, and firm specific items
 
-2. [Analyze](#era1-analyze) what risk are critical and consider correlations; Select measures consistent with management's veiw of risk and prioritize
+2. [Analyze](#era1-analyze) what risk are critical and consider correlations; Select measures consistent with management's view of risk and prioritize
 
 3. [Implement](#era1-implement) ways to manage the risk: avoid, reduce frequency, mitigate severity, transfer, or retain
 
@@ -54,7 +54,7 @@ Risk model can also be used to allocate capital to BUs and investment function t
 
     * Faced external and internal pressure to use cat models after HU Andrew
 
-    * Nowadays it would be considered mismangement for a company not to use cat models
+    * Nowadays it would be considered mismanagement for a company not to use cat models
     
 There is a spectrum of acceptance for both internal and external, and ERM is somewhere between the 2 examples above
 
@@ -218,7 +218,7 @@ Focus on **managing** risks identified and analyzed as material
 
 4. **Eliminate** or **transfer** of the consequences
 
-5. **Retention** (by desing of default) some or all of the risk
+5. **Retention** (by design or by default) some or all of the risk
 
 Speculative risk factor may provide an opportunity to capitalize on the risk, rather than manage it away
 
@@ -244,7 +244,7 @@ Goal: **understand** and **quantify** the relationships among the risks to the b
 
 Modeling can help with *management functions* and *strategic decisions*:
 
-* Determining capital need (to support riks, maintain rating, etc)
+* Determining capital need (to support risk, maintain rating, etc)
 
 * Identifying sources of significant risk and cost of capital to support them
 
@@ -305,7 +305,7 @@ Risks less amenable to detailed representation in enterprise risk model (**Non-q
 
 * Requires specialized management process and difficult to incorporate into an overall risk model
 
-* Can be modeled in bulk using informed judgements (but with high degree of uncertainty)
+* Can be modeled in bulk using informed judgments (but with high degree of uncertainty)
 
 * Use model to manage the risk for which the modeling process is effective
 
@@ -355,7 +355,7 @@ Instability from variations in the premiums as well as losses
 Misestimated parameters, imperfect form and risk not modeled (Likely largest risk net of reinsurance (larger than cat exposure))
 
 * **Estimation Risk**:  
-Error in estimatins the form and parameters
+Error in estimations the form and parameters
     
     * Depends on available data (i.e. more and better data *reduces* this risk)
 
@@ -366,9 +366,9 @@ Error on forecast of future value even if we fit the historical data accurately
     
         * Freq/Sev trend from the time of the data to the current and future underwriting periods
     
-        * Developemen of ultimate losses
+        * Development of ultimate losses
     
-    * Affected by macro factors (e.g. inflation) and the coresponding dependencies should be reflected in the model
+    * Affected by macro factors (e.g. inflation) and the corresponding dependencies should be reflected in the model
 
     * Unexpected change in external risk conditions also add to projection risk, e.g.
     
@@ -383,7 +383,7 @@ Causal link between a large unpredictable event and losses to an insurer
     
     * Court ruling that favors a large group of policyholders (e.g. class action)
     
-    * Exposure that existed, unknown, for many years comes to light (e.g. asebestos)
+    * Exposure that existed, unknown, for many years comes to light (e.g. asbestos)
 
     * New cause of loss emerges that was previously regarded as not covered (e.g. environmental, CD)
 
@@ -406,11 +406,11 @@ Exposure to natural and man-made cat
 
 * Likely largest risk after parameter risk, special case of parameter risk
 
-* Based on proprietary cat models, further source of uncertaity
+* Based on proprietary cat models, further source of uncertainty
 
     * Differences between commercial models and different versions of the same model
     
-    * Considerable amount of uncertainty in the probabilities of various events and the amount of insured damange
+    * Considerable amount of uncertainty in the probabilities of various events and the amount of insured damage
 
     * Additional uncertainty from data quality
     
@@ -502,52 +502,82 @@ Efficient Frontier: $\sigma$ vs $\operatorname{E}[Return]$
 
 Important to capture dependencies or else the model will be unrealistically stable
 
-**Sources of Dependencies**:
+***Sources of Dependencies***:
 
-* Macro econ conditions, affect many risks. Use ESG
+* Simultaneous impact of macro economic conditions on many risks
 
-* U/w cycle, loss trends and reserve development can impact across lines
+    A good ESG should capture the dependence between inflation, interest rates, equity values, etc
+    
+    * This will impact asset values
+    
+    * Inflation will impact underwriting losses, loss reserve development
+    
+    * Interest rates may influence the underwriting cycle
 
-* CAT and other extreme events like the 2008 financial crisis
+* U/w cycle, loss trends and reserve development can be correlated across LoB and with each other
+
+* Cat and other event losses can cross lines
+
+* Large man made cat (e.g. 9/11) can have impact on both insurance and market risk
 
 * Difficult to quantify
 
-Use copulas to capture different forms of dependency
+    * May reference studies of multiple insurers, public insurance industry information and macroeconomic data
+    
+    * Still require professional judgement
 
-* Correlation is too simplistic and does not capture the dependencies in the tail
+***Modeling Dependencies***:
 
-***
+* Avoid using just the correlation coefficient to describe and oversimplify dependency
+
+* We are most interested in the tail dependency
+
+    * e.g. High inflation or large cat that impacts multiple LoB that would typically be uncorrelated
+
+* Use copulas to capture different forms of dependency
+
+    * See [ERA 3.3](#era3.3-intro) for more details
 
 ### Setting Capital Requirements {#setting-cap-era1}
 
-Policyholders wants more capital $\Leftrightarrow$ Shareholders want higher return (less capital)
+ERM help insurer fin the optimum level of capital that balances efficiency and prudence
 
-Set capital to maximize insurer's value $\Rightarrow$ Unifies the competing requirements of prudence and efficiency
+* Policyholders (acting through regulators and rating agencies) demand adequate capital
 
-Approaches to set capital requirements:
+* Shareholders require that capital be used efficiently
 
-**1. Default Avoidance**: Focused on the **tail** and protecting **policyholders**
+Set capital to maximize insurer's value creates a conceptual framework that unifies the competing requirements of prudence and efficiency
+
+* See [ERA 2.2](#era2.2-intro) for more detail
+
+Approaches to setting capital requirements:
+
+**1. Default Avoidance**:  
+Focused on the **tail** and protecting **policyholders**
 
 Caveat:
 
 * S/h will be hurt at much lower loss amount
+
 * We have the least confidence in the tail of the model
 
 $\hookrightarrow$ More feasible and relevant to focus on thresholds less extreme than default
 
-**2. Lower Threshold than Probability of Ruin**:
+**2. Other Thresholds** (Lower than probability of ruin):
 
-* Probability of downgrade
+i. Probability of downgrade
 
     * Significant loss $\leadsto$ $\downarrow$ financial rating $\leadsto$ $\downarrow$ franchise value > loss itself
+    
+    * Franchise value: customer base, agency relationships, reputation, infrastructure and expertise
 
-* Sufficient capital to service renewals
+ii. Sufficient capital to service renewals
 
-* Survive and thrive after major CAT
+iii. Survive and thrive after major cat
 
-### Convert Probability to Loss
+#### Convert Probability to Loss
 
-Converting Probability Levels to Financial Loss Amounts
+Associate the selected probability level with amount of financial loss
 
 * Smallest amount of loss, $\alpha \%$ of the time $\Rightarrow$ $VaR_{100 - \alpha \%}$
 
@@ -557,10 +587,22 @@ Converting Probability Levels to Financial Loss Amounts
 
 **Important**: Risk measures do not tell us how much capital to hold; They tell us for a given level of capital, what the risk to the company is
 
-### Risk Adjusted Performance
+* Determination of optimal capital level is not purely a risk measurement exercise
+
+    * Need to balance sufficient financial strength to attract business and the need of shareholders to achieve attractive return
+
+* Risk measurement quantifies the risk the company is exposed to in relationship to the capital so established
+
+* Strategic risk decisions can then be made in the framework created
+
+* Capital is not set by risk measures, but analyzed by them to understand the sources of risk and for further strategic decision making
+
+#### Risk Adjusted Performance
 
 Allocate capital to business units $\Rightarrow$ Calculate the rate of return $\dfrac{\text{Profit}}{\text{Capital}}$ for that unit $\Rightarrow$ Compare RoR across BUs
 
 Can also allocate risk capital to investments $\Rightarrow$ Compare riskiness of investments and u/w
 
-* Need to make sure risk measures are consistent
+* Validity of such a comparison will depend on the consistency of the risk measures that are developed
+
+* See [ERA 2.2](#era2.2-intro) for more detail

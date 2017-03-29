@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="required-capital.html">
-<link rel="next" href="allocating-the-cost-of-capital.html">
+<link rel="prev" href="era-2-2-risk-measures-and-capital-allocation-g-venter.html">
+<link rel="next" href="risk-measures.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,253 +139,43 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="capital-allocation" class="section level2">
-<h2><span class="header-section-number">18.4</span> Capital Allocation</h2>
-<p>Allocate the company risk measure to each BU for the following purposes:</p>
+<div id="era2.2-intro" class="section level2">
+<h2><span class="header-section-number">18.1</span> Introduction</h2>
+<p>VaR is too simplistic for insurance companies due to risk from reserves and u/w losses</p>
+<p>Advantages attributed to <strong>Economic Capital</strong></p>
 <ul>
-<li><p>Measure the amount of risk each BU contributes</p></li>
-<li><p>Set capacity and policy limits for each BU</p></li>
-<li><p>Calculate risk-adjusted profitability e.g. <span class="math inline">\(\dfrac{\text{Profit}}{\text{Allocated Capital}}\)</span> or EVA = Profit - Cost of Capital</p></li>
+<li><strong>Unifying</strong> measure for all risks in an organization</li>
+<li>More <strong>meaningful</strong> than RBC or Capital Adequacy Ratios (Prem/Surplus, Res/Surplus)</li>
+<li>Forces firm to <strong>quantify</strong> risks it faces and combine them into a probability dist<sup>n</sup></li>
+<li>Provides a <strong>framework for setting acceptable risk levels</strong> for the company and its business units</li>
 </ul>
-<hr />
-<p>Definition:</p>
-<p><span class="math inline">\(Y\)</span>: Losses of a company</p>
-<p><span class="math inline">\(X_j\)</span>: Losses for each BU, <span class="math inline">\(\sum_j X_j = Y\)</span></p>
-<p><span class="math inline">\(\rho(Y)\)</span>: Risk measure of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mapsto\)</span> a real number</p>
-<p><span class="math inline">\(r(X_j)\)</span>: Allocation of risk measure to the individual BUs</p>
+<p>(One of the risk measure discuss in the paper will be econ capital (?) Not all are econ capital)</p>
+<p>Should consider multiple risk measures to see if the results are consistent</p>
 <ul>
-<li>Usually different from <span class="math inline">\(\rho(X_j)\)</span>, which is the risk measure applied to BU <span class="math inline">\(j\)</span></li>
-</ul>
-<div id="proportional-method" class="section level3">
-<h3><span class="header-section-number">18.4.1</span> Proportional Method</h3>
-<p>Allocate risk measure in proportion to the risk measure applied to each unit</p>
-<p><span class="math inline">\(r(X_j) = \dfrac{\rho(X_j)}{\sum_i \rho(X_i)} \rho(Y)\)</span></p>
+<li>Many other risk measures will also have the properties above</li>
+<li>Calling one of the risk measures economic capital is likely to confuse the process
 <ul>
-<li><p><span class="math inline">\(TVaR\)</span>: <span class="math inline">\(r(X_j) = \operatorname{E}[X_j \mid F(Y) &gt; \alpha]\)</span>; Condition on when the <strong>firm</strong> has losses XS the <span class="math inline">\(\alpha^{th}\)</span> percentile</p></li>
-<li><p><span class="math inline">\(VaR\)</span>: <span class="math inline">\(r(X_j) = \operatorname{E}[X_j \mid F(Y) = \alpha]\)</span>; Condition on when the firm has losses at the <span class="math inline">\(\alpha^{th}\)</span> percentile</p>
-<ul>
-<li>Difficult to calculate because it is estimating a single point in the dist<sup>n</sup>, results from sims can be quite variable</li>
-</ul></li>
-<li><p>Typical you’re conditioning on the BU’s <span class="math inline">\(\alpha^{th}\)</span> percentile</p></li>
-</ul>
-<p>Not marginal if the condition is not on the firm’s <span class="math inline">\(\alpha\)</span></p>
-<ul>
-<li><p>Marginal allocation means as unit grows, it is charged with the additional capital it requires</p></li>
-<li><p>Not marginal means the individuals don’t sum to the total (?)</p></li>
-</ul>
-</div>
-<div id="co-measures" class="section level3">
-<h3><span class="header-section-number">18.4.2</span> Co-Measures</h3>
-<p><span class="math inline">\(r(X_j) = \operatorname{E}[h(X_j) \cdot L(Y) \mid g(Y)]\)</span></p>
-<p>Given that:</p>
-<ul>
-<li><span class="math inline">\(\rho(Y) = \operatorname{E}[h(Y) \cdot L(Y) \mid g(Y)]\)</span></li>
-<li><span class="math inline">\(h(\cdot)\)</span> is additive: <span class="math inline">\(h(u+v) = h(u) + h(v)\)</span></li>
-</ul>
-<p><span class="math inline">\(\hookrightarrow\)</span> <span class="math inline">\(\rho(Y) = \sum_j r(X_j)\)</span></p>
-<ul>
-<li>This is a marginal allocation that sums to the total risk measure</li>
-</ul>
-<p><a name="co-measures"></a></p>
-<table style="width:67%;">
-<colgroup>
-<col width="18%" />
-<col width="9%" />
-<col width="9%" />
-<col width="13%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Risk Measure</th>
-<th><span class="math inline">\(h(Y)\)</span></th>
-<th><span class="math inline">\(L(Y)\)</span></th>
-<th>Condition</th>
-<th>Co-Measure</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(TVaR\)</span></td>
-<td><span class="math inline">\(Y\)</span></td>
-<td><span class="math inline">\(1\)</span></td>
-<td><span class="math inline">\(F(Y) &gt; \alpha\)</span></td>
-<td><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) &gt; \alpha]\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(VaR\)</span></td>
-<td><span class="math inline">\(Y\)</span></td>
-<td><span class="math inline">\(1\)</span></td>
-<td><span class="math inline">\(F(Y) = \alpha\)</span></td>
-<td><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) = \alpha]\)</span></td>
-</tr>
-<tr class="odd">
-<td>Standard Deviation</td>
-<td><span class="math inline">\(Y - \operatorname{E}[Y]\)</span></td>
-<td><span class="math inline">\(\dfrac{Y - \operatorname{E}[Y]}{\sigma_Y}\)</span></td>
-<td>none</td>
-<td><span class="math inline">\(\dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(XTVaR\)</span></td>
-<td></td>
-<td></td>
-<td></td>
-<td><span class="math inline">\(\operatorname{E}[X_j \mid Y &gt; b] - \operatorname{E}[X_j]\)</span></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>Note for S.d.: <span class="math inline">\(\rho(X_j) = \dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y} = \operatorname{E} \left [ (X_j - \operatorname{E}[X_j]) \cdot \dfrac{Y - \operatorname{E}[Y]}{\sigma_Y} \right ]\)</span></p></li>
-<li><p>For <span class="math inline">\(XTVaR\)</span>:</p>
-<ul>
-<li><p><span class="math inline">\(\rho(Y) = \operatorname{E}[Y - \operatorname{E}[Y ]\mid Y &gt; b]\)</span></p></li>
-<li><p>Note the condition is on loss amount <span class="math inline">\(Y\)</span> not the percentile</p></li>
-<li><p>Expected losses in unit <span class="math inline">\(j\)</span> when the company has a loss above <span class="math inline">\(b\)</span> less the expected losses in unit <span class="math inline">\(j\)</span></p></li>
+<li>(I guess econ capital is just a generic term?)</li>
 </ul></li>
 </ul>
-<p>At low threshold, unit with higher mean have higher allocation</p>
-<p>At higher threshold, unite with higher variance have higher allocation</p>
-</div>
-<div id="having-a-marginal-method" class="section level3">
-<h3><span class="header-section-number">18.4.3</span> Having a Marginal Method</h3>
-<p><a name="marginal"></a> <strong>Marginal Allocation</strong>:<br />
-Allocation is marginal if the change to the company’s risk measure from a small change in a single BU is attributed to that business unit</p>
+<p>Current modeling approaches are not able to accurately estimate losses deep in the tail like 1-in-3000 (99.97%) event</p>
 <ul>
-<li>Consistent with concept that price should be proportional to marginal cost</li>
-<li>Leads to suitable allocation</li>
+<li><p>Bond ratings are discusses at this level but the ratings are not tied to the probabilities; Probabilities were simply observed</p></li>
+<li><p>Issue can be circumvented by focusing on events that can lead to impairment of the company, not just insolvency</p></li>
 </ul>
-<hr />
-<p><a name="scalable"></a> <strong>Scalable Risk Measures</strong>:<br />
-A small proportional change in the business change the risk measure by the same proportion</p>
+<p>Choosing probability level is an artificial exercise <span class="math inline">\(\because\)</span> There are no theoretical support to choose one level over another</p>
 <ul>
-<li><p>Require that <span class="math inline">\(\rho(aY) = a \cdot \rho(Y)\)</span> <span class="math inline">\(\Rightarrow\)</span> Homogenous of degree 1</p></li>
-<li><p>Most measures in currency units have this property (e.g. S.D. TVaR) but not variance and probability of default</p></li>
+<li>The company sometimes compare held capital to the loss dist<sup>n</sup> stating that it’s holding capital to cover a 1-in-x year event. But not the other way around like setting the capital based on it</li>
 </ul>
-<p>Scalability gives us that risk measure is both <em>marginal</em> and <em>additive</em></p>
-<p>Proportional change can be achieve from proportional reinsurance and normal growth</p>
-<ul>
-<li>Except for companies that write large policies compared to their volume; Transformed risk measure might still work</li>
-</ul>
-<hr />
-<p><a name="suitable"></a> <strong>Suitable Allocation</strong>:<br />
-Growing a unit that have above average profit/risk will increase the profit/risk for the company</p>
-<p>Given <span class="math inline">\(\dfrac{P_j}{r(X_j)} &gt; \dfrac{P}{\rho(Y)}\)</span></p>
-<p>Show <span class="math inline">\(\dfrac{P + \epsilon P_j}{\rho(Y + \epsilon X_j)} &gt; \dfrac{P}{\rho(Y)}\)</span></p>
-</div>
-<div id="marginal-impact" class="section level3">
-<h3><span class="header-section-number">18.4.4</span> Marginal Impact</h3>
-<p><a name="only-marginal"></a></p>
-<p>A risk measure can have many co-measures but only 1 will be marginal</p>
-<p>It is the one that is based on derivative of the firm risk measure w.r.t. growth in BU <span class="math inline">\(j\)</span></p>
-<p><span class="math inline">\(r(X_j) = \lim \limits_{\epsilon \rightarrow 0} \dfrac{\rho(Y + \epsilon X_j) - \rho(Y)}{\epsilon} = \dfrac{\partial \rho(Y)}{\partial X_j}\)</span></p>
-<ul>
-<li>Even under non-homogeneous growth, the risk measure is still decompositional (sum to the total) and is often close to marginal</li>
-</ul>
-<p><span class="math inline">\(XTVaR\)</span></p>
-<ul>
-<li><p>Scalable when done XS of a percentile <span class="math inline">\(\alpha\)</span></p></li>
-<li><p><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) &gt; \alpha] - \operatorname{E}[X_j]\)</span></p></li>
-</ul>
-<p>Variance</p>
-<ul>
-<li><p><span class="math inline">\(r(X_j) = \operatorname{Cov}(X_j,Y)\)</span></p></li>
-<li><p>Not scalable, so not marginal</p></li>
-</ul>
-<p><span class="math inline">\(VaR\)</span></p>
-<ul>
-<li><span class="math inline">\(r(X_j) = \operatorname{E}[X_j \mid F(Y) = \alpha]\)</span></li>
-</ul>
-<p>Standard Deviation</p>
-<ul>
-<li><p>Spreading the s.d. <span class="math inline">\(\propto\)</span> mean is not marginal: <span class="math inline">\(r(X_j) = \dfrac{\operatorname{E}[X_j]}{\operatorname{E}[Y]} \cdot \sigma_Y\)</span></p></li>
-<li><p>This is marginal: <span class="math inline">\(r(X_j) = \dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}\)</span></p></li>
-</ul>
-<p>Exponential Moment</p>
-<ul>
-<li><p><span class="math inline">\(r(X_j) = r_1(X_j) + \dfrac{\operatorname{E}[X_j]}{\operatorname{E}[Y]} \cdot c \cdot \operatorname{E} \left [ Y \cdot e^{cY/\operatorname{E}[Y]} \cdot \left \{ \dfrac{X_j}{\operatorname{E}[X_j]} - \dfrac{Y}{\operatorname{E}[Y]} \right \} \right ]\)</span></p>
-<ul>
-<li><p>Without the curly bracket it is just allocating <span class="math inline">\(\propto\)</span> the mean</p></li>
-<li><p>Curly bracket (XS ratio factor) adjust for correlation, where BU that have large <span class="math inline">\(X_j\)</span> when Y is also large will have additional allocation; UBs that don’t contribute to large losses will be negative in the curly bracket, receive reduced allocation</p></li>
-</ul></li>
-</ul>
-<p>EPD</p>
-<ul>
-<li><p><span class="math inline">\(r(X_j) = (CoTVaR - CoVaR) \cdot (1-\alpha)\)</span></p></li>
-<li><p>Only works when XS of a percentile</p></li>
-</ul>
-<hr />
-<p>Table of Co-Measures</p>
-<table style="width:71%;">
-<colgroup>
-<col width="22%" />
-<col width="9%" />
-<col width="9%" />
-<col width="13%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Risk Measure</th>
-<th><span class="math inline">\(h(Y)\)</span></th>
-<th><span class="math inline">\(L(Y)\)</span></th>
-<th>Condition</th>
-<th>Co-Measure</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(TVaR\)</span></td>
-<td><span class="math inline">\(Y\)</span></td>
-<td><span class="math inline">\(1\)</span></td>
-<td><span class="math inline">\(F(Y) &gt; \alpha\)</span></td>
-<td><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) &gt; \alpha]\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(VaR\)</span></td>
-<td><span class="math inline">\(Y\)</span></td>
-<td><span class="math inline">\(1\)</span></td>
-<td><span class="math inline">\(F(Y) = \alpha\)</span></td>
-<td><span class="math inline">\(\operatorname{E}[X_j \mid F(Y) = \alpha]\)</span></td>
-</tr>
-<tr class="odd">
-<td>Standard Deviation</td>
-<td><span class="math inline">\(Y - \operatorname{E}[Y]\)</span></td>
-<td><span class="math inline">\(\dfrac{Y - \operatorname{E}[Y]}{\sigma_Y}\)</span></td>
-<td>none</td>
-<td><span class="math inline">\(\dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(EPD\)</span></td>
-<td><span class="math inline">\(X - \operatorname{E}[X \mid F(Y) = \alpha]\)</span></td>
-<td><span class="math inline">\(1-\alpha\)</span></td>
-<td><span class="math inline">\(F(Y) &gt; \alpha\)</span></td>
-<td><span class="math inline">\((CoTVaR - CoVaR) \cdot (1-\alpha)\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="using-decomposition" class="section level3">
-<h3><span class="header-section-number">18.4.5</span> Using Decomposition</h3>
-<p>If the allocated risk measure <span class="math inline">\(r(X_j)\)</span> is a decomposition of the company risk measure <span class="math inline">\(\rho(Y)\)</span> then we can use the measure to measure risk-adjusted profitability of a BU</p>
-<p><span class="math inline">\(\dfrac{P_j}{r(X_j)}\)</span></p>
-<p>We also need <span class="math inline">\(r(X_j) \propto\)</span> [Market Value of Risk] for this to be an appropriate metric</p>
-<ul>
-<li>BU with higher ratio have more profit relative to the value of risk they are taking</li>
-</ul>
-<p>However, we don’t know how to determine the market value of risk <span class="math inline">\(\Rightarrow\)</span> Use several risk measures and hope that one is close and that the indicated strategic directions are consistent with each other</p>
-<ul>
-<li>Question on how to determine the market value of risk have not been settle yet, likely a risk measure on a transformed probability but we don’t know yet</li>
-</ul>
-</div>
+<p>Company is better off expressing the capital under various risk measures</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="required-capital.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="allocating-the-cost-of-capital.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="era-2-2-risk-measures-and-capital-allocation-g-venter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="risk-measures.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
