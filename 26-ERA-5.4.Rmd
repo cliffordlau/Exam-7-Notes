@@ -1,6 +1,4 @@
-# C5 ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major
-
-## Cliff's Summary
+# ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major
 
 [Characteristics](#uw-cycle) of underwriting cycle
 
@@ -28,7 +26,7 @@ Captial flow under different profitability
 
 How different components interact
 
-## Introduction
+## Introduction {#era5-uw-cycle-intro}
 
 Important to consider how the firm interacts with a competitive environment in an ERM framework
 

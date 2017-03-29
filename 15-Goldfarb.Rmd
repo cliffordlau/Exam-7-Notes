@@ -81,7 +81,7 @@ Recognize the risky cashflow by discounting them at a rate higher than the risk-
 
 * $r_f$ here should be consistent with the one use for CAPM
 
-* Arithemitc average should be used when forecasting over 1 year (geometric average when forecasting over multiple years)
+* Arithmetic average should be used when forecasting over 1 year (geometric average when forecasting over multiple years)
 
 * Need to sensitivity test
 
@@ -406,7 +406,124 @@ Or compare multiples from diversified insurers
 
 ## Option Pricing Models
 
+2 different ways to value insurance company using options
 
+1. **Equity** of the firm as a call option
+
+2. Valuation of **real options**
+
+    (Additonal source of value the firm has from its ability to engage or disengage in various projects)
+    
+### Equity as Call Option
+
+**Merton's method**:  
+Owners of the firm have given assets of the firm to the debt holders, but maintain the right to purchase them at price $D$ when the debt is due at time $T$
+
+* At $T$, if the value of the firm $V_T > D$ then the owners will pay back the debt
+
+* If $V_T < D$, the option will not be exercised and firm goes bankrupt
+
+$$E_T = \max[V_T - D, 0]$$
+
+```{remark}
+
+
+* Call option with strike price $D$ and "stock" price $V_T$
+
+* Price with Black-Scholes
+
+* Assume debt to have one expiration date $T$
+
+* We need the volatility of the value of **all** assets of the firm
+```
+
+***Application to P&C Insurers***
+
+* Mostly theoretical
+
+* Moody's KMV credit default model is based on this to estimate probabilities of default for publicly traded companies
+
+* Difficult to apply to P&C companies due to the additional complexity of having policyholder liabilities that look just like debt to the shareholders
+
+    * And with policyholder liabilities it is hard to reduce it into a debt with single expiration date
+    
+### Real Options Valuation
+
+```{block, type='rmdcaution'}
+Not super sure how the 'value' of each of the options work
+```
+
+```{definition, name="Real Options"}
+Management of a company has flexibility on when to take action on projects
+
+Real options examples:
+
+* Abandonment
+
+    (e.g. Abandoning a project so you cut off the future cash outflow)
+    
+    * Value as an American put option (You have the right to sell at a predetermined price anytime up to the expiration date)
+
+    * $K$ = liquidation proceeds
+
+* Expansion
+
+    (e.g. similar to the abandonment but with investing)
+    
+    * Value as an American call option
+    
+    * $K$ = additional investment
+
+* Contraction
+
+    (Not total abandonment)
+    
+    * Value as American put
+    
+    * Value is the gross value of the lost capacity
+    
+    * $K$ = cost savings (reduced investment)
+
+* Defer
+
+    * Value as an American call (since it's still an investment project\)
+
+* Extend
+
+    * Value as European call since it would only be exercised at the end of the project
+    
+    * Extend the life of the project by paying a fixed amount
+
+Value is added when the firm can purchase assets below their fair value or has exclusive access to opportunities
+
+* e.g. flexibility to purchase assets at market price **doesn't** add value
+```
+
+**Practical Considerations**, difficulty in:
+
+* Identifying a new business where such a real option with value exists
+
+* Assess the current value of these business
+
+* Determine if the firm has the ability to enter this business at a fixed price, or a price that significantly differs from market value
+
+**Valuation considerations**, technical issues to consider:
+
+* Valuing the underlying cash flow
+
+* Time to maturity
+
+* Exercise type (American vs European)
+
+* Appropriate valuation formula (e.g. Black-Scholes assumes lognormal distribution for asset price)
+
+**Reasonableness of real option values**
+
+* Options are more valuable when new information will be available before the expiration
+
+* Expansion options are only valuable if they have some exclusive right
+
+* Exercise price must be fixed for the option to have value
 
 ## Past Exam Questions
 

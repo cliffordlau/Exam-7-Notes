@@ -1,6 +1,4 @@
-# C3 ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck
-
-## Cliff's Summary
+# ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck
 
 Parameter risk is more important as the process risk is smaller
 
@@ -24,7 +22,7 @@ Should focuse on the spread of potential outcomes instead of best estimate
 
 * Add flexibility and let the parameters reflect the uncertainty in the assumptions
 
-## Introduction
+## Introduction {#era-3.2-intro}
 
 Parameter risk is key for large companies since process risk is reduced with a large book
 
