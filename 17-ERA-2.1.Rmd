@@ -292,7 +292,7 @@ Risk capital is a measure of firm's total risk bearing capacity
 * Still an open question in actuarial science
 ```
 
-#### Allocation
+#### Allocation {#era2-1-allocation}
 
 **Cost of risk capital** is being allocated, not the capital itself
 

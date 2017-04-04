@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="testing-the-assumptions-of-age-to-age-factors-g-venter.html">
-<link rel="next" href="testable-implications.html">
+<link rel="prev" href="miscellaneous.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -662,172 +662,59 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="venter-def" class="section level2">
-<h2><span class="header-section-number">5.1</span> Definitions and Assumptions</h2>
-<table>
-<caption><span id="tab:venter-mack-def">Table 5.1: </span> Tables of Definitions</caption>
-<thead>
-<tr class="header">
-<th>Venter Notations</th>
-<th>Definitions</th>
-<th>Mack Notations (<a href="cl-ass.html#def:mack-1994-def">4.1</a>)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(w\)</span></td>
-<td>AYs</td>
-<td><span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(d\)</span></td>
-<td>Dev period; <span class="math inline">\(d=0\)</span> is age @ end of year 1</td>
-<td><span class="math inline">\(k\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(c(w,d)\)</span></td>
-<td>Cumulative losses for AY <span class="math inline">\(w\)</span> age <span class="math inline">\(d\)</span></td>
-<td><span class="math inline">\(c_{i,k}\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(c(w,\infty)\)</span></td>
-<td>Ultimate losses for AY <span class="math inline">\(w\)</span></td>
-<td><span class="math inline">\(c_{i,I}\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(q(w, d+1)\)</span></td>
-<td><strong>Incremental</strong> losses for AY <span class="math inline">\(w\)</span> age <span class="math inline">\(d\)</span> to <span class="math inline">\(d+1\)</span></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(f(d)\)</span></td>
-<td>Col parameters; <strong>(LDF - 1)</strong>; applies to whole col</td>
-<td><span class="math inline">\(f_k - 1\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(F(d)\)</span></td>
-<td>LDF to ultimate that applies to <span class="math inline">\(c(w,d)\)</span></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(h(w)\)</span></td>
-<td>Row parameters; applies to whole row</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div id="macks-chainladder-assumptions" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Mack’s Chainladder Assumptions</h3>
-<p>Same assumptions as the <a href="cl-ass.html#cl-ass">Mack 1994</a> but stated in Venter’s terminology</p>
-
-<div class="proposition">
-<span id="prp:mack-ass-1" class="proposition"><strong>Proposition 5.1  (Mack Assumption 1) </strong></span><span class="math display">\[\mathrm{E}[q(w,d+1) \mid \text{Data to } w+d] = f(d) \times c(w,d)\]</span>
-</div>
-<p></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
-<ul>
-<li><p>Here <span class="math inline">\(f(d)\)</span> is LDF - 1</p></li>
-<li><p>Expected incremental development is <span class="math inline">\(\propto\)</span> reported losses</p></li>
-<li>See also (Prop <a href="cl-ass.html#prp:cl-ass-1">4.1</a>) from Mack (1994)
-</div>
-<p></p></li>
-</ul>
-
-<div class="proposition">
-<span id="prp:mack-ass-2" class="proposition"><strong>Proposition 5.2  (Mack Assumption 2) </strong></span><span class="math display">\[c(w,d) \perp\!\!\!\!\perp c(v,g) \:\:\:\: \forall \: d,g,v,w \:\:\:\: : \:\:\:\: v \neq w\]</span>
-</div>
-<p></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
-<ul>
-<li><p>Losses not in the same row are independent of each other</p></li>
-<li>See also (Prop <a href="cl-ass.html#prp:cl-ass-2">4.2</a>) from Mack (1994)
-</div>
-<p></p></li>
-</ul>
-
-<div class="proposition">
-<span id="prp:mack-ass-3" class="proposition"><strong>Proposition 5.3  (Mack Assumption 3) </strong></span><span class="math display">\[\mathrm{Var}[q(w,d) \mid \text{Data to } w+d] = a_{fun}\big(d,c(w,d)\big)\]</span>
-</div>
-<p></p>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
-<ul>
-<li><p>Variance of incremental losses depends only on:</p>
+<div id="past-exam-questions-16" class="section level2">
+<h2><span class="header-section-number">A.12</span> Past Exam Questions</h2>
+<p><strong>Exercises</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Cumulative losses reported to date <span class="math inline">\(c(w,d)\)</span></p></li>
-<li><p>Age of the AY <span class="math inline">\(d\)</span> (Does not vary by AY down the column)</p></li>
-</ol></li>
-<li><p>Different <span class="math inline">\(a_{fun}(\cdots)\)</span> leads to different <span class="math inline">\(\hat{f}(d)\)</span> estimate</p></li>
-<li>See also (Prop <a href="cl-ass.html#prp:cl-ass-3">4.3</a>) from Mack (1994)
-</div>
-<p></p></li>
-</ul>
-</div>
-<div id="variance-assumptions-for-chainladder" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> Variance Assumptions (for Chainladder)</h3>
-<p>Same as shown in Mack 1994 Table <a href="cl-ass.html#tab:CL-var-weight">4.1</a></p>
-<table style="width:97%;">
-<caption><span id="tab:venter-var-weight">Table 5.2: </span> Relationships between weight, variance and residual (Venter)</caption>
-<colgroup>
-<col width="22%" />
-<col width="34%" />
-<col width="18%" />
-<col width="22%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Weight</th>
-<th>Description</th>
-<th>Variance <span class="math inline">\(a_{fun}\big(d,c(w,d)\big)\)</span></th>
-<th>LDF - 1 <span class="math inline">\(f(d)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Simple Average</td>
-<td><span class="math inline">\(k(d)c(w,d)^2\)</span></td>
-<td><span class="math inline">\(\dfrac{\sum_w 1 \frac{q(w,d+1)}{c(w,d)}}{\sum_w 1}\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(c(w,d)\)</span></td>
-<td>Weighted Average</td>
-<td><span class="math inline">\(k(d)c(w,d)\)</span></td>
-<td><span class="math inline">\(\dfrac{\sum_w c(w,d) \frac{q(w,d+1)}{c(w,d)}}{\sum_w c(w,d)}\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(c(w,d)^2\)</span></td>
-<td>Least Square</td>
-<td><span class="math inline">\(k(d)\)</span></td>
-<td><span class="math inline">\(\dfrac{\sum_w c(w,d)^2 \frac{q(w,d+1)}{c(w,d)}}{\sum_w c(w,d)^2}\)</span></td>
-</tr>
-</tbody>
-</table>
+<li><span class="math inline">\(\star\)</span> Use simplied GLM and then back out the GLM parameters</li>
+<li>Reduce parameters</li>
+<li>Minimize square error for GLM</li>
+<li>Benefit of simplified GLM</li>
+<li>Residuals</li>
+<li>Dispersion</li>
+<li>Dispersion with hat matrix adj</li>
+<li>Simulate loss</li>
+<li>Setup GLM</li>
+<li>Negative values</li>
+<li>Simulat ngative</li>
+<li>Partial triangle</li>
+<li>Stratified</li>
+<li>Dealing with correlation</li>
+<li>Outliers</li>
+</ol>
+<p><strong>Practical Issues</strong></p>
 <ul>
-<li><p><span class="math inline">\(c(w,\infty) = F(d)c(w,d)\)</span></p>
-<p><span class="math inline">\(F(d) = \prod_{s \geq d} (1 + f(s))\)</span></p></li>
-<li><p>Recall <span class="math inline">\(\dfrac{q(w,d+1)}{c(w,d)}\)</span> are the empirical LDF - 1</p></li>
+<li>2013 #7: negatvie values</li>
+<li>2014 #7: List 4 practical issues and solutions</li>
+<li>2015 #10: Heteroscedasticity, why important, adjustments description</li>
+<li>2015 #11: Negative values, outliers, exposure level</li>
 </ul>
-<p><span class="math inline">\(\mathrm{E}[q(w,d+1)] = f(d)c(w,d)\)</span></p>
+<p><strong>Diagnostics</strong></p>
 <ul>
-<li><p><span class="math inline">\(n = \sum \limits_{i=1}^{m-1} i = \dfrac{m(m-1)}{2}\)</span> = predicted data point?</p></li>
-<li><p><span class="math inline">\(p=m-1\)</span> since we don’t predict the first column</p></li>
-<li><p><span class="math inline">\(m =\)</span> dimension</p></li>
+<li><span class="math inline">\(\star\)</span> 2014 #9: Evaluate the results given mean unpaid, s.e., CoV by AYs</li>
 </ul>
+<div id="question-highlights-16" class="section level3">
+<h3><span class="header-section-number">A.12.1</span> Question Highlights</h3>
+<p>n/a</p>
+
 </div>
 </div>
+</div>
+
+
+
+
+
+
+
+<!--  -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="testing-the-assumptions-of-age-to-age-factors-g-venter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="testable-implications.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="miscellaneous.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -855,7 +742,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/05-Venter-Factors.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/28-Shapland-Leong.Rmd",
 "text": "Edit"
 },
 "download": null,

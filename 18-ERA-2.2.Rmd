@@ -3,130 +3,199 @@
 Know the risk measures
 
 * Moment based
+
 * Tail based ($VaR$, $TVaR$, $XTVaR$, $EPD$)
+
 * Probability transform
+
 * Generalized moments
 
 Capital a company should hold depends on *practical considerations*, not simply derived from a risk measure
 
 Allocation of risk measures
 
-* Proportional
-* [Co-measures](#co-measures)
+* [Proportional](#proportional-era2-2)
 
-Allocation is [marginal](#marginal) if the change to the company’s risk measure from a small change in a single BU is attributed to that business unit
+* [Co-measures](#co-measures-era2-2)
 
-* [Scalable](#scalable) risk measures
-* [Suitable](#suitable) alloaction
-* A risk measure can have many co-measures but [only 1](#only-marginal) will be marginal
+Allocation is marginal (\@ref(def:marginal-era2-2)) if the change to the company’s risk measure from a small change in a single BU is attributed to that business unit
+
+* Scalable risk measures (\@ref(def:scalable-era2-2)) 
+
+* Suitable alloaction (\@ref(def:marginal-era2-2))
+
+* A risk measure can have many co-measures but [only 1](#marginal-impact-era-2-2) will be marginal
 
 Can bypass the above if we can just allocate the cost of capital
 
 ## Introduction {#era2-2-intro}
 
-VaR is too simplistic for insurance companies due to risk from reserves and u/w losses
+VaR by itself it too simplistic for insurance companies
 
-Advantages attributed to **Economic Capital**
+*Advantages* attributed to **Economic Capital**
 
-* **Unifying** measure for all risks in an organization
-* More **meaningful** than RBC or Capital Adequacy Ratios (Prem/Surplus, Res/Surplus)
-* Forces firm to **quantify** risks it faces and combine them into a probability dist^n^
+* **Unifying** measure for *all risks* in an organization
+
+* More meaningful *to management* than RBC or Capital Adequacy Ratios (e.g. Prem/Surplus, Res/Surplus)
+
+* Forces firm to **quantify** risks it faces and **combine** them into a probability dist^n^
+
 * Provides a **framework for setting acceptable risk levels** for the company and its business units
 
-(One of the risk measure discuss in the paper will be econ capital (?) Not all are econ capital)
+```{remark}
 
-Should consider multiple risk measures to see if the results are consistent
 
-* Many other risk measures will also have the properties above
-* Calling one of the risk measures economic capital is likely to confuse the process
-    * (I guess econ capital is just a generic term?)
+* Many other risk measures have the advantages above (not just "economic capital" under VaR)
+
+* Insurers typically use multiple risk measure to see if a consistent picture emerges
+
+* VaR is typically calculated from the distribution of all risks and then allocate down to inidividual units
+
+    This provides consistent measurement of risk across units
+```
+
+***Target Probability Level***
+
+* Current modeling approaches are not able to accurately estimate losses deep in the tail like 1-in-3000 (99.97%) event
+
+* Bond ratings are discusses at this level but the ratings are not tied to the probabilities
+
+    * Ratings are defined by factors (e.g. interest coverage)
+
+    * Probabilities are published retrospectively after observing rated bonds for many organizations for many years
     
-Current modeling approaches are not able to accurately estimate losses deep in the tail like 1-in-3000 (99.97%) event
+* Target probability level is *artificial* (no theoretical support)
 
-* Bond ratings are discusses at this level but the ratings are not tied to the probabilities; Probabilities were simply observed
-
-* Issue can be circumvented by focusing on events that can lead to impairment of the company, not just insolvency
-
-Choosing probability level is an artificial exercise $\because$ There are no theoretical support to choose one level over another
+    * Sometimes it is just backed out based on the modeled distribution
+    
+* **Suggestion**: Should just express actual capital under various risk measures
 
 * The company sometimes compare held capital to the loss dist^n^ stating that it's holding capital to cover a 1-in-x year event. But not the other way around like setting the capital based on it
 
-Company is better off expressing the capital under various risk measures
+* Modeling difficulty of the tail can be circumvented by focusing on events that can lead to impairment of the company, not just insolvency
 
 ## Risk Measures
 
 3 major class of risk measures
 
-* Moment-based (e.g. mean, variance)
-* Tail-based (VaR, TVaR)
-* Probability Transformation (WTVaR, Mean of Transformed dist^n^)
+1. [Moment-based](#moment-base-era2-2) (*e.g. mean, variance*)
 
-Risk measure can measure losses (like from insurance) but mostly mean negative profit (including premium charged) here
+2. [Tail-based](#tail-base-era2-2) (*e.g. VaR, TVaR*)
+
+3. [Probability Transformation](#prop-trans-era2-2) (*e.g. WTVaR, Mean of Transformed dist^n^*)
+
+
+
+```{definition, loss-risk-measure-era2-2}
+Loss here is not just loss from claims, but "negative profit" after considering income (e.g. premium), expenses etc
 
 * $Y =$ Losses
+
 * $\rho(Y) =$ Risk Measure
+```
 
-### Moment-Based Measures
+### Moment-Based Measures {#moment-base-era2-2}
 
-$\operatorname{E}[Y^k]$ is the k^th^ moment of $Y$ which represent losses
+$\mathrm{E} \left[ Y^k \right]$ is the k^th^ moment of $Y$ which represent losses
 
 * 1^st^ moment = Mean
-* 2^nd^ central moment = Variance = $\operatorname{E}[(Y-\operatorname{E}[Y])^2]$
+
+* 2^nd^ central moment = Variance = $\mathrm{E}\left[ (Y-\mathrm{E}[Y])^2 \right]$
+
     * S.d. is preferred as it has the same units as the loss
+    
+    * Semi-s.d. only captures unfavorable deviations
+    
+    * Quadratic risk measures are not enough to capture market attitudes to risk (they do not capture skewness)
+
 * 3^rd^ moment = Skewness
 
-$\operatorname{E}[Y e^{cY/\operatorname{E}[Y]}]$ captures all the moment using taylor expansion
+**Exponential Moments**
+
+$$\mathrm{E}\left[Y e^{cY/\mathrm{E}[Y]}\right]$$
+
+* Captures all the moment using taylor expansion
+
+* Scaled to \$ but captures the effect of large losses on the risk exponentially
 
 * Does not exist unless there is a maximum possible loss
 
-### Tail-Based Measures at $\alpha$ Percentile
+### Tail-Based Measures at $\alpha$ Percentile {#tail-base-era2-2}
 
-| Risk Measure | Name                | Description                            |
-| ------------ | ------------------- | -------------------------------------- |
+Table: (\#tab:era2-2-tail-measure-tab) Tail-Based Measures
+
+| Risk Measure | Name                | Description            |
+|:------------ |:--------------------- |:-------------------------------------- |
 | $VaR$        | Value at Risk       | $\alpha$^th^ Percentile                |
 | $TVaR$       | Tail Value at Risk  | Avg loss above $\alpha$^th^ percentile |
-| $XTVaR$      | XS Tail Value at Risk | $TVaR - Mean$                        |
-| $EPD$        | Expected Policyholder Deficit | $(TVaR - VaR) \cdot (1 - \alpha)$ |
-| Value of Default Put Option |      | Market cost of insuring for losses over $VaR_{\alpha}$|
+| $XTVaR$^1^ | XS Tail Value at Risk | $TVaR - Mean$                        |
+| $EPD$^2^        | Expected Policyholder Deficit | $(TVaR - VaR) \cdot (1 - \alpha)$ |
+| Value of Default Put Option^3^ |      | Market cost of insuring for losses over $VaR_{\alpha}$|
 
-* $XTVaR$ focuses on funding losses above the mean
-* $EPD$ = unconditional expected value of defaulted losses if Capital = $VaR_{\alpha}$
+1. $XTVaR$ focuses on funding losses above the mean
+
+2. $EPD$ = unconditional expected value of defaulted losses if capital = $VaR_{\alpha}$
+
     * If there was no risk premium required, this is the cost of insuring for losses over $VaR_{\alpha}$
-* Value of default put is great than EPD, it includes an additional risk premium (market cost of insuring for losses over $VaR_{\alpha}$)
+    
+    * First part of the equation is the expected loss given default and the second part is to get to the unconditional value
+    
+    * Expected loss of insuring the company for losses excess of their capital amount (here it's $VaR_{\alpha}$)
 
-### Probability Transforms
+3. Value of default put is great than EPD, it includes an additional risk premium (market cost of insuring for losses over $VaR_{\alpha}$)
+
+    * Value of insuring against default
+    
+    * Estimate using option pricing
+
+### Probability Transforms {#prop-trans-era2-2}
 
 To recognize that large losses are worse for the firm in more than a linear way (e.g. losses twice as big is > twice as worst)
 
 Change the loss distribution function by putting more weight (add probability) to the worst losses
 
 * e.g. Esscher transform $f^*(y) = k \cdot e ^{y/c} \: f(y)$
+
     * Lower $c$ $\Rightarrow$ Higher losses from the transformed dist^n^
+
     * Can get non sensical results for $c$ that's too low
+
 * $EPD$ on a transformed dist^n^ can give us the value of the default put
 
-Comments
+    * The largest losses will have additional weight (to account for the risk premium we discussed above)
+
+```{remark}
+
 
 * Most asset pricing formulas like CAPM and Black-Scholes can be expressed as transformed means  
-$\therefore$ transformed means are a promising risk measure for determining the market value of risk as it can also be the market value of the risk
+$\therefore$ transformed means are a promising risk measure for determining the market value of risk
 
 * Complete market is where any risk can be sold, but we work in incomplete markets
 
 * Theory of pricing in incomplete markets favors:
 
     * Minimum Martingale Transform (MMT)
+    
     * Minimum Entropy Martingale Transform (MET)
+    
     * These give reasonable approximations of reinsurance prices
     
 * Mean under then Wang transform closely approximates market prices for bonds and CAT bonds
 
-* $WTVaR$ is $TVaR$ on a transformed distribution
+* We can calculate other risk measures (e.g. VaR) on the transformed distribution
+
+    * $WTVaR$ (Weighted TVaR) is $TVaR$ on a transformed distribution
+    
+    * EPD on transformed distribution can use to estimate value of default put
+```
 
 ### Generalized Moments
 
-Include more than just $\operatorname{E}[Y^k]$
+Includes more than just $\mathrm{E}[Y^k]$, can include all of the above risk measures (Not just expectations of powers of the variable)
 
-$TVaR_{\alpha} = \operatorname{E} \left[ Y \cdot \left( Y > F^{ -1}(\alpha) \right) \mid Y > F^{ -1}(\alpha) \right]$
+**TVaR expressed in generalized moments**
+
+$$TVaR_{\alpha} = \mathrm{E} \left[ Y \cdot \left( Y > F^{ -1}_Y(\alpha) \right) \big| Y > F^{ -1}_Y(\alpha) \right]$$
 
 * $(Y > b) = \begin{cases} 1 & : Y > b\\ 0 & : \text{otherwise} \end{cases}$
 
@@ -134,19 +203,23 @@ $TVaR_{\alpha} = \operatorname{E} \left[ Y \cdot \left( Y > F^{ -1}(\alpha) \rig
 
 **Spectral Measures**
 
-$\rho(Y) = \operatorname{E} \left[ Y \cdot \eta \left( F(Y) \right) \right]$
+* This includes many tail measures that can be written in the following form
+
+$$\rho(Y) = \mathrm{E} \left[ Y \cdot \eta \left( F(Y) \right) \right]$$
 
 * $\eta \geq 0$
 
 * Multiply the loss by a non-negative scalar $\eta(Y)$ when taking the expectations
 
+* TVaR is a spectral measures
+
 **Blurred VaR**
 
-$\eta(p) = \operatorname{exp} \left \{ - \theta (p-\alpha)^2 \right \}$
+* Takes the distance from the target percentile as the weighting function
 
-* Give more weight to losses near $\alpha^{th}$ percentile
+$$\eta(p) = \mathrm{exp} \left \{ - \theta (p-\alpha)^2 \right \}$$
 
-* Still using the whole distribution
+* Give more weight to losses near $\alpha^{th}$ percentile while still using the whole distribution
 
 * $\theta$ controls how quickly the weight drops of as we get further from $\alpha$
 
@@ -154,233 +227,349 @@ $\eta(p) = \operatorname{exp} \left \{ - \theta (p-\alpha)^2 \right \}$
 
 Which risk measures to use
 
-* $TVaR$ at a low percentile is fine as it captures all risks above this level; Set at level where we begin to loss capital
+* $TVaR$ at a **low percentile** is preferred as it captures all risks above this level  
 
-* Try to get close to market value of risk
+    Set at level where we begin to loss capital
+
+    * High percentile is not recommended as it ignores all risk below that percentile
+
+* Try to get close to **market value** of risk
 
     * $WTVaR$ with the MET is promising, or
-    * Exponential moment $\operatorname{E}[Y e^{cY/\operatorname{E}[Y]}]$
+    
+    * Exponential moment $\mathrm{E}[Y e^{cY/\mathrm{E}[Y]}]$
 
 ## Required Capital
 
-Capital a company should hold depends on *practical considerations*, not simply derived from a risk measure
+Capital a company should hold depends on **practical considerations**, not simply derived from a risk measure
 
 * Risk measures should be used to measure the safety of the capital
 
-Considerations that drive capital requirements:
+***Considerations*** that drive capital requirements:
 
-* **Customers** reactions: Well capitalized insurer $\Leftarrow$ vs $\Rightarrow$ better price
+* **Customers reactions**:  
+Well capitalized insurer $\Leftarrow$ vs $\Rightarrow$ better price  
+Know your customer base, whether they are price or capital sensitive
 
     * $\downarrow$ rating $\Rightarrow$ $\downdownarrows$ of cumtomers since customers that want a higher level can quickly leave
 
     * $\uparrow$ rating $\Rightarrow$ $\upharpoonleft$ of growth since higher rating just provides an opportunity to compete with other insurers that already have the business
 
-* **Keeping renewal business**: Have enough capital so that in adverse scenario there is still enough capital to service renewals that is x% of the business
+* **Keeping renewal business**:  
+Have enough capital so that in adverse scenario there is still enough capital to service renewals that is x% of the business
+
+    * Since renewal business are more profitable
 
 Once capital level has been established, compare it against different risk measures
 
-$TVaR$ is a better risk measure than $VaR$ for a given percentile since $VaR$ is just the smallest loss XS of a percentile, $TVaR$ is the average
+* Look at % of capital lost a various probability levels
+
+* $TVaR$ is a better risk measure than $VaR$ for a given percentile since $VaR$ is just the smallest loss XS of a percentile, $TVaR$ is the average
 
 ## Capital Allocation
 
-Allocate the company risk measure to each BU for the following purposes:
+Allocate the total risk measure to each BUs for the following **purposes**:
 
-* Measure the amount of risk each BU contributes
+1. Measure the amount of risk each BU **contributes**
 
-* Set capacity and policy limits for each BU
+2. Set **capacity** and *policy limits* for each BU
 
-* Calculate risk-adjusted profitability e.g. $\dfrac{\text{Profit}}{\text{Allocated Capital}}$ or EVA = Profit - Cost of Capital
+3. Calculate **risk-adjusted profitability**    
 
-***
+    * RORAC: $\dfrac{\text{Profit}}{\text{Allocated Capital}}$
+    
+    * EVA = Profit - Cost of Capital
 
-Definition:
+```{definition}
 
-$Y$: Losses of a company
+
+$Y$: Losses of a company with CDF $F(y)$
 
 $X_j$: Losses for each BU, $\sum_j X_j = Y$
 
 $\rho(Y)$: Risk measure of $Y$, $\mapsto$ a real number
 
+* $\rho(Y) = \sum_j r(X_j)$
+
 $r(X_j)$: Allocation of risk measure to the individual BUs
 
 * Usually different from $\rho(X_j)$, which is the risk measure applied to BU $j$
+```
 
-### Proportional Method
+### Proportional Method {#proportional-era2-2}
 
 Allocate risk measure in proportion to the risk measure applied to each unit
 
-$r(X_j) = \dfrac{\rho(X_j)}{\sum_i \rho(X_i)} \rho(Y)$
+\begin{equation}
+  r(X_j) = \dfrac{\rho(X_j)}{\sum_i \rho(X_i)} \rho(Y)
+  (\#eq:prop-method-allocation-era2-2)
+\end{equation}
 
-* $TVaR$: $r(X_j) = \operatorname{E}[X_j \mid F(Y) > \alpha]$; Condition on when the **firm** has losses XS the $\alpha^{th}$ percentile
+* This works for any risk measure
 
-* $VaR$: $r(X_j) = \operatorname{E}[X_j \mid F(Y) = \alpha]$; Condition on when the firm has losses at the $\alpha^{th}$ percentile
+### Co-Measures {#co-measures-era2-2}
 
-    * Difficult to calculate because it is estimating a single point in the dist^n^, results from sims can be quite variable
-
-* Typical you're conditioning on the BU's $\alpha^{th}$ percentile
-
-Not marginal if the condition is not on the firm's $\alpha$
-
-* Marginal allocation means as unit grows, it is charged with the additional capital it requires
-
-* Not marginal means the individuals don't sum to the total (?)
-
-### Co-Measures
-
-$r(X_j) = \operatorname{E}[h(X_j) \cdot L(Y) \mid g(Y)]$
+\begin{equation}
+  r(X_j) = \mathrm{E}[h(X_j) \cdot L(Y) \mid g(Y)]
+  (\#eq:co-measures-method-era2-2)
+\end{equation}
 
 Given that:
 
-* $\rho(Y) = \operatorname{E}[h(Y) \cdot L(Y) \mid g(Y)]$
-* $h(\cdot)$ is additive: $h(u+v) = h(u) + h(v)$
+* $\rho(Y)$ is expressed as a conditional expected value
+
+$$\rho(Y) = \mathrm{E}[h(Y) \cdot L(Y) \mid g(Y)]$$
+
+* $h(\cdot)$ is additive
+
+$$h(u+v) = h(u) + h(v)$$
 
 $\hookrightarrow$ $\rho(Y) = \sum_j r(X_j)$
 
 * This is a marginal allocation that sums to the total risk measure
 
-<a name="co-measures"></a>
+Table: (\#tab:era2-2-co-measure-tab) Co-Measures
 
 | Risk Measure | $h(Y)$ | $L(Y)$ | Condition | Co-Measure |
-| ------------ | ------ | ------ | --------- | ---------- |
-| $TVaR$ | $Y$ | $1$ | $F(Y) > \alpha$ | $\operatorname{E}[X_j \mid F(Y) > \alpha]$ |
-| $VaR$ | $Y$ | $1$ | $F(Y) = \alpha$ | $\operatorname{E}[X_j \mid F(Y) = \alpha]$ |
-| Standard Deviation | $Y - \operatorname{E}[Y]$ | $\dfrac{Y - \operatorname{E}[Y]}{\sigma_Y}$ | none | $\dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}$ |
-| $XTVaR$ |   |   |   | $\operatorname{E}[X_j \mid Y > b] - \operatorname{E}[X_j]$
+|:------------------ |:------ |:------ |:--------- |:--------------- |
+| $TVaR$ | $Y$ | $1$ | $F(Y) > \alpha$ | $\mathrm{E}[X_j \mid F(Y) > \alpha]$ |
+| $VaR$ | $Y$ | $1$ | $F(Y) = \alpha$ | $\mathrm{E}[X_j \mid F(Y) = \alpha]$ |
+| Standard Deviation^1^ | $Y - \mathrm{E}[Y]$ | $\dfrac{Y - \mathrm{E}[Y]}{\sigma_Y}$ | none | $\dfrac{\mathrm{Cov}(X_j,Y)}{\sigma_Y}$ |
+| $XTVaR$^2^ |   |   |   | $\mathrm{E}[X_j \mid Y > b] - \mathrm{E}[X_j]$
 
-* Note for S.d.: $\rho(X_j) = \dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y} = \operatorname{E} \left [ (X_j - \operatorname{E}[X_j]) \cdot \dfrac{Y - \operatorname{E}[Y]}{\sigma_Y} \right ]$ 
+1. Note for s.d.:
 
-* For $XTVaR$:
+$$\rho(X_j) = \dfrac{\mathrm{Cov}(X_j,Y)}{\sigma_Y} = \mathrm{E} \left [ (X_j - \mathrm{E}[X_j]) \cdot \dfrac{Y - \mathrm{E}[Y]}{\sigma_Y} \right ]$$ 
 
-    * $\rho(Y) = \operatorname{E}[Y - \operatorname{E}[Y ]\mid Y > b]$
+2. For $XTVaR$:
+
+$$\rho(Y) = \mathrm{E}[Y - \mathrm{E}[Y ]\mid Y > b]$$
     
-    * Note the condition is on loss amount $Y$ not the percentile
+  * Note the condition is on loss amount $Y$ not the percentile
     
-    * Expected losses in unit $j$ when the company has a loss above $b$ less the expected losses in unit $j$
-    
-At low threshold, unit with higher mean have higher allocation
+  * Expected losses in unit $j$ when the company has a loss above $b$ less the expected losses in unit $j$
 
-At higher threshold, unite with higher variance have higher allocation
+```{remark}
+Under $TVaR$ and $XTVaR$
+
+* At low threshold, unit with higher mean have higher allocation
+
+* At higher threshold, unit with higher variance have higher allocation
+```
+
+#### Co-$TVaR$ and -$VaR$
+
+$TVaR$:
+
+$$r(X_j) = \mathrm{E}[X_j \mid F(Y) > \alpha]$$
+    
+* Average losses in unit $j$, condition on when the **firm** (Just like in co-measures) has losses XS the $\alpha^{th}$ percentile
+
+$VaR$:
+
+$$r(X_j) = \mathrm{E}[X_j \mid F(Y) = \alpha]$$
+    
+* Expected value of losses in unit $j$, condition on when the **firm** has losses at the $\alpha^{th}$ percentile
+
+* *Caveat*: Difficult to calculate because it is estimating a single point in the dist^n^, results from sims can be quite variable
+
+* Typical you're conditioning on the BU's $\alpha^{th}$ percentile
+
+**Not marginal** if the condition is not on the firm's $\alpha$
+
+* Marginal allocation means as unit grows, it is charged with the additional capital it requires
+
+* Not marginal means the individuals don't sum to the total (?)
 
 ### Having a Marginal Method
 
-<a name="marginal"></a> **Marginal Allocation**:  
+```{definition, marginal-era2-2}
+**Marginal Allocation**:  
 Allocation is marginal if the change to the company's risk measure from a small change in a single BU is attributed to that business unit
 
 * Consistent with concept that price should be proportional to marginal cost
-* Leads to suitable allocation
 
-***
+* Leads to suitable allocation (\@ref(def:suitable-era2-2))
+```
 
-<a name="scalable"></a> **Scalable Risk Measures**:  
-A small proportional change in the business change the risk measure by the same proportion
+```{definition, scalable-era2-2}
+**Scalable Risk Measures**:  
+A small proportional change in the business (e.g. 5%) change the risk measure by the same proportion (e.g. 5%)
 
-* Require that $\rho(aY) = a \cdot \rho(Y)$ $\Rightarrow$ Homogenous of degree 1
+* This is Homogenous of degree 1:
 
-* Most measures in currency units have this property (e.g. S.D. TVaR) but not variance and probability of default
+    $\rho(aY) = a \cdot \rho(Y)$
 
-Scalability gives us that risk measure is both *marginal* and *additive*
+* Most measures in currency units have this property (e.g. S.D., TVaR) but not variance (currency^2^) and probability of default (unitless)
 
-Proportional change can be achieve from proportional reinsurance and normal growth
+* Scalable risk measures are both *marginal* and *additive*
+```
 
-* Except for companies that write large policies compared to their volume; Transformed risk measure might still work
+```{remark}
+For many companies and BUs, growth in exposure units can approximate homogeneous growth
 
-***
+* Proportional change can be achieve from proportional reinsurance and normal growth
 
-<a name="suitable"></a> **Suitable Allocation**:  
+    * Except for companies that write large policies compared to their volume; Transformed risk measure might still work
+```
+
+```{definition, suitable-era2-2}
+**Suitable Allocation**:  
 Growing a unit that have above average profit/risk will increase the profit/risk for the company
 
-Given $\dfrac{P_j}{r(X_j)} > \dfrac{P}{\rho(Y)}$
+Given:
 
-Show $\dfrac{P + \epsilon P_j}{\rho(Y + \epsilon X_j)} > \dfrac{P}{\rho(Y)}$
+$$\dfrac{P_j}{r(X_j)} > \dfrac{P}{\rho(Y)}$$
 
-### Marginal Impact
+We can show:
 
-<a name="only-marginal"></a>
+$$\dfrac{P + \epsilon P_j}{\rho(Y + \epsilon X_j)} > \dfrac{P}{\rho(Y)}$$
 
-A risk measure can have many co-measures but only 1 will be marginal
+Where: $P_j$ is the profit for the $j$^th^ business unit and $P$ is the profit of the company
 
-It is the one that is based on derivative of the firm risk measure w.r.t. growth in BU $j$
+* This is based on pluggin in the definition of $r(X_j)$ below
+```
 
-$r(X_j) = \lim \limits_{\epsilon \rightarrow 0} \dfrac{\rho(Y + \epsilon X_j) - \rho(Y)}{\epsilon} = \dfrac{\partial \rho(Y)}{\partial X_j}$
+### Marginal Impact {#marginal-impact-era-2-2}
 
-* Even under non-homogeneous growth, the risk measure is still decompositional (sum to the total) and is often close to marginal
+A risk measure can have many co-measures but only 1 (the following form) will be marginal
+
+$$r(X_j) = \lim \limits_{\epsilon \rightarrow 0} \dfrac{\rho(Y + \epsilon X_j) - \rho(Y)}{\epsilon} = \dfrac{\partial \rho(Y)}{\partial X_j}$$
+
+* This is the derivative of the firm risk measure w.r.t. growth in BU $j$
+
+* Even under non-homogeneous growth, the risk measure is still a decomposition (sum to the total) and is often *close to marginal*
+
+***
 
 $XTVaR$
 
-* Scalable when done XS of a percentile $\alpha$
+$$\dfrac{\partial\rho(Y)}{\partial X_j} = r(X_j) = \mathrm{E}[X_j \mid F(Y) > \alpha] - \mathrm{E}[X_j]$$
 
-* $\operatorname{E}[X_j \mid F(Y) > \alpha] - \operatorname{E}[X_j]$
-
-Variance
-
-* $r(X_j) = \operatorname{Cov}(X_j,Y)$
-
-* Not scalable, so not marginal
-
-$VaR$
-
-* $r(X_j) = \operatorname{E}[X_j \mid F(Y) = \alpha]$
-
-Standard Deviation
-
-* Spreading the s.d. $\propto$ mean is not marginal: $r(X_j) = \dfrac{\operatorname{E}[X_j]}{\operatorname{E}[Y]} \cdot \sigma_Y$
-
-* This is marginal: $r(X_j) = \dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}$
-
-Exponential Moment
-
-* $r(X_j) = r_1(X_j) + \dfrac{\operatorname{E}[X_j]}{\operatorname{E}[Y]} \cdot c \cdot \operatorname{E} \left [ Y \cdot e^{cY/\operatorname{E}[Y]} \cdot \left \{ \dfrac{X_j}{\operatorname{E}[X_j]} - \dfrac{Y}{\operatorname{E}[Y]} \right \} \right ]$
-
-    * Without the curly bracket it is just allocating $\propto$ the mean
-
-    * Curly bracket (XS ratio factor) adjust for correlation, where BU that have large $X_j$ when Y is also large will have additional allocation; UBs that don't contribute to large losses will be negative in the curly bracket, receive reduced allocation
-    
-EPD
-
-* $r(X_j) = (CoTVaR - CoVaR) \cdot (1-\alpha)$
-
-* Only works when XS of a percentile
+* Scalable when done XS of a percentile $\alpha$ (not when done XS a constant $b$)
 
 ***
 
-Table of Co-Measures
+Variance
+
+$$\rho(Y) = Var(Y)$$
+
+$$r(X_j) = \mathrm{Cov}(X_j,Y)$$
+
+* Not scalable (since $Var(aY) = a^2 Var(Y)$), so not marginal?
+
+***
+
+$VaR$
+
+$$\rho(Y) = VaR_{\alpha}(Y) = \mathrm{E}[Y \mid F(Y) = \alpha]$$
+
+$$r(X_j) = \mathrm{E}[X_j \mid F(Y) = \alpha]$$
+
+***
+
+Standard Deviation
+
+* Spreading the s.d. $\propto$ mean is **not marginal**:
+
+$$\rho(Y) = Stdev(Y) = \mathrm{E}\left[ \dfrac{Y \cdot Stdev(Y)}{\mathrm{E}[Y]} \right]$$
+
+$$r(X_j) = \mathrm{E}\left[ \dfrac{X_j \cdot Stdev(Y)}{\mathrm{E}[Y]} \right] = \dfrac{\mathrm{E}[X_j]}{\mathrm{E}[Y]} \cdot Stdev(Y)$$
+
+* **This is marginal**: $h(Y) = Y - \mathrm{E}[Y]$ and $L(Y) = \dfrac{(Y - \mathrm{E}[Y])}{Stdev(Y)}$
+
+$$\rho(Y) = \mathrm{E}\left[ \dfrac{Y - \mathrm{E}[Y]^2}{Stdev(Y)} \right] = Stdev(Y)$$
+
+$$r(X_j) = \mathrm{E}\left[ \dfrac{(X - \mathrm{E}[X])(Y - \mathrm{E}[Y])}{Stdev(Y)} \right] = \dfrac{\mathrm{Cov}(X_j,Y)}{Stdev(Y)}$$
+
+***
+
+Exponential Moment
+
+$$\rho(Y) = \mathrm{E}[Y \cdot e^{cY/\mathrm{E}[Y]}]$$
+
+$$r(X_j) = r_1(X_j) + \dfrac{\mathrm{E}[X_j]}{\mathrm{E}[Y]} \cdot c \cdot \mathrm{E} \left [ Y \cdot e^{cY/\mathrm{E}[Y]} \cdot \left \{ \dfrac{X_j}{\mathrm{E}[X_j]} - \dfrac{Y}{\mathrm{E}[Y]} \right \} \right ]$$
+
+* Without the curly bracket it is just allocating $c \cdot \rho(Y)$ $\propto$ the mean $\dfrac{\mathrm{E}[X_j]}{\mathrm{E}[Y]}$
+
+* Curly bracket (XS ratio factor) adjust for correlation, where BU that have large $X_j$ when Y is also large will have additional allocation
+
+* BUs that don't contribute to large losses will be negative in the curly bracket, receive reduced allocation
+
+***
+
+EPD
+
+$$EPD_{\alpha} = (TVaR_{\alpha} - VaR_{\alpha}) \cdot (1 - \alpha)$$
+
+$$\rho(Y) = \mathrm{E}[Y - B \mid F(Y) > \alpha] \cdot (1 - \alpha)$$
+
+where $B = VaR_{\alpha}(Y) = F_Y^{-1}(\alpha)$
+
+$$r(X_j) = (CoTVaR - CoVaR) \cdot (1-\alpha)$$
+
+* Only scalable when XS of a percentile
+
+***
+
+$RTVaR = TVaR + c \cdot Stdev(Y \mid F(Y) > \alpha)$
+
+* $h_1(Y) = Y$
+
+* $h_2(Y) = Y - \mathrm{E}[Y|F(Y) > \alpha]$
+
+* $L_1(Y) = 1$
+
+* $L_2(Y) = \dfrac{c[Y - \mathrm{E}[Y \mid F(Y) > \alpha]]}{Stdev(Y \mid F(Y) > \alpha)}$
+
+Condition:
+
+$F(Y) > \alpha$ for both
+
+$r(X_j) = \mathrm{E}[X_j \mid F(Y) > \alpha] + c \dfrac{Cov(X_j, Y \mid F(Y) > \alpha)}{Stdev(Y \mid F(Y) > \alpha)}$
+
+***
+
+Table: (\#tab:era2-2-co-measure-tab) Co-Measures
 
 | Risk Measure | $h(Y)$ | $L(Y)$ | Condition | Co-Measure |
-| --------------- | ------ | ------ | --------- | ---------- |
-| $TVaR$ | $Y$ | $1$ | $F(Y) > \alpha$ | $\operatorname{E}[X_j \mid F(Y) > \alpha]$ |
-| $VaR$ | $Y$ | $1$ | $F(Y) = \alpha$ | $\operatorname{E}[X_j \mid F(Y) = \alpha]$ |
-| Standard Deviation | $Y - \operatorname{E}[Y]$ | $\dfrac{Y - \operatorname{E}[Y]}{\sigma_Y}$ | none | $\dfrac{\operatorname{Cov}(X_j,Y)}{\sigma_Y}$ |
-| $EPD$ | $X - \operatorname{E}[X \mid F(Y) = \alpha]$ | $1-\alpha$ | $F(Y) > \alpha$ | $(CoTVaR - CoVaR) \cdot (1-\alpha)$ |
+|:--------------- |:------ |:------ |:--------- |:------------------ |
+| $TVaR$ | $Y$ | $1$ | $F(Y) > \alpha$ | $\mathrm{E}[X_j \mid F(Y) > \alpha]$ |
+| $VaR$ | $Y$ | $1$ | $F(Y) = \alpha$ | $\mathrm{E}[X_j \mid F(Y) = \alpha]$ |
+| Standard Deviation | $Y - \mathrm{E}[Y]$ | $\dfrac{Y - \mathrm{E}[Y]}{\sigma_Y}$ | none | $\dfrac{\mathrm{Cov}(X_j,Y)}{\sigma_Y}$ |
+| $EPD$ | $X - \mathrm{E}[X \mid F(Y) = \alpha]$ | $1-\alpha$ | $F(Y) > \alpha$ | See 1. |
+
+1. $(CoTVaR - CoVaR) \cdot (1-\alpha)$
 
 ### Using Decomposition
 
-If the allocated risk measure $r(X_j)$ is a decomposition of the company risk measure $\rho(Y)$ then we can use the measure to measure risk-adjusted profitability of a BU
+If the allocated risk measure $r(X_j)$ is a decomposition of the company risk measure $\rho(Y)$ then we can use the measure to measure **risk-adjusted profitability** of a BU
 
-$\dfrac{P_j}{r(X_j)}$
+$$\dfrac{P_j}{r(X_j)}$$
 
-We also need $r(X_j) \propto$ [Market Value of Risk] for this to be an appropriate metric
+If the risk measure $\propto$ the market value of risk $\Rightarrow$ the BU with higher ratio have more profit relative to the value of risk they are taking
 
-* BU with higher ratio have more profit relative to the value of risk they are taking
-
-However, we don't know how to determine the market value of risk $\Rightarrow$ Use several risk measures and hope that one is close and that the indicated strategic directions are consistent with each other
+* But since don't know how to determine the market value of risk (i.e. don't know which risk measure is $\propto$ the value of risk) $\Rightarrow$ Use several risk measures and hope one is close and that the indicated *strategic directions* are consistent with each other
 
 * Question on how to determine the market value of risk have not been settle yet, likely a risk measure on a transformed probability but we don't know yet
 
 ## Allocating the Cost of Capital
 
-Compare profitability among the BU by allocate a cost of capital for each BU
+Compare profitability among the BU by allocating **cost of capital** for each BU
 
 2 possible definitions for cost of capital $C_j$
 
-* Option pricing: Value of the right to call upon the capital of the firm
+1. Option pricing: Value of the right to call upon the capital of the firm
 
-    * Difficult to value as the timing is not fixed in advanced
+    * Added value = $P_j - C_j$ 
     
-* Market value of a stop loss that attach at zero profits for the BU
+    * *Caveat*: Difficult to value as the timing is not fixed in advanced
+    
+2. Market value of a stop loss that attach at *zero profits* for the BU
 
-    * Could use the expected value of the stop loss on transformed probabilities
+    1. Start with expected value of the stop-loss
     
-    * MET is recommended
+    2. Use probability transform and theory of pricing in incomplete markets (e.g. MET)
     
     * Practical estimate: Mean + 30% of s.d. would apply a consistent risk load to the BU
     
@@ -388,8 +577,8 @@ Compare profitability among the BU by allocate a cost of capital for each BU
 
 Allocating capital, even using marginal decomposition is arbitrary and artificial
 
-* Arbitrary because different risk measures give us different allocations and therefore different answers
+* **Arbitrary** because different risk measures give us different allocations and therefore different answers
 
-* Artificial because the business unit has access to the entire capital of the firm, not just a portion of it
+* **Artificial** because the business unit has access to the entire capital of the firm, not just a portion of it
 
-Using a value added approach, by allocating cost of capital is more economically realistic
+Using a value added approach, by allocating *cost of capital* is more economically realistic

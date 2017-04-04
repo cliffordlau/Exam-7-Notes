@@ -7,7 +7,9 @@ Leverage ratios were used in the early days
 In the 1990s RBC was introduced that combie
 
 * Credit
+
 * Reserve
+
 * Accumulation
 
 Scenario testing
