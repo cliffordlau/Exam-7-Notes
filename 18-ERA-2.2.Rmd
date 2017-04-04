@@ -22,7 +22,7 @@ Allocation is marginal (\@ref(def:marginal-era2-2)) if the change to the company
 
 * Scalable risk measures (\@ref(def:scalable-era2-2)) 
 
-* Suitable alloaction (\@ref(def:marginal-era2-2))
+* Suitable allocation (\@ref(def:marginal-era2-2))
 
 * A risk measure can have many co-measures but [only 1](#marginal-impact-era-2-2) will be marginal
 
