@@ -1,10 +1,10 @@
 # ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft
 
-Talks about different ways regulator regulates company's capitla adequacy
+Talks about different ways regulator regulates company's capital adequacy
 
 Leverage ratios were used in the early days
 
-In the 1990s RBC was introduced that combie
+In the 1990s RBC was introduced that combine
 
 * Credit
 
@@ -15,7 +15,7 @@ In the 1990s RBC was introduced that combie
 Scenario testing
 
 * Against scenarios from regulators
-* Can be stochastics
+* Can be stochastic
 
 2 options to meet capital requirements:
 
@@ -24,100 +24,131 @@ Scenario testing
 
 ## Introduction {#era2-3-intro}
 
-Prior to 1990: Leverage Ratios
+History of regulatory & rating agency capital adequacy models
 
-After 1990: Risk Based Capital Model (RBC)
+* Prior to 1990: [Leverage Ratios](#era2-3-leverage)
 
-Soon after RBC: Scenario Testing
+* After 1990: [Risk Based Capital Model](#era2-3-rbc) (RBC)
+
+Soon after RBC:
+
+* Scenario Testing (NY interest rate scenarios for life insurers)
+
+* DCAT in Canada
 
 More recently: Stochastic Scenario Testing
 
-## Leverage Ratios
+## Leverage Ratios {#era2-3-leverage}
 
-In early 1970s in US if companies fail 4 of 12 IRIS tests will get regulatory scrutiny
+IRIS Ratios
 
-In US prior to the 1990s, 2 leverage ratio tests were used:
+* Developed in early 1970s in the US
 
-* $\dfrac{\text{Premium}}{\text{Surplus}} < 3.0$
+* If companies fail 4 of 12 IRIS tests they will get regulatory scrutiny
 
-* $\dfrac{\text{Reserves}}{\text{Surplus}} < a$ where $a$ is fixed
+* Still in use today but less weight is given compared to other regulatory capital adequacy measures
 
-In EU Solvency I are equivalent to the higher of $\dfrac{\text{Premium}}{\text{Surplus}}$ and $\dfrac{\text{Incurred Claims}}{\text{Surplus}}$
+In US prior to the 1990s (before RBC), 2 leverage ratio tests were used:
 
-And also net leverage $\dfrac{\text{Premium} + \text{Reserves}}{\text{Surplus}}$
+1. $\dfrac{\text{Premium}}{\text{Surplus}} < 3.0$
 
-Does not distinguish between LoBs
+2. $\dfrac{\text{Reserves}}{\text{Surplus}} < a$ where $a$ is fixed (e.g. $a=3.0$)
 
-## Risk-Based Capital Models
+    * This penalize long tail lines more
 
-**Advantagtes**
+In EU Solvency I:
 
-Combining several risk include asset, credit, premium, reserve
+* Required capital =  higher of:  
+$\dfrac{\text{Premium}}{\text{Surplus}}$ and $\dfrac{\text{Incurred Claims}}{\text{Surplus}}$
 
-Factor models: 
+* And also *net leverage*:  
+$\dfrac{\text{Premium} + \text{Reserves}}{\text{Surplus}}$
 
-* Factors vary with the quality and type of asset or LoB
+* Does not distinguish between LoBs and nothing besides u/w risk
 
-* Factors applied to accounting values
+## Risk-Based Capital Models {#era2-3-rbc}
 
-***
+***Main advances***
+
+* **Combining several risk** include *asset*, *credit*, *premium*, *reserve*
+
+* **Factor models**: 
+
+    * Factors vary with the quality and type of asset or LoB
+
+    * Factors applied to accounting values
 
 Used in UK, AUS, US, CA, JAP, AM Best and S&P
 
-Models recognize accumulation risk (CATs) and multiple events instead of just occurrence amounts (most of them 1-in-100 or 1-in-250)
+* Models recognize accumulation risk (cat) and aggregate loss instead of just occurrence amounts (most of them 1-in-100 or 1-in-250)
+
+* Factors very significantly between jurisdictions
 
 AM Best has much higher factors than the rest:
 
-* Rating agency focus on long term viability vs regulatory focus on one year survival
+* Rating agencies focus on long term viability vs regulatory focus on one year survival
 
-* Correlation adjustment reduces the combined risk charge especially when the factors are of similar size
+* Correlation adjustment reduces the combined risk charges especially when the factors are of similar size
 
 ### Credit Risk
 
-Largest component is reinsurance recoverable
+Largest component is **reinsurance recoverable**
 
-Many models vary the factors with the credit quality of the reinsurers
+* Many models vary the factors with the *credit quality* of the reinsurers
 
-AM Best increases credit charge for companies with high Reinsurance Recoverable / Surplus ratio
+AM Best:
 
-UK: premium ceded to one reinsurer can not > 20% of gross premium; Recoverable from an insurance group cannot > 100% of surplus
+* Increases credit charge for companies with high $\dfrac{\text{Reinsurance Recoverable}}{\text{Surplus}}$
+
+UK:
+
+* *Premium ceded* to one reinsurer can not > 20% of *gross premium*
+
+* *Recoverable* from an insurance group cannot > 100% of *surplus*
 
 ### Reserve Risk
 
-Similar to premium factors, vary by LoB and applied to net reserves
+Similar to premium factors, **vary by LoB** and applied to **net reserves**
 
-Japan: reserve levels are low as payments are made quickly, factor is applied to net loss payment
+Japan:
+
+* Reserve levels are low as payments are made quickly, factor is applied to **net loss payment**
 
 ### Accumulation Risk
 
-Some models have started to use accumulation risk but many do not use it yet
+Some models have started to use accumulation risk (but many do not use it yet)
 
-Focus is on 1-in-100 or 1-in-250 events
+* Focus is on 1-in-100 or 1-in-250 events
 
 ## Scenario Testing
 
-Some regulators require test of capital against scenarios
+Some regulators require test of capital against a set of scenarios
 
-* Static scenarios in Canada (DCAT)
+* **Static scenarios** in Canada (DCAT)
 
-* Stochastic in UK and Australia with 99.5% of 1 year survival rate
+* **Stochastic** in UK and Australia
 
-* UK also have 3 years 98.5% and 5 year 97.5% survival
+    * AUS: 99.5% of 1 year survival rate
+
+    * UK: also have 3 years 98.5% and 5 years 97.5% survival
 
 Stochastic modeling requires:
 
 * Forecasting financials for 1-5 years
-* Probability dist^n^ where they can be developed
+
+* Probability dist^n^ (for many risk sources) where they can be developed
+
 * Dependencies among risks
+
 * Reflection of Management Responses
 
 ## Evaluating Capital Structure Strategies
 
 2 options to meet capital requirements:
 
-**Purchase reinsurance**
+***Purchase reinsurance***
 
-Impact: 
+*Impact*: 
 
 * Premium $\downarrow$; Capital Requirement $\downarrow$
 
@@ -131,14 +162,12 @@ Change in premium or reserve charge have a larger impact then to the recoverable
 
 * Changes to small risk charges have a small impact on the total risk charge
 
-Annual cost: Ceded Premium $\times$ Profit Margin
+*Annual cost*: Ceded Premium $\times$ Profit Margin
 
-***
+***Issue Surplus Notes***
 
-**Issue Surplus Notes**
+*Annual cost*: (Surplus note yield - Bond yields) $\times$ Face Value of Surplus Note
 
-Annual cost: (Surplus note yield - Bond yields) $\times$ Face Value of Surplus Note
-
-However surplus note is a longer commitment as they can not be repaid for a certain time period
+However surplus note is a **longer commitment** as they can not be repaid for a certain time period
 
 Reinsurance might be cheaper and the company can exit quickly

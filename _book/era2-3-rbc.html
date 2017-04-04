@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era2-3-intro.html">
-<link rel="next" href="risk-based-capital-models.html">
+<link rel="prev" href="era2-3-leverage.html">
+<link rel="next" href="scenario-testing.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -92,11 +92,11 @@
 <li class="chapter" data-level="18" data-path="era-2-2-risk-measures-and-capital-allocation-g-venter.html"><a href="era-2-2-risk-measures-and-capital-allocation-g-venter.html"><i class="fa fa-check"></i><b>18</b> ERA 2.2 Risk Measures and Capital Allocation - G. Venter</a></li>
 <li class="chapter" data-level="19" data-path="era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><a href="era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><i class="fa fa-check"></i><b>19</b> ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft</a><ul>
 <li class="chapter" data-level="19.1" data-path="era2-3-intro.html"><a href="era2-3-intro.html"><i class="fa fa-check"></i><b>19.1</b> Introduction</a></li>
-<li class="chapter" data-level="19.2" data-path="leverage-ratios.html"><a href="leverage-ratios.html"><i class="fa fa-check"></i><b>19.2</b> Leverage Ratios</a></li>
-<li class="chapter" data-level="19.3" data-path="risk-based-capital-models.html"><a href="risk-based-capital-models.html"><i class="fa fa-check"></i><b>19.3</b> Risk-Based Capital Models</a><ul>
-<li class="chapter" data-level="19.3.1" data-path="risk-based-capital-models.html"><a href="risk-based-capital-models.html#credit-risk"><i class="fa fa-check"></i><b>19.3.1</b> Credit Risk</a></li>
-<li class="chapter" data-level="19.3.2" data-path="risk-based-capital-models.html"><a href="risk-based-capital-models.html#reserve-risk"><i class="fa fa-check"></i><b>19.3.2</b> Reserve Risk</a></li>
-<li class="chapter" data-level="19.3.3" data-path="risk-based-capital-models.html"><a href="risk-based-capital-models.html#accumulation-risk"><i class="fa fa-check"></i><b>19.3.3</b> Accumulation Risk</a></li>
+<li class="chapter" data-level="19.2" data-path="era2-3-leverage.html"><a href="era2-3-leverage.html"><i class="fa fa-check"></i><b>19.2</b> Leverage Ratios</a></li>
+<li class="chapter" data-level="19.3" data-path="era2-3-rbc.html"><a href="era2-3-rbc.html"><i class="fa fa-check"></i><b>19.3</b> Risk-Based Capital Models</a><ul>
+<li class="chapter" data-level="19.3.1" data-path="era2-3-rbc.html"><a href="era2-3-rbc.html#credit-risk"><i class="fa fa-check"></i><b>19.3.1</b> Credit Risk</a></li>
+<li class="chapter" data-level="19.3.2" data-path="era2-3-rbc.html"><a href="era2-3-rbc.html#reserve-risk"><i class="fa fa-check"></i><b>19.3.2</b> Reserve Risk</a></li>
+<li class="chapter" data-level="19.3.3" data-path="era2-3-rbc.html"><a href="era2-3-rbc.html#accumulation-risk"><i class="fa fa-check"></i><b>19.3.3</b> Accumulation Risk</a></li>
 </ul></li>
 <li class="chapter" data-level="19.4" data-path="scenario-testing.html"><a href="scenario-testing.html"><i class="fa fa-check"></i><b>19.4</b> Scenario Testing</a></li>
 <li class="chapter" data-level="19.5" data-path="evaluating-capital-structure-strategies.html"><a href="evaluating-capital-structure-strategies.html"><i class="fa fa-check"></i><b>19.5</b> Evaluating Capital Structure Strategies</a></li>
@@ -131,38 +131,66 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="leverage-ratios" class="section level2">
-<h2><span class="header-section-number">19.2</span> Leverage Ratios</h2>
-<p>IRIS Ratios</p>
+<div id="era2-3-rbc" class="section level2">
+<h2><span class="header-section-number">19.3</span> Risk-Based Capital Models</h2>
+<p><strong><em>Main advances</em></strong></p>
 <ul>
-<li><p>Developed in early 1970s in the US</p></li>
-<li><p>If companies fail 4 of 12 IRIS tests they will get regulatory scrutiny</p></li>
-<li><p>Still in use today but less weight is given compared to other regulatory capital adequacy measures</p></li>
-</ul>
-<p>In US prior to the 1990s (before RBC), 2 leverage ratio tests were used:</p>
-<ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\dfrac{\text{Premium}}{\text{Surplus}} &lt; 3.0\)</span></p></li>
-<li><p><span class="math inline">\(\dfrac{\text{Reserves}}{\text{Surplus}} &lt; a\)</span> where <span class="math inline">\(a\)</span> is fixed (e.g. <span class="math inline">\(a=3.0\)</span>)</p>
+<li><p><strong>Combining several risk</strong> include <em>asset</em>, <em>credit</em>, <em>premium</em>, <em>reserve</em></p></li>
+<li><p><strong>Factor models</strong>:</p>
 <ul>
-<li>This penalize long tail lines more</li>
+<li><p>Factors vary with the quality and type of asset or LoB</p></li>
+<li><p>Factors applied to accounting values</p></li>
 </ul></li>
-</ol>
-<p>In EU Solvency I:</p>
-<ul>
-<li><p>Required capital = higher of:<br />
-<span class="math inline">\(\dfrac{\text{Premium}}{\text{Surplus}}\)</span> and <span class="math inline">\(\dfrac{\text{Incurred Claims}}{\text{Surplus}}\)</span></p></li>
-<li><p>And also <em>net leverage</em>:<br />
-<span class="math inline">\(\dfrac{\text{Premium} + \text{Reserves}}{\text{Surplus}}\)</span></p></li>
-<li><p>Does not distinguish between LoBs and nothing besides u/w risk</p></li>
 </ul>
+<p>Used in UK, AUS, US, CA, JAP, AM Best and S&amp;P</p>
+<ul>
+<li><p>Models recognize accumulation risk (cat) and aggregate loss instead of just occurrence amounts (most of them 1-in-100 or 1-in-250)</p></li>
+<li><p>Factors very significantly between jurisdictions</p></li>
+</ul>
+<p>AM Best has much higher factors than the rest:</p>
+<ul>
+<li><p>Rating agencies focus on long term viability vs regulatory focus on one year survival</p></li>
+<li><p>Correlation adjustment reduces the combined risk charges especially when the factors are of similar size</p></li>
+</ul>
+<div id="credit-risk" class="section level3">
+<h3><span class="header-section-number">19.3.1</span> Credit Risk</h3>
+<p>Largest component is <strong>reinsurance recoverable</strong></p>
+<ul>
+<li>Many models vary the factors with the <em>credit quality</em> of the reinsurers</li>
+</ul>
+<p>AM Best:</p>
+<ul>
+<li>Increases credit charge for companies with high <span class="math inline">\(\dfrac{\text{Reinsurance Recoverable}}{\text{Surplus}}\)</span></li>
+</ul>
+<p>UK:</p>
+<ul>
+<li><p><em>Premium ceded</em> to one reinsurer can not &gt; 20% of <em>gross premium</em></p></li>
+<li><p><em>Recoverable</em> from an insurance group cannot &gt; 100% of <em>surplus</em></p></li>
+</ul>
+</div>
+<div id="reserve-risk" class="section level3">
+<h3><span class="header-section-number">19.3.2</span> Reserve Risk</h3>
+<p>Similar to premium factors, <strong>vary by LoB</strong> and applied to <strong>net reserves</strong></p>
+<p>Japan:</p>
+<ul>
+<li>Reserve levels are low as payments are made quickly, factor is applied to <strong>net loss payment</strong></li>
+</ul>
+</div>
+<div id="accumulation-risk" class="section level3">
+<h3><span class="header-section-number">19.3.3</span> Accumulation Risk</h3>
+<p>Some models have started to use accumulation risk (but many do not use it yet)</p>
+<ul>
+<li>Focus is on 1-in-100 or 1-in-250 events</li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era2-3-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="risk-based-capital-models.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="era2-3-leverage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="scenario-testing.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
