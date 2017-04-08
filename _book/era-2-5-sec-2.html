@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era-2-5-sec-3.html">
-<link rel="next" href="era-3-1-considerations-on-implementing-internal-risk-model-mango.html">
+<link rel="prev" href="era-2-5-sec-1.html">
+<link rel="next" href="era-2-5-sec-3.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,41 +138,208 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conclusion" class="section level2">
-<h2><span class="header-section-number">21.5</span> Conclusion</h2>
-<p>Use cost-benefit analysis to compare reinsurance programs</p>
+<div id="era-2-5-sec-2" class="section level2">
+<h2><span class="header-section-number">21.3</span> Reinsurance as Capital</h2>
+<p>Capital is held to pay for claims when the premium is not sufficient to do so</p>
 <ul>
-<li>Select metrics to determine the <em>benefit of the reinsurance</em> and compare to <em>cost for each reinsurance programs</em></li>
+<li><p>Highly variable results will require more capital</p>
+<p><span class="math inline">\(\Downarrow\)</span></p>
+<p>Reinsurance reduce volatility of results <span class="math inline">\(\Rightarrow\)</span> reduce capital required</p>
+<p><span class="math inline">\(\Downarrow\)</span></p>
+<p>Reinsurance can be thought of as borrowed capital</p></li>
 </ul>
-<p>Net cost of reinsurance = NPV of expected decrease in earnings from purchasing reinsurance = <span class="math inline">\(\Delta\)</span> PV[Expected loss - Premium - Reinstatement + Commission]</p>
-<p>Combined ratio can be distorted due to expense ratio</p>
-<p><strong>Stability</strong> is the simplest measure of benefit</p>
+<p>We value the reinsurance by the impact it has in reducing Capital (or Cost of Capital)</p>
+<p><span class="math inline">\(\therefore\)</span> We compare the reduction in cost of capital to the cost of the reinsurance</p>
+<hr />
+<p>Measure the amount of capital reduction that the insurer receives from the reinsurance program</p>
 <ul>
-<li>But <span class="math inline">\(\sigma\)</span> can be misleading as they can be lowered by eliminating favorable results</li>
-</ul>
-<p>Useful to look at the <strong>differences of distributions</strong> from the reinsurance options</p>
-<p><strong>Efficient frontier</strong> is useful</p>
-<p>If we can measure the increase of value of the firm that would be great</p>
-<ul>
-<li><p>Increased earnings from reduced financing costs</p></li>
-<li><p>Higher premium from better claims paying ratings</p></li>
-<li><p>Can’t do this right now so the substitute is to measure the reduction in capital requirements</p></li>
-</ul>
-<p>Value of reinsurance can be measures vs:</p>
-<ul>
-<li><p>A cost of capital, or</p></li>
-<li><p>Capital (ROE)</p></li>
+<li><p>Compare the <strong>cost of capital reduction</strong> from reinsurance program</p></li>
+<li><p>i.e. Compare the marginal cost of reinsurance to the marginal capital to judge the value of reinsurance</p></li>
 </ul>
 
+<div class="definition">
+<p><span id="def:coc-reduct-met-1" class="definition"><strong>Definition 21.8 </strong></span>Cost of capital reduction: <strong><em>Metrics 1</em></strong></p>
+<p>Net Benefit = |<span class="math inline">\(\Delta\)</span>Cost of Capital| - |Net Cost of Reinsurance|</p>
+<ul>
+<li><p>Net benefit &gt; 0 then accept</p></li>
+<li><p><strong>Net cost of reinsurance</strong> = <span class="math inline">\(\text{Reinsurance Premium} - \mathrm{E}[Recovery]\)</span> on a PV basis</p></li>
+<li><p>Alt formula: Net benefit = Net Cost of Reinsurance - <span class="math inline">\(\Delta\)</span>Cost of Capital</p></li>
+<li>Review other criteria when the dollar benefit is the same
 </div>
-<!-- </div> -->
+<p></p></li>
+</ul>
+
+<div class="definition">
+<p><span id="def:coc-reduct-met-2" class="definition"><strong>Definition 21.9 </strong></span>Cost of captial reduction: <strong><em>Metrics 2</em></strong></p>
+<p><span class="math inline">\(ROE = \dfrac{\text{Net Cost of Reinsurance}}{\Delta \text{Capital}}\)</span></p>
+<ul>
+<li><p>Compare return on equity</p></li>
+<li><p>We want <span class="math inline">\(ROE\)</span> <strong>below</strong> the <em>cost of capital</em> here and that lower is better since we are reducing capital</p>
+<ul>
+<li><p>Think about it if you’re going from the plan interested to gross, if the <span class="math inline">\(ROE\)</span> is lower you don’t want to change so the current plan is better</p></li>
+<li>Tink of this as investing negative capital, and <span class="math inline">\(\therefore\)</span> we want a <strong>low ROE</strong>
+</div>
+<p></p></li>
+</ul></li>
+</ul>
+<div id="era-2-5-change-in-cap" class="section level3">
+<h3><span class="header-section-number">21.3.1</span> Change in Capital</h3>
+<p>2 different methods to determine the change in capital from the reinsurance structure</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="era-2-5-sec-2.html#theo-model-era-2-5">Theoretical models</a>:</p>
+<p>Use risk measures we discussed earlier (e.g. VaR, TVaR)</p></li>
+<li><p><a href="era-2-5-sec-2.html#prac-model-era-2-5">Practical models</a>:</p>
+<p>Use captial requirements from rating/regulatory agencies</p></li>
+</ol>
+<div id="theo-model-era-2-5" class="section level4">
+<h4><span class="header-section-number">21.3.1.1</span> Theoretical Models</h4>
+<p>A risk metric is selected as a proxy to represent the economic capital required</p>
+<ul>
+<li>e.g. <span class="math inline">\(VaR\)</span>, <span class="math inline">\(TVaR\)</span>, multiples of <span class="math inline">\(VaR\)</span>, <span class="math inline">\(XTVaR\)</span>, etc</li>
+</ul>
+<p><strong><em>Procedure:</em></strong></p>
+<ol style="list-style-type: decimal">
+<li>Calculate <strong>Expected Earnings</strong></li>
+</ol>
+<p><span class="math display">\[\text{Expected Earnings} = \text{Net Premiums} - \text{Expense} - \text{Expected Losses}\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate <strong>Economic Captial</strong></li>
+</ol>
+<p><span class="math display">\[\text{Economic Capital} = \text{Net Premium} - \text{Expenses} - \text{Risk Measures}\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Measure the <span class="math inline">\(\Delta\)</span> in <em>Economic Capital</em> and <em>Expected Earnings</em> to determine the comparison metrics above (<a href="era-2-5-sec-2.html#def:coc-reduct-met-1">21.8</a> and <a href="era-2-5-sec-2.html#def:coc-reduct-met-2">21.9</a>)</p>
+<ul>
+<li><p>We measure the <span class="math inline">\(\Delta\)</span> against a base (<em>e.g. bare or current</em>)</p></li>
+<li><p>Here <span class="math inline">\(\text{Net Cost of Reinsurance} = \Delta \text{Expected Income}\)</span></p></li>
+<li><p>Remember that lower <span class="math inline">\(ROE\)</span> is better</p></li>
+</ul></li>
+</ol>
+</div>
+<div id="prac-model-era-2-5" class="section level4">
+<h4><span class="header-section-number">21.3.1.2</span> Practical Models</h4>
+<p>Use capital requirements from rating agencies (<em>e.g. BCAR, S&amp;P, CAR, RBC, ICAR, etc</em>)</p>
+<ul>
+<li><p>Typically set target as a multiple of a given regulatory metric</p>
+<p>(e.g. 175% BCAR or 4 times RBC authorized control level)</p></li>
+</ul>
+<p>Reinsurance reduces the capital required due to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Lower <em>net premium</em> and <em>net reserves</em></p></li>
+<li><p>With a slight offset from increase <em>counterparty risk</em></p></li>
+</ol>
+<p><strong><em>Pros/Cons</em></strong></p>
+<ul>
+<li><p><strong>Pros</strong>: Easier to implement (no need to model loss dist<sup>n</sup> and correlation)</p></li>
+<li><p><strong>Cons</strong>: Not as accurate because the measurement of risk is based on proxies and not the actual risk itself</p>
+<ul>
+<li><p>e.g. stop loss only have small impact on premium but can have large impact on a risk (like the tail) that the method might not pick up</p></li>
+<li><p>Alternatively, model a year out and predict the probability of falling below certain thresholds</p>
+<p><span class="math inline">\(\Rightarrow\)</span> Capital could be set so that the probability is lower</p></li>
+<li><p>But then we’ll have to model the I/S and reinsurance structure and everything</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="theorectical-model-example-marginal-roe" class="section level3">
+<h3><span class="header-section-number">21.3.2</span> Theorectical Model Example: Marginal ROE</h3>
+<p>Compare the marginal cost of reinsurance to the marginal capital to judge the value of reinsurance</p>
+<ol style="list-style-type: decimal">
+<li><p>Pick a risk metric as proxy for capital required</p></li>
+<li><p>Calculate <strong>marginal capital</strong> relative the current program</p></li>
+<li><p>Calculate <span class="math inline">\(\Delta\)</span> NPV Net Benefit = <span class="math inline">\(\Delta\)</span> NPV Ceded Loss - <span class="math inline">\(\Delta\)</span> NPV Ceded Premium</p></li>
+<li><p>Calculate <span class="math inline">\(ROE = \dfrac{\Delta \text{NPV Net Benefit}}{\text{Marginal Capital}}\)</span></p></li>
+<li><p>Calculate <em>after-tax</em> <span class="math inline">\(ROE\)</span></p></li>
+</ol>
+<ul>
+<li><p>Compare the <span class="math inline">\(ROE\)</span> (We still want it lower?)</p>
+<ul>
+<li>Bare in mind that a high ROE is meaningless if the amount of capital you can invest is small</li>
+</ul></li>
+</ul>
+<div id="xtvar" class="section level4">
+<h4><span class="header-section-number">21.3.2.1</span> XTVaR</h4>
+<p>Might be better to look at a multiple of XTVaR at a lower percentile</p>
+<ul>
+<li>XTVaR is the unfunded part of TVaR</li>
+</ul>
+<p><span class="math display">\[XTVaR_{\alpha} = \mathrm{E}[Y \mid F(Y) &gt; \alpha] - \mathrm{E}[Y]\]</span></p>
+<ul>
+<li>VaR is a single point and can be volatile at high percentiles</li>
+</ul>
+</div>
+</div>
+<div id="era-2-5-acc-risk" class="section level3">
+<h3><span class="header-section-number">21.3.3</span> Accumulation Risk</h3>
+<p>So far we implicitly assumed that the capital is held for only 1 year</p>
+<ul>
+<li><p>Capital calculated so far was static without regard to how long it takes to run it down as claims are paid</p></li>
+<li><p>Capital needs to be held until all claims are paid</p></li>
+</ul>
+<div id="life-time-amount-of-capital" class="section level4">
+<h4><span class="header-section-number">21.3.3.1</span> “Life-time” Amount of Capital</h4>
+<p><span class="math display">\[\begin{align}
+  \text{&quot;Lifetime&quot; amount of capital} \:\: = \:\: &amp; \text{Capital for new business} \\
+  &amp;+ \text{Capital to support all unpaid claims from prior years} \\
+\end{align}\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> Set the capital requirements based on premium and reserves</p>
+<ul>
+<li><p><em>Caveat</em>: Current reserves may be based on business that is different from this year’s book (<em>e.g. size, mix of business, etc</em>)</p></li>
+<li><p>Use “<em>as-if</em>” reserves for capital calculation</p></li>
+</ul>
+
+<div class="definition">
+<p><span id="def:as-if-res-era-2-5" class="definition"><strong>Definition 21.10  (As-if Reserves) </strong></span></p>
+<ul>
+<li><p>Calculate the reserves as if the company had been writing the same book the last several years</p></li>
+<li><p>Adjust for inflation</p></li>
+<li>Especialy important for long tailed lines where capital requirement for the accumulated outstanding reserve can be much large than the requirement for new business
+</div>
+<p></p></li>
+</ul>
+<p>Focus here is to determine the impacts on capital so we can assign a cost to each reinsurance program</p>
+<ul>
+<li><p>When comparing reinsurance program, the reserves would be calculated under each reinsurance program</p></li>
+<li><p>Capital calculated for both the new premium, and the loss reserves is a surrogate for the PV of the capital required for the current book over its lifetime</p></li>
+</ul>
+<p><strong>2 Advantages</strong> for the “as-if” reserves</p>
+<ol style="list-style-type: decimal">
+<li><p>Measure the impact of accumulated risk caused by correlated factors</p>
+<ul>
+<li>Likely means “correlated risk factors” that can influence all those accident years (<em>e.g. inflation, change in law</em>)</li>
+</ul></li>
+<li><p>Alternative reinsurance programs can be applied to the premium and as‐if reserves, providing a more valid measure of the accumulated risk and capital used over the full life of the AY</p></li>
+</ol>
+<hr />
+<p>When aggregating AYs, we get temporal risk (risk based on time) that affect all AYs at the same time (<em>e.g. severity trend and auto correlation of severity trend</em>)</p>
+<p>Including all AYs create a bigger spread of possible outcomes</p>
+</div>
+</div>
+<div id="capital-consumed" class="section level3">
+<h3><span class="header-section-number">21.3.4</span> Capital Consumed</h3>
+<p><strong>Concept</strong>: How much capital is needed to pay deficiencies</p>
+<p>Plot/compare <em>PDF</em> and <em>CDF</em> of <strong>Capital Consumed</strong>:</p>
+<p><span class="math display">\[\text{Capital Consumed} = - PV[\text{Premium} + \text{Reserves} - \text{Losses} - \text{Expenses}]\]</span></p>
+<p><strong><em>Apply Reinsurance Example</em></strong></p>
+<p>When modeling XoL contracts we need to model <em>severity trend</em></p>
+<ul>
+<li><p>Severity trend impacts <em>all open claims</em></p></li>
+<li><p>Payment pattern is important as claims that are open longer will have more severity trend applied</p></li>
+</ul>
+<p>We can base the capital consumed on different risk measures (<em>e.g. VaR and TVaR</em>)</p>
+<p><span class="math display">\[ROE = \dfrac{\text{Expected Profit}}{\text{Capital Consumed}}\]</span></p>
+<ul>
+<li>Do we want increase or decrease <em>ROE</em>?</li>
+</ul>
+<p><span style="color:red">Comment from notes that author is not sure about</span></p>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era-2-5-sec-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="era-3-1-considerations-on-implementing-internal-risk-model-mango.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="era-2-5-sec-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="era-2-5-sec-3.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
