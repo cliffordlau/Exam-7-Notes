@@ -2,56 +2,91 @@
 
 Just know the 4 sections and have an idea of what it covers
 
+1. [Startup: Staffing and Scope](#era-3-1-sec-1)
+
+2. [IRM Parameter Development](#era-3-1-sec-2)
+
+3. [Implementation](#era-3-1-sec-3)
+
+4. [Integration and Mainteneance](#era-3-1-sec-4)
+
 ## Introduction {#era3-1-intro}
 
 Creation of internal risk model
 
 * Decisions at the beginning of the process
+
 * How the input parameters should be determined
+
 * How to overcome political hurdles
+
 * How to integrate model into the company's business planning
 
-## Startup: Staffing and Scope
+## Startup: Staffing and Scope {#era-3-1-sec-1}
 
 Important to define responsibilities of those involved and scope of the project
 
 * Organization Chart
+
     * Reporting line of team
+
     * Leader needs reputation for fairness and balance
+
 * Functions Represented
+
     * U/w, planning, actuarial, risk
+
 * Resource Commitment
+
     * Full time or part time
+
 * Critical Roles and Responsibilities
+
     * Control of inputs and outputs
+
     * Analyses and uses of output
+
 * Purpose
+
     * Quantify variation around?
+
     * Objective view of dist^n^ of results?
+
 * Scope
+
     * Prospective u/w year only?
+
     * Reserves, assets, op risk?
+
     * Low detail on whole company? or,
+
     * High detail on a pilot segment
     
-## IRM Parameter Development
+## IRM Parameter Development {#era-3-1-sec-2}
 
 Important **input** parameters to model:
 
 * ELR
+
 * LR dist^n^
+
 * Expected premium
+
 * Correlation amongst risk
+
 * ESG
 
 Other considerations:
 
 * **Modeling software**: should match the capabilities of the team
+
 * **Parameter development**: should include expertise from u/w, planning, claims and actuarial; have a systematic way to capture expert opinion
+
 * **Correlations**: Have to be owned at a high level (C-suites) as it crosses LoBs and have significant impact on the allocated capital; Should have inputs from IRM team
+
 * **Validation**: test and validate over extended period; provide training so that interested parties all have a basic understanding of the statistics
 
-## Implementation
+## Implementation {#era-3-1-sec-3}
 
 Have senior management set priority and timeline for IRM analysis and rollout to prevent ambushes
 
@@ -64,14 +99,19 @@ There will be a large appetite for the results of the IRM
 Recommendations
 
 * **Priority Setting**: Have top management set the priority for implementation
+
 * **Communications**: Regular communication and to a broad audience
+
 * **Pilot Testing**: Allows effective preparation of the company for the magnitude of the change
+
 * **Education**: Training so leadership has a similar base level of understanding
 
-## Integration and Mainteneance
+## Integration and Mainteneance {#era-3-1-sec-4}
 
 Make it part of the corporate calendar
 
 * Cycle: Integrate into annual planning process
+
 * Updating: Major updates no more than once per year
+
 * Controls: Maintain centralized controls of inputs, outputs and even application templates

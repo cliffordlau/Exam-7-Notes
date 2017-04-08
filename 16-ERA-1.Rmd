@@ -610,11 +610,11 @@ Can also allocate risk capital to investments $\Rightarrow$ Compare riskiness of
 ## Past Exam Questions
 
 ```{block, type='rmdcaution'}
-Haven't done TIA practice questions
+Haven't done past exam questions for ERA 1
 ```
 
 ```{block, type='rmdcaution'}
-Haven't done past exam questions
+Haven't done TIA practice questions
 ```
 
 ### Question Highlights

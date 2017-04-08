@@ -534,3 +534,16 @@ Value of reinsurance can be measures vs:
 
 * Capital (ROE)
 
+## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done past exam questions for ERA 2
+```
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
+
+### Question Highlights
+
+n/a
