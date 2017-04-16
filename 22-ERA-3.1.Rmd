@@ -29,7 +29,7 @@ Just know the 4 sections and have an idea of what it covers
 Things firm often **underestimate** when implementing an IRM (this is on a similar scale as implementing a new ledger or reserve review process)
 
 * **Resource commitment**:  
-Hiring staff, purchasing systmes, software, consultants
+Hiring staff, purchasing systems, software, consultants
 
 * **Timelines**:  
 Can take years to implement
@@ -121,7 +121,7 @@ Potential **outputs** of the risk model:
 
 * Output example: $\sigma$ of LR or profits, $VaR$ and $TVaR$, correlations
 
-***Purpose***, exampes:
+***Purpose***, examples:
 
 * Quantify variation around the plan
 
@@ -209,7 +209,7 @@ Potential ***challenges*** on parameters that need to be developed
 
 ***Parameter development***
 
-* Need to develop a systematic way to capture the expert opinion (product exptertise) from the following departments:
+* Need to develop a systematic way to capture the expert opinion (product expertise) from the following departments:
 
   * W/w, planning, claims, planning and actuarial
 
@@ -221,7 +221,7 @@ Potential ***challenges*** on parameters that need to be developed
 
 ***Validation***
 
-* Valiate and test over extended period
+* Validate and test over extended period
 
 * Provide training so that interested parties all have a basic understanding of the model
 
@@ -235,7 +235,7 @@ Have senior management set priority and timeline for IRM analysis and rollout to
 
 There will be a large appetite for the results of the IRM
 
-* Provide access to the output from the mdoel consistently and predictively
+* Provide access to the output from the model consistently and predicatively
 
 ### Recommendations
 
@@ -259,13 +259,13 @@ Integrate IRM into an organization's existing ***corporate calendar***:
     
 * Timeline for review of internal financials
 
-* Timeline ofr bonus pool
+* Timeline for bonus pool
 
 ***Update frequency***
 
 * Major updates should be no more than twice a year
 
-* Minor upadtes can be handled by scaling
+* Minor updates can be handled by scaling
 
     * $\sigma$ can be calculated by keeping the CoV constant
 
