@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-04-08">
+<meta name="date" content="2017-04-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -95,10 +95,18 @@
 <li class="chapter" data-level="21" data-path="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><a href="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><i class="fa fa-check"></i><b>21</b> ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</a></li>
 <li class="chapter" data-level="22" data-path="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><a href="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><i class="fa fa-check"></i><b>22</b> ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</a><ul>
 <li class="chapter" data-level="22.1" data-path="era3-1-intro.html"><a href="era3-1-intro.html"><i class="fa fa-check"></i><b>22.1</b> Introduction</a></li>
-<li class="chapter" data-level="22.2" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html"><i class="fa fa-check"></i><b>22.2</b> Startup: Staffing and Scope</a></li>
-<li class="chapter" data-level="22.3" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html"><i class="fa fa-check"></i><b>22.3</b> IRM Parameter Development</a></li>
-<li class="chapter" data-level="22.4" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html"><i class="fa fa-check"></i><b>22.4</b> Implementation</a></li>
-<li class="chapter" data-level="22.5" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html"><i class="fa fa-check"></i><b>22.5</b> Integration and Mainteneance</a></li>
+<li class="chapter" data-level="22.2" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html"><i class="fa fa-check"></i><b>22.2</b> Startup: Staffing and Scope</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html#recommendations"><i class="fa fa-check"></i><b>22.2.1</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html"><i class="fa fa-check"></i><b>22.3</b> IRM Parameter Development</a><ul>
+<li class="chapter" data-level="22.3.1" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html#recommendtaions"><i class="fa fa-check"></i><b>22.3.1</b> Recommendtaions</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html"><i class="fa fa-check"></i><b>22.4</b> Implementation</a><ul>
+<li class="chapter" data-level="22.4.1" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html#recommendations-1"><i class="fa fa-check"></i><b>22.4.1</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="22.5" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html"><i class="fa fa-check"></i><b>22.5</b> Integration and Mainteneance</a><ul>
+<li class="chapter" data-level="22.5.1" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html#recommendations-2"><i class="fa fa-check"></i><b>22.5.1</b> Recommendations</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="23" data-path="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><a href="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><i class="fa fa-check"></i><b>23</b> ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</a></li>
 <li class="chapter" data-level="24" data-path="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><a href="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><i class="fa fa-check"></i><b>24</b> ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</a></li>
@@ -129,21 +137,62 @@
             <section class="normal" id="section-">
 <div id="era-3-1-sec-2" class="section level2">
 <h2><span class="header-section-number">22.3</span> IRM Parameter Development</h2>
-<p>Important <strong>input</strong> parameters to model:</p>
+<p>Potential <strong><em>challenges</em></strong> on parameters that need to be developed</p>
 <ul>
-<li><p>ELR</p></li>
-<li><p>LR dist<sup>n</sup></p></li>
-<li><p>Expected premium</p></li>
-<li><p>Correlation amongst risk</p></li>
-<li><p>ESG</p></li>
+<li><p>Data quality</p></li>
+<li><p>Unique characteristics of the company or LoB</p></li>
+<li><p>Differing risk attitudes</p></li>
 </ul>
-<p>Other considerations:</p>
+<p><strong><em>Expert opinion</em></strong> is important in developing parameters</p>
 <ul>
-<li><p><strong>Modeling software</strong>: should match the capabilities of the team</p></li>
-<li><p><strong>Parameter development</strong>: should include expertise from u/w, planning, claims and actuarial; have a systematic way to capture expert opinion</p></li>
-<li><p><strong>Correlations</strong>: Have to be owned at a high level (C-suites) as it crosses LoBs and have significant impact on the allocated capital; Should have inputs from IRM team</p></li>
-<li><p><strong>Validation</strong>: test and validate over extended period; provide training so that interested parties all have a basic understanding of the statistics</p></li>
+<li><p>Especially for segments with small volume and low quality data</p></li>
+<li><p>This will increase the time to implement</p></li>
 </ul>
+<p><strong><em>Correlation</em></strong> assessment is <em>important</em> and <em>challenging</em></p>
+<ul>
+<li><p>Lack of data</p></li>
+<li><p>High political sensitivity</p></li>
+<li><p>Spans multiple business units</p></li>
+<li><p>Significant impact on the overall risk profile and capital allocation</p></li>
+</ul>
+<p><strong><em>Validation</em></strong> will be difficult as there are no model to compare</p>
+<ul>
+<li><p>Validate by reviewing a series of tests involving complementary variables, e.g.:</p>
+<ul>
+<li><p>Compare extreme outcomes from the model to actual extreme outcomes</p></li>
+<li><p>Compare variation of loss ratios to historical variation</p></li>
+<li><p>Model accurately handle correlation</p></li>
+<li><p>Capital allocation make sense? (long tail and cat prone risk have more capital)</p></li>
+</ul></li>
+<li><p>Gain comfort with the reasonableness of the model through the use of many metrics</p></li>
+</ul>
+<div id="recommendtaions" class="section level3">
+<h3><span class="header-section-number">22.3.1</span> Recommendtaions</h3>
+<p><strong><em>Modeling software</em></strong></p>
+<ul>
+<li><p>How much is pre-built from purchased software</p></li>
+<li><p>What needs to be built in-house</p></li>
+<li><p>Skills of the team should align with what they need to build</p>
+<ul>
+<li>e.g. Buy an ESG unless your team have finance and economics experts with time series modeling</li>
+</ul></li>
+</ul>
+<p><strong><em>Parameter development</em></strong></p>
+<ul>
+<li><p>Need to develop a systematic way to capture the expert opinion (product exptertise) from the following departments:</p></li>
+<li><p>W/w, planning, claims, planning and actuarial</p></li>
+</ul>
+<p><strong><em>Correlations</em></strong></p>
+<ul>
+<li><p>Needs to be owned at a high level (C-suites) as it crosses LoBs and have significant impact on the allocated capital</p></li>
+<li><p>IRM team will provide recommendations on correlation assumptions</p></li>
+</ul>
+<p><strong><em>Validation</em></strong></p>
+<ul>
+<li><p>Valiate and test over extended period</p></li>
+<li><p>Provide training so that interested parties all have a basic understanding of the model</p></li>
+</ul>
+</div>
 </div>
             </section>
 
@@ -191,6 +240,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

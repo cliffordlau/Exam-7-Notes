@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="reinsurance-reserving-procedure.html">
-<link rel="next" href="estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html">
+<link rel="prev" href="miscellaneous.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -678,81 +678,59 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="past-exam-questions-12" class="section level2">
-<h2><span class="header-section-number">13.4</span> Past Exam Questions</h2>
-<div class="rmdcaution">
-<p>
-Haven’t done TIA practice questions
-</p>
-</div>
-<p><strong>Concepts</strong></p>
+<div id="past-exam-questions-17" class="section level2">
+<h2><span class="header-section-number">A.12</span> Past Exam Questions</h2>
+<p><strong>Exercises</strong></p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\star\)</span> Use simplied GLM and then back out the GLM parameters</li>
+<li>Reduce parameters</li>
+<li>Minimize square error for GLM</li>
+<li>Benefit of simplified GLM</li>
+<li>Residuals</li>
+<li>Dispersion</li>
+<li>Dispersion with hat matrix adj</li>
+<li>Simulate loss</li>
+<li>Setup GLM</li>
+<li>Negative values</li>
+<li>Simulat ngative</li>
+<li>Partial triangle</li>
+<li>Stratified</li>
+<li>Dealing with correlation</li>
+<li>Outliers</li>
+</ol>
+<p><strong>Practical Issues</strong></p>
 <ul>
-<li><p>1996 #10: Problems of reinsurance reserving</p></li>
-<li><p>1999 #9: Partition consideration</p></li>
-<li><p>1999 #10: Fidelity proportional is short tail</p></li>
-<li><p>2000 #68 b c: SB incorporates reported loss in the ELR but difficult to adjust ELR to a prior estimate for each year</p></li>
-<li><p>2001 #54: pros and cons of CL and BF</p></li>
-<li><p>2002 #42: SB vs BF similarity and difference</p></li>
-<li><p>2004 #49 c d: SB vs BF pros and cons</p></li>
-<li><p>2006 - #45: Which method to use SB vs CL</p></li>
-<li><p>2007 - #21: Discuss how SB is a special case of BF 59</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2008 - #35: Reason of report lag and upward development due to modal value claim reserve</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2008 - #37: Industry data vs internal</p>
-<ul>
-<li><p>Industry: thin internal data; volatile from rate changes; rate change history not credible; shift in underlying policies</p></li>
-<li><p>Internal: Rate change not reflected in industry; industry composition different from reinsurer; Underlying policies not represented in Sch P data; believe data is credible and representative of the specific business involved</p></li>
-</ul></li>
-<li><p><span class="math inline">\(\star\)</span> 2009 - #32: How to partition data</p>
-<ul>
-<li><p>Fac vs treaty <span class="math inline">\(\Rightarrow\)</span> LoB; Don’t split by cedant as data too thin</p></li>
-<li><p>Diagnostics: Look at reporting pattern and amount of data for credibility; discuss with u/w and claims</p></li>
-</ul></li>
-<li><p>2011 #10 b: SB pros and cons</p></li>
-<li><p>2011 #11: report lag; upward development; standard method not work; industry data not work</p></li>
-<li><p>2012 #10 b-d: SB vs CL</p></li>
-<li><p>2012 #11: problems of reinsurance reserving</p></li>
-<li><p>2013 #10 c: SB vs CL</p></li>
-<li><p>2014 #13: problems of reinsurance reserving</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2015 #12: Discuss problems of reinsurance reserving based on data given</p>
-<ul>
-<li><p>Reporting lag (claims below reporting threshold)</p></li>
-<li><p>Persistent upward development (upward development of ALAE by looking at ratio)</p></li>
-<li><p>Heterogeneity patterns (each AYs have different retention)</p></li>
-</ul></li>
-<li><p>2015 #13 b: Reason to adjust EP for SB (e.g on-level so LR for each AY is comparable, adjust for varying rate as SB assumes constant ELR)</p></li>
+<li>2013 #7: negatvie values</li>
+<li>2014 #7: List 4 practical issues and solutions</li>
+<li>2015 #10: Heteroscedasticity, why important, adjustments description</li>
+<li>2015 #11: Negative values, outliers, exposure level</li>
 </ul>
-<p><strong>Calculations</strong></p>
+<p><strong>Diagnostics</strong></p>
 <ul>
-<li><p>1997 #11: SB (Use adjusted on-level premium)</p></li>
-<li><p>1998 #35: IBNR with CL, BF, SB</p></li>
-<li><p>2000 #68 a: SB</p></li>
-<li><p>2001 #53: SB</p></li>
-<li><p>2003 #44: SB</p></li>
-<li><p>2004 #49 a b: CL and SB</p></li>
-<li><p>2005 #38: SB</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2007 - #3: Credibility weight SB and CL, remember to use <span class="math inline">\(Z_k = p_k \cdot CF\)</span></p></li>
-<li><p>2007 - #22 a b: CL and SB</p></li>
-<li><p>2008 - #36: SB</p></li>
-<li><p>2009 - #31: SB</p></li>
-<li><p>2011 #10 a c: SB and credibility weighted</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2012 #10 a: SB method, need to consider age of policy on risk attaching vs loss occurring basis, also take out expense from premium</p></li>
-<li><p>2013 #10 a b: SB and credibility weighted SB and CL</p></li>
-<li><p>2014 #14: SB</p></li>
-<li><p>2015 #13 a: SB</p></li>
+<li><span class="math inline">\(\star\)</span> 2014 #9: Evaluate the results given mean unpaid, s.e., CoV by AYs</li>
 </ul>
-<div id="question-highlights-12" class="section level3">
-<h3><span class="header-section-number">13.4.1</span> Question Highlights</h3>
+<div id="question-highlights-17" class="section level3">
+<h3><span class="header-section-number">A.12.1</span> Question Highlights</h3>
+<p>n/a</p>
 
 </div>
 </div>
-<!-- </div> -->
+</div>
+
+
+
+
+
+
+
+<!--  -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="reinsurance-reserving-procedure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="miscellaneous.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -780,7 +758,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/13-Patrik.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/28-Shapland-Leong.Rmd",
 "text": "Edit"
 },
 "download": null,

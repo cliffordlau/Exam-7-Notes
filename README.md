@@ -1,5 +1,5 @@
-# Exam-7-2016-Notes
+# Exam-7-Notes
 
-Notes for CAS Exam 7 2016 sitting
+Notes for CAS [Exam 7](http://cliffordlau.github.io/Exam-7-Notes/) 2017 spring sitting
 
-Eventually will cover all 3 sections A to C
+Written in [Bookdown](https://bookdown.org)

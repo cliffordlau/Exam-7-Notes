@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-04-08">
+<meta name="date" content="2017-04-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -95,10 +95,18 @@
 <li class="chapter" data-level="21" data-path="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><a href="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><i class="fa fa-check"></i><b>21</b> ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</a></li>
 <li class="chapter" data-level="22" data-path="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><a href="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><i class="fa fa-check"></i><b>22</b> ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</a><ul>
 <li class="chapter" data-level="22.1" data-path="era3-1-intro.html"><a href="era3-1-intro.html"><i class="fa fa-check"></i><b>22.1</b> Introduction</a></li>
-<li class="chapter" data-level="22.2" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html"><i class="fa fa-check"></i><b>22.2</b> Startup: Staffing and Scope</a></li>
-<li class="chapter" data-level="22.3" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html"><i class="fa fa-check"></i><b>22.3</b> IRM Parameter Development</a></li>
-<li class="chapter" data-level="22.4" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html"><i class="fa fa-check"></i><b>22.4</b> Implementation</a></li>
-<li class="chapter" data-level="22.5" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html"><i class="fa fa-check"></i><b>22.5</b> Integration and Mainteneance</a></li>
+<li class="chapter" data-level="22.2" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html"><i class="fa fa-check"></i><b>22.2</b> Startup: Staffing and Scope</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html#recommendations"><i class="fa fa-check"></i><b>22.2.1</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html"><i class="fa fa-check"></i><b>22.3</b> IRM Parameter Development</a><ul>
+<li class="chapter" data-level="22.3.1" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html#recommendtaions"><i class="fa fa-check"></i><b>22.3.1</b> Recommendtaions</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html"><i class="fa fa-check"></i><b>22.4</b> Implementation</a><ul>
+<li class="chapter" data-level="22.4.1" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html#recommendations-1"><i class="fa fa-check"></i><b>22.4.1</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="22.5" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html"><i class="fa fa-check"></i><b>22.5</b> Integration and Mainteneance</a><ul>
+<li class="chapter" data-level="22.5.1" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html#recommendations-2"><i class="fa fa-check"></i><b>22.5.1</b> Recommendations</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="23" data-path="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><a href="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><i class="fa fa-check"></i><b>23</b> ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</a></li>
 <li class="chapter" data-level="24" data-path="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><a href="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><i class="fa fa-check"></i><b>24</b> ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</a></li>
@@ -129,12 +137,52 @@
             <section class="normal" id="section-">
 <div id="era3-1-intro" class="section level2">
 <h2><span class="header-section-number">22.1</span> Introduction</h2>
-<p>Creation of internal risk model</p>
+<p><strong>Key considerations</strong> <em>before</em> creation of internal risk model</p>
 <ul>
-<li><p>Decisions at the beginning of the process</p></li>
+<li><p>These are decisions at the beginning of the process</p></li>
 <li><p>How the input parameters should be determined</p></li>
 <li><p>How to overcome political hurdles</p></li>
 <li><p>How to integrate model into the company’s business planning</p></li>
+</ul>
+<p>Things firm often <strong>underestimate</strong> when implementing an IRM (this is on a similar scale as implementing a new ledger or reserve review process)</p>
+<ul>
+<li><p><strong>Resource commitment</strong>:<br />
+Hiring staff, purchasing systmes, software, consultants</p></li>
+<li><p><strong>Timelines</strong>:<br />
+Can take years to implement</p></li>
+<li><p><strong>Organizational impact</strong>:<br />
+Can have large impact on how the company is run, how decisions are made</p></li>
+</ul>
+<p>If done properly, IRM can be a hub for:</p>
+<ul>
+<li><p>Risk decision making</p></li>
+<li><p>Planning</p></li>
+<li><p>Pricing</p></li>
+<li><p>Reinsurance purchasing</p></li>
+<li><p>Capacity allocation</p></li>
+<li><p>Rating agency interaction</p></li>
+</ul>
+<p>Possible <strong>components</strong> of a risk model:</p>
+<ul>
+<li><p>Freq/sev distribution for each LoBs</p></li>
+<li><p>Premium and LR projections for the forecast year</p></li>
+<li><p>Correlations across LoBs</p></li>
+<li><p>Model for distributions of the unpaid by LoB</p></li>
+<li><p>Correlations of the unpaid</p></li>
+<li><p>ESG that simulates economic conditions, which can be used as an input to some of the other model components</p></li>
+<li><p>Asset / market risk model that model asset prices</p></li>
+</ul>
+<p>Potential <strong>use</strong> of the risk model:</p>
+<ul>
+<li><p>Model u/w losses for the next year</p></li>
+<li><p>Reserve movements</p></li>
+</ul>
+<p>Potential <strong>outputs</strong> of the risk model:</p>
+<ul>
+<li><p><span class="math inline">\(\sigma\)</span> of LR for the current AY for each LoB</p></li>
+<li><p><span class="math inline">\(VaR\)</span> and <span class="math inline">\(TVaR\)</span> for the same LoB at various percentiles</p></li>
+<li><p><span class="math inline">\(\sigma\)</span>, <span class="math inline">\(VaR\)</span>, <span class="math inline">\(TVaR\)</span> of loss reserves</p></li>
+<li><p>Allocation of various capital metrics (e.g. <span class="math inline">\(5 \times VaR_{90\%}\)</span>) to each LoB</p></li>
 </ul>
 </div>
             </section>
@@ -183,6 +231,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

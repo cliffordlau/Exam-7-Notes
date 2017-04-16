@@ -4,7 +4,11 @@ Just know the 4 sections and have an idea of what it covers
 
 1. [Startup: Staffing and Scope](#era-3-1-sec-1)
 
+    * Issues to consider before begin implementing an internal risk model (IRM)
+
 2. [IRM Parameter Development](#era-3-1-sec-2)
+
+    * Issues and recommendations when selecting the parameters that are used in the IRM
 
 3. [Implementation](#era-3-1-sec-3)
 
@@ -12,9 +16,9 @@ Just know the 4 sections and have an idea of what it covers
 
 ## Introduction {#era3-1-intro}
 
-Creation of internal risk model
+**Key considerations** *before* creation of internal risk model
 
-* Decisions at the beginning of the process
+* These are decisions at the beginning of the process 
 
 * How the input parameters should be determined
 
@@ -22,69 +26,204 @@ Creation of internal risk model
 
 * How to integrate model into the company's business planning
 
+Things firm often **underestimate** when implementing an IRM (this is on a similar scale as implementing a new ledger or reserve review process)
+
+* **Resource commitment**:  
+Hiring staff, purchasing systmes, software, consultants
+
+* **Timelines**:  
+Can take years to implement
+
+* **Organizational impact**:  
+Can have large impact on how the company is run, how decisions are made
+
+If done properly, IRM can be a hub for:
+
+* Risk decision making
+
+* Planning
+
+* Pricing
+
+* Reinsurance purchasing
+
+* Capacity allocation
+
+* Rating agency interaction
+
+Possible **components** of a risk model:
+
+* Freq/sev distribution for each LoBs
+
+* Premium and LR projections for the forecast year
+
+* Correlations across LoBs
+
+* Model for distributions of the unpaid by LoB
+
+* Correlations of the unpaid
+
+* ESG that simulates economic conditions, which can be used as an input to some of the other model components
+
+* Asset / market risk model that model asset prices
+
+Potential **use** of the risk model:
+
+* Model u/w losses for the next year
+
+* Reserve movements
+
+Potential **outputs** of the risk model:
+
+* $\sigma$ of LR for the current AY for each LoB
+
+* $VaR$ and $TVaR$ for the same LoB at various percentiles
+
+* $\sigma$, $VaR$, $TVaR$ of loss reserves
+
+* Allocation of various capital metrics (e.g. $5 \times VaR_{90\%}$) to each LoB
+
 ## Startup: Staffing and Scope {#era-3-1-sec-1}
 
-Important to define responsibilities of those involved and scope of the project
+***Critical***: **Scope** and **purpose** needs to be be agreed upon by all *key stakeholders* at the start
 
-* Organization Chart
+* Other decisions depends on this
 
-    * Reporting line of team
+* Fail to do so will lead to backtracking on decisions later on and delay
 
-    * Leader needs reputation for fairness and balance
+**Managing expectations** is key
 
-* Functions Represented
+* IRM has the potential to *appear* to be all things to all people
 
-    * U/w, planning, actuarial, risk
+* Different departments will think it will solve a myriad of problems for them
 
-* Resource Commitment
+***Staffing***
 
-    * Full time or part time
+* Clear reporting lines for modeling team so direction can be followed
 
-* Critical Roles and Responsibilities
+    * Solid vs dotted line (*matrix*) reporting
+    
+    * Multi function oversight committee
 
-    * Control of inputs and outputs
+* Key functions that need to be represented
 
-    * Analyses and uses of output
+    * U/w, planning, finance, actuarial, risk
 
-* Purpose
+* Resource Commitment: Full time or part time (e.g. temporary for implementation and permanent for upkeep)
 
-    * Quantify variation around?
+***Inputs & Outputs***
 
-    * Objective view of dist^n^ of results?
+* Needs good control similar to accounting figures, see [integration](#era-3-1-sec-4) section for further discussion
 
-* Scope
+* Templates that provide analysis could be locked down to prevent misuse
 
-    * Prospective u/w year only?
+* Input example: premium, loss, exposure
 
-    * Reserves, assets, op risk?
+* Output example: $\sigma$ of LR or profits, $VaR$ and $TVaR$, correlations
 
-    * Low detail on whole company? or,
+***Purpose***, exampes:
+
+* Quantify variation around the plan
+
+* Provide objective view on the distribution of company LoB results
+
+***Scope***
+
+* *Prospective* u/w year only?
+
+* Or includes reserves, assets? 
+
+* What about op risk?
+
+* Level of detail:
+
+    * Low detail on whole company, or
 
     * High detail on a pilot segment
     
+### Recommendations
+
+Imperative for the IRM team to report to a leader with a reputation for **fairness and balance**
+
+* The actual functional reporting line is less important
+    
+**Resource commitment**: think of IRM implementation of a new competency
+
+* Firm will need to hire or transfer employees for the new department
+    
+Need **good controls** over inputs and outputs similar (similar to that used with a ledger or reserving)
+
+Define *initial scope* as **clearly** as possible
+    
 ## IRM Parameter Development {#era-3-1-sec-2}
 
-Important **input** parameters to model:
+Potential ***challenges*** on parameters that need to be developed
 
-* ELR
+* Data quality
 
-* LR dist^n^
+* Unique characteristics of the company or LoB
 
-* Expected premium
+* Differing risk attitudes
 
-* Correlation amongst risk
+***Expert opinion*** is important in developing parameters
 
-* ESG
+* Especially for segments with small volume and low quality data
 
-Other considerations:
+* This will increase the time to implement
 
-* **Modeling software**: should match the capabilities of the team
+***Correlation*** assessment is *important* and *challenging*
 
-* **Parameter development**: should include expertise from u/w, planning, claims and actuarial; have a systematic way to capture expert opinion
+* Lack of data
 
-* **Correlations**: Have to be owned at a high level (C-suites) as it crosses LoBs and have significant impact on the allocated capital; Should have inputs from IRM team
+* High political sensitivity
 
-* **Validation**: test and validate over extended period; provide training so that interested parties all have a basic understanding of the statistics
+* Spans multiple business units
+
+* Significant impact on the overall risk profile and capital allocation
+
+***Validation*** will be difficult as there are no model to compare
+
+* Validate by reviewing a series of tests involving complementary variables, e.g.:
+
+    * Compare extreme outcomes from the model to actual extreme outcomes
+    
+    * Compare variation of loss ratios to historical variation
+    
+    * Model accurately handle correlation
+    
+    * Capital allocation make sense? (long tail and cat prone risk have more capital)
+    
+* Gain comfort with the reasonableness of the model through the use of many metrics
+
+### Recommendtaions
+
+***Modeling software***
+
+* How much is pre-built from purchased software
+
+* What needs to be built in-house
+
+* Skills of the team should align with what they need to build
+
+    * e.g. Buy an ESG unless your team have finance and economics experts with time series modeling
+
+***Parameter development***
+
+* Need to develop a systematic way to capture the expert opinion (product exptertise) from the following departments:
+
+  * W/w, planning, claims, planning and actuarial
+
+***Correlations***
+
+* Needs to be owned at a high level (C-suites) as it crosses LoBs and have significant impact on the allocated capital
+
+* IRM team will provide recommendations on correlation assumptions
+
+***Validation***
+
+* Valiate and test over extended period
+
+* Provide training so that interested parties all have a basic understanding of the model
 
 ## Implementation {#era-3-1-sec-3}
 
@@ -96,22 +235,56 @@ Have senior management set priority and timeline for IRM analysis and rollout to
 
 There will be a large appetite for the results of the IRM
 
-Recommendations
+* Provide access to the output from the mdoel consistently and predictively
 
-* **Priority Setting**: Have top management set the priority for implementation
+### Recommendations
 
-* **Communications**: Regular communication and to a broad audience
+**Priority Setting**: Have top management set the priority for implementation
 
-* **Pilot Testing**: Allows effective preparation of the company for the magnitude of the change
+**Communications**: Regular communication to a broad audience
 
-* **Education**: Training so leadership has a similar base level of understanding
+**Pilot Testing**: Allows effective preparation of the company for the magnitude of the change
+
+**Education**: Target training so leadership has a similar base level of understanding
 
 ## Integration and Mainteneance {#era-3-1-sec-4}
 
-Make it part of the corporate calendar
+Integrate IRM into an organization's existing ***corporate calendar***:
 
-* Cycle: Integrate into annual planning process
+* Budget season
 
-* Updating: Major updates no more than once per year
+    * Certain parameters should be set (e.g. correlations, CoV's) at the beginning of budget season
+    
+    * Others can be set as part of the budget process (e.g. Premium)
+    
+* Timeline for review of internal financials
 
-* Controls: Maintain centralized controls of inputs, outputs and even application templates
+* Timeline ofr bonus pool
+
+***Update frequency***
+
+* Major updates should be no more than twice a year
+
+* Minor upadtes can be handled by scaling
+
+    * $\sigma$ can be calculated by keeping the CoV constant
+
+    * Correlation parameters don't need to be updated very frequently
+
+***Input/Output***
+
+* Needs clear ownership similar to accounting figures
+
+* Source of inputs
+
+* Who published the outputs and reports
+
+* Have analytical templates that are endorsed by IRM to prevent misuse
+
+### Recommendations
+
+**Cycle**: Integrate into annual planning process
+
+**Updating**: Major updates no more than twice a year; minor update with scaling
+
+**Controls**: Maintain centralized controls of inputs, outputs and even application templates

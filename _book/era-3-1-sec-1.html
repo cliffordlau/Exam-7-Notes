@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-04-08">
+<meta name="date" content="2017-04-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -95,10 +95,18 @@
 <li class="chapter" data-level="21" data-path="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><a href="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><i class="fa fa-check"></i><b>21</b> ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</a></li>
 <li class="chapter" data-level="22" data-path="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><a href="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><i class="fa fa-check"></i><b>22</b> ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</a><ul>
 <li class="chapter" data-level="22.1" data-path="era3-1-intro.html"><a href="era3-1-intro.html"><i class="fa fa-check"></i><b>22.1</b> Introduction</a></li>
-<li class="chapter" data-level="22.2" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html"><i class="fa fa-check"></i><b>22.2</b> Startup: Staffing and Scope</a></li>
-<li class="chapter" data-level="22.3" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html"><i class="fa fa-check"></i><b>22.3</b> IRM Parameter Development</a></li>
-<li class="chapter" data-level="22.4" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html"><i class="fa fa-check"></i><b>22.4</b> Implementation</a></li>
-<li class="chapter" data-level="22.5" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html"><i class="fa fa-check"></i><b>22.5</b> Integration and Mainteneance</a></li>
+<li class="chapter" data-level="22.2" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html"><i class="fa fa-check"></i><b>22.2</b> Startup: Staffing and Scope</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="era-3-1-sec-1.html"><a href="era-3-1-sec-1.html#recommendations"><i class="fa fa-check"></i><b>22.2.1</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html"><i class="fa fa-check"></i><b>22.3</b> IRM Parameter Development</a><ul>
+<li class="chapter" data-level="22.3.1" data-path="era-3-1-sec-2.html"><a href="era-3-1-sec-2.html#recommendtaions"><i class="fa fa-check"></i><b>22.3.1</b> Recommendtaions</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html"><i class="fa fa-check"></i><b>22.4</b> Implementation</a><ul>
+<li class="chapter" data-level="22.4.1" data-path="era-3-1-sec-3.html"><a href="era-3-1-sec-3.html#recommendations-1"><i class="fa fa-check"></i><b>22.4.1</b> Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="22.5" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html"><i class="fa fa-check"></i><b>22.5</b> Integration and Mainteneance</a><ul>
+<li class="chapter" data-level="22.5.1" data-path="era-3-1-sec-4.html"><a href="era-3-1-sec-4.html#recommendations-2"><i class="fa fa-check"></i><b>22.5.1</b> Recommendations</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="23" data-path="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><a href="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><i class="fa fa-check"></i><b>23</b> ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</a></li>
 <li class="chapter" data-level="24" data-path="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><a href="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><i class="fa fa-check"></i><b>24</b> ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</a></li>
@@ -129,39 +137,65 @@
             <section class="normal" id="section-">
 <div id="era-3-1-sec-1" class="section level2">
 <h2><span class="header-section-number">22.2</span> Startup: Staffing and Scope</h2>
-<p>Important to define responsibilities of those involved and scope of the project</p>
+<p><strong><em>Critical</em></strong>: <strong>Scope</strong> and <strong>purpose</strong> needs to be be agreed upon by all <em>key stakeholders</em> at the start</p>
 <ul>
-<li><p>Organization Chart</p>
+<li><p>Other decisions depends on this</p></li>
+<li><p>Fail to do so will lead to backtracking on decisions later on and delay</p></li>
+</ul>
+<p><strong>Managing expectations</strong> is key</p>
 <ul>
-<li><p>Reporting line of team</p></li>
-<li><p>Leader needs reputation for fairness and balance</p></li>
+<li><p>IRM has the potential to <em>appear</em> to be all things to all people</p></li>
+<li><p>Different departments will think it will solve a myriad of problems for them</p></li>
+</ul>
+<p><strong><em>Staffing</em></strong></p>
+<ul>
+<li><p>Clear reporting lines for modeling team so direction can be followed</p>
+<ul>
+<li><p>Solid vs dotted line (<em>matrix</em>) reporting</p></li>
+<li><p>Multi function oversight committee</p></li>
 </ul></li>
-<li><p>Functions Represented</p>
+<li><p>Key functions that need to be represented</p>
 <ul>
-<li>U/w, planning, actuarial, risk</li>
+<li>U/w, planning, finance, actuarial, risk</li>
 </ul></li>
-<li><p>Resource Commitment</p>
+<li><p>Resource Commitment: Full time or part time (e.g. temporary for implementation and permanent for upkeep)</p></li>
+</ul>
+<p><strong><em>Inputs &amp; Outputs</em></strong></p>
 <ul>
-<li>Full time or part time</li>
-</ul></li>
-<li><p>Critical Roles and Responsibilities</p>
+<li><p>Needs good control similar to accounting figures, see <a href="era-3-1-sec-4.html#era-3-1-sec-4">integration</a> section for further discussion</p></li>
+<li><p>Templates that provide analysis could be locked down to prevent misuse</p></li>
+<li><p>Input example: premium, loss, exposure</p></li>
+<li><p>Output example: <span class="math inline">\(\sigma\)</span> of LR or profits, <span class="math inline">\(VaR\)</span> and <span class="math inline">\(TVaR\)</span>, correlations</p></li>
+</ul>
+<p><strong><em>Purpose</em></strong>, exampes:</p>
 <ul>
-<li><p>Control of inputs and outputs</p></li>
-<li><p>Analyses and uses of output</p></li>
-</ul></li>
-<li><p>Purpose</p>
+<li><p>Quantify variation around the plan</p></li>
+<li><p>Provide objective view on the distribution of company LoB results</p></li>
+</ul>
+<p><strong><em>Scope</em></strong></p>
 <ul>
-<li><p>Quantify variation around?</p></li>
-<li><p>Objective view of dist<sup>n</sup> of results?</p></li>
-</ul></li>
-<li><p>Scope</p>
+<li><p><em>Prospective</em> u/w year only?</p></li>
+<li><p>Or includes reserves, assets?</p></li>
+<li><p>What about op risk?</p></li>
+<li><p>Level of detail:</p>
 <ul>
-<li><p>Prospective u/w year only?</p></li>
-<li><p>Reserves, assets, op risk?</p></li>
-<li><p>Low detail on whole company? or,</p></li>
+<li><p>Low detail on whole company, or</p></li>
 <li><p>High detail on a pilot segment</p></li>
 </ul></li>
 </ul>
+<div id="recommendations" class="section level3">
+<h3><span class="header-section-number">22.2.1</span> Recommendations</h3>
+<p>Imperative for the IRM team to report to a leader with a reputation for <strong>fairness and balance</strong></p>
+<ul>
+<li>The actual functional reporting line is less important</li>
+</ul>
+<p><strong>Resource commitment</strong>: think of IRM implementation of a new competency</p>
+<ul>
+<li>Firm will need to hire or transfer employees for the new department</li>
+</ul>
+<p>Need <strong>good controls</strong> over inputs and outputs similar (similar to that used with a ledger or reserving)</p>
+<p>Define <em>initial scope</em> as <strong>clearly</strong> as possible</p>
+</div>
 </div>
             </section>
 
@@ -209,6 +243,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
