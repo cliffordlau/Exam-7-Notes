@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="model-risk.html">
-<link rel="next" href="conclusion.html">
+<link rel="prev" href="impact-of-parameter-risk.html">
+<link rel="next" href="estimation-risk.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,26 +133,57 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="projection-models" class="section level2">
-<h2><span class="header-section-number">23.6</span> Projection Models</h2>
-<p>The <strong>form of the model</strong> is very important in measuring variability</p>
+<div id="projection-risk-era3-2" class="section level2">
+<h2><span class="header-section-number">23.3</span> Projection Risk</h2>
+<p>Different ways to project trends</p>
 <ul>
-<li>e.g. simple trend vs time series; expected parameters vs pool of dist<sup>n</sup> for those parameters</li>
+<li><p><a href="projection-risk-era3-2.html#era-3-2-part-1">Simple trend</a></p></li>
+<li><p><a href="projection-risk-era3-2.html#era-3-2-part-2">Severity trend and inflation</a></p></li>
+<li><p><a href="projection-risk-era3-2.html#era-3-2-part-3">Trend as time series</a></p></li>
 </ul>
-<p>Use common sense to ensure model is <strong>structurally consistent</strong> with the underlying process</p>
-<p>Risk modeling we are more focused on the spread of potential outcomes instead of the best estimate</p>
+<div id="era-3-2-part-1" class="section level3">
+<h3><span class="header-section-number">23.3.1</span> Simple Trend</h3>
+<p>Forecast one trend using historical average and into the future</p>
+<p><strong>Caveat</strong>: Additional uncertainty due to estimate of ultimate losses is uncertain</p>
+</div>
+<div id="era-3-2-part-2" class="section level3">
+<h3><span class="header-section-number">23.3.2</span> Severity Trend and Inflation</h3>
+<p>Claim severity <span class="math inline">\(\neq\)</span> general inflation</p>
+<p><span class="math display">\[[\text{Claim Severity Trend}] \approx [\text{General Inflation}] + [\text{Superimposed Inflation}]\]</span></p>
+<p><strong>2 approaches</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Model the severity trend independent of general inflation</p></li>
+<li><p>Adjust the data for general inflation and model the residual superimposed inflation</p></li>
+</ol>
+<p>For ERM where general inflation is modeled, severity trend should be <strong>dependent</strong> on the general inflation</p>
+</div>
+<div id="era-3-2-part-3" class="section level3">
+<h3><span class="header-section-number">23.3.3</span> Trend as a Time Series</h3>
+<p>More realistic, allow for trends to change over time</p>
+<p>AR(1) with mean reverting form:</p>
+<p><span class="math display">\[\begin{array}{ccccc}
+  r_{t+1} &amp;= &amp;m + \alpha_1(r_t - m) &amp;+ &amp;\epsilon_{t+1} \\
+  &amp;= &amp;(m - \alpha_1  m) + \alpha_1 r_t &amp;+ &amp;\epsilon_{t+1} \\
+  &amp;= &amp;\alpha_0 + \alpha_1 r_t &amp;+ &amp;\epsilon_{t+1} \\
+\end{array}\]</span></p>
 <ul>
-<li><p>Selecting models using parsimony will lead to unrealistically stable results</p></li>
-<li><p>Add flexibility (e.g. additional parameters) transfer assumptions from the structure to the parameters and allow the risk model reflect the uncertainty in the assumptions</p></li>
+<li><p><span class="math inline">\(m\)</span> is the long term mean estimated from data</p></li>
+<li><p><span class="math inline">\(\alpha_1\)</span> is the correlation from one period to the next</p></li>
+<li><p><span class="math inline">\(\epsilon_t \sim N(0,\sigma)\)</span></p></li>
 </ul>
+<p>Simple trend understate the projection risk especially for long tail LoBs</p>
+<ul>
+<li>Simple trend had a 10 year forecast 99th percentile prediction error of +45%</li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="model-risk.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="impact-of-parameter-risk.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estimation-risk.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

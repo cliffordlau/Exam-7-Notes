@@ -2,7 +2,7 @@
 
 Parameter risk is more important as the process risk is smaller
 
-Different ways to model the severity trend
+Different ways to model the [severity trend](#projection-risk-era3-2)
 
 * Model the trend independently or adjust the general inflation then model the superimposed inflation
 
@@ -58,7 +58,7 @@ However if we add systemic factor that impacts all claims (e.g. inflation), it d
 
 For small company there is a large amount of process risk so the overall variability does not increase very much
 
-## Projection Risk
+## Projection Risk {#projection-risk-era3-2}
 
 Different ways to project trends
 
