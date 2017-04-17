@@ -10,7 +10,7 @@ Underlying cause of insurer failure can be op risk even though if the surface ca
 
 Plan loss ratio example hows how optimistic loss ratio propagates forward
 
-* 3 different reasons why the planned LR didn't work and only 1 of them is truely insurance risk
+* 3 different reasons why the planned LR didn't work and only 1 of them is truly insurance risk
 
 [Cycle management](#era-cycle-mgmt)
 
@@ -30,7 +30,7 @@ Various research to date
 
 Scenario planning and the 10 [Steps](#scen-step)
 
-* Look at the insurance example and the [advantages](#scen-adv) of scneario planning
+* Look at the insurance example and the [advantages](#scen-adv) of scenario planning
 
 Advance scenario planning
 
@@ -90,7 +90,7 @@ The risk of loss resulting from inadequate or failed internal process, people, a
 
     * Discruption of business of system failures
     
-    * e.g. processing center downtime, system interuptions, flood
+    * e.g. processing center downtime, system interruptions, flood
 
 7) Execution, delivery and process management
 
@@ -124,7 +124,7 @@ Study show that insurer failure are mostly attributed to under **reserving** and
 
 **Underlying cause** of insurer failure is actually *op-risk*
 
-* e.g. Over accumulation of risk exposure (insufficient initial reserving or premature reserve release)
+* e.g. Over accumulation of risk exposure (insufficient initial reserving or premature reserve release) given the asset base
 
 * e.g. Overly optimistic plan loss ratios
 
@@ -134,9 +134,9 @@ Clear that op risk have heavily contributed to insurance impairments and should 
 
 ## Insurer Op Risk: Plan Loss Ratios
 
-Mostly impact long tailed LoBs (50% @ 5yrs, 90% @ 10yrs)
+Mostly impact long tailed LoBs (e.g. 50% reported @ 5yrs, 90% @ 10yrs)
 
-Optimistic loss ratio propagates forward
+Optimistic loss ratio **propagates forward**
 
 * Optimistic LR for older years lead to optimistic LR for th recent years
 
@@ -154,103 +154,151 @@ As the older years losses develop higher than expected $\Rightarrow$ increase in
 
 * Eventual runoff
 
-Three reasons why the planned LR did not work
+### Three reasons why the planned LR did not work
 
 1) Model unable to forecast accurate LR
 
     * If the market and other carriers did fine, then the model was effective
     
-    * Planning system did not deliver accurate LR, therefore op risk
+        $\therefore$ *Op-risk*: Planning system did not deliver accurate LR, 
     
-    * Unless everyone else failed to price properly, like asbestos
+    * If everyone else failed to price properly, e.g. asbestos
+    
+        $\therefore$ A true insurance risk (unpredictable nature of long-tailed business)
 
 2) Model was able to forecast accurate LR but was improperly used
 
-    * Op risk: What checks were there to be sure the model was used correctly?
+    * *Op risk*: What checks were there to be sure the model was used correctly?
 
 3) Model did accurately forecast the LR but indications were unpopular so ignored
 
-    * Op risk: What governance should be there around management's decisions
+    * *Op risk*: What governance should be there around management's decisions
     
 ## Insurer Op Risk: Cycle Management {#era-cycle-mgmt}
 
-**Cycle management**:  
+```{definition, era-4-1-cycle-mgmt, name = "Cycle Management"}
 Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
 
 * Simply maintaining market share during soft markets increases the likelihood of impairment
+```
 
 3 questions to ask:
 
-1) Does the company have or need a proactive cycle management strategy
+1) Does the company have a **proactive cycle management** strategy? (if not, need?)
 
-2) Does the company know where in the cycle the market stands
+    * e.g. if we reduce rates (or increase exposure for the same premium) during soft market, it'll lead to increase reserve down the line
 
-3) Are u/w-ers making decisions that are consistent with (1) and (2)
+2) Does the company know **where in the cycle** the market stands
 
-#### System Performance Perspective
+3) Are u/w-ers making **decisions that are consistent** with (1) and (2)
 
-From a system performance perspective, company needs to be:
+### System Performance Perspective
 
-* Stable, available, reliable, and affordable
+Assess an insurance company from a system performance perspective, it needs to be:
 
-* Downgrade impacts the first 2 (stability, availability)
+* **Stable** and **available** 
 
-* Insolvent impacts the last 2 (reliability, affordability)
+    * Downgrade impacts this
 
-#### Cycle Management {#era-4-CM}
+* **reliable** and **affordable**
 
-Areas impact by implementing cycle management:
+    * Insolvent impacts this
 
-* Planning, u/w, objective setting, incentive bonus
+### Performance Improvement via Cycle Management {#era-4-CM}
+
+**Areas impacted** by implementing cycle management:
+
+* *Planning*, *u/w*, *objective setting*, *incentive bonus*
 
 Focus on the following to achieve meaningful process improvements:
 
-**Intellectual Property**
+* [Intellectual property](#era-4-CM-1)
 
-Intangible and are time consuming to build but easy to destroy
+* [Underwriter incentives](#era-4-CM-2)
 
-* Experts in u/w, claims, finance, actuarial
-* P/h info database
+* [Market overreaction](#era-4-CM-3)
+
+* [Owner education](#era-4-CM-4)
+
+#### Intellectual Property {#era-4-CM-1}
+
+Majority of an insurer's **franchise value** are intangible
+
+* They time consuming to build but easy to destroy
+
+*IP examples*:
+
+* Experts in various functions (*e.g. u/w, claims, finance, actuarial*)
+
+* Proprietary database
+
 * Forecasting systems
+
 * Market relationship
+
 * Reputation
 
-Focus on retaining these core assets through cycle:
+Focus on **retaining these core assets** through cycle:
 
 * Retain top talent, grow and develop their skills
+
 * Maintain presence in core market channels
-* Maintain consistent pattern of investment in IT and systems
 
-***
+* Maintain consistent pattern of investment in systems, models and database
 
-**Underwriter Incentives**
+#### Underwriter Incentives {#era-4-CM-2}
 
-Bonus should be based on u/w-er supporting the portfolio goals, which may include writing less business, and they should know that it won't affect employment and bonus
+Bonus should be based on u/w-er supporting the portfolio goals throughout the year
 
-***
+* Which may include writing less business
 
-**Market Overreaction**
+* U/w-er should know that it won't affect employment and bonus
 
-Companies tend to overreact, taking prices too low and too high
+#### Market Overreaction {#era-4-CM-3}
 
-Companies with most capital during price-improvement phase will reap windfall profits, which will more than offset many years of small u/w losses
+Industry tend to overreact (*taking prices too low and too high*)
 
-***
+Companies with most capital during price-improvement phase will reap windfall profits
 
-**Owner Education**
+* Which will more than offset many years of small u/w losses
 
-Owner/shareholders need to understand that some financial figures will be out of step with the market and does not appear healthy during soft markets:
+#### Owner Education {#era-4-CM-4}
+
+Educate owner/shareholders on the impact of cycle management on financial figures
+
+Will be out of step with the market and does not appear healthy during soft markets:
 
 * Premium volume $\downarrow$
+
+    * Need to understand that growing exposure when the price is not adequate is not prudent
+
 * Overhead expense ratio to premium $\uparrow$
 
-## Additional Perspectives {#add-pers-era-4-1}
+    * Typically a metric for efficiency, but should be focus less
+    
+    * See this as capital investment in the assets of the firm and they will provide benefits to the firm in the future
 
-### Agency Theory Perespective
+## Miscellaneous {#add-pers-era-4-1}
 
-Incentives of managers and u/w-ers of the firm are not always aligned with shareholders
+Various different miscellaneous topics
 
-Rather than try to fund for this op risk, better to understand it:
+* [Agency theory](#era-4-1-misc-1)
+
+* [Op-risk management in banking and manufacturing](#era-4-1-misc-2)
+
+* [Control Self-Assessment](#era-4-1-misc-3)
+
+* [Key Risk Indicators](#era-4-1-misc-4)
+
+* [Six Sigma](#era-4-1-misc-5)
+
+* [Op-risk modeling](#era-4-1-misc-6)
+
+### Agency Theory Perespective {#era-4-1-misc-1}
+
+**Incentives** of managers and u/w-ers of the firm are *not always aligned* with shareholders
+
+**Understand** the misalignment rather than try to fund for this op risk:
 
 * Giving management equity stakes $\xrightarrow{\text{Caveat}}$ Manager too aggressive taking on more risk
 
@@ -258,189 +306,328 @@ Rather than try to fund for this op risk, better to understand it:
 
 * Production incentives for u/w-ers $\xrightarrow{\text{Caveat}}$ Sloppy u/w-ing or mispricing
 
-### Operational Risk Management in Banking and Manufacturing
+Key is to be aware of the problems and monitor results
 
-Risks that are common to all business
+* Have independent board members in this process
+
+### Operational Risk Management in Banking and Manufacturing {#era-4-1-misc-2}
+
+Op-risks that are common to all business:
 
 * Pension funding
 
-* IT failure
+    * Both financial and HR component
+    
+    * **Quantifiable**: Models that incorporate financial risk and firm demographics
+
+* IT failure:
+
+    * Hardware or software failure, viruses and internet attacks
+    
+    * Need contingency planning
+    
+    * **Quantifiable**
 
 * Other HR risks (loss of important staff, misdesign of comp program)
 
+    * Loss of key staff (Could be due to misdesign of compensation program)
+    
+    * Employee liability, fraud, inadequate training, incompetence
+    
+    * **Identification** and **control** are more important
+
 * Reputation risk
+
+    * Damaged from product tampering, bad press, off-hours behavior of key employees
+    
+    * **Identification** and **control** are more important
 
 * Lawsuits
 
-### Control Self-Assessment (CSA)
+    * Business practices can be misinterpreted or reinterpreted
+    
+    * Corporate culture makes a different
+    
+    * **Monitoring** is important, **funding** can be useful too
 
-**Definition** from Institute of Internal Auditors  
-A process through which internal control effectiveness is examined and assessed. The objective is to provide reasonable assurance that all business objectives will be met
+### Control Self-Assessment (CSA) {#era-4-1-misc-3}
 
-Objectives of internal control
+```{definition, csa-era-4-2, name = "Control Self-Assessment"}
+A process through which internal control effectiveness is examined and assessed
 
-* Reliability and integrity of information
+* Objective: Provide reasonable assurance that all business objectives will be met
 
-* Compliance with policies, laws and regulations
+* From Institute of Internal Auditors  
+```
 
-* Safeguarding assets
+***Objectives of internal control***
 
-* Economical and efficient use of resources
+* **Reliability** and **integrity** of information
 
-* Accomplishment of objectives and goals for operations or programs
+* **Compliance** with policies, laws and regulations
 
-### Key Risk Indications (KRIs)
+* *Safeguarding* **assets**
 
+* Economical and **efficient use of resources**
+
+* **Accomplishment** of *objectives* and *goals* for operations or programs
+
+### Key Risk Indications (KRIs) {#era-4-1-misc-4}
+
+```{definition, era-4-2-kri, name = "KRIs"}
 Broad category of measures that monitor the activities and status of the control environment of an operational risk category
 
-* Measured frequently
+* Measured frequently (e.g. daily)
 
 * Have threshold that lead to escalation
 
-Possible KRIs
+* *Purpose*: Keep the risk management process dynamic and risk profiles current
 
-* Production: retention ratio, rate/exposure
+* Forward looking, leading indicators of risk
+```
 
-* Internal controls: audit results and frequency
+***KRIs examples***
 
-* Staffing: turnover rate, premium/employee, training budget
+* *Production*: retention ratio, rate/exposure
 
-* Claims: freq, sev
+* *Internal controls*: audit results and frequency
 
-### Six Sigma
+* *Staffing*: turnover rate, premium/employee, training budget
 
-Tolerances for quality if $\pm 3 \sigma$ based on manufacturing
+* *Claims*: frequency, severity
 
-Applied in process improvement or predictive design of processes
+### Six Sigma {#era-4-1-misc-5}
 
-Useful in high volume processing
+Tolerances for output quality of $\pm 3 \sigma$ (born out of manufacturing)
 
-Help identify and eliminate: inefficiencies, errors, overlaps, gaps in communication and coordination
+Provides **framework for**:
 
-Insurance example:
+* Process redesign
 
-* U/w-ing: exposure data verification, exposure data capture, classification
+* Project management
 
-* Claims: coverage verification
+* Customer feedback gathering
 
-* Reinsurance: treaty claim reporting, coverage verification, collateralization
+* Internal communication
 
-### Operational Risk Modeling
+* Design trade-offs
 
-Operational risk manager needs to decide if risk should be transferred or retained
+* Documentation
 
-Steps for operational risk portfolio management:
+* Control plans
 
-1) Identify exposure base for each risk source (premium, headcount, payroll)
+**Application**:
 
-2) Measure the exposure level for each BU and risk source
+1. Existing process improvement
 
-3) Estimate the loss potential per exposure for each op risk
+2. Predictive design
 
-4) Step 2 + 3 = loss dist^n^ for each BU
+**Value proposition**:
 
-5) Estimate the impact of mitigation, process improvements, or risk transfer
+* Useful in *high volume* processing
 
-    * Requires significant expert opinion as there are no significant amount of loss data both before and after
-    
+* Help *identify* and *eliminate* chronic process issues such as: 
+
+    * Inefficiencies, errors, overlaps, gaps in communication and coordination
+
+**Insurance example**:
+
+* *U/w-ing*: exposure data verification, exposure data capture, classification
+
+* *Claims*: coverage verification, ALAE, use of outside counsel, initial case reserve setting
+
+* *Reinsurance*: treaty claim reporting, coverage verification, reinsurance recoverable, LoC, collateralization
+
+### Operational Risk Modeling {#era-4-1-misc-6}
+
+Operational risk manager needs to decide if risk should be *transferred* or *retained*
+
+Based on insurance portfolio risk management, steps for operational risk portfolio management:
+
+1) Identify **exposure base** for each *risk source* (premium, headcount, payroll)
+
+2) Measure the **exposure level** for each BU and each op-risk source
+
+3) Estimate the **loss potential** per exposure for each op-risk
+
+4) Step 2 + 3 = loss freq and sev **distribution** for each BU
+
+5) Estimate the *impact* of **mitigation**, **process improvements**, or **risk transfer**
+
+    * This step requires significant expert opinion as there are no significant amount of loss data both before and after
+
+Challenge is the lack of data available or they are recorded in an uncoordinated manner
+
+* Worthwhile to begin to collect data
+
 ## ERA 4.2 Strategic Risk Intro
 
-**Strategy**: Planning and the use of resources to achieve an organization's goals
+```{definition, era-4-2-strategy, name = "Strategy"}
+Planning and the use of resources to achieve an organization's goals
+```
 
-**Strategic risk**: Intentional risk taking to achieve an organization's goals
+```{definition, era-4-2-strategic-risk, name = "Strategic Risk"}
+Intentional risk taking to achieve an organization's goals
+```
 
-Scenario planning is a key part of strategic risk management
+**Scenario planning** is a key part of strategic risk management
 
 * Think through the possible scenarios the firm could find itself in and to plan responses to those scenarios
 
-* Advanced scenario planning incorporates several LoBs and indcludes dependencies among the LoBs
+* Advanced scenario planning incorporates several LoBs and includes dependencies among the LoBs
 
-* Further step is agent based modeling where other parties reactions are also modeled
+* Further step is **agent based** modeling where other parties reactions are also modeled
 
 ## History and Definition
 
-**Strategy**
+```{definition, era-4-2-strategy-mw, name = "Strategy - Merriam-Webster"}
 
-*Definition* from Mango:
+
+a. Science and art of employng the political, economic, pyschological and military forces of nation to afford the maximum support to adopted polices
+
+b. The science and art of military command to meet the enemy under advantageous conditions
+
+2. A careful plan or method
+
+3. An adaptation for achieving evolutionary success, such as foraging strategies of insects
+```
+
+```{definition, era-4-2-strategy-mango, name = "Strategy - Mango"}
+
 
 * Science and art of planning
 
 * Using political, psychological, and organizational resources
 
 * To achieve major organizational goals
+```
 
-*Definition* from GIRO:
+```{remark}
+The above aligns well with the GIRO (General Insurance Research Organization) definition
+```
 
-* A strategy is a long term series of actions designed to take a company from its current state to its desired future state, and aim to provide a sustainable competitive advantage over other companies in the same market
+```{definition, era-4-2-strategy-giro, name = "Strategy - GIRO"}
+A long term series of actions designed to take a company from its current state to its desired future state, and aim to provide a sustainable competitive advantage over other companies in the same market
 
-Strategy in NOT (from GIRO):
+Strategy in NOT:
 
 * Business planning, strategy considers a wider breadth of issues such as the market, and where the company sits
+
 * Tactics, as these are short term
+```
 
-***
+```{definition, era-4-2-strategic-risk-2, name = "Strategic Risk"}
 
-**Strategic Risk**
-
-Definition (unclear, but can be interpreted as):
 
 * Intentional risk taking
 
 * Unintentional risk as by-products of strategy planning or execution
+```
 
-Definition from OCC (more like op risk):
+```{definition, era-4-2-strategic-risk-OCC, name = "Strategic Risk - OCC"}
+Risk to earnings or capital arising from averse business decisions or improper implementation of those decisions. ... Its focus is on how plans, systems and implementation affect the franchise value
+```
 
-* Strategic risk is the risk to earnings or capital arising from averse business decisions or improper implementation of those decisions. ... Its focus is on how plans, systems and implementation affect the franchise value
+```{remark}
 
-* Very similar to operation risk and not strategic risk
 
-## Research to Date
+* OCC's definition focuses on unintentional risk
 
-* Miller
+    * Which overlaps with op-risk by Basel:  
+    *The risk of loss resulting from inadequate or failed internal processes, people and systems, or from external events. This definitions include legal risk, but excludes strategic and reputational risk*
+    
+* OCC includes system risk in strategic risk
 
-* Baird and Thomas
+    * Basel includes system risk in op-risk (which excludes strategic risk)
+```
 
-* Slywotzky and Drzik
+## Strategic Risk Management Research to Date {#era-4-2-strat-research}
 
-* Hertz and Thomas
+* [Miller](#era-4-2-strat-research-1)
 
-### Miller
+* [Baird and Thomas](#era-4-2-strat-research-2)
 
-Strategic risk: unpredictability in corporate outcomes (effects)
+* [Slywotzky and Drzik](#era-4-2-strat-research-3)
 
-Strategic uncertainty: unpredictability of environmental and organizational variables that impact corporate performance (sources)
+* [Hertz and Thomas](#era-4-2-strat-research-4)
+
+### Miller {#era-4-2-strat-research-1}
+
+```{definition, era-4-2-miller-risk, name = "Risk - Miller"}
+Unpredictability in corporate outcomes (effects)
+```
+
+```{definition, era-4-2-miller-uncertainty, name = "Uncertainty - Miller"}
+Unpredictability of environmental and organizational variables that impact corporate performance (sources)
+```
+ 
+```{remark}
+
 
 * Our definition of risk is closer to Miller's definition of uncertainty
 
-### Baird and Thomas
+* Our definition of strategic risk (unpredictable impacts of strategies), is what Miller refers to as strategic uncertainty
+```
 
-Definition of risk too restrictive from an 1992 old paper:
+### Baird and Thomas {#era-4-2-strat-research-2}
 
-* Risk: A condition in which the consequences of a decision and the probabilities associated with the consequences are know entities
+```{definition, era-4-2-baird-old-risk, name = "Risk - Old 1921 paper"}
+A condition in which the consequences of a decision and the probabilities associated with the consequences are know entities
+```
 
-Baird and Thomas strategic risk definition (very broad):
+```{remark}
 
-* Corporate strategic moves which cause returns to vary, which involve venturing into the unknown, which may result in corporate ruin, where outcomes and probabilities maybe only be partially known and where hard to define goals may not be met
 
-Elements of strategic risk:
+* Baird and Thomas point out that the above lack clarity
 
-* Voluntariness of exposure (Choose risk because potential benefits are larger than consequences)
+* When making strategic decisions, the planners rarely know all the possible consequences or their probabilities
 
-* Controllability of consequences (outcomes can be contained)
+    * $\therefore$ the definition above does not capture strategic risk
+    
+    * Lack of knowing consequences or probabilities would be called *uncertainty* by theorists
+```
 
-* Discounting in time (ability to delay consequences)
+```{definition, era-4-2-baird-strat-risk, name = "Strategic Risk - Baird and Thomas"}
+Corporate strategic moves which cause returns to vary
 
-* Discounting in space (ability to shift risks to competitors)
+* Which involve venturing into the unknown
 
-* Knowledge of risky situation
+* Which may result in corporate ruin
 
-* Magnitude of impact
+* Where outcomes and probabilities maybe only be partially known, and
 
-* Group/individual factors (is the leader of the group in favor of risk acceptance)
+* Where hard to define goals may not be met
+```
 
-### Slywotzky and Drzik
+***Elements of strategic risk***
 
-Table: (\#tab:era-4-2-drizk) Categories of Strategic Risk
+* **Voluntariness** of exposure
+
+    (Choose risk because potential benefits are larger than consequences)
+
+* **Controllability** of consequences
+
+    (Outcomes can be contained)
+
+* Discounting in **time**
+
+    (Ability to delay consequences)
+
+* Discounting in **space**
+
+    (Ability to shift risks to competitors)
+
+* **Knowledge** of risky situation
+
+* **Magnitude** of impact
+
+* **Group/individual factors**
+
+    (Is the leader of the group in favor of risk acceptance)
+
+### Slywotzky and Drzik {#era-4-2-strat-research-3}
+
+Table: (\#tab:era-4-2-drizk) Categories of Strategic Risk and Magnitude for Insurance Industry
 
 | Risk | Examples | Magnitude | Comments |
 | ---------- | --------------------- | --- | ----------------------- |
@@ -452,77 +639,116 @@ Table: (\#tab:era-4-2-drizk) Categories of Strategic Risk
 | Project | Failure of R&D; IT; Business Development; M&A | High | Insurers has long history of failed mergers; Low investment in IT |
 | Stagnation | Flat or declining volume; Price declines | High | Highly correlated to the cycle; Companies will keep writing business to cover fixed expenses |
 
-### Hertz and Thomas
+### Hertz and Thomas {#era-4-2-strat-research-4}
 
-Risk Analysis: An input for the strategy development process, aiding strategy formulation, evaluation, choice and implementation
+```{definition, era-4-2-risk-an-hertz, name = "Risk Analysis - Hertz and Thomas"}
+An input for the strategy development process, aiding strategy formulation, evaluation, choice and implementation
+```
 
-* No distinction is drawn between strategic risk analysis and strategy formulation
+```{remark}
+Strategic risk analysis vs strategy formulation
+
+* No distinction is drawn between strategic risk *analysis* and *strategy formulation*
 
 * Both are viewed as part of a iterative, adaptive and flexible policy dialogue process
+```
 
-## Scenario Planning
+Definition above focus on how to make better strategy decisions and is **close to the *strategic error*** concept
 
-Effective strategic planning begins with scenario planning:
+## Scenario Planning {#era-4-2-scen-plan}
 
-* Limited # of scenarios: each tells a story of how elements may interact with each other under different conditions
+Effective strategic planning begins with scenario planning
 
-* Test for internal consistency and plausibility
+***Key Characteristics*** on scenarios:
 
-* Explore joint impact of several variables and change multiple variables at one time
+* **Limited # of scenarios**:
 
-* Include subjective interpretation of factors that cannot be explicitly modeled
+    Each tells a story of how elements may interact with each other under different conditions
 
-* Attempts to capture the richness of range of possibilities $\Rightarrow$ Lead the makers to consider changes they might otherwise ignore
+* Test for **internal consistency** and **plausibility**
 
-#### Key Steps in Scenario Planning Process:
+* Explore **joint impact** of several variables and change **multiple variables** at one time to capture new states after major shock
 
-1) Define **scope**: time frame, geography, market segment
+* Include **subjective interpretation** of factors that cannot be explicitly modeled
 
-2) Identify major **stakeholders**: employees, owners, regulators, customers, competitors, suppliers
+Attempts to capture the richness of range of possibilities $\Rightarrow$ Lead the makers to consider changes they might otherwise ignore
 
-3) Identify basic **trends**: their influence on organization
+### Key Steps in Scenario Planning Process {#era-4-2-scen-plan-process}
 
-4) Identify key **uncertainties**: leverage points of impact
+1) Define **scope**:
+
+    (*e.g. time frame, geography, market segment*)
+
+2) Identify major **stakeholders**:
+
+    (*e.g. employees, owners, regulators, customers, competitors, suppliers*)
+
+3) Identify basic **trends** (and their influence on organization)
+
+4) Identify key **uncertainties**:
+
+    * Leverage points of impact
 
 5) Construct **initial scenario** theme
 
-6) Check for **consistency** and **plausibility**: outcomes fit together?
+6) Check for **consistency** and **plausibility**
 
-7) Develop **learning scenarios**: identify themes and naming scenarios
+    * Do outcomes fit together?
 
-8) Identify **research needs**: areas that need additional research
+7) Develop **learning scenarios**:
 
-9) Develop **quantitative models**: formalize some interactions in a quantitative model?
+    * Identify themes and naming scenarios
 
-10) Evolve toward **decision scenarios**: iterative process of reviewing scenarios with the goal of converging to test scenarios and generate new ideas
+8) Identify **research needs**:
 
-#### Insurance Example
+    * Areas that need additional research
 
-Scenarios will be less detailed than a typical strategy or plan document
+9) Develop **quantitative models**:
 
-Traditional unilateral planning approach:  
-Set planned premium and ELR based on current year LR, price trend, and loss trend
+    * Should formalize some interactions in a quantitative model?
 
-* Caveat: Not thinking through the possibility of a possible price decrease, where they might want to reduce premium volume instead of the inflexibility of making the planned premium volume
+10) Evolve toward **decision scenarios**:
 
-**Scenario planning**:  
-Allow u/w-ers to be flexible in their approach in the case prices are not as expected
+    * *Iterative* process of reviewing scenarios with the goal of converging to test scenarios and generate new ideas
 
-Must decide ahead of time:
+### Insurance Example
 
-* Range of scenarios
+Scenarios will be **less detailed** than a typical strategy or plan document
+
+* Goal is to generate a first-order approximation of the possible states
+
+* Best place to try this is the **plan portfolio mix** (e.g. coming year WP and ELR by segments)
+
+**Traditional unilateral planning approach**:  
+Set planned premium and ELR based on current year base LR, cost trend, price change, target premium volume, LR
+
+**Caveat**: Not thinking through other possibilities $\Rightarrow$ Not reacting properly while fixating on "making plan"
+
+* Commitment to only one plan leads to organizational inertia, inflexibility that is unrealistic and potentially detrimental to the firm
+
+* e.g. If price decrease, company might want to reduce premium volume instead of the inflexibility of making the planned premium volume
+
+#### Basic Scenario Planning Example
+
+
+
+Must **decide ahead of time**:
+
+* Range of scenarios and relative likelihood
 
 * Responses to those scenarios
 
-Plans must have enough detail to give them operational weight
+Plans must have **enough detail** to give them operational weight
 
 **Advantages**:
 
-* Thinks through responses beforehand and can agree on best response ahead of time
+* **Thinks through responses** beforehand and can agree on best response ahead of time
+
+    * With the rate change example, it allow u/w-ers to be flexible in their approach in case prices are not as expected
 
 * Saves time during a crisis
 
-* Operational inertia is reduced, flexibility is built into the system
+* Operational **inertia is reduced**, flexibility is built into the system
     
 ## Advanced Scenario Planning & ERM
 
@@ -540,30 +766,34 @@ Plans must have enough detail to give them operational weight
 
 **Stochastic Scenario Planning**
 
-Generate stochastically simulated scenarios that have responses based on a set of rules
+Generate stochastically simulated scenarios that have responses based on a set of rules (This has been done with success in asset management)
 
-1) Need to define goals
+1) Need to define **goals** that we want to achieve
 
-    * e.g. profit or premium level etc
+    (*e.g. profit or premium level etc*)
 
-2) Need to have downside constraints
+2) Need to have **downside constraints**
 
-    * e.g. capital loss of x% with y% probability
+    (*e.g. capital loss of x% with y% probability*)
 
-3) Need to determine the estimate environmental variables that define the state of the world
+3) Need to determine the essential **environmental variables** that define the state of the world
   
-    * e.g. size of market, price level, current market share, etc
+    (*e.g. size of market, price level, current market share, etc*)
 
-4) Define action rules that respond to environmental variables
+4) Define **action rules** that respond to environmental variables
 
-    * e.g. hold price, increase u/w capacity according to price adequacy levels
+    (*e.g. hold price, increase u/w capacity according to price adequacy levels*)
+    
+    * Express as mathematical formulas that can be programmed into the simulation
     
 ## Agent-Based Modeling
 
-Agents can be competitors, customers, regulators
+Agents can be: *competitors*, *customers*, *regulators*
 
 Program each agent to respond to the state of the market
 
-* Chase market share, focus on technical price, customer may reduce coverage if prices are high, etc
+* *e.g. Chase market share, focus on technical price, customer may reduce coverage if prices are high, etc*
 
 Creates a complex system with emergent properties that describe the behavior of agents
+
+* There emergent properties are often difficult to ascertain without running the simulations
