@@ -1,283 +1,431 @@
 # ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major
 
-[Characteristics](#uw-cycle) of underwriting cycle
+[Characteristics](#era-5-uw-cycle) of underwriting cycle
 
-[4 stage](#4-stage) of insurance business
+[4 stage](#era-5-4-stage) of insurance business
 
-* First stage is the classic cycle and the next 3 shows how things stablize and then eventually breakdown
+* First stage is the classic cycle and the next 3 shows how things stabilize and then eventually breakdown
 
-Various [theories](#cycle-theory) of underwriting cycle
+Various [theories](#era-5-cycle-theory) of underwriting cycle
 
-Approaches to modeling the cycle
+[Approaches](#era-5-cycle-mod-app) to modeling the cycle
 
-* Need to us combined ratio or someting as proxy for price
-* Calculate and forecast [predictor](#cycle-predictor) variables
-* Gather competitor intellgence
+* Need to us combined ratio or something as proxy for price
+
+* Calculate and forecast predictor variables
+
+* Gather competitor intelligence
 
 Styles of modeling:
 
 * Soft, technical and behavioral
 
-Look at the different impact on [supply and demand](#s-and-d) under different scenarios
+Look at the different impact on [supply and demand](#era-5-supply-demand) under different scenarios
 
-[Gron](#gron) supply curve
+[Gron](#era-5-4-gron) supply curve
 
-Captial flow under different profitability
+Capital flow (fig. \@ref(fig:capital-flow)) under different profitability
 
 How different components interact
 
 ## Introduction {#era5-uw-cycle-intro}
 
-Important to consider how the firm interacts with a competitive environment in an ERM framework
+Important to consider how the firm **interacts** with a **competitive environment** in an ERM framework
 
-Price competition is inevitable due to: Low barriers of entry; lack of patent or copyright product
+Price competition is inevitable due to:
 
-Price is difficult to define since it depends on premium charged as well as limits, deductible, terms and conditions
+* Low barriers of entry
 
-<a name="uw-cycle"></a> **Underwriting cycle**:
+* Lack of patent or copyright product
 
-* Recurring increase and decrease of prices and profits
+**Price** and **quantity** is difficult to access outside the firm
 
-* Result of a dynamical system with both feedback and external shocks and slow adjustment
+* Price depends on premium charged as well as *limits*, *deductible*, *terms* and *conditions*
+
+* It's the **ratio** of premium to expected losses that define prices
+
+### Underwriting cycle {#era-5-uw-cycle}
+
+```{definition, era-5-4-uw-cycle, name = "Underwiting Cycle"}
+Recurring increase and decrease of prices and profits
+```
+
+```{remark}
+
+
+* Result of a dynamical system with both **feedback** and **external shocks** and **slow adjustment**
 
 * Each LoB has it's own cycle
 
 * Capital plays an important role $\Rightarrow$ multiline insurers creates dependencies between LoBs' cycle
+```
 
-### 4 Stages Insurance Business {.tabset}
+### Four Stages Insurance Business {#era-5-4-stage}
 
-<a name="4-stage"></a>
+Steward describes the evolution of insurance business, the stages has sometimes takes decades to play out
 
-Steward describes the evolution of insurance business, sometimes takes decades to play out
+At each stage, different factor drives the cycle
 
-#### 1. Emergence
+***Stage 1: Emergence*** (Driven by **competitive factors**)
     
-Classic u/w-ing cycle here at this stage
+* Classic u/w-ing cycle here at this stage
 
 * New LoB, thin data, inaccurate pricing
-* $\hookrightarrow$ $\uparrow$ demand with erratic pricing $\Rightarrow$ Price wars
-* $\hookrightarrow$ solvency crisis $\Rightarrow$ force out weak competitors $\Rightarrow$ price correction
-* $\hookrightarrow$ $\uparrow$ profitability $\Rightarrow$ new entrants and repeat
+
+    $\hookrightarrow$ $\uparrow$ demand with erratic pricing $\Rightarrow$ Price wars
+
+    $\hookrightarrow$ solvency crisis $\Rightarrow$ force out weak competitors $\Rightarrow$ price correction
+
+    $\hookrightarrow$ $\uparrow$ profitability $\Rightarrow$ new entrants and repeat
     
-#### 2. Control
+***Stage 2: Control*** (Driven by **statistical lags**)
 
-Stop the cycle with help from rating bureau or insurance department
+* Stop the cycle with help from rating bureau or insurance department
     
-#### 3. Breakdown
+***Stage 3: Breakdown*** (Driven by **mix of the two**)
 
-Control regime breaks down due to new technology or social changes
+* Control regime breaks down due to *new technology* or *social changes*
 
-New type of competitors take business away
+* New type of competitors take business away
     
-#### 4. Reorganization
+***Stage 4: Reorganization*** (Driven by **competitive factors**)
 
-Return to stage 1, new configuration of the market phase emerges
+* Return to stage 1, new configuration of the market phase emerges
     
-## Theories of the Cycle
+## Theories of the Cycle {#era-5-cycle-theory}
 
-<a name"cycle-theory"></a>
+Different researches findings below are often contradictory due to:
 
-Different researches findings are contradictory
+* Research typically focused on different LoBs
 
-**Institutional Factors**
+* Often focus on just one stage
 
-Lags in data
+### Institutional Factors
+
+Lags in data can lead to cycles
 
 Reporting and regulatory delays leads to 2^nd^ order autoregression
 
-**Competition**
+### Competition
 
-Low prices by one competitor can push prices down
+Competition drives prices down:
 
-Companies strategy is either aggressive growth or price maintenance
+* Players might not behave rationally
 
-4 phases of cycle: cheating, pain, fear, restoration
+* Someone might underestimate the expected loss (winner's curse)
 
-**Capital Constraints**
+Companies strategy is either **aggressive growth** (through price reduction) or **price maintenance**
 
-Capital determines the available supply of insurance
+* Once a large portion of the market is dropping prices, price maintenance is not sustainable
 
-Capital is not replaced quickly once reduced
+* Incumbents drop price so as to convince the aggressive players that they should focus on profits, rather than market share and thus get back to higher prices sooner
 
-* Best clients may leave first when capital $\downarrow$ $\Rightarrow$ anti-selection
+Dowling's 4 phases of cycle
 
-**Economic Linkages**
+1. Cheating (optimistic reserve levels)
 
-Profitability of firm links to investment income, cost of capital
+2. Pain
 
-Expected losses may depend on interest rates, inflation
+3. Fear
 
-Price of risk set by the market is generally ignored by insurers
+4. Restoration
 
-**All of the Above**
+### Supply and Demand, Capital Constraints and Shocks
+
+Capital determines the available **supply** of insurance
+
+* Losses that reduce capital will reduce the supply $\Rightarrow$ Increase price
+
+Capital is not replaced quickly once reduced (debatable now with ILS)
+
+$\therefore$ Market does not rebound quickly
+
+Best clients may leave first when capital $\downarrow$ $\Rightarrow$ anti-selection
+
+$\therefore$ Declining profits exacerbated by anti-selection
+
+### Economic Linkages
+
+Profitability of firm **links to the economy**
+
+* *Investment income*, *cost of capital*
+
+* Expected losses may impacted by: *inflation*, *GNP growth*, *unemployment*
+
+* Price of risk (may be set by the market)
+
+    * Is generally ignored by insurers
+
+### All of the Above
 
 No single theory can explain the u/w cycle completely
 
-## Approaches to Modeling the Cycle
+## Approaches to Modeling the Cycle {#era-5-cycle-mod-app}
 
-First we define what it is we want to know and look for leading indicators that foretell the turn in the cycle
+3 approach:
 
-**Criterion Variable**
+1. [Soft approach](#era-5-4-soft)
 
-The concern is price, but impossible to define in insurance
+2. [Technical approach](#era-5-4-hard)
 
-Use loss ratio or combined ratio etc as a proxy
+3. [Behavioral modeling (Econometric)](#era-5-4-behav)
 
-* Can include investment income
+Below show the importance of the dimension to each style:
 
-<a name="cycle-predictor"></a> **Predictor Variable**
+* **Data quantity, variety and complexity**
 
-To calculate the current period criterion and also forecast the forward period criterion
-
-* Historical criterion variable: loss, expense
-* Internal financial variables: reserve, capital, capital flow, reinsurance cessions
-* Regulatory rating variables: rating changes
-* Reinsurance sector financials: capital held
-* Econometric variable: inflation, unemployment, GDP
-* Financial market variables: interest rates, stock market returns
-
-**Competitor Intelligence**
-
-Gather information on customers at renewal time and competitors
-
-* Trade publications and rate filings
-* Need to beware of antitrust and legal issues
-
-### Styles of Modeling {.tabset}
-
-#### Soft Approach
-
-Focuses on gathering expert opinion
-
-* Data quality, variety, complexity, and human factors
-
-Human approach, focused on three methods:
-
-1) Scenarios
-
-    * Detailed written statement describing a possible future state of the world
+    Soft > Behavioral > Technical
     
-2) Delphi Method
+* **Recognition of human factors**
 
-    * Gather expert opinion without biasing the group to the opinion of the most senior persons
+    Soft > Behavioral > Technical
     
-    * Multiple rounds of providing information and questions
-    
-3) Formal Competitor Analysis
+* **Mathematical formalism and rigor**
 
-    * For at financials, news item, behavioral metrics
-    
-    * Look for unusual profitable or distressed financial conditions across a large number of firms
-    
-#### Technical Approach
+    Technical > Behavioral > Soft
 
-Focuses on statistical modeling, mathematical formalism and rigor
+***
 
-**Autoregressive Model**
+Before we model, first we define what it is we want to know and look for leading indicators that foretell the turn in the cycle:
+
+***Criterion Variable***
+
+* What variable we are interested in?
+
+* *Conceptually* we want **price**
+
+    * e.g. Price to coer a *standard* risk
+    
+    * But impossible to define in insurance
+
+* Use **loss ratio** or **combined ratio** etc as a proxy
+
+    * Maybe with adjustments for TVM (e.g. include investment income)
+
+***Predictor Variable***:  
+Information available to calculate the *current period criterion* and also forecast the *forward period criterion*
+
+* **Historical** criterion variable and it's components:
+
+    (*e.g. loss, expense*)
+
+* **Internal financial** variables:  
+
+    (*e.g. reserve, capital, capital flow, reinsurance cessions*)
+
+* **Regulatory rating** variables:
+
+    (*e.g. downgrades and upgrades*)
+
+* **Reinsurance sector financials**:
+
+    (*e.g. capital held by reinsurers*)
+
+* **Econometric** variable:
+
+    (*e.g. inflation, unemployment, GDP*)
+
+* **Financial market** variables:
+
+    (*e.g. interest rates, stock market returns*)
+
+***Competitor Intelligence***:  
+Gather information on customers at renewal time and competitors (*e.g. Firm's own agents, customere surveys at renewal, trade publications/news, rate filing*)
+
+* Provides more detailed information on the state of the u/w cycle
+
+* Need to beware of antitrust and legal issues (*e.g. industrial spying*)
+
+* Goal is to look for **leading indicatiors** that foretell the turn in the cycle
+
+### Soft Approach {#era-5-4-soft}
+
+Starts with intense focus on **data gathering** and **intelligence**
+
+**Goal**: Give analysts insight into the complex u/w cycle
+
+* Collect as much information as we can
+
+This is a human approach, focused on three methods:
+
+1) ***Scenarios***
+
+    Detailed written statement describing a possible future state of the world
+    
+    * Help company think about how it might respond to different future states
+    
+    * Goal is to have a detailed description of the environment and **analyzed by minds**
+    
+2) ***Delphi Method***
+
+    Gather expert opinion without biasing the group to the opinion of the most senior persons
+    
+    *Process*:
+    
+    1. Give background to participants
+    
+    2. Gather opinions using questionnaire
+    
+    3. Results are summarized and distributed
+    
+    4. Allow participants to reconsider and articulate reason for disagreeing
+    
+    5. Repeat until consensus is reached
+    
+3) ***Formal Competitor Analysis***
+
+    * First determine *current state*, *motives*, and *likely behavior* for the main competitors
+    
+    * Need database of competitor information that has *key financials*, *new items*, and *behavioral metrics*
+    
+    * Overtime, distinction between normal and abnormal statistics becomes evident
+    
+    * Key to predicting turns in the u/w cycle is **unusually profitable** or **distressed** financial conditions reproduced over a **large number** of firms
+    
+### Technical Approach {#era-5-4-hard}
+
+Focus here is on a small number of industry financial statistics (possibly only 1)
+
+* We have at best only a rudimentary theory underlying the model
+
+***Autoregressive Model***
 
 Research shown cycle can be modeled with $AR(2)$ or $AR(3)$ model
 
-For $AR(2)$: $X_t = b_o + b_1 X_{t_1} + b_2 X_{t-2} + \sigma \epsilon_t$
+For $AR(2)$:
 
-Use autoregressive model to model P&C industry combined ratios
+$$X_t = b_o + b_1 X_{t-1} + b_2 X_{t-2} + \sigma \epsilon_t$$
 
-Results showed weak mean regression with lag 1 but strong mean regression at lag 2
+Use autoregressive model to model **P&C industry combined ratios**
 
-Model can be used to forecast a few periods into the future and estimate the distribution for those forecasts
+* Results showed weak mean regression with lag 1 but strong mean regression at lag 2
 
-***
+* Model can be used to forecast a few periods into the future and estimate the distribution for those forecasts
 
-**VARMAX**
+***VARMAX***
 
-Generalized multivariate time series that can utilize external variables
+Generalized multivariate time series that can handle multiple simultaneous variable and utilize external variables
 
-***
+***General Factor Model***
 
-**General Factor Model**
+* Looks like $AR(1)$ but with non-normal mean and a moving temporary mean (determined by $z_{t-1}$)
 
-* Looks like $AR(1)$ but with non-normal mean and a moving temporary mean
+$$X_t = c + d(Z_{t-1} - X_{t-1}) + \tau \delta_t$$
 
-* $X_t = c + d(Z_{t-1} - X_{t-1}) + \tau \delta_t$
-
-    * $Z_t = a + b \cdot Z_{t-1} + \sigma \epsilon_t$
+* $Z_t = a + b \cdot Z_{t-1} + \sigma \epsilon_t$
     
-    * $Z_t$ maybe an unknown or unobservable variable
+* $Z_t$ maybe an unknown or unobservable variable
+
+* Neither error term needs to be normal
     
 Complicated to fit this model
 
-#### Behavioral Modeling
+* Generalized method of moments or efficient method of moments
+
+### Behavioral Modeling {#era-5-4-behav}
 
 Econometric Modeling
 
-* Sit between soft and technical model's concern for structural insight (soft) and statistical validity (technical)
+* Sit between soft and technical model's concern for **structural insight** (soft) and **statistical validity** (technical)
 
-Can be done at an industry level or company level
+Can be done at an *industry* level or *company* level
 
 * Industry level can be more detailed
 
 * Company level requires maintaining many individual models and their interactions
 
-    * May reveal emergent properties (See ERA 4.2)
+    * Can lead to insight from emergent properties (See [ERA 4.2](#era-4-2-intro))
     
-## Supply and Demand
+## Supply and Demand {#era-5-supply-demand}
 
-Plotting the supply and demand curve on quantity vs price
-
-![](figures/Exam-7-Notes-6.png)
-
-<a name="s-and-d"></a>
+```{r supply-and-demand, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Supply and Demand on quantity vs price'}
+knitr::include_graphics('figures/Exam-7-Notes-6.png')
+```
 
 **Supply**
 
-New competition or technology increases the quantity available at a given price  
-$\hookrightarrow$ Shifting curve $\searrow$
+* New competition or technology increases the quantity available at a given price
 
-Higher capital requirement  
-$\hookrightarrow$ Shifting curve $\uparrow$
+    $\hookrightarrow$ Shifting curve $\searrow$
+    
+    * More quantity for same price
+
+* Higher capital requirement
+
+    $\hookrightarrow$ Shifting curve $\uparrow$
+    
+    * Less quantity for same price
 
 **Demand**
 
-Excess capital makes insurance more valuable  
-$\hookrightarrow$ Shifting curve $\nearrow$
+* Excess capital makes insurance more valuable
 
-Shock to capital  
-$\hookrightarrow$ Shifting curve $\swarrow$
+    $\hookrightarrow$ Shifting curve $\nearrow$
 
-Company demand curve will be flatter since customers can go to another company for small changes in price
+* Shock to capital  
 
-***
+    $\hookrightarrow$ Shifting curve $\swarrow$
 
-More intuitive to think of quantity as a function of price
+```{remark}
 
-Market price is where supply meets demand
 
-Difficult to empirically estimate the curves because only the equilibrium is observable
+* Curve above is for **industry**
 
-***
+    * If the industry is well capitalized, its promise to pay claims are worth more and the insurance produce is more valuable and more demand for it
+    
+    * If there's a shock event that reduce the industry's capital, it will reduce demand for the product
 
-<a name="gron"></a> **Gron Supply Curve**
+* Company demand curve will be flatter since customers can go to another company for small changes in price
+```
 
-Plot 4 and 5 above
+$Quantity  = f(Price)$
 
-The first flat section:
+* Alternative way to think about this
 
-* There is a minimum price = expected losses + marginal expenses
-* Supply is perfectly elastic for a certain quantity, where the supply 
+* When companies are capital rich, customers want more product for the same price
+
+* When new competition comes into the market, the same price will have more produce available
+
+**Market price** = where supply meets demand
+
+* Difficult to empirically estimate the curves because only the equilibrium is observable
+
+### Gron Supply Curve {#era-5-4-gron}
+
+Plot 4 above in fig. \@ref(fig:supply-and-demand)
+
+***The first flat section***:
+
+* There is a minimum price for insurance product
+
+$$\text{Minimum Price} = \text{Expected Losses} + \text{Marginal Expenses}$$
+
+* *Supply* is **perfectly elastic** for a certain quantity, where the supply 
 will increase without an increasing price
 
-The curved section:
+***The curved section***:
 
-* At certain point firm will require additional capital to support the business, and the price must increase
+* At certain point firm will require **additional capital** to support the business, and the price must increase
+
 * Once price hits a a certain level, profits are enough to cover the additional capital and the supply curve approaches a price asymptotically
 
-Shock scenario:
+* This is [high AE](#goldfarb-ae) from Goldfard's perspective
+
+Plot 5 above in fig. \@ref(fig:supply-and-demand)
+
+***Shock scenario***:
 
 * Curve would simply shift $\leftarrow$
-* Expected loss + marginal expense is still the same, while the amount of capital the company have before it needs to seek additional capital has changed
+
+* Expected loss + marginal expense is still the same
+
+* Amount of capital the company have before it needs to seek additional capital has changed
 
 ## Capital Flows
 
-![](figures/Exam-7-Notes-7.png)
+```{r capital-flow, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Capital Flow'}
+knitr::include_graphics('figures/Exam-7-Notes-7.png')
+```
 
 * Capital $\uparrow$ in a firm from retained earnings and capital infusions
 
@@ -289,11 +437,13 @@ Shock scenario:
 
 ## Assembling the Components
 
-![](figures/Exam-7-Notes-8.png)
+```{r compoents-uw-cycle, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Underwriting Cycle Components'}
+knitr::include_graphics('figures/Exam-7-Notes-8.png')
+```
 
 * Economic factors and capital both affect the supply and demand curves
 
-* Level of price and losses affect the supply curve
+* Level of price and losses affect the supply curve (but possibly with delay)
 
 * Capital is impacted directly by premium and losses and specifically profitability
 
@@ -301,10 +451,26 @@ Output of this model is an equilibrium price
 
 The behavioral model can be used to simulate a dist^n^ of this price
 
+* Should be validated against historical experience
+
 ## Conclusion
 
 U/w cycle is the behavior of a complex dynamic system
 
-Output of the modeled u/w cycle should feed into the firm's demand and retention models
+Output of the modeled u/w cycle should feed into the firm's **demand** and **retention** models
 
 * They help to forecast how clients will react to the difference between the firm's pricing and that of other prices available in the market
+
+## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done past exam questions for ERA 4 and 5
+```
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
+
+### Question Highlights
+
+n/a

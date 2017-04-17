@@ -460,7 +460,7 @@ Challenge is the lack of data available or they are recorded in an uncoordinated
 
 * Worthwhile to begin to collect data
 
-## ERA 4.2 Strategic Risk Intro
+## ERA 4.2 Strategic Risk Intro {#era-4-2-intro}
 
 ```{definition, era-4-2-strategy, name = "Strategy"}
 Planning and the use of resources to achieve an organization's goals
@@ -797,3 +797,17 @@ Program each agent to respond to the state of the market
 Creates a complex system with emergent properties that describe the behavior of agents
 
 * There emergent properties are often difficult to ascertain without running the simulations
+
+## Past Exam Questions
+
+```{block, type='rmdcaution'}
+Haven't done past exam questions for ERA 4
+```
+
+```{block, type='rmdcaution'}
+Haven't done TIA practice questions
+```
+
+### Question Highlights
+
+n/a
