@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era-3-3-kendall.html">
-<link rel="next" href="how-to-use-a-copula.html">
+<link rel="prev" href="era-3-3-pearson.html">
+<link rel="next" href="motivations-for-using-copulas.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,56 +152,54 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="motivations-for-using-copulas" class="section level2">
-<h2><span class="header-section-number">24.4</span> Motivations for Using Copulas</h2>
-<p><strong><em>Limitations of joint distributions</em></strong></p>
-<p>There are only a few joint distributions that are tractable to work with (normal, lognormal, exponential, etc)</p>
+<div id="era-3-3-kendall" class="section level2">
+<h2><span class="header-section-number">24.3</span> Kendall’s <span class="math inline">\(\tau\)</span></h2>
+<p>Depends on the <strong>order</strong> not the <em>value</em> of the data</p>
+<p><strong>Concordant</strong>:<br />
+When one pair dominates the other given <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span></p>
 <ul>
-<li><p>We can’t do Weibull, Pareto or gamma</p></li>
-<li><p>We can’t mix distributions like joining normal with exponential</p></li>
+<li><p><span class="math inline">\(x_1 &gt; x_2\)</span> and <span class="math inline">\(y_1 &gt; y_2\)</span> or,</p></li>
+<li><p><span class="math inline">\(x_2 &gt; x_1\)</span> and <span class="math inline">\(y_2 &gt; y_1\)</span></p></li>
 </ul>
-<p>Modeling all business together is not feasible due to inconsistent of mix of business over time</p>
-<div id="joint-distribution-plots" class="section level3">
-<h3><span class="header-section-number">24.4.1</span> Joint Distribution Plots</h3>
-<p>3 ways to look at them to try and see if there are dependencies; Each box should have the same number of points if independent</p>
-<ol style="list-style-type: decimal">
-<li><p>Straight plotting on <span class="math inline">\((x,y)\)</span></p>
+<p><strong>Discordant</strong>:<br />
+When the pair is mixed</p>
+<p><strong><em>Kendall’s <span class="math inline">\(\tau\)</span></em></strong></p>
+<span class="math display" id="eq:era-3-3-ken">\[\begin{equation}
+  \tau = \dfrac{C - D}{\text{# of pairs}}
+  \tag{24.1}
+\end{equation}\]</span>
 <ul>
-<li><p>Draw lines at 25%, 50% and 75% and segment the plot into 16</p></li>
-<li><p>If the 2 marginal distributions are independent <span class="math inline">\(\Rightarrow\)</span> there should be about <span class="math inline">\(\frac{1}{16}\)</span> of the points in each rectangles</p></li>
-<li><p>This is useful to show us actual values, but</p></li>
-<li><p>Might be difficult to see points in some of the rectangles</p></li>
-</ul></li>
-<li><p>Plot on log log scale <span class="math inline">\((\ln(x), \ln(y))\)</span></p>
+<li><p><span class="math inline">\(\tau = \dfrac{C - D}{C + D}\)</span> if there are no ties</p></li>
+<li><p><span class="math inline">\(\tau \in [-1, 1]\)</span> with same interpretation as Pearson’s</p></li>
+</ul>
+<p>Focus on the <strong>rank</strong> <span class="math inline">\(\Rightarrow\)</span> changes in one extreme value won’t change the indication</p>
+<p><strong><em>Continuous</em> Kendall’s <span class="math inline">\(\tau\)</span></strong></p>
+<span class="math display" id="eq:era-3-3-ken-cont">\[\begin{equation}
+  \tau = 4 \mathrm{E}[C(u,v)] - 1
+  \tag{24.2}
+\end{equation}\]</span>
+<span class="math display" id="eq:era-3-3-ken-cont-2">\[\begin{equation}
+  \tau = -1 + 4 \int_0^1 \int_0^1 C(u,v)c(u,v)dudv
+  \tag{24.3}
+\end{equation}\]</span>
+
+<div class="definition">
+<p><span id="def:corr-dep" class="definition"><strong>Definition 24.1  (Correlation vs Dependency) </strong></span></p>
 <ul>
-<li>This alleviate the issue above and shows a clearer picture of the dependencies</li>
-</ul></li>
-<li><p>Plot the <strong>percentile</strong> from each marginal dist<sup>n</sup></p>
-<ul>
-<li><p>This gives us a clean picture as all the rectangles are the same size since the axis are now the percentile</p></li>
-<li><p>Only need the marginal distributions <span class="math inline">\(F(x)\)</span> and <span class="math inline">\(G(y)\)</span> to plot</p></li>
-</ul></li>
-</ol>
+<li><p>Correlation = mathematical calculation, a statistic, and measure of dependency</p></li>
+<li><p>Dependency = interaction between random variables (broader term)</p></li>
+<li>e.g. correlation can be 0 while there are still dependency
 </div>
-<div id="era-3-3-copula-advantages" class="section level3">
-<h3><span class="header-section-number">24.4.2</span> Advantages of using copula to describe dependency with percentiles</h3>
-<ol style="list-style-type: decimal">
-<li><p>It is independent of the underlying distributions</p>
-<ul>
-<li>Describe the relationship between the <strong>percentiles</strong> of 2 different distributions</li>
-</ul></li>
-<li><p>Can update the marginal dist<sup>n</sup> without changing the dependency structure</p></li>
-<li><p>Can joint dist<sup>n</sup> that is not the same</p></li>
-</ol>
-</div>
+<p></p></li>
+</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era-3-3-kendall.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="how-to-use-a-copula.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="era-3-3-pearson.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="motivations-for-using-copulas.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
