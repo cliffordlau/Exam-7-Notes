@@ -40,52 +40,99 @@ Advance scenario planning
 
 * Agent based modeling (competitors, customers, regulators)
 
-## ERA 4.1 Operational Risk
+## ERA 4.1 Operational Risk Intro
 
 Important cause of insurer insolvency $\Rightarrow$ Need to be aware and attempt to measure
 
-**Definition from Basel**:  
+```{definition, op-risk-basel, name = "Basel Op-Risk Definition"}
+
+
 The risk of loss resulting from inadequate or failed internal process, people, and systems or from external events
 
-* Include legal risk but exclude strategic and reputation risk
+* Include legal risk 
+
+* Exclude strategic and reputation risk
+```
 
 **7 Types of Operational Risk Defined by Basel Committee**
 
 1) Internal fraud
 
+    * Acts that are intended to defraud, take property, or circumvent: regulations, law, or company policy
+    
+    * Includes at least one internal party
+
 2) External fraud
+
+    * Acts by a 3^rd^ party that are intended to defaud, take property, or circumvent the law
 
 3) Employment practices and workplace safety
 
+    * Acts *inconsistent* with: employment health, safety laws or agreements, which result in payment for: injury, claims for diversity of discrimination issues
+    
+    * e.g. repetitive stress, discrimination
+
 4) Clients, products and business practices
+
+    * Unintentional or neligent failure to meet a professional obligation to specific clients
+    
+    * Nature of design of a product
+    
+    * e.g. client privacy, bad faith
 
 5) Damage to physical assets
 
+    * Loss of damage to physical assets from natural disaster of other events
+    
+    * e.g. Physical damage to office, own auto fleets
+
 6) Business disruption and system failures
+
+    * Discruption of business of system failures
+    
+    * e.g. processing center downtime, system interuptions, flood
 
 7) Execution, delivery and process management
 
-Still no consensus on how to define op risk
+    * Failed transaction processing or process management
+    
+    * Relations with trade counterparties and vendors
+    
+    * e.g. policy processing, claims payment errors
 
-Could include reputational and strategic risk, but as long as it is considered it is fine
+```{remark}
 
-Understanding of op risk is in its infancy especially with quantitative modeling
+
+* Definition of op-risk has gained substantial visibility in ERM
+
+    * For insurance though, the debate is always on going whether it is worth while to hold capital for op-risk
+    
+    * Different from banking, insurance op-risk are already baked into the other risk categories we measure and manage
+
+* But still no consensus on how to define op-risk
+
+* Could include reputational and strategic risk (just have a consistent risk taxonomy)
+
+* Understanding of op risk is in its infancy especially with quantitative modeling
 
 * Do not lose sight of op risk despite it is soft, difficult, poorly understood and lack historical track record
+```
 
-### Operational Risk to Insurers
+## Operational Risk to Insurers
 
-Study show that insurer failure are mostly attributed to under reserving and under pricing
+Study show that insurer failure are mostly attributed to under **reserving** and **under pricing**
 
-That is factually accurate, however in many case the underlying cause was actually operational risk
+**Underlying cause** of insurer failure is actually *op-risk*
 
-* e.g. Over accumulation of risk exposure (insufficient initial reserving or premature reserve release) and maybe just overly optimistic plan loss ratios
+* e.g. Over accumulation of risk exposure (insufficient initial reserving or premature reserve release)
 
-* Capital charges for premium, reserve, and growth are partially proxies for operational risk
+* e.g. Overly optimistic plan loss ratios
 
-Clear that op risk have heavily contributed to insurance impairments and should be explicitly model
+Clear that op risk have heavily contributed to insurance impairments and should be **explicitly model**
 
-### Insurer Op Risk: Plan Loss Ratios
+* Currently capital charges for premium, reserve, and growth are *partially* **proxies** for operational risk
+
+## Insurer Op Risk: Plan Loss Ratios
 
 Mostly impact long tailed LoBs (50% @ 5yrs, 90% @ 10yrs)
 
@@ -125,7 +172,7 @@ Three reasons why the planned LR did not work
 
     * Op risk: What governance should be there around management's decisions
     
-### Insurer Op Risk: Cycle Management {#era-cycle-mgmt}
+## Insurer Op Risk: Cycle Management {#era-cycle-mgmt}
 
 **Cycle management**:  
 Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
@@ -197,9 +244,9 @@ Owner/shareholders need to understand that some financial figures will be out of
 * Premium volume $\downarrow$
 * Overhead expense ratio to premium $\uparrow$
 
-### Additional Perspectives {#add-pers-era-4-1}
+## Additional Perspectives {#add-pers-era-4-1}
 
-#### Agency Theory Perespective
+### Agency Theory Perespective
 
 Incentives of managers and u/w-ers of the firm are not always aligned with shareholders
 
@@ -211,7 +258,7 @@ Rather than try to fund for this op risk, better to understand it:
 
 * Production incentives for u/w-ers $\xrightarrow{\text{Caveat}}$ Sloppy u/w-ing or mispricing
 
-#### Operational Risk Management in Banking and Manufacturing
+### Operational Risk Management in Banking and Manufacturing
 
 Risks that are common to all business
 
@@ -225,7 +272,7 @@ Risks that are common to all business
 
 * Lawsuits
 
-#### Control Self-Assessment (CSA)
+### Control Self-Assessment (CSA)
 
 **Definition** from Institute of Internal Auditors  
 A process through which internal control effectiveness is examined and assessed. The objective is to provide reasonable assurance that all business objectives will be met
@@ -242,7 +289,7 @@ Objectives of internal control
 
 * Accomplishment of objectives and goals for operations or programs
 
-#### Key Risk Indications (KRIs)
+### Key Risk Indications (KRIs)
 
 Broad category of measures that monitor the activities and status of the control environment of an operational risk category
 
@@ -260,7 +307,7 @@ Possible KRIs
 
 * Claims: freq, sev
 
-#### Six Sigma
+### Six Sigma
 
 Tolerances for quality if $\pm 3 \sigma$ based on manufacturing
 
@@ -278,7 +325,7 @@ Insurance example:
 
 * Reinsurance: treaty claim reporting, coverage verification, collateralization
 
-#### Operational Risk Modeling
+### Operational Risk Modeling
 
 Operational risk manager needs to decide if risk should be transferred or retained
 
@@ -296,7 +343,7 @@ Steps for operational risk portfolio management:
 
     * Requires significant expert opinion as there are no significant amount of loss data both before and after
     
-## ERA 4.2 Strategic Risk
+## ERA 4.2 Strategic Risk Intro
 
 **Strategy**: Planning and the use of resources to achieve an organization's goals
 
@@ -310,7 +357,7 @@ Scenario planning is a key part of strategic risk management
 
 * Further step is agent based modeling where other parties reactions are also modeled
 
-### History and Definition
+## History and Definition
 
 **Strategy**
 
@@ -347,7 +394,7 @@ Definition from OCC (more like op risk):
 
 * Very similar to operation risk and not strategic risk
 
-### Research to Date
+## Research to Date
 
 * Miller
 
@@ -357,7 +404,7 @@ Definition from OCC (more like op risk):
 
 * Hertz and Thomas
 
-#### Miller
+### Miller
 
 Strategic risk: unpredictability in corporate outcomes (effects)
 
@@ -365,7 +412,7 @@ Strategic uncertainty: unpredictability of environmental and organizational vari
 
 * Our definition of risk is closer to Miller's definition of uncertainty
 
-#### Baird and Thomas
+### Baird and Thomas
 
 Definition of risk too restrictive from an 1992 old paper:
 
@@ -391,7 +438,7 @@ Elements of strategic risk:
 
 * Group/individual factors (is the leader of the group in favor of risk acceptance)
 
-#### Slywotzky and Drzik
+### Slywotzky and Drzik
 
 Table: (\#tab:era-4-2-drizk) Categories of Strategic Risk
 
@@ -405,7 +452,7 @@ Table: (\#tab:era-4-2-drizk) Categories of Strategic Risk
 | Project | Failure of R&D; IT; Business Development; M&A | High | Insurers has long history of failed mergers; Low investment in IT |
 | Stagnation | Flat or declining volume; Price declines | High | Highly correlated to the cycle; Companies will keep writing business to cover fixed expenses |
 
-#### Hertz and Thomas
+### Hertz and Thomas
 
 Risk Analysis: An input for the strategy development process, aiding strategy formulation, evaluation, choice and implementation
 
@@ -413,7 +460,7 @@ Risk Analysis: An input for the strategy development process, aiding strategy fo
 
 * Both are viewed as part of a iterative, adaptive and flexible policy dialogue process
 
-### Scenario Planning
+## Scenario Planning
 
 Effective strategic planning begins with scenario planning:
 
@@ -477,7 +524,7 @@ Plans must have enough detail to give them operational weight
 
 * Operational inertia is reduced, flexibility is built into the system
     
-### Advanced Scenario Planning & ERM
+## Advanced Scenario Planning & ERM
 
 **Model Expansion**
 
@@ -511,7 +558,7 @@ Generate stochastically simulated scenarios that have responses based on a set o
 
     * e.g. hold price, increase u/w capacity according to price adequacy levels
     
-### Agent-Based Modeling
+## Agent-Based Modeling
 
 Agents can be competitors, customers, regulators
 
