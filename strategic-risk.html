@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CAS Exam 7 Study Notes</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="CAS exam 7 study notes for 2017 Spring sitting.">
+  <meta name="generator" content="bookdown 0.3.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="CAS Exam 7 Study Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="CAS exam 7 study notes for 2017 Spring sitting." />
+  <meta name="github-repo" content="cliffordlau/Exam-7-2016-Notes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CAS Exam 7 Study Notes" />
+  
+  <meta name="twitter:description" content="CAS exam 7 study notes for 2017 Spring sitting." />
+  
+
+<meta name="author" content="Cliff Lau">
+
+
+<meta name="date" content="2017-04-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="operational-risk.html">
+<link rel="next" href="era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CAS Exam 7 Study Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="part"><span><b>I Estimation of Policy Liabilities</b></span></li>
+<li class="chapter" data-level="1" data-path="loss-development-using-credibility-e-brosius.html"><a href="loss-development-using-credibility-e-brosius.html"><i class="fa fa-check"></i><b>1</b> Loss Development Using Credibility - E. Brosius</a></li>
+<li class="chapter" data-level="2" data-path="credible-claims-reserve-the-benktander-method-t-mack.html"><a href="credible-claims-reserve-the-benktander-method-t-mack.html"><i class="fa fa-check"></i><b>2</b> Credible Claims Reserve: The Benktander Method - T. Mack</a></li>
+<li class="chapter" data-level="3" data-path="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html"><a href="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html"><i class="fa fa-check"></i><b>3</b> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</a></li>
+<li class="chapter" data-level="4" data-path="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><a href="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><i class="fa fa-check"></i><b>4</b> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</a></li>
+<li class="chapter" data-level="5" data-path="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><a href="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><i class="fa fa-check"></i><b>5</b> Testing the Assumptions of Age-to-Age Factors - G. Venter</a></li>
+<li class="chapter" data-level="6" data-path="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><a href="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach-d-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a></li>
+<li class="chapter" data-level="7" data-path="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><i class="fa fa-check"></i><b>7</b> A Model for Reserving Workers Compensation High Deductibles - J. Siewert</a></li>
+<li class="chapter" data-level="8" data-path="claims-development-by-layer-r-sahasrabuddhe.html"><a href="claims-development-by-layer-r-sahasrabuddhe.html"><i class="fa fa-check"></i><b>8</b> Claims Development by Layer - R. Sahasrabuddhe</a></li>
+<li class="chapter" data-level="9" data-path="using-the-odp-bootstrap-model-a-practitioners-guide.html"><a href="using-the-odp-bootstrap-model-a-practitioners-guide.html"><i class="fa fa-check"></i><b>9</b> Using the ODP Bootstrap Model: A Practitioner’s Guide</a></li>
+<li class="chapter" data-level="10" data-path="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall.html"><i class="fa fa-check"></i><b>10</b> Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</a></li>
+<li class="chapter" data-level="11" data-path="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html"><a href="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html"><i class="fa fa-check"></i><b>11</b> Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer</a></li>
+<li class="chapter" data-level="12" data-path="a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><a href="a-framework-for-assessing-risk-margins-k-marshall-et-al-.html"><i class="fa fa-check"></i><b>12</b> A Framework for Assessing Risk Margins - K. Marshall et al.</a></li>
+<li class="chapter" data-level="13" data-path="reinsurance-loss-reserving-patrik.html"><a href="reinsurance-loss-reserving-patrik.html"><i class="fa fa-check"></i><b>13</b> Reinsurance Loss Reserving - Patrik</a></li>
+<li class="chapter" data-level="14" data-path="estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><a href="estimating-the-premium-asset-on-retrospectively-rate-policies-m-teng-and-m-perkins.html"><i class="fa fa-check"></i><b>14</b> Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins</a></li>
+<li class="part"><span><b>II Insurance Company Valuation</b></span></li>
+<li class="chapter" data-level="15" data-path="pc-insurance-company-valuation-r-goldfarb.html"><a href="pc-insurance-company-valuation-r-goldfarb.html"><i class="fa fa-check"></i><b>15</b> P&amp;C Insurance Company Valuation - R. Goldfarb</a></li>
+<li class="part"><span><b>III Enterprise Risk Management</b></span></li>
+<li class="chapter" data-level="16" data-path="era-1-1-1-3-introduction-brehm-et-al-.html"><a href="era-1-1-1-3-introduction-brehm-et-al-.html"><i class="fa fa-check"></i><b>16</b> ERA 1.1 - 1.3 Introduction - Brehm, et al.</a></li>
+<li class="chapter" data-level="17" data-path="era-2-1-corporate-decision-making-using-an-enterprise-risk-model-don-mango.html"><a href="era-2-1-corporate-decision-making-using-an-enterprise-risk-model-don-mango.html"><i class="fa fa-check"></i><b>17</b> ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango</a></li>
+<li class="chapter" data-level="18" data-path="era-2-2-risk-measures-and-capital-allocation-g-venter.html"><a href="era-2-2-risk-measures-and-capital-allocation-g-venter.html"><i class="fa fa-check"></i><b>18</b> ERA 2.2 Risk Measures and Capital Allocation - G. Venter</a></li>
+<li class="chapter" data-level="19" data-path="era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><a href="era-2-3-regulatory-and-rating-agency-capital-adequacy-models-witcraft.html"><i class="fa fa-check"></i><b>19</b> ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft</a></li>
+<li class="chapter" data-level="20" data-path="era-2-4-asset-liability-management-brehm.html"><a href="era-2-4-asset-liability-management-brehm.html"><i class="fa fa-check"></i><b>20</b> ERA 2.4 Asset-Liability Management - Brehm</a></li>
+<li class="chapter" data-level="21" data-path="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><a href="era-2-5-measuring-value-in-reinsurance-venter-gluck-brehm.html"><i class="fa fa-check"></i><b>21</b> ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</a></li>
+<li class="chapter" data-level="22" data-path="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><a href="era-3-1-considerations-on-implementing-internal-risk-model-mango.html"><i class="fa fa-check"></i><b>22</b> ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</a></li>
+<li class="chapter" data-level="23" data-path="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><a href="era-3-2-modeling-parameter-uncertainty-venter-gluck.html"><i class="fa fa-check"></i><b>23</b> ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</a></li>
+<li class="chapter" data-level="24" data-path="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><a href="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html"><i class="fa fa-check"></i><b>24</b> ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</a></li>
+<li class="chapter" data-level="25" data-path="era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html"><a href="era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html"><i class="fa fa-check"></i><b>25</b> ERA 4.1 &amp; 4.2 Operational and Strategic Risk - D. Mango, G. Venter</a><ul>
+<li class="chapter" data-level="25.1" data-path="operational-risk.html"><a href="operational-risk.html"><i class="fa fa-check"></i><b>25.1</b> 4.1 Operational Risk</a><ul>
+<li class="chapter" data-level="25.1.1" data-path="operational-risk.html"><a href="operational-risk.html#operational-risk-to-insurers"><i class="fa fa-check"></i><b>25.1.1</b> Operational Risk to Insurers</a></li>
+<li class="chapter" data-level="25.1.2" data-path="operational-risk.html"><a href="operational-risk.html#insurer-op-risk-plan-loss-ratios"><i class="fa fa-check"></i><b>25.1.2</b> Insurer Op Risk: Plan Loss Ratios</a></li>
+<li class="chapter" data-level="25.1.3" data-path="operational-risk.html"><a href="operational-risk.html#insurer-op-risk-cycle-management"><i class="fa fa-check"></i><b>25.1.3</b> Insurer Op Risk: Cycle Management</a></li>
+<li class="chapter" data-level="25.1.4" data-path="operational-risk.html"><a href="operational-risk.html#additional-perspectives"><i class="fa fa-check"></i><b>25.1.4</b> Additional Perspectives</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="strategic-risk.html"><a href="strategic-risk.html"><i class="fa fa-check"></i><b>25.2</b> 4.2 Strategic Risk</a><ul>
+<li class="chapter" data-level="25.2.1" data-path="strategic-risk.html"><a href="strategic-risk.html#history-and-definition"><i class="fa fa-check"></i><b>25.2.1</b> History and Definition</a></li>
+<li class="chapter" data-level="25.2.2" data-path="strategic-risk.html"><a href="strategic-risk.html#research-to-date"><i class="fa fa-check"></i><b>25.2.2</b> Research to Date</a></li>
+<li class="chapter" data-level="25.2.3" data-path="strategic-risk.html"><a href="strategic-risk.html#scenario-planning"><i class="fa fa-check"></i><b>25.2.3</b> Scenario Planning</a></li>
+<li class="chapter" data-level="25.2.4" data-path="strategic-risk.html"><a href="strategic-risk.html#advanced-scenario-planning-erm"><i class="fa fa-check"></i><b>25.2.4</b> Advanced Scenario Planning &amp; ERM</a></li>
+<li class="chapter" data-level="25.2.5" data-path="strategic-risk.html"><a href="strategic-risk.html#agent-based-modeling"><i class="fa fa-check"></i><b>25.2.5</b> Agent-Based Modeling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><a href="era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><i class="fa fa-check"></i><b>26</b> ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major</a></li>
+<li class="part"><span><b>IV Overall Summary</b></span></li>
+<li class="chapter" data-level="27" data-path="exam-7-2016-overall-summary.html"><a href="exam-7-2016-overall-summary.html"><i class="fa fa-check"></i><b>27</b> Exam 7 2016 Overall Summary</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAS Exam 7 Study Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="strategic-risk" class="section level2">
+<h2><span class="header-section-number">25.2</span> 4.2 Strategic Risk</h2>
+<p><strong>Strategy</strong>: Planning and the use of resources to achieve an organization’s goals</p>
+<p><strong>Strategic risk</strong>: Intentional risk taking to achieve an organization’s goals</p>
+<p>Scenario planning is a key part of strategic risk management</p>
+<ul>
+<li><p>Think through the possible scenarios the firm could find itself in and to plan responses to those scenarios</p></li>
+<li><p>Advanced scenario planning incorporates several LoBs and indcludes dependencies among the LoBs</p></li>
+<li><p>Further step is agent based modeling where other parties reactions are also modeled</p></li>
+</ul>
+<div id="history-and-definition" class="section level3">
+<h3><span class="header-section-number">25.2.1</span> History and Definition</h3>
+<p><strong>Strategy</strong></p>
+<p><em>Definition</em> from Mango:</p>
+<ul>
+<li>Science and art of planning</li>
+<li>Using political, psychological, and organizational resources</li>
+<li>To achieve major organizational goals</li>
+</ul>
+<p><em>Definition</em> from GIRO:</p>
+<ul>
+<li>A strategy is a long term series of actions designed to take a company from its current state to its desired future state, and aim to provide a sustainable competitive advantage over other companies in the same market</li>
+</ul>
+<p>Strategy in NOT (from GIRO):</p>
+<ul>
+<li>Business planning, strategy considers a wider breadth of issues such as the market, and where the company sits</li>
+<li>Tactics, as these are short term</li>
+</ul>
+<hr />
+<p><strong>Strategic Risk</strong></p>
+<p>Definition (unclear, but can be interpreted as):</p>
+<ul>
+<li>Intentional risk taking</li>
+<li>Unintentional risk as by-products of strategy planning or execution</li>
+</ul>
+<p>Definition from OCC (more like op risk):</p>
+<ul>
+<li><p>Strategic risk is the risk to earnings or capital arising from averse business decisions or improper implementation of those decisions. … Its focus is on how plans, systems and implementation affect the franchise value</p></li>
+<li><p>Very similar to operation risk and not strategic risk</p></li>
+</ul>
+</div>
+<div id="research-to-date" class="section level3 tabset">
+<h3><span class="header-section-number">25.2.2</span> Research to Date</h3>
+<div id="miller" class="section level4">
+<h4><span class="header-section-number">25.2.2.1</span> Miller</h4>
+<p>Strategic risk: unpredictability in corporate outcomes (effects)</p>
+<p>Strategic uncertainty: unpredictability of environmental and organizational variables that impact corporate performance (sources)</p>
+<ul>
+<li>Our definition of risk is closer to Miller’s definition of uncertainty</li>
+</ul>
+</div>
+<div id="baird-and-thomas" class="section level4">
+<h4><span class="header-section-number">25.2.2.2</span> Baird and Thomas</h4>
+<p>Definition of risk too restrictive from an 1992 old paper:</p>
+<ul>
+<li>Risk: A condition in which the consequences of a decision and the probabilities associated with the consequences are know entities</li>
+</ul>
+<p>Baird and Thomas strategic risk definition (very broad):</p>
+<ul>
+<li>Corporate strategic moves which cause returns to vary, which involve venturing into the unknown, which may result in corporate ruin, where outcomes and probabilities maybe only be partially known and where hard to define goals may not be met</li>
+</ul>
+<p>Elements of strategic risk:</p>
+<ul>
+<li>Voluntariness of exposure (Choose risk because potential benefits are larger than consequences)</li>
+<li>Controllability of consequences (outcomes can be contained)</li>
+<li>Discounting in time (ability to delay consequences)</li>
+<li>Discounting in space (ability to shift risks to competitors)</li>
+<li>Knowledge of risky situation</li>
+<li>Magnitude of impact</li>
+<li>Group/individual factors (is the leader of the group in favor of risk acceptance)</li>
+</ul>
+</div>
+<div id="slywotzky-and-drzik" class="section level4">
+<h4><span class="header-section-number">25.2.2.3</span> Slywotzky and Drzik</h4>
+<p>Categorize strategic risk</p>
+<table style="width:85%;">
+<colgroup>
+<col width="15%" />
+<col width="30%" />
+<col width="5%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Risk</th>
+<th>Examples</th>
+<th>Magnitude</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Industry</td>
+<td>Capital Intensive; Overcapacity; Accommodation</td>
+<td>Very High</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Technology</td>
+<td>Shift; Patents; Obsolescence</td>
+<td>Low</td>
+<td>Possibly innovation in dist<sup>n</sup></td>
+</tr>
+<tr class="odd">
+<td>Brand</td>
+<td>Erosion; Collapse</td>
+<td>Moderate</td>
+<td>Reputation for fair claims handling</td>
+</tr>
+<tr class="even">
+<td>Competitor</td>
+<td>Global Rivals; Unique Competitors</td>
+<td>Moderate</td>
+<td>Predatory pricing from competitors</td>
+</tr>
+<tr class="odd">
+<td>Customer</td>
+<td>Priority Shift; Power; Concentration</td>
+<td>Moderate</td>
+<td>Bigger issue for large commercial insurance</td>
+</tr>
+<tr class="even">
+<td>Project</td>
+<td>Failure of R&amp;D; IT; Business Development; M&amp;A</td>
+<td>High</td>
+<td>Insurers has long history of failed mergers; Low investment in IT</td>
+</tr>
+<tr class="odd">
+<td>Stagnation</td>
+<td>Flat or declining volume; Price declines</td>
+<td>High</td>
+<td>Highly correlated to the cycle; Companies will keep writing business to cover fixed expenses</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hertz-and-thomas" class="section level4">
+<h4><span class="header-section-number">25.2.2.4</span> Hertz and Thomas</h4>
+<p>Risk Analysis: An input for the strategy development process, aiding strategy formulation, evaluation, choice and implementation</p>
+<ul>
+<li><p>No distinction is drawn between strategic risk analysis and strategy formulation</p></li>
+<li><p>Both are viewed as part of a iterative, adaptive and flexible policy dialogue process</p></li>
+</ul>
+</div>
+</div>
+<div id="scenario-planning" class="section level3">
+<h3><span class="header-section-number">25.2.3</span> Scenario Planning</h3>
+<p>Effective strategic planning begins with scenario planning:</p>
+<ul>
+<li>Limited # of scenarios: each tells a story of how elements may interact with each other under different conditions</li>
+<li>Test for internal consistency and plausibility</li>
+<li>Explore joint impact of several variables and change multiple variables at one time</li>
+<li>Include subjective interpretation of factors that cannot be explicitly modeled</li>
+<li>Attempts to capture the richness of range of possibilities <span class="math inline">\(\Rightarrow\)</span> Lead the makers to consider changes they might otherwise ignore</li>
+</ul>
+<p><a name="for scenario planning"></a> Key Steps in Scenario Planning Process:</p>
+<ol style="list-style-type: decimal">
+<li>Define <strong>scope</strong>: time frame, geography, market segment</li>
+<li>Identify major <strong>stakeholders</strong>: employees, owners, regulators, customers, competitors, suppliers</li>
+<li>Identify basic <strong>trends</strong>: their influence on organization</li>
+<li>Identify key <strong>uncertainties</strong>: leverage points of impact</li>
+<li>Construct <strong>initial scenario</strong> theme</li>
+<li>Check for <strong>consistency</strong> and <strong>plausibility</strong>: outcomes fit together?</li>
+<li>Develop <strong>learning scenarios</strong>: identify themes and naming scenarios</li>
+<li>Identify <strong>research needs</strong>: areas that need additional research</li>
+<li>Develop <strong>quantitative models</strong>: formalize some interactions in a quantitative model?</li>
+<li>Evolve toward <strong>decision scenarios</strong>: iterative process of reviewing scenarios with the goal of converging to test scenarios and generate new ideas</li>
+</ol>
+<div id="insurance-example" class="section level4">
+<h4><span class="header-section-number">25.2.3.1</span> Insurance Example</h4>
+<p>Scenarios will be less detailed than a typical strategy or plan document</p>
+<p>Traditional unilateral planning approach:<br />
+Set planned premium and ELR based on current year LR, price trend, and loss trend</p>
+<ul>
+<li>Caveat: Not thinking through the possibility of a possible price decrease, where they might want to reduce premium volume instead of the inflexibility of making the planned premium volume</li>
+</ul>
+<p><strong>Scenario planning</strong>:<br />
+Allow u/w-ers to be flexible in their approach in the case prices are not as expected</p>
+<p>Must decide ahead of time:</p>
+<ul>
+<li>Range of scenarios</li>
+<li>Responses to those scenarios</li>
+</ul>
+<p>Plans must have enough detail to give them operational weight</p>
+<p><a name="scen-adv"></a> <strong>Advantages</strong>:</p>
+<ul>
+<li>Thinks through responses beforehand and can agree on best response ahead of time</li>
+<li>Saves time during a crisis</li>
+<li>Operational inertia is reduced, flexibility is built into the system</li>
+</ul>
+</div>
+</div>
+<div id="advanced-scenario-planning-erm" class="section level3">
+<h3><span class="header-section-number">25.2.4</span> Advanced Scenario Planning &amp; ERM</h3>
+<p><strong>Model Expansion</strong></p>
+<ul>
+<li>Expend into several LoBs</li>
+<li>Internal consistency requires coordination</li>
+<li>Need to model dependencies</li>
+<li>Responses will be politically charged, as limited u/w capacity must be allocated across the company
+<ul>
+<li>Better to do this during planning than in the heat of a market crisis</li>
+</ul></li>
+</ul>
+<p><strong>Stochastic Scenario Planning</strong></p>
+<p>Generate stochastically simulated scenarios that have responses based on a set of rules</p>
+<ol style="list-style-type: decimal">
+<li><p>Need to define goals</p>
+<ul>
+<li>e.g. profit or premium level etc</li>
+</ul></li>
+<li><p>Need to have downside constraints</p>
+<ul>
+<li>e.g. capital loss of x% with y% probability</li>
+</ul></li>
+<li><p>Need to determine the estimate environmental variables that define the state of the world</p>
+<ul>
+<li>e.g. size of market, price level, current market share, etc</li>
+</ul></li>
+<li><p>Define action rules that respond to environmental variables</p>
+<ul>
+<li>e.g. hold price, increase u/w capacity according to price adequacy levels</li>
+</ul></li>
+</ol>
+</div>
+<div id="agent-based-modeling" class="section level3">
+<h3><span class="header-section-number">25.2.5</span> Agent-Based Modeling</h3>
+<p>Agents can be competitors, customers, regulators</p>
+<p>Program each agent to respond to the state of the market</p>
+<ul>
+<li>Chase market share, focus on technical price, customer may reduce coverage if prices are high, etc</li>
+</ul>
+<p>Creates a complex system with emergent properties that describe the behavior of agents</p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="operational-risk.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/25-ERA-4.1-4.2.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
