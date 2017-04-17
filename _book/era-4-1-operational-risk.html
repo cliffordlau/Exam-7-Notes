@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html">
-<link rel="next" href="era-4-1-operational-risk.html">
+<link rel="prev" href="era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html">
+<link rel="next" href="era-4-2-strategic-risk.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,46 +135,222 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="era-4.1-4.2-operational-and-strategic-risk---d.-mango-g.-venter" class="section level1">
-<h1><span class="header-section-number">Chapter 25</span> ERA 4.1 &amp; 4.2 Operational and Strategic Risk - D. Mango, G. Venter</h1>
-<p><strong><em>Op risk</em></strong></p>
-<p>The risk of loss resulting from inadequate or failed internal process, people, and systems or from external events</p>
-<p><a href="#op-risk-type">Types</a> of operational risk</p>
-<p>Underlying cause of insurer failure can be op risk even though if the surface cause is reserving or under pricing</p>
-<p>Plan loss ratio example hows how optimistic loss ratio propagates forward</p>
+<div id="era-4.1-operational-risk" class="section level2">
+<h2><span class="header-section-number">25.1</span> ERA 4.1 Operational Risk</h2>
+<p>Important cause of insurer insolvency <span class="math inline">\(\Rightarrow\)</span> Need to be aware and attempt to measure</p>
+<p><strong>Definition from Basel</strong>:<br />
+The risk of loss resulting from inadequate or failed internal process, people, and systems or from external events</p>
 <ul>
-<li>3 different reasons why the planned LR didn’t work and only 1 of them is truely insurance risk</li>
+<li>Include legal risk but exclude strategic and reputation risk</li>
 </ul>
-<p><a href="era-4-1-operational-risk.html#era-cycle-mgmt">Cycle management</a></p>
+<p><strong>7 Types of Operational Risk Defined by Basel Committee</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Internal fraud</p></li>
+<li><p>External fraud</p></li>
+<li><p>Employment practices and workplace safety</p></li>
+<li><p>Clients, products and business practices</p></li>
+<li><p>Damage to physical assets</p></li>
+<li><p>Business disruption and system failures</p></li>
+<li><p>Execution, delivery and process management</p></li>
+</ol>
+<p>Still no consensus on how to define op risk</p>
+<p>Could include reputational and strategic risk, but as long as it is considered it is fine</p>
+<p>Understanding of op risk is in its infancy especially with quantitative modeling</p>
 <ul>
-<li><a href="era-4-1-operational-risk.html#era-4-CM">IP, u/w incentives, market overreaction, owner education</a></li>
+<li>Do not lose sight of op risk despite it is soft, difficult, poorly understood and lack historical track record</li>
 </ul>
-<p>6 <a href="era-4-1-operational-risk.html#add-pers-era-4-1">Additional persepctives</a></p>
-<p><strong><em>Strategic risk</em></strong></p>
-<p>Various definition of strategic risk, no one clear definition, some overlaps with op risk</p>
-<p>Various research to date</p>
+<div id="operational-risk-to-insurers" class="section level3">
+<h3><span class="header-section-number">25.1.1</span> Operational Risk to Insurers</h3>
+<p>Study show that insurer failure are mostly attributed to under reserving and under pricing</p>
+<p>That is factually accurate, however in many case the underlying cause was actually operational risk</p>
 <ul>
-<li><p>Elements of strategic risk from Baird and Thomas</p></li>
-<li><p>Category of strategic risk from slywotzky and drzik</p></li>
+<li><p>e.g. Over accumulation of risk exposure (insufficient initial reserving or premature reserve release) and maybe just overly optimistic plan loss ratios</p></li>
+<li><p>Capital charges for premium, reserve, and growth are partially proxies for operational risk</p></li>
 </ul>
-<p>Scenario planning and the 10 <a href="#scen-step">Steps</a></p>
+<p>Clear that op risk have heavily contributed to insurance impairments and should be explicitly model</p>
+</div>
+<div id="insurer-op-risk-plan-loss-ratios" class="section level3">
+<h3><span class="header-section-number">25.1.2</span> Insurer Op Risk: Plan Loss Ratios</h3>
+<p>Mostly impact long tailed LoBs (50% @ 5yrs, 90% @ 10yrs)</p>
+<p>Optimistic loss ratio propagates forward</p>
 <ul>
-<li>Look at the insurance example and the <a href="#scen-adv">advantages</a> of scneario planning</li>
+<li><p>Optimistic LR for older years lead to optimistic LR for th recent years</p></li>
+<li><p>Since the ELR is based on older years experience that might be too low, the planned LR is too low as well</p></li>
 </ul>
-<p>Advance scenario planning</p>
+<p>As the older years losses develop higher than expected <span class="math inline">\(\Rightarrow\)</span> increase in reserves for all years, and can lead to:</p>
 <ul>
-<li><p>Expend to several LoBs with dependencies</p></li>
-<li><p>Stochastic</p></li>
-<li><p>Agent based modeling (competitors, customers, regulators)</p></li>
-</ul> 
+<li><p>Rating downgrade</p></li>
+<li><p>Downgrade of claims paying ability</p></li>
+<li><p>Massive non-renewals</p></li>
+<li><p>No new business</p></li>
+<li><p>Eventual runoff</p></li>
+</ul>
+<p>Three reasons why the planned LR did not work</p>
+<ol style="list-style-type: decimal">
+<li><p>Model unable to forecast accurate LR</p>
+<ul>
+<li><p>If the market and other carriers did fine, then the model was effective</p></li>
+<li><p>Planning system did not deliver accurate LR, therefore op risk</p></li>
+<li><p>Unless everyone else failed to price properly, like asbestos</p></li>
+</ul></li>
+<li><p>Model was able to forecast accurate LR but was improperly used</p>
+<ul>
+<li>Op risk: What checks were there to be sure the model was used correctly?</li>
+</ul></li>
+<li><p>Model did accurately forecast the LR but indications were unpopular so ignored</p>
+<ul>
+<li>Op risk: What governance should be there around management’s decisions</li>
+</ul></li>
+</ol>
+</div>
+<div id="era-cycle-mgmt" class="section level3">
+<h3><span class="header-section-number">25.1.3</span> Insurer Op Risk: Cycle Management</h3>
+<p><strong>Cycle management</strong>:<br />
+Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle</p>
+<ul>
+<li>Simply maintaining market share during soft markets increases the likelihood of impairment</li>
+</ul>
+<p>3 questions to ask:</p>
+<ol style="list-style-type: decimal">
+<li><p>Does the company have or need a proactive cycle management strategy</p></li>
+<li><p>Does the company know where in the cycle the market stands</p></li>
+<li><p>Are u/w-ers making decisions that are consistent with (1) and (2)</p></li>
+</ol>
+<div id="system-performance-perspective" class="section level4">
+<h4><span class="header-section-number">25.1.3.1</span> System Performance Perspective</h4>
+<p>From a system performance perspective, company needs to be:</p>
+<ul>
+<li><p>Stable, available, reliable, and affordable</p></li>
+<li><p>Downgrade impacts the first 2 (stability, availability)</p></li>
+<li><p>Insolvent impacts the last 2 (reliability, affordability)</p></li>
+</ul>
+</div>
+<div id="era-4-CM" class="section level4">
+<h4><span class="header-section-number">25.1.3.2</span> Cycle Management</h4>
+<p>Areas impact by implementing cycle management:</p>
+<ul>
+<li>Planning, u/w, objective setting, incentive bonus</li>
+</ul>
+<p>Focus on the following to achieve meaningful process improvements:</p>
+<p><strong>Intellectual Property</strong></p>
+<p>Intangible and are time consuming to build but easy to destroy</p>
+<ul>
+<li>Experts in u/w, claims, finance, actuarial</li>
+<li>P/h info database</li>
+<li>Forecasting systems</li>
+<li>Market relationship</li>
+<li>Reputation</li>
+</ul>
+<p>Focus on retaining these core assets through cycle:</p>
+<ul>
+<li>Retain top talent, grow and develop their skills</li>
+<li>Maintain presence in core market channels</li>
+<li>Maintain consistent pattern of investment in IT and systems</li>
+</ul>
+<hr />
+<p><strong>Underwriter Incentives</strong></p>
+<p>Bonus should be based on u/w-er supporting the portfolio goals, which may include writing less business, and they should know that it won’t affect employment and bonus</p>
+<hr />
+<p><strong>Market Overreaction</strong></p>
+<p>Companies tend to overreact, taking prices too low and too high</p>
+<p>Companies with most capital during price-improvement phase will reap windfall profits, which will more than offset many years of small u/w losses</p>
+<hr />
+<p><strong>Owner Education</strong></p>
+<p>Owner/shareholders need to understand that some financial figures will be out of step with the market and does not appear healthy during soft markets:</p>
+<ul>
+<li>Premium volume <span class="math inline">\(\downarrow\)</span></li>
+<li>Overhead expense ratio to premium <span class="math inline">\(\uparrow\)</span></li>
+</ul>
+</div>
+</div>
+<div id="add-pers-era-4-1" class="section level3">
+<h3><span class="header-section-number">25.1.4</span> Additional Perspectives</h3>
+<div id="agency-theory-perespective" class="section level4">
+<h4><span class="header-section-number">25.1.4.1</span> Agency Theory Perespective</h4>
+<p>Incentives of managers and u/w-ers of the firm are not always aligned with shareholders</p>
+<p>Rather than try to fund for this op risk, better to understand it:</p>
+<ul>
+<li><p>Giving management equity stakes <span class="math inline">\(\xrightarrow{\text{Caveat}}\)</span> Manager too aggressive taking on more risk</p></li>
+<li><p>Equity is a large portion of management’s net worth <span class="math inline">\(\xrightarrow{\text{Caveat}}\)</span> Too risk adverse</p></li>
+<li><p>Production incentives for u/w-ers <span class="math inline">\(\xrightarrow{\text{Caveat}}\)</span> Sloppy u/w-ing or mispricing</p></li>
+</ul>
+</div>
+<div id="operational-risk-management-in-banking-and-manufacturing" class="section level4">
+<h4><span class="header-section-number">25.1.4.2</span> Operational Risk Management in Banking and Manufacturing</h4>
+<p>Risks that are common to all business</p>
+<ul>
+<li><p>Pension funding</p></li>
+<li><p>IT failure</p></li>
+<li><p>Other HR risks (loss of important staff, misdesign of comp program)</p></li>
+<li><p>Reputation risk</p></li>
+<li><p>Lawsuits</p></li>
+</ul>
+</div>
+<div id="control-self-assessment-csa" class="section level4">
+<h4><span class="header-section-number">25.1.4.3</span> Control Self-Assessment (CSA)</h4>
+<p><strong>Definition</strong> from Institute of Internal Auditors<br />
+A process through which internal control effectiveness is examined and assessed. The objective is to provide reasonable assurance that all business objectives will be met</p>
+<p>Objectives of internal control</p>
+<ul>
+<li><p>Reliability and integrity of information</p></li>
+<li><p>Compliance with policies, laws and regulations</p></li>
+<li><p>Safeguarding assets</p></li>
+<li><p>Economical and efficient use of resources</p></li>
+<li><p>Accomplishment of objectives and goals for operations or programs</p></li>
+</ul>
+</div>
+<div id="key-risk-indications-kris" class="section level4">
+<h4><span class="header-section-number">25.1.4.4</span> Key Risk Indications (KRIs)</h4>
+<p>Broad category of measures that monitor the activities and status of the control environment of an operational risk category</p>
+<ul>
+<li><p>Measured frequently</p></li>
+<li><p>Have threshold that lead to escalation</p></li>
+</ul>
+<p>Possible KRIs</p>
+<ul>
+<li><p>Production: retention ratio, rate/exposure</p></li>
+<li><p>Internal controls: audit results and frequency</p></li>
+<li><p>Staffing: turnover rate, premium/employee, training budget</p></li>
+<li><p>Claims: freq, sev</p></li>
+</ul>
+</div>
+<div id="six-sigma" class="section level4">
+<h4><span class="header-section-number">25.1.4.5</span> Six Sigma</h4>
+<p>Tolerances for quality if <span class="math inline">\(\pm 3 \sigma\)</span> based on manufacturing</p>
+<p>Applied in process improvement or predictive design of processes</p>
+<p>Useful in high volume processing</p>
+<p>Help identify and eliminate: inefficiencies, errors, overlaps, gaps in communication and coordination</p>
+<p>Insurance example:</p>
+<ul>
+<li><p>U/w-ing: exposure data verification, exposure data capture, classification</p></li>
+<li><p>Claims: coverage verification</p></li>
+<li><p>Reinsurance: treaty claim reporting, coverage verification, collateralization</p></li>
+</ul>
+</div>
+<div id="operational-risk-modeling" class="section level4">
+<h4><span class="header-section-number">25.1.4.6</span> Operational Risk Modeling</h4>
+<p>Operational risk manager needs to decide if risk should be transferred or retained</p>
+<p>Steps for operational risk portfolio management:</p>
+<ol style="list-style-type: decimal">
+<li><p>Identify exposure base for each risk source (premium, headcount, payroll)</p></li>
+<li><p>Measure the exposure level for each BU and risk source</p></li>
+<li><p>Estimate the loss potential per exposure for each op risk</p></li>
+<li><p>Step 2 + 3 = loss dist<sup>n</sup> for each BU</p></li>
+<li><p>Estimate the impact of mitigation, process improvements, or risk transfer</p>
+<ul>
+<li>Requires significant expert opinion as there are no significant amount of loss data both before and after</li>
+</ul></li>
+</ol>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era-3-3-modeling-and-dependency-correlations-and-copulas-g-venter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="era-4-1-operational-risk.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="era-4-1-4-2-operational-and-strategic-risk-d-mango-g-venter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="era-4-2-strategic-risk.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

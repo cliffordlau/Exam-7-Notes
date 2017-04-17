@@ -1,6 +1,6 @@
 # ERA 4.1 & 4.2 Operational and Strategic Risk - D. Mango, G. Venter
 
-### Op risk
+***Op risk***
 
 The risk of loss resulting from inadequate or failed internal process, people, and systems or from external events
 
@@ -12,19 +12,20 @@ Plan loss ratio example hows how optimistic loss ratio propagates forward
 
 * 3 different reasons why the planned LR didn't work and only 1 of them is truely insurance risk
 
-[Cycle management](#cycle-mgmt)
+[Cycle management](#era-cycle-mgmt)
 
-* [IP, u/w incentives, market overreaction, owner education](#4-CM)
+* [IP, u/w incentives, market overreaction, owner education](#era-4-CM)
 
-6 [Additional persepctives](#add-pers)
+6 [Additional persepctives](#add-pers-era-4-1)
 
-### Strategic risk
+***Strategic risk***
 
 Various definition of strategic risk, no one clear definition, some overlaps with op risk
 
 Various research to date
 
 * Elements of strategic risk from Baird and Thomas
+
 * Category of strategic risk from slywotzky and drzik
 
 Scenario planning and the 10 [Steps](#scen-step)
@@ -34,10 +35,12 @@ Scenario planning and the 10 [Steps](#scen-step)
 Advance scenario planning
 
 * Expend to several LoBs with dependencies
+
 * Stochastic
+
 * Agent based modeling (competitors, customers, regulators)
 
-## 4.1 Operational Risk
+## ERA 4.1 Operational Risk
 
 Important cause of insurer insolvency $\Rightarrow$ Need to be aware and attempt to measure
 
@@ -46,17 +49,21 @@ The risk of loss resulting from inadequate or failed internal process, people, a
 
 * Include legal risk but exclude strategic and reputation risk
 
-<a name="op-risk-type"></a> **7 Types of Operational Risk Defined by Basel Committee**
+**7 Types of Operational Risk Defined by Basel Committee**
 
 1) Internal fraud
-2) External fraud
-3) Employment practices and workplace safety
-4) Clients, products and business practices
-5) Damage to physical assets
-6) Business disruption and system failures
-7) Execution, delivery and process management
 
-***
+2) External fraud
+
+3) Employment practices and workplace safety
+
+4) Clients, products and business practices
+
+5) Damage to physical assets
+
+6) Business disruption and system failures
+
+7) Execution, delivery and process management
 
 Still no consensus on how to define op risk
 
@@ -91,9 +98,13 @@ Optimistic loss ratio propagates forward
 As the older years losses develop higher than expected $\Rightarrow$ increase in reserves for all years, and can lead to:
 
 * Rating downgrade
+
 * Downgrade of claims paying ability
+
 * Massive non-renewals
+
 * No new business
+
 * Eventual runoff
 
 Three reasons why the planned LR did not work
@@ -114,9 +125,9 @@ Three reasons why the planned LR did not work
 
     * Op risk: What governance should be there around management's decisions
     
-### Insurer Op Risk: Cycle Management
+### Insurer Op Risk: Cycle Management {#era-cycle-mgmt}
 
-<a name="cycle-mgmt"></a> **Cycle management**:  
+**Cycle management**:  
 Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
 
 * Simply maintaining market share during soft markets increases the likelihood of impairment
@@ -124,7 +135,9 @@ Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
 3 questions to ask:
 
 1) Does the company have or need a proactive cycle management strategy
+
 2) Does the company know where in the cycle the market stands
+
 3) Are u/w-ers making decisions that are consistent with (1) and (2)
 
 #### System Performance Perspective
@@ -132,12 +145,12 @@ Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
 From a system performance perspective, company needs to be:
 
 * Stable, available, reliable, and affordable
+
 * Downgrade impacts the first 2 (stability, availability)
+
 * Insolvent impacts the last 2 (reliability, affordability)
 
-#### Cycle Management
-
-<a name="4-CM"></a>
+#### Cycle Management {#era-4-CM}
 
 Areas impact by implementing cycle management:
 
@@ -184,9 +197,7 @@ Owner/shareholders need to understand that some financial figures will be out of
 * Premium volume $\downarrow$
 * Overhead expense ratio to premium $\uparrow$
 
-### Additional Perspectives {.tabset}
-
-<a name="add-pers"></a>
+### Additional Perspectives {#add-pers-era-4-1}
 
 #### Agency Theory Perespective
 
@@ -205,9 +216,13 @@ Rather than try to fund for this op risk, better to understand it:
 Risks that are common to all business
 
 * Pension funding
+
 * IT failure
+
 * Other HR risks (loss of important staff, misdesign of comp program)
+
 * Reputation risk
+
 * Lawsuits
 
 #### Control Self-Assessment (CSA)
@@ -218,9 +233,13 @@ A process through which internal control effectiveness is examined and assessed.
 Objectives of internal control
 
 * Reliability and integrity of information
+
 * Compliance with policies, laws and regulations
+
 * Safeguarding assets
+
 * Economical and efficient use of resources
+
 * Accomplishment of objectives and goals for operations or programs
 
 #### Key Risk Indications (KRIs)
@@ -228,13 +247,17 @@ Objectives of internal control
 Broad category of measures that monitor the activities and status of the control environment of an operational risk category
 
 * Measured frequently
+
 * Have threshold that lead to escalation
 
 Possible KRIs
 
 * Production: retention ratio, rate/exposure
+
 * Internal controls: audit results and frequency
+
 * Staffing: turnover rate, premium/employee, training budget
+
 * Claims: freq, sev
 
 #### Six Sigma
@@ -273,7 +296,7 @@ Steps for operational risk portfolio management:
 
     * Requires significant expert opinion as there are no significant amount of loss data both before and after
     
-## 4.2 Strategic Risk
+## ERA 4.2 Strategic Risk
 
 **Strategy**: Planning and the use of resources to achieve an organization's goals
 
@@ -294,7 +317,9 @@ Scenario planning is a key part of strategic risk management
 *Definition* from Mango:
 
 * Science and art of planning
+
 * Using political, psychological, and organizational resources
+
 * To achieve major organizational goals
 
 *Definition* from GIRO:
@@ -313,6 +338,7 @@ Strategy in NOT (from GIRO):
 Definition (unclear, but can be interpreted as):
 
 * Intentional risk taking
+
 * Unintentional risk as by-products of strategy planning or execution
 
 Definition from OCC (more like op risk):
@@ -321,7 +347,15 @@ Definition from OCC (more like op risk):
 
 * Very similar to operation risk and not strategic risk
 
-### Research to Date {.tabset}
+### Research to Date
+
+* Miller
+
+* Baird and Thomas
+
+* Slywotzky and Drzik
+
+* Hertz and Thomas
 
 #### Miller
 
@@ -344,16 +378,22 @@ Baird and Thomas strategic risk definition (very broad):
 Elements of strategic risk:
 
 * Voluntariness of exposure (Choose risk because potential benefits are larger than consequences)
+
 * Controllability of consequences (outcomes can be contained)
+
 * Discounting in time (ability to delay consequences)
+
 * Discounting in space (ability to shift risks to competitors)
+
 * Knowledge of risky situation
+
 * Magnitude of impact
+
 * Group/individual factors (is the leader of the group in favor of risk acceptance)
 
 #### Slywotzky and Drzik
 
-Categorize strategic risk
+Table: (\#tab:era-4-2-drizk) Categories of Strategic Risk
 
 | Risk | Examples | Magnitude | Comments |
 | ---------- | --------------------- | --- | ----------------------- |
@@ -378,22 +418,35 @@ Risk Analysis: An input for the strategy development process, aiding strategy fo
 Effective strategic planning begins with scenario planning:
 
 * Limited # of scenarios: each tells a story of how elements may interact with each other under different conditions
+
 * Test for internal consistency and plausibility
+
 * Explore joint impact of several variables and change multiple variables at one time
+
 * Include subjective interpretation of factors that cannot be explicitly modeled
+
 * Attempts to capture the richness of range of possibilities $\Rightarrow$ Lead the makers to consider changes they might otherwise ignore
 
-<a name="for scenario planning"></a> Key Steps in Scenario Planning Process:
+#### Key Steps in Scenario Planning Process:
 
 1) Define **scope**: time frame, geography, market segment
+
 2) Identify major **stakeholders**: employees, owners, regulators, customers, competitors, suppliers
+
 3) Identify basic **trends**: their influence on organization
+
 4) Identify key **uncertainties**: leverage points of impact
+
 5) Construct **initial scenario** theme
+
 6) Check for **consistency** and **plausibility**: outcomes fit together?
+
 7) Develop **learning scenarios**: identify themes and naming scenarios
+
 8) Identify **research needs**: areas that need additional research
+
 9) Develop **quantitative models**: formalize some interactions in a quantitative model?
+
 10) Evolve toward **decision scenarios**: iterative process of reviewing scenarios with the goal of converging to test scenarios and generate new ideas
 
 #### Insurance Example
@@ -411,14 +464,17 @@ Allow u/w-ers to be flexible in their approach in the case prices are not as exp
 Must decide ahead of time:
 
 * Range of scenarios
+
 * Responses to those scenarios
 
 Plans must have enough detail to give them operational weight
 
-<a name="scen-adv"></a> **Advantages**:
+**Advantages**:
 
 * Thinks through responses beforehand and can agree on best response ahead of time
+
 * Saves time during a crisis
+
 * Operational inertia is reduced, flexibility is built into the system
     
 ### Advanced Scenario Planning & ERM
@@ -426,9 +482,13 @@ Plans must have enough detail to give them operational weight
 **Model Expansion**
 
 * Expend into several LoBs
+
 * Internal consistency requires coordination
+
 * Need to model dependencies
+
 * Responses will be politically charged, as limited u/w capacity must be allocated across the company
+
     * Better to do this during planning than in the heat of a market crisis
 
 **Stochastic Scenario Planning**
