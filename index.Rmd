@@ -64,9 +64,15 @@ I. **Estimation of Policy Liabilities** (14 chapters)
         
     10. Verall
     
+        *Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions*
+    
     11. Meyers (new 2016)
     
+        *Stochastic Loss Reserving Using Bayesian MCMC Models*
+    
     12. Marshall et al
+    
+        *A Framework for Assessing Risk Margins*
     
 * Learning Objectives 11-13: **6-9%**
     
@@ -77,12 +83,16 @@ I. **Estimation of Policy Liabilities** (14 chapters)
 * Learning Objective 14: **4-5%**
     
     14. Teng & Perkins
+    
+        *Estimating the Premium Asset on Retrospectively Rate Policies*
 
 II. **Insurance Company Valuation** (1 chapter)
 
 * Learning Objective 1-3: **8-12%**
 
     15. Goldfarb
+    
+        *P&C Insurance Company Valuation*
 
 III. **Enterprise Risk Management** (11 chapter)
 
@@ -90,24 +100,52 @@ III. **Enterprise Risk Management** (11 chapter)
 
     16. ERA 1
     
+        *Historical Context*
+        
+        *Overview of Enterprise Risk Management*
+        
+        *Enterprise Risk Modeling Overview*
+    
     17. ERA 2.1
+    
+        *Corporate Decision Making Using an Enterprise Risk Model*
     
     18. ERA 2.2
     
+        *Risk Measures and Capital Allocation*
+    
     19. ERA 2.3
+    
+        *Regulatory and Rating Agency Capital Adequacy Models*
     
     20. ERA 2.4
     
+        *Asset-Liability Management*
+    
     21. ERA 2.5
+    
+        *Measuring Value in Reinsurance*
     
     22. ERA 3.1
     
+        *Considerations on Implementing Internal Risk Model*
+    
     23. ERA 3.2
     
+        *Modeling Parameter Uncertainty*
+    
     24. ERA 3.3
+    
+        *Modeling and Dependency: Correlations and Copulas*
     
 * Learning Objectives 7 & 8: **4-6%**
 
     25. ERA 4.1 & 4.2
     
+        *Operational Risk*
+        
+        *Strategic Risk*
+    
     26. ERA 5.4
+    
+        *Approaches to Modeling the Underwriting Cycle*
