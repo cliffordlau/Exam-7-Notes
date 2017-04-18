@@ -10,32 +10,43 @@
     
     * Remember to adjust for exposure if needed
 
-* Theoretical dis^n^ formulas: Poisson - Binomial (\@ref(prp:poi-bin)) and Negative Binomial - Binomial (\@ref(prp:nb-bin))
-
 * Know the [conclusions](#conclusions) on LS
 
 * Know the [caveat](#LS-Caveat) on least square
 
+* Additional [considerations](#consid) for calculations when using LS
+
 ***Method comparisons***
 
-* Formula for each given methods (Table \@ref(tab:method-form-ref))
+* LS formula for each method (Table \@ref(tab:method-form-ref))
 
 * [Pros and cons](#Trad-Caveat) of each method
 
-* The different $a$ and $b$ for each methods
+***Theoretical Bayesian***
+
+* Poisson - Binomial (\@ref(prp:poi-bin))
+
+    * Use bayesian credibility: \@ref(prp:spec-poi-bin)
+
+* Negative Binomial - Binomial (\@ref(prp:nb-bin))
+
+    * Use bayesian credibility: \@ref(prp:spec-NB-bin)
 
 ***[Bayesian Credibility](#bay-cred)***
 
 * Best linear estimator formula (\@ref(prp:bayes-ble))
 
-* Know which method is best given the Cov and Var relationships (Table \@ref(tab:bayes-variance))
+    * Know which method is best given the Cov and Var relationships (Table \@ref(tab:bayes-variance))
 
-* [Development Formula](#cred-dev):  
-Can use the credibility formula to get the LS results
+* [Development Formula](#cred-dev): Use the credibility formula
+
+    1. Estimate from data (prop. \@ref(prp:dev-form-1): Same as the LS equation
+    
+        * Alt form for $Z$ with equation \@ref(eq:brosius-alt-z) that gives you same as LS results
+    
+    2. Use [$VHM$ and $EVPV$](#cred-dev) for $Z$ if historical not a good predictor
 
 * [Case load effect](#case-load)
-
-***Additional [considerations](#consid) for calculations***
 
 ## Method Assumptions
 
@@ -51,9 +62,9 @@ Table: (\#tab:method-form-ref) Formula for a given method
 ```{proposition, least-sq, name = "Least Squares Formula"}
 
 
-$b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$
+$$b = \dfrac{\overline{xy} - \bar{x}\bar{y}}{\overline{x^2}-\bar{x}^2} = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$$
 
-$a = \bar{y} - b\bar{x}$
+$$a = \bar{y} - b\bar{x}$$
 
 Notes:
 
@@ -91,7 +102,7 @@ Above calculation can be done with the table features on TI-30XS
 
 ### Least Squares Pros & Cons {#LS-Caveat}
 
-Pros
+***Pros***
 
 * Good when dist^n^ is the same across multiple years
   
@@ -101,7 +112,7 @@ Pros
 
 * Good when the randomness of the data is primarily driven by process variance
 
-Cons
+***Cons***
 
 * Bad when systemic shift year to year e.g. inflation, legal environment (Tort reform)
 
@@ -119,9 +130,7 @@ Calculates ATU, so needs the tail factor first and also start from the oldest pe
 
 Recursively go backwards using the previous estimates
 
-$Z = \dfrac{b}{c}$; $c$ is the ATU
-
-Notes on parameters:
+Notes on **parameters**:
 
 * $a$ = Projected ultimate if no losses are reported
 
@@ -198,7 +207,7 @@ We can't use the Bayes theorem as in the previous section if we don't know the u
 ```{proposition, bayes-ble}
 Estimate the ultimate losses using the **best linear estimator** of Y|X, $L(x)$
 
-$L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$
+$$L(x) = (x - \mathrm{E[X]})\dfrac{Cov(X,Y)}{Var(X)} + \mathrm{E[Y]}$$
 
 * Y = Ultimate Losses; X = Reported Losses
 
@@ -232,7 +241,7 @@ Estimate $\mathrm{E}[X]$, $\mathrm{Var}(X)$, and $\mathrm{Cov}(X,Y)$ from data (
 ```
 
 ```{proof}
-Start with$y = a + bx$ and plug in $a$ and $b$ from proposition \@ref(prp:least-sq)
+Start with $y = a + bx$ and plug in $a$ and $b$ from proposition \@ref(prp:least-sq)
 
 We get:
 
@@ -261,7 +270,7 @@ Alternative way to express $L(x)$, following Bühlmann credibility, we express $
 
     $\mathrm{Var}_Y(\mathrm{E}\left[X \mid Y \right])$
 
-* We can read $VHM$ as distrust in underwriters and EVPV distrust in the claims department
+* *Sidebar*: We can read $VHM$ as distrust in underwriters and $EVPV$ distrust in the claims department
 
 * Use the method below when the least-square assumption fails
 
@@ -274,7 +283,7 @@ Formula below requires additional hypothesis (in paper appendix?)
 ```{proposition, dev-form-2, name = "Development Formula 2"}
 Suppose that there is a real number $d \neq 0$ such that $\mathrm{E}\left[X \mid Y = y \right] = dy$ for all $y$
 
-$L(x) = Z \underbrace{\dfrac{x}{d}}_{\begin{array}{c} \text{Dev'}\\ \text{Method}\\ \end{array}} + (1-Z)\underbrace{\mathrm{E[Y]}}_{ELR}$
+$$L(x) = Z \underbrace{\dfrac{x}{d}}_{\begin{array}{c} \text{Dev'}\\ \text{Method}\\ \end{array}} + (1-Z)\underbrace{\mathrm{E[Y]}}_{ELR}$$
 
 * Formula is the credibility weighting of the chainladder estimate and ELR estimate
 
@@ -329,9 +338,16 @@ We assumes the following
 ```
 
 ```{remark}
-Alternatively, $Z = \dfrac{b}{c}$, where $c$ is the CDF and $b$ is from the LS
+Alternatively, you can use:
 
-* This yield the LS results (Where we assume there's no change in the underlying year to year data)
+\begin{equation}
+  Z = \dfrac{b}{c}
+  (\#eq:brosius-alt-z)
+\end{equation}
+
+where $c$ is the CDF and $b$ is from the LS
+
+* **This yield the LS results** (Where we assume there's no change in the underlying year to year data)
 
 * Assume same $d$ for any size of $y$; Not necessarily true for large or small $y$
 ```
@@ -341,7 +357,7 @@ Start with $\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)} = \dfrac{1}{d} \dfrac{VHM
 
 Based on \@ref(prp:cred-dev-m1) we have $Z = \dfrac{VHM}{VHM + EVPV}$
 
-And $b$ from \@ref(prp:least-sq) $\dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$
+And $b = \dfrac{\mathrm{Cov}(X,Y)}{\mathrm{Var}(X)}$ from \@ref(prp:least-sq) 
 
 Then we have $b = \dfrac{1}{d} Z$
 
@@ -400,9 +416,9 @@ Also note that since $Q(x)$ is still linear, $L(x) = Q(x)$
 
 ### Caseload Effect {#case-load}
 
-In proposition \@ref(prp:dev-form-2) we assumed the expected number of claims reported is $\propto$ number of claims incurred
+In proposition \@ref(prp:dev-form-2) we **assumed** the expected number of claims reported is $\propto$ number of claims incurred
 
-* Not necessarily true e.g. claim is more likely to be reported in a timely fashion when the caseload (case reserve) is low, and we expect the development ratio $\dfrac{\mathrm{E}[X \mid Y = y]}{y}$ to be not a constant decreasing function of $y$
+* **Not necessarily true**: e.g. claim is more likely to be reported in a timely fashion when the caseload (case reserve) is low, and we expect the development ratio $\dfrac{\mathrm{E}[X \mid Y = y]}{y}$ to be not a constant decreasing function of $y$
 
 When $D$ and $Y$ not independent the credibility-based development formula still works (i.e. constant development ratio is not essential for a credibility-based development formula)
 
@@ -413,7 +429,7 @@ When $D$ and $Y$ not independent the credibility-based development formula still
 ```{proposition, dev-form-3, name = "Development Formula 3"}
 Supposed there are real numbers $d \neq 0$ and $x_0$ such that $\mathrm{E}[X \mid Y= y] = dy + x_0$ for all $y$
 
-$L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$
+$$L(x) = Z \dfrac{x - x_0}{d} + (1-Z)\mathrm{E[Y]}$$
 
 * $Z = \dfrac{VHM}{VHM + EVPV}$
 ```
