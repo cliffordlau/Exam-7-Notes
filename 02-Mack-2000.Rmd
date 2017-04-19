@@ -1,15 +1,21 @@
 # Credible Claims Reserve: The Benktander Method - T. Mack
 
-Know the GB method formula (\@ref(prp:GB-method))and properties
+Know the GB method formula (\@ref(prp:GB-method)) and properties
 
-* Recognize actual emergence faster
+* Benktander recognize actual emergence faster
+
+* Know when we are working with *Ultimate* or *Reserve*
+
+* Know when is the $GB$ [$MS$](#mack-2000-gb-mse) lower than $BF$
+
+* Know the iterative form of BF and GB and it's extension Theorem \@ref(thm:GB-iterate)
 
 ## Gunnar Benktander Method (GB)
 
 ```{proposition, GB-method, name = "Benktander Reserve"} 
 Reserve under the Benktaner Method
 
-$R_{GB} = q_kU_{BF}$
+$$R_{GB} = q_kU_{BF}$$
 
 * $q_k = (1 - p_k)$ = % unpaid loss @ $k$
 
@@ -53,13 +59,15 @@ $$U^{(m)} = (1-q^m_k)U_{CL} + q^m_k U_0$$
 $$R^{(m)} = (1-q^m_k)R_{CL} + q^m_k R_{BF}$$
 
 between $BF$ and $CL$ which start at $BF$ and lead via $GB$ to $CL$ for $m= \infty$
+
+* **Can't seem to reproduce the reserve formula...**
 ```
 
-### MSE
+### MSE {#mack-2000-gb-mse}
 
 MSE of Benktander is almost as small as the MSE of the optimal credibility in most cases
 
-$MSE(R_{GB}) < MSE(R_{BF})$
+$$MSE(R_{GB}) < MSE(R_{BF})$$
 
 * When $p_k \in [0, 2c^*]$; $c^*$ is the optimal credibility
 
@@ -68,7 +76,7 @@ $MSE(R_{GB}) < MSE(R_{BF})$
 * Doesn't hold if $c^*$ is small and $p_k$ is large
 
 ```{remark}
-$MSE(R_c) = \mathrm{E}[R_c - R]^2$
+$$MSE(R_c) = \mathrm{E}[R_c - R]^2$$
 
 * $R_c = c R_{CL} + (1-c)R_{BF}$
 
@@ -99,17 +107,13 @@ $C_k =$ Actual paid losses at $k$
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
 **Concepts**
 
-* 2006 - #16 b c: GB method vs BF and dev
+* 2006 - #16 b, c: GB method vs BF and dev
 
-    * Lower MSE and gives weight to both a-priori and emerged
+    * GB has lower MSE and gives weight to both a-priori and emerged
 
-* 2007 - #46 b-c: BF weight, BF drawback, GB advantages over BF
+* 2007 - #46 c,d: BF weight, BF drawback, GB advantages over BF
 
 * 2008 - #10 b-c: Comparison of methods and GB as credibility weight
 
@@ -123,17 +127,35 @@ Haven't done TIA practice questions
 
 * 2006 - #16 a: GB method ultimate
 
+* 2007 - #46 a, b: BF weight, BF drawback, GB advantages over BF
+
 * 2012 - #1 a: GB BF Dev
 
-* $\star$ 2014 - # 5: Credibility weight methods from the Clark paper on LDF curve fitting
+* $\star$ 2014 - #5: Credibility weight methods from the Clark paper on LDF curve fitting
 
     * Weight to the Dev method is $(1-q_k)$
+    
+* TIA 1: Straight calculate
 
-**Other**
+* TIA 2: Back out numbers with formulas
 
-* 2012 - #1 b (fig \@ref(fig:2012-1)): Minor arithmetic
+**Long calculation**
 
-* 2013 - #4 a: Back out LDFs with BF and GB methods
+* $\star \star$ 2016 - #1:
+
+    a. Use GB with [incremental LR](#lr-claim-res-def) projection
+    
+    b. Know the GB method extension theorem
+    
+    c. This is from Hurlimann equation with optimal credibility \@ref(eq:lr-claim-res-method) and you need that [additional assumption](#optimal-cred-hurlimann-proof) for the formula to work
+
+**Arithmetics**
+
+* $\star$ 2012 - #1 b (fig \@ref(fig:2012-1)): Minor arithmetic
+
+* $\star$ 2013 - #4 a: Back out LDFs with BF and GB methods
+
+* TIA 3: Long calc for all years reserve with BF and GB
 
 ### Question Highlights
 

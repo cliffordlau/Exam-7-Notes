@@ -1,5 +1,7 @@
 # Formulas
 
+Links to all key formulas
+
 ## Loss Development Using Credibility - E. Brosius
 
 $\star$ Least Square (\@ref(prp:least-sq))
@@ -20,3 +22,10 @@ $\star$ Best linear estimator formula (\@ref(prp:bayes-ble))
 
 [Case load effect](#case-load)
 
+## Credible Claims Reserve: The Benktander Method - T. Mack
+
+GB method formula (\@ref(prp:GB-method))
+
+Iterative form of BF and GB and it's extension: Theorem \@ref(thm:GB-iterate)
+
+## Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann
