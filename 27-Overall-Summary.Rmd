@@ -15,7 +15,9 @@ Least square methods
 Theoretical Bayesian method and also estimating the Bayesian credibility with 2 methods for getting $Z$
 
 * Can do $Z = \dfrac{b}{c}$ or the VHM EVPV formula
+
 * Under certain relationships between $X$ and $Y$ supports different methods
+
 * Some formulas to remember if we do the theoretical Bayes
 
 Discussion on the caseload effect where the development and ultimate is not independent
