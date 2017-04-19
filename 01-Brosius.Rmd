@@ -474,10 +474,6 @@ Subject to sampling error when estimating parameters similar to other methods
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
 **Concepts**
 
 * 1996 - #28: Poi-bin process, $a$ and $b$ for methods
