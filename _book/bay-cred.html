@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-04-18">
+<meta name="date" content="2017-04-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -118,6 +118,7 @@
 <li class="chapter" data-level="26" data-path="era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><a href="era-5-4-approaches-to-modeling-the-underwriting-cycle-major.html"><i class="fa fa-check"></i><b>26</b> ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major</a></li>
 <li class="part"><span><b>IV Overall Summary</b></span></li>
 <li class="chapter" data-level="27" data-path="exam-7-2016-overall-summary.html"><a href="exam-7-2016-overall-summary.html"><i class="fa fa-check"></i><b>27</b> Exam 7 2016 Overall Summary</a></li>
+<li class="chapter" data-level="28" data-path="formulas.html"><a href="formulas.html"><i class="fa fa-check"></i><b>28</b> Formulas</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org">Published with bookdown</a></li>
 
@@ -189,17 +190,21 @@ If <span class="math inline">\(L(x) = a + b x\)</span> then we minimize <span cl
 <td><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> don’t vary together</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}\)</span></td>
+<td><span class="math inline">\(\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}\)</span><sup>1</sup></td>
 <td><span class="math inline">\(L(X) \approx x + \left[\mathrm{E}[Y] - \mathrm{E}[X] \right]\)</span></td>
 <td>Same as BF Method</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}\)</span></td>
+<td><span class="math inline">\(\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}\)</span><sup>2</sup></td>
 <td><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> move together, <span class="math inline">\(Y\)</span> is significantly influenced by <span class="math inline">\(X\)</span></td>
 <td>Use Dev Method</td>
 </tr>
 </tbody>
 </table>
+<ol style="list-style-type: decimal">
+<li><p>Also means change in the reported should not affect the IBNR</p></li>
+<li><p>Also means greater than expected reported amount should lead to an increase in IBNR</p></li>
+</ol>
 <div id="practical-application-ls-development" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> Practical Application (LS Development)</h3>
 

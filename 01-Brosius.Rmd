@@ -4,9 +4,9 @@
 
 ***Least Square***
 
-* Least Square formula (\@ref(prp:least-sq))
+* Least Square formula (prop. \@ref(prp:least-sq)) and Table \@ref(tab:method-form-ref)
 
-    * Know how to do them on the calculator
+    * Know how to do them on the calculator (Notation for $a$ and $b$ on TI-30XS is flipped)
     
     * Remember to adjust for exposure if needed
 
@@ -76,6 +76,8 @@ Notes:
 
 ```{block, calc-note, type='rmdtip'}
 Above calculation can be done with the table features on TI-30XS
+
+* Note that TI-30XS use the formula $y = ax + b$, different from us
 ```
 
 ### Caveat with Traditional Method {#Trad-Caveat}
@@ -229,8 +231,12 @@ Table: (\#tab:bayes-variance) Intuitive interpretation of $L(x)$
 | $x = \mathrm{E[X]}$ | $L(X) = \mathrm{E[Y]}$ | Losses are coming in as expected, estimate of ultimate losses is unchanged | 
 | $\mathrm{Cov(X,Y)} \approx 0$  | $L(X) \cong \mathrm{E[Y]}$ | $X$ and $Y$ are only loosely related $\Rightarrow$ Use ELR Method |
 | $\mathrm{Cov(X,Y)} \ll \mathrm{Var(X)}$ | $L(X) \cong \mathrm{E[Y]}$ | $X$ and $Y$ don't vary together | 
-| $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$ | $L(X) \approx x + \left[\mathrm{E}[Y] - \mathrm{E}[X] \right]$ | Same as BF Method |
-| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$ | $X$ and $Y$ move together, $Y$ is significantly influenced by $X$ | Use Dev Method |
+| $\mathrm{Cov(X,Y)} \approx \mathrm{Var(X)}$^1^ | $L(X) \approx x + \left[\mathrm{E}[Y] - \mathrm{E}[X] \right]$ | Same as BF Method |
+| $\mathrm{Cov(X,Y)} \gg \mathrm{Var(X)}$^2^| $X$ and $Y$ move together, $Y$ is significantly influenced by $X$ | Use Dev Method |
+
+1. Also means change in the reported should not affect the IBNR
+
+2. Also means greater than expected reported amount should lead to an increase in IBNR
 
 ### Practical Application (LS Development)
 
@@ -474,7 +480,7 @@ Haven't done TIA practice questions
 
 **Concepts**
 
-* 1996 - #28: Poi-bin process 
+* 1996 - #28: Poi-bin process, $a$ and $b$ for methods
 
 * 1996 - #50: When to use LS
 
@@ -506,15 +512,35 @@ Haven't done TIA practice questions
 
 * $\star$ 2008 - #10a: VHM and EVPV calc
 
-    * Double check the $\sigma_y$ calc make sense
+    * $\sigma_y = \sigma_{LR} \times Prem$
 
-* $\star$ 2011 #1: a) LS w/ exposure adjustment b) Assess LS parameters resonability c) Draw the relationship of losses to date vs ultimate for the 3 methods
+* $\star$ 2011 #1:
 
-* 2012 ‐ #1 b: Solving equations to back out numbers using BK and BF method
+    a. LS w/ exposure adjustment
+    
+    b. Assess LS parameters resonability
+    
+    c. $\star$ Draw the relationship of losses to date vs ultimate for the 3 methods
 
-* 2012 - #4: LS and know that LS gives the optimal linear weight based on $\dfrac{b}{c}$
+* ~~2012 ‐ #1 b: Solving equations to back out numbers using BK and BF method~~
 
-* 2014 #1: a) VHM and EVPV b) Why LS is not appropriate
+* $\star$ 2012 - #4: LS and know that LS gives the optimal linear weight based on $\dfrac{b}{c}$ between linked ratio method and LR method
+
+* 2014 #1:
+
+    a. VHM and EVPV
+    
+    b. Why LS is not appropriate:  
+    Coverage levels have changes, no guarantee that the payout pattern remains
+    
+* 2016 #2:
+
+    a. LS calculation
+    
+    b. LS parameters potential problems
+    
+    c. $VHM$ and $EVPV$:  
+    Use a priori based on average from historical
 
 **Simple Plug and Play**
 
