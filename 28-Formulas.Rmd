@@ -1,0 +1,22 @@
+# Formulas
+
+## Loss Development Using Credibility - E. Brosius
+
+$\star$ Least Square (\@ref(prp:least-sq))
+
+Theoretical Bayesian:
+
+* Poisson - Binomial (\@ref(prp:poi-bin))
+
+* Negative Binomial - Binomial (\@ref(prp:nb-bin))
+
+$\star$ Best linear estimator formula (\@ref(prp:bayes-ble))
+
+1. Estimate from data (prop. \@ref(prp:dev-form-1):
+    
+    * Alt form for $Z$ with equation \@ref(eq:brosius-alt-z)
+    
+2. $\star\star$ Use [$VHM$ and $EVPV$](#cred-dev) for $Z$
+
+[Case load effect](#case-load)
+
