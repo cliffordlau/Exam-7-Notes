@@ -92,7 +92,7 @@
 <li class="chapter" data-level="2" data-path="credible-claims-reserve-the-benktander-method-t-mack.html"><a href="credible-claims-reserve-the-benktander-method-t-mack.html"><i class="fa fa-check"></i><b>2</b> Credible Claims Reserve: The Benktander Method - T. Mack</a><ul>
 <li class="chapter" data-level="2.1" data-path="gunnar-benktander-method-gb.html"><a href="gunnar-benktander-method-gb.html"><i class="fa fa-check"></i><b>2.1</b> Gunnar Benktander Method (GB)</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="gunnar-benktander-method-gb.html"><a href="gunnar-benktander-method-gb.html#method-comparison"><i class="fa fa-check"></i><b>2.1.1</b> Method Comparison</a></li>
-<li class="chapter" data-level="2.1.2" data-path="gunnar-benktander-method-gb.html"><a href="gunnar-benktander-method-gb.html#mse"><i class="fa fa-check"></i><b>2.1.2</b> MSE</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gunnar-benktander-method-gb.html"><a href="gunnar-benktander-method-gb.html#mack-2000-gb-mse"><i class="fa fa-check"></i><b>2.1.2</b> MSE</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="notation.html"><a href="notation.html"><i class="fa fa-check"></i><b>2.2</b> Notation</a></li>
 <li class="chapter" data-level="2.3" data-path="past-exam-questions-1.html"><a href="past-exam-questions-1.html"><i class="fa fa-check"></i><b>2.3</b> Past Exam Questions</a><ul>
@@ -100,9 +100,9 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html"><a href="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann.html"><i class="fa fa-check"></i><b>3</b> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</a><ul>
-<li class="chapter" data-level="3.1" data-path="loss-ratio-claims-reserve.html"><a href="loss-ratio-claims-reserve.html"><i class="fa fa-check"></i><b>3.1</b> Loss Ratio Claims Reserve</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="loss-ratio-claims-reserve.html"><a href="loss-ratio-claims-reserve.html#loss-ratio-claims-reserve-summary"><i class="fa fa-check"></i><b>3.1.1</b> Loss Ratio Claims Reserve Summary</a></li>
-<li class="chapter" data-level="3.1.2" data-path="loss-ratio-claims-reserve.html"><a href="loss-ratio-claims-reserve.html#optimal-credibility-weights"><i class="fa fa-check"></i><b>3.1.2</b> Optimal Credibility Weights</a></li>
+<li class="chapter" data-level="3.1" data-path="lr-claim-res-def.html"><a href="lr-claim-res-def.html"><i class="fa fa-check"></i><b>3.1</b> Loss Ratio Claims Reserve Definition</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="lr-claim-res-def.html"><a href="lr-claim-res-def.html#loss-ratio-claims-reserve-summary"><i class="fa fa-check"></i><b>3.1.1</b> Loss Ratio Claims Reserve Summary</a></li>
+<li class="chapter" data-level="3.1.2" data-path="lr-claim-res-def.html"><a href="lr-claim-res-def.html#optimal-cred-hurlimann-proof"><i class="fa fa-check"></i><b>3.1.2</b> Optimal Credibility Weights</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="hur-remark.html"><a href="hur-remark.html"><i class="fa fa-check"></i><b>3.2</b> Remark 6.1</a></li>
 <li class="chapter" data-level="3.3" data-path="notation-1.html"><a href="notation-1.html"><i class="fa fa-check"></i><b>3.3</b> Notation</a></li>
@@ -674,6 +674,8 @@
 </ul></li>
 <li class="chapter" data-level="28" data-path="formulas.html"><a href="formulas.html"><i class="fa fa-check"></i><b>28</b> Formulas</a><ul>
 <li class="chapter" data-level="28.1" data-path="loss-development-using-credibility-e-brosius-1.html"><a href="loss-development-using-credibility-e-brosius-1.html"><i class="fa fa-check"></i><b>28.1</b> Loss Development Using Credibility - E. Brosius</a></li>
+<li class="chapter" data-level="28.2" data-path="credible-claims-reserve-the-benktander-method-t-mack-1.html"><a href="credible-claims-reserve-the-benktander-method-t-mack-1.html"><i class="fa fa-check"></i><b>28.2</b> Credible Claims Reserve: The Benktander Method - T. Mack</a></li>
+<li class="chapter" data-level="28.3" data-path="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann-1.html"><a href="credible-claims-reserve-benktander-neuhaus-and-mack-w-hurlimann-1.html"><i class="fa fa-check"></i><b>28.3</b> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org">Published with bookdown</a></li>
@@ -697,18 +699,13 @@
             <section class="normal" id="section-">
 <div id="past-exam-questions-1" class="section level2">
 <h2><span class="header-section-number">2.3</span> Past Exam Questions</h2>
-<div class="rmdcaution">
-<p>
-Haven’t done TIA practice questions
-</p>
-</div>
 <p><strong>Concepts</strong></p>
 <ul>
-<li><p>2006 - #16 b c: GB method vs BF and dev</p>
+<li><p>2006 - #16 b, c: GB method vs BF and dev</p>
 <ul>
-<li>Lower MSE and gives weight to both a-priori and emerged</li>
+<li>GB has lower MSE and gives weight to both a-priori and emerged</li>
 </ul></li>
-<li><p>2007 - #46 b-c: BF weight, BF drawback, GB advantages over BF</p></li>
+<li><p>2007 - #46 c,d: BF weight, BF drawback, GB advantages over BF</p></li>
 <li><p>2008 - #10 b-c: Comparison of methods and GB as credibility weight</p></li>
 <li><p>2013 - #4 b: GB approaches CL as more iterations are done</p></li>
 </ul>
@@ -717,16 +714,29 @@ Haven’t done TIA practice questions
 <li><p>2004 - #31: GB method ultimate</p></li>
 <li><p>2005 - #16: GB method ultimate</p></li>
 <li><p>2006 - #16 a: GB method ultimate</p></li>
+<li><p>2007 - #46 a, b: BF weight, BF drawback, GB advantages over BF</p></li>
 <li><p>2012 - #1 a: GB BF Dev</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2014 - # 5: Credibility weight methods from the Clark paper on LDF curve fitting</p>
+<li><p><span class="math inline">\(\star\)</span> 2014 - #5: Credibility weight methods from the Clark paper on LDF curve fitting</p>
 <ul>
 <li>Weight to the Dev method is <span class="math inline">\((1-q_k)\)</span></li>
 </ul></li>
+<li><p>TIA 1: Straight calculate</p></li>
+<li><p>TIA 2: Back out numbers with formulas</p></li>
 </ul>
-<p><strong>Other</strong></p>
+<p><strong>Long calculation</strong></p>
 <ul>
-<li><p>2012 - #1 b (fig <a href="past-exam-questions-1.html#fig:2012-1">2.1</a>): Minor arithmetic</p></li>
-<li><p>2013 - #4 a: Back out LDFs with BF and GB methods</p></li>
+<li><p><span class="math inline">\(\star \star\)</span> 2016 - #1:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Use GB with <a href="lr-claim-res-def.html#lr-claim-res-def">incremental LR</a> projection</p></li>
+<li><p>Know the GB method extension theorem</p></li>
+<li><p>This is from Hurlimann equation with optimal credibility <a href="lr-claim-res-def.html#eq:lr-claim-res-method">(3.1)</a> and you need that <a href="lr-claim-res-def.html#optimal-cred-hurlimann-proof">additional assumption</a> for the formula to work</p></li>
+</ol></li>
+</ul>
+<p><strong>Arithmetics</strong></p>
+<ul>
+<li><p><span class="math inline">\(\star\)</span> 2012 - #1 b (fig <a href="past-exam-questions-1.html#fig:2012-1">2.1</a>): Minor arithmetic</p></li>
+<li><p><span class="math inline">\(\star\)</span> 2013 - #4 a: Back out LDFs with BF and GB methods</p></li>
+<li><p>TIA 3: Long calc for all years reserve with BF and GB</p></li>
 </ul>
 <div id="question-highlights-1" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Question Highlights</h3>

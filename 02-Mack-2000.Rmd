@@ -10,7 +10,7 @@ Know the GB method formula (\@ref(prp:GB-method)) and properties
 
 * Know the iterative form of BF and GB and it's extension Theorem \@ref(thm:GB-iterate)
 
-## Gunnar Benktander Method (GB)
+## Gunnar Benktander Method (GB) {#mack-2000-gb-method}
 
 ```{proposition, GB-method, name = "Benktander Reserve"} 
 Reserve under the Benktaner Method
@@ -56,11 +56,13 @@ gives credibility mixtures
 
 $$U^{(m)} = (1-q^m_k)U_{CL} + q^m_k U_0$$
 
-$$R^{(m)} = (1-q^m_k)R_{CL} + q^m_k R_{BF}$$
+$$R^{(m)} = (1-q^m_k)R_{CL} + q^m_k R_0$$
 
 between $BF$ and $CL$ which start at $BF$ and lead via $GB$ to $CL$ for $m= \infty$
+```
 
-* **Can't seem to reproduce the reserve formula...**
+```{remark}
+The reserve formula of theorem \@ref(thm:GB-iterate) seems to be wrong in Mack but it's right in Hurlimann
 ```
 
 ### MSE {#mack-2000-gb-mse}

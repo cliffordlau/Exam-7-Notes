@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="risk-margin.html">
-<link rel="next" href="documentation-and-regularity.html">
+<link rel="prev" href="credible-claims-reserve-the-benktander-method-t-mack-1.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -697,79 +697,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="marshall-add-analysis" class="section level2">
-<h2><span class="header-section-number">12.8</span> Additional Analysis</h2>
-<p>Test the quality of our result</p>
-<p><strong>Sensitivity Testing</strong>:<br />
-Varying the different CoV and correlations</p>
-<p><strong>Scenario Testing</strong>:<br />
-Consider what assumptions need to change in our mid point to eat up the risk margin (similar to back testing)</p>
-<p><strong>Internal Benchmarking</strong>:<br />
-Compare CoVs within between OCL and PL and also with other valuation groups to look for consistency</p>
-<p><em>Independent risk</em>:</p>
-<ul>
-<li><p>Large liability will have smaller CoV due to law of large numbers</p></li>
-<li><p>Short tail line will have a small CoV as well due to less volatility</p></li>
-</ul>
-<p>Therefore:</p>
-<ul>
-<li><p><em>Outstanding Claims Liability</em>:</p>
-<p><span class="math inline">\(\phi_{short \: tail} &lt; \phi_{long \: tail} &lt; \phi_{long \: tail, \: small \: book}\)</span></p></li>
-<li><p>Premium Liability - <em>Long Tail</em>:</p>
-<p>OCL &gt; PL <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\phi_{OCL} &lt; \phi_{PL}\)</span></p>
-<ul>
-<li>Because there are many AYs of claims in the reserves</li>
-</ul></li>
-<li><p>Premium Liability - <em>Short Tail</em>:</p>
-<p>OCL &lt; PL <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\phi_{OCL} &gt; \phi_{PL}\)</span></p>
-<ul>
-<li><p>Because OCL is small</p></li>
-<li><p>LoB with significant event risk will have different risk profiles for the PL and OCL</p></li>
-</ul></li>
-</ul>
-<p><em>Internal Systemic</em>:</p>
-<ul>
-<li>If the methods to estimate liabilities is similar across valuation groups, we would expect the CoV to be similar for classes that have similar claim payment patterns</li>
-</ul>
-<p><em>External Systemic</em>:</p>
-<ul>
-<li>Main sources of external systemic risk are higher for long tail lines; Event risk is higher for property; Liability for HO can also be significant</li>
-</ul>
-<p><strong>External Benchmarking</strong>:<br />
-Compare selected CoV with external sources</p>
-<ul>
-<li><p>Such as <a href="http://www.apra.gov.au/gi/documents/rp_gi_rmir_09_ex_v2.pdf">APRA 2008</a></p></li>
-<li><p>Use just as a sanity check, not appropriate to simply take the risk margins from benchmarks</p></li>
-<li><p>Independent risk CoV depend on the size of liabilities</p>
-<p><span class="math inline">\(\Rightarrow\)</span> Similar sized liability today would represent a small book due to inflation</p>
-<p><span class="math inline">\(\Rightarrow\)</span> Adjust CoV upward</p></li>
-<li><p>Estimate PL with a scale up factor from OCL</p></li>
-</ul>
-<p><strong>Hindsight Analysis</strong>:</p>
-<ul>
-<li><p>Compare the actual results with expected over multiple periods</p></li>
-<li><p>Blend of all 3 risks (independent, internal/external systemic), at least the actual episodes of those risk</p></li>
-<li><p>Useful as a guide if the CoVs are reasonable</p></li>
-<li><p>Works well for short-tailed LoB where the AY’s liabilities don’t move together too much</p>
-<ul>
-<li>Where for long tail lines you can change your mind significantly about the liabilities for multiple AYs in one reserve study</li>
-</ul></li>
-</ul>
-<p><strong>Mechanical Hindsight</strong>:</p>
-<ul>
-<li><p>Value the liabilities today using a mechanical method and repeat with information at older evaluation date</p></li>
-<li><p>Measure independent risk over stable periods</p></li>
-<li><p>By using multiple methods you can measure the internal systemic risk</p></li>
-<li><p>By measuring over long periods of time, you can measure risk from all sources</p></li>
-</ul>
+<div id="credible-claims-reserve-benktander-neuhaus-and-mack---w.-hurlimann-1" class="section level2">
+<h2><span class="header-section-number">28.3</span> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</h2>
+
 </div>
+</div>
+
+
+
+
+
+
+
+<!--  -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="risk-margin.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="documentation-and-regularity.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="credible-claims-reserve-the-benktander-method-t-mack-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -797,7 +744,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/12-Marshall-et-al.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/28-Formulas.Rmd",
 "text": "Edit"
 },
 "download": null,

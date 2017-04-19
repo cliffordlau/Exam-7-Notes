@@ -76,12 +76,11 @@
 <li class="chapter" data-level="3.1" data-path="lr-claim-res-def.html"><a href="lr-claim-res-def.html"><i class="fa fa-check"></i><b>3.1</b> Loss Ratio Claims Reserve Definition</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="lr-claim-res-def.html"><a href="lr-claim-res-def.html#loss-ratio-claims-reserve-summary"><i class="fa fa-check"></i><b>3.1.1</b> Loss Ratio Claims Reserve Summary</a></li>
 <li class="chapter" data-level="3.1.2" data-path="lr-claim-res-def.html"><a href="lr-claim-res-def.html#optimal-cred-hurlimann-proof"><i class="fa fa-check"></i><b>3.1.2</b> Optimal Credibility Weights</a></li>
+<li class="chapter" data-level="3.1.3" data-path="lr-claim-res-def.html"><a href="lr-claim-res-def.html#hurlimann-mse"><i class="fa fa-check"></i><b>3.1.3</b> MSE</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="hur-remark.html"><a href="hur-remark.html"><i class="fa fa-check"></i><b>3.2</b> Remark 6.1</a></li>
 <li class="chapter" data-level="3.3" data-path="notation.html"><a href="notation.html"><i class="fa fa-check"></i><b>3.3</b> Notation</a></li>
-<li class="chapter" data-level="3.4" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>3.4</b> Past Exam Questions</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>3.4.1</b> Question Highlights</a></li>
-</ul></li>
+<li class="chapter" data-level="3.4" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>3.4</b> Past Exam Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><a href="measuring-the-variability-of-chain-ladder-reserve-estimate-t-mack.html"><i class="fa fa-check"></i><b>4</b> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</a></li>
 <li class="chapter" data-level="5" data-path="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><a href="testing-the-assumptions-of-age-to-age-factors-g-venter.html"><i class="fa fa-check"></i><b>5</b> Testing the Assumptions of Age-to-Age Factors - G. Venter</a></li>
@@ -135,14 +134,23 @@
 <h1><span class="header-section-number">Chapter 3</span> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</h1>
 <p>Everything is based on a special method to calculate the <span class="math inline">\(ELR\)</span> and <span class="math inline">\(LDFs\)</span></p>
 <ul>
-<li><p><span class="math inline">\(ELR\)</span> is based on the whole triangle <span class="math inline">\(\sum\)</span>-ing up column LRs</p></li>
+<li><p><span class="math inline">\(ELR\)</span> is based on the whole triangle <span class="math inline">\(\sum\)</span>-ing up column incremental LRs</p></li>
 <li><p><span class="math inline">\(LDFs\)</span> are based <span class="math inline">\(\dfrac{\text{Col LRs}}{ELR}\)</span></p></li>
-<li><p>Key is just to watch out for incremental vs cumulative</p></li>
+<li><p>Key is just to watch out for the given data is <em>incremental</em> vs <em>cumulative</em></p></li>
 </ul>
 <p>Know the <span class="math inline">\(Z\)</span> for different methods (Table <a href="lr-claim-res-def.html#tab:method-tbl-cred">3.1</a>)</p>
 <ul>
 <li><p>The <span class="math inline">\(Z\)</span> is for weighting the <strong>reserve</strong></p></li>
-<li><p>Optimal credibility formula assumes <span class="math inline">\(U_i^{BC} {\perp\!\!\!\!\perp} C_i\)</span> and <span class="math inline">\(R_i\)</span></p></li>
+<li><p>Optimal credibility formula assumes:</p>
+<ul>
+<li><p><span class="math inline">\(U_i^{BC} {\perp\!\!\!\!\perp} \: C_i\)</span> and <span class="math inline">\(R_i\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{Var}(U_i) = \mathrm{Var}(U_i^{BC})\)</span></p></li>
+</ul></li>
+<li><p><a href="lr-claim-res-def.html#hurlimann-mse">MSE</a> for the credibility formula</p></li>
+</ul>
+<p>All the method can be done using traditional LDFs</p>
+<ul>
+<li>Remember “shortcuts” to calculate the CDFs given incremental triangles</li>
 </ul> 
 </div>
             </section>
