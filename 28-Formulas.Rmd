@@ -29,3 +29,9 @@ GB method formula (\@ref(prp:GB-method))
 Iterative form of BF and GB and it's extension: Theorem \@ref(thm:GB-iterate)
 
 ## Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann
+
+$\star$ Credibility equation \@ref(eq:lr-claim-res-method) and the different $Z$ \@ref(tab:method-tbl-cred)
+
+[Cape Code](#hur-remark)
+
+[Credibility method MSE](#hurlimann-mse)

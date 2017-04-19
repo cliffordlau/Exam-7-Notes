@@ -20,7 +20,7 @@ Know the $Z$ for different methods (Table \@ref(tab:method-tbl-cred))
 
 * [MSE](#hurlimann-mse) for the credibility formula
 
-All the method can be done using traditional LDFs
+All the methods can be done using traditional LDFs
 
 * Remember "shortcuts" to calculate the CDFs given incremental triangles
 
