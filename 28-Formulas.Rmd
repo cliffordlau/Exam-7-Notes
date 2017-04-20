@@ -35,3 +35,11 @@ $\star$ Credibility equation \@ref(eq:lr-claim-res-method) and the different $Z$
 [Cape Code](#hur-remark)
 
 [Credibility method MSE](#hurlimann-mse)
+
+## Reinsurance Loss Reserving - Patrik
+
+[Long tail reserving method](#patrik-long-est-methods):
+
+1. Stanard Buhlmann
+
+2. Credibility IBNR method ($Z = p_k \times CL$ and weighting **reserve** on $CL$ and $SB$)

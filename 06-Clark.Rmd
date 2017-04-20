@@ -1,4 +1,4 @@
-# LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark
+# LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark {#curve-fit-clark}
 
 Memorize the CDF for loglogistic \@ref(eq:clark-loglogistic) and weibull \@ref(eq:clark-weibull)
 

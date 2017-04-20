@@ -18,19 +18,25 @@ Know the [7 problems of reinsurance reserving](#prob-of-re)
 
 * General theme: Heterogeneity, low frequency & high severity, lack of detailed (exposure & claims) information, longer lag
 
-Know the components of reinsurance reserve
+Know the [components](#patrik-res-comp) of reinsurance reserve
 
-4 steps of setting reinsurance reserve:
+Four steps of setting reinsurance reserve:
 
 * Partition $\Rightarrow$ Development Patterns $\Rightarrow$ Estimate $\Rightarrow$ Monitor and AvE
 
 * Partition priority
 
-* Considerations for short vs medium vs long tail lines
+* Considerations for short vs medium vs [long tail lines](#patrik-long-est-methods)
 
-    * Know SB well and how to adjust the premium
+    * $\star$ SB method and how to adjust the premium
     
-    * Know the credibility weighted method
+        * Shortcut on getting all year IBNR
+    
+    * $\star$ credibility weighted method
+    
+        * Weight is $Z_k = p_k \times CF$
+        
+        * Weighting the **reserve** for $CL$ and $SB$
 
 * AvE
 
@@ -114,7 +120,7 @@ Standard techniques requires: Homogeneous book, sufficient frequency, and detail
 
 Side note on tax impact, reinsurer liabilities are much longer tail than primary and there for the discounted liabilities are smaller and will incur greater income tax
 
-## 6 Components to a Reinsurance Loss Reserve
+## 6 Components to a Reinsurance Loss Reserve {#patrik-res-comp}
 
 6 components of a reinsurer's loss reserve
 
@@ -212,7 +218,7 @@ Need to **balance** *homogeneity* with *credibility* of data
 
 * Leverage u/w-er, claim handlers and data processors to determine which variables are the most important
 
-### Step (2) & (3): Analyze Distorical Data and Projection
+### Step (2) & (3): Analyze Historical Data and Projection
 
 **Backward** looking of historical data (Step 2):  
 Analyze the historical development patterns. If possible, consider individual case reserve development and the emergence of IBNR claims separately
@@ -266,7 +272,7 @@ $\therefore$ Use method that provide reasonable accuracy for the least effort an
 Table: (\#tab:short-tail-lines) Reinsurance categories that are usually short-tailed
 
 | Category I^1^ | Category II | Category III |
-| ------------ | ------------ | ------------ |
+|:------------:|:------------:|:------------:|
 | Property | Treaty | Proportional |
 | Property | Treaty | Cat |
 | Property | Treaty | Excess^2^ |
@@ -312,7 +318,7 @@ Medium-taild exposure
 Table: (\#tab:medium-tail-lines) Reinsurance categories that are usually medium-tailed
 
 | Category I | Category II | Category III | Category IV |
-| ------------ | ------------ | ------------ | ------------ |
+|:------------:|:------------:|:------------:|:------------:|
 | Property | Treaty | Excess | High layers^1^ |
 | Construction^2^ | | | |
 | Surety | | | |
@@ -353,7 +359,7 @@ Long-taild exposure
 Table: (\#tab:medium-tail-lines) Reinsurance categories that are usually long-tailed
 
 | Category I | Category II | Category III | Category IV |
-| ------------ | ------------ | ------------ |------------ |
+|:------------:|:------------:|:------------:|:------------:|
 | Casualty | Treaty | Excess^1^ | |
 | Casualty | Treaty | Proportional^2^ | |
 | Casualty | Facultative | | |
@@ -378,78 +384,110 @@ Table: (\#tab:medium-tail-lines) Reinsurance categories that are usually long-ta
     
 * Need to separate the above into finer, more homogeneous categories (e.g. separate claims-made and occurrence coverage)
 
-***Estimation Methods***
+##### Long Tailed Lines: Estimation Methods {#patrik-long-est-methods}
 
-* **Chainladder** (*BF*):
+***Chainladder*** (*CL*):
 
-    Don't use, too much leverage
+Don't use, too much leverage
 
-* **Bornhuetter-Ferguson** (*CL*):
+***Bornhuetter-Ferguson*** (*BF*):
 
-    Better than *CL*, correlate future development with an exposure measure (reinsurance premium): Premium $\times$ ELR
+Better than *CL*, correlate future development with an exposure measure (reinsurance premium): Premium $\times$ ELR
 
-    * Caveat 1): Very dependent on selected LR
+* Caveat 1): Very dependent on selected LR
     
-        LR for a given AY is strongly correlated with the underwriting cycle as well as the reported loss to date
+    * LR for a given AY is strongly correlated with the underwriting cycle as well as the reported loss to date
+    
+    * $\therefore$ need to consider the u/w cycle in ELR pick
+    
+        (May use LR from pricing work)
         
-        $\therefore$ need to consider the u/w cycle in ELR pick
-        May use LR from pricing work
+* Caveat 2): Estimate for each AY does not reflect the reported to date  
+(unless the selected LR is chosen with that in mind)
+
+***Stanard Buhlmann*** (*SB* or Cape Cod in Europe):
+
+$$ELR = \dfrac{\sum C_k}{\sum E_k p_k}$$
+
+* $C_k$: reported to date
+
+* $E_k$: Adj Prem
+
+* $p_k$: expected % reported to date
+
+* $k$ is the exposure year
+    
+Must **on-level** the historical premium and adjust to be pure premium ($E_k$)
+
+* **Remove** *commissions* and *brokerage* and *internal expenses* (but might not worth the effort)
+
+* Remove any suspected **rate level differences** (so each year have the same ELR)
+
+* Unclear how to adjust ELR to a prior estimate for each year (from 2000 #68)
         
-    * Caveat 2): Estimate for each AY does not reflect the reported to date (unless the selected LR is chosen with that in mind)
+*SB* IBNR:
 
-* **Stanard Buhlmann** (*SB* or Cape Cod in Europe):
+$$\begin{align}
+    IBNR_k &= E_k(1-p_k) \times ELR \\
+         &= (E_k - p_k E_k) \times ELR \\    
+  \end{align}$$
 
-    $ELR = \dfrac{\sum C_k}{\sum E_k p_k}$
+For all years $IBNR$ we have
 
-    * $C_k$: reported to date; $E_k$: Adj Prem; $p_k$: expected % reported to date; $k$ is the exposure year
+$$\begin{align}
+    IBNR_k &= \sum_k (E_k - p_k E_k) \times ELR \\
+    &= \left( \sum_k E_k - \sum_k p_k E_k \right) \times ELR \\
+    &= (\text{Total Adj Prem} - \text{Total Used Up Prem}) \times ELR \\
+    &= \text{Premium Not Used} \times ELR \\
+  \end{align}$$
+
+
+```{remark}
+
+
+* This estimate of the ELR use actual incurred loss
+
+* Method is sensitive to the accurary of the on-level EP
+
+* Total used up premium is something we'll already have from calculating the $ELR$
+```
+
+***Credibility IBNR Estimates***
+
+Weight the *CL* method with *SB* or *BF*
     
-    * Must on-level the historical premium and adjust to be pure premium ($E_k$)
+**Reserve** (or IBNR) for year $k$: 
 
-        * Remove commissions and brokerage and internal expenses (but might not worth the effort)
+$$\hat{R}_k = Z_k \times R^{CL}_k + (1-Z_k)\times R^{SB}_k$$
 
-        * Remove any suspected rate level differences (so each year have the same ELR)
+* $Z_k = p_k \times CF$; Credibility Factor $CF \in [0,1]$
+
+    $CF = 0$ $\Rightarrow$ *BF*
+    
+    $CF = 1$ $\Rightarrow$ Benktander (*GB*)
         
-    * *SB* IBNR $= E_k(1-p_k) \times ELR$
+* Can also weight together the IBNR estimate from paid loss method
     
-    * Remark:
-    
-        This estimate of the ELR use actual incurred loss
-
-        Method is sensitive to the accurary of the on-level EP
-    
-* **Credibility IBNR Estimates**:
-
-    Weight the *CL* method with *SB* or *BF*
-    
-    Reserve for year $k$: $\hat{R}_k = Z_k \times R^{CL}_k + (1-Z_k)\times R^{SB}_k$
-
-    * $Z_k = p_k \times CF$; Credibility Factor $CF \in [0,1]$
-
-        $CF = 0$ $\Rightarrow$ *BF*
-    
-        $CF = 1$ $\Rightarrow$ Benktander (*GB*)
+    * Case reserve are based on judgement of many people and can vary over time (lack consistency) $\Rightarrow$ Given long enough paid history, paid estimate might be more stable and credible
         
-    * Can also weight together the IBNR estimate from paid loss method
-    
-        Case reserve are based on judgement of many people and can vary over time (lack consistency) $\Rightarrow$ Given long enough paid history, paid estimate might be more stable and credible
-        
-    * Or weight with *BF* based on different a-priori (e.g. based on pricing ELR)
+* Or weight with *BF* based on different a-priori (e.g. based on pricing ELR)
 
-* **Alternative Methods**:
+***Alternative Methods***
 
-    * Fit losses reported to date to a curve (Clark)
+**Fit** losses reported to date to a **curve** ([Clark](#curve-fit-clark))
     
-        Practical problem: negative incrementals (get around by grouping over different periods)
+* *Practical problem*:  
+Negative incrementals (get around by grouping over different periods)
 
-    * Model claim counts and use stochastic model (Bootstrap) for the whole claims development process
+Model **claim counts** and use **stochastic model** (Bootstrap) for the whole claims development process
     
-        Caveat: difficult to explain to management
+* *Caveat*: difficult to explain to management
         
-        Advantage: Can contemplate intuitively satisfying models for various lag distributions
+* *Advantage*: Can contemplate **intuitively satisfying** models for various lag distributions
         
-        * Time from loss to first report and lag from report to settlement
+    * Time from loss to first report and lag from report to settlement
         
-        * Connect the lags with appropriate models for the dollar reserving and payments on individual claims up through settlement
+    * Connect the lags with appropriate models for the dollar reserving and payments on individual claims up through settlement
 
 ### Step (4): Monitoring and Testing Predictions
 
@@ -502,13 +540,13 @@ Haven't done TIA practice questions
 
 * $\star$ 2008 - #35: Reason of report lag and upward development due to modal value claim reserve
 
-* $\star$ 2008 - #37: Industry data vs internal
+* $\star \star$ 2008 - #37: Industry data vs internal
 
-    * Industry: thin internal data; volatile from rate changes; rate change history not credible; shift in underlying policies
+    * Industry: thin internal data; volatile from rate changes; rate change history not credible; shift in underlying policies so historical no reliable
 
     * Internal: Rate change not reflected in industry; industry composition different from reinsurer; Underlying policies not represented in Sch P data; believe data is credible and representative of the specific business involved
 
-* $\star$ 2009 - #32: How to partition data
+* $\star \star$ 2009 - #32: How to partition data
 
     * Fac vs treaty $\Rightarrow$ LoB; Don't split by cedant as data too thin
 
@@ -530,11 +568,20 @@ Haven't done TIA practice questions
 
     * Reporting lag (claims below reporting threshold)
 
-    * Persistent upward development (upward development of ALAE by looking at ratio)
+    * Persistent upward development (upward development of ALAE by looking at ALAE/Loss ratio)
 
     * Heterogeneity patterns (each AYs have different retention)
 
 * 2015 #13 b: Reason to adjust EP for SB (e.g on-level so LR for each AY is comparable, adjust for varying rate as SB assumes constant ELR)
+
+* 2016 #17:
+
+    a. 2 of the 7 problems with reinsurance reserving
+    
+    b. Describe the cause of each
+
+* $\star$ TIA 2: LoBs groupings considerations
+
 
 **Calculations**
 
@@ -560,14 +607,28 @@ Haven't done TIA practice questions
 
 * 2009 - #31: SB
 
-* 2011 #10 a c: SB and credibility weighted
+* $\star$ 2011 #10 a c: SB and credibility weighted
 
-* $\star$ 2012 #10 a: SB method, need to consider age of policy on risk attaching vs loss occurring basis, also take out expense from premium
+    * Shorthand on getting SB IBNR by $ELR \times (\text{total adjusted premium} - \text{total used up premium})$
+
+* $\star \star$ 2012 #10 a: SB method, need to consider age of policy on risk attaching vs loss occurring basis, also take out expense from premium
 
 * 2013 #10 a b: SB and credibility weighted SB and CL
 
 * 2014 #14: SB
 
 * 2015 #13 a: SB
+
+* 2016 #16:
+
+    a. SB
+    
+    b. Credibility weighting
+
+* TIA 1: Standard Buhlmann and credibility IBRN
+
+    * \$star$ Remember to use the on-leveled premium and remove commissions and brokerage and internal expenses (So pure premium)
+    
+    * $\star$ credibility factor is applied to the $p_k$
 
 ### Question Highlights
