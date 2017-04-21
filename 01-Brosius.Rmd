@@ -14,7 +14,7 @@
 
 * Know the [caveat](#LS-Caveat) on least square
 
-* Additional [considerations](#consid) for calculations when using LS
+* Additional [considerations](#bro-consid) for calculations when using LS
 
 ***Method comparisons***
 
@@ -124,7 +124,7 @@ Above calculation can be done with the table features on TI-30XS
     
         * As the expected value increase $\propto$ exposure and the covariances increase $\propto$ squared exposure
 
-### Practical Considerations for the Least Square Method {#consid}
+### Practical Considerations for the Least Square Method {#bro-consid}
 
 **Normalize** the losses by dividing with premium since LS assume constant distribution and also ***adjust for inflation***
 

@@ -36,6 +36,10 @@ $\star$ Credibility equation \@ref(eq:lr-claim-res-method) and the different $Z$
 
 [Credibility method MSE](#hurlimann-mse)
 
+## Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack
+
+
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):

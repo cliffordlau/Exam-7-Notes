@@ -1,6 +1,6 @@
 # Reinsurance Loss Reserving - Patrik
 
-Know the [7 problems of reinsurance reserving](#prob-of-re)
+$\star$ Know the [7 problems of reinsurance reserving](#prob-of-re)
 
 1. Longer claims report lag
 
@@ -24,7 +24,7 @@ Four steps of setting reinsurance reserve:
 
 * Partition $\Rightarrow$ Development Patterns $\Rightarrow$ Estimate $\Rightarrow$ Monitor and AvE
 
-* Partition priority
+* $\star$ Partition priority
 
 * Considerations for short vs medium vs [long tail lines](#patrik-long-est-methods)
 
@@ -513,9 +513,11 @@ Caveat:
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
+Past question mostly focus on:
+
+* The 7 problems of reinsurance loss reserving
+
+* Using the SB and credibility IBNR method
 
 **Concepts**
 
@@ -581,7 +583,6 @@ Haven't done TIA practice questions
     b. Describe the cause of each
 
 * $\star$ TIA 2: LoBs groupings considerations
-
 
 **Calculations**
 

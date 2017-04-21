@@ -81,18 +81,19 @@
 <li class="chapter" data-level="4.1.4" data-path="cl-ass.html"><a href="cl-ass.html#cl-ass-vio"><i class="fa fa-check"></i><b>4.1.4</b> Violation of Assumptions</a></li>
 <li class="chapter" data-level="4.1.5" data-path="cl-ass.html"><a href="cl-ass.html#strengthweakness-of-chainladder"><i class="fa fa-check"></i><b>4.1.5</b> Strength/Weakness of Chainladder</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="mean-squared-error.html"><a href="mean-squared-error.html"><i class="fa fa-check"></i><b>4.2</b> Mean Squared Error</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="mean-squared-error.html"><a href="mean-squared-error.html#mack-mse-app"><i class="fa fa-check"></i><b>4.2.1</b> Applying the MSE Formula</a></li>
+<li class="chapter" data-level="4.2" data-path="mack-mse.html"><a href="mack-mse.html"><i class="fa fa-check"></i><b>4.2</b> Mean Squared Error</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="mack-mse.html"><a href="mack-mse.html#mack-mse-app"><i class="fa fa-check"></i><b>4.2.1</b> Applying the MSE Formula</a></li>
+<li class="chapter" data-level="4.2.2" data-path="mack-mse.html"><a href="mack-mse.html#mse-calculation-flow"><i class="fa fa-check"></i><b>4.2.2</b> MSE Calculation Flow</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html"><i class="fa fa-check"></i><b>4.3</b> Confidence Intervals</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#ci-for-all-years-reserves"><i class="fa fa-check"></i><b>4.3.1</b> CI for All Years Reserves</a></li>
+<li class="chapter" data-level="4.3.1" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#mack-all-year-ci"><i class="fa fa-check"></i><b>4.3.1</b> CI for All Years Reserves</a></li>
 <li class="chapter" data-level="4.3.2" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#ci-application-range"><i class="fa fa-check"></i><b>4.3.2</b> CI Application &amp; Range</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html"><i class="fa fa-check"></i><b>4.4</b> Chain Ladder Assumptions Test</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#intercept"><i class="fa fa-check"></i><b>4.4.1</b> Intercept</a></li>
-<li class="chapter" data-level="4.4.2" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#residuals"><i class="fa fa-check"></i><b>4.4.2</b> Residuals</a></li>
-<li class="chapter" data-level="4.4.3" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#cy-test"><i class="fa fa-check"></i><b>4.4.3</b> Calendar Year Test</a></li>
-<li class="chapter" data-level="4.4.4" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#adjacent-ldf"><i class="fa fa-check"></i><b>4.4.4</b> Correlation of Adjacent LDFs</a></li>
+<li class="chapter" data-level="4.4.1" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-int-test"><i class="fa fa-check"></i><b>4.4.1</b> Intercept</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-residuals"><i class="fa fa-check"></i><b>4.4.2</b> Residuals</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-cy-test"><i class="fa fa-check"></i><b>4.4.3</b> Calendar Year Test</a></li>
+<li class="chapter" data-level="4.4.4" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-adjacent-ldf"><i class="fa fa-check"></i><b>4.4.4</b> Correlation of Adjacent LDFs</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="past-exam-questions.html"><a href="past-exam-questions.html"><i class="fa fa-check"></i><b>4.5</b> Past Exam Questions</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="past-exam-questions.html"><a href="past-exam-questions.html#question-highlights"><i class="fa fa-check"></i><b>4.5.1</b> Question Highlights</a></li>
@@ -145,7 +146,7 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="mean-squared-error" class="section level2">
+<div id="mack-mse" class="section level2">
 <h2><span class="header-section-number">4.2</span> Mean Squared Error</h2>
 <p>We wish to measure the average error between the ultimate losses <span class="math inline">\(c_u\)</span> and the estimate <span class="math inline">\(\hat{c}_u\)</span></p>
 <p><span class="math display">\[\begin{align}
@@ -163,10 +164,14 @@
 <p>Applying the properties of <span class="math inline">\(\mathrm{Var}(X) = \mathrm{E}[X^2] - \mathrm{E}[X]^2\)</span> we get</p>
 <p><span class="math display">\[MSE(\hat{c}_{i,I}) = \mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I})^2 \mid D\right] = \mathrm{Var}\left((c_{i,I}-\hat{c}_{i,I}) \mid D\right) + \left[\mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I}) \mid D\right]\right]^2\]</span></p>
 <p>We can pull out <span class="math inline">\(\hat{c}_{i,I}\)</span> from the variance and expectation term to get</p>
-<p><span class="math display">\[MSE(\hat{c}_{i,I}) = \underbrace{\mathrm{Var}\left(c_{i,I} \mid D\right)}_{\text{Process Variance}} + \underbrace{\left[\mathrm{E}\left[c_{i,I} \mid D\right] - \hat{c}_{i,I} \right]^2}_{\text{Parameter Variance}}\]</span></p>
-<hr />
-<p><span class="math inline">\(R_i\)</span> is the unpaid for year <span class="math inline">\(i\)</span>: <span class="math inline">\(R_i = c_{i,I} - c_{i,k}\)</span></p>
-<p>So the estimate of the unpaid claim is <span class="math inline">\(\hat{R}_i = \hat{c}_{i,I} - c_{i,k}\)</span></p>
+<span class="math display" id="eq:mse-mack-breakdown">\[\begin{equation}
+  MSE(\hat{c}_{i,I}) = \underbrace{\mathrm{Var}\left(c_{i,I} \mid D\right)}_{\text{Process Variance}} + \underbrace{\left[\mathrm{E}\left[c_{i,I} \mid D\right] - \hat{c}_{i,I} \right]^2}_{\text{Parameter Variance}}
+  \tag{4.3}
+\end{equation}\]</span>
+<p><span class="math inline">\(R_i\)</span> is the unpaid for year <span class="math inline">\(i\)</span>:</p>
+<p><span class="math display">\[R_i = c_{i,I} - c_{i,k}\]</span></p>
+<p>So the estimate of the unpaid claim is:</p>
+<p><span class="math display">\[\hat{R}_i = \hat{c}_{i,I} - c_{i,k}\]</span></p>
 <p>Since the difference between <span class="math inline">\(\hat{R}_i\)</span> and <span class="math inline">\(\hat{c}_{i,I}\)</span> is just paid to date (constant) so the MSE are the same</p>
 <p><span class="math display">\[MSE(\hat{R}_i) = MSE(\hat{c}_{i,I})\]</span></p>
 <div id="mack-mse-app" class="section level3">
@@ -177,8 +182,8 @@ Important formulas below
 </div>
 <p></p>
 <span class="math display" id="eq:mse-formula">\[\begin{equation}
-  MSE(\hat{c}_{i,I}) = \left[ s.e.(\hat{c}_{i,I}) \right]^2  = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f}_k^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
-  \tag{4.3}
+  MSE(\hat{c}_{i,I}) = \left[ s.e.(\hat{c}_{i,I}) \right]^2  = {\hat{c}_{i,I}}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{{\hat{\alpha}_k}^2}{{\hat{f}_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
+  \tag{4.4}
 \end{equation}\]</span>
 
 <div class="remark">
@@ -198,33 +203,33 @@ Important formulas below
 <p></p>
 <p><span class="math inline">\(\alpha\)</span> is the proportions for the variance</p>
 <span class="math display" id="eq:alpha-1">\[\begin{equation}
-  \hat{\alpha}_k^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2
-  \tag{4.4}
+  {\hat{\alpha}_k}^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2
+  \tag{4.5}
 \end{equation}\]</span>
 
 <div class="remark">
 <p><span class="remark"><em>Remark. </em></span> This one varies by age (columns), for each age:</p>
 <ol style="list-style-type: decimal">
 <li><p>Calculate the difference<sup>2</sup> of the LDFs for each AY and the selected</p></li>
-<li><p>Then multiply by each row’s respective cumulative loss for that age</p></li>
+<li><p>Then multiply (weight) by each AY’s cumulative loss for given age</p></li>
 <li>Sum the above and then divide by the number of rows minus 1
 </div>
 <p></p></li>
 </ol>
 <p><span class="math inline">\(\alpha^2_{I-1}\)</span> (e.g. <span class="math inline">\(\alpha^2_9\)</span> for a 10 <span class="math inline">\(\times\)</span> 10 triangle)</p>
 <span class="math display" id="eq:alpha-2">\[\begin{equation}
-\hat{\alpha}_{I-1}^2 = \mathrm{min} \left( \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
-  \hat{\alpha}_{I-3}^2 &amp; \text{if } \hat{\alpha}_{I-3}^2 &lt; \hat{\alpha}_{I-2}^2 \\
-  \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} &amp; \text{else}\\
+{\hat{\alpha}_{I-1}}^2 = \mathrm{min} \left( {\hat{\alpha}_{I-2}}^2 \times \dfrac{{\hat{\alpha}_{I-2}}^2}{{\hat{\alpha}_{I-3}}^2},{\hat{\alpha}_{I-3}}^2 \right) = \begin{cases}
+  {\hat{\alpha}_{I-3}}^2 &amp; \text{if } {\hat{\alpha}_{I-3}}^2 &lt; {\hat{\alpha}_{I-2}}^2 \\
+  {\hat{\alpha}_{I-2}}^2 \times \dfrac{{\hat{\alpha}_{I-2}}^2}{{\hat{\alpha}_{I-3}}^2} &amp; \text{else}\\
 \end{cases}
-\tag{4.5}
+\tag{4.6}
 \end{equation}\]</span>
 
 <div class="remark">
 <p><span class="remark"><em>Remark. </em></span> For the last <span class="math inline">\(\alpha\)</span>:</p>
 <ul>
 <li><p>If the 3<sup>rd</sup> last <span class="math inline">\(\alpha\)</span> is lower than the 2<sup>nd</sup> last <span class="math inline">\(\alpha\)</span>, use the 3<sup>rd</sup> last <span class="math inline">\(\alpha\)</span></p>
-<p>(If the final <span class="math inline">\(alpha\)</span>’s are not trending down, take the lower one)</p></li>
+<p>(If the final <span class="math inline">\(\alpha\)</span>’s are not trending down, take the lower one)</p></li>
 <li><p>If the final <span class="math inline">\(\alpha\)</span>’s are decreasing, then just take the same % of decrease to get the last <span class="math inline">\(\alpha\)</span></p></li>
 </ul>
 <p>Also note that if we believe the claims development have stopped at some age <span class="math inline">\(j\)</span> then we can set <span class="math inline">\(\alpha^2_j = 0\)</span></p>
@@ -232,6 +237,36 @@ Finally, you can also fit a logarithmic curve to the <span class="math inline">\
 </div>
 <p></p>
 </div>
+</div>
+<div id="mse-calculation-flow" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> MSE Calculation Flow</h3>
+<p>For a <span class="math inline">\(10 \times 10\)</span> triangle</p>
+<p><strong><em>Step 1</em></strong>:<br />
+Calculate all the <span class="math inline">\(\hat{f}_k\)</span></p>
+<p><strong><em>Step 2</em></strong>:<br />
+Calculate all the <span class="math inline">\({\hat{\alpha}_k}^2\)</span></p>
+<ul>
+<li><p>Calculate a <span class="math inline">\(\alpha_{i,k}^2\)</span> triangle</p>
+<ul>
+<li>Each cell is <span class="math inline">\(c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\({\hat{\alpha}_k}^2\)</span> is the sum of column <span class="math inline">\(k\)</span> over the number of cells - 1</p></li>
+<li><p>See special case for the last <span class="math inline">\(\alpha_k^2\)</span></p></li>
+</ul>
+<p><strong><em>Step 3</em></strong>:<br />
+Calculate the projected triangle using the <span class="math inline">\(\hat{f}_k\)</span></p>
+<p><strong><em>Step 4</em></strong>:<br />
+Calculate a <span class="math inline">\(MSE(\hat{c}_{i,k+1})\)</span> triangle</p>
+<div class="figure"><span id="fig:mack-mse-triangle"></span>
+<img src="figures/Exam-7-Notes-16.png" alt="Breakdown of MSE formula for each cell" width="100%" />
+<p class="caption">
+Figure 4.1: Breakdown of MSE formula for each cell
+</p>
+</div>
+<p><strong><em>Step 5</em></strong>:<br />
+Get the <span class="math inline">\(MSE\)</span> for the AY by summing up a given row of <span class="math inline">\(MSE(\hat{c}_{i,I})\)</span></p>
+<p><strong><em>Step 6</em></strong>:<br />
+Get the total <span class="math inline">\(MSE\)</span> for the total reserve (all AYs) you have to consider the <a href="mack-CI-methods.html#mack-all-year-ci">dependencey</a> between AYs since we use the same LDFs</p>
 </div>
 </div>
             </section>

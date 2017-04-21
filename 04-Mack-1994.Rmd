@@ -1,77 +1,54 @@
 # Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack
 
-Know the 3 **assumptions** of [chain ladder](#cl-ass)
+$\star$ 3 underlying **assumptions** of [chain ladder](#cl-ass) that makes the [implicit assumptions](#mack-implicit-ass) hold
 
-Know the 3 different **weight and variance** assumptions
+1. Expected incremental losses are $\propto$ losses to date (prop. \@ref(prp:cl-ass-1))
 
-| Weight $w_{j,k}$ | Description | Variance | Residual |
-| ---------------- | ----------- | -------- | -------- |
-| 1                | Simple Average | $\alpha_k^2 \times \mathbf{c_{j,k}^2}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{j,k}^2}}}$ |
-| $c_{j,k}$        | Weighted Average | $\alpha_k^2 \times \mathbf{c_{j,k}}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{c_{j,k}}}}$ |
-| $c_{j,k}^2$      | Least Square | $\alpha_k^2 \times \mathbf{1}$ | $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathbf{1}}}$ |
+2. Losses in each AY are $\perp\!\!\!\!\perp$ of the losses in other AYs (prop. \@ref(prp:cl-ass-2))
 
-**Mean squared error** calculation
+3. Variance of the incremental losses is $\propto$ losses reported to date (prop. \@ref(prp:cl-ass-3))
 
-$\begin{align}
-  MSE(\hat{c}_{i,I}) = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
-\end{align}$
+$\star$ 3 different **weight and variance** assumptions from table \@ref(tab:CL-var-weight)
 
-$\begin{align}
-  \hat{\alpha}_k^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2
-\end{align}$
+$\star$ **Mean squared error** [calculation](#mack-mse-app)
 
-$\hat{\alpha}_{I-1}^2 = \mathrm{min} \left( \dfrac{(\hat{\alpha}_{I-2}^2)^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
-  \hat{\alpha}_{I-3}^2 & \text{if } \hat{\alpha}_{I-3}^2 < \hat{\alpha}_{I-2}^2 \\
-  \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} & \text{else}\\
-\end{cases}$
+* The big MSE formula \@ref(eq:mse-formula)
 
-Confidence Interval
+* How to get the $\alpha$'s we need for the MSE formula \@ref(eq:alpha-1) and \@ref(eq:alpha-2)
+
+**Confidence Interval**
 
 * Normal: equation \@ref(eq:normal-ci)
 
-* Log-normal: equation \@ref(eq:lognormal-ci)
+* $\star$ Log-normal: equation \@ref(eq:lognormal-ci)
 
-Know the 4 **test of assumptions**
+    * Use log-normal when $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$
 
-Test 1. Intercept
+$\star$ When the above assumptions might be [violated](#cl-ass-vio) and know the 4 **test of assumptions** to check
 
-Test 2. [Residuals](#residuals)
+* Test 1. [Intercept](#mack-int-test)
 
-Test 3. [CY Test](#cy-test)
+* Test 2. [Residuals](#mack-residuals)
 
-* Rank small and large
+    * Formula for residual \@ref(eq:residual-eq)
+
+* Test 3. [CY Test](#mack-cy-test)
+
+    * How to get $z$ \@ref(eq:s-l-diagonal-mack)
     
-* $\mathrm{E}[z_n] = \dfrac{n}{2} - c_n$
+    * Expected value \@ref(eq:exp-z-diagonal-mack) and variance \@ref(eq:var-z-diagonal-mack)
+
+* Test 4. [Adjacent LDF Correlation](#mack-adjacent-ldf)
+
+    * $T$ for age $k$ \@ref(eq:t-k-mack) and $S$ \@ref(eq:sq-diff-rank-mack)
+
+    * $T$ for the whole triangle \@ref(eq:total-t-mack)
+  
+    * CI to compare with resutls \@ref(eq:t-ci-mack)
     
-    * $c_n = {n - 1 \choose m}\frac{n}{2^n}$
-        
-    * $m = \mathrm{floor}\left[ \dfrac{n-1}{2} \right]$
+    * This is test at a lower CI
 
-* $\mathrm{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \mathrm{E}[Z_n] - \mathrm{E}[z_n]^2$
-    
-* $Z = \sum_{diagonal} z$
-
-* Since $Z \sim$ Normal, can sum the mean and variance assuming $\perp\!\!\!\perp$
-
-* Test 95% CI: $\mathrm{E}[Z] \pm 2 \times \sigma$
-
-Test 4. [Adjacent LDF Correlation](#adjacent-ldf)
-
-* $S = \sum \limits_{\in rows} \Big \{ [Rank \: Col \: i \: LDF] - [Rank \: Col \: j \: LDF] \Big \}^2$
-
-* $T_k = 1 - \dfrac{S}{n(n^2-1)/6}$
-    
-* $T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}$
-
-* $\mathrm{E}[T] \pm Z \sqrt{\mathrm{Var}(T)}$
-
-    * $\mathrm{E}[T] = 0$
-
-    * $\mathrm{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}$
-
-* Use $Z = 0.67$ for range of [25%, 75%]
-
-## Chain Ladder Assumptions {#cl-ass}
+## Chainladder Underlying Assumptions {#cl-ass}
 
 ```{definition, mack-1994-def}
 Notations use for Mack
@@ -144,19 +121,15 @@ $$\mathrm{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 
 
 ```
 
-<!-- Need to double check on the below: -->
+### Implicit Assumptions {#mack-implicit-ass}
 
-<!-- ```{proposition, cl-ass-4, name = "Chain Ladder Assumption 4"} -->
-<!-- Variance is $\propto$ mean -->
+Taking a step back and look at the implicit assumptions we make when using *CL*
 
-<!-- * Based on assumption 1 and 3 (proposition \@ref(prp:cl-ass-1) & proposition \@ref(prp:cl-ass-3)) -->
+* For these implicit assumptions to hold, the 3 [underlying assumptions](#cl-ass) have to be true
 
-<!-- * If variance follows distribution x, then it implies the variance is $\propto$ loss -->
-<!-- ``` -->
+We are making assumptions on **how we select** the factor $\hat{f}_k$ and the **application**: 
 
-### Implicit Assumptions
-
-When using *CL*, we are making assumptions on how we select the factor $\hat{f}_k$ and the application $\hat{c}_{i,k+1} = c_{i,k} \times \hat{f}_k$
+$$\hat{c}_{i,k+1} = c_{i,k} \times \hat{f}_k$$
 
 Which requires the following assumptions:
 
@@ -167,6 +140,8 @@ Which requires the following assumptions:
         $\hat{f}_k$ are representative of the true $f_k$
 
     * Based on assumption 1 & 2 (prop. \@ref(prp:cl-ass-1) & prop. \@ref(prp:cl-ass-2))
+    
+    * See proof in Mack appendix A
 
 2. Unbiased estimate of Ultimate
 
@@ -175,6 +150,8 @@ Which requires the following assumptions:
         Multiplying the $\hat{f}_k$'s by the paid to date will give us an unbiased estimate of the future losses
 
     * Based on assumption 1 & 2 (prop. \@ref(prp:cl-ass-1) & prop. \@ref(prp:cl-ass-2))
+    
+    * See proof in Mack appendix C
 
 3. To use volume weighted average LDF
 
@@ -186,10 +163,6 @@ Which requires the following assumptions:
 
 ### Proof for Assumption 3 {#cl-ass-3-proof}
 
-```{block, type='rmdcaution'}
-Work in progress section
-```
-
 To estimate $f_k$ we can weight the historical LDFs in many different ways, putting it in general terms:
 
 \begin{equation}
@@ -198,11 +171,31 @@ To estimate $f_k$ we can weight the historical LDFs in many different ways, putt
 \end{equation}
 
 ```{remark}
-We assume each of the $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ are an unbiased estimate of $f_k$
+We assume each of the $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ are an unbiased estimate of $f_k$ (See proof below)
 
-* From assumption 1 & 2?
+$\therefore$ Any weighting of them is an unbiased estiamte of $\hat{f}_k$
+```
 
-$\therefore$ Any weighting of them is also unbiased
+```{proof}
+$$\begin{align}
+    \mathrm{E}\left[ \dfrac{c_{i, k+1}}{c_{i,k}} \right] &= \mathrm{E} \left[ \mathrm{E} \left[ \dfrac{c_{i, k+1}}{c_{i,k}} \mid c_{i,1}, ...,c_{i,k}\right] \right] &\cdots \:\:\: (1)\\
+    &= \mathrm{E} \left[ \mathrm{E} \left[ c_{i, k+1} \mid c_{i,1}, ...,c_{i,k}\right] / c_{i,k} \right] &\cdots \:\:\: (2)\\
+    &= \mathrm{E} \left[ c_{i,k} \: f_k \:/ c_{i,k} \right] &\cdots \:\:\: (3)\\
+    &= \mathrm{E} \left[f_k\right] \\
+    &= f_k &\cdots \:\:\: (4) \\
+  \end{align}$$
+```
+
+```{remark}
+
+
+1. Because the iterative rule $\mathrm{E}[X] = \mathrm{E}[\mathrm{E}(X \mid Y)]$
+
+2. Because $c_{i,k}$ is scalar since it's given
+
+3. From assumption 1 (prop. \@ref(prp:cl-ass-1))
+
+4. Because $c_{i,k}$ is scalar
 ```
 
 ```{remark}
@@ -211,13 +204,17 @@ When we use weighted volume average $w_{i,k} = \dfrac{c_{i,k}}{\sum \limits_{j} 
 
 ***
 
-The weights that minimize the variance is inversely proportional to the variance of the item we are estimating
+Based on theory of point estimation, among several unbiased estimators, prefrence should be given to the one with the smallest variance
+
+The weights that minimize the variance is inversely proportional to the variance of the item we are weighting, i.e.:
 
 * We want weights $w_{i,k}$ for each $i$ on $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$
 
 * The weight we apply to each $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ varies based on the variance of $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$
 
 * And if $\left( \dfrac{c_{i,k+1}}{c_{i,k}} \right)$ has high variance its weight will be lower to minimize the total variance of our estimate of $\hat{f}_k = \left( \dfrac{c_{1,k+1}}{c_{1,k}} \right) \times w_{1,k} + \cdots + \left( \dfrac{c_{I,k+1}}{c_{I,k}} \right) \times w_{I,k}$
+
+* Mack appendix B has a proof of this
 
 High variance estimate get lower weight:
 
@@ -267,13 +264,13 @@ Table: (\#tab:CL-var-weight) Relationships between weight, variance and residual
 
 2. Note the least square here we are forcing the intercept through the origin
 
-    Assumption for LS is that variance is the same for each exposure year (See Brosius)
+    Assumption for LS is that variance is the same for each exposure year (See [Brosius](#bro-consid))
 
 * Use different method for LDF selection based on variance assumption
 
 * Variance and the weight always multiply to $c_{j,k}^2$
 
-### Violation of Assumptions
+### Violation of Assumptions {#cl-ass-vio}
 
 Correlation between on AYs and another
 
@@ -281,7 +278,7 @@ Correlation between on AYs and another
 
 * Not necessarily assumption 1 (Prop. \@ref(prp:cl-ass-1))
 
-* e.g. Strong calendar year effects (i.e. faster payment, changing inflation) will lead to correlation along a diagonal
+* e.g. Strong **calendar year effects** (i.e. faster payment, changing inflation) will lead to correlation along a diagonal
 
 * Check using [calendar year test](#cy-test)
 
@@ -289,7 +286,7 @@ A single $\hat{f}_k$ is **not** appropriate for all years $i$
 
 * Assumption 1 (Prop. \@ref(prp:cl-ass-1)) is violated
 
-Dependence among columns
+**Dependence among columns**
 
 * Assumption 1 (Prop. \@ref(prp:cl-ass-1)) is violated
 
@@ -297,7 +294,7 @@ Dependence among columns
 
     If losses in the follow period are inversely correlated to the losses in the current period, then we'll have correlation between adjacent LDFs but still maintain independence of AYs
     
-If residuals are not random around zero
+If **residuals are not random around zero**
 
 * Assumption 3 (Prop. \@ref(prp:cl-ass-3)) is violated
 
@@ -307,7 +304,9 @@ If residuals are not random around zero
 
 ### Strength/Weakness of Chainladder
 
-Weakness
+Here we are talking about the weakness and not the limitation due to it's implicit assumptions
+
+***Weakness***
 
 * Tail LDFs depend on very few observations
 
@@ -319,13 +318,13 @@ Weakness
 
 * Unexpected future changes can make the observations obsolete
 
-Strength
+***Strength***
 
 * User knows exactly how the method works and it's weakness
 
 * Can be easily explained to non-actuaries
 
-## Mean Squared Error
+## Mean Squared Error {#mack-mse}
 
 We wish to measure the average error between the ultimate losses $c_u$ and the estimate $\hat{c}_u$
 
@@ -347,26 +346,31 @@ $$MSE(\hat{c}_{i,I}) = \mathrm{E}\left[(c_{i,I}-\hat{c}_{i,I})^2 \mid D\right] =
 
 We can pull out $\hat{c}_{i,I}$ from the variance and expectation term to get
 
-$$MSE(\hat{c}_{i,I}) = \underbrace{\mathrm{Var}\left(c_{i,I} \mid D\right)}_{\text{Process Variance}} + \underbrace{\left[\mathrm{E}\left[c_{i,I} \mid D\right] - \hat{c}_{i,I} \right]^2}_{\text{Parameter Variance}}$$
+\begin{equation}
+  MSE(\hat{c}_{i,I}) = \underbrace{\mathrm{Var}\left(c_{i,I} \mid D\right)}_{\text{Process Variance}} + \underbrace{\left[\mathrm{E}\left[c_{i,I} \mid D\right] - \hat{c}_{i,I} \right]^2}_{\text{Parameter Variance}}
+  (\#eq:mse-mack-breakdown)
+\end{equation}
 
-***
+$R_i$ is the unpaid for year $i$:
 
-$R_i$ is the unpaid for year $i$: $R_i = c_{i,I} - c_{i,k}$
+$$R_i = c_{i,I} - c_{i,k}$$
 
-So the estimate of the unpaid claim is $\hat{R}_i = \hat{c}_{i,I} - c_{i,k}$
+So the estimate of the unpaid claim is:
+
+$$\hat{R}_i = \hat{c}_{i,I} - c_{i,k}$$
 
 Since the difference between $\hat{R}_i$ and $\hat{c}_{i,I}$ is just paid to date (constant) so the MSE are the same
 
 $$MSE(\hat{R}_i) = MSE(\hat{c}_{i,I})$$
 
-### Applying the MSE Formula
+### Applying the MSE Formula {#mack-mse-app}
 
 ```{block2, type='rmdnote'}
 Important formulas below
 ```
 
 \begin{equation}
-  MSE(\hat{c}_{i,I}) = \left[ s.e.(\hat{c}_{i,I}) \right]^2  = \hat{c}_{i,I}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{\hat{\alpha}_k^2}{\hat{f}_k^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
+  MSE(\hat{c}_{i,I}) = \left[ s.e.(\hat{c}_{i,I}) \right]^2  = {\hat{c}_{i,I}}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{{\hat{\alpha}_k}^2}{{\hat{f}_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
   (\#eq:mse-formula)
 \end{equation}
 
@@ -387,7 +391,7 @@ Important formulas below
 $\alpha$ is the proportions for the variance
 
 \begin{equation}
-  \hat{\alpha}_k^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2
+  {\hat{\alpha}_k}^2 = \frac{1}{I - k - 1} \sum_{j=1}^{I-k} c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2
   (\#eq:alpha-1)
 \end{equation}
 
@@ -396,7 +400,7 @@ This one varies by age (columns), for each age:
 
 1. Calculate the difference^2^ of the LDFs for each AY and the selected
 
-2. Then multiply by each row's respective cumulative loss for that age
+2. Then multiply (weight) by each AY's cumulative loss for given age
 
 3. Sum the above and then divide by the number of rows minus 1
 ```
@@ -404,9 +408,9 @@ This one varies by age (columns), for each age:
 $\alpha^2_{I-1}$ (e.g. $\alpha^2_9$ for a 10 $\times$ 10 triangle)
 
 \begin{equation}
-\hat{\alpha}_{I-1}^2 = \mathrm{min} \left( \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2},\hat{\alpha}_{I-3}^2 \right) = \begin{cases}
-  \hat{\alpha}_{I-3}^2 & \text{if } \hat{\alpha}_{I-3}^2 < \hat{\alpha}_{I-2}^2 \\
-  \hat{\alpha}_{I-2}^2 \times \dfrac{\hat{\alpha}_{I-2}^2}{\hat{\alpha}_{I-3}^2} & \text{else}\\
+{\hat{\alpha}_{I-1}}^2 = \mathrm{min} \left( {\hat{\alpha}_{I-2}}^2 \times \dfrac{{\hat{\alpha}_{I-2}}^2}{{\hat{\alpha}_{I-3}}^2},{\hat{\alpha}_{I-3}}^2 \right) = \begin{cases}
+  {\hat{\alpha}_{I-3}}^2 & \text{if } {\hat{\alpha}_{I-3}}^2 < {\hat{\alpha}_{I-2}}^2 \\
+  {\hat{\alpha}_{I-2}}^2 \times \dfrac{{\hat{\alpha}_{I-2}}^2}{{\hat{\alpha}_{I-3}}^2} & \text{else}\\
 \end{cases}
 (\#eq:alpha-2)
 \end{equation}
@@ -416,7 +420,7 @@ For the last $\alpha$:
 
 * If the 3^rd^ last $\alpha$ is lower than the 2^nd^ last $\alpha$, use the 3^rd^ last $\alpha$
 
-    (If the final $alpha$'s are not trending down, take the lower one)
+    (If the final $\alpha$'s are not trending down, take the lower one)
     
 * If the final $\alpha$'s are decreasing, then just take the same % of decrease to get the last $\alpha$
 
@@ -424,6 +428,40 @@ Also note that if we believe the claims development have stopped at some age $j$
 
 Finally, you can also fit a logarithmic curve to the $\alpha^2_k$'s to estimate $\alpha^2_{I-1}$
 ```
+
+### MSE Calculation Flow
+
+For a $10 \times 10$ triangle
+
+***Step 1***:  
+Calculate all the $\hat{f}_k$
+
+***Step 2***:  
+Calculate all the ${\hat{\alpha}_k}^2$
+
+* Calculate a $\alpha_{i,k}^2$ triangle
+
+    * Each cell is $c_{j,k} \Big ( \underbrace{\frac{c_{j,k+1}}{c_{j,k}}-\hat{f_k}}_{\text{AY LDFs - Selected}} \Big )^2$
+  
+* ${\hat{\alpha}_k}^2$ is the sum of column $k$ over the number of cells - 1
+
+* See special case for the last $\alpha_k^2$
+
+***Step 3***:  
+Calculate the projected triangle using the $\hat{f}_k$
+
+***Step 4***:  
+Calculate a $MSE(\hat{c}_{i,k+1})$ triangle
+
+```{r mack-mse-triangle, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Breakdown of MSE formula for each cell'}
+knitr::include_graphics('figures/Exam-7-Notes-16.png')
+```
+
+***Step 5***:  
+Get the $MSE$ for the AY by summing up a given row of $MSE(\hat{c}_{i,I})$ 
+
+***Step 6***:  
+Get the total $MSE$ for the total reserve (all AYs) you have to consider the [dependencey](#mack-all-year-ci) between AYs since we use the same LDFs
 
 ## Confidence Intervals {#mack-CI-methods}
 
@@ -469,14 +507,14 @@ $$\mu_i = \mathrm{ln}(\hat{R}_i) - \dfrac{\sigma_i^2}{2}$$
     This would give us negative value for the bottom end of the CI if we use normal distribution
 ```
 
-### CI for All Years Reserves
+### CI for All Years Reserves {#mack-all-year-ci}
 
 Mean is easy: $\hat{R} = \sum \limits_{i} \hat{R}_i$
 
 But since $\hat{R}_{i}$ rely on the same LDFs they are not independent and we need to include a correlation factor for the $MSE(\hat{R})$
 
 \begin{equation}
-  [s.e.(\hat{R})]^2 = \sum \limits_{i=2}^I \left\{ [s.e.(\hat{R}_i)]^2 + \hat{c}_{i,I} \left( \sum \limits_{j = i+1}^{I} \hat{c}_{j,I} \right) \left( \sum \limits_{k = I + 1 - i}^{I - 1} \dfrac{2 \hat{\alpha}^2_k \big/ \hat{f}^2_k}{\sum_{n=1}^{I-k}c_{n,k}}\right) \right\}
+  [s.e.({\hat{R}})]^2 = \sum \limits_{i=2}^I \left\{ [s.e.(\hat{R}_i)]^2 + \hat{c}_{i,I} \left( \sum \limits_{j = i+1}^{I} \hat{c}_{j,I} \right) \left( \sum \limits_{k = I + 1 - i}^{I - 1} \dfrac{2 {\hat{\alpha_k}}^2 \big/ {\hat{f_k}}^2}{\sum_{n=1}^{I-k}c_{n,k}}\right) \right\}
   (\#eq:mse-total)
 \end{equation}
 
@@ -484,7 +522,7 @@ If we want to simplify things we can use the square root rule to sum up the diff
 
 ### CI Application & Range
 
-**Total CI**
+***Total CI***
 
 Consider the ratio $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i}$
 
@@ -496,21 +534,21 @@ Consider the ratio $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i}$
 
     Driven by the large uncertainty around the development from age 12 - 24
     
-* Recall from previous section we mentioned that we should use log-normal distribution for the CI if $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$, this is equivalent to $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} > 50%$
+* Recall from previous section we mentioned that we should use log-normal distribution for the CI if $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$, this is equivalent to $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i} > 50\%$
 
 * Then calculate the total reserve CI
 
-**Allocate CI to each AY**
+***Allocate CI to each AY***
 
 After calculating the all year CI, we can allocate the upperbound the total CI to each AYs
 
 * Through trial & error to figure out the $Z_{\alpha}$ for each AY that would yield the total upperbound CI
 
-**Empirical Limits**
+***Empirical Limits***
 
 Use the max/min historical LDFs for each age $k$ to get the upper and lower limit of the confidence interval
 
-* CI is too small for older ages as there are only a few LDFs (and too large for younger ages)
+* *Caveat*: CI is too small for older ages as there are only a few LDFs (and too large for younger ages)
 
     $\therefore$ Not very useful
 
@@ -518,15 +556,15 @@ Use the max/min historical LDFs for each age $k$ to get the upper and lower limi
 
 Tests on the various Chain Ladder assumptions
 
-1. Intercept
+1. [Intercept](#mack-int-test)
 
-2. Residuals
+2. [Residuals](#mack-residuals)
 
-3. Calendar year test
+3. [Calendar year test](#mack-cy-test)
 
-4. Correlation of adjacent LDFs
+4. [Correlation of adjacent LDFs](#mack-adjacent-ldf)
 
-### Intercept
+### Intercept {#mack-int-test}
 
 Test for assumption 1 (prop. \@ref(prp:cl-ass-1))
 
@@ -540,7 +578,7 @@ Plot the losses at adjacent ages
 
 We expect to see the line of best fit goes through the origin if the chain ladder assumption holds
 
-### Residuals{#residuals}
+### Residuals{#mack-residuals}
 
 Test for assumption 3 (prop. \@ref(prp:cl-ass-3))
 
@@ -572,7 +610,7 @@ Test can be used to test the various variance assumptions by calculating the $\v
 
 * If passed $\Rightarrow$ expected losses are linear w.r.t. cumulative losses paid to date
 
-### Calendar Year Test{#cy-test}
+### Calendar Year Test{#mack-cy-test}
 
 Test for assumption 2 (prop. \@ref(prp:cl-ass-2))
 
@@ -584,17 +622,26 @@ Important formulas below
 
 1. Rank the LDFs in each column (1 = lowest)
 
-2. Label them $S$ (small) and $L$ (large) and the median is discarded
+2. Label them $S$ (small) and $L$ (large) and the median is *discarded*
 
 3. For each diagonal $d$ with at least 2 elements:
 
-$$z^d = \mathrm{min}(\text{# of }S, \text{# of }L)$$
+\begin{equation}
+  z^d = \mathrm{min}(\text{# of }S, \text{# of }L)
+  (\#eq:s-l-diagonal-mack)
+\end{equation}
 
 4. Calculate $\mathrm{E}[z_n]$ and $\mathrm{Var}(z_n)$ for each diagonal $d$
 
-$$\mathrm{E}[z_n] = \dfrac{n}{2} - c_n$$
+\begin{equation}
+  \mathrm{E}[z_n] = \dfrac{n}{2} - c_n
+  (\#eq:exp-z-diagonal-mack)
+\end{equation}
 
-$$\mathrm{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \mathrm{E}[z_n] - \mathrm{E}[z_n]^2$$
+\begin{equation}
+\mathrm{Var}(z_n) = \dfrac{n(n-1)}{4} - c_n (n-1) + \mathrm{E}[z_n] - \mathrm{E}[z_n]^2
+  (\#eq:var-z-diagonal-mack)
+\end{equation}
 
 ```{remark}
 
@@ -626,7 +673,7 @@ Since $z \sim Normal$, can sum the mean and variance by assuming independence
 
 If the observed $Z$ is outside the CI range $\Rightarrow$ There is calendar year effects and assumption (2) is violated
 
-### Correlation of Adjacent LDFs{#adjacent-ldf}
+### Correlation of Adjacent LDFs{#mack-adjacent-ldf}
 
 Test assumption (1) (prop. \@ref(prp:cl-ass-1))
 
@@ -656,9 +703,15 @@ Important formulas below
 
 1. Calculate Spearman's correlation for each pair of **adjacent LDFs**
 
-$$S_k = \sum \limits_{i} \Big \{ rank(f_{i,k-1}) - rank(f_{i,k}) \Big \}^2$$
+\begin{equation}
+  S_k = \sum \limits_{i} \Big \{ rank(f_{i,k-1}) - rank(f_{i,k}) \Big \}^2
+  (\#eq:sq-diff-rank-mack)
+\end{equation}
 
-$$T_k = 1 - \dfrac{S}{n_k(n_k^2-1)/6}$$
+\begin{equation}
+  T_k = 1 - \dfrac{S_k}{n_k(n_k^2-1)/6}
+  (\#eq:t-k-mack)
+\end{equation}
 
 ```{remark}
 
@@ -678,7 +731,10 @@ $$T_k = 1 - \dfrac{S}{n_k(n_k^2-1)/6}$$
 
 2. Calculate $T$ for the whole triangle
 
-$$T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}$$
+\begin{equation}
+  T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}
+  (\#eq:total-t-mack)
+\end{equation}
 
 ```{remark}
 
@@ -692,11 +748,14 @@ $$T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\s
 
 3. Compare $T$ with CI based on distribution
 
-$$\mathrm{E}[T] = 0$$
-
-$$\mathrm{Var}[T] = \dfrac{1}{(I-2)(I-3)/2}$$
-
-$$CI = \mathrm{E}[T] \pm Z \sqrt{\mathrm{Var}(T)}$$
+\begin{equation}
+  \begin{array}{c}
+    CI = \mathrm{E}[T] \pm Z \sqrt{\mathrm{Var}(T)} \\
+    \mathrm{E}[T] = 0 \\
+    \mathrm{Var}[T] = \dfrac{1}{(I-2)(I-3)/2} \\
+  \end{array}
+  (\#eq:t-ci-mack)
+\end{equation}
 
 ```{remark}
 
