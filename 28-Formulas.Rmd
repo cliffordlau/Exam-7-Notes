@@ -38,7 +38,43 @@ $\star$ Credibility equation \@ref(eq:lr-claim-res-method) and the different $Z$
 
 ## Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack
 
+$\star$ 3 different **weight and variance** assumptions from table \@ref(tab:CL-var-weight)
 
+$\star$ **Mean squared error** [calculation](#mack-mse-app)
+
+* The big MSE formula \@ref(eq:mse-formula)
+
+* How to get the $\alpha$'s we need for the MSE formula \@ref(eq:alpha-1) and \@ref(eq:alpha-2)
+
+**Confidence Interval**
+
+* Normal: equation \@ref(eq:normal-ci)
+
+* $\star$ Log-normal: equation \@ref(eq:lognormal-ci)
+
+    * Use log-normal when $s.e.(\hat{R}_i) > \dfrac{R_i}{2}$
+
+$\star$ 4 **test of assumptions** to check
+
+* Test 2. [Residuals](#mack-residuals)
+
+    * Formula for residual \@ref(eq:residual-eq)
+
+* $\star \star$ Test 3. [CY Test](#mack-cy-test)
+
+    * How to get $z$ \@ref(eq:s-l-diagonal-mack)
+    
+    * Expected value \@ref(eq:exp-z-diagonal-mack) and variance \@ref(eq:var-z-diagonal-mack)
+
+* $\star \star$ Test 4. [Adjacent LDF Correlation](#mack-adjacent-ldf)
+
+    * $T$ for age $k$ \@ref(eq:t-k-mack) and $S$ \@ref(eq:sq-diff-rank-mack)
+
+    * $T$ for the whole triangle \@ref(eq:total-t-mack)
+  
+    * CI to compare with resutls \@ref(eq:t-ci-mack)
+    
+    * This is test at a lower CI
 
 ## Reinsurance Loss Reserving - Patrik
 
