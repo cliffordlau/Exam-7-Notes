@@ -1,39 +1,63 @@
 # Testing the Assumptions of Age-to-Age Factors - G. Venter
 
-Standards used in this paper
+Definitions and standards used for Venter
 
-* The $n$ for this paper excludes the first column
+* $n$, $m$, $p$
 
-* Coefficient $> 2 \sigma$ is significant
+    * $\star$ The $n$ excludes the first column
+  
+    * Important for implication 2 [counting parameters](#venter-count-para) for adj SSE
 
-Know the adj SSE, AIC and BIC
+* $\star$ Project **incremental** losses, $q(w,d+1)$ here
 
-Know the 6 implications
+    * Column parameter $f(d)$ is LDF - 1
 
-1) Statistical significance of $f(d)$
+$\star \star$ [Goodness of fit](#venter-goodness-fit) measure: 
 
-2) Is there a better estimate for $q$ than $f \times c$
+* Adj SSE \@ref(eq:adj-sse-venter)
+
+* AIC \@ref(eq:aic-venter)
+
+* BIC \@ref(eq:bic-venter)
+
+6 testable implications
+
+1) [Statistical significance](#venter-imp-1) of factors
+
+    * Coefficient $> 2 \sigma$ is significant
+
+2) $\star \star$ Is there a [better estimate](#venter-imp-2) for $q$ than $f \times c$
 
     * Number of parameters (Table \@ref(tab:venter-alt-pattern))
     
-    * BF parameters (Table \@ref(tab:venter-var-weight-BF))
+    * [Counting parameters](#venter-count-para)
+    
+    * $\star \star$ BF parameters (Table \@ref(tab:venter-var-weight-BF))
+    
+    * [Iteration process](#iteration-proc-venter)
 
-3) Check residuals against $c(w,d)$
+3) Check [residuals](venter-imp-3) against $c(w,d-1)$
 
-4) Stability of $f(d)$ down the column
+4) [Stability](#venter-imp-4) of $f(d)$ down the column
 
-5) No correlation among columns
+5) $\star \star$ [No correlation among columns](#venter-imp-5)
 
-    * Know the calculation for test
+    * Pearson correlation calculation \@ref(eq:venter-pearson-corr) and test statistics \@ref(eq:venter-pearson-corr-test-stat)
+    
+    * To test for all different pairs (not just adjacent pairs) \@ref(eq:corr-pair-total)
+    
+    * Similar to [Mack's adjacent LDF test](#mack-adjacent-ldf)
 
-6) No particularly high or low diagonals
+6) No particularly [high or low diagonals](#venter-imp-6)
+
+    * Setting up regression with CY dummy variable \@ref(eq:venter-cy-regress)
 
 ## Definitions and Assumptions {#venter-def}
 
 Table: (\#tab:venter-mack-def) Tables of Definitions
 
 | Venter Notations | Definitions | Mack Notations (\@ref(def:mack-1994-def)) | 
-| --------- | ------------------------------------------------|----------- |
+|:--------- |:------------------------------------------------|:----------- |
 | $w$       | AYs | $i$ |
 | $d$       | Dev period; $d=0$ is age @ end of year 1 | $k$ |
 | $c(w,d)$  | Cumulative losses for AY $w$ age $d$ | $c_{i,k}$ |
@@ -111,13 +135,15 @@ Table: (\#tab:venter-var-weight) Relationships between weight, variance and resi
     
 * Recall $\dfrac{q(w,d+1)}{c(w,d)}$ are the empirical LDF - 1
 
-$\mathrm{E}[q(w,d+1)] = f(d)c(w,d)$
+```{definition, venter-cl-para-def, name = "Chainladder Parameter definition"}
+$$\mathrm{E}[q(w,d+1)] = f(d)c(w,d)$$
 
 * $n = \sum \limits_{i=1}^{m-1} i = \dfrac{m(m-1)}{2}$ = predicted data point?
 
 * $p=m-1$ since we don't predict the first column
 
 * $m =$ dimension
+```
 
 ## 6 Testable Implications
 
@@ -129,35 +155,39 @@ $\mathrm{E}[q(w,d+1)] = f(d)c(w,d)$
 
 3) [Check residuals against $c(w,d)$](#venter-imp-3)
 
+    * Test for Mack assumption 1 (\@ref(prp:cl-ass-1))?
+
 4) [Stability of $f(d)$ down the column](#venter-imp-4)
+
+    * Test for Mack assumption 1 (\@ref(prp:cl-ass-1))?
 
 5) [No correlation among columns](#venter-imp-5)
 
-    Test for independence
+    * Test for Mack assumption 1 (\@ref(prp:cl-ass-1))
 
 6) [No particularly high or low diagonals](#venter-imp-6)
 
-    Test for independence
+    * Test for Mack assumption 2 (\@ref(prp:cl-ass-2))
 
 ### Goodness of Fit Measurement {#venter-goodness-fit}
 
 Compare different fit of the models based on adjusted $SSE$ (actual vs projected **excluding** 1st column)
 
-Adjusted *SSE*
+**Adjusted *SSE***
 
 \begin{equation}
   \dfrac{SSE}{(n-p^2)}
   (\#eq:adj-sse-venter)
 \end{equation}
 
-Akaike Information Criterion
+**Akaike Information Criterion**
 
 \begin{equation}
   AIC \approx SSE \times e^{2p/n}
   (\#eq:aic-venter)
 \end{equation}
 
-Bayesian Information Criterion
+**Bayesian Information Criterion**
 
 \begin{equation}
   BIC \approx SSE \times n^{p/n}
@@ -171,18 +201,18 @@ Bayesian Information Criterion
 
     * Exclude because when we do reserving we don't predict anything from the first column
     
-    * Usually the triangle excluding the first column
+    * So usually equals number of cells in the triangle excluding first column
 
 * $p =$ # of parameters
 
 * $SSE = \sum (A - E)^2$
 
-    * Here you exclude the first column when calculating the difference
+    * Here you **exclude the first column** when calculating the difference
     
 * Venter use the adjusted SSE as the AIC can be too permissive of over parameterization for large data sets
 ```
 
-### Implication 1: Significance of Factors {#venter-imp-1}
+## Implication 1: Significance of Factors {#venter-imp-1}
 
 Check if the parameter coefficient is $> 2 \sigma$ for 95% sure that the parameters are $\neq 0$
 
@@ -192,7 +222,7 @@ Check if the parameter coefficient is $> 2 \sigma$ for 95% sure that the paramet
 
 * LDFs tend to fail towards the tail
 
-### Implication 2: Superiority of Alternative Emergence Patterns {#venter-imp-2}
+## Implication 2: Superiority of Alternative Emergence Patterns {#venter-imp-2}
 
 If an alternative emergence pattern provides a better explanation of the triangle, maybe it should be used
 
@@ -200,12 +230,12 @@ If an alternative emergence pattern provides a better explanation of the triangl
 
 2. Calculate the Adjusted SSE \@ref(eq:adj-sse-venter) (based on every cell except the age 0 column)
 
-#### Parameters: Alternative Emergence Pattern
+### Parameters: Alternative Emergence Pattern
 
 Table: (\#tab:venter-alt-pattern) Alternative emergence pattern on a $m \times m$ triangle
 
 | Emergence Patterns | # of Parameters $p$ | Comments |
-| ------------------------------ | ---------- | ------------------------ |
+|:------------------------------ |:---------- |:------------------------ |
 | $\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d)$ | $m - 1$ | e.g. Chainladder |
 | $\mathrm{E}[q(w,d+1) \mid \text{Data to }w+d] = f(d) c(w,d) + g(d)$ | $2m - 2$ | e.g. Least Squares |
 | $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)$ | $2m-2$ | e.g. BF |
@@ -222,7 +252,7 @@ $f(d)h(w)$
 
 * Here $f(d)$ is related to the % of losses emerged in period $d$
 
-    Not LDF -1
+    Incremental % emergence, **NOT** LDF - 1
     
 * $h(w)$ can be think of as an estimate of ultimate losses for AY $w$
 
@@ -230,22 +260,22 @@ $f(d)h(w)$
     
 * The -2 for the BF is due to $f(0)$ and constant
 
-* If BF is better $\Rightarrow$ Loss emergence is more accurately represented as fluctuating around a proportion of expected ultimate losses (rather than proportion of reported losses)
+* If **BF** is better $\Rightarrow$ Loss emergence is more accurately represented as fluctuating around a proportion of expected ultimate losses (rather than proportion of reported losses)
 
-* Cape Cod works when the loss ratio is stable (stable book of business)
+* **Cape Cod** works when the loss ratio is stable (stable book of business)
 
     * Use $h(w) = h \times Premium(w)$, so we only need stable ELR
     
     * Cape Cod works out to an additive model $q(w,d) = h \times f(d)$
 
-* Can further reduce parameters by **combining** some row and column parameters
+* Can **further reduce parameters** by **combining** some row and column parameters
 
     * Might be intuitively appealing to sum up the recent and tail years of the $h(w)$ since there's little empirical data to support different estimates
 
 * We'll be mostly focusing on this form
 ```
 
-#### Variance Assumptions: Alternative Emergence Pattern
+### Variance Assumptions: Alternative Emergence Pattern
 
 Consider $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)$ from Table \@ref(tab:venter-alt-pattern)
 
@@ -289,7 +319,7 @@ Different variance assumption for $\varepsilon$ $\Rightarrow$ different paramete
 Table: (\#tab:venter-var-weight-BF) Variance and parameters for various form of $\mathrm{E}[q(w,d) \mid \text{Data to }w+d] = f(d)h(w)$
 
 | Method | $\mathrm{Var}(\varepsilon(w,d)) \propto f(d)^p h(w)^q$ | $\mathbf{f(d)}$: Col Parameters | $\mathbf{h(w)}$: Row Parameters |
-| ------------------ | ------------------ | ------------------ | ------------------ |
+|:------------------ |:------------------ |:------------------ |:------------------ |
 | *BF*^1^ | $p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}$ |
 | Cape Cod^2^ | $p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}$ |
 | *BF* (Var $\propto$ $fh$)| $p=q=1$ | $f^2(d) = \dfrac{\sum_w h \left( \frac{q}{h} \right) ^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f \left( \frac{q}{f} \right)^2}{\sum_d f}$ |
@@ -304,15 +334,11 @@ Table: (\#tab:venter-var-weight-BF) Variance and parameters for various form of 
 
 Recall from [Mack 1994](#residuals), we need to look at the residual graphs to determine which variance assumption is appropriate
 
-#### Iteration Process
-
-```{block, type='rmdcaution'}
-Work in progress section
-```
+### Iteration Process {#iteration-proc-venter}
 
 Need to seed one of them and iterate until convergence
 
-* $f(d)$ $\sum \downarrow$; $h(w)$ $\sum \rightarrow$ (for the constant var BF)
+* e.g. for constant variance BF: $f(d)$ $\sum \downarrow$; $h(w)$ $\sum \rightarrow$
 
 * Use the above to estimate the parameters and then calculate the unpaid
 
@@ -324,55 +350,73 @@ Step 1) Start iteration with the $f(d)$ from Chainladder
     
 * For age 0, subtract the sum of the other factors from unity
 
-Step 2) Find $h(w)$'s that minimize the SSE
+Step 2) Find $h(w)$'s that minimize the $SSE$
 
 * One regression for each $w$
 
-Step 3) Find $f(d)$'s that minimize the SSE based on the $h(w)$ above
+* Depending your variance assumption (Table \@ref(tab:venter-var-weight-BF)), see figures below
 
-Step 4) Do this till convergence
+Step 3) Find $f(d)$'s that minimize the $SSE$ based on the $h(w)$ from step 2
 
-#### Counting *n* and *p* for SSE {#venter-count-para}
+Step 4) Repeat step 2 & 3 till convergence
+
+Step 5) Use the $f(d)$ and $h(w)$ calculated to get the estiamted triangle to calculate $SSE$ or do projection
+
+```{r bf-const-var-fig, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='BF with constant variance'}
+knitr::include_graphics('figures/Exam-7-Notes-17.png')
+```
+
+```{r bf-var-prop-fh-fig, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='BF with variance proportional to $fh$'}
+knitr::include_graphics('figures/Exam-7-Notes-18.png')
+```
+
+```{r cape-cod-fig, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='Cape Cod'}
+knitr::include_graphics('figures/Exam-7-Notes-19.png')
+```
+
+### Counting *n* and *p* for SSE {#venter-count-para}
 
 **For *n***
 
-* For reserving: number of cell in the triangle minus the first column $\dfrac{m(m-1)}{2}$
+* *For reserving*: number of cell in the triangle minus the first column $\dfrac{m(m-1)}{2}$
 
-    Since we don't need to forecast the first column to calculate the unpaid
+    (Since we don't need to forecast the first column to calculate the unpaid)
     
-* For pricing: number of cell in the triangle
+* *For pricing*: number of cell in the triangle
 
-**For *p*** (Just a walk through of how we get the $m$ in Table \@ref(\#tab:venter-alt-pattern))
+**For *p*** (Just a walk through of how we get the $p$ in Table \@ref(tab:venter-alt-pattern))
 
 * ***BF***: Start with $2m$ parameters all the $f(d)$'s and $h(w)$'s
 
     1. We don't need $f(0)$ for reserves again since we don't need to forcast the first column
     
-    2. Less one more due to degree of freedom (?)
+    2. Less one more due to degree of freedom
     
-        Since you can fix any one of the parameters and still get the same results
+        (Since you can fix any one of the parameters and still get the same results)
         
     3. So we have $p = 2m-2$
 
-* Similarly for **Cape Cod** but we only start with $m + 1$ so we ended up with $m-1$ taking out the $f(d)$ and the degree of freedom
+* Similarly for **Cape Cod** but we only start with $m + 1$ so we ended up with $m-1$ (i.e. taking out the $f(d)$ and the degree of freedom)
 
 * **Grouped *BF*** is similar as well if you don't group the $f(0)$
 
-    If you group the $f(0)$ you can't subtract one for that as you'll be using the parameter
+    * *Note*: If you group the $f(0)$ you can't subtract one for that as you'll be using the parameter
     
-* **Chainladder** you have $m$ for all the $f(d)$'s to start with and less the $f(d)$
+* **Chainladder** you have $m$ for all the $f(d)$'s to start with and less the $f(0)$
     
-### Implication 3: Linearity {#venter-imp-3}
+## Implication 3: Linearity {#venter-imp-3}
 
 The forecast incremental losses might not be a linear function (e.g. $q(w,d) = a\sqrt{c(w,d)}$)
 
-Look at residuals as function of previous
-
-* Test for linearity by making sure the residuals are not a sequence of positive then negative and vice versa
+* **Test for linearity** by making sure the residuals are not a sequence of positive then negative and vice versa
 
 * Do this for each regression (i.e. every $d$)
 
-### Implication 4: Stability {#venter-imp-4}
+* Look at residuals as function of $c(w,d-1)$
+
+* Similar to residual test from [mack](#mack-residuals)
+
+## Implication 4: Stability {#venter-imp-4}
 
 Look at empirical LDFs $f(d)$ down a column
 
@@ -382,11 +426,11 @@ Look at empirical LDFs $f(d)$ down a column
 
 * Can compare rolling 5 year averages as well
 
-### Implication 5: No Correlation on Columns (Test for independence) {#venter-imp-5}
+## Implication 5: No Correlation on Columns (Test for independence) {#venter-imp-5}
 
 Calculate Pearson correlation for every pair of columns with at **least 3 LDFs**
 
-* This is a test on the LDFs
+* This is a test on the LDFs (Mack assumption 1 (prop. \@ref(prp:cl-ass-1)), LDFs are not correlated)
 
 * Test with only 2 LDFs will either be 1 or -1
 
@@ -396,7 +440,10 @@ Calculate Pearson correlation for every pair of columns with at **least 3 LDFs**
 
 ***Correlation***:
 
-$$r = \dfrac{\sum \tilde{x} \tilde{y}}{\sqrt{\sum \tilde{x}^2\sum \tilde{y}^2}}$$
+\begin{equation}
+  r = \dfrac{\sum {\tilde{x}} {\tilde{y}} }{\sqrt{\sum {\tilde{x}}^2 \sum {\tilde{y}}^2}}
+  (\#eq:venter-pearson-corr)
+\end{equation}
 
 Where $\tilde{x} = x - \bar{x}$ and $\tilde{y} = y - \bar{y}$
 
@@ -406,7 +453,10 @@ Where $\tilde{x} = x - \bar{x}$ and $\tilde{y} = y - \bar{y}$
 
 ***Test statistics*** for significance is $T \sim t_{n-2}$
 
-$$T = r \sqrt{ \dfrac{n-2}{1-r^2} }$$
+\begin{equation}
+  T = r \sqrt{ \dfrac{n-2}{1-r^2} }
+  (\#eq:venter-pearson-corr-test-stat)
+\end{equation}
 
 * Look up the t-value from table for 90%
 
@@ -414,19 +464,29 @@ $$T = r \sqrt{ \dfrac{n-2}{1-r^2} }$$
 
 Perform test for all columns
 
-* We deem the triangle have significant correlations if more than $0.1 x + \sqrt{x}$ pairs are correlated
+* We deem the triangle have significant correlations if the number of correlated pairs are more than
 
-* x = # of pair tested = ${m - 3 \choose 2}$ for a $m \times m$ triangle
+\begin{equation}
+  0.1 x + \sqrt{x} \:\:\: : \:\:\: x = {m - 3 \choose 2}
+  (\#eq:corr-pair-total)
+\end{equation}
 
-### Implication 6: No High of Low Diagonals (Test for independence) {#venter-imp-6}
+* x = # of pair tested for a $m \times m$ triangle
+
+## Implication 6: No High of Low Diagonals (Test for independence) {#venter-imp-6}
 
 Similar to [Mack](#cy-test)'s CY Test
+
+* This is a test on Mack assumption 2 (prop. \@ref(prp:cl-ass-2)), no AY correlation
 
 **Key Idea**: Run regression on the triangle with a dummy variable for each diagonal
 
 Each $q(w,d)$ is regressed against the prior cumulative losses  + dummy variable for which diagonal it is in
 
-* $q(w,d) \sim c(w,d-1) + dummy_{CY}$
+\begin{equation}
+  q(w,d) \sim c(w,d-1) + dummy_{CY}
+  (\#eq:venter-cy-regress)
+\end{equation}
 
 * If losses are significantly higher or lower in a diagonal $\Rightarrow$ The coefficient of the dummy variable would be statistically significant (i.e. coefficient is double the $\sigma$)
 
@@ -438,7 +498,7 @@ Each $q(w,d)$ is regressed against the prior cumulative losses  + dummy variable
 
 * This can be implement with a regression on the logarithm of the losses
 
-#### Diagonal Trend as Inflation
+### Diagonal Trend as Inflation
 
 Consider CY trend as inflation and model $q(w,d)$ with a diagonal parameter $g(w+d)$, where $w+d$ is the diagonal
 

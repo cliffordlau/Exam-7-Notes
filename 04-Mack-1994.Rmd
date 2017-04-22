@@ -717,6 +717,8 @@ Use rank correlation (e.g. Spearman's correlation coefficient $T$) instead of va
 
 * See [Venter](#venter-imp-5) for his method too
 
+* Spearman correlation coefficient is defined as the Pearson correlation coefficient between the ranked variables
+
 We are testing for independence
 
 * Which is more strict than just testing for 0 correlation
