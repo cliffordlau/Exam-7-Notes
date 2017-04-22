@@ -78,6 +78,40 @@ $\star$ 4 **test of assumptions** to check
     
         * This is test at a lower CI
 
+## Testing the Assumptions of Age-to-Age Factors - G. Venter
+
+$\star \star$ [Goodness of fit](#venter-goodness-fit) measure: 
+
+* Adj SSE \@ref(eq:adj-sse-venter)
+
+* AIC \@ref(eq:aic-venter)
+
+* BIC \@ref(eq:bic-venter)
+
+6 testable implications
+
+2) $\star \star$ Is there a [better estimate](#venter-imp-2) for $q$ than $f \times c$
+
+    * Number of parameters (Table \@ref(tab:venter-alt-pattern))
+    
+    * [Counting parameters](#venter-count-para)
+    
+    * $\star \star$ BF parameters (Table \@ref(tab:venter-var-weight-BF))
+    
+    * [Iteration process](#iteration-proc-venter)
+
+5) $\star \star$ [No correlation among columns](#venter-imp-5)
+
+    * Remember we are testing $f(d)$ so LDF - 1
+
+    * Pearson correlation calculation \@ref(eq:venter-pearson-corr) and test statistics \@ref(eq:venter-pearson-corr-test-stat)
+    
+    * To test for all different pairs (not just adjacent pairs) \@ref(eq:corr-pair-total)
+
+6) No particularly [high or low diagonals](#venter-imp-6)
+
+    * Setting up regression with CY dummy variable \@ref(eq:venter-cy-regress)
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):

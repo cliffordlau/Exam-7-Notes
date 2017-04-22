@@ -42,6 +42,8 @@ $\star \star$ [Goodness of fit](#venter-goodness-fit) measure:
 
 5) $\star \star$ [No correlation among columns](#venter-imp-5)
 
+    * Remember we are testing $f(d)$ so LDF - 1
+
     * Pearson correlation calculation \@ref(eq:venter-pearson-corr) and test statistics \@ref(eq:venter-pearson-corr-test-stat)
     
     * To test for all different pairs (not just adjacent pairs) \@ref(eq:corr-pair-total)
@@ -212,6 +214,16 @@ Compare different fit of the models based on adjusted $SSE$ (actual vs projected
 * Venter use the adjusted SSE as the AIC can be too permissive of over parameterization for large data sets
 ```
 
+```{block, calc-note, type='rmdtip'}
+$SSE$ calculation can be done with the table features on TI-30XS
+
+* Plug in each the actual and projected triangle into L1 and L2 (make sure the cells match)
+
+* Calculate L3 = (L1 - L2)^2^
+
+* Calculate $\sum L3$
+```
+
 ## Implication 1: Significance of Factors {#venter-imp-1}
 
 Check if the parameter coefficient is $> 2 \sigma$ for 95% sure that the parameters are $\neq 0$
@@ -322,7 +334,7 @@ Table: (\#tab:venter-var-weight-BF) Variance and parameters for various form of 
 |:------------------ |:------------------ |:------------------ |:------------------ |
 | *BF*^1^ | $p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h(w) = \dfrac{\sum_d f^2 \frac{q}{f}}{\sum_d f^2}$ |
 | Cape Cod^2^ | $p=q=0$ | $f(d) = \dfrac{\sum_w h^2 \frac{q}{h}}{\sum_w h^2}$ | $h = \dfrac{\sum_\Delta f^2 \frac{q}{f}}{\sum_\Delta f^2}$ |
-| *BF* (Var $\propto$ $fh$)| $p=q=1$ | $f^2(d) = \dfrac{\sum_w h \left( \frac{q}{h} \right) ^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f \left( \frac{q}{f} \right)^2}{\sum_d f}$ |
+| *BF* (Var $\propto$ $fh$)^3^| $p=q=1$ | $f^2(d) = \dfrac{\sum_w h \left( \frac{q}{h} \right) ^2}{\sum_w h}$ | $h^2(w) = \dfrac{\sum_d f \left( \frac{q}{f} \right)^2}{\sum_d f}$ |
 
 1. *BF*: assumes each $q(w,d)$ have constant variance (least square, standard regression)
 
@@ -331,6 +343,8 @@ Table: (\#tab:venter-var-weight-BF) Variance and parameters for various form of 
     For $f(d)$ weight is expected ultimate losses squared, years with higher expected losses get higher weight
     
 2. Cape Cod: also assumes constant variance
+
+3. Variance of the cell is proportional to the expected loss of the cell
 
 Recall from [Mack 1994](#residuals), we need to look at the residual graphs to determine which variance assumption is appropriate
 
@@ -447,9 +461,11 @@ Calculate Pearson correlation for every pair of columns with at **least 3 LDFs**
 
 Where $\tilde{x} = x - \bar{x}$ and $\tilde{y} = y - \bar{y}$
 
-* $x$'s and $y$'s are **incremental LDFs - 1**
+* $x$'s and $y$'s are incremental LDFs - 1
 
-* But actually not necessary since -1 doesn't affect the correlation
+    * But actually not necessary since -1 doesn't affect the correlation
+    
+* Use calculator data table for $r$ once you have $\tilde{x}$ and $\tilde{y}$
 
 ***Test statistics*** for significance is $T \sim t_{n-2}$
 
@@ -459,6 +475,8 @@ Where $\tilde{x} = x - \bar{x}$ and $\tilde{y} = y - \bar{y}$
 \end{equation}
 
 * Look up the t-value from table for 90%
+
+* $n$ is the number of LDF pairs
 
 * If $|T| <$ table value $\Rightarrow$ Not correlated
 
@@ -514,10 +532,6 @@ This will have parameters for each row, column, and diagonal
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
 **Concepts**
 
 * 2011 #4: Implication 1
@@ -526,9 +540,39 @@ Haven't done TIA practice questions
 
 **Implication Tests**
 
-* 2014 #4: Implication 5 correlation tests
+* $\star$ 2014 #4: correlation tests
 
-* 2015 #5: Implication 5 correlation tests
+* 2015 #5: correlation tests
+
+* $\star$ 2016 #6: Correlation test combine with Mack
+
+* TIA 2: correlation test
+
+* TIA 3: correlation test
+
+* TIA 4: statistical significance test on the correlation
+
+* TIA 5: statistical significance test on the correlation
+
+**Alternative Emergence**
+
+* $\star$ TIA 1: BF with constant variance $3 \times 3$ triangle
+
+    * Can simplify the calculation if one of the parameter is constant
+    
+* $\star$ TIA 6: BF with variance proportional to $fh$
+
+* $\star$ TIA 7:
+
+    a. $SSE$ calc for $4 \times 4$ triangle
+    
+    b. Calculate Adj $SSE$, AIC and BIC
+    
+    c. Pick method that is better
+
+* $\star$ TIA 8: Full blown calc with BF $\propto \: fh$
+
+* $\star$ TIA 9: Calculating $n$ and $p$ and all the goodness of fit metrics for various methods and pick the best
 
 ### Question Highlights
 

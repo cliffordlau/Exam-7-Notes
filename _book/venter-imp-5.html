@@ -161,8 +161,11 @@
 \end{equation}\]</span>
 <p>Where <span class="math inline">\(\tilde{x} = x - \bar{x}\)</span> and <span class="math inline">\(\tilde{y} = y - \bar{y}\)</span></p>
 <ul>
-<li><p><span class="math inline">\(x\)</span>’s and <span class="math inline">\(y\)</span>’s are <strong>incremental LDFs - 1</strong></p></li>
-<li><p>But actually not necessary since -1 doesn’t affect the correlation</p></li>
+<li><p><span class="math inline">\(x\)</span>’s and <span class="math inline">\(y\)</span>’s are incremental LDFs - 1</p>
+<ul>
+<li>But actually not necessary since -1 doesn’t affect the correlation</li>
+</ul></li>
+<li><p>Use calculator data table for <span class="math inline">\(r\)</span> once you have <span class="math inline">\(\tilde{x}\)</span> and <span class="math inline">\(\tilde{y}\)</span></p></li>
 </ul>
 <p><strong><em>Test statistics</em></strong> for significance is <span class="math inline">\(T \sim t_{n-2}\)</span></p>
 <span class="math display" id="eq:venter-pearson-corr-test-stat">\[\begin{equation}
@@ -171,6 +174,7 @@
 \end{equation}\]</span>
 <ul>
 <li><p>Look up the t-value from table for 90%</p></li>
+<li><p><span class="math inline">\(n\)</span> is the number of LDF pairs</p></li>
 <li><p>If <span class="math inline">\(|T| &lt;\)</span> table value <span class="math inline">\(\Rightarrow\)</span> Not correlated</p></li>
 </ul>
 <p>Perform test for all columns</p>
