@@ -119,16 +119,17 @@
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="mack-mse.html"><a href="mack-mse.html"><i class="fa fa-check"></i><b>4.2</b> Mean Squared Error</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="mack-mse.html"><a href="mack-mse.html#mack-mse-app"><i class="fa fa-check"></i><b>4.2.1</b> Applying the MSE Formula</a></li>
+<li class="chapter" data-level="4.2.2" data-path="mack-mse.html"><a href="mack-mse.html#mse-calculation-flow"><i class="fa fa-check"></i><b>4.2.2</b> MSE Calculation Flow</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html"><i class="fa fa-check"></i><b>4.3</b> Confidence Intervals</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#ci-for-all-years-reserves"><i class="fa fa-check"></i><b>4.3.1</b> CI for All Years Reserves</a></li>
+<li class="chapter" data-level="4.3.1" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#mack-all-year-ci"><i class="fa fa-check"></i><b>4.3.1</b> CI for All Years Reserves</a></li>
 <li class="chapter" data-level="4.3.2" data-path="mack-CI-methods.html"><a href="mack-CI-methods.html#ci-application-range"><i class="fa fa-check"></i><b>4.3.2</b> CI Application &amp; Range</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html"><i class="fa fa-check"></i><b>4.4</b> Chain Ladder Assumptions Test</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#intercept"><i class="fa fa-check"></i><b>4.4.1</b> Intercept</a></li>
-<li class="chapter" data-level="4.4.2" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#residuals"><i class="fa fa-check"></i><b>4.4.2</b> Residuals</a></li>
-<li class="chapter" data-level="4.4.3" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#cy-test"><i class="fa fa-check"></i><b>4.4.3</b> Calendar Year Test</a></li>
-<li class="chapter" data-level="4.4.4" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#adjacent-ldf"><i class="fa fa-check"></i><b>4.4.4</b> Correlation of Adjacent LDFs</a></li>
+<li class="chapter" data-level="4.4.1" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-int-test"><i class="fa fa-check"></i><b>4.4.1</b> Intercept</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-residuals"><i class="fa fa-check"></i><b>4.4.2</b> Residuals</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-cy-test"><i class="fa fa-check"></i><b>4.4.3</b> Calendar Year Test</a></li>
+<li class="chapter" data-level="4.4.4" data-path="chain-ladder-assumptions-test.html"><a href="chain-ladder-assumptions-test.html#mack-adjacent-ldf"><i class="fa fa-check"></i><b>4.4.4</b> Correlation of Adjacent LDFs</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="past-exam-questions-3.html"><a href="past-exam-questions-3.html"><i class="fa fa-check"></i><b>4.5</b> Past Exam Questions</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="past-exam-questions-3.html"><a href="past-exam-questions-3.html#question-highlights-2"><i class="fa fa-check"></i><b>4.5.1</b> Question Highlights</a></li>
@@ -716,43 +717,61 @@ No historical questions on the MSE yet
 <li><p>2012 #5: CL assumptions and whether they are met</p></li>
 <li><p>2014 #2: CL assumptions on intercept and residuals</p></li>
 <li><p>2014 #4 b: CL LS assumptions</p></li>
+<li><p>TIA 1: Mack’s 3 assumptions</p></li>
 </ul>
 <p><strong>Assumption test</strong></p>
 <ul>
-<li><p><span class="math inline">\(\star\)</span> 2011 #3 a (fig <a href="past-exam-questions-3.html#fig:2011-3">4.1</a>): CY Test</p></li>
+<li><p><span class="math inline">\(\star\)</span> 2011 #3 a (fig <a href="past-exam-questions-3.html#fig:2011-3">4.2</a>): CY Test</p></li>
 <li><p>2013 #3: Residuals test</p></li>
 <li><p>2013 #1: CY test and potential cause</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2014 #4 a (fig <a href="past-exam-questions-3.html#fig:2014-4">4.2</a>): Adjacent LDFs correlation test</p>
+<li><p><span class="math inline">\(\star\)</span> 2014 #4 a (fig <a href="past-exam-questions-3.html#fig:2014-4">4.3</a>): Adjacent LDFs correlation test</p>
 <ul>
 <li>Has to use method from Venter?</li>
 </ul></li>
 <li><p>2015 #3: Residuals test and plot, remember to label them</p></li>
 <li><p>2015 #4: CY Test</p></li>
 </ul>
+<p><strong>Calclulation</strong></p>
+<ul>
+<li><p>TIA 2: simple average LDF and reserve calc (given the variance of loss)</p></li>
+<li><p>TIA 3 (fig <a href="#fig:tia-mack-1994-3-a"><strong>??</strong></a>): CY test</p></li>
+</ul>
 <div id="question-highlights-2" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> Question Highlights</h3>
 <div class="figure"><span id="fig:2011-3"></span>
 <img src="questions/2011-3Q.png" alt="2011 Question 3" width="100%" />
 <p class="caption">
-Figure 4.1: 2011 Question 3
+Figure 4.2: 2011 Question 3
 </p>
 </div>
 <div class="figure"><span id="fig:2011-3"></span>
 <img src="questions/2011-3A.png" alt="2011 Question 3" width="100%" />
 <p class="caption">
-Figure 4.1: 2011 Question 3
+Figure 4.2: 2011 Question 3
 </p>
 </div>
 <div class="figure"><span id="fig:2014-4"></span>
 <img src="questions/2014-4Q.png" alt="2014 Question 4" width="100%" />
 <p class="caption">
-Figure 4.2: 2014 Question 4
+Figure 4.3: 2014 Question 4
 </p>
 </div>
 <div class="figure"><span id="fig:2014-4"></span>
 <img src="questions/2014-4A.png" alt="2014 Question 4" width="100%" />
 <p class="caption">
-Figure 4.2: 2014 Question 4
+Figure 4.3: 2014 Question 4
+</p>
+</div>
+<div class="figure"><span id="fig:tia-mack-1994-2-a"></span>
+<img src="questions/TIA-Mack-1994-q-3-a.png" alt="TIA Question 2a" width="100%" />
+<p class="caption">
+Figure 4.4: TIA Question 2a
+</p>
+</div>
+<div class="figure"><span id="fig:tia-mack-1994-2-a"></span>
+<img src="questions/TIA-Mack-1994-a-3-a.png" alt="TIA Question 2a" width="100%" />
+<p class="caption">
+Figure 4.4: TIA Question 2a
 </p>
 </div>
 

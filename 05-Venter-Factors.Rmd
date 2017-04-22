@@ -47,6 +47,8 @@ Table: (\#tab:venter-mack-def) Tables of Definitions
 
 Same assumptions as the [Mack 1994](#cl-ass) but stated in Venter's terminology
 
+* Venter refers these as assumptions needed for least-squares optimality to be achieved by the typical age-to-age factor method of loss development
+
 ```{proposition, mack-ass-1, name = "Mack Assumption 1"}
 $$\mathrm{E}[q(w,d+1) \mid \text{Data to } w+d] = f(d) \times c(w,d)$$
 ```

@@ -2,11 +2,11 @@
 
 $\star$ 3 underlying **assumptions** of [chain ladder](#cl-ass) that makes the [implicit assumptions](#mack-implicit-ass) hold
 
-1. Expected incremental losses are $\propto$ losses to date (prop. \@ref(prp:cl-ass-1))
+1. Expected incremental losses are $\propto$ losses to date, dependent on age (prop. \@ref(prp:cl-ass-1))
 
 2. Losses in each AY are $\perp\!\!\!\!\perp$ of the losses in other AYs (prop. \@ref(prp:cl-ass-2))
 
-3. Variance of the incremental losses is $\propto$ losses reported to date (prop. \@ref(prp:cl-ass-3))
+3. Variance of the incremental losses is $\propto$ losses reported to date dependent on age (prop. \@ref(prp:cl-ass-3))
 
 $\star$ 3 different **weight and variance** assumptions from table \@ref(tab:CL-var-weight)
 
@@ -37,6 +37,8 @@ $\star$ When the above assumptions might be [violated](#cl-ass-vio) and know the
     * How to get $z$ \@ref(eq:s-l-diagonal-mack)
     
     * Expected value \@ref(eq:exp-z-diagonal-mack) and variance \@ref(eq:var-z-diagonal-mack)
+    
+        * Or just memorize them up to 6 (Table \@ref(tab:cy-test-exp-var-table))
 
 * Test 4. [Adjacent LDF Correlation](#mack-adjacent-ldf)
 
@@ -46,7 +48,11 @@ $\star$ When the above assumptions might be [violated](#cl-ass-vio) and know the
   
     * CI to compare with resutls \@ref(eq:t-ci-mack)
     
-    * This is test at a lower CI
+        * This is test at a lower CI
+        
+    * This is similar to [Venter's test](#venter-imp-5)
+    
+    * Why test the whole triangle versus just pairs of LDFs
 
 ## Chainladder Underlying Assumptions {#cl-ass}
 
@@ -584,10 +590,12 @@ Test for assumption 3 (prop. \@ref(prp:cl-ass-3))
 
 ***Test Procedure***
 
-For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
+For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k+1}$
+
+* x-axis is the $c_{i,k}$ and y-axis is $\varepsilon_{i, k+1}$
 
 \begin{equation}
-  \varepsilon_{i,k} = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathrm{Var}(c_{j,k})}}
+  \varepsilon_{i,k+1} = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{\mathrm{Var}(c_{i,k})}}
   (\#eq:residual-eq)
 \end{equation}
 
@@ -596,10 +604,20 @@ For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k}$
 
 * We can take out the $\alpha^2_k$ term since it's constant for the same $k$
 
-    e.g. $\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{c_{j,k}}}$ for weighted average assumption
+    e.g. $\varepsilon = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{c_{i,k}}}$ for weighted average assumption
 
 * For residuals @ $k$, you need LDFs from $k-1$ to $k$
 
+* Note that the results would change depending on the unit (e.g. dollar, thousand, etc) but shouldn't affect your conclusion
+
+```
+
+```{block, calc-note, type='rmdtip'}
+You can calculate the different weighted LDFs with the table features on TI-30XS
+
+* $y$ terms can be the LDFs and $x$ is the weight ($c_{i,k}^2$ or $c_{i,k}$ depending on the assumption)
+
+* Then the LDF will be $\dfrac{\sum x y}{\sum x}$
 ```
 
 ***Results Interpretation***
@@ -655,6 +673,16 @@ Important formulas below
 * $z \sim$ Normal
 ```
 
+Table: (\#tab:cy-test-exp-var-table) $\mathrm{E}[z_n]$ and $\mathrm{Var}(z_n)$ up to $n=6$
+
+| n      | $\mathrm{E}[z_n]$ | $\mathrm{Var}(z_n)$ |
+|:------:|:---------------:|:---------------:|
+| 2 | 0.5   | 0.25  |
+| 3 | 0.75  | 0.188 |
+| 4 | 1.25  | 0.438 |
+| 5 | 1.563 | 0.37  |
+| 6 | 2.062 | 0.62  |
+
 5.  See if the observed $Z$ is in the CI
 
 \begin{equation*} Z = \sum_{d} z^d \end{equation*}
@@ -683,7 +711,7 @@ Test assumption (1) (prop. \@ref(prp:cl-ass-1))
 
     $\therefore$ We define one test statistics for the whole triangle
 
-Use rank correlation (e.g. Spearman's correlation) instead of value correlation (e.g. Person correlation)
+Use rank correlation (e.g. Spearman's correlation coefficient $T$) instead of value correlation (e.g. Pearson correlation)
 
 * Because LDFs down the column for a given age $k$ have different variance
 
@@ -695,13 +723,21 @@ We are testing for independence
 
 Threshold use is relatively low, at 50%, as an indicator that we need to investigate further
 
+Reason to consider the correlation of a triangle as whole instead of between pairs of columns
+
+* More important to know whether correlations globablly prevail than to find a samll part of the triangle with correlation
+
+* At 10% significance 10% of the pairs will show up as significant just by random (see more on [Venter](#venter-imp-5))
+
+* Avoid an accumulation of error probabilities
+
 ```{block2, type='rmdnote'}
 Important formulas below
 ```
 
 ***Test Procedure***
 
-1. Calculate Spearman's correlation for each pair of **adjacent LDFs**
+1. Calculate Spearman's correlation coefficient $T_k$ for each pair of **adjacent LDFs**
 
 \begin{equation}
   S_k = \sum \limits_{i} \Big \{ rank(f_{i,k-1}) - rank(f_{i,k}) \Big \}^2
@@ -729,7 +765,7 @@ Important formulas below
 * $k$ starts at 2 by convention
 ```
 
-2. Calculate $T$ for the whole triangle
+2. Calculate Spearman's correlation coefficient $T$ for the whole triangle
 
 \begin{equation}
   T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}
@@ -771,14 +807,6 @@ If the $T$ is in the CI $\Rightarrow$ Do not reject the $H_0$ of uncorrelated LD
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
-```{block, type='rmdcaution'}
-No historical questions on the MSE yet
-```
-
 **Concepts**
 
 * 2011 #3 b: CL method assumptions
@@ -787,24 +815,94 @@ No historical questions on the MSE yet
 
 * 2014 #2: CL assumptions on intercept and residuals
 
-* 2014 #4 b: CL LS assumptions
+* $\star$ 2014 #4 b: Related to both Venter and Mack CL LS assumptions
+
+* TIA 1: Mack's 3 assumptions
+
+* TIA 3b: Cause of CY trend
+
+* TIA 6c: Shortcomings of the empirical LDF method for range
+
+* TIA 8b: Assumption being test with adj ldfs test
+
+* $\star \star$ TIA 13: Clark vs Mack assumptions
+
+    * Clark's variance proportional constant is to the whole triangle (constant the same for the entire triangle)
 
 **Assumption test**
 
 * $\star$ 2011 #3 a (fig \@ref(fig:2011-3)): CY Test
 
-* 2013 #3: Residuals test
+* 2012 #3: Residuals test
 
 * 2013 #1: CY test and potential cause
 
 * $\star$ 2014 #4 a (fig \@ref(fig:2014-4)): Adjacent LDFs correlation test
 
-    * Has to use method from Venter?
+    * From [Venter](#venter-imp-5)
 
 * 2015 #3: Residuals test and plot, remember to label them
 
 * 2015 #4: CY Test
 
+* 2016 #5: CY Test and potential reasons
+
+* $\star \star$ 2016 #6: LDF correlation test
+
+    a. From [Venter](#venter-imp-5)
+    
+    b. Spearman's $T$ for the whole triangle
+    
+    c. $\star$ Why test adjacent of whole triangle
+    
+* 2016 #7: Residual test
+
+* $\star$ TIA 3a: (fig \@ref(fig:tia-mack-1994-3-a)): CY test
+
+* TIA 7: Residual graph under different variance assumptions
+
+    a. $\star$ Residual graph for age 36 under Mack variance
+      
+        * Note that you need 24-36 LDF and the plot is based on losses @ 24
+        
+    b. $\star$ Residual graph under the LS variance assumption
+    
+* $\star$ TIA 8a: Adjacent LDF test
+
+* $\star$ TIA 9: CY trend, with 90% CI (1.65)
+
+* TIA 11: Adj LDF corr test and know what the conclusion is if they are outside of the CI
+
+**Calclulation**
+
+* $\star$ 2011 #8: MSE calc
+
+* TIA 2: simple average LDF and reserve calc (given the variance of loss)
+
+* TIA 4:
+
+    a. Reserve with weighted vol. average
+    
+    b. $\star$ Lognormal CI
+    
+* $\star \star$ TIA 5: full MSE calculation
+
+* $\star$ TIA 6:
+
+    a. Applying the CI
+    
+    b. Empirical LDF method for upper bound
+
+* $\star \star$ TIA 10:
+
+    a. 1-in-20 upper bound reserve
+    
+        * Test to use normal or log normal CI
+        
+    b. Allocation by trial and error
+    
+* $\star$ TIA 11: MSE Calc
+  
 ### Question Highlights
 
 ```{r 2011-3, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2011 Question 3'}
@@ -815,4 +913,9 @@ knitr::include_graphics('questions/2011-3A.png')
 ```{r 2014-4, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2014 Question 4'}
 knitr::include_graphics('questions/2014-4Q.png')
 knitr::include_graphics('questions/2014-4A.png')
+```
+
+```{r tia-mack-1994-2-a, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='TIA Question 2a'}
+knitr::include_graphics('questions/TIA-Mack-1994-q-3-a.png')
+knitr::include_graphics('questions/TIA-Mack-1994-a-3-a.png')
 ```

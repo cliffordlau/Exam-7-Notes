@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-04-21">
+<meta name="date" content="2017-04-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -170,9 +170,12 @@
 <h3><span class="header-section-number">4.4.2</span> Residuals</h3>
 <p>Test for assumption 3 (prop. <a href="cl-ass.html#prp:cl-ass-3">4.3</a>)</p>
 <p><strong><em>Test Procedure</em></strong></p>
-<p>For each age <span class="math inline">\(k\)</span>, plot the <span class="math inline">\(c_{i,k}\)</span> with the residuals <span class="math inline">\(\varepsilon_{i,k}\)</span></p>
+<p>For each age <span class="math inline">\(k\)</span>, plot the <span class="math inline">\(c_{i,k}\)</span> with the residuals <span class="math inline">\(\varepsilon_{i,k+1}\)</span></p>
+<ul>
+<li>x-axis is the <span class="math inline">\(c_{i,k}\)</span> and y-axis is <span class="math inline">\(\varepsilon_{i, k+1}\)</span></li>
+</ul>
 <span class="math display" id="eq:residual-eq">\[\begin{equation}
-  \varepsilon_{i,k} = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{\mathrm{Var}(c_{j,k})}}
+  \varepsilon_{i,k+1} = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{\mathrm{Var}(c_{i,k})}}
   \tag{4.10}
 \end{equation}\]</span>
 
@@ -180,11 +183,29 @@
 <p><span class="remark"><em>Remark. </em></span> </p>
 <ul>
 <li><p>We can take out the <span class="math inline">\(\alpha^2_k\)</span> term since it’s constant for the same <span class="math inline">\(k\)</span></p>
-<p>e.g. <span class="math inline">\(\varepsilon = \dfrac{c_{j,k+1} - c_{j,k} \: \hat{f_k}}{\sqrt{c_{j,k}}}\)</span> for weighted average assumption</p></li>
-<li>For residuals @ <span class="math inline">\(k\)</span>, you need LDFs from <span class="math inline">\(k-1\)</span> to <span class="math inline">\(k\)</span></li>
+<p>e.g. <span class="math inline">\(\varepsilon = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{c_{i,k}}}\)</span> for weighted average assumption</p></li>
+<li><p>For residuals @ <span class="math inline">\(k\)</span>, you need LDFs from <span class="math inline">\(k-1\)</span> to <span class="math inline">\(k\)</span></p></li>
+<li>Note that the results would change depending on the unit (e.g. dollar, thousand, etc) but shouldn’t affect your conclusion</li>
 </ul>
 </div>
 <p></p>
+<div class="rmdtip">
+<p>
+You can calculate the different weighted LDFs with the table features on TI-30XS
+</p>
+<ul>
+<li>
+<p>
+<span class="math inline"><em>y</em></span> terms can be the LDFs and <span class="math inline"><em>x</em></span> is the weight (<span class="math inline"><em>c</em><sub><em>i</em>, <em>k</em></sub><sup>2</sup></span> or <span class="math inline"><em>c</em><sub><em>i</em>, <em>k</em></sub></span> depending on the assumption)
+</p>
+</li>
+<li>
+<p>
+Then the LDF will be <span class="math inline"><span class="math inline">\(\dfrac{\sum x y}{\sum x}\)</span></span>
+</p>
+</li>
+</ul>
+</div>
 <p><strong><em>Results Interpretation</em></strong></p>
 <p>Residuals should vary randomly around zero across <span class="math inline">\(c_{i,k}\)</span></p>
 <p>Test can be used to test the various variance assumptions by calculating the <span class="math inline">\(\varepsilon\)</span> differently (See Table <a href="cl-ass.html#tab:CL-var-weight">4.1</a>)</p>
@@ -232,6 +253,43 @@ Important formulas below
 </div>
 <p></p></li>
 </ul>
+<table>
+<caption><span id="tab:cy-test-exp-var-table">Table 4.2: </span> <span class="math inline">\(\mathrm{E}[z_n]\)</span> and <span class="math inline">\(\mathrm{Var}(z_n)\)</span> up to <span class="math inline">\(n=6\)</span></caption>
+<thead>
+<tr class="header">
+<th align="center">n</th>
+<th align="center"><span class="math inline">\(\mathrm{E}[z_n]\)</span></th>
+<th align="center"><span class="math inline">\(\mathrm{Var}(z_n)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">0.5</td>
+<td align="center">0.25</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">0.75</td>
+<td align="center">0.188</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">1.25</td>
+<td align="center">0.438</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">1.563</td>
+<td align="center">0.37</td>
+</tr>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">2.062</td>
+<td align="center">0.62</td>
+</tr>
+</tbody>
+</table>
 <ol start="5" style="list-style-type: decimal">
 <li>See if the observed <span class="math inline">\(Z\)</span> is in the CI</li>
 </ol>
@@ -257,7 +315,7 @@ Important formulas below
 <li><p>We want to test if there is a correlation among columns for the triangle as a whole</p>
 <p><span class="math inline">\(\therefore\)</span> We define one test statistics for the whole triangle</p></li>
 </ul>
-<p>Use rank correlation (e.g. Spearman’s correlation) instead of value correlation (e.g. Person correlation)</p>
+<p>Use rank correlation (e.g. Spearman’s correlation coefficient <span class="math inline">\(T\)</span>) instead of value correlation (e.g. Pearson correlation)</p>
 <ul>
 <li><p>Because LDFs down the column for a given age <span class="math inline">\(k\)</span> have different variance</p></li>
 <li><p>See <a href="#venter-imp-5">Venter</a> for his method too</p></li>
@@ -267,6 +325,12 @@ Important formulas below
 <li>Which is more strict than just testing for 0 correlation</li>
 </ul>
 <p>Threshold use is relatively low, at 50%, as an indicator that we need to investigate further</p>
+<p>Reason to consider the correlation of a triangle as whole instead of between pairs of columns</p>
+<ul>
+<li><p>More important to know whether correlations globablly prevail than to find a samll part of the triangle with correlation</p></li>
+<li><p>At 10% significance 10% of the pairs will show up as significant just by random (see more on <a href="#venter-imp-5">Venter</a>)</p></li>
+<li><p>Avoid an accumulation of error probabilities</p></li>
+</ul>
 
 <div class="rmdnote">
 Important formulas below
@@ -274,7 +338,7 @@ Important formulas below
 <p></p>
 <p><strong><em>Test Procedure</em></strong></p>
 <ol style="list-style-type: decimal">
-<li>Calculate Spearman’s correlation for each pair of <strong>adjacent LDFs</strong></li>
+<li>Calculate Spearman’s correlation coefficient <span class="math inline">\(T_k\)</span> for each pair of <strong>adjacent LDFs</strong></li>
 </ol>
 <span class="math display" id="eq:sq-diff-rank-mack">\[\begin{equation}
   S_k = \sum \limits_{i} \Big \{ rank(f_{i,k-1}) - rank(f_{i,k}) \Big \}^2
@@ -300,7 +364,7 @@ Important formulas below
 <p></p></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li>Calculate <span class="math inline">\(T\)</span> for the whole triangle</li>
+<li>Calculate Spearman’s correlation coefficient <span class="math inline">\(T\)</span> for the whole triangle</li>
 </ol>
 <span class="math display" id="eq:total-t-mack">\[\begin{equation}
   T = \dfrac{\sum T_k (n_k - 1)}{\sum (n_k-1)} = \dfrac{\sum_k (I - k -1)T_k}{\sum_k I - k -1}

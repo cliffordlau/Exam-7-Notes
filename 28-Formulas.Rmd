@@ -65,6 +65,8 @@ $\star$ 4 **test of assumptions** to check
     * How to get $z$ \@ref(eq:s-l-diagonal-mack)
     
     * Expected value \@ref(eq:exp-z-diagonal-mack) and variance \@ref(eq:var-z-diagonal-mack)
+    
+        * Or just memorize them up to 6 (Table \@ref(tab:cy-test-exp-var-table))
 
 * $\star \star$ Test 4. [Adjacent LDF Correlation](#mack-adjacent-ldf)
 
@@ -74,7 +76,7 @@ $\star$ 4 **test of assumptions** to check
   
     * CI to compare with resutls \@ref(eq:t-ci-mack)
     
-    * This is test at a lower CI
+        * This is test at a lower CI
 
 ## Reinsurance Loss Reserving - Patrik
 

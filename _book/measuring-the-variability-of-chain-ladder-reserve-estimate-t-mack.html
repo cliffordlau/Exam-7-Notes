@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-04-21">
+<meta name="date" content="2017-04-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -150,9 +150,9 @@
 <h1><span class="header-section-number">Chapter 4</span> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</h1>
 <p><span class="math inline">\(\star\)</span> 3 underlying <strong>assumptions</strong> of <a href="cl-ass.html#cl-ass">chain ladder</a> that makes the <a href="cl-ass.html#mack-implicit-ass">implicit assumptions</a> hold</p>
 <ol style="list-style-type: decimal">
-<li><p>Expected incremental losses are <span class="math inline">\(\propto\)</span> losses to date (prop. <a href="cl-ass.html#prp:cl-ass-1">4.1</a>)</p></li>
+<li><p>Expected incremental losses are <span class="math inline">\(\propto\)</span> losses to date, dependent on age (prop. <a href="cl-ass.html#prp:cl-ass-1">4.1</a>)</p></li>
 <li><p>Losses in each AY are <span class="math inline">\(\perp\!\!\!\!\perp\)</span> of the losses in other AYs (prop. <a href="cl-ass.html#prp:cl-ass-2">4.2</a>)</p></li>
-<li><p>Variance of the incremental losses is <span class="math inline">\(\propto\)</span> losses reported to date (prop. <a href="cl-ass.html#prp:cl-ass-3">4.3</a>)</p></li>
+<li><p>Variance of the incremental losses is <span class="math inline">\(\propto\)</span> losses reported to date dependent on age (prop. <a href="cl-ass.html#prp:cl-ass-3">4.3</a>)</p></li>
 </ol>
 <p><span class="math inline">\(\star\)</span> 3 different <strong>weight and variance</strong> assumptions from table <a href="cl-ass.html#tab:CL-var-weight">4.1</a></p>
 <p><span class="math inline">\(\star\)</span> <strong>Mean squared error</strong> <a href="mack-mse.html#mack-mse-app">calculation</a></p>
@@ -178,14 +178,21 @@
 <li><p>Test 3. <a href="chain-ladder-assumptions-test.html#mack-cy-test">CY Test</a></p>
 <ul>
 <li><p>How to get <span class="math inline">\(z\)</span> <a href="chain-ladder-assumptions-test.html#eq:s-l-diagonal-mack">(4.11)</a></p></li>
-<li><p>Expected value <a href="chain-ladder-assumptions-test.html#eq:exp-z-diagonal-mack">(4.12)</a> and variance <a href="chain-ladder-assumptions-test.html#eq:var-z-diagonal-mack">(4.13)</a></p></li>
+<li><p>Expected value <a href="chain-ladder-assumptions-test.html#eq:exp-z-diagonal-mack">(4.12)</a> and variance <a href="chain-ladder-assumptions-test.html#eq:var-z-diagonal-mack">(4.13)</a></p>
+<ul>
+<li>Or just memorize them up to 6 (Table <a href="chain-ladder-assumptions-test.html#tab:cy-test-exp-var-table">4.2</a>)</li>
+</ul></li>
 </ul></li>
 <li><p>Test 4. <a href="chain-ladder-assumptions-test.html#mack-adjacent-ldf">Adjacent LDF Correlation</a></p>
 <ul>
 <li><p><span class="math inline">\(T\)</span> for age <span class="math inline">\(k\)</span> <a href="chain-ladder-assumptions-test.html#eq:t-k-mack">(4.15)</a> and <span class="math inline">\(S\)</span> <a href="chain-ladder-assumptions-test.html#eq:sq-diff-rank-mack">(4.14)</a></p></li>
 <li><p><span class="math inline">\(T\)</span> for the whole triangle <a href="chain-ladder-assumptions-test.html#eq:total-t-mack">(4.16)</a></p></li>
-<li><p>CI to compare with resutls <a href="chain-ladder-assumptions-test.html#eq:t-ci-mack">(4.17)</a></p></li>
-<li><p>This is test at a lower CI</p></li>
+<li><p>CI to compare with resutls <a href="chain-ladder-assumptions-test.html#eq:t-ci-mack">(4.17)</a></p>
+<ul>
+<li>This is test at a lower CI</li>
+</ul></li>
+<li><p>This is similar to <a href="#venter-imp-5">Venter’s test</a></p></li>
+<li><p>Why test the whole triangle versus just pairs of LDFs</p></li>
 </ul></li>
 </ul> 
 </div>
