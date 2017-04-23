@@ -112,7 +112,7 @@ $\star \star$ [Goodness of fit](#venter-goodness-fit) measure:
 
     * Setting up regression with CY dummy variable \@ref(eq:venter-cy-regress)
 
-## LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark {#curve-fit-clark}
+## LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark
 
 $\star$ Paper definition/standards:
 
