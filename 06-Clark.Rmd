@@ -1,20 +1,70 @@
 # LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark {#curve-fit-clark}
 
-Memorize the CDF for loglogistic \@ref(eq:clark-loglogistic) and weibull \@ref(eq:clark-weibull)
+$\star$ Paper definition/standards:
 
-We use the **average age** of the period here
+* We use the **average age** of the period here (so minus 6 month)
 
-Know how to calculate reserves given the $G(x)$ and for each of the 2 methods given:
+* Ratio of variance to mean is constant, $\sigma^2$, for the whole triangle \@ref(eq:clark-proc-var-ass)
 
-* Growth function distribution and parameter (might have to estimate)
+    * Variance of *incremental* loss is proportional to the *mean of incremental* loss and assume this proportion is known and same for the whole triangle
 
-* LDF or Cape Cod
+**Reserve estimate**
 
-* Data (e.g. paid to date for each AY)
+* $\star \star$ Given $G(x)$ distribution 
+    
+    * **Loglogistic** \@ref(eq:clark-loglogistic), or
+        
+    * **Weibull** \@ref(eq:clark-weibull)
+        
+    * Might have to estimate parameters
+    
+* 2 Reserving method
+    
+    * $\star$ [LDF](#clark-ldf-method) Method
 
-* Test for truncation by looking at age twice the triangle
+    * $\star$ [Cape Cod](#clark-cape-cod-method) Method
+        
+        * Typically better because it has additional information on exposure
+        
+* Test for truncation by looking at age twice the triangle size
+    
+    * Different truncation method
 
-Other use of the model
+[**Reserve process variance**](#clark-var-reserve)
+
+* $\star \star$ Need Estimation of $\sigma^2$ \@ref(eq:clark-sigma-est)
+    
+    * Note the $n$ and $p$ for the 2 methods
+        
+    * We're looking at **incremental** losses
+
+**Distribution**
+
+* [Process variance](#clark-proc-var-sec)
+    
+* ODP for incremental loss \@ref(eq:clark-inc-loss-dist)
+    
+* [Parameter variance](#clark-para-var-sec)
+
+* Estimate using MLE
+
+    * Estimate for $ULT_{AY}$ based on [MLE](#clark-mle-2)
+
+    * Estimate for $ELR$ based on [MLE](#clark-mle-1)
+    
+[*3 key assumptions*](#clark-key-ass)
+
+* $\star \star$ Test $iid$ assumpation with [residual plots](#clark-res-review)
+
+**Other use of the model**
+
+* Estimate variance for next prospective u/w year
+
+* Estimate CY development
+
+* Variability in discounted reserve
+
+[**Counting average accident date**](#avg-age-claim)
 
 ## Expected Loss Emergence
 
@@ -65,9 +115,13 @@ Important formulas and definition below
 
 * Can use data @ different age
 
-* Output is a smooth curve $\Rightarrow$ Can interpolate between ages and estimates a tail
+    * Not the same maturity as prior years
+    
+    * Only last few CYs
 
-Motivation for using a curve is to recognize that adjacent LDFs are related
+* Output is a smooth curve $\Rightarrow$ Can interpolate between ages and extrapolate a tail
+
+Motivation for using a curve is to recognize that **adjacent LDFs are related**
 
 Doesn't work when there is **expected** negative loss development
 ```
@@ -105,7 +159,7 @@ $$ULT_{AY}$$
 ```{remark}
 
 
-* $h(w)$ for each row
+* $h(w)$ for each row (i.e. parameter for each AY)
 
 * $h(w)$ here represents the ultimate loss for each $w$
 
@@ -120,7 +174,7 @@ $$[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}$$
 
 Estimate parameters with MLE
 
-### Process Variance
+### Process Variance {#clark-proc-var-sec}
 
 ```{block, type='rmdnote'}
 Important formulas below
@@ -128,7 +182,10 @@ Important formulas below
 
 ***Key assumption***:
 
-$$\mathrm{Var}(c_i) \propto \mathrm{E}[c_i] = \sigma^2 \mathrm{E}[c_i]$$
+\begin{equation}
+  \mathrm{Var}(c_i) \propto \mathrm{E}[c_i] = \sigma^2 \mathrm{E}[c_i]
+  (\#eq:clark-proc-var-ass)
+\end{equation}
 
 * Assume ratio of the variance to mean is constant for each cell in the **triangle**
 
@@ -139,7 +196,7 @@ $$\mathrm{Var}(c_i) \propto \mathrm{E}[c_i] = \sigma^2 \mathrm{E}[c_i]$$
 ```{remark}
 Compare variance assumption with Mack and Venter
 
-* Mack-1994:
+* *Mack-1994*:
     
     Proposition \@ref(prp:cl-ass-3): $\mathrm{Var}\left (c_{i,k+1} \mid c_{i,1} \cdots c_{i,k}\right ) = \alpha_k^2 \: c_{i,k}$
 
@@ -147,7 +204,7 @@ Compare variance assumption with Mack and Venter
 
     n = includes all here?
 
-* Venter Factors:  
+* *Venter Factors*:  
 
     2 version of BF method \@ref(tab:venter-var-weight-BF)
 
@@ -159,7 +216,10 @@ Compare variance assumption with Mack and Venter
 
 **Estimate $\mathbf{\sigma^2}$ based on the entire triangle**:
 
-$$\dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}$$
+\begin{equation}
+  \dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}
+  (\#eq:clark-sigma-est)
+\end{equation}
 
 * $n =$ # of data points in triangle
 
@@ -177,9 +237,14 @@ $$\dfrac{Variance}{Mean} = \sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n
 
 * $\mu_i =$ expected incremental loss emergence
 
+* $\sigma^2$ for $LDF$ will tend to be higher due to more parameters used
+
 ***Assume incremental loss follows ODP Poisson***
 
-$$C_i \sim ODP(\lambda_i, \sigma^2)$$
+\begin{equation}
+  C_i \sim ODP(\lambda_i, \sigma^2)
+  (\#eq:clark-inc-loss-dist)
+\end{equation}
 
 * Use ODP so that variance $\neq$ mean
 
@@ -191,7 +256,7 @@ $$C_i \sim ODP(\lambda_i, \sigma^2)$$
 
 * Here $C_i$ means the r.v. while $c_i$ is the observation
 
-Caveat:
+*Caveat*:
 
 * Potential issue with ODP is that some granularity is lost since reserves are estimated in multiple of $\sigma^2$
 
@@ -226,7 +291,7 @@ Take the log of the above
 
 $$\sum_{i \in \Delta} \dfrac{c_i}{\sigma^2} \ln \left( \dfrac{\mu_i}{\sigma^2} \right) - \dfrac{\mu_i}{\sigma^2} - \ln \left[ \left(\dfrac{c_i}{\sigma^2} \right)! \right]$$
 
-If we assume the $\sigma^2 is known and constant then we have function in proposition \@ref(prp:clark-mle-odp)
+If we assume the $\sigma^2$ is known and constant then we have function in proposition \@ref(prp:clark-mle-odp)
 
 * We can remove $\sigma^2$ in the first 2 terms as it is a constant
 
@@ -234,7 +299,7 @@ If we assume the $\sigma^2 is known and constant then we have function in propos
 
 ```
 
-#### MLE for Method 1
+#### MLE for Method 1 {#clark-mle-1}
 
 When maximize the MLE for $ELR$ we get:
 
@@ -244,7 +309,7 @@ $$ELR = \dfrac{\sum_{i \in \Delta} c_i}{\sum_{i \in \Delta} P_i \times [G(y) - G
 
 * Which is the Cape Cod $ELR$ from [Hurlimann](#hur-remark)
 
-#### MLE for Method 2
+#### MLE for Method 2 {#clark-mle-2}
 
 When we maximize the MLE for $ULT_{AY}$ we get:
 
@@ -254,13 +319,14 @@ $$ULT_{AY} = \dfrac{\sum_{i \in AY} c_i}{\sum_{i \in AY}[G(y) - G(x)]}$$
 
 * The is the LDF method of estimating ultimate
 
-### Parameter Variance
+### Parameter Variance {#clark-para-var-sec}
 
 ```{block, type='rmdcaution'}
 Not super testable
 ```
 
-Information matrix $I$ (2^nd^ derivative matrix $l$ vs each parameter)
+*Information matrix* $I$:  
+(2^nd^ derivative matrix $l$ vs each parameter)
 
 \begin{equation}
 \begin{bmatrix}
@@ -271,10 +337,10 @@ Information matrix $I$ (2^nd^ derivative matrix $l$ vs each parameter)
 (\#eq:clark-info-matrix)
 \end{equation}
 
-Covariance matrix:
+*Covariance matrix*:
 
 \begin{equation}
-  \Sigma = -\sigma^2 \times I^{-1}
+  \mathbf{\Sigma} = -\sigma^2 \times I^{-1}
   (\#eq:clark-cov-matrix)
 \end{equation}
 
@@ -294,15 +360,15 @@ $$\sigma^2 \sum_i \mu_i$$
 
 **Parameter Variance of $R$**
 
-$$\mathrm{Var}(\mathrm{E}[R]) = (\partial R)'\Sigma (\partial R)$$
+$$\mathrm{Var}(\mathrm{E}[R]) = (\partial R)'\mathbf{\Sigma} (\partial R)$$
 
-* $\Sigma$ is from equation \@ref(eq:clark-cov-matrix) above
+* $\mathbf{\Sigma}$ is from equation \@ref(eq:clark-cov-matrix) above
 
 * $\partial R$ = vector that is the derivative of the reserve by each parameter
 
 * Calculation heavy, not testable
 
-## 3 Key Assumptions of Model
+## 3 Key Assumptions of Model {#clark-key-ass}
 
 1) Incremental losses $iid$
 
@@ -326,17 +392,21 @@ The above temper the volatility in the model, actual results can be more variabl
 
 Model only works for positive expected incremental losses, but a negative loss here or there is fine as well
 
-## LDF Method (Method 2)
+## LDF Method (Method 2) {#clark-ldf-method}
 
 Can use either Loglogistic \@ref(eq:clark-loglogistic) or Weibull \@ref(eq:clark-weibull) for $G(x)$
 
 Estimate $\theta$, $\omega$, and $ULT_{AY}$ with [MLE](#clark-MLE)
 
+* Recall $ULT_{AY}$ estimate from [prior section](#clark-mle-2)
+
+* Then estimate $\mu$ for the whole triangle
+
 $$\mu = ULT_{AY} \times [G(y) - G(x)]$$
 
-$$l = c_i \ln(\mu_i) - \mu_i$$
+* Calculate the [log likelihood](#clark-mle-odp) for the sum of the whole triangle
 
-Calculate $\sigma^2$
+Calculate $\sigma^2$ for residual or reserve process variance
 
 $$\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta} \underbrace{\dfrac{(c_i - \mu_i)^2}{\mu_i}}_{\chi^2 \text{ term}}$$
 
@@ -346,9 +416,9 @@ $$\sigma^2 = \dfrac{1}{n-p}\sum\limits_{i \in \Delta} \underbrace{\dfrac{(c_i - 
 
 * This is for **incremental** losses
 
-### Residual Review
+### Residual Review {#clark-res-review}
 
-Normalized residuals:
+**Normalized residuals**:
 
 $$r_i = \dfrac{c_i - \mu_i}{\sigma \sqrt{\mu_i}}$$
 
@@ -356,7 +426,7 @@ $$r_i = \dfrac{c_i - \mu_i}{\sigma \sqrt{\mu_i}}$$
 
 * Same as $\dfrac{\sqrt{\chi^2 \text{ term}}}{\sigma}$
 
-Plot residuals (should be randomly scattered around 0):
+**Plot residuals** (should be randomly scattered around 0):
 
 1. age $x$ vs $r_{i,x}$ 
 
@@ -372,9 +442,9 @@ Plot residuals (should be randomly scattered around 0):
 
 ***Untruncated***
 
-1) Get G(x): % paid(reported) to date
+1) Get $G(x)$: % paid(reported) to date
 
-2) Ultimate = Paid to date (reported to date) $\div$ G(x)
+2) Ultimate = Paid to date (reported to date) $\div$ $G(x)$
 
 ***Truncated*** @ age $x_t$
 
@@ -386,7 +456,10 @@ Plot residuals (should be randomly scattered around 0):
 
 [Process Variance](#clark-var-reserve):
 
-$$\sigma^2 \sum_i \mu_i = \sigma^2 \times \text{Unpaid}$$
+\begin{equation}
+  \sigma^2 \sum_i \mu_i = \sigma^2 \times \text{Unpaid}
+  (\#eq:reserve-proc-var-clark)
+\end{equation}
 
 [Parameter variance](#clark-var-reserve) is huge and computational intensive as it requires inverting a big matrix
 
@@ -394,9 +467,9 @@ $$\sigma^2 \sum_i \mu_i = \sigma^2 \times \text{Unpaid}$$
 
 Total variance can be calculated by summing the process and parameter variance
 
-## Cape Cod Method (Method 1)
+## Cape Cod Method (Method 1) {#clark-cape-cod-method}
 
-Requires exposure base:
+Requires **exposure base**:
 
 * e.g. on-level and trended EP, original loss projection, trended # of vehicles, claim counts, etc
 
@@ -404,13 +477,19 @@ Requires exposure base:
 
 Estimate $\theta$, $\omega$ and $ELR$ with [MLE](#clark-MLE)
 
+* Recall $ELR$ estimate from [prior section](#clark-mle-1)
+
 $$ELR = \sum_{AY} \dfrac{\text{Losses Paid to Date}}{\underbrace{G(x)}_{\text{Expected portion paid}} \times Premium}$$
 
-* **Do not truncate** when calculating ELR
+* **Do not truncate** when calculating $ELR$
+
+* Calculate $\mu$
 
 $$\mu = Premium_{AY} \times ELR \times [G(y) - G(x)]$$
 
-Calculate $\sigma^2$:
+* Calculate the [log likelihood](#clark-mle-odp) for the sum of the whole triangle
+
+Calculate $\sigma^2$ for residual or reserve process variance
 
 $$\sigma^2= \dfrac{1}{n-p}\sum\limits_{i \in \Delta}^n\dfrac{(c_i - \mu_i)^2}{\mu_i}$$
 
@@ -434,11 +513,13 @@ Check if the assumption of one expected LR is reasonable by looking for any upwa
 
 * Reserve = On-level Premium $\times \: ELR \: \times [(G(x_t) - G(x)]$
 
-Similar story for the process variance and parameter variance as the LDF method
+    * Or, Reserve = On-level Premium $\times \: ELR \: \times G(x_t) \: \times \:[(1 - G'(x)]$
 
-The Covariance matrix $\Sigma$ is smaller just $3 \times 3$
+Similar story for the **process variance** and **parameter variance** as the LDF method
 
-Parameter variance is smaller than the LDF method since we have more information (exposure) in the Cape Cod method 
+* The Covariance matrix $\Sigma$ is smaller just $3 \times 3$
+
+* *Parameter variance* is smaller than the LDF method since we have more information (exposure) in the Cape Cod method 
 
 ## Other Use of Model
 
@@ -448,17 +529,17 @@ Estimate variance for the **next u/w year**
 
 * Need to be given the $\mathrm{Var}(ELR)$
 
-Process Variance:
+**Process Variance**:
 
 $$\sigma^2 \times \: ELR \: \times Premium$$
 
-Parameter Variance:
+**Parameter Variance**:
 
 $$\left(\sqrt{\mathrm{Var}(ELR)}\times Premium \right)^2$$
 
-Total Variance: Process Variance + Parameter Variance
+**Total Variance**: Process Variance + Parameter Variance
 
-CoV:
+**CoV**:
 
 $$\dfrac{\sqrt{Total \: Variance}}{ELR \times Premium}$$
 
@@ -504,35 +585,121 @@ MLE is useful for estimating both the expected emergence pattern and the varianc
 
 ODP is convenient link to LDF and Cape Cod estimates
     
-## Average Age of Claims
+## Average Age of Claims {#avg-age-claim}
 
 ```{block, type='rmdcaution'}
 From paper appendix, to be included later...(Not crucial)
+Not complete
 ```
+
+$t$ is the number of months since inception
+
+Accident year
+
+$$x = 
+  \begin{cases}
+    \dfrac{t}{2} &: \: t < 12 \\
+    t - 6 &: \: t \geq 12 \\
+  \end{cases}$$
+
+Accident Quarter
+
+$$x = 
+  \begin{cases}
+    \dfrac{t}{2} &: \: t < 3 \\
+    t - 1.5 &: \: t \geq 3 \\
+  \end{cases}$$
+
+Policy year
+
+$$x = 
+  \begin{cases}
+    \dfrac{t}{3} &: \: t \leq 12 \\
+    t - 12 &: \: t \geq 24 \\
+  \end{cases}$$
+  
+* The in between 12 and 24 is some complicated formula...
+  
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
+**Reserve/variance Calculation**
 
-**Reserve Calculation**
-
-* $\star$ 2011 #2 (\@ref(fig:2011-2)): Cape Cod truncated and reserve CoV
+* $\star \star$ 2011 #2 (\@ref(fig:2011-2)): Cape Cod truncated and reserve CoV
 
 * 2012 #2: Cape Cod method and reserve CoV
 
-* $\star \star$ 2013 #3 (\@ref(fig:2013-3)): LDF method with $\sigma^2$ calc
+* $\star \star$ 2013 #3 (\@ref(fig:2013-3)): LDF method, need to calc $\sigma^2$ and normalized residuals
 
-* 2013 #10: Stanard-Buhlmann
+* 2014 #3: $\sigma^2$ calc
 
 * 2014 #5: plug and play LDF and Cape Cod method with Benktander
 
-* 2015 #2 (\@ref(fig:2015-2)): LDF Method and concept where if we switch to Cape Cod the CoV should go down as it incorporates additional information
+* $\star$ 2015 #2 (\@ref(fig:2015-2)): LDF Method and concept where if we switch to Cape Cod the CoV should go down as it incorporates additional information
 
-**Other**
+* $\star$ 2016 #3: stdv for cape cod and LDF and why the $\sigma^2$ is higher for LDF
 
-* 2012 #3: Residual plot from projection and assumptions
+* TIA 1: Reserve with truncated loglogistic and given parameters
+
+    a. Cape Cod
+    
+    b. LDF method
+    
+* TIA 2: Weibull
+
+    a. Cape Cod no truncation
+    
+    b. $\star$ Process standard deviation
+    
+    c. Variance of incremental loss
+    
+* TIA 3: Weibull
+
+    a. LDF method reserve
+    
+    b. Loss reserve total standard deviation given parameter variance
+    
+    c. Note that we can not model triangle with negative development
+    
+**Other calculation**
+
+* TIA 4: Loglogistic with LDF method
+
+    a. $\star$Log likelihood to test which parameters are better
+
+        * Probably too long for exam, but good for checking my understanding
+        
+    b. Total reserve
+
+* $\star$ TIA 7: given all parameters for cape cod; everything is mostly given but good to see how the calculation works
+
+    a. CY paid
+    
+    b. Variance for the next CY paid
+    
+    c. Prospective AY expected loss and variance
+    
+* TIA 8: Setup data for clark's calculation
+
+* TIA 9: loglikelihood for cape cod compare (similar to TIA 4)
+
+* $\star$ TIA 10: process variance, long calc for $\sigma$, LDF method and Weibull
+
+* $\star$ TIA 11: count average dates for quarterly
+
+* TIA 12: count average date for policy year
+
+* TIA 13: count average date for policy year with stuff in between 12 and 24
+
+**Concepts**
+
+* $\star \star$ 2016 #4b: appropriatness of using Cape Cod
+
+* TIA 5: Assumptions made that lead to the cape cod and LDF method
+
+    * List the formula for the 2 methods
+    
+* TIA 6: Advantages of Clark's growth function method
 
 ### Question Highlights
 

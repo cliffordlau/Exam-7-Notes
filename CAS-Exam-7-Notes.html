@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CAS Exam 7 Study Notes</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="CAS exam 7 study notes for 2017 Spring sitting.">
+  <meta name="generator" content="bookdown <!--bookdown:version--> and GitBook 2.6.7">
+
+  <meta property="og:title" content="CAS Exam 7 Study Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="CAS exam 7 study notes for 2017 Spring sitting." />
+  <meta name="github-repo" content="cliffordlau/Exam-7-2016-Notes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CAS Exam 7 Study Notes" />
+  
+  <meta name="twitter:description" content="CAS exam 7 study notes for 2017 Spring sitting." />
+  
+
+<meta name="author" content="Cliff Lau">
+
+
+<meta name="date" content="2017-04-23">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+<!--bookdown:title:start-->
+<div id="header">
+<h1 class="title">CAS Exam 7 Study Notes</h1>
+<h4 class="author"><em>Cliff Lau</em></h4>
+<h4 class="date"><em>2017-04-23</em></h4>
+</div>
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+<!--bookdown:toc2:start-->
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#part-estimation-of-policy-liabilities">(PART) Estimation of Policy Liabilities</a></li>
+<li><a href="#loss-development-using-credibility---e.-brosius"><span class="toc-section-number">1</span> Loss Development Using Credibility - E. Brosius</a></li>
+<li><a href="#credible-claims-reserve-the-benktander-method---t.-mack"><span class="toc-section-number">2</span> Credible Claims Reserve: The Benktander Method - T. Mack</a></li>
+<li><a href="#credible-claims-reserve-benktander-neuhaus-and-mack---w.-hurlimann"><span class="toc-section-number">3</span> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</a></li>
+<li><a href="#measuring-the-variability-of-chain-ladder-reserve-estimate---t.-mack"><span class="toc-section-number">4</span> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</a></li>
+<li><a href="#testing-the-assumptions-of-age-to-age-factors---g.-venter"><span class="toc-section-number">5</span> Testing the Assumptions of Age-to-Age Factors - G. Venter</a></li>
+<li><a href="#curve-fit-clark"><span class="toc-section-number">6</span> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a></li>
+<li><a href="#a-model-for-reserving-workers-compensation-high-deductibles---j.-siewert"><span class="toc-section-number">7</span> A Model for Reserving Workers Compensation High Deductibles - J. Siewert</a></li>
+<li><a href="#claims-development-by-layer---r.-sahasrabuddhe"><span class="toc-section-number">8</span> Claims Development by Layer - R. Sahasrabuddhe</a></li>
+<li><a href="#using-the-odp-bootstrap-model-a-practitioners-guide"><span class="toc-section-number">9</span> Using the ODP Bootstrap Model: A Practitioner’s Guide</a></li>
+<li><a href="#obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions---r.-verrall"><span class="toc-section-number">10</span> Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</a></li>
+<li><a href="#stochastic-loss-reserving-using-bayesian-mcmc-models---g.-meyer"><span class="toc-section-number">11</span> Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer</a></li>
+<li><a href="#a-framework-for-assessing-risk-margins---k.-marshall-et-al."><span class="toc-section-number">12</span> A Framework for Assessing Risk Margins - K. Marshall et al.</a></li>
+<li><a href="#reinsurance-loss-reserving---patrik"><span class="toc-section-number">13</span> Reinsurance Loss Reserving - Patrik</a></li>
+<li><a href="#estimating-the-premium-asset-on-retrospectively-rate-policies---m.-teng-and-m.-perkins"><span class="toc-section-number">14</span> Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins</a></li>
+<li><a href="#part-insurance-company-valuation">(PART) Insurance Company Valuation</a></li>
+<li><a href="#pc-insurance-company-valuation---r.-goldfarb"><span class="toc-section-number">15</span> P&amp;C Insurance Company Valuation - R. Goldfarb</a></li>
+<li><a href="#part-enterprise-risk-management">(PART) Enterprise Risk Management</a></li>
+<li><a href="#era-1.1---1.3-introduction---brehm-et-al."><span class="toc-section-number">16</span> ERA 1.1 - 1.3 Introduction - Brehm, et al.</a></li>
+<li><a href="#era-2.1-corporate-decision-making-using-an-enterprise-risk-model---don-mango"><span class="toc-section-number">17</span> ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango</a></li>
+<li><a href="#era-2.2-risk-measures-and-capital-allocation---g.-venter"><span class="toc-section-number">18</span> ERA 2.2 Risk Measures and Capital Allocation - G. Venter</a></li>
+<li><a href="#era-2.3-regulatory-and-rating-agency-capital-adequacy-models---witcraft"><span class="toc-section-number">19</span> ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft</a></li>
+<li><a href="#era-2.4-asset-liability-management---brehm"><span class="toc-section-number">20</span> ERA 2.4 Asset-Liability Management - Brehm</a></li>
+<li><a href="#era-2.5-measuring-value-in-reinsurance---venter-gluck-brehm"><span class="toc-section-number">21</span> ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</a></li>
+<li><a href="#era-3.1-considerations-on-implementing-internal-risk-model---mango"><span class="toc-section-number">22</span> ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</a></li>
+<li><a href="#era-3.2-modeling-parameter-uncertainty---venter-gluck"><span class="toc-section-number">23</span> ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</a></li>
+<li><a href="#era-3.3-modeling-and-dependency-correlations-and-copulas---g.-venter"><span class="toc-section-number">24</span> ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</a></li>
+<li><a href="#era-4.1-4.2-operational-and-strategic-risk---d.-mango-g.-venter"><span class="toc-section-number">25</span> ERA 4.1 &amp; 4.2 Operational and Strategic Risk - D. Mango, G. Venter</a></li>
+<li><a href="#era-5.4-approaches-to-modeling-the-underwriting-cycle---major"><span class="toc-section-number">26</span> ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major</a></li>
+<li><a href="#part-overall-summary">(PART) Overall Summary</a></li>
+<li><a href="#exam-7-2016-overall-summary"><span class="toc-section-number">27</span> Exam 7 2016 Overall Summary</a></li>
+<li><a href="#formulas"><span class="toc-section-number">28</span> Formulas</a><ul>
+<li><a href="#loss-development-using-credibility---e.-brosius-1"><span class="toc-section-number">28.1</span> Loss Development Using Credibility - E. Brosius</a></li>
+<li><a href="#credible-claims-reserve-the-benktander-method---t.-mack-1"><span class="toc-section-number">28.2</span> Credible Claims Reserve: The Benktander Method - T. Mack</a></li>
+<li><a href="#credible-claims-reserve-benktander-neuhaus-and-mack---w.-hurlimann-1"><span class="toc-section-number">28.3</span> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</a></li>
+<li><a href="#measuring-the-variability-of-chain-ladder-reserve-estimate---t.-mack-1"><span class="toc-section-number">28.4</span> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</a></li>
+<li><a href="#testing-the-assumptions-of-age-to-age-factors---g.-venter-1"><span class="toc-section-number">28.5</span> Testing the Assumptions of Age-to-Age Factors - G. Venter</a></li>
+<li><a href="#curve-fit-clark"><span class="toc-section-number">28.6</span> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a></li>
+<li><a href="#reinsurance-loss-reserving---patrik-1"><span class="toc-section-number">28.7</span> Reinsurance Loss Reserving - Patrik</a></li>
+</ul></li>
+</ul>
+<!--bookdown:toc2:end-->
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAS Exam 7 Study Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<div id="overview" class="section level1 unnumbered">
+<h1>Overview</h1>
+<!--chapter:end:index.Rmd-->
+</div>
+<div id="part-estimation-of-policy-liabilities" class="section level1 unnumbered">
+<h1>(PART) Estimation of Policy Liabilities</h1>
+</div>
+<div id="loss-development-using-credibility---e.-brosius" class="section level1">
+<h1><span class="header-section-number">1</span> Loss Development Using Credibility - E. Brosius</h1>
+<!--chapter:end:01-Brosius.Rmd-->
+</div>
+<div id="credible-claims-reserve-the-benktander-method---t.-mack" class="section level1">
+<h1><span class="header-section-number">2</span> Credible Claims Reserve: The Benktander Method - T. Mack</h1>
+<!--chapter:end:02-Mack-2000.Rmd-->
+</div>
+<div id="credible-claims-reserve-benktander-neuhaus-and-mack---w.-hurlimann" class="section level1">
+<h1><span class="header-section-number">3</span> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</h1>
+<!--chapter:end:03-Hurlimann.Rmd-->
+</div>
+<div id="measuring-the-variability-of-chain-ladder-reserve-estimate---t.-mack" class="section level1">
+<h1><span class="header-section-number">4</span> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</h1>
+<!--chapter:end:04-Mack-1994.Rmd-->
+</div>
+<div id="testing-the-assumptions-of-age-to-age-factors---g.-venter" class="section level1">
+<h1><span class="header-section-number">5</span> Testing the Assumptions of Age-to-Age Factors - G. Venter</h1>
+<!--chapter:end:05-Venter-Factors.Rmd-->
+</div>
+<div id="curve-fit-clark" class="section level1">
+<h1><span class="header-section-number">6</span> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</h1>
+<!--chapter:end:06-Clark.Rmd-->
+</div>
+<div id="a-model-for-reserving-workers-compensation-high-deductibles---j.-siewert" class="section level1">
+<h1><span class="header-section-number">7</span> A Model for Reserving Workers Compensation High Deductibles - J. Siewert</h1>
+<!--chapter:end:07-Siewert.Rmd-->
+</div>
+<div id="claims-development-by-layer---r.-sahasrabuddhe" class="section level1">
+<h1><span class="header-section-number">8</span> Claims Development by Layer - R. Sahasrabuddhe</h1>
+<!--chapter:end:08-Sahasrabuddhe.Rmd-->
+</div>
+<div id="using-the-odp-bootstrap-model-a-practitioners-guide" class="section level1">
+<h1><span class="header-section-number">9</span> Using the ODP Bootstrap Model: A Practitioner’s Guide</h1>
+<!--chapter:end:09-Shapland.Rmd-->
+</div>
+<div id="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions---r.-verrall" class="section level1">
+<h1><span class="header-section-number">10</span> Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall</h1>
+<!--chapter:end:10-Verrall.Rmd-->
+</div>
+<div id="stochastic-loss-reserving-using-bayesian-mcmc-models---g.-meyer" class="section level1">
+<h1><span class="header-section-number">11</span> Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer</h1>
+<!--chapter:end:11-Meyers.Rmd-->
+</div>
+<div id="a-framework-for-assessing-risk-margins---k.-marshall-et-al." class="section level1">
+<h1><span class="header-section-number">12</span> A Framework for Assessing Risk Margins - K. Marshall et al.</h1>
+<!--chapter:end:12-Marshall-et-al.Rmd-->
+</div>
+<div id="reinsurance-loss-reserving---patrik" class="section level1">
+<h1><span class="header-section-number">13</span> Reinsurance Loss Reserving - Patrik</h1>
+<!--chapter:end:13-Patrik.Rmd-->
+</div>
+<div id="estimating-the-premium-asset-on-retrospectively-rate-policies---m.-teng-and-m.-perkins" class="section level1">
+<h1><span class="header-section-number">14</span> Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins</h1>
+<!--chapter:end:14-Teng-Perkins.Rmd-->
+</div>
+<div id="part-insurance-company-valuation" class="section level1 unnumbered">
+<h1>(PART) Insurance Company Valuation</h1>
+</div>
+<div id="pc-insurance-company-valuation---r.-goldfarb" class="section level1">
+<h1><span class="header-section-number">15</span> P&amp;C Insurance Company Valuation - R. Goldfarb</h1>
+<!--chapter:end:15-Goldfarb.Rmd-->
+</div>
+<div id="part-enterprise-risk-management" class="section level1 unnumbered">
+<h1>(PART) Enterprise Risk Management</h1>
+</div>
+<div id="era-1.1---1.3-introduction---brehm-et-al." class="section level1">
+<h1><span class="header-section-number">16</span> ERA 1.1 - 1.3 Introduction - Brehm, et al.</h1>
+<!--chapter:end:16-ERA-1.Rmd-->
+</div>
+<div id="era-2.1-corporate-decision-making-using-an-enterprise-risk-model---don-mango" class="section level1">
+<h1><span class="header-section-number">17</span> ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango</h1>
+<!--chapter:end:17-ERA-2.1.Rmd-->
+</div>
+<div id="era-2.2-risk-measures-and-capital-allocation---g.-venter" class="section level1">
+<h1><span class="header-section-number">18</span> ERA 2.2 Risk Measures and Capital Allocation - G. Venter</h1>
+<!--chapter:end:18-ERA-2.2.Rmd-->
+</div>
+<div id="era-2.3-regulatory-and-rating-agency-capital-adequacy-models---witcraft" class="section level1">
+<h1><span class="header-section-number">19</span> ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft</h1>
+<!--chapter:end:19-ERA-2.3.Rmd-->
+</div>
+<div id="era-2.4-asset-liability-management---brehm" class="section level1">
+<h1><span class="header-section-number">20</span> ERA 2.4 Asset-Liability Management - Brehm</h1>
+<!--chapter:end:20-ERA-2.4.Rmd-->
+</div>
+<div id="era-2.5-measuring-value-in-reinsurance---venter-gluck-brehm" class="section level1">
+<h1><span class="header-section-number">21</span> ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm</h1>
+<!--chapter:end:21-ERA-2.5.Rmd-->
+</div>
+<div id="era-3.1-considerations-on-implementing-internal-risk-model---mango" class="section level1">
+<h1><span class="header-section-number">22</span> ERA 3.1 Considerations on Implementing Internal Risk Model - Mango</h1>
+<!--chapter:end:22-ERA-3.1.Rmd-->
+</div>
+<div id="era-3.2-modeling-parameter-uncertainty---venter-gluck" class="section level1">
+<h1><span class="header-section-number">23</span> ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck</h1>
+<!--chapter:end:23-ERA-3.2.Rmd-->
+</div>
+<div id="era-3.3-modeling-and-dependency-correlations-and-copulas---g.-venter" class="section level1">
+<h1><span class="header-section-number">24</span> ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter</h1>
+<!--chapter:end:24-ERA-3.3.Rmd-->
+</div>
+<div id="era-4.1-4.2-operational-and-strategic-risk---d.-mango-g.-venter" class="section level1">
+<h1><span class="header-section-number">25</span> ERA 4.1 &amp; 4.2 Operational and Strategic Risk - D. Mango, G. Venter</h1>
+<!--chapter:end:25-ERA-4.1-4.2.Rmd-->
+</div>
+<div id="era-5.4-approaches-to-modeling-the-underwriting-cycle---major" class="section level1">
+<h1><span class="header-section-number">26</span> ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major</h1>
+<!--chapter:end:26-ERA-5.4.Rmd-->
+</div>
+<div id="part-overall-summary" class="section level1 unnumbered">
+<h1>(PART) Overall Summary</h1>
+</div>
+<div id="exam-7-2016-overall-summary" class="section level1">
+<h1><span class="header-section-number">27</span> Exam 7 2016 Overall Summary</h1>
+<!--chapter:end:27-Overall-Summary.Rmd-->
+</div>
+<div id="formulas" class="section level1">
+<h1><span class="header-section-number">28</span> Formulas</h1>
+<p>Links to all key formulas</p>
+<div id="loss-development-using-credibility---e.-brosius-1" class="section level2">
+<h2><span class="header-section-number">28.1</span> Loss Development Using Credibility - E. Brosius</h2>
+<p><span class="math inline">\(\star\)</span> Least Square (@ref(prp:least-sq))</p>
+<p>Theoretical Bayesian:</p>
+<ul>
+<li><p>Poisson - Binomial (@ref(prp:poi-bin))</p></li>
+<li><p>Negative Binomial - Binomial (@ref(prp:nb-bin))</p></li>
+</ul>
+<p><span class="math inline">\(\star\)</span> Best linear estimator formula (@ref(prp:bayes-ble))</p>
+<ol style="list-style-type: decimal">
+<li><p>Estimate from data (prop. @ref(prp:dev-form-1):</p>
+<ul>
+<li>Alt form for <span class="math inline">\(Z\)</span> with equation @ref(eq:brosius-alt-z)</li>
+</ul></li>
+<li><p><span class="math inline">\(\star\star\)</span> Use <a href="#cred-dev"><span class="math inline">\(VHM\)</span> and <span class="math inline">\(EVPV\)</span></a> for <span class="math inline">\(Z\)</span></p></li>
+</ol>
+<p><a href="#case-load">Case load effect</a></p>
+</div>
+<div id="credible-claims-reserve-the-benktander-method---t.-mack-1" class="section level2">
+<h2><span class="header-section-number">28.2</span> Credible Claims Reserve: The Benktander Method - T. Mack</h2>
+<p>GB method formula (@ref(prp:GB-method))</p>
+<p>Iterative form of BF and GB and it’s extension: Theorem @ref(thm:GB-iterate)</p>
+</div>
+<div id="credible-claims-reserve-benktander-neuhaus-and-mack---w.-hurlimann-1" class="section level2">
+<h2><span class="header-section-number">28.3</span> Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann</h2>
+<p><span class="math inline">\(\star\)</span> Credibility equation @ref(eq:lr-claim-res-method) and the different <span class="math inline">\(Z\)</span> @ref(tab:method-tbl-cred)</p>
+<p><a href="#hur-remark">Cape Code</a></p>
+<p><a href="#hurlimann-mse">Credibility method MSE</a></p>
+</div>
+<div id="measuring-the-variability-of-chain-ladder-reserve-estimate---t.-mack-1" class="section level2">
+<h2><span class="header-section-number">28.4</span> Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack</h2>
+<p><span class="math inline">\(\star\)</span> 3 different <strong>weight and variance</strong> assumptions from table @ref(tab:CL-var-weight)</p>
+<p><span class="math inline">\(\star\)</span> <strong>Mean squared error</strong> <a href="#mack-mse-app">calculation</a></p>
+<ul>
+<li><p>The big MSE formula @ref(eq:mse-formula)</p></li>
+<li><p>How to get the <span class="math inline">\(\alpha\)</span>’s we need for the MSE formula @ref(eq:alpha-1) and @ref(eq:alpha-2)</p></li>
+</ul>
+<p><strong>Confidence Interval</strong></p>
+<ul>
+<li><p>Normal: equation @ref(eq:normal-ci)</p></li>
+<li><p><span class="math inline">\(\star\)</span> Log-normal: equation @ref(eq:lognormal-ci)</p>
+<ul>
+<li>Use log-normal when <span class="math inline">\(s.e.(\hat{R}_i) &gt; \dfrac{R_i}{2}\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\star\)</span> 4 <strong>test of assumptions</strong> to check</p>
+<ul>
+<li><p>Test 2. <a href="#mack-residuals">Residuals</a></p>
+<ul>
+<li>Formula for residual @ref(eq:residual-eq)</li>
+</ul></li>
+<li><p><span class="math inline">\(\star \star\)</span> Test 3. <a href="#mack-cy-test">CY Test</a></p>
+<ul>
+<li><p>How to get <span class="math inline">\(z\)</span> @ref(eq:s-l-diagonal-mack)</p></li>
+<li><p>Expected value @ref(eq:exp-z-diagonal-mack) and variance @ref(eq:var-z-diagonal-mack)</p>
+<ul>
+<li>Or just memorize them up to 6 (Table @ref(tab:cy-test-exp-var-table))</li>
+</ul></li>
+</ul></li>
+<li><p><span class="math inline">\(\star \star\)</span> Test 4. <a href="#mack-adjacent-ldf">Adjacent LDF Correlation</a></p>
+<ul>
+<li><p><span class="math inline">\(T\)</span> for age <span class="math inline">\(k\)</span> @ref(eq:t-k-mack) and <span class="math inline">\(S\)</span> @ref(eq:sq-diff-rank-mack)</p></li>
+<li><p><span class="math inline">\(T\)</span> for the whole triangle @ref(eq:total-t-mack)</p></li>
+<li><p>CI to compare with resutls @ref(eq:t-ci-mack)</p>
+<ul>
+<li>This is test at a lower CI</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="testing-the-assumptions-of-age-to-age-factors---g.-venter-1" class="section level2">
+<h2><span class="header-section-number">28.5</span> Testing the Assumptions of Age-to-Age Factors - G. Venter</h2>
+<p><span class="math inline">\(\star \star\)</span> <a href="#venter-goodness-fit">Goodness of fit</a> measure:</p>
+<ul>
+<li><p>Adj SSE @ref(eq:adj-sse-venter)</p></li>
+<li><p>AIC @ref(eq:aic-venter)</p></li>
+<li><p>BIC @ref(eq:bic-venter)</p></li>
+</ul>
+<p>6 testable implications</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><span class="math inline">\(\star \star\)</span> Is there a <a href="#venter-imp-2">better estimate</a> for <span class="math inline">\(q\)</span> than <span class="math inline">\(f \times c\)</span></p>
+<ul>
+<li><p>Number of parameters (Table @ref(tab:venter-alt-pattern))</p></li>
+<li><p><a href="#venter-count-para">Counting parameters</a></p></li>
+<li><p><span class="math inline">\(\star \star\)</span> BF parameters (Table @ref(tab:venter-var-weight-BF))</p></li>
+<li><p><a href="#iteration-proc-venter">Iteration process</a></p></li>
+</ul></li>
+<li><p><span class="math inline">\(\star \star\)</span> <a href="#venter-imp-5">No correlation among columns</a></p>
+<ul>
+<li><p>Remember we are testing <span class="math inline">\(f(d)\)</span> so LDF - 1</p></li>
+<li><p>Pearson correlation calculation @ref(eq:venter-pearson-corr) and test statistics @ref(eq:venter-pearson-corr-test-stat)</p></li>
+<li><p>To test for all different pairs (not just adjacent pairs) @ref(eq:corr-pair-total)</p></li>
+</ul></li>
+<li><p>No particularly <a href="#venter-imp-6">high or low diagonals</a></p>
+<ul>
+<li>Setting up regression with CY dummy variable @ref(eq:venter-cy-regress)</li>
+</ul></li>
+</ol>
+</div>
+<div id="curve-fit-clark" class="section level2">
+<h2><span class="header-section-number">28.6</span> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</h2>
+<p><span class="math inline">\(\star\)</span> Paper definition/standards:</p>
+<ul>
+<li>We use the <strong>average age</strong> of the period here (so minus 6 month)</li>
+</ul>
+<p><strong>Reserve estimate</strong></p>
+<ul>
+<li><p><span class="math inline">\(\star \star\)</span> Given <span class="math inline">\(G(x)\)</span> distribution</p>
+<ul>
+<li><p><strong>Loglogistic</strong> @ref(eq:clark-loglogistic), or</p></li>
+<li><p><strong>Weibull</strong> @ref(eq:clark-weibull)</p></li>
+<li><p>Might have to estimate parameters</p></li>
+</ul></li>
+<li><p>2 Reserving method</p>
+<ul>
+<li><p><span class="math inline">\(\star\)</span> <a href="#clark-ldf-method">LDF</a> Method</p></li>
+<li><p><span class="math inline">\(\star\)</span> <a href="#clark-cape-cod-method">Cape Cod</a> Method</p></li>
+</ul></li>
+<li><p>Test for truncation by looking at age twice the triangle size</p>
+<ul>
+<li>Different truncation method</li>
+</ul></li>
+</ul>
+<p><a href="#clark-var-reserve"><strong>Reserve process variance</strong></a></p>
+<ul>
+<li><p><span class="math inline">\(\star \star\)</span> Estimation of <span class="math inline">\(\sigma^2\)</span> @ref(eq:clark-sigma-est)</p>
+<ul>
+<li><p>Note the <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> for the 2 methods</p></li>
+<li><p>We’re looking at <strong>incremental</strong> losses</p></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\star \star\)</span> Test <span class="math inline">\(iid\)</span> assumpation with <a href="#clark-res-review">residual plots</a> by calculating standardized residual</p>
+<p><a href="#avg-age-claim"><strong>Counting average accident date</strong></a></p>
+</div>
+<div id="reinsurance-loss-reserving---patrik-1" class="section level2">
+<h2><span class="header-section-number">28.7</span> Reinsurance Loss Reserving - Patrik</h2>
+<p><a href="#patrik-long-est-methods">Long tail reserving method</a>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Stanard Buhlmann</p></li>
+<li><p>Credibility IBNR method (<span class="math inline">\(Z = p_k \times CL\)</span> and weighting <strong>reserve</strong> on <span class="math inline">\(CL\)</span> and <span class="math inline">\(SB\)</span>)</p></li>
+</ol>
+<!--chapter:end:28-Formulas.Rmd-->
+</div>
+</div>
+<!--bookdown:body:end-->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+
+<!--bookdown:config-->
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

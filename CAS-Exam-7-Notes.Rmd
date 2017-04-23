@@ -1,3 +1,158 @@
+--- 
+title: "CAS Exam 7 Study Notes"
+author: "Cliff Lau"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+link-citations: yes
+github-repo: cliffordlau/Exam-7-2016-Notes
+description: "CAS exam 7 study notes for 2017 Spring sitting."
+---
+
+# Overview {-}
+
+<!--chapter:end:index.Rmd-->
+
+
+# (PART) Estimation of Policy Liabilities {-}
+# Loss Development Using Credibility - E. Brosius
+
+<!--chapter:end:01-Brosius.Rmd-->
+
+
+# Credible Claims Reserve: The Benktander Method - T. Mack
+
+<!--chapter:end:02-Mack-2000.Rmd-->
+
+
+# Credible Claims Reserve: Benktander, Neuhaus and Mack - W. Hurlimann
+
+<!--chapter:end:03-Hurlimann.Rmd-->
+
+
+# Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack
+
+<!--chapter:end:04-Mack-1994.Rmd-->
+
+
+# Testing the Assumptions of Age-to-Age Factors - G. Venter
+
+<!--chapter:end:05-Venter-Factors.Rmd-->
+
+
+# LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark {#curve-fit-clark}
+
+<!--chapter:end:06-Clark.Rmd-->
+
+
+# A Model for Reserving Workers Compensation High Deductibles - J. Siewert
+
+<!--chapter:end:07-Siewert.Rmd-->
+
+
+# Claims Development by Layer - R. Sahasrabuddhe
+
+<!--chapter:end:08-Sahasrabuddhe.Rmd-->
+
+
+# Using the ODP Bootstrap Model: A Practitioner's Guide
+
+<!--chapter:end:09-Shapland.Rmd-->
+
+
+# Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall
+
+<!--chapter:end:10-Verrall.Rmd-->
+
+
+# Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
+
+<!--chapter:end:11-Meyers.Rmd-->
+
+
+# A Framework for Assessing Risk Margins - K. Marshall et al.
+
+<!--chapter:end:12-Marshall-et-al.Rmd-->
+
+
+# Reinsurance Loss Reserving - Patrik
+
+<!--chapter:end:13-Patrik.Rmd-->
+
+
+# Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins
+
+<!--chapter:end:14-Teng-Perkins.Rmd-->
+
+
+# (PART) Insurance Company Valuation {-}
+# P&C Insurance Company Valuation - R. Goldfarb
+
+<!--chapter:end:15-Goldfarb.Rmd-->
+
+
+# (PART) Enterprise Risk Management {-}
+# ERA 1.1 - 1.3 Introduction - Brehm, et al.
+
+<!--chapter:end:16-ERA-1.Rmd-->
+
+
+# ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango
+
+<!--chapter:end:17-ERA-2.1.Rmd-->
+
+
+# ERA 2.2 Risk Measures and Capital Allocation - G. Venter
+
+<!--chapter:end:18-ERA-2.2.Rmd-->
+
+
+# ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft
+
+<!--chapter:end:19-ERA-2.3.Rmd-->
+
+
+# ERA 2.4 Asset-Liability Management - Brehm
+
+<!--chapter:end:20-ERA-2.4.Rmd-->
+
+
+# ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm
+
+<!--chapter:end:21-ERA-2.5.Rmd-->
+
+
+# ERA 3.1 Considerations on Implementing Internal Risk Model - Mango
+
+<!--chapter:end:22-ERA-3.1.Rmd-->
+
+
+# ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck
+
+<!--chapter:end:23-ERA-3.2.Rmd-->
+
+
+# ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter
+
+<!--chapter:end:24-ERA-3.3.Rmd-->
+
+
+# ERA 4.1 & 4.2 Operational and Strategic Risk - D. Mango, G. Venter
+
+<!--chapter:end:25-ERA-4.1-4.2.Rmd-->
+
+
+# ERA 5.4 Approaches to Modeling the Underwriting Cycle - Major
+
+<!--chapter:end:26-ERA-5.4.Rmd-->
+
+
+# (PART) Overall Summary {-}
+# Exam 7 2016 Overall Summary
+
+<!--chapter:end:27-Overall-Summary.Rmd-->
+
 # Formulas
 
 Links to all key formulas
@@ -157,3 +312,6 @@ $\star \star$ Test $iid$ assumpation with [residual plots](#clark-res-review) by
 1. Stanard Buhlmann
 
 2. Credibility IBNR method ($Z = p_k \times CL$ and weighting **reserve** on $CL$ and $SB$)
+
+<!--chapter:end:28-Formulas.Rmd-->
+

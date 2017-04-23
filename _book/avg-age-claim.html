@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="avg-age-claim.html">
-<link rel="next" href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html">
+<link rel="prev" href="comments-and-conclusion.html">
+<link rel="next" href="past-exam-questions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -149,116 +149,43 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="past-exam-questions" class="section level2">
-<h2><span class="header-section-number">6.9</span> Past Exam Questions</h2>
-<p><strong>Reserve/variance Calculation</strong></p>
+<div id="avg-age-claim" class="section level2">
+<h2><span class="header-section-number">6.8</span> Average Age of Claims</h2>
+<div class="rmdcaution">
+<p>
+From paper appendix, to be included later…(Not crucial) Not complete
+</p>
+</div>
+<p><span class="math inline">\(t\)</span> is the number of months since inception</p>
+<p>Accident year</p>
+<p><span class="math display">\[x = 
+  \begin{cases}
+    \dfrac{t}{2} &amp;: \: t &lt; 12 \\
+    t - 6 &amp;: \: t \geq 12 \\
+  \end{cases}\]</span></p>
+<p>Accident Quarter</p>
+<p><span class="math display">\[x = 
+  \begin{cases}
+    \dfrac{t}{2} &amp;: \: t &lt; 3 \\
+    t - 1.5 &amp;: \: t \geq 3 \\
+  \end{cases}\]</span></p>
+<p>Policy year</p>
+<p><span class="math display">\[x = 
+  \begin{cases}
+    \dfrac{t}{3} &amp;: \: t \leq 12 \\
+    t - 12 &amp;: \: t \geq 24 \\
+  \end{cases}\]</span></p>
 <ul>
-<li><p><span class="math inline">\(\star \star\)</span> 2011 #2 (<a href="past-exam-questions.html#fig:2011-2">6.1</a>): Cape Cod truncated and reserve CoV</p></li>
-<li><p>2012 #2: Cape Cod method and reserve CoV</p></li>
-<li><p><span class="math inline">\(\star \star\)</span> 2013 #3 (<a href="past-exam-questions.html#fig:2013-3">6.2</a>): LDF method, need to calc <span class="math inline">\(\sigma^2\)</span> and normalized residuals</p></li>
-<li><p>2014 #3: <span class="math inline">\(\sigma^2\)</span> calc</p></li>
-<li><p>2014 #5: plug and play LDF and Cape Cod method with Benktander</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2015 #2 (<a href="past-exam-questions.html#fig:2015-2">6.3</a>): LDF Method and concept where if we switch to Cape Cod the CoV should go down as it incorporates additional information</p></li>
-<li><p><span class="math inline">\(\star\)</span> 2016 #3: stdv for cape cod and LDF and why the <span class="math inline">\(\sigma^2\)</span> is higher for LDF</p></li>
-<li><p>TIA 1: Reserve with truncated loglogistic and given parameters</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Cape Cod</p></li>
-<li><p>LDF method</p></li>
-</ol></li>
-<li><p>TIA 2: Weibull</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Cape Cod no truncation</p></li>
-<li><p><span class="math inline">\(\star\)</span> Process standard deviation</p></li>
-<li><p>Variance of incremental loss</p></li>
-</ol></li>
-<li><p>TIA 3: Weibull</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>LDF method reserve</p></li>
-<li><p>Loss reserve total standard deviation given parameter variance</p></li>
-<li><p>Note that we can not model triangle with negative development</p></li>
-</ol></li>
+<li>The in between 12 and 24 is some complicated formula…</li>
 </ul>
-<p><strong>Other calculation</strong></p>
-<ul>
-<li><p>TIA 4: Loglogistic with LDF method</p>
-<ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(\star\)</span>Log likelihood to test which parameters are better</p>
-<ul>
-<li>Probably too long for exam, but good for checking my understanding</li>
-</ul></li>
-<li><p>Total reserve</p></li>
-</ol></li>
-<li><p><span class="math inline">\(\star\)</span> TIA 7: given all parameters for cape cod; everything is mostly given but good to see how the calculation works</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>CY paid</p></li>
-<li><p>Variance for the next CY paid</p></li>
-<li><p>Prospective AY expected loss and variance</p></li>
-</ol></li>
-<li><p>TIA 8: Setup data for clark’s calculation</p></li>
-<li><p>TIA 9: loglikelihood for cape cod compare (similar to TIA 4)</p></li>
-<li><p><span class="math inline">\(\star\)</span> TIA 10: process variance, long calc for <span class="math inline">\(\sigma\)</span>, LDF method and Weibull</p></li>
-<li><p><span class="math inline">\(\star\)</span> TIA 11: count average dates for quarterly</p></li>
-<li><p>TIA 12: count average date for policy year</p></li>
-<li><p>TIA 13: count average date for policy year with stuff in between 12 and 24</p></li>
-</ul>
-<p><strong>Concepts</strong></p>
-<ul>
-<li><p><span class="math inline">\(\star \star\)</span> 2016 #4b: appropriatness of using Cape Cod</p></li>
-<li><p>TIA 5: Assumptions made that lead to the cape cod and LDF method</p>
-<ul>
-<li>List the formula for the 2 methods</li>
-</ul></li>
-<li><p>TIA 6: Advantages of Clark’s growth function method</p></li>
-</ul>
-<div id="question-highlights" class="section level3">
-<h3><span class="header-section-number">6.9.1</span> Question Highlights</h3>
-<div class="figure"><span id="fig:2011-2"></span>
-<img src="questions/2011-2Q.png" alt="2011 Question 2" width="100%" />
-<p class="caption">
-Figure 6.1: 2011 Question 2
-</p>
 </div>
-<div class="figure"><span id="fig:2011-2"></span>
-<img src="questions/2011-2A.png" alt="2011 Question 2" width="100%" />
-<p class="caption">
-Figure 6.1: 2011 Question 2
-</p>
-</div>
-<div class="figure"><span id="fig:2013-3"></span>
-<img src="questions/2013-3Q.png" alt="2013 Question 3" width="100%" />
-<p class="caption">
-Figure 6.2: 2013 Question 3
-</p>
-</div>
-<div class="figure"><span id="fig:2013-3"></span>
-<img src="questions/2013-3A.png" alt="2013 Question 3" width="100%" />
-<p class="caption">
-Figure 6.2: 2013 Question 3
-</p>
-</div>
-<div class="figure"><span id="fig:2015-2"></span>
-<img src="questions/2015-2Q.png" alt="2015 Question 2" width="100%" />
-<p class="caption">
-Figure 6.3: 2015 Question 2
-</p>
-</div>
-<div class="figure"><span id="fig:2015-2"></span>
-<img src="questions/2015-2A.png" alt="2015 Question 2" width="100%" />
-<p class="caption">
-Figure 6.3: 2015 Question 2
-</p>
-</div>
-
-</div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="avg-age-claim.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="comments-and-conclusion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="past-exam-questions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
