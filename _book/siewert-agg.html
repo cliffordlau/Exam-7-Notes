@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="siewert-direct-dev.html">
-<link rel="next" href="siewert-dev-method.html">
+<link rel="prev" href="siewert-dist-model.html">
+<link rel="next" href="past-exam-questions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,25 +139,47 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="siewert-cred-weight-model" class="section level2">
-<h2><span class="header-section-number">7.5</span> Method 4) Credibility Weighting Techniques / Bornhuetter-Ferguson</h2>
-<p>Credibility weighting between <a href="siewert-lr-method.html#siewert-lr-method">Method 1</a> and <a href="siewert-direct-dev.html#siewert-direct-dev">Method 3</a></p>
-<span class="math display" id="eq:siewert-cred-wtd">\[\begin{equation}
-  L = Z \times ({^{XS}Loss}_t^L \cdot {^{XS}LDF}_t^{L}) + (1 - Z) \times E
-  \tag{7.5}
-\end{equation}\]</span>
+<div id="siewert-agg" class="section level2">
+<h2><span class="header-section-number">7.8</span> Aggregate Limits</h2>
+<p>Use collective risk model to model individual losses</p>
 <ul>
-<li><p>If <span class="math inline">\(Z = \frac{1}{^{XS}LDF_t^L}\)</span> then we have the BF method</p></li>
-<li><p><span class="math inline">\(E\)</span> is from <a href="siewert-lr-method.html#siewert-lr-method">method 1</a></p></li>
+<li><p><em>Poisson</em> (frequency) and <em>Weibull</em> (severity)</p></li>
+<li><p>Build out a table with XS loss for each <em>deductible</em> and <em>aggregate</em></p></li>
+<li><p>Need a different model for each age?</p></li>
 </ul>
+<p>Need 4 inputs:</p>
+<ol style="list-style-type: decimal">
+<li><p>Expected unlimited</p></li>
+<li><p>Age</p></li>
+<li><p>Deductible</p></li>
+<li><p>Aggregate limit</p></li>
+</ol>
+<p>Reserve (use BF): Expected aggregate loss <span class="math inline">\(\times\)</span> % unreported</p>
+<ul>
+<li><strong>Caveat</strong>: doesn’t take into account if the aggregate is about to be pieced of not</li>
+</ul>
+<div id="siewert-agg-tbl-m" class="section level3">
+<h3><span class="header-section-number">7.8.1</span> Table M</h3>
+<p>Appendix discuss calculation with Table M</p>
+<div class="rmdcaution">
+<p>
+From paper appendix, to be included later…(Not crucial)
+</p>
+</div>
+<p>Need adjusted losses to determine ELG</p>
+<p><span class="math display">\[\text{Adj Losses} = \underbrace{\dfrac{1 + 0.8 \cdot \chi}{1 - \chi}}_{\text{Adj Factor}} \times \mathrm{E}[\text{Unlimited Loss}]\]</span></p>
+<p>Entry ratio:</p>
+<p><span class="math display">\[\dfrac{\text{Agg Limit}}{\text{Expected Losses in Layer}}\]</span></p>
+<p>Use entry ratio to lookup insurance charge and apply to the expected loss in layer to get the expected loss XS the aggregate</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="siewert-direct-dev.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="siewert-dev-method.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="siewert-dist-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="past-exam-questions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

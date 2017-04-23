@@ -612,7 +612,7 @@ For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k+1}$
 
 ```
 
-```{block, calc-note, type='rmdtip'}
+```{block, type='rmdtip'}
 You can calculate the different weighted LDFs with the table features on TI-30XS
 
 * $y$ terms can be the LDFs and $x$ is the weight ($c_{i,k}^2$ or $c_{i,k}$ depending on the assumption)
@@ -917,7 +917,7 @@ knitr::include_graphics('questions/2014-4Q.png')
 knitr::include_graphics('questions/2014-4A.png')
 ```
 
-```{r tia-mack-1994-2-a, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='TIA Question 2a'}
+```{r tia-mack-1994-3-a, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='TIA Question 2a'}
 knitr::include_graphics('questions/TIA-Mack-1994-q-3-a.png')
 knitr::include_graphics('questions/TIA-Mack-1994-a-3-a.png')
 ```

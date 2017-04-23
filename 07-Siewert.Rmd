@@ -1,16 +1,22 @@
 # A Model for Reserving Workers Compensation High Deductibles - J. Siewert
 
-Know the 6 methods and their pros and cons:
+6 methods and their **pros** and **cons**:
 
 1) [Loss Ratio Method](#siewert-lr-method)
+
+    * Per occ \@ref(eq:siewert-lr-per-occ) and aggregate \@ref(eq:siewert-lr-agg) formula
 
 2) [Implied Development](#siewert-implied-dev)
 
 3) [Direct Development](#siewert-direct-dev)
 
-    * See the 2 methods for calculating the $^{XS}LDF^L_t$
+    * See the 2 methods, \@ref(eq:siewert-direct-form-1) and \@ref(eq:siewert-direct-form-2), for calculating the $^{XS}LDF^L_t$
+    
+    * \@ref(eq:siewert-direct-form-2) is basically from method 5 proposition \@ref(prp:siewert-ldf-rel-3)
     
 4) [Credibility Weight Method](#siewert-cred-weight-model)
+
+    * Formula \@ref(eq:siewert-cred-wtd) weighting 1 and 3
 
 5) [Development Method](#siewert-dev-method)
 
@@ -18,13 +24,22 @@ Know the 6 methods and their pros and cons:
     
     ii. Claim counts are developed separately ground up
     
-    iii. Severity LDF formulas, know them well to manipulate and know what formula requires what
-    
-        Proposition \@ref(prp:siewert-ldf-rel-1), \@ref(prp:siewert-ldf-rel-2), \@ref(prp:siewert-ldf-rel-3), \@ref(prp:inc-ldf-rel-1), and \@ref(prp:inc-ldf-rel-2)
+    iii. $\star \star$ Relativities \@ref(def:siewert-rel-form), severity LDF formulas, know them well to manipulate and know what formula requires what
+
+        * Proposition \@ref(prp:siewert-ldf-rel-1) and  \@ref(prp:siewert-ldf-rel-2) are simlar one for limited one for XS
+        
+            * Might need to break out the $LDF_t$ into it's components
+        
+        * Proposition \@ref(prp:siewert-ldf-rel-3) combines the above
+            * Note the 3 proposition above works with LDF if we sub out the ultimate relativities
+        
+        * Proposition \@ref(prp:inc-ldf-rel-1) and  \@ref(prp:inc-ldf-rel-2) are for *incremental* LDFs
 
 6) [Distribution Method](#siewert-dist-model)
 
-Finally there's the method for accounting for aggregate charge
+    * Use Weibull for $R_t^L$
+
+Finally there's the method for accounting for [aggregate charge](#siewert-agg) with collective risk model or [table M](#siewert-agg-tbl-M)
 
 ## Introduction
 
@@ -73,7 +88,10 @@ After the program matures, the focus shifts to **issues on the liability side**
 
 **Expected Ultimate lossXS Per Occ limit**
 
-$$P \cdot E \cdot \chi$$
+\begin{equation}
+  P \cdot E \cdot \chi
+  (\#eq:siewert-lr-per-occ)
+\end{equation}
 
 * $P$ = Premium
 
@@ -83,7 +101,11 @@ $$P \cdot E \cdot \chi$$
 
 **Expected Ultimate Loss XS Aggregate Limits**
 
-$$P \cdot E \cdot (1-\chi) \cdot \varphi$$
+\begin{equation}
+  P \cdot E \cdot (1-\chi) \cdot \varphi
+  (\#eq:siewert-lr-agg)
+\end{equation}
+
 
 * $\varphi$ = Aggregate charge = % of losses in deductible layer that exceed the aggregate
 
@@ -147,7 +169,10 @@ Different ways to get $^{XS}LDF^L_t$:
 
 **Formula 1**: Given unlimited & limited LDFs and $\chi$
 
-$$^{XS}LDF_t^{L} = \dfrac{^{XS}Ult}{^{XS}Loss_t} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}} = \dfrac{\chi}{\frac{1}{LDF_t} - \frac{(1-\chi)}{LDF_t^L}}$$
+\begin{equation}
+  ^{XS}LDF_t^{L} = \dfrac{^{XS}Ult}{^{XS}Loss_t} = \dfrac{Ult \cdot \chi}{\frac{Ult}{LDF_t} - \frac{Ult\cdot(1-\chi)}{LDF_t^L}} = \dfrac{\chi}{\frac{1}{LDF_t} - \frac{(1-\chi)}{LDF_t^L}}
+  (\#eq:siewert-direct-form-1)
+\end{equation}
 
 * Based on $\underbrace{Loss_t \cdot LDF_t}_{100\%} = \underbrace{Loss^L_t \cdot LDF^L_t}_{100\% - \chi} + \underbrace{^{XS}Loss_t^L \cdot {^{XS}LDF}^L_t}_{\chi}$
 
@@ -155,7 +180,10 @@ $$^{XS}LDF_t^{L} = \dfrac{^{XS}Ult}{^{XS}Loss_t} = \dfrac{Ult \cdot \chi}{\frac{
 
 **Formula 2**: Given unlimited & limited LDFs and $R^L_t$
 
-$$^{XS}LDF^L_t = \dfrac{LDF_t - R^L_t \times LDF^L_t}{1-R^L_t}$$
+\begin{equation}
+  ^{XS}LDF^L_t = \dfrac{LDF_t - R^L_t \times LDF^L_t}{1-R^L_t}
+  (\#eq:siewert-direct-form-2)
+\end{equation}
 
 * Based on Question 21 from 2004 (\@ref(fig:2004-21))
 
@@ -171,7 +199,10 @@ $$^{XS}LDF^L_t = \dfrac{LDF_t - R^L_t \times LDF^L_t}{1-R^L_t}$$
 
 Credibility weighting between [Method 1](#siewert-lr-method) and [Method 3](#siewert-direct-dev)
 
-$$L = Z \times ({^{XS}Loss}_t^L \cdot {^{XS}LDF}_t^{L}) + (1 - Z) \times E$$
+\begin{equation}
+  L = Z \times ({^{XS}Loss}_t^L \cdot {^{XS}LDF}_t^{L}) + (1 - Z) \times E
+  (\#eq:siewert-cred-wtd)
+\end{equation}
 
 * If $Z = \frac{1}{^{XS}LDF_t^L}$ then we have the BF method
 
@@ -181,11 +212,11 @@ $$L = Z \times ({^{XS}Loss}_t^L \cdot {^{XS}LDF}_t^{L}) + (1 - Z) \times E$$
 
 Method overview:
 
-1. Select trend to adjust historical layers
+1. Select *trend* to adjust historical layers
 
-2. Develop ground up claim count 
+2. Develop *ground up* **claim count**
 
-3. Calculate $^{XS}LDF^L_t$ based on $R^L_t$
+3. Calculate **severity** $^{XS}LDF^L_t$ based on $R^L_t$
 
 **Data Required**
 
@@ -241,12 +272,12 @@ Fit LDFs for each layer to the power curve
 
 #### Relativities
 
-```{definition}
+```{definition, siewert-rel-form}
 Relativity
 
-$R_t^L = \dfrac{\text{Limited Sev @ }t}{\text{Unlimited Sev @ t}} = \dfrac{S^L_t}{S_t}$
+$$R_t^L = \dfrac{\text{Limited Sev @ }t}{\text{Unlimited Sev @ t}} = \dfrac{S^L_t}{S_t}$$
 
-$R^L = \dfrac{\text{Limited Sev @ Ult}}{\text{Unlimited Sev @ Ult}} = \dfrac{S^L}{S}$
+$$R^L = \dfrac{\text{Limited Sev @ Ult}}{\text{Unlimited Sev @ Ult}} = \dfrac{S^L}{S}$$
 ```
 
 ```{remark}
@@ -296,6 +327,8 @@ $$LDF_t = R^L_t \cdot LDF^L_t + (1 - R^L_t) \cdot {^{XS}LDF}^L_t$$
 * Formula only work once claim reporting is finished
 
 * Relativity based on average from historical losses
+
+* All the above can be adjusted to work with incremental LDFs if we don't use the ultimate relativities
 ```
 
 #### Incremental LDFs and Change in Relativities
@@ -336,7 +369,7 @@ Use a modeled severity distribution (e.g. Weibull) **for each age**
 
 Then we can use the distribution and then applies all the relationships discussed in [Method 5](#siewert-dev-method)
 
-## Aggregate Limits
+## Aggregate Limits {#siewert-agg}
 
 Use collective risk model to model individual losses
 
@@ -360,13 +393,23 @@ Reserve (use BF): Expected aggregate loss $\times$ % unreported
 
 * **Caveat**: doesn't take into account if the aggregate is about to be pieced of not
 
-#### Table M
+### Table M {#siewert-agg-tbl-m}
 
 Appendix discuss calculation with Table M
 
 ```{block, type='rmdcaution'}
 From paper appendix, to be included later...(Not crucial)
 ```
+
+Need adjusted losses to determine ELG
+
+$$\text{Adj Losses} = \underbrace{\dfrac{1 + 0.8 \cdot \chi}{1 - \chi}}_{\text{Adj Factor}} \times \mathrm{E}[\text{Unlimited Loss}]$$
+
+Entry ratio:
+
+$$\dfrac{\text{Agg Limit}}{\text{Expected Losses in Layer}}$$
+
+Use entry ratio to lookup insurance charge and apply to the expected loss in layer to get the expected loss XS the aggregate
 
 ## Past Exam Questions
 
@@ -390,8 +433,6 @@ From paper appendix, to be included later...(Not crucial)
 
 **Simple Plug and Play Calculations**
 
-* 1999 - #29: Service revenue calc = utl $\times$ loss multiplier - known recoverables
-
 * 2001 - #23: Loss ratio method for aggregate loss charge
 
 * 2002 - #28 a c: XS deductible IBNR reserve and service revenue
@@ -410,9 +451,13 @@ From paper appendix, to be included later...(Not crucial)
 
 * 2012 - #6: Get unlimited with limited and XS and relativity with the formula
 
-* $\star$ 2014 #6 (\@ref(fig:2014-6)): Use incremental formula and also the combined formula
+* $\star$ 2014 - #6 (\@ref(fig:2014-6)): Use incremental formula and also the combined formula
 
-* 2015 #6 a b: LR and implied dev method
+* 2015 - #6 a b: LR and implied dev method
+
+* TIA 1 & 2: Plug and play with relativities
+
+* TIA 3: plug and play with incremental rel
 
 **Full Calcualation**
 
@@ -423,6 +468,14 @@ From paper appendix, to be included later...(Not crucial)
 * 2011 - #6 a b: Direct development and BF (slightly erroneous question)
 
 * $\star \star$ 2015 - #6 c (\@ref(fig:2015-6)): Calculate layer between
+
+* $\star$ 2016 - #9: Use industry and company XS development then the pros and cons of the 2 methods
+
+* $\star$ TIA 4: reserve for policy with deductible and agg limit
+
+    * Lots of arithemtics
+    
+* $\star$ TIA 5: XS dev and Table M
 
 ### Question Highlights
 

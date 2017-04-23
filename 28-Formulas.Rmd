@@ -150,6 +150,45 @@ $\star \star$ Test $iid$ assumpation with [residual plots](#clark-res-review) by
 
 [**Counting average accident date**](#avg-age-claim)
 
+## A Model for Reserving Workers Compensation High Deductibles - J. Siewert
+
+6 methods and their **pros** and **cons**:
+
+1) [Loss Ratio Method](#siewert-lr-method)
+
+    * Per occ \@ref(eq:siewert-lr-per-occ) and aggregate \@ref(eq:siewert-lr-agg) formula
+
+2) [Implied Development](#siewert-implied-dev)
+
+3) [Direct Development](#siewert-direct-dev)
+
+    * See the 2 methods, \@ref(eq:siewert-direct-form-1) and \@ref(eq:siewert-direct-form-2), for calculating the $^{XS}LDF^L_t$
+    
+    * \@ref(eq:siewert-direct-form-2) is basically from method 5 proposition \@ref(prp:siewert-ldf-rel-3)
+    
+4) [Credibility Weight Method](#siewert-cred-weight-model)
+
+    * Formula \@ref(eq:siewert-cred-wtd) weighting 1 and 3
+
+5) [Development Method](#siewert-dev-method)
+
+    * $\star \star$ Relativities \@ref(def:siewert-rel-form), severity LDF formulas, know them well to manipulate and know what formula requires what
+
+        * Proposition \@ref(prp:siewert-ldf-rel-1) and  \@ref(prp:siewert-ldf-rel-2) are simlar one for limited one for XS
+        
+            * Might need to break out the $LDF_t$ into it's components
+        
+        * Proposition \@ref(prp:siewert-ldf-rel-3) combines the above
+            * Note the 3 proposition above works with LDF if we sub out the ultimate relativities
+        
+        * Proposition \@ref(prp:inc-ldf-rel-1) and  \@ref(prp:inc-ldf-rel-2) are for *incremental* LDFs
+
+6) [Distribution Method](#siewert-dist-model)
+
+    * Use Weibull for $R_t^L$
+
+Finally there's the method for accounting for [aggregate charge](#siewert-agg) with collective risk model or [table M](#siewert-agg-tbl-M)
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):

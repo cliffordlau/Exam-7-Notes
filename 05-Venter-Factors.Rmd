@@ -214,7 +214,7 @@ Compare different fit of the models based on adjusted $SSE$ (actual vs projected
 * Venter use the adjusted SSE as the AIC can be too permissive of over parameterization for large data sets
 ```
 
-```{block, calc-note, type='rmdtip'}
+```{block, type='rmdtip'}
 $SSE$ calculation can be done with the table features on TI-30XS
 
 * Plug in each the actual and projected triangle into L1 and L2 (make sure the cells match)

@@ -74,7 +74,7 @@ Notes:
 
 ```
 
-```{block, calc-note, type='rmdtip'}
+```{block, type='rmdtip'}
 Above calculation can be done with the table features on TI-30XS
 
 * Note that TI-30XS use the formula $y = ax + b$, different from us
