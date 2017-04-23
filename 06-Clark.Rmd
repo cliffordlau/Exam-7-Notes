@@ -68,10 +68,6 @@ $\star$ Paper definition/standards:
 
 ## Expected Loss Emergence
 
-```{block, type='rmdnote'}
-Important formulas and definition below
-```
-
 ```{definition, clark-def}
 
 
@@ -175,10 +171,6 @@ $$[G(y \mid \omega, \theta) - G(x \mid \omega, \theta)] \times ULT_{AY}$$
 Estimate parameters with MLE
 
 ### Process Variance {#clark-proc-var-sec}
-
-```{block, type='rmdnote'}
-Important formulas below
-```
 
 ***Key assumption***:
 

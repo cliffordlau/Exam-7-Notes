@@ -371,10 +371,6 @@ $$MSE(\hat{R}_i) = MSE(\hat{c}_{i,I})$$
 
 ### Applying the MSE Formula {#mack-mse-app}
 
-```{block2, type='rmdnote'}
-Important formulas below
-```
-
 \begin{equation}
   MSE(\hat{c}_{i,I}) = \left[ s.e.(\hat{c}_{i,I}) \right]^2  = {\hat{c}_{i,I}}^2 \Bigg \{ \sum_{k = I + 1 - i}^{I-1} \frac{{\hat{\alpha}_k}^2}{{\hat{f}_k}^2} \Bigg ( \frac{1}{\hat{c}_{i,k}} + \underbrace{\frac{1}{\sum_{j=1}^{I-k}c_{j,k}}}_{\text{Column x latest}}\Bigg ) \Bigg \}
   (\#eq:mse-formula)
@@ -389,10 +385,6 @@ Important formulas below
 ```
 
 #### Estimating $\alpha$
-
-```{block2, type='rmdnote'}
-Important formulas below
-```
 
 $\alpha$ is the proportions for the variance
 
@@ -472,10 +464,6 @@ Get the total $MSE$ for the total reserve (all AYs) you have to consider the [de
 ## Confidence Intervals {#mack-CI-methods}
 
 Can have different assumptions on the distribution of the unpaid
-
-```{block2, type='rmdnote'}
-Important formulas below
-```
 
 ***Normal Estimation***
 
@@ -632,10 +620,6 @@ Test can be used to test the various variance assumptions by calculating the $\v
 
 Test for assumption 2 (prop. \@ref(prp:cl-ass-2))
 
-```{block2, type='rmdnote'}
-Important formulas below
-```
-
 ***Test Procdeure***
 
 1. Rank the LDFs in each column (1 = lowest)
@@ -732,10 +716,6 @@ Reason to consider the correlation of a triangle as whole instead of between pai
 * At 10% significance 10% of the pairs will show up as significant just by random (see more on [Venter](#venter-imp-5))
 
 * Avoid an accumulation of error probabilities
-
-```{block2, type='rmdnote'}
-Important formulas below
-```
 
 ***Test Procedure***
 
