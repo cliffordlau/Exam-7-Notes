@@ -189,6 +189,28 @@ $\star \star$ Test $iid$ assumpation with [residual plots](#clark-res-review) by
 
 Finally there's the method for accounting for [aggregate charge](#siewert-agg) with collective risk model or [table M](#siewert-agg-tbl-M)
 
+## Claims Development by Layer - R. Sahasrabuddhe
+
+$\star \star$ [Setup base triangle](#base-tri)
+
+1. Set AY CY trend triangle
+
+2. Unlimited mean loss *table* with \@ref(eq:unlimited-mean-sahas) **detrended**
+
+3. LEV triangle @ $L$ and LEV for the last row @ $B$ with \@ref(eq:sahas-lim-exp)
+
+4. Use \@ref(eq:base-layer-loss) to get base layer
+
+$\star \star$ [Convert the base LDFs to any layer](#convert-ldf)
+    
+* Convert base layer LDFs \@ref(eq:layer-b-to-x)
+
+* Convert to LDFs for XS Layers: \@ref(eq:sahas-ldf-xs)
+
+Practical adjustments
+
+* Formula when we don't have severity distribution for every  age \@ref(eq:sahas-only-diag) and how to estimate \@ref(eq:sahas-ratio)
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):
