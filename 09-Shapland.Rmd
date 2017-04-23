@@ -1,52 +1,78 @@
 # Using the ODP Bootstrap Model: A Practitioner's Guide
 
-Flow of the paper: Parameterize $\rightarrow$ Bootstrap $\rightarrow$ Practical Issues $\rightarrow$ Correlations
+[Notations](#shapland-notations) are similar to [Venter](#venter-def)
 
-Remember this uses **incremental** triangles
+* See Table \@ref(tab:odp-glm-para-tri) for sample triangle layout
 
-**Parametize**
+***Model Parameters***:
 
-$m_{wd} = \operatorname{exp} \left [\alpha_w + \sum_j \beta_j \right]$
+* Mean \@ref(eq:odp-mean)
 
-$\operatorname{Var}[q(w,d)] = \phi m_{wd}^z$
+* Variance \@ref(eq:odp-var) and [dispersion factor](#odp-dispersion)
 
-Parameterize with GLM or Wtd average
+    * Need [residual](#odp-res): unscaled \@ref(eq:odp-pear-res), scaled \@ref(eq:odp-scaled-res), standardized \@ref(eq:odp-std-res)
 
-**Bootstrap**
+* Parameterize with [GLM](#ODP-GLM-fit) or [simplified (ODP)](#simplified-glm) (*Note the condition required for ODP*)
 
-Create sample triangle from mean and randomly sampled residuals $\Rightarrow$ Estimate parameters from sampled triangle $\Rightarrow$ Calculate mean and variance of the sampled triangle $\Rightarrow$ Draw losses from gamma
+[***Simulation procedure***](#odp-boot-sim)
 
-Dispersion factor with standard \@ref(eq:std-dispersion)
+* Parameter variance \@ref(eq:odp-sim-loss)
 
-**Practical Issues**
+* Process variance  \@ref(eq:proc-var-sim-shapland)
 
-* Negative incremental values (fit and simulate)
+* [Other variation](#bootstrap-variation-shap) of the bootstrap (*e.g. incurred, BF, Cape Cod*)
 
-* Non-zero sum of residuals
+* [Pros and Cons of GLM](#GLM-bootstrap) 
 
-* N-year wtd average
+* [GLM vs ODP](#odp-vs-glm-shap) bootstrap
 
-* Missing values
+***Practical issues***:
 
-* Outliers
+1. [Negative Incremental Values](#prac-issue-1)
 
-* Heteroskedasticity
+    * During fitting: \@ref(eq:method-1-inc-neg-fit) and \@ref(eq:method-2-inc-neg-fit)
+    
+    * During simulation: 
 
-* Partial latest year exposure or partial diagonal
+2. [Non‐Zero Sum of Residuals](#prac-issue-2)
 
-* Exposure adjustment
+3. [Using an L-year Weighted Average](#prac-issue-3)
 
-* Parametric bootstrap
+4. [Missing Values](#prac-issue-4)
 
-**Diagnostics**
+5. [Outliers](#prac-issue-5)
 
-**Other**
+6. [Heteroscedasticity](#prac-issue-6)
 
-* Multiple models
+    * [Stratified sampling](#stratified-sample)
+    
+    * [Hetero adjustment to residuals](#hetero-adj-res)
+    
+    * [Non-constant scale parameter](#non-constant-scale-para)
 
-* Model outputs
+7. [Heteroecthesious Data](#prac-issue-7)
 
-* Correlations
+8. [Exposure Adjustment](#prac-issue-8)
+
+9. [Tail Factors](#prac-issue-9)
+
+10. [Fitting a Distribution to ODP Bootstrap Residuals](#prac-issue-10)
+
+5 diagnostics
+
+1. [Residual graphs](#odp-res-diag)
+
+2. [Normality test](#odp-norm-test)
+
+3. [Outliers](#odp-diag-outlier)
+
+4. [Parameter adjustment](#odp-diag-para)
+
+5. [Model results](#odp-diag-results-review)
+
+[Multiple models](#shapland-multi-mod)
+
+[Model testing](#shapland-testing)
 
 ## Introduction
 
@@ -202,7 +228,7 @@ Mean and variance for each $q(w,d)$ in the triangle (per table \@ref(tab:odp-glm
 
     * We don't use $\beta_1$ which effectively means $\beta_1 = 0$
 
-* $\alpha_i$ and $\beta_j$ are selected to minimize error between $\operatorname{ln}(actual) - \operatorname{ln}(forecast)$
+* $\alpha_i$ and $\beta_j$ are selected to minimize error between $\ln(actual) - \ln(forecast)$
 ```
 
 Equivalence for using [Venter](#venter-def) notation:
@@ -214,7 +240,7 @@ Equivalence for using [Venter](#venter-def) notation:
 #### Variance for $q(w,d)$
 
 \begin{equation}
-  \operatorname{Var}[q(w,d)] = \phi m_{wd}^z
+  \mathrm{Var}[q(w,d)] = \phi m_{wd}^z
   (\#eq:odp-var)
 \end{equation}
 
@@ -399,15 +425,11 @@ GLM model = Chainladder w/ volume-weighted averages when:
 
 ### Residuals {#odp-res}
 
-```{block, type='rmdnote'}
-Important formulas below
-```
-
 ***Unscaled* Pearson residuals**
 
 \begin{equation}
 \begin{split}
-  r_{w,d} & = & \dfrac{A - E}{\sqrt{\operatorname{Var}(E)}} &\\
+  r_{w,d} & = & \dfrac{A - E}{\sqrt{\mathrm{Var}(E)}} &\\
   & = & \dfrac{q(w,d) - m_{wd}}{\sqrt{m^z_{wd}}} &\\
   & = & \dfrac{q(w,d) - m_{wd}}{\sqrt{m_{wd}}} & \:\:\:\: \text{Recall }z = 1\text{ for ODP Poisson}\\
 \end{split}
@@ -468,7 +490,7 @@ Important formulas below
 
 * **Benefits**:
 
-    1. $f^H_{w,d}$ account forthe exclusion of zero-value residuals
+    1. $f^H_{w,d}$ account for the exclusion of zero-value residuals
     
         * Or the zero-value residuals will have some variance but we just don't know what it is yet so we should sample from the remaining residuals but not the zeros
         
@@ -509,6 +531,8 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
 
 0) Model our losses, determine [mean](#fitted-tri-odp) and [residual](#odp-res) for each cell
 
+    * This can be based on [GLM Framework](#ODP-GLM-fit) of [simplified GLM](#simplified-glm)
+
 1) Create a sampled $triangle^*$ from the residuals and the means
 
     i. **Sample** with replacement on the Pearson residuals \@ref(eq:odp-pear-res) from our original triangle from Step 0.
@@ -539,15 +563,28 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
 
 3) Calculate **mean** and **variance**[^2] for the future cells (unpaid): $(m^*_{wd}, \phi m^*_{wd})$
 
-    * For GLM Framework: $m^*_{wd} = \operatorname{exp} \left [\alpha_w + \sum \limits_{i=2}^d \beta_i \right]$
+    * **Mean**: $m^*_{wd}$
+
+        * *GLM Framework*:
+        
+            $m^*_{wd} = \mathrm{exp} \left [\alpha_w + \sum \limits_{i=2}^d \beta_i \right]$
     
-    * For Simplified GLM, back out the $c^*(w,d)$ by $\dfrac{Ult_w}{CDF_d}$ then get the $m^*_{wd}$
+        * *Simplified GLM*
+        
+            Back out the $c^*(w,d)$ by $\dfrac{Ult_w}{CDF_d}$ then get the $m^*_{wd}$
     
-    * Variance: $\phi m_{wd}^{*}$ (for ODP $z=1$ on the $m^{*z}_{wd}$)
+    * **Variance**: $\phi m_{wd}^{*}$
+    
+        (for ODP $z=1$ on the $m^{*z}_{wd}$)
 
 [^2]: Step 3 and 3 were added in England & Verrall (2002), in their 1999 paper it doesn't have this step (stopped at 2) and instead just suggest you to add process variance by multiply the results by $f^{RoF}$
 
-4) Add **process variance**: draw losses[^3] from $Gamma(m_{wd}^*,\phi m_{wd}^*)$ for the future cells (unpaid)
+4) Add **process variance**: draw losses[^3] from the following Gamma distribution for the future cells (unpaid):
+
+    \begin{equation}
+      Gamma(m_{wd}^*,\phi m_{wd}^*)
+      (\#eq:proc-var-sim-shapland)
+    \end{equation}
 
     * Simulate loss from the gamma distribution for each future cells
     
@@ -557,7 +594,7 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
 
 5) Calculate simulated **unpaid**: sum the bottom half of triangle
     
-## Variations on the ODP Bootstrap
+## Variations on the ODP Bootstrap {#bootstrap-variation-shap}
 
 **Reason to use paid data**:
 
@@ -875,7 +912,7 @@ Again we can simplify things by having only 1 parameters for each dimension: $\a
 \end{array}
 \end{equation*}
 
-## ODP vs GLM Bootstrap Summary
+## ODP vs GLM Bootstrap Summary {#odp-vs-glm-shap}
 
 **ODP Bootstrap** is a specific case of the GLM model with the following parameters:
 
@@ -893,7 +930,7 @@ Solution is the same as volume weighted Chainladder
 
 * Can include CY trend
 
-* Variance of the incremental losses $\propto% $m^z_{wd}$ (where $z=1$ for this paper)
+* Variance of the incremental losses $\propto $m^z_{wd}$ (where $z=1$ for this paper)
 
 ## Practical Issues {#odp-prac-issues}
 
@@ -1226,7 +1263,7 @@ Adjust the dispersion factor $\phi$ as well as the residuals (similar to above)
   (\#eq:odp-hetero-adj-factor-2)
 \end{equation}
 
-2. Perform step 3 and 4 from the [second method](#hetero-adj-res) above
+2. Perform step 3 and 4 from the [hetero adjustment method](#hetero-adj-res) above
 
     (i.e. Equation \@ref(eq:odp-hetero-adj) and \@ref(eq:odp-hetero-adj-rescale))
 
@@ -1334,13 +1371,13 @@ Adjustment for when exposure changed dramatically over the years (e.g. rapid gro
 
 * Fit to the exposure adjusted losses should be exposure weighted
 
-    (i.e. exposure adjusted losses with higher exposure are assumed to have lower variance, see Anderson et al. (2007))
+    (*i.e. exposure adjusted losses with higher exposure are assumed to have lower variance, see Anderson et al. (2007)*)
 
 * This will need fewer AY parameters since the exposure adjustment should capture a lot of the difference between AYs
 
 ### Parametric Bootstrapping {#prac-issue-9}
 
-***ODP Bootstrap**
+**ODP Bootstrap**
 
 * See CAS Tail Factor Working Party Report (2013)
 
@@ -1420,11 +1457,11 @@ Statistical tests:
 
 * AIC
 
-$$2p + n \left [ 1 + \operatorname{ln}(2\pi\dfrac{RSS}{n})\right]$$
+$$2p + n \left [ 1 + \ln(2\pi\dfrac{RSS}{n})\right]$$
 
 * BIC
 
-$$n \operatorname{ln}\left( \dfrac{RSS}{n}\right) + p \operatorname{ln}(n)$$
+$$n \ln\left( \dfrac{RSS}{n}\right) + p \ln(n)$$
 
 * $RSS$ = actual residual - expected residual from normal then squared and summed
 
@@ -1446,13 +1483,13 @@ Test model with different sets of parameters using [GLM bootstrap](#GLM-bootstra
 
 * Check parameter significance based on *t*-statistics (>2)
 
-Parameter selection process:
+*Parameter selection process*:
 
 1. Start with all the AY and Age parameters ($\alpha_w$ and $\beta_d$) and remove the insignificant ones until only significant parameters are left
 
 2. Add CY parameter ($\gamma$) and check for significance
 
-After selecting parameters:
+*After selecting parameters*:
 
 3. Check the diagnostics discussed above (e.g. [residuals](#odp-res-diag) and [normality](#odp-norm-test))
 
@@ -1513,7 +1550,7 @@ Table: (\#tab:odp-output-table) Model output review format
 * Implausible results can affect the mean
 ```
 
-## Using Multiple Models
+## Using Multiple Models {#shapland-multi-mod}
 
 Use different methods (Paid/Inc'd Dev, BF, etc) and assigning weights by AYs
 
@@ -1545,7 +1582,7 @@ Using the best estimate total unpaid *mean*, *s.e.*, and *CoV* from above to fit
 
 We can use these fitted distribution to:
 
-1. Assess quality of ti
+1. Assess quality of fit
 
 2. Parameterize a DFA model
 
@@ -1561,7 +1598,7 @@ We can review the s.e. and CoV similar what we did in the [diagnostics](#odp-dia
 
 We can estimate mean and the variability of ultimate loss ratios by AYs
 
-Compile a similar table as before \@ref(tab:odp-output-table but for loss ratio
+Compile a similar table as before \@ref(tab:odp-output-table) but for loss ratio
 
 Useful for projecting pricing risk in a risk model
 
@@ -1615,19 +1652,19 @@ Additional comments:
 
 * Using residuals to correlate LoBs (both location mapping& re-sorting) are liable to create correlations close to zero
 
-* Reserve Risk: Correlate **total unpaid** by correlating the incremental paid
+* *Reserve Risk*: Correlate **total unpaid** by correlating the incremental paid
     
     May or may not be a reasonable approximation
     
     Risk not modeled is contagion risk, where a single event results in claims in multiple lines of business (can change correlation assumptions to address this)
 
-* Pricing Risk: Correlate **loss ratios** over time
+* *Pricing Risk*: Correlate **loss ratios** over time
 
     Not as likely to be close to zero
 
     Use different correlation assumption than for reserve risk
 
-## Model Testing
+## Model Testing {#shapland-testing}
 
 Important to test the model results against actual (see [Meyers](#meyers-test))
 

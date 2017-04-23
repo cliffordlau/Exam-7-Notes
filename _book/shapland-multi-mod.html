@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="claims-development-by-layer-r-sahasrabuddhe.html">
-<link rel="next" href="introduction.html">
+<link rel="prev" href="odp-diagnostics.html">
+<link rel="next" href="shapland-testing.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -178,69 +178,111 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-the-odp-bootstrap-model-a-practitioners-guide" class="section level1">
-<h1><span class="header-section-number">Chapter 9</span> Using the ODP Bootstrap Model: A Practitioner’s Guide</h1>
-<p><a href="shapland-notations.html#shapland-notations">Notations</a> are similar to <a href="#venter-def">Venter</a></p>
+<div id="shapland-multi-mod" class="section level2">
+<h2><span class="header-section-number">9.10</span> Using Multiple Models</h2>
+<p>Use different methods (Paid/Inc’d Dev, BF, etc) and assigning weights by AYs</p>
 <ul>
-<li>See Table <a href="shapland-notations.html#tab:odp-glm-para-tri">9.1</a> for sample triangle layout</li>
+<li>Models should be reviewed and finalize individually before blending with weights</li>
 </ul>
-<p><strong><em>Model Parameters</em></strong>:</p>
+<p><strong>Method 1</strong>:<br />
+In the process variance step of bootstrap, use the same underlying <span class="math inline">\(u \sim U(0,1)\)</span> to draw from each model then weight the models by a set of deterministic %’s</p>
 <ul>
-<li><p>Mean <a href="bootstrap-model.html#eq:odp-mean">(9.1)</a></p></li>
-<li><p>Variance <a href="bootstrap-model.html#eq:odp-var">(9.3)</a> and <a href="bootstrap-model.html#odp-dispersion">dispersion factor</a></p>
-<ul>
-<li>Need <a href="bootstrap-model.html#odp-res">residual</a>: unscaled <a href="bootstrap-model.html#eq:odp-pear-res">(9.8)</a>, scaled <a href="bootstrap-model.html#eq:odp-scaled-res">(9.9)</a>, standardized <a href="bootstrap-model.html#eq:odp-std-res">(9.10)</a></li>
-</ul></li>
-<li><p>Parameterize with <a href="bootstrap-model.html#ODP-GLM-fit">GLM</a> or <a href="bootstrap-model.html#simplified-glm">simplified (ODP)</a> (<em>Note the condition required for ODP</em>)</p></li>
+<li>Use the same random variable or else we would reduce the variability of the outcomes</li>
 </ul>
-<p><a href="odp-boot-sim.html#odp-boot-sim"><strong><em>Simulation procedure</em></strong></a></p>
+<p><strong>Method 2</strong>:<br />
+Run each model independently for each simulation (i.e. use different <span class="math inline">\(u \sim U(0,1)\)</span>) then for each AY use the weights to randomly select one of the modeled results</p>
 <ul>
-<li><p>Parameter variance <a href="odp-boot-sim.html#eq:odp-sim-loss">(9.14)</a></p></li>
-<li><p>Process variance <a href="odp-boot-sim.html#eq:proc-var-sim-shapland">(9.15)</a></p></li>
-<li><p><a href="bootstrap-variation-shap.html#bootstrap-variation-shap">Other variation</a> of the bootstrap (<em>e.g. incurred, BF, Cape Cod</em>)</p></li>
-<li><p><a href="GLM-bootstrap.html#GLM-bootstrap">Pros and Cons of GLM</a></p></li>
-<li><p><a href="odp-vs-glm-shap.html#odp-vs-glm-shap">GLM vs ODP</a> bootstrap</p></li>
+<li>Results will be a mixture of the various models</li>
 </ul>
-<p><strong><em>Practical issues</em></strong>:</p>
+<p><strong>Other considerations</strong>:</p>
+<ul>
+<li><p>Should consider both the mean and standard deviation (or CoV) in each model result when selecting weights</p></li>
+<li><p>Can also select the weights using Bayesian methods to account for the quality of each model’s forecast</p></li>
+<li><p>Perform the same <a href="odp-diagnostics.html#odp-diag-results-review">model output review</a> as in the above section for the best estimate</p></li>
+<li><p>Also review the IBNR by AYs to look for inconsistencies (e.g. negative IBNR) and compare to deterministic results</p></li>
+</ul>
+<div id="additional-useful-output" class="section level3">
+<h3><span class="header-section-number">9.10.1</span> Additional Useful Output</h3>
+<p>Using the best estimate total unpaid <em>mean</em>, <em>s.e.</em>, and <em>CoV</em> from above to fit to Normal, LogNormal, and Gamma distribution.</p>
+<p>We can use these fitted distribution to:</p>
 <ol style="list-style-type: decimal">
-<li><p><a href="odp-prac-issues.html#prac-issue-1">Negative Incremental Values</a></p>
-<ul>
-<li><p>During fitting: <a href="odp-prac-issues.html#eq:method-1-inc-neg-fit">(9.16)</a> and <a href="odp-prac-issues.html#eq:method-2-inc-neg-fit">(9.17)</a></p></li>
-<li><p>During simulation:</p></li>
-</ul></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-2">Non‐Zero Sum of Residuals</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-3">Using an L-year Weighted Average</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-4">Missing Values</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-5">Outliers</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-6">Heteroscedasticity</a></p>
-<ul>
-<li><p><a href="odp-prac-issues.html#stratified-sample">Stratified sampling</a></p></li>
-<li><p><a href="odp-prac-issues.html#hetero-adj-res">Hetero adjustment to residuals</a></p></li>
-<li><p><a href="odp-prac-issues.html#non-constant-scale-para">Non-constant scale parameter</a></p></li>
-</ul></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-7">Heteroecthesious Data</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-8">Exposure Adjustment</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-9">Tail Factors</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-10">Fitting a Distribution to ODP Bootstrap Residuals</a></p></li>
+<li><p>Assess quality of fit</p></li>
+<li><p>Parameterize a DFA model</p></li>
+<li><p>Smooth out extreme values</p></li>
 </ol>
-<p>5 diagnostics</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="odp-diagnostics.html#odp-res-diag">Residual graphs</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-norm-test">Normality test</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-diag-outlier">Outliers</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-diag-para">Parameter adjustment</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-diag-results-review">Model results</a></p></li>
-</ol>
-<p><a href="shapland-multi-mod.html#shapland-multi-mod">Multiple models</a></p>
-<p><a href="shapland-testing.html#shapland-testing">Model testing</a></p> 
+</div>
+<div id="estimated-cash-flow-results" class="section level3">
+<h3><span class="header-section-number">9.10.2</span> Estimated Cash Flow Results</h3>
+<p>Since bootstrap generates simulation for each cell in the bottom half of the triangle we can use this to get cash flow forecasts by CY and their variability as well</p>
+<p>We can review the s.e. and CoV similar what we did in the <a href="odp-diagnostics.html#odp-diag-results-review">diagnostics</a> section</p>
+</div>
+<div id="estimated-ultimate-loss-ratio-results" class="section level3">
+<h3><span class="header-section-number">9.10.3</span> Estimated Ultimate Loss Ratio Results</h3>
+<p>We can estimate mean and the variability of ultimate loss ratios by AYs</p>
+<p>Compile a similar table as before <a href="odp-diagnostics.html#tab:odp-output-table">9.7</a> but for loss ratio</p>
+<p>Useful for projecting pricing risk in a risk model</p>
+</div>
+<div id="estimated-unpaid-claims-runoff-results" class="section level3">
+<h3><span class="header-section-number">9.10.4</span> Estimated Unpaid Claims Runoff Results</h3>
+<p>Project unpaid claims out by CY similar to the cash flow projection</p>
+<p>Useful for calculating risk margins using the cost of capital method</p>
+</div>
+<div id="distribution-graphs" class="section level3">
+<h3><span class="header-section-number">9.10.5</span> Distribution Graphs</h3>
+<p>Plot the distribution of the simulated unpaid in a histogram</p>
+<ul>
+<li><p>Or smooth the histogram with a Kernel density function (for each point it takes a weighted average of the points around it, giving less weight to points further from it)</p></li>
+<li><p>For each point it takes a weighted average of the points around it; giving less weight to points further from it</p></li>
+</ul>
+</div>
+<div id="correlation" class="section level3">
+<h3><span class="header-section-number">9.10.6</span> Correlation</h3>
+<p>Correlate the loss distribution over several LoB</p>
+<ul>
+<li>Multivariate distribution requires the same underlying distribution which doesn’t work here for ODP</li>
+</ul>
+<p>Method 1: <strong>Location Mapping</strong></p>
+<ul>
+<li><p>When sampling the residuals, sample from the same place in the triangle for all the lines we want to correlate</p></li>
+<li><p><strong>Disadvantages</strong>:</p>
+<ul>
+<li><p>Requires all LoB to have the same size triangle with no missing values or outliers</p></li>
+<li><p>Cannot stress the correlations among the LoBs (Can only use the historical correlations)</p></li>
+</ul></li>
+</ul>
+<p>Method 2: <strong>Re-Sorting</strong></p>
+<ul>
+<li><p>Use Iman-Conover algorithms or Copulas (Not explained in paper)</p></li>
+<li><p><strong>Advantages</strong>:</p>
+<ul>
+<li><p>Can accommodate different shapes and sizes</p></li>
+<li><p>Can make different correlation assumptions</p></li>
+<li><p>Can strengthen the correlation for extreme events (e.g. <em>t</em> Copula vs normal Copula)</p></li>
+</ul></li>
+<li><p>Calculate correlation matrix using Spearman’s Rank Order and re-sorting based on the ranks of unpaid claims by AYs</p>
+<ul>
+<li>Look at p-value for each correlation parameter to see that they’re significantly different from zero</li>
+</ul></li>
+</ul>
+<p>Additional comments:</p>
+<ul>
+<li><p>Using residuals to correlate LoBs (both location mapping&amp; re-sorting) are liable to create correlations close to zero</p></li>
+<li><p><em>Reserve Risk</em>: Correlate <strong>total unpaid</strong> by correlating the incremental paid</p>
+<p>May or may not be a reasonable approximation</p>
+<p>Risk not modeled is contagion risk, where a single event results in claims in multiple lines of business (can change correlation assumptions to address this)</p></li>
+<li><p><em>Pricing Risk</em>: Correlate <strong>loss ratios</strong> over time</p>
+<p>Not as likely to be close to zero</p>
+<p>Use different correlation assumption than for reserve risk</p></li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="claims-development-by-layer-r-sahasrabuddhe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="odp-diagnostics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="shapland-testing.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

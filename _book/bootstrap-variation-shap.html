@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="claims-development-by-layer-r-sahasrabuddhe.html">
-<link rel="next" href="introduction.html">
+<link rel="prev" href="odp-boot-sim.html">
+<link rel="next" href="GLM-bootstrap.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -178,69 +178,67 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-the-odp-bootstrap-model-a-practitioners-guide" class="section level1">
-<h1><span class="header-section-number">Chapter 9</span> Using the ODP Bootstrap Model: A Practitioner’s Guide</h1>
-<p><a href="shapland-notations.html#shapland-notations">Notations</a> are similar to <a href="#venter-def">Venter</a></p>
+<div id="bootstrap-variation-shap" class="section level2">
+<h2><span class="header-section-number">9.5</span> Variations on the ODP Bootstrap</h2>
+<p><strong>Reason to use paid data</strong>:</p>
 <ul>
-<li>See Table <a href="shapland-notations.html#tab:odp-glm-para-tri">9.1</a> for sample triangle layout</li>
+<li><p>For insurance risk it is best to focus on the <strong>claim payment stream</strong>:</p>
+<p>It measures the variability of the actual cash flows that directly affect the bottom line</p></li>
+<li><p><strong>Case reserves temper the volatility</strong></p>
+<p>Changes in case reserves and IBNR reserves will also impact the bottom line, but to a considerable extent the changes in IBNR are intended to counter the impact of the changes in case reserves</p>
+<p>To some degree, then, the total reserve movements can act to mask the underlying changes due to cash flows</p></li>
 </ul>
-<p><strong><em>Model Parameters</em></strong>:</p>
+<p><strong>Reason to include case reserves</strong>:</p>
 <ul>
-<li><p>Mean <a href="bootstrap-model.html#eq:odp-mean">(9.1)</a></p></li>
-<li><p>Variance <a href="bootstrap-model.html#eq:odp-var">(9.3)</a> and <a href="bootstrap-model.html#odp-dispersion">dispersion factor</a></p>
-<ul>
-<li>Need <a href="bootstrap-model.html#odp-res">residual</a>: unscaled <a href="bootstrap-model.html#eq:odp-pear-res">(9.8)</a>, scaled <a href="bootstrap-model.html#eq:odp-scaled-res">(9.9)</a>, standardized <a href="bootstrap-model.html#eq:odp-std-res">(9.10)</a></li>
-</ul></li>
-<li><p>Parameterize with <a href="bootstrap-model.html#ODP-GLM-fit">GLM</a> or <a href="bootstrap-model.html#simplified-glm">simplified (ODP)</a> (<em>Note the condition required for ODP</em>)</p></li>
+<li>Case reserves contain valuable information about potential future payments</li>
 </ul>
-<p><a href="odp-boot-sim.html#odp-boot-sim"><strong><em>Simulation procedure</em></strong></a></p>
-<ul>
-<li><p>Parameter variance <a href="odp-boot-sim.html#eq:odp-sim-loss">(9.14)</a></p></li>
-<li><p>Process variance <a href="odp-boot-sim.html#eq:proc-var-sim-shapland">(9.15)</a></p></li>
-<li><p><a href="bootstrap-variation-shap.html#bootstrap-variation-shap">Other variation</a> of the bootstrap (<em>e.g. incurred, BF, Cape Cod</em>)</p></li>
-<li><p><a href="GLM-bootstrap.html#GLM-bootstrap">Pros and Cons of GLM</a></p></li>
-<li><p><a href="odp-vs-glm-shap.html#odp-vs-glm-shap">GLM vs ODP</a> bootstrap</p></li>
-</ul>
-<p><strong><em>Practical issues</em></strong>:</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="odp-prac-issues.html#prac-issue-1">Negative Incremental Values</a></p>
-<ul>
-<li><p>During fitting: <a href="odp-prac-issues.html#eq:method-1-inc-neg-fit">(9.16)</a> and <a href="odp-prac-issues.html#eq:method-2-inc-neg-fit">(9.17)</a></p></li>
-<li><p>During simulation:</p></li>
-</ul></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-2">Non‐Zero Sum of Residuals</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-3">Using an L-year Weighted Average</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-4">Missing Values</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-5">Outliers</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-6">Heteroscedasticity</a></p>
-<ul>
-<li><p><a href="odp-prac-issues.html#stratified-sample">Stratified sampling</a></p></li>
-<li><p><a href="odp-prac-issues.html#hetero-adj-res">Hetero adjustment to residuals</a></p></li>
-<li><p><a href="odp-prac-issues.html#non-constant-scale-para">Non-constant scale parameter</a></p></li>
-</ul></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-7">Heteroecthesious Data</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-8">Exposure Adjustment</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-9">Tail Factors</a></p></li>
-<li><p><a href="odp-prac-issues.html#prac-issue-10">Fitting a Distribution to ODP Bootstrap Residuals</a></p></li>
+<div id="bootstrapping-the-incurred-loss-triangle" class="section level3">
+<h3><span class="header-section-number">9.5.1</span> Bootstrapping the Incurred Loss Triangle</h3>
+<p>2 approaches to model the <em>unpaid loss</em> distribution using incurred loss triangle</p>
+<p><strong>Method 1</strong>: Modeling the incurred data and convert the ultimate values to a payment pattern</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Run the paid and incurred data model in parallel</p></li>
+<li><p>For each iteration and each AY individually:</p>
+<p>Use the payment pattern (from paid model) to convert the ultimate values (from incurred model) to a payment stream</p></li>
 </ol>
-<p>5 diagnostics</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="odp-diagnostics.html#odp-res-diag">Residual graphs</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-norm-test">Normality test</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-diag-outlier">Outliers</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-diag-para">Parameter adjustment</a></p></li>
-<li><p><a href="odp-diagnostics.html#odp-diag-results-review">Model results</a></p></li>
-</ol>
-<p><a href="shapland-multi-mod.html#shapland-multi-mod">Multiple models</a></p>
-<p><a href="shapland-testing.html#shapland-testing">Model testing</a></p> 
+<p><em>Method 1</em> <strong>Advantages</strong>:</p>
+<ul>
+<li><p>We improve the ultimate estimates by incorporating the case reserves while still focusing on the payment stream for measuring risk</p></li>
+<li><p>Which effectively allows a distribution of IBNR to become a distribution of IBNR and case reserves</p></li>
+<li><p>Can make it more sophisticated by correlating some part of the paid and incurred models (e.g. the residual sampling and/or process variance portions)</p>
+<p>So that if we have large payment @ an older age, the incurred should be large as well</p></li>
+</ul>
+<p><strong>Method 2</strong>: Applying the ODP bootstrap to the Munich chain ladder model</p>
+<ul>
+<li>See Liu and Verrall (2010)</li>
+</ul>
+<p><em>Method 2</em> <strong>Advantages</strong>:</p>
+<ul>
+<li><p>Don’t have to model the paid loss twice</p></li>
+<li><p>Explicitly measuring and imposing a framework around the correlation of the paid and outstanding losses</p></li>
+</ul>
+</div>
+<div id="bootstrapping-the-bf-and-cape-cod-method" class="section level3">
+<h3><span class="header-section-number">9.5.2</span> Bootstrapping the BF and Cape Cod Method</h3>
+<p><strong>ODP issue</strong>: Distribution for the most recent AYs can produce results with more variance than you would expect when compared to earlier AYs in the actual data</p>
+<ul>
+<li><p>Due More LDFs are used to extrapolate the sampled values for the most recent accident years and the random samples of incremental values</p></li>
+<li><p>Similar to the leverage effect of the deterministic chainladder</p></li>
+</ul>
+<p><strong>Solution</strong>: Incorporate BF or Cape Cod</p>
+<ul>
+<li><p>Have the a-priori be stochastic e.g. draw the BF a-priori from a distribution or apply Cape Cod to each simulated triangle</p></li>
+<li><p>More complicated approach is to modify the underlying assumptions of the GLM framework which would results in a completely different set of residuals (this is beyond scope)</p></li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="claims-development-by-layer-r-sahasrabuddhe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="odp-boot-sim.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="GLM-bootstrap.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
