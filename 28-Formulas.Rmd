@@ -243,6 +243,30 @@ $\star$ ***Practical issues***:
     
     * [Non-constant scale parameter](#non-constant-scale-para)
 
+## Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall
+
+Model is defined with ([ODP or ODNB](#odp-nb-verrall)) and stochastic row parameters
+
+* Moments for Mack: \@ref(eq:verrall-mack-mean) & \@ref(eq:verrall-mack-var)
+
+* Moments for ODP: \@ref(eq:verall-odp)
+
+* Moments fod OD NB: \@ref(eq:verall-odnb)
+
+Bayesian BF calculation:
+
+* Gamma moments \@ref(eq:verall-gamma-apriori)
+
+    * Impact of $\beta_i$ on the Gamma variance
+
+* Credibility formula \@ref(eq:bayesian-bf-verrall) and credibility weight \@ref(eq:verall-bf-cred-fact)
+
+[Use](#stoch-col-bf) and [calculate](#verrall-gamma-calc) the stochastic column parameters
+
+* Use the parameters with \@ref(eq:verall-odnb-col-para), see fig. \@ref(fig:verall-stoch-para)
+
+* Calculate the parameters $\gamma_i$ pictorially, see fig. \@ref(fig:verall-gamma-calc)
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):

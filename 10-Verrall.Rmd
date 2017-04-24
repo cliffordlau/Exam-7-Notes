@@ -1,10 +1,32 @@
 # Obtaining Predictive Distributions for Reserves Which Incorporate Expert Opinions - R. Verrall
 
-Know how the model is defined with ODP and ODNB and stochastic row parameters
+Model is defined with ([ODP or ODNB](#odp-nb-verrall)) and stochastic row parameters
 
-Know the Bayesian BF calculation and assumptions \@ref(eq:bayesian-bf-verrall) and \@ref(eq:verall-bf-cred-fact)
+* Moments for Mack: \@ref(eq:verrall-mack-mean) & \@ref(eq:verrall-mack-var)
 
-Know how to [use](#stoch-col-bf) and [calculate](#verrall-gamma-calc) the stochastic column parameters
+* Moments for ODP: \@ref(eq:verall-odp)
+
+* Moments fod OD NB: \@ref(eq:verall-odnb)
+
+[Chainladder intervention](#cl-intervention-verall)
+
+* Variance of prior and it's impact
+
+Bayesian BF calculation:
+
+* Gamma moments \@ref(eq:verall-gamma-apriori)
+
+    * Impact of $\beta_i$ on the Gamma variance
+
+* Credibility formula \@ref(eq:bayesian-bf-verrall) and credibility weight \@ref(eq:verall-bf-cred-fact)
+
+    * $\beta_i$ and $\varphi$ impact the credibility weight
+
+[Use](#stoch-col-bf) and [calculate](#verrall-gamma-calc) the stochastic column parameters
+
+* Use the parameters with \@ref(eq:verall-odnb-col-para), see fig. \@ref(fig:verall-stoch-para)
+
+* Calculate the parameters $\gamma_i$ pictorially, see fig. \@ref(fig:verall-gamma-calc)
 
 ## Introduction {#Verall-intro}
 
@@ -72,13 +94,15 @@ $$x_i = \mathrm{E}[D_{in}]$$
 
 * Expected % reported in each period: $y_j$
 
-    $\sum y_i = 1$
+$$\sum y_i = 1$$
 
 * Expected reported to date: $p_j$
 
-    $\sum_{k=1}^j y_k$
+$$p_j = \sum_{k=1}^j y_k$$
 
-* Expected development from $D_{ij-1}$ to $D_{ij}$: $\lambda_j$ ($= \dfrac{p_j}{p_{j-1}}$?)
+* Expected development from $D_{ij-1}$ to $D_{ij}$: 
+
+$$\lambda_j = \dfrac{p_j}{p_{j-1}}$$
 
 $$\{\lambda_j \: : \: j = 2 ,...,n\}$$
 
@@ -148,7 +172,7 @@ Only the first 2 moments of **cumulative claims** are specified
 * Downside is that without specifying a distribution we don't get a predictive distribution
 ```
 
-### Over-dispersed Poisson and Negative Binomial
+### Over-dispersed Poisson and Negative Binomial {#odp-nb-verrall}
 
 Separate stream of research that focused on the use of GLM
 
@@ -158,7 +182,7 @@ Separate stream of research that focused on the use of GLM
 \begin{split}
 & c_{ij} \mid c, \alpha, \beta, \varphi \sim  ODP(m_{ij}, \varphi m_{ij}) \\
 & \mathrm{E}[c_{ij}] = m_{ij} \\
-& \mathrm{Var}(c_ij) = \varphi m_{ij} \\
+& \mathrm{Var}(c_{ij}) = \varphi m_{ij} \\
 & \ln(m_{ij}) = c + \alpha_i + \beta_j \: ; \: \alpha_1 = \beta_1 = 0 
 \end{split}
 (\#eq:verall-odp)
@@ -215,7 +239,7 @@ We can get the same predictive distribution (as ODP) with ODNB
 \begin{split}
 & c_{ij} \mid D_{ij-1}, \lambda_j, \varphi \sim  ODNB \\
 & \mathrm{E}[c_{ij}] = (\lambda_j - 1)D_{ij-1} \\
-& \mathrm{Var}(c_ij) = \varphi \lambda_j \mathrm{E}[c_{ij}] \\
+& \mathrm{Var}(c_{ij}) = \varphi \lambda_j \mathrm{E}[c_{ij}] \\
 \end{split}
 (\#eq:verall-odnb)
 \end{equation}
@@ -234,19 +258,19 @@ We can get the same predictive distribution (as ODP) with ODNB
 ```{remark}
 For both ODP and ODNB
 
-* Use a quasi-likelihood approach so that the loss data are not restricted to the positive integers
+* Use a *quasi-likelihood* approach so that the loss data are not restricted to the positive integers
 
 * Reserve estimates are the same as Chainladder
 
-* Both are subject to the positivity constraints
+* Both are subject to the *positivity constraints*
 
     * It's apparent in the ODNB formula that the column sums must be positive or else we'll have development factor $\lambda_j < 1$ $\Rightarrow$ Varaiance to be negative
 
-* Advantages (over Kremer):
+* **Advantages** (over Kremer):
 
     * Does not necessarily break down if there are negative incremental loss values
     
-        *  In a strick sense, the model requires the incremental losses in a column to be positive otherwise it is more difficult to justify and interpret the inferences (but it doesn't necessarily break the model)
+        *  In a strict sense, the model requires the incremental losses in a column to be positive otherwise it is more difficult to justify and interpret the inferences (but it doesn't necessarily break the model)
     
     * Gives the same reserve estimate as Chainladder
     
@@ -254,15 +278,14 @@ For both ODP and ODNB
     
 * Verrall suggest that model can be specified for either incremental or cumulative loss
 
-* Advantage of the NB:
+* **Advantage** of the NB:
 
     * Form of the mean is the same as chainladder
     
 * If we replace the NB and use normal instead we can deal with the problem of negative incremental claims (not discussed in paper)
-
 ```
 
-## Incorporating Expert Opinion about the Development Factors
+## Incorporating Expert Opinion about the Development Factors {#cl-intervention-verall}
 
 Intervene in the estimation of Chainladder factors
 
@@ -270,7 +293,7 @@ Intervene in the estimation of Chainladder factors
 
 * How many years of data to use in the estimation
 
-**Procedure**
+***Procedure***
 
 Step 1. Use ODNB from \@ref(eq:verall-odnb) for our incremental claim distribution
 
@@ -280,13 +303,13 @@ Step 2. Choose prior distribution
 
 * We just choose if we want a *strong* or *vague* prior
 
-    * Vauge priors (i.e. large variances)
+    * **Vauge priors** (i.e. large variances)
     
         * Closer to Bayesian Chainladder
         
         * Prediction error will be similar to CL or slightly larger
         
-    * Strong priors (i.e. small variances)
+    * **Strong priors** (i.e. small variances)
     
         * We think prior means are appropriate
         
@@ -386,10 +409,6 @@ Now consider the effect of using these prior distributions on the model for the 
 
 <!-- $$f(c_{ij} \mid y; data) = \int f(c_{ij}\mid x_i, y)\:f(x_i \mid y; data) dx_i$$ -->
 
-```{block, type='rmdnote'}
-Important formulas below
-```
-
 \begin{equation}
 \mathrm{E}[c_{ij}] = Z_{ij} \times \underbrace{(\lambda_j -1)D_{ij-1}}_{\text{Chainladder}} + (1 - Z_{ij}) \times \underbrace{M_i \: y_i}_{\text{BF}}
 (\#eq:bayesian-bf-verrall)
@@ -400,7 +419,7 @@ Important formulas below
 
 * Result is a blend of Chainladder and BF (like **Benktander**)
 
-* $y_i = \dfrac{\lambda_j -1}{\lambda_j \lambda_{j+1} \cdots \lambda_n}$
+* $y_j = \dfrac{\lambda_j -1}{\lambda_j \lambda_{j+1} \cdots \lambda_n}$
 ```
 
 **Credibility factor** $Z_{ij}$
@@ -417,17 +436,17 @@ Z_{ij} = \dfrac{p_{j-1}}{\beta_i \varphi + p_{j-1}}
 
     * Large $p_{j-1}$ means losses are more mature so more weight to the Chainladder method
 
-* We can influence the balance of the weighting ($Z_{ij}$) through $\beta_i$
+* We can **influence the balance of the weighting** ($Z_{ij}$) through $\beta_i$
 
     * Larger $\beta_i$ the more weight goes to the *BF* method
     
-    * Prior with large variance will give results close to Chainladder
+    * Prior with *large variance* will give results close to Chainladder
     
-        Lowers the prediction error but not by much
+        * Lowers the prediction error but not by much
     
-    * Prior with small variance will give results close to *BF*
+    * Prior with *small variance* will give results close to *BF*
     
-        Will lower the prediction error due to low variance in the prior
+        * Will lower the prediction error due to low variance in the prior
     
 * $\varphi$ the process variance on $c_{ij}$ also have impact on the credibililty
 
@@ -479,11 +498,11 @@ We can use stochastic process for both by first estimating the column parameters
 Result posterior distribution:
 
 \begin{equation}
-\begin{split}
-& c_{ij} \mid c_{1,j}, c_{2,j},..., c_{i-1,j}, x, \varphi  \sim  ODNB \\
-& \mathrm{E}[c_{ij}] = (\gamma_i - 1) \sum \limits_{m=1}^{i-1} c_{m,j} \\
-\end{split}
-(\#eq:verall-odnb-col-para)
+  \begin{array}{c}
+  c_{ij} \mid c_{1,j}, c_{2,j},..., c_{i-1,j}, x, \varphi  \sim  ODNB \\
+  \mathrm{E}[c_{ij}] = (\gamma_i - 1) \sum \limits_{m=1}^{i-1} c_{m,j} \\
+  \end{array}
+  (\#eq:verall-odnb-col-para)
 \end{equation}
 
 * Note that it is similar to \@ref(eq:verall-odnb) but recursive down the column (over $i$)
@@ -524,7 +543,7 @@ Know how to calculate this pictorially (equation is complicated...)
 
 First, use Chainladder to get ultimate loss and % unpaid by AY
 
-$\gamma_1 = 1.000$
+$$\gamma_1 = 1.000$$
 
 First calculate **LDFs**, then the **% unpaid** and **a-priori** for each *AY*
 
@@ -552,29 +571,78 @@ This section of the paper just goes through the methods we've discussed and comp
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
 **Concepts**
 
-* 2012 #8: Explain model as trade off between standard CL and BF
+* 2012 #8b: Explain model as trade off between standard CL and BF
 
-* 2013 #9: Model specification stuff on variance of the prior, BF Bayesian
+* $\star$ 2013 #9: Model specification stuff on variance of the prior, BF Bayesian
 
     * Bayesian vs Bootstrap: Provide expert opinion while maintaining the integrity of the variance estimates
 
     * Bayesian vs Mack: Provides full distribution of unpaid losses and not just the first 2 moments
 
-* 2014 #10: Expert opinions in LDFs or row parameters; $\beta$ impact on the Bayesian model
+* $\star$ 2014 #10: Expert opinions in LDFs or row parameters; $\beta$ impact on the Bayesian model
+
+* $\star \star$ 2016 #11 \@ref(fig:2016-11): Various distribution assumptions 
+
+* TIA 1: Chainladder intervention setup (LDF change)
+
+* TIA 4: Chainladder intervention setup (LDF based on industry)
+
+* $\star$ TIA 5: Model setup change in exposure (bayesian with stochastic row parameter)
 
 **Full Calculation**
 
-* $\star$ 2012 #8 \@ref(fig:2012-8): Bayesian model for BF method
+* $\star \star$ 2012 #8a \@ref(fig:2012-8): Bayesian model for BF method
+
+* TIA 2: Using $\gamma$ for unpaid
+
+* \$star$ TIA 3: BF unpaid estimate
+
+* \$star$ TIA 6: Calculate $\gamma$ and forecast with both the row and column parameters
+
+* $\star$ TIA 7: Calculate $\gamma$
 
 ### Question Highlights
 
 ```{r 2012-8, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2012 Question 8'}
-knitr::include_graphics('questions/2012-8Q.png')
+knitr::include_graphics('questions/2012-8Q1.png')
+knitr::include_graphics('questions/2012-8Q2.png')
 knitr::include_graphics('questions/2012-8A.png')
 ```
+
+```{r 2016-11, echo = FALSE, out.width='100%', fig.show='hold', fig.cap='2016 Question 11'}
+knitr::include_graphics('questions/2016-11Q.png')
+```
+
+**2016 Q11 Solution**
+
+*Part a*
+
+Need the variance for the 3 distribution:
+
+* ODP: $\mathrm{Var}(c_{ij}) = \varphi m_{ij}$ \@ref(eq:verall-odp)
+
+$$m_{ij} = 75,000 - 50,000 = 25,000$$
+
+$$\mathrm{Var}(c_{ij}) = 1.5 \times 25,000 = 37,500$$
+
+* OD NB: $\mathrm{Var}(c_{ij}) = \varphi \lambda_j \mathrm{E}[c_{ij}]$ \@ref(eq:verall-odnb)
+
+$$m_{ij} = 75,000 - 50,000 = 25,000$$
+
+$$\lambda_j = \dfrac{75,000}{50,000} = 1.5$$
+
+$$\mathrm{Var}(c_{ij}) = 1.25 \times 1.5 \times 25,000 = 46,875$$
+
+* Normal: $\mathrm{Var}(D_{ij}) = \sigma^2_j D_{ij-1}$ \@ref(eq:verrall-mack-var)
+
+$$\mathrm{Var}(c_{ij}) = 1.75 \times 50,000 = 87,500$$
+
+*Part b*
+
+Negative binomial beause $\lambda_j$ is effectively a loss development factor similar to the chainladder
+
+*Part c*
+
+Normal because it's the only one that can have negative output
