@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert-1.html">
-<link rel="next" href="using-the-odp-bootstrap-model-a-practitioners-guide-shapland-1.html">
+<link rel="prev" href="claims-development-by-layer-r-sahasrabuddhe-1.html">
+<link rel="next" href="reinsurance-loss-reserving-patrik-1.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -132,32 +132,43 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="claims-development-by-layer---r.-sahasrabuddhe-1" class="section level2">
-<h2><span class="header-section-number">28.8</span> Claims Development by Layer - R. Sahasrabuddhe</h2>
-<p><span class="math inline">\(\star \star\)</span> <a href="#base-tri">Setup base triangle</a></p>
+<div id="using-the-odp-bootstrap-model-a-practitioners-guide---shapland-1" class="section level2">
+<h2><span class="header-section-number">28.9</span> Using the ODP Bootstrap Model: A Practitioner’s Guide - Shapland</h2>
+<p><strong><em>Model Parameters</em></strong>:</p>
+<ul>
+<li><p>Mean <a href="#eq:odp-mean">(<strong>??</strong>)</a></p></li>
+<li><p>Variance <a href="#eq:odp-var">(<strong>??</strong>)</a> and <a href="#odp-dispersion">dispersion factor</a></p>
+<ul>
+<li>Need <a href="#odp-res">residual</a>: unscaled <a href="#eq:odp-pear-res">(<strong>??</strong>)</a>, scaled <a href="#eq:odp-scaled-res">(<strong>??</strong>)</a>, standardized <a href="#eq:odp-std-res">(<strong>??</strong>)</a></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\star\)</span> <a href="#odp-boot-sim"><strong><em>Simulation procedure</em></strong></a></p>
+<ul>
+<li><p>Parameter variance <a href="#eq:odp-sim-loss">(<strong>??</strong>)</a></p></li>
+<li><p>Process variance <a href="#eq:proc-var-sim-shapland">(<strong>??</strong>)</a></p></li>
+</ul>
+<p><span class="math inline">\(\star\)</span> <strong><em>Practical issues</em></strong>:</p>
 <ol style="list-style-type: decimal">
-<li><p>Set AY CY trend triangle</p></li>
-<li><p>Unlimited mean loss <em>table</em> with <a href="#eq:unlimited-mean-sahas">(<strong>??</strong>)</a> <strong>detrended</strong></p></li>
-<li><p>LEV triangle @ <span class="math inline">\(L\)</span> and LEV for the last row @ <span class="math inline">\(B\)</span> with <a href="#eq:sahas-lim-exp">(<strong>??</strong>)</a></p></li>
-<li><p>Use <a href="#eq:base-layer-loss">(<strong>??</strong>)</a> to get base layer</p></li>
+<li><p><span class="math inline">\(\star\)</span> <a href="#prac-issue-1">Negative Incremental Values</a></p>
+<ul>
+<li><p>During fitting: <a href="#eq:method-1-inc-neg-fit">(<strong>??</strong>)</a> and <a href="#eq:method-2-inc-neg-fit">(<strong>??</strong>)</a></p></li>
+<li><p>During simulation: <a href="#eq:gamma-adj-odp">(<strong>??</strong>)</a></p></li>
+</ul></li>
+<li><p><span class="math inline">\(\star\)</span> <a href="#prac-issue-6">Heteroscedasticity</a></p>
+<ul>
+<li><p><a href="#stratified-sample">Stratified sampling</a></p></li>
+<li><p><a href="#hetero-adj-res">Hetero adjustment to residuals</a></p></li>
+<li><p><a href="#non-constant-scale-para">Non-constant scale parameter</a></p></li>
+</ul></li>
 </ol>
-<p><span class="math inline">\(\star \star\)</span> <a href="#convert-ldf">Convert the base LDFs to any layer</a></p>
-<ul>
-<li><p>Convert base layer LDFs <a href="#eq:layer-b-to-x">(<strong>??</strong>)</a></p></li>
-<li><p>Convert to LDFs for XS Layers: <a href="#eq:sahas-ldf-xs">(<strong>??</strong>)</a></p></li>
-</ul>
-<p>Practical adjustments</p>
-<ul>
-<li>Formula when we don’t have severity distribution for every age <a href="#eq:sahas-only-diag">(<strong>??</strong>)</a> and how to estimate <a href="#eq:sahas-ratio">(<strong>??</strong>)</a></li>
-</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using-the-odp-bootstrap-model-a-practitioners-guide-shapland-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="claims-development-by-layer-r-sahasrabuddhe-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reinsurance-loss-reserving-patrik-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

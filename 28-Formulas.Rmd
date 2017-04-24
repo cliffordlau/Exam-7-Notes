@@ -211,6 +211,38 @@ Practical adjustments
 
 * Formula when we don't have severity distribution for every  age \@ref(eq:sahas-only-diag) and how to estimate \@ref(eq:sahas-ratio)
 
+## Using the ODP Bootstrap Model: A Practitioner's Guide - Shapland
+
+***Model Parameters***:
+
+* Mean \@ref(eq:odp-mean)
+
+* Variance \@ref(eq:odp-var) and [dispersion factor](#odp-dispersion)
+
+    * Need [residual](#odp-res): unscaled \@ref(eq:odp-pear-res), scaled \@ref(eq:odp-scaled-res), standardized \@ref(eq:odp-std-res)
+
+$\star$ [***Simulation procedure***](#odp-boot-sim)
+
+* Parameter variance \@ref(eq:odp-sim-loss)
+
+* Process variance  \@ref(eq:proc-var-sim-shapland)
+
+$\star$ ***Practical issues***:
+
+1. $\star$ [Negative Incremental Values](#prac-issue-1)
+
+    * During fitting: \@ref(eq:method-1-inc-neg-fit) and \@ref(eq:method-2-inc-neg-fit)
+    
+    * During simulation: \@ref(eq:gamma-adj-odp)
+
+6. $\star$ [Heteroscedasticity](#prac-issue-6)
+
+    * [Stratified sampling](#stratified-sample)
+    
+    * [Hetero adjustment to residuals](#hetero-adj-res)
+    
+    * [Non-constant scale parameter](#non-constant-scale-para)
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):

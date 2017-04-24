@@ -1,4 +1,4 @@
-# Using the ODP Bootstrap Model: A Practitioner's Guide
+# Using the ODP Bootstrap Model: A Practitioner's Guide - Shapland
 
 [Notations](#shapland-notations) are similar to [Venter](#venter-def)
 
@@ -14,7 +14,7 @@
 
 * Parameterize with [GLM](#ODP-GLM-fit) or [simplified (ODP)](#simplified-glm) (*Note the condition required for ODP*)
 
-[***Simulation procedure***](#odp-boot-sim)
+$\star$ [***Simulation procedure***](#odp-boot-sim)
 
 * Parameter variance \@ref(eq:odp-sim-loss)
 
@@ -26,13 +26,13 @@
 
 * [GLM vs ODP](#odp-vs-glm-shap) bootstrap
 
-***Practical issues***:
+$\star$ ***Practical issues***:
 
-1. [Negative Incremental Values](#prac-issue-1)
+1. $\star$ [Negative Incremental Values](#prac-issue-1)
 
     * During fitting: \@ref(eq:method-1-inc-neg-fit) and \@ref(eq:method-2-inc-neg-fit)
     
-    * During simulation: 
+    * During simulation: \@ref(eq:gamma-adj-odp)
 
 2. [Non‐Zero Sum of Residuals](#prac-issue-2)
 
@@ -42,7 +42,7 @@
 
 5. [Outliers](#prac-issue-5)
 
-6. [Heteroscedasticity](#prac-issue-6)
+6. $\star$ [Heteroscedasticity](#prac-issue-6)
 
     * [Stratified sampling](#stratified-sample)
     
@@ -58,9 +58,9 @@
 
 10. [Fitting a Distribution to ODP Bootstrap Residuals](#prac-issue-10)
 
-5 diagnostics
+***5 diagnostics***
 
-1. [Residual graphs](#odp-res-diag)
+1. $\star$ [Residual graphs](#odp-res-diag)
 
 2. [Normality test](#odp-norm-test)
 
@@ -68,7 +68,7 @@
 
 4. [Parameter adjustment](#odp-diag-para)
 
-5. [Model results](#odp-diag-results-review)
+5. $\star$ [Model results](#odp-diag-results-review)
 
 [Multiple models](#shapland-multi-mod)
 
@@ -1229,17 +1229,21 @@ Calculate a hetero-adjustment factor to scale the residuals to the same level:
 
     Residual \@ref(eq:odp-pear-res) $\times$ Hat Matrix Factor \@ref(eq:odp-std-res) $\times$ Hetero Factor \@ref(eq:odp-hetero-adj-factor)
 
-\begin{equation}
-  r_{wd}^{iH} = r_{wd} \times f_{wd}^H \times h^i
-  (\#eq:odp-hetero-adj)
-\end{equation}
+    \begin{equation}
+      r_{wd}^{iH} = r_{wd} \times f_{wd}^H \times h^i
+      (\#eq:odp-hetero-adj)
+    \end{equation}
+    
+    * $h^i$ here is based on the group we draw from
 
 4. Need to divide the sampled residual by $h^i$ to reflect the variability of group $i$
 
-\begin{equation}
-  q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}
-  (\#eq:odp-hetero-adj-rescale)
-\end{equation}
+    \begin{equation}
+      q^{i*}(w,d) = m_{wd} +       \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}
+      (\#eq:odp-hetero-adj-rescale)
+    \end{equation}
+
+    * $h^i$ here is based on the group we're simulating for
 
 5. Adjust the variance for the process variance step in the simulation
 
@@ -1714,34 +1718,59 @@ Future testing:
 
 ## Past Exam Questions
 
-**Exercises**
+**TIA Exercise**
 
-1. $\star$ Use simplified GLM and then back out the GLM parameters
-2. Reduce parameters
-3. Minimize square error for GLM
-4. Benefit of simplified GLM
-5. Residuals
-6. Dispersion
-7. Dispersion with hat matrix adj
-8. Simulate loss
-9. Setup GLM
-10. Negative values
-11. Simulate negative
-12. Partial triangle
-13. Stratified
-14. Dealing with correlation
-15. Outliers
+* $\star \star$ TIA 1: Use simplified GLM and then back out the GLM parameters
+
+* TIA 2: Reduce parameters
+
+* TIA 3: Minimize square error for GLM
+
+* TIA 4: Benefit of simplified GLM
+
+* $\star$ TIA 5: Residuals with england verrall adjustment
+
+* TIA 6: Dispersion
+
+* TIA 7: Dispersion with hat matrix adj
+
+* TIA 8: Simulate loss variance distribution assumption & simulate psudeo triangle (no process variance)
+
+* TIA 9: Setup GLM with CY trend
+
+* TIA 10: Negative values
+
+* TIA 11: Simulate negative
+
+* TIA 12: Partial triangle
+
+* TIA 13: Stratified (includes "new" method in the paper)
+
+* TIA 14: Dealing with correlation (location mapping)
+
+* TIA 15: Outliers
 
 **Practical Issues**
 
 * 2013 #7: negative values
+
 * 2014 #7: List 4 practical issues and solutions
+
 * 2015 #10: Heteroscedasticity, why important, adjustments description
-* 2015 #11: Negative values, outliers, exposure level
+
+* 2015 #11: Identify issues with given triangle: Negative values, outliers, exposure level
+
+* 2016 #12: Negative values adjustment
 
 **Diagnostics**
 
 * $\star$ 2014 #9: Evaluate the results given mean unpaid, s.e., CoV by AYs
+
+* $\star$ 2016 #13: Residual plots, part c on rational
+
+**Calculations**
+
+* $\star \star$ 2016 14: Hetero adjustment
 
 ### Question Highlights
 

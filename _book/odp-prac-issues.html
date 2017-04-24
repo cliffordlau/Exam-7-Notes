@@ -26,7 +26,7 @@
 <meta name="author" content="Cliff Lau">
 
 
-<meta name="date" content="2017-04-23">
+<meta name="date" content="2017-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -78,7 +78,7 @@
 <li class="chapter" data-level="6" data-path="curve-fit-clark.html"><a href="curve-fit-clark.html"><i class="fa fa-check"></i><b>6</b> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</a></li>
 <li class="chapter" data-level="7" data-path="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert.html"><i class="fa fa-check"></i><b>7</b> A Model for Reserving Workers Compensation High Deductibles - J. Siewert</a></li>
 <li class="chapter" data-level="8" data-path="claims-development-by-layer-r-sahasrabuddhe.html"><a href="claims-development-by-layer-r-sahasrabuddhe.html"><i class="fa fa-check"></i><b>8</b> Claims Development by Layer - R. Sahasrabuddhe</a></li>
-<li class="chapter" data-level="9" data-path="using-the-odp-bootstrap-model-a-practitioners-guide.html"><a href="using-the-odp-bootstrap-model-a-practitioners-guide.html"><i class="fa fa-check"></i><b>9</b> Using the ODP Bootstrap Model: A Practitioner’s Guide</a><ul>
+<li class="chapter" data-level="9" data-path="using-the-odp-bootstrap-model-a-practitioners-guide-shapland.html"><a href="using-the-odp-bootstrap-model-a-practitioners-guide-shapland.html"><i class="fa fa-check"></i><b>9</b> Using the ODP Bootstrap Model: A Practitioner’s Guide - Shapland</a><ul>
 <li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="introduction.html"><a href="introduction.html#stochastic-vs-static-model"><i class="fa fa-check"></i><b>9.1.1</b> Stochastic vs Static Model</a></li>
 </ul></li>
@@ -422,21 +422,23 @@ m_{w,d} = m^+_{w,d} + \Psi
 \end{equation}\]</span>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Scale up the residuals:</p>
-<p>Residual <a href="bootstrap-model.html#eq:odp-pear-res">(9.8)</a> <span class="math inline">\(\times\)</span> Hat Matrix Factor <a href="bootstrap-model.html#eq:odp-std-res">(9.10)</a> <span class="math inline">\(\times\)</span> Hetero Factor <a href="odp-prac-issues.html#eq:odp-hetero-adj-factor">(9.22)</a></p></li>
-</ol>
+<p>Residual <a href="bootstrap-model.html#eq:odp-pear-res">(9.8)</a> <span class="math inline">\(\times\)</span> Hat Matrix Factor <a href="bootstrap-model.html#eq:odp-std-res">(9.10)</a> <span class="math inline">\(\times\)</span> Hetero Factor <a href="odp-prac-issues.html#eq:odp-hetero-adj-factor">(9.22)</a></p>
 <span class="math display" id="eq:odp-hetero-adj">\[\begin{equation}
   r_{wd}^{iH} = r_{wd} \times f_{wd}^H \times h^i
   \tag{9.23}
 \end{equation}\]</span>
-<ol start="4" style="list-style-type: decimal">
-<li>Need to divide the sampled residual by <span class="math inline">\(h^i\)</span> to reflect the variability of group <span class="math inline">\(i\)</span></li>
-</ol>
+<ul>
+<li><span class="math inline">\(h^i\)</span> here is based on the group we draw from</li>
+</ul></li>
+<li><p>Need to divide the sampled residual by <span class="math inline">\(h^i\)</span> to reflect the variability of group <span class="math inline">\(i\)</span></p>
 <span class="math display" id="eq:odp-hetero-adj-rescale">\[\begin{equation}
-  q^{i*}(w,d) = m_{wd} + \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}
+  q^{i*}(w,d) = m_{wd} +       \dfrac{r^{i*}}{h^i}\sqrt{m_{wd}}
   \tag{9.24}
 \end{equation}\]</span>
-<ol start="5" style="list-style-type: decimal">
-<li>Adjust the variance for the process variance step in the simulation</li>
+<ul>
+<li><span class="math inline">\(h^i\)</span> here is based on the group we’re simulating for</li>
+</ul></li>
+<li><p>Adjust the variance for the process variance step in the simulation</p></li>
 </ol>
 <span class="math display" id="eq:gamma-adj-odp-hetero">\[\begin{equation}
   Gamma(m_{wd}, \dfrac{\phi m_{wd}}{h^i})
