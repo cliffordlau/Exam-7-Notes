@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="testing-the-assumptions-of-age-to-age-factors-g-venter-1.html">
-<link rel="next" href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert-1.html">
+<link rel="prev" href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall-1.html">
+<link rel="next" href="reinsurance-loss-reserving-patrik-1.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,48 +135,68 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach---d.-clark" class="section level2">
-<h2><span class="header-section-number">28.6</span> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</h2>
-<p><span class="math inline">\(\star\)</span> Paper definition/standards:</p>
+<div id="stochastic-loss-reserving-using-bayesian-mcmc-models---g.-meyer-1" class="section level1">
+<h1><span class="header-section-number">Chapter 29</span> Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer</h1>
+<p><strong>Interpretation</strong> of all the <a href="#meyers-test">test</a>:</p>
 <ul>
-<li>We use the <strong>average age</strong> of the period here (so minus 6 month)</li>
+<li><p>KS-test: <a href="#eq:ks-expected-lower">(<strong>??</strong>)</a>, <a href="#eq:ks-test-meyers-diff">(<strong>??</strong>)</a>, and <a href="#eq:ks-test-meyers-criteria">(<strong>??</strong>)</a></p></li>
+<li><p><span class="math inline">\(p-p\)</span> plot (fig. <a href="#fig:meyers-p-p-plot"><strong>??</strong></a>)</p>
+<ul>
+<li><p>Too light tailed: Shallow slope near corner and steep in the middle</p></li>
+<li><p>Too heavy tailed: Steep slope near corner and shallow in the middle</p></li>
+<li><p>Biased upwards: Bow down</p></li>
+</ul></li>
+<li><p>Freq vs Count plot (fig. <a href="#fig:meyers-freq-perc-plot"><strong>??</strong></a>)</p></li>
 </ul>
-<p><strong>Reserve estimate</strong></p>
+<p><strong><em>Bayesian Models</em></strong> (<em>Cumulative</em>):</p>
 <ul>
-<li><p><span class="math inline">\(\star \star\)</span> Given <span class="math inline">\(G(x)\)</span> distribution</p>
+<li><p>Lognormal <a href="#eq:meyers-loss-dist-lcl">(<strong>??</strong>)</a></p></li>
+<li><p><span class="math inline">\(\beta = 0\)</span> when it’s done developing</p></li>
+<li><p><span class="math inline">\(\sigma\)</span> constraint <a href="#eq:meyers-sigm-dist-lcl">(<strong>??</strong>)</a></p></li>
+</ul>
+<p><em>Variations</em></p>
 <ul>
-<li><p><strong>Loglogistic</strong> <a href="#eq:clark-loglogistic">(<strong>??</strong>)</a>, or</p></li>
-<li><p><strong>Weibull</strong> <a href="#eq:clark-weibull">(<strong>??</strong>)</a></p></li>
-<li><p>Might have to estimate parameters</p></li>
+<li><p><a href="#meyers-lcl">Leveled Chain-Ladder</a> (LCL): Add variability to the row parameter with <span class="math inline">\(\alpha\)</span></p>
+<ul>
+<li>Mean <a href="#eq:meyers-lcl-mean">(<strong>??</strong>)</a></li>
 </ul></li>
-<li><p>2 Reserving method</p>
+<li><p><a href="#meyers-ccl">Correlated Chain-Ladder</a> (CCL): Add AY correlation with <span class="math inline">\(\rho\)</span></p>
 <ul>
-<li><p><span class="math inline">\(\star\)</span> <a href="#clark-ldf-method">LDF</a> Method</p></li>
-<li><p><span class="math inline">\(\star\)</span> <a href="#clark-cape-cod-method">Cape Cod</a> Method</p></li>
+<li>Mean <a href="#eq:meyers-ccl-mean">(<strong>??</strong>)</a></li>
 </ul></li>
-<li><p>Test for truncation by looking at age twice the triangle size</p>
+<li><p><a href="#meyers-csr">Changing Settlement Rate</a> (CSR): LCL with speed up claims closure with <span class="math inline">\(\gamma\)</span></p>
 <ul>
-<li>Different truncation method</li>
+<li><p>Mean <a href="#eq:meyers-csr-mean">(<strong>??</strong>)</a></p></li>
+<li><p>$&gt;0 $ for increase payout speed</p></li>
 </ul></li>
 </ul>
-<p><a href="#clark-var-reserve"><strong>Reserve process variance</strong></a></p>
+<p><strong>Bayesian Models</strong> (<em>Incremental</em>):</p>
 <ul>
-<li><p><span class="math inline">\(\star \star\)</span> Estimation of <span class="math inline">\(\sigma^2\)</span> <a href="#eq:clark-sigma-est">(<strong>??</strong>)</a></p>
+<li><p>Distribution <a href="#eq:meyers-CIT-distribution">(<strong>??</strong>)</a></p>
 <ul>
-<li><p>Note the <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> for the 2 methods</p></li>
-<li><p>We’re looking at <strong>incremental</strong> losses</p></li>
+<li>Based on mixed lognormal distribution <a href="#eq:meyers-mix-log-norm-norm">(<strong>??</strong>)</a> (skewed log-normal <a href="#eq:meyers-skewed-normal">(<strong>??</strong>)</a> was not used)</li>
 </ul></li>
+<li><p><span class="math inline">\(\sigma\)</span> constraint <a href="#eq:meyers-sigm-dist-cit">(<strong>??</strong>)</a> is different</p></li>
+<li><p>Additional constraint on <span class="math inline">\(\beta\)</span> so that it is decreasing</p></li>
+<li><p>Constraint on CY trend <span class="math inline">\(\tau\)</span></p></li>
+<li><p>Additional constraint on <span class="math inline">\(\sigma\)</span> so that it cannot increase drastically period to period</p></li>
 </ul>
-<p><span class="math inline">\(\star \star\)</span> Test <span class="math inline">\(iid\)</span> assumpation with <a href="#clark-res-review">residual plots</a> by calculating standardized residual</p>
-<p><a href="#avg-age-claim"><strong>Counting average accident date</strong></a></p>
+<p><em>Variation</em></p>
+<ul>
+<li><p><a href="#meyers-cit">Correlated Incremental Trend</a> (CIT): LIT with added AY correlation <span class="math inline">\(\rho\)</span></p>
+<ul>
+<li>Mean <a href="#eq:meyers-CIT-mean">(<strong>??</strong>)</a></li>
+</ul></li>
+<li><p><a href="#meyers-lit">Leveled Incremental Trend</a> (LIT): Use skewed distribution and CY trend <span class="math inline">\(\tau\)</span></p></li>
+</ul> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="testing-the-assumptions-of-age-to-age-factors-g-venter-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="obtaining-predictive-distributions-for-reserves-which-incorporate-expert-opinions-r-verrall-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reinsurance-loss-reserving-patrik-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

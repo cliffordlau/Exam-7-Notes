@@ -1,8 +1,72 @@
 # Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
 
-Know how to read all the [test](#meyers-test): KS-test, $p-p$ plot and Freq vs Count plot
+**Interpretation** of all the [test](#meyers-test):
 
-Know the form of all the methods in the [model](#model-summary-meyers)
+* KS-test: \@ref(eq:ks-expected-lower), \@ref(eq:ks-test-meyers-diff), and \@ref(eq:ks-test-meyers-criteria)
+
+* $p-p$ plot (fig. \@ref(fig:meyers-p-p-plot))
+
+    * Too light tailed: Shallow slope near corner and steep in the middle
+
+    * Too heavy tailed: Steep slope near corner and shallow in the middle
+
+    * Biased upwards: Bow down
+
+* Freq vs Count plot (fig. \@ref(fig:meyers-freq-perc-plot))
+
+All the different [model](#model-summary-meyers) introduced (fig. \@ref(fig:meyers-models-overview))
+
+***Bayesian Models*** (*Cumulative*):
+
+* Lognormal \@ref(eq:meyers-loss-dist-lcl)
+
+* $\beta = 0$ when it's done developing
+
+* $\sigma$ constraint \@ref(eq:meyers-sigm-dist-lcl)
+
+*Variations*
+
+* [Leveled Chain-Ladder](#meyers-lcl) (LCL): Add variability to the row parameter with $\alpha$
+
+    * Mean \@ref(eq:meyers-lcl-mean)
+
+* [Correlated Chain-Ladder](#meyers-ccl) (CCL): Add AY correlation with $\rho$
+
+    * Mean \@ref(eq:meyers-ccl-mean)
+
+* [Changing Settlement Rate](#meyers-csr) (CSR): LCL with speed up claims closure with $\gamma$
+
+    * Mean \@ref(eq:meyers-csr-mean)
+    
+    * $\gamma >0 $ for increase payout speed
+
+**Bayesian Models** (*Incremental*):
+
+* Distribution \@ref(eq:meyers-CIT-distribution)
+
+    * Based on mixed lognormal distribution \@ref(eq:meyers-mix-log-norm-norm) (skewed log-normal \@ref(eq:meyers-skewed-normal) was not used)
+
+* $\sigma$ constraint \@ref(eq:meyers-sigm-dist-cit) is different
+
+* Additional constraint on $\beta$ so that it is decreasing
+
+* Constraint on CY trend $\tau$
+
+* Additional constraint on $\sigma$ so that it cannot increase drastically period to period
+
+*Variation*
+
+* [Correlated Incremental Trend](#meyers-cit) (CIT): LIT with added AY correlation $\rho$
+
+    * Mean \@ref(eq:meyers-CIT-mean)
+    
+* [Leveled Incremental Trend](#meyers-lit) (LIT): Use skewed distribution and CY trend $\tau$
+
+**Non-Bayesian Models**:
+
+* [Mack](#meyers-mack): See [Mack-1994](#cl-ass)
+
+* [England & Verall ODP](#meyers-odp): See [Shapland](#odp-glm-para), but doesn't have the [residual adjustments](#odp-res)
 
 ## Introduction & Synopsis
 
@@ -44,7 +108,7 @@ If we can find better model and/or better data we can rule out 1)
 
 1) Insurer with significant changes to their books over the exposure period would violate the assumptions of the model and should be excluded
 
-    * **Solution**: Use consisteny of *NEP** and **Net:Gross Premium** to establish stability in book
+    * **Solution**: Use consisteny of **NEP** and **Net:Gross Premium** to establish stability in book
     
     * Use CoV to establish consistency
     
@@ -88,7 +152,10 @@ $$\{e_i\} = \left\{ \dfrac{1}{n+1}, \dfrac{2}{n+1},...,\dfrac{n}{n+1} \right\}$$
 
 For the *KS* test we'll compare $\{ p_i \}$ with $\{ f_i \}$
 
-$$\{f_i\} = \left\{ \dfrac{1}{n}, \dfrac{2}{n},...,\dfrac{n}{n} \right\}$$
+\begin{equation}
+  \{f_i\} = \left\{ \dfrac{1}{n}, \dfrac{2}{n},...,\dfrac{n}{n} \right\}
+  (\#eq:ks-expected-lower)
+\end{equation}
 
 $H_0$: Distribution of $p_i$ is uniform
 
@@ -206,7 +273,7 @@ Prior distributions
 
 * [Leveled Incremental Trend](#meyers-lit) (LIT): Use skewed distribution and CY trend $\tau$
 
-* [Correlated Incremental Trend](#meyers-cit) (CIT): LIT with added AY correlation $rho$
+* [Correlated Incremental Trend](#meyers-cit) (CIT): LIT with added AY correlation $\rho$
 
 * [Changing Settlement Rate](#meyers-csr) (CSR): LCL with speed up claims closure $\gamma$
 
@@ -312,6 +379,8 @@ $\alpha_w$
 * Model select an $\alpha_w$ for each instance of the simulation based on wide priors
 
 * Main feature of this model for adding variability
+
+* $e^{\alpha}$ is sort of the ultimate for the AY
 ```
 
 ```{remark}
@@ -319,7 +388,7 @@ $\beta_d$
 
 * $\beta_{10} = 0$ so we have 100% at 10 years and not overdetermining the model
 
-* $\beta_d < 100\%$ most of the time, represents % paid (incurred) to date
+* $e^{\beta_d} < 100\%$ most of the time (i.e. $\beta_d < 0$), represents % paid (incurred) to date
 ```
 
 ```{remark}
@@ -394,8 +463,6 @@ $\rho \cdot \left[ \mathrm{ln}\left(C_{w-1, d}\right) - \mu_{w-1,d} \right]$
 * Model reduces to LCL when $\rho = 0$
 ```
 
-$C_{wd}$ has the same distribution as in LCL
-
 **Priors** for $\{\alpha_w\}$, $\{\sigma_d\}$, $\{\beta_d\}$ and $\rho$
 
 * Prior is still wide priors
@@ -465,7 +532,7 @@ $\gamma$
 
 * *Wide prior* similar to LCL and CCL
 
-* $\gamma \sim \mathcal{N}(0, 0.025)
+* $\gamma \sim \mathcal{N}(0, 0.025)$
 
 ***Test Results***
 
@@ -872,11 +939,29 @@ It also has a number of convergence diagnostics
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
+**TIA Exercise**
 
-n/a
+* $\star$ TIA 1: Perform KS test on given percentile
+
+* TIA 2: read p-p plot and structure correlated AY model
+
+* TIA 3: Skewed normal limitation
+
+* TIA 4: Describe CIT model
+
+* TIA 5: Read p-p plot
+
+* $\star$ TIA 6: read p-p plot and how to address the issues
+
+**Past Exam**
+
+* 2016 #15:
+
+    a. KS Test with given percentile
+    
+    b. Reason why model can not predict
+    
+    c. How to improve on the Mack model
 
 ### Question Highlights
 

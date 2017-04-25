@@ -267,6 +267,68 @@ Bayesian BF calculation:
 
 * Calculate the parameters $\gamma_i$ pictorially, see fig. \@ref(fig:verall-gamma-calc)
 
+# Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
+
+**Interpretation** of all the [test](#meyers-test):
+
+* KS-test: \@ref(eq:ks-expected-lower), \@ref(eq:ks-test-meyers-diff), and \@ref(eq:ks-test-meyers-criteria)
+
+* $p-p$ plot (fig. \@ref(fig:meyers-p-p-plot))
+
+    * Too light tailed: Shallow slope near corner and steep in the middle
+
+    * Too heavy tailed: Steep slope near corner and shallow in the middle
+
+    * Biased upwards: Bow down
+
+* Freq vs Count plot (fig. \@ref(fig:meyers-freq-perc-plot))
+
+***Bayesian Models*** (*Cumulative*):
+
+* Lognormal \@ref(eq:meyers-loss-dist-lcl)
+
+* $\beta = 0$ when it's done developing
+
+* $\sigma$ constraint \@ref(eq:meyers-sigm-dist-lcl)
+
+*Variations*
+
+* [Leveled Chain-Ladder](#meyers-lcl) (LCL): Add variability to the row parameter with $\alpha$
+
+    * Mean \@ref(eq:meyers-lcl-mean)
+
+* [Correlated Chain-Ladder](#meyers-ccl) (CCL): Add AY correlation with $\rho$
+
+    * Mean \@ref(eq:meyers-ccl-mean)
+
+* [Changing Settlement Rate](#meyers-csr) (CSR): LCL with speed up claims closure with $\gamma$
+
+    * Mean \@ref(eq:meyers-csr-mean)
+    
+    * $\gamma >0 $ for increase payout speed
+
+**Bayesian Models** (*Incremental*):
+
+* Distribution \@ref(eq:meyers-CIT-distribution)
+
+    * Based on mixed lognormal distribution \@ref(eq:meyers-mix-log-norm-norm) (skewed log-normal \@ref(eq:meyers-skewed-normal) was not used)
+
+* $\sigma$ constraint \@ref(eq:meyers-sigm-dist-cit) is different
+
+* Additional constraint on $\beta$ so that it is decreasing
+
+* Constraint on CY trend $\tau$
+
+* Additional constraint on $\sigma$ so that it cannot increase drastically period to period
+
+*Variation*
+
+* [Correlated Incremental Trend](#meyers-cit) (CIT): LIT with added AY correlation $\rho$
+
+    * Mean \@ref(eq:meyers-CIT-mean)
+    
+* [Leveled Incremental Trend](#meyers-lit) (LIT): Use skewed distribution and CY trend $\tau$
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):
