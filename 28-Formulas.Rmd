@@ -267,7 +267,7 @@ Bayesian BF calculation:
 
 * Calculate the parameters $\gamma_i$ pictorially, see fig. \@ref(fig:verall-gamma-calc)
 
-# Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
+## Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
 
 **Interpretation** of all the [test](#meyers-test):
 
@@ -336,3 +336,25 @@ Bayesian BF calculation:
 1. Stanard Buhlmann
 
 2. Credibility IBNR method ($Z = p_k \times CL$ and weighting **reserve** on $CL$ and $SB$)
+
+## Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins
+
+Retro formula: \@ref(eq:teng-retro-formula)
+
+**Retro rating formula approach**
+
+* $\star$ PDLD formulas \@ref(eq:pdld-1-form), \@ref(eq:premium-1-form), and \@ref(eq:pdld-n-subseq-form)
+
+* Basic premium factor vs charge (charge is after tax)
+
+**Empirical approach**
+
+* Assume premium lags (typically 9 month)
+
+* $\star \star$ Cumulative PDLD \@ref(eq:cpdld-ratio-perkin) and calculating it recursively \@ref(eq:cpdld-ratio-recurse)
+
+* [Practical application](#application-teng)
+
+    * First adjustment period might cover more than one policy period
+
+Feldblum's adjustment to the empirical $CPDLD_1$ \@ref(eq:feldblum-adj-prem)

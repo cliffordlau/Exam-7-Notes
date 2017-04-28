@@ -2,25 +2,31 @@
 
 Retro formula: \@ref(eq:teng-retro-formula)
 
-Use PDLD to get the premium development based on the loss development
+**Retro rating formula approach**
 
-Know what each term means like basic premium factor or charge
+* $\star$ PDLD formulas \@ref(eq:pdld-1-form), \@ref(eq:premium-1-form), and \@ref(eq:pdld-n-subseq-form)
 
-Know the formula approach for PDLD \@ref(eq:pdld-1-form), \@ref(eq:premium-1-form), and \@ref(eq:pdld-n-subseq-form)
+* Basic premium factor vs charge (charge is after tax)
 
-Know the empirical approach for PDLD
+* Understand the shape and pattern of $PDLD$
 
-* Assume premium lags
+**Empirical approach**
+
+* Assume premium lags (typically 9 month)
 
 * Ratio selection
 
-* Cumulative PDLD based on a weighted average with expected % future report for each future periods
+* $\star \star$ Cumulative PDLD \@ref(eq:cpdld-ratio-perkin) and calculating it recursively \@ref(eq:cpdld-ratio-recurse)
 
-* Know the [practical application](#application-teng)
+* [Practical application](#application-teng)
 
     * First adjustment period might cover more than one policy period
 
-Know the Teng Perkins [improvements](#teng-improvements) and [assumptions](#teng-assumptions)
+Teng Perkins [improvements](#teng-improvements) and [assumptions](#teng-assumptions)
+
+* Understand pattern of the PDLD
+
+Feldblum's adjustment to the empirical $CPDLD_1$ \@ref(eq:feldblum-adj-prem)
 
 ## Introduction
 
@@ -199,10 +205,6 @@ PDLD = \dfrac{\Delta P}{\Delta L} \sim \dfrac{d P}{d L}
 
 First adjustment includes Basic Premium ($BP$) $\Rightarrow$ Requires different treatment from the other adjustments
 
-```{block, type='rmdnote'}
-Important formulas below
-```
-
 \begin{equation}
   PDLD_1 =\underbrace{\left(\frac{BP}{SP} \right)}_{\text{Basic Prem Factor}} \frac{TM}{ELR \cdot \%Loss_1} + \underbrace{\left( \frac{CL_1}{L_1}\right)}_{\text{Loss Capping Ratio}} \cdot LCF \cdot TM
   (\#eq:pdld-1-form)
@@ -279,7 +281,7 @@ If you observe increasing trends in the ratios for a give age:
     
     * Improvement in loss experience (fewer large losses so larger portion is within the cap)
     
-* Higher basic limits (for $PDLP_1$)
+* Higher basic limits (for $PDLD_1$)
 
 PDLD can be negative if $\Delta CL$ is negative:  
 Losses > max increase while claims within retro limit have a reduction in reserves
@@ -288,7 +290,19 @@ Losses > max increase while claims within retro limit have a reduction in reserv
 
 Cumulative PDLD based on a weighted average with expected % future report for each future periods
 
-$CPDLD_d = \dfrac{\sum_{i=d}^{\infty} PDLD_i \times \text{% Reported in period i}}{\sum_{i=d}^{\infty} \text{% Reported in period i}}$
+\begin{equation}
+  CPDLD_d = \dfrac{\sum_{i=d}^{\infty} PDLD_i \times \text{% Reported in period i}}{\sum_{i=d}^{\infty} \text{% Reported in period i}}
+  (\#eq:cpdld-ratio-perkin)
+\end{equation}
+
+* If you need the CPDLD for every PYs, it is best done starting with the oldest year and recursively up to the most recent year
+
+\begin{equation}
+  CPDLD_d = \dfrac{ CPDLD_{d-1} \times \text{% rpt'd in period}_{d-1} + PDLD_d \times \text{% rpt'd in period}_d }{\text{% rpt'd in period}_{d-1} + \text{% rpt'd in period}_d}
+  (\#eq:cpdld-ratio-recurse)
+\end{equation}
+
+* Or us calculator data table to calculate $\dfrac{\sum xy}{\sum y}$ adding one pair at a time
 
 ### Application {#application-teng}
 
@@ -302,7 +316,7 @@ For each period:
 
 **For each quarter**
 
-1) Determine reported losses @ prior adjustment
+1) Determine reported losses @ prior adjustment (given)
 
 2) Estimate ultimate losses
 
@@ -310,23 +324,35 @@ For each period:
 
 4) $\sum \limits_{qtr \in last \: adj \: age \: i} \Delta L_{qtr}$
 
+    * i.e. group the quarters by the age of next adjustments they're waiting for
+
 **For each year**
 
 1) Expected premium emergence = $\Delta P = CPDLD \times \Delta L_{yr}$
 
-2) Determine premiums booked through prior adjustment
+2) Determine premiums booked through prior adjustment (given)
 
 3) Estimated total premium = (1) + (2)
 
-4) **Premium asset** = Premium booked as of current evaluation - (3)
+4) **Premium asset** = (3) - Premium booked as of current evaluation
 
-    * Premium booked as of current eval $\neq$ premium booked through prior adjustment due to: timing of retro adjustments, minor premium adjustments, interim premium booking
-    
-    * Text doesn't say make adjustment though
-    
-For the most recent periods need to adjust for only exposure period that is being earned out
+```{remark}
 
-* Pro rate your ultimate losses by % earned premium
+
+* Premium booked as of current eval $\neq$ premium booked through prior adjustment due to:
+
+    * Timing of retro adjustments
+    
+    * Minor premium adjustments
+    
+    * Interim premium booking
+    
+* Negative premium assets means returning premium to client
+
+* For the most recent periods need to adjust for only exposure period that is being earned out
+
+    * Pro rate your ultimate losses by % earned premium
+```
 
 ### Further Issues
 
@@ -338,7 +364,7 @@ For premium that is not secured, a provision for bad debt should be held
 
 ## Feldblum's Discussion
 
-We do not develop premium directly because:
+We **do not develop premium directly** because:
 
 * Estimate of ultimate inc'd losses can be obtained sooner
 
@@ -346,7 +372,7 @@ We do not develop premium directly because:
 
 Both Fitzgibbon and PDLD are based on the retro rating formula (with some difference)
 
-Both methods estimate the parameter on the data, downside:
+Both methods estimate the parameter on the data, **downside**:
 
 1. Unable to look up retro parameters since this is done for the whole book of business
 
@@ -358,11 +384,11 @@ $\therefore$ Easier to do a regression using empirical data to estimate the para
 
 **Fitzgibbons and Berry** 
 
-* Also create a linear relationship of premium to losses, but they forecast ultimate premium directly, rather than premium development $\Rightarrow$ can lead to large deviations
+* Also create a linear relationship of premium to losses, but they **forecast ultimate premium directly**, rather than premium development $\Rightarrow$ can lead to large deviations
 
 * Premium asset $\propto$ expected unreported losses
 
-* Does not respond if the actual premium to loss relationship is different than estimated
+* **Caveat**: Does not respond if the actual premium to loss relationship is different than estimated
 
 * Berry's solution is to give less weight to this method as the year matures and give more weight to his DR2 method
 
@@ -396,19 +422,20 @@ Simple adjustment, subtract out the fixed component of $CPDLD_1$
 
 Fixed component of $CPDLD_1$:
 
-$$\dfrac{P_{fixed}}{\operatorname{E}[L]} = \underbrace{\dfrac{BP}{SP} \cdot TM}_{\text{Basic Prem Charge}} \Big / ELR$$
+\begin{equation}
+  \dfrac{P_{fixed}}{\operatorname{E}[L]} = \underbrace{\dfrac{BP}{SP} \cdot TM}_{\text{Basic Prem Charge}} \Big / ELR
+  (\#eq:feldblum-adj-prem)
+\end{equation}
     
 * Based on $P_{fixed} = BP \cdot TM$ and divided by $\mathrm{E}[L]$
 
 We calculate $P$ as the fixed component $\times$ $\mathrm{E}[L]$ and add the variable component $\times$ $L$
 
+* Fixed component and variable components are what?
+
 This can help better understand changes in the $PDLD_1$ ratio
     
 ## Past Exam Questions
-
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
 
 **Concepts**
 
@@ -424,11 +451,13 @@ Haven't done TIA practice questions
 
 * 2003 - #10: Feldblum comment on Teng Perkins: premium responsiveness decreases at higher LR for a book of business
 
-* 2007 - #36: Retro premium and reported losses relationship
+* 2007 - #36: Retro premium and reported losses relationship on graph
 
-* $\star$ 2014 #12 \@ref(fig:2014-12): incremental losses vs premium
+* $\star$ 2014 #12 \@ref(fig:2014-12): incremental losses vs premium relationships
 
 * $\star$ 2015 #14 \@ref(fig:2015-14): PDLD ratio
+
+* TIA 2b: Difference in the first period
 
 **Calculations**
 
@@ -451,15 +480,33 @@ from prior adjustment - premium booked as of current
 
 * 2008 - #14: premium asset
 
-* 2009 - #6 \@ref(fig:2009-6): Premium after 2^nd^ retro adjustment
+* $\star$ 2009 - #6 \@ref(fig:2009-6): Premium after 2^nd^ retro adjustment
 
 * $\star \star$ 2012 - #7 \@ref(fig:2012-7): Retrospective premium asset, good question, 2 methods to do
+
+    * Can calculate a weighted capping ratio
 
 * $\star$ 2013 #6 a-c: PDLD 1 to 3 and relationship with loss capping ratio, ratio should decrease monotonically
 
     * State whether you using the loss capping ration as cumulative or incremental
 
 * 2015 #14 a: PDLD 1 and 2 plug and play
+
+* $\star \star$ 2016 #18: quarter calculation premium asset
+
+* TIA 1: Retro formula plug and play
+
+* TIA 2a: plug and play
+
+* $\star$ TIA 3: PDLD and CPDLD and practical application
+
+* $\star$ TIA 4: CPDLD for all AYs and premium asset
+
+* $\star \star$ TIA 5: Premium asset for quarterly eval
+
+* TIA 6: PDLD calc given loss and premium
+
+* $\star$ TIA 7: CPDLD, using the enhancement
 
 ### Question Highlights
 

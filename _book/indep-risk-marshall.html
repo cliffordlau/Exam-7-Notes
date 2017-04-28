@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="a-framework-for-assessing-risk-margins-k-marshall-et-al-.html">
-<link rel="next" href="three-sources-of-uncertainty.html">
+<link rel="prev" href="three-sources-of-uncertainty.html">
+<link rel="next" href="int-sys-comp.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -146,31 +146,63 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">12.1</span> Introduction</h2>
-<p>Estimate <em>risk margin</em> for <em>unpaid losses</em> and <em>premium liabilities</em></p>
+<div id="indep-risk-marshall" class="section level2">
+<h2><span class="header-section-number">12.3</span> Independent Risk</h2>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-1" class="definition"><strong>Definition 12.2 </strong></span>Independent Risk = Randomness inherent to the insurance process</p>
 <ul>
-<li><p>An additional reserve held as a safety measure in case losses end up worse than expected</p></li>
-<li><p><em>Risk margin</em> = 75<sup>th</sup> percentile - mean</p>
-<p>(an Australian regulatory standard)</p></li>
-<li><p>Based on CoV</p></li>
+<li><p><em>Parameter Risk</em>: ability to select correct parameters and appropriate model</p></li>
+<li><em>Process Risk</em>: randomness e.g. tossing a die
+</div>
+<p></p></li>
 </ul>
-<p>Goal is to create a framework for an actuary to proceed through to estimate the risk margin</p>
-<p><strong>Data Segmentation</strong></p>
+<p>Use <strong>stochastic modeling</strong> to analyze independent risk</p>
 <ul>
-<li><p>Portfolio for the analysis should be split into reasonably <em>homogeneous groups</em></p></li>
-<li><p>Might combine or further split groups from what was used for liability valuation</p></li>
-<li><p>Balance the practical benefits from large groups vs insight gained from smaller groups</p></li>
-<li><p>Might want to further split if a LoB has a portion that has significantly more uncertainty than another part (e.g. HO CAT/non CAT)</p></li>
+<li><p>Focus on periods where episodes of systemic risk were non-existent or minimal</p>
+<p>Limit the impact of the <em>historical external episodes</em> and allow us to focus on the independent risk</p></li>
+<li><p>Supplement with internal and external benchmarking</p></li>
 </ul>
+<div id="cov-for-independent-risk" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> CoV for Independent Risk</h3>
+<p>Model the parameter and process risk together</p>
+<ul>
+<li><a href="#mack-CI-methods">Mack</a>, <a href="#odp-boot-sim">bootstrap</a>, stochastic CL, GLM, <a href="#Verall-intro">Bayesian</a></li>
+</ul>
+<p>Ideally the model adequately <strong>model away the systemic risk</strong> so all that is left is the independent risk</p>
+<ul>
+<li><p>Residual should only have independent risk</p></li>
+<li><p><strong>For small data set</strong>: difficult to model away the external systemic risk</p>
+<ul>
+<li><p><strong>Solution</strong>: Do not model away past episodes of systemic risk</p>
+<p>Use results as starting point and then add a margin for external systemic risks not in data to have a measure of independent and external systemic risk</p></li>
+</ul></li>
+</ul>
+<p>Complexity of the model should be commensurate with the importance of the total risk margin</p>
+<p>Models for <strong>outstanding claims liabilities</strong>:</p>
+<ul>
+<li><p>GLM and bootstrapping are particularly useful</p></li>
+<li><p>They can <em>isolate</em> the independent risks</p></li>
+<li><p><em>Graphing residuals</em> again AY, age, experience period can used to identify past systemic episodes</p></li>
+</ul>
+<p>Models for <strong>premium liabilities</strong>:</p>
+<ul>
+<li><p>GLM, bootstrap, Bayesian</p></li>
+<li><p>Can model frequency and severity CoV then combine</p>
+<ul>
+<li><p><em>Frequency</em>: Remove past systemic episodes</p></li>
+<li><p><em>Severity</em>: Adjust for inflation and seasonality</p></li>
+</ul></li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="a-framework-for-assessing-risk-margins-k-marshall-et-al-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="three-sources-of-uncertainty.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="three-sources-of-uncertainty.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="int-sys-comp.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

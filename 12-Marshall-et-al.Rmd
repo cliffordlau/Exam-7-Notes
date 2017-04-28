@@ -1,55 +1,64 @@
 # A Framework for Assessing Risk Margins - K. Marshall et al.
 
-This had some pretty good past exam questions, need to know the qualitative items quite well
+Importance of [qualitative analysis](#marshall-quant-v-qual)
 
-Know why we need qualitative analysis
+[***Independent Risk***](#indep-risk-marshall)
 
-**Independent**
+* Parameter and process variance model with stochastic model
 
-Parameter and process variance model with stochastic model
+[***Internal Systemic Risk***](#int-sys-comp)
 
-**Internal Systemic**
+$\star$ Three components of internal systemic risk \@ref(def:three-int-sys-risk)
 
-Know the [3 components](#int-sys-comp)
+[CoV calculation](#cov-int-marshall):
 
-Score against best practice and calibrate to CoV
+* [Score against best practice](#score-bp-int-marshall) (Table \@ref(tab:marshall-spec-error-int-sys), \@ref(tab:marshall-para-error-int-sys) and \@ref(tab:marshall-data-error-int-sys))
 
-* Know how to score given actual examples as in past exam
-* Hindsight analysis
+* [Calibrate to CoV](#cali-score-int-marshall) for each component where CoV $\in [5\%, 25\%]$
 
-**Extnernal Systemic**
+    * 2 Hindsight analysis
 
-Know the different [risk categories](#ext-sys-risk)
+[***Extnernal Systemic Risk***](#ext-sys-risk)
 
-* And what lines they impact most
+$\star$ Different [risk categories](#risk-categories-marshall)
 
-Use benchmark similar to internal but select CoV directly
+* Certain lines are impacted more than other by a given risk
 
-**Correlation**
+[CoV](#cov-ext-marshall): Use benchmark similar to internal but select CoV directly
 
-Risk sources are independent of each other
+$\star$ ***Correlation***
 
-Independent: assume independence across lines, weight by liabilities
+* The 3 main risk sources are independent of each other and therefore can be sum with square root rule \@ref(eq:marshall-source-2)
 
-Internal: base on correlation matrix $\Sigma$, again weighted by liabilities
+    * Pros and cons quantitative method for correlation
 
-External: correlation between each valuation group and risk categories $\Rightarrow$ then roll up to the risk categories and assume they are independent of each other
+* **Independent** \@ref(eq:marshall-indep-corr):
 
-**Risk Margin**
+    Assume independence across lines, weight by liabilities
 
-$\text{Risk Margin} = \underbrace{\mu}_{\text{Expected Loss}} \times \underbrace{\phi }_{\text{CoV}} \times \underbrace{Z_{\alpha}}_{0.67\text{ for the }75^{th}\text{ percentile}}$
+* **Internal** \@ref(eq:marshall-int-sys-corr):
 
-**Addiation analysis**
+    Base on correlation matrix $\Sigma$, again weighted by liabilities
 
-Sensitivity, scenario testing
+* **External** \@ref(eq:marshall-ext-sys-corr-1) & \@ref(eq:marshall-ext-sys-corr-2):
 
-[Internal benchmarking](#marshall-add-analysis), important to know the relationships and consistency, been heavily tested in the past
+    Correlation between each valuation group and risk categories $\Rightarrow$ then roll up to the risk categories and assume they are independent of each other
 
-External benchmarking
+***Risk Margin***: \@ref(eq:risk-margin-marshall)
 
-Hindsight and mechanical hindsight
+* $\alpha$-tile \@ref(eq:risk-margin-alpha-marshall)
 
-**Regularity of review**
+[***Addition analysis***](#marshall-add-analysis)
+
+* Sensitivity, scenario testing
+
+* $\star$ [Internal benchmarking](#marshall-add-analysis), important to know the relationships and consistency, been heavily tested in the past
+
+* External benchmarking
+
+* Hindsight and mechanical hindsight
+
+***Regularity of review***
 
 ## Introduction
 
@@ -94,7 +103,7 @@ Systemic Risk
 * Need to make assumptions about the correlation of the different risks
 ```
 
-### Quantitative vs Qualitative Analysis
+### Quantitative vs Qualitative Analysis {#marshall-quant-v-qual}
 
 **Limitation of quantitative analysis**
 
@@ -109,19 +118,19 @@ $\therefore$ Need qualitative measures as well to examine the uncertainty
 Table: (\#tab:marshall-quantitative) Quantitative method effectiveness
 
 | Effective | Not effective |
-| ------------------------------------ | ------------------------------ |
+|:------------------------------------ |:------------------------------ |
 | Independent risk | Internal systemic risk |
 | *Past episodes* of external systemic risk | External systemic risk that has not yet occurred |
 
-* Good stochastic model will fit away past systemic episodes (e.g. high inflation) while we still want to hold a margin for the future
+* Good stochastic model will **fit away past systemic episodes** (e.g. high inflation) while we still want to hold a margin for the future
 
 * Outcome dependent significantly on actual episodes of risk, not all potential ones (for systemic risk that was not fitted away)
 
     * Need to judge if episodes in data are representative going forward
 
-* Model is unlikely to pick up internal systemic risk from the actuarial valuation process
+* Model is unlikely to pick up **internal systemic risk** from the actuarial valuation process
 
-## Independent Risk
+## Independent Risk {#indep-risk-marshall}
 
 ```{definition}
 Independent Risk = Randomness inherent to the insurance process
@@ -145,35 +154,35 @@ Model the parameter and process risk together
 
 * [Mack](#mack-CI-methods), [bootstrap](#odp-boot-sim), stochastic CL, GLM, [Bayesian](#Verall-intro)
 
-Ideally the model adequately model away the systemic risk so all that is left is the independent risk
+Ideally the model adequately **model away the systemic risk** so all that is left is the independent risk
 
 * Residual should only have independent risk
 
-* For small data set, difficult to model away the external systemic risk 
+* **For small data set**: difficult to model away the external systemic risk 
 
-    * Do not model away past episodes of systemic risk
+    * **Solution**: Do not model away past episodes of systemic risk
     
-    * Use results as starting point and then add a margin for external systemic risks not in data to have a measure of independent and external systemic risk
+        Use results as starting point and then add a margin for external systemic risks not in data to have a measure of independent and external systemic risk
 
 Complexity of the model should be commensurate with the importance of the total risk margin
 
-Models for *outstanding claims liabilities*:
+Models for **outstanding claims liabilities**:
 
 * GLM and bootstrapping are particularly useful
 
-* They can isolate the independent risks
+* They can *isolate* the independent risks
 
-* Graphing residuals again AY, age, experience period can used to identify past systemic episodes
+* *Graphing residuals* again AY, age, experience period can used to identify past systemic episodes
 
-Models for *premium liabilities*:
+Models for **premium liabilities**:
 
 * GLM, bootstrap, Bayesian
 
 * Can model frequency and severity CoV then combine
 
-    * Frequency: Remove past systemic episodes
+    * *Frequency*: Remove past systemic episodes
     
-    * Severity: Adjust for inflation and seasonality
+    * *Severity*: Adjust for inflation and seasonality
 
 ## Internal Systemic Risk {#int-sys-comp}
 
@@ -191,6 +200,7 @@ Examples:
 
 * Reserve selection (e.g. management overrides actuary's opinion)
 
+```{definition, three-int-sys-risk}
 *3 components* of internal systemic risk:
 
 1) **Specification Error**:
@@ -204,13 +214,18 @@ Examples:
 3) **Data Error**:
 
     Lack of data, lack of knowledge of the underlying pricing, u/w, and claim management process, inadequate knowledge of portfolio
+```
 
-### CoV for Internal Systemic Risk
+### CoV for Internal Systemic Risk {#cov-int-marshall}
 
 **Benchmarking technique**:  
 Need to define a list of **risk indicators**, score them against best practice, map the scores to a CoV
 
-***Score Against Best Practice***
+1. [Score against best practice](#score-bp-int-marshall)
+
+2. [Calibrate Score to CoV]()
+
+#### Score Against Best Practice {#score-bp-int-marshall}
 
 1) For each valuation group, assign a score (1-5) for each **risk indicator**
 
@@ -247,7 +262,7 @@ Table: (\#tab:marshall-data-error-int-sys) Data Error Risk Indicators
 
 We score the 3 components for each valuation group (OCL and PL) and then roll up the score and assign the average grade for each valuation group to a CoV
 
-***Calibrate Score to CoV***
+#### Calibrate Score to CoV {#cali-score-int-marshall}
 
 Significant amount of judgement supplement by quantitative analysis
 
@@ -263,7 +278,7 @@ Analysis of past model performance should aid in estimating the potential variab
 
     Mechanically do various ex post analysis, and see how prediction error can be reduced; e.g. do a detailed vs crude and see the difference
 
-Additional comments:
+*Additional comments*:
 
 * Improvement from poor to fair is greater than from fair to good
 
@@ -287,14 +302,14 @@ External systemic risk = systemic risk that are not internal
 
 Need to consider systemic risk not in the data set (i.e. Can't only consider actual episodes of systemic risk in the data set)
 
-See risk categories in [section below](#risk-categories-marshall)
+See **risk categories** in [section below](#risk-categories-marshall)
 
 ```{remark}
 
 
 * A handful of these risk categories will dominate the uncertainty for that valuation group
 
-* Useful to rank the risk categories in order of impact on the uncertainty of a valuation group
+* Useful to **rank** the risk categories in order of impact on the uncertainty of a valuation group
 
     (This will give guidance on how to score them)
 
@@ -311,15 +326,19 @@ See risk categories in [section below](#risk-categories-marshall)
     * Emerging trends - portfolio and claims
 ```
 
-### CoV for External Systemic Risk
+### CoV for External Systemic Risk {#cov-ext-marshall}
 
-Use bench marking technique similar to internal systemic risk
+Use [bench marking](#cov-int-marshall) technique similar to internal systemic risk
 
-Straight up select the CoV, **rank** the risk in order of importance to help with the selection
+**Directly select the CoV**
 
-Quantitative approach can provide in insight but we need to also consider possible emerging and potential future sources of external systemic risk
+* **Rank** the risk in order of importance to help with the selection
 
-* Should bare in mind the skewness (might not be relevant for 75^th^ percentile if it is very skewed)
+*Quantitative* approach can provide in insight
+
+* But we need to also consider **possible emerging and potential future sources** of external systemic risk
+
+* Should bare in mind the **skewness** (might not be relevant for 75^th^ percentile if it is very skewed)
 
 Consider risk that affect u/w and risk selection, claims management, expense management, economic/legal environment
 
@@ -435,7 +454,7 @@ Assumes the 3 main risk components are independent of each other
 
 ### Independent Risk Cov Correlation
 
-Assume independence across liabilities, where $i$ is the different valuation groups
+Assume *independence* across liabilities, where $i$ is the different valuation groups
 
 \begin{equation}
   \phi_{indep}^2 = \sum_i (\phi_i w_i)^2 = (\vec{\phi w})(\vec{\phi w})^T
@@ -474,7 +493,7 @@ For a given risk category $c$, the CoV is:
   (\#eq:marshall-ext-sys-corr-1)
 \end{equation}
 
-Then assume independence between risk categories:
+Then assume *independence* between risk categories:
 
 \begin{equation}
   \phi_{external}^2 = \sum \limits_{c \: \in risk \: category} \phi_{external, c}^2
@@ -485,7 +504,7 @@ Then assume independence between risk categories:
 
 ## Risk Margin
 
-Risk Margin
+***Risk Margin***
 
 \begin{equation}
   \mu \times \phi \times Z_{\alpha}
@@ -500,7 +519,10 @@ Risk Margin
 
 $\alpha$ %-ile
 
-$$\mu(1+\phi Z_{\alpha})$$
+\begin{equation}
+  \mu(1+\phi Z_{\alpha})
+  (\#eq:risk-margin-alpha-marshall)
+\end{equation}
 
 ## Additional Analysis {#marshall-add-analysis}
 
@@ -604,10 +626,6 @@ Should consider applying the key steps to any new portfolio
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
 **Concepts**
 
 * $\star$ [2013 #8 b f g h](#2013-8): Correlations, internal benchmarking
@@ -625,6 +643,8 @@ Haven't done TIA practice questions
 * $\star$ [2013 #8 a c d e](#2013-8): Correlations, risk margins
 
 * 2015 #8 d: Independent CoV
+
+* TIA 1: risk margin calculation
 
 ### Question Highlights
 
