@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era-1-1-1-3-introduction-brehm-et-al-.html">
-<link rel="next" href="era-1-2-overview-of-enterprise-risk-management.html">
+<link rel="prev" href="model-qual-era1.html">
+<link rel="next" href="setting-cap-era1.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -147,51 +147,219 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="era-1.1-historical-context" class="section level2">
-<h2><span class="header-section-number">16.1</span> ERA 1.1 Historical Context</h2>
-<p><strong>Two similar quantitative initiatives</strong> from the past</p>
+<div id="key-elements-era1" class="section level2">
+<h2><span class="header-section-number">16.8</span> Key Elements of Enterprise Risk Model</h2>
+<ol style="list-style-type: decimal">
+<li><p><a href="key-elements-era1.html#era1-uw-risk">Underwriting</a> Risk</p></li>
+<li><p><a href="key-elements-era1.html#era-1-3-res-risk">Reserving</a> Risk</p></li>
+<li><p><a href="key-elements-era1.html#era-1-3-ass-risk">Asset</a> Risk</p></li>
+<li><p><a href="key-elements-era1.html#era-1-3-dep-risk">Dependencies</a> (Correlation)</p></li>
+</ol>
+<div id="era1-uw-risk" class="section level3">
+<h3><span class="header-section-number">16.8.1</span> Underwriting Risk</h3>
+<ol style="list-style-type: lower-roman">
+<li><p><a href="key-elements-era1.html#era-1-3u-w-risk-1">Loss frequency &amp; severity distribution</a></p></li>
+<li><p><a href="key-elements-era1.html#era-1-3u-w-risk-1">Pricing risk</a></p></li>
+<li><p><a href="key-elements-era1.html#era-1-3u-w-risk-1">Parameter risk</a></p>
 <ul>
-<li><p>Dynamic Financial Analysis</p>
-<ul>
-<li><p>RBC (from 1990s) was the precursor to scenario testing and Dynamic Financial Analysis (DFA) but DFA didn’t pan out</p></li>
-<li><p>DFA requires support from many functions and was not widely used due to lack of natural champion</p></li>
+<li><p>Estimation risk</p></li>
+<li><p>Projection risk</p></li>
+<li><p>Event risk</p></li>
+<li><p>Systematic risk</p></li>
 </ul></li>
-<li><p>Cat Model</p>
+<li><p><a href="key-elements-era1.html#era-1-3u-w-risk-1">Cat model uncertainty</a></p></li>
+</ol>
+<div id="era-1-3u-w-risk-1" class="section level4">
+<h4><span class="header-section-number">16.8.1.1</span> Loss Frequency and Severity Distribution</h4>
+<p>Use statistical methods to:</p>
 <ul>
-<li><p>Primitive in 1980s</p></li>
-<li><p>Faced external and internal pressure to use cat models after HU Andrew</p></li>
-<li><p>Nowadays it would be considered mismanagement for a company not to use cat models</p></li>
+<li><p>Estimate parameters</p></li>
+<li><p>Test quality of fit</p></li>
+<li><p>Understand uncertainties that remain</p></li>
+</ul>
+<p>Common distributions for insurance loss are available in many papers</p>
+<ul>
+<li><p><a href="https://www.casact.org/pubs/proceed/proceed83/83156.pdf">Transformed Beta and Gamma Distributions and Aggregate Losses - Venter</a></p></li>
+<li><p>Continuous Distributions - Kreps</p></li>
+</ul>
+</div>
+<div id="era-1-3u-w-risk-2" class="section level4">
+<h4><span class="header-section-number">16.8.1.2</span> Pricing Risk</h4>
+<p>Instability from variations in the premiums as well as losses</p>
+<ul>
+<li><p>Misestimation of projected losses as well as competitive market pressures</p></li>
+<li><p>Deficiency may exist for many years for long tailed lines <span class="math inline">\(\Rightarrow\)</span> Accumulation of reserve deficiency</p></li>
+<li><p>Model should include u/w cycle as it contributes significantly to pricing risk</p>
+<ul>
+<li>See additional details in <a href="#era5-uw-cycle-intro">ERA 5.2</a></li>
 </ul></li>
 </ul>
-<p>There is a spectrum of acceptance for both internal and external, and ERM is somewhere between the 2 examples above</p>
-<p><strong><em>External Pressure</em></strong> on ERM as of 2007:</p>
+</div>
+<div id="era-1-3u-w-risk-3" class="section level4">
+<h4><span class="header-section-number">16.8.1.3</span> Parameter Risk</h4>
+<p>Misestimated parameters, imperfect form and risk not modeled (Likely largest risk net of reinsurance (larger than cat exposure))</p>
+<p><strong><em>Estimation Risk</em></strong><br />
+Error in estimations the form and parameters</p>
 <ul>
-<li><p>International Association of Insurance Supervision (IAIS) began development of an approach of rating insurer based on Basel II</p>
-<p>See 2004 IAA document</p></li>
-<li><p>Canada (<em>Dynamic Capital Adequacy Test</em>) and Australia (<em>Internaal Model Based Method</em>) developed and implemented regulatory requirements regarding the construction and use of internal risk models</p></li>
-<li><p>UK (<em>Financial Service Authority</em>) implemented Individual Capital Adequacy Standards (<em>ICAS</em>) in 2004:</p>
-<p>“<em>A firm is required to undertake regular assessments of the amount and quality of capital which in their view is adequate for the size and nature of their business…</em>”</p></li>
-<li><p>NAIC is moving towards a new audit paradigm:</p>
-<p><strong>C</strong>apital adequacy, <strong>A</strong>sset quality, <strong>R</strong>eserves, <strong>R</strong>einsurance, <strong>M</strong>anagement, <strong>E</strong>arnings and <strong>L</strong>iquidity (<strong>CARRMEL</strong>)</p></li>
-<li><p>2005 S&amp;P stated that a firm’s EMR program will become a critical component in its rating methodology</p></li>
+<li>Depends on available data (i.e. more and better data <em>reduces</em> this risk)</li>
 </ul>
-<p><strong><em>Internal Champion</em></strong></p>
+<p><strong><em>Projection Risk</em></strong><br />
+Error on forecast of future value even if we fit the historical data accurately</p>
 <ul>
-<li><p>ERM needs an <strong>internal</strong> champion (e.g. CRO) with:</p>
+<li><p>Examples:</p>
 <ul>
-<li><p><strong>Quantitative skills</strong></p></li>
-<li><p><strong>Operational experience</strong></p></li>
-<li><p><strong>Political skills</strong> (executive rank) to work across organizational silos</p></li>
+<li><p>Freq/Sev trend from the time of the data to the current and future underwriting periods</p></li>
+<li><p>Development of ultimate losses</p></li>
+</ul></li>
+<li><p>Affected by macro factors (e.g. inflation) and the corresponding dependencies should be reflected in the model</p></li>
+<li><p>Unexpected change in external risk conditions also add to projection risk, e.g.</p>
+<ul>
+<li><p>Lower fuel price <span class="math inline">\(\Rightarrow\)</span> Increased driving</p></li>
+<li><p>Long term shift to more extreme weather</p></li>
 </ul></li>
 </ul>
+<p><strong><em>Event Risk</em></strong>:<br />
+Causal link between a large unpredictable event and losses to an insurer</p>
+<p>Example:</p>
+<ul>
+<li><p>Court ruling that favors a large group of policyholders (e.g. class action)</p></li>
+<li><p>Exposure that existed, unknown, for many years comes to light (e.g. asbestos)</p></li>
+<li><p>New cause of loss emerges that was previously regarded as not covered (e.g. environmental, CD)</p></li>
+<li><p>Regulator or court expands coverage by barring important exclusions</p></li>
+<li><p>New entrant into market reduces rates to grab market share</p></li>
+</ul>
+<p><strong><em>Systematic Risk</em></strong>:</p>
+<ul>
+<li><p>Operates simultaneously on a large number of policies</p></li>
+<li><p>Undiversifiable, i.e. do not improve with added volume</p></li>
+<li><p>e.g. macro factors such as inflation</p></li>
+</ul>
+<p>See additional detail in <a href="#era3-2-intro">ERA 3.2</a></p>
+</div>
+<div id="era-1-3u-w-risk-3" class="section level4">
+<h4><span class="header-section-number">16.8.1.4</span> Catastrophe Modeling Uncertainty</h4>
+<p>Exposure to natural and man-made cat</p>
+<ul>
+<li><p>Likely largest risk after parameter risk, special case of parameter risk</p></li>
+<li><p>Based on proprietary cat models, further source of uncertainty</p>
+<ul>
+<li><p>Differences between commercial models and different versions of the same model</p></li>
+<li><p>Considerable amount of uncertainty in the probabilities of various events and the amount of insured damage</p></li>
+<li><p>Additional uncertainty from data quality</p>
+<ul>
+<li>Mismatches of company data fields and cat model assumptions</li>
+</ul></li>
+</ul></li>
+<li><p>Can quantified by the use of more than one model for each peril</p></li>
+<li><p>Cat distributions are subject to the same considerations of parameter risk and correlation as other risk distributions</p></li>
+</ul>
+</div>
+</div>
+<div id="era-1-3-res-risk" class="section level3">
+<h3><span class="header-section-number">16.8.2</span> Reserving Risk</h3>
+<p>Adverse development can be significant for long tailed lines</p>
+<p><span class="math inline">\(\uparrow\)</span> reserve uncertainty <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\uparrow\)</span> capital requirement &amp; <span class="math inline">\(\uparrow\)</span> time holding the capital</p>
+<p>Model needs to capture both process variance and parameter risk</p>
+<p>Key aspects of risk modeling process</p>
+<ul>
+<li><p>Specifying the reserve runoff model</p></li>
+<li><p>Testing it with quality of fit measures</p></li>
+</ul>
+<p>Unearned premium reserve should be modeled in <a href="key-elements-era1.html#era1-uw-risk">underwriting risk</a></p>
+</div>
+<div id="era-1-3-ass-risk" class="section level3">
+<h3><span class="header-section-number">16.8.3</span> Asset Risk</h3>
+<p>Need to focus on issues of the specific markets that the company operates</p>
+<p>Main asset classes: <strong>equities</strong>, <strong>fixed income</strong>, <strong>real estate</strong></p>
+<ul>
+<li><p>Different types of fixed income are important in different regions</p></li>
+<li><p>FX and inflation are closely related to asset modeling as well</p></li>
+</ul>
+<p><strong><em>Asset Modeling: Probabilistic Reality</em></strong></p>
+<ul>
+<li><p>Modeling <strong>scenarios</strong> consistent with historical patterns</p></li>
+<li><p>Generate a large variety of scenarios against which to test the insurer’s strategy</p></li>
+<li><p>Scenarios are weighted by probability</p></li>
+<li><p>Scenarios should be reasonable when compared to historical patterns</p></li>
+</ul>
+<p><strong><em>Asset liability matching</em></strong></p>
+<ul>
+<li><p>Offset between insurance risk and investment risk</p></li>
+<li><p>P&amp;C companies can opt for longer duration assets and not match the liabilities to increase investment return while still maintain reasonable ALM risk</p>
+<ul>
+<li><p>Need to consider that P&amp;C liabilities are inflation sensitive as well</p></li>
+<li><p>Or if liabilities are carried at PV marked to current interest rate</p></li>
+</ul></li>
+</ul>
+<p>Efficient Frontier: <span class="math inline">\(\sigma\)</span> vs <span class="math inline">\(\operatorname{E}[Return]\)</span></p>
+<ul>
+<li><p>See how it changes by modifying reinsurance structure or asset mix</p></li>
+<li><p>More details in <a href="#era2-4-intro">ERA 2.4</a></p></li>
+</ul>
+<p><strong><em>Modeling Considerations</em></strong></p>
+<ul>
+<li><p><strong>Bonds</strong>:</p>
+<ul>
+<li><p>Model with <em>arbitrage free models</em></p></li>
+<li><p>Should capture historical features of bond markets</p>
+<p>(high auto-correlations and distribution of yield spreads)</p></li>
+</ul></li>
+<li><p><strong>Equities</strong>:</p>
+<ul>
+<li><p>Incorporate <em>correlations with bonds</em></p></li>
+<li><p>Geometric <em>Brownian motion</em> model with additional volatility is more realistic</p>
+<p>(Allow for more extreme motion or even discontinuities)</p></li>
+</ul></li>
+<li><p><strong>FX</strong>:</p>
+<ul>
+<li><p>First model <em>interest rates of the currencies</em> then model the FX rates</p></li>
+<li><p>Changes in actual and anticipated interest rates in two countries lead to changes in the FX rates</p></li>
+<li><p>Interest rate <em>movements across different economies</em> are correlated as well</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="era-1-3-dep-risk" class="section level3">
+<h3><span class="header-section-number">16.8.4</span> Dependencies</h3>
+<p>Important to capture dependencies or else the model will be unrealistically stable</p>
+<p><strong><em>Sources of Dependencies</em></strong>:</p>
+<ul>
+<li><p>Simultaneous impact of <strong>macro economic conditions</strong> on many risks</p>
+<p>A good ESG should capture the dependence between inflation, interest rates, equity values, etc</p>
+<ul>
+<li><p>This will impact asset values</p></li>
+<li><p>Inflation will impact underwriting losses, loss reserve development</p></li>
+<li><p>Interest rates may influence the underwriting cycle</p></li>
+</ul></li>
+<li><p><strong>U/w cycle</strong>, loss trends and reserve development can be correlated across LoB and with each other</p></li>
+<li><p>Cat and other event losses can impact across lines</p></li>
+<li><p>Large man made cat (e.g. 9/11) can have impact on both insurance and market risk</p></li>
+<li><p>Difficult to quantify</p>
+<ul>
+<li><p>May reference studies of multiple insurers, public insurance industry information and macroeconomic data</p></li>
+<li><p>Still require professional judgement</p></li>
+</ul></li>
+</ul>
+<p><strong><em>Modeling Dependencies</em></strong>:</p>
+<ul>
+<li><p>Avoid using just the correlation coefficient to describe and oversimplify dependency</p></li>
+<li><p>We are most interested in the <strong>tail dependency</strong></p>
+<ul>
+<li>e.g. High inflation or large cat that impacts multiple LoB that would typically be uncorrelated</li>
+</ul></li>
+<li><p>Use <strong>copulas</strong> to capture different forms of dependency</p>
+<ul>
+<li>See <a href="#era3-3-intro">ERA 3.3</a> for more details</li>
+</ul></li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era-1-1-1-3-introduction-brehm-et-al-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="era-1-2-overview-of-enterprise-risk-management.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="model-qual-era1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="setting-cap-era1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

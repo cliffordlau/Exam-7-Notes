@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era-1-1-1-3-introduction-brehm-et-al-.html">
-<link rel="next" href="era-1-2-overview-of-enterprise-risk-management.html">
+<link rel="prev" href="key-elements-era1.html">
+<link rel="next" href="past-exam-questions.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -147,51 +147,72 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="era-1.1-historical-context" class="section level2">
-<h2><span class="header-section-number">16.1</span> ERA 1.1 Historical Context</h2>
-<p><strong>Two similar quantitative initiatives</strong> from the past</p>
+<div id="setting-cap-era1" class="section level2">
+<h2><span class="header-section-number">16.9</span> Setting Capital Requirements</h2>
+<p>ERM help insurer find the optimum level of capital that balances <strong>efficiency</strong> and <strong>prudence</strong></p>
 <ul>
-<li><p>Dynamic Financial Analysis</p>
-<ul>
-<li><p>RBC (from 1990s) was the precursor to scenario testing and Dynamic Financial Analysis (DFA) but DFA didn’t pan out</p></li>
-<li><p>DFA requires support from many functions and was not widely used due to lack of natural champion</p></li>
-</ul></li>
-<li><p>Cat Model</p>
-<ul>
-<li><p>Primitive in 1980s</p></li>
-<li><p>Faced external and internal pressure to use cat models after HU Andrew</p></li>
-<li><p>Nowadays it would be considered mismanagement for a company not to use cat models</p></li>
-</ul></li>
+<li><p>Policyholders (acting through regulators and rating agencies) demand adequate capital</p></li>
+<li><p>Shareholders require that capital be used efficiently</p></li>
 </ul>
-<p>There is a spectrum of acceptance for both internal and external, and ERM is somewhere between the 2 examples above</p>
-<p><strong><em>External Pressure</em></strong> on ERM as of 2007:</p>
+<p>Set capital to <strong>maximize insurer’s value</strong> creates a conceptual framework that <em>unifies</em> the competing requirements of prudence and efficiency</p>
 <ul>
-<li><p>International Association of Insurance Supervision (IAIS) began development of an approach of rating insurer based on Basel II</p>
-<p>See 2004 IAA document</p></li>
-<li><p>Canada (<em>Dynamic Capital Adequacy Test</em>) and Australia (<em>Internaal Model Based Method</em>) developed and implemented regulatory requirements regarding the construction and use of internal risk models</p></li>
-<li><p>UK (<em>Financial Service Authority</em>) implemented Individual Capital Adequacy Standards (<em>ICAS</em>) in 2004:</p>
-<p>“<em>A firm is required to undertake regular assessments of the amount and quality of capital which in their view is adequate for the size and nature of their business…</em>”</p></li>
-<li><p>NAIC is moving towards a new audit paradigm:</p>
-<p><strong>C</strong>apital adequacy, <strong>A</strong>sset quality, <strong>R</strong>eserves, <strong>R</strong>einsurance, <strong>M</strong>anagement, <strong>E</strong>arnings and <strong>L</strong>iquidity (<strong>CARRMEL</strong>)</p></li>
-<li><p>2005 S&amp;P stated that a firm’s EMR program will become a critical component in its rating methodology</p></li>
+<li>See <a href="#era2-2-intro">ERA 2.2</a> for more detail</li>
 </ul>
-<p><strong><em>Internal Champion</em></strong></p>
+<p>Approaches to setting capital requirements:</p>
+<p><strong><em>1. Default Avoidance</em></strong>:<br />
+Focused on the <strong>tail</strong> and protecting <strong>policyholders</strong></p>
+<p><em>Caveat</em>:</p>
 <ul>
-<li><p>ERM needs an <strong>internal</strong> champion (e.g. CRO) with:</p>
+<li><p>S/h will be hurt at much lower loss amount</p></li>
+<li><p>We have the least confidence in the tail of the model</p></li>
+</ul>
+<p><span class="math inline">\(\hookrightarrow\)</span> More feasible and relevant to focus on thresholds less extreme than default</p>
+<p><strong><em>2. Other Thresholds</em></strong> (Lower than probability of ruin):</p>
+<ol style="list-style-type: lower-roman">
+<li><p><strong>Probability of downgrade</strong></p>
 <ul>
-<li><p><strong>Quantitative skills</strong></p></li>
-<li><p><strong>Operational experience</strong></p></li>
-<li><p><strong>Political skills</strong> (executive rank) to work across organizational silos</p></li>
+<li><p>Significant loss <span class="math inline">\(\leadsto\)</span> <span class="math inline">\(\downarrow\)</span> financial rating <span class="math inline">\(\leadsto\)</span> <span class="math inline">\(\downarrow\)</span> franchise value &gt; loss itself</p></li>
+<li><p>Franchise value: customer base, agency relationships, reputation, infrastructure and expertise</p></li>
 </ul></li>
+<li><p>Sufficient <strong>capital to service renewals</strong></p></li>
+<li><p>Survive and <strong>thrive after major cat</strong></p></li>
+</ol>
+<div id="convert-probability-to-loss" class="section level3">
+<h3><span class="header-section-number">16.9.1</span> Convert Probability to Loss</h3>
+<p>Associate the selected probability level with amount of financial loss</p>
+<ul>
+<li><p>Smallest amount of loss, <span class="math inline">\(\alpha \%\)</span> of the time <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(VaR_{100 - \alpha \%}\)</span></p></li>
+<li><p>Average loss, <span class="math inline">\(\alpha \%\)</span> of the time <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(TVaR_{100 - \alpha \%}\)</span></p></li>
+<li><p>1-in-<span class="math inline">\(x\)</span> years event loss no more than <span class="math inline">\(y \%\)</span> of capital <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\dfrac{100}{y} \times TVaR_{1 - \frac{1}{x}}\)</span></p></li>
 </ul>
+<p><strong>Important</strong>: Risk measures do not tell us how much capital to hold; They tell us for a given level of capital, what is the risk to the company</p>
+<ul>
+<li><p>Determination of optimal capital level is not purely a risk measurement exercise</p>
+<ul>
+<li>Need to balance sufficient financial strength to <strong>attract business* and the need of shareholders to achieve </strong>attractive return**</li>
+</ul></li>
+<li><p>Risk measurement quantifies the risk the company is exposed to in relationship to the capital so established</p></li>
+<li><p>Strategic risk decisions can then be made in the framework created</p></li>
+<li><p>Capital is not set by risk measures, but analyzed by them to understand the sources of risk and for further strategic decision making</p></li>
+</ul>
+</div>
+<div id="risk-adjusted-performance" class="section level3">
+<h3><span class="header-section-number">16.9.2</span> Risk Adjusted Performance</h3>
+<p>Allocate capital to business units <span class="math inline">\(\Rightarrow\)</span> Calculate the rate of return <span class="math inline">\(\dfrac{\text{Profit}}{\text{Capital}}\)</span> for that unit <span class="math inline">\(\Rightarrow\)</span> Compare RoR across BUs</p>
+<p>Can also allocate risk capital to investments <span class="math inline">\(\Rightarrow\)</span> Compare riskiness of investments and u/w</p>
+<ul>
+<li><p>Validity of such a comparison will depend on the consistency of the risk measures that are developed</p></li>
+<li><p>See <a href="#era2-2-intro">ERA 2.2</a> for more detail</p></li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era-1-1-1-3-introduction-brehm-et-al-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="era-1-2-overview-of-enterprise-risk-management.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="key-elements-era1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="past-exam-questions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

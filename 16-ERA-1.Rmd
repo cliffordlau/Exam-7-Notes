@@ -4,6 +4,8 @@
 
 Requirements to promote ERM
 
+* External pressure and internal champion
+
 Definition of ERM \@ref(def:erm-def-era1)
 
 7 [key aspect](#key-aspect-era1) of ERM
@@ -12,31 +14,47 @@ Definition of ERM \@ref(def:erm-def-era1)
 
 Enterprise risk model process
 
-1. [Diagnose](#era1-diagnose): Assess all risk and consider general environment, industry, and firm specific items
+1. [Diagnose](#era1-diagnose):
 
-2. [Analyze](#era1-analyze) what risk are critical and consider correlations; Select measures consistent with management's view of risk and prioritize
+    * Develop threshold for all risk in different categories \@ref(tab:era1-analyze-pillar)
 
-3. [Implement](#era1-implement) ways to manage the risk: avoid, reduce frequency, mitigate severity, transfer, or retain
+2. [Analyze](#era1-analyze):
 
-4. Monitor the process, update when there's new risk, new ways to control or new options to transfer/treating the risk
+    * Prioritize and analyze material risk and correlation
 
-[Goal](#ermodel-overview-era1) of enterprise risk model
+    * Critical risk \@ref(def:era-1-2-crit-risk)
+    
+3. [Implement](#era1-implement):
+
+    * 5 ways to manage the risk: avoid, reduce frequency, mitigate severity, transfer, or retain
+
+4. Monitor the process:
+
+    * Update new risk, ways to control or options to transfer/treating the risk
+
+[Goal](#ermodel-overview-era1) of enterprise risk model and how it help with management functions and strategic decisions
 
 Model [quality](#model-qual-era1)
 
-4 [key elements](#key-elements-era1) of enterprise risk model: underwriting risk, reserving risk, asset risk and dependencies
+* Key elements for good model and factors that impact the quality of model
 
-* Know the different component of u/w risk
+4 [key elements](#key-elements-era1) of enterprise risk model:
 
-* Different asset class modeling
+* [Underwriting](#era1-uw-risk) risk:
 
-* Source of dependencies
+    [Freq & sev](#era-1-3u-w-risk-1), [pricing](#era-1-3u-w-risk-2), [parameter](#era-1-3u-w-risk-3) (estimation, projection, event and systematic) and [cat model](#era-1-3u-w-risk-1) 
 
-Approach to [setting capital](#setting-cap-era1) based on default avoidance or threshold lower than probability of ruin
+* [Reserving](#era-1-3-res-risk) risk:
 
-Risk measures do not tell us how much capital to hold; They tell us for a given level of capital, what the risk to the company is
+* [Asset](#era-1-3-ass-risk) risk for different class of assets:
 
-Risk model can also be used to allocate capital to BUs and investment function to calculate risk-adjusted performance
+    (*Bonds, equities, FX, etc*)
+
+* [Dependencies](#era-1-3-dep-risk), its various sources and how to model them
+
+Approach to [setting capital](#setting-cap-era1) based on **default avoidance* or threshold lower than probability of ruin
+
+Capital allocation
 
 ## ERA 1.1 Historical Context
 
@@ -100,7 +118,7 @@ ERM is the process of *systematically* and *comprehensively*:
 * To **maximize enterprise value**
 ```
 
-### Key aspects of ERM {#key-aspect-era1}
+## Key aspects of Enterprise Risk Management {#key-aspect-era1}
 
 *ERM* is:
 
@@ -122,11 +140,11 @@ ERM is the process of *systematically* and *comprehensively*:
 
 7) Are evaluated as a **tradeoff** of **risk and return**, to maximize firm value
     
-### Risk Taxonomy {#risk-cat-era1}
+## Risk Taxonomy {#risk-cat-era1}
 
 **Insurance Hazard**:
 
-* Unique to insurers that is intentionally taken on to make a profit
+* Unique to insurers that is intentionally taken on to make a profit, the crusx is having inadequate premium to cover the expsosure
 
 * *In-force* exposures:
 
@@ -139,6 +157,8 @@ ERM is the process of *systematically* and *comprehensively*:
 **Financial Risk**:
 
 * Volatility in: interest rate, FX, equity, credit, liquidity
+
+    * Liquidity risk is the risk of having insufficient liquid assets to be able to meet a sudden cash demand
     
 * Focus on *assets* of insurance company (Insurers tend to have high $\frac{Asset}{Equity}$ ratio)
 
@@ -160,11 +180,11 @@ ERM is the process of *systematically* and *comprehensively*:
 Operational and strategic risks are less amenable to *quantitative* modeling
 ```
     
-### Enterprise Risk Model Process
+## Enterprise Risk Model Process
 
 [Diagnose](#era1-diagnose) $\Rightarrow$ [Analyze](#era1-analyze) $\Rightarrow$ [Implement](#era1-implement) $\Rightarrow$ [Monitor](#era1-monitor) $\Rightarrow$ Repeat
 
-#### Diagnose {#era1-diagnose}
+### Diagnose {#era1-diagnose}
 
 High level risk assessment
 
@@ -177,24 +197,26 @@ Table below \@ref(tab:era1-analyze-pillar) can serve as a structured way to anal
 Table: (\#tab:era1-analyze-pillar) Categorization of uncertainties
 
 | General Environment | Industry | Firm Specific |
-| ------------------------ | ------------------------ | ------------------------ |
+|:------------------------ |:------------------------ |:------------------------ |
 | Political uncertainties (*e.g. democratic changes, war, revolution*) | Input market (*e.g. supply, quality*) | Operating (*e.g. labor, supply*) |
 | Government policy (*e.g. fiscal, monetary changes, regulation*) | Product market (*e.g. demand*) | Liability (*e.g. products, employment, production*) |
 | Marcoeconomic environment (*e.g. inflation, interest rates*) | Competitive uncertainties (*e.g. new entrants, rivalry*) | R&D |
 | Social (*e.g. terrorism*) | | Credit |
 | Natural (*e.g. cat events*) | | Behavioral |
 
-#### Analyze {#era1-analyze}
+### Analyze {#era1-analyze}
 
 Analyze risk identified in [step 1](#era1-diagnose) for **materiality** and **prioritize**
 
-**Critical Risk**:
+```{definition, era-1-2-crit-risk, name = "Critical Risk"}
+
 
 * Risk with potential to exceed the company's threshold
 
 * They should be modeled to the extent possible
 
 * Preferably *quantified* with a probability distribution of outcomes
+```
 
 **Correlations** among risk factors must be recognized (distribution integrated across the various risk silos)
 
@@ -204,7 +226,7 @@ Selected **risk measures** must be **consistent** with management's view toward 
 
 **Prioritize** risk factors that contribute to adverse scenarios (or risk metrics) above the critical threshold
 
-#### Implement {#era1-implement}
+### Implement {#era1-implement}
 
 Focus on **managing** risks identified and analyzed as material
 
@@ -224,7 +246,7 @@ Speculative risk factor may provide an opportunity to capitalize on the risk, ra
 
 * Perform a cost/benefit or risk/return trade-off analysis
 
-#### Monitor {#era1-monitor}
+### Monitor {#era1-monitor}
 
 Management need to monitor the process, compare to expectations
 
@@ -256,11 +278,11 @@ Modeling can help with *management functions* and *strategic decisions*:
 
 * Valuing companies for M&A
 
-### Quality of Models {#model-qual-era1}
+## Quality of Models {#model-qual-era1}
 
-**Good Model**:
+***Good Model***:
 
-* Show the *balance* between risk and reward for a *range* of different strategies
+* Show the *balance* between **risk** and **reward** for a **range** of different strategies
 
     (e.g. changing asset mix or reinsurance program or LoB to grow)
 
@@ -268,28 +290,28 @@ Modeling can help with *management functions* and *strategic decisions*:
 
     (Model only approximates reality and the parameters are uncertain)
 
-**Weak Model**:
+***Weak Model***:
 
-* *Over(under)state* risks $\leadsto$ Overly cautious (aggressive) choices
+* **Over(under)state** risks $\leadsto$ Overly cautious (aggressive) choices
 
-Things that affect the suitability and usefulness of the model
+Factors that affect the suitability and usefulness of the model
 
-* Data quality
+* **Data quality**
 
-* Choices on assumptions and mathematical method
+* Choices on **assumptions** and mathematical method
 
-* Variety of different risk elements and how they are represented
+* Variety of different risk elements and **how they are represented**
 
-**Key elements** that differentiate model quality:
+***Key elements*** that differentiate model quality:
 
-* Model:
+* *Model*:
 
     i. Reflects **relative importance** of various risks to business decisions
 
     ii. Includes mathematical techniques to reflect **dependencies**
     
 
-* Modelers:
+* *Modelers*:
 
     i. Have a **deep knowledge** of the **fundamentals** of those risks
 
@@ -303,27 +325,43 @@ Risks less amenable to detailed representation in enterprise risk model (**Non-q
 
 * They are extremely important to the success of a business
 
-* Requires specialized management process and difficult to incorporate into an overall risk model
+* Requires **specialized management process** and difficult to incorporate into an overall risk model
 
-* Can be modeled in bulk using informed judgments (but with high degree of uncertainty)
+* Can be **modeled in bulk** using informed judgments (but with high degree of uncertainty)
 
 * Use model to manage the risk for which the modeling process is effective
 
-* While some risks are at best weakly represented in such a model and requires other management methods
+* While some risks are at best **weakly represented** in such a model and **requires other management methods**
 
-### Key Elements of ERM {#key-elements-era1}
+## Key Elements of Enterprise Risk Model {#key-elements-era1}
 
-1. Underwriting Risk
+1. [Underwriting](#era1-uw-risk) Risk
 
-2. Reserving Risk
+2. [Reserving](#era-1-3-res-risk) Risk
 
-3. Asset Risk
+3. [Asset](#era-1-3-ass-risk) Risk
 
-4. Dependencies (Correlation)
+4. [Dependencies](#era-1-3-dep-risk) (Correlation)
 
-#### Underwriting Risk {#era1-uw-risk}
+### Underwriting Risk {#era1-uw-risk}
 
-***Loss Frequency and Severity Distribution***
+i. [Loss frequency & severity distribution](#era-1-3u-w-risk-1)
+
+ii. [Pricing risk](#era-1-3u-w-risk-1)
+
+iii. [Parameter risk](#era-1-3u-w-risk-1)
+
+    * Estimation risk
+    
+    * Projection risk
+    
+    * Event risk
+    
+    * Systematic risk
+    
+iv. [Cat model uncertainty](#era-1-3u-w-risk-1)
+
+#### Loss Frequency and Severity Distribution {#era-1-3u-w-risk-1}
 
 Use statistical methods to:
 
@@ -339,7 +377,7 @@ Common distributions for insurance loss are available in many papers
 
 * Continuous Distributions - Kreps
 
-***Pricing Risk***
+#### Pricing Risk {#era-1-3u-w-risk-2}
 
 Instability from variations in the premiums as well as losses
 
@@ -351,57 +389,59 @@ Instability from variations in the premiums as well as losses
 
     * See additional details in [ERA 5.2](#era5-uw-cycle-intro)
 
-***Parameter Risk***:  
+#### Parameter Risk {#era-1-3u-w-risk-3}
+
 Misestimated parameters, imperfect form and risk not modeled (Likely largest risk net of reinsurance (larger than cat exposure))
 
-* **Estimation Risk**:  
+***Estimation Risk***  
 Error in estimations the form and parameters
     
-    * Depends on available data (i.e. more and better data *reduces* this risk)
+* Depends on available data (i.e. more and better data *reduces* this risk)
 
-* **Projection Risk**:  
+***Projection Risk***  
 Error on forecast of future value even if we fit the historical data accurately
     
-    * Examples:
+* Examples:
     
-        * Freq/Sev trend from the time of the data to the current and future underwriting periods
+    * Freq/Sev trend from the time of the data to the current and future underwriting periods
     
-        * Development of ultimate losses
+    * Development of ultimate losses
     
-    * Affected by macro factors (e.g. inflation) and the corresponding dependencies should be reflected in the model
+* Affected by macro factors (e.g. inflation) and the corresponding dependencies should be reflected in the model
 
-    * Unexpected change in external risk conditions also add to projection risk, e.g.
+* Unexpected change in external risk conditions also add to projection risk, e.g.
     
-        * Lower fuel price $\Rightarrow$ Increased driving
+    * Lower fuel price $\Rightarrow$ Increased driving
         
-        * Long term shift to more extreme weather
+    * Long term shift to more extreme weather
 
-* **Event Risk**:  
+***Event Risk***:  
 Causal link between a large unpredictable event and losses to an insurer
 
-    Example:
+Example:
     
-    * Court ruling that favors a large group of policyholders (e.g. class action)
+* Court ruling that favors a large group of policyholders (e.g. class action)
     
-    * Exposure that existed, unknown, for many years comes to light (e.g. asbestos)
+* Exposure that existed, unknown, for many years comes to light (e.g. asbestos)
 
-    * New cause of loss emerges that was previously regarded as not covered (e.g. environmental, CD)
+* New cause of loss emerges that was previously regarded as not covered (e.g. environmental, CD)
 
-    * Regulator or court expands coverage by barring important exclusions
+* Regulator or court expands coverage by barring important exclusions
 
-    * New entrant into market reduces rates to grab market share
+* New entrant into market reduces rates to grab market share
 
-* **Systematic Risk**:
+***Systematic Risk***:
 
-    * Operates simultaneously on a large number of policies
+* Operates simultaneously on a large number of policies
     
-    * Undiversifiable, i.e. do not improve with added volume
+* Undiversifiable, i.e. do not improve with added volume
 
-    * e.g. macro factors such as inflation
+* e.g. macro factors such as inflation
     
-* See additional detail in [ERA 3.2](#era3-2-intro)
+See additional detail in [ERA 3.2](#era3-2-intro)
 
-***Catastrophe Modeling Uncertainty***  
+#### Catastrophe Modeling Uncertainty {#era-1-3u-w-risk-3}
+
 Exposure to natural and man-made cat
 
 * Likely largest risk after parameter risk, special case of parameter risk
@@ -420,7 +460,7 @@ Exposure to natural and man-made cat
 
 * Cat distributions are subject to the same considerations of parameter risk and correlation as other risk distributions
 
-#### Reserving Risk
+### Reserving Risk {#era-1-3-res-risk}
 
 Adverse development can be significant for long tailed lines
 
@@ -436,7 +476,7 @@ Key aspects of risk modeling process
 
 Unearned premium reserve should be modeled in [underwriting risk](#era1-uw-risk)
 
-#### Asset Risk
+### Asset Risk {#era-1-3-ass-risk}
 
 Need to focus on issues of the specific markets that the company operates
 
@@ -448,7 +488,7 @@ Main asset classes: **equities**, **fixed income**, **real estate**
 
 ***Asset Modeling: Probabilistic Reality***
 
-* Modeling scenarios consistent with historical patterns
+* Modeling **scenarios** consistent with historical patterns
 
 * Generate a large variety of scenarios against which to test the insurer's strategy
 
@@ -476,7 +516,7 @@ Efficient Frontier: $\sigma$ vs $\operatorname{E}[Return]$
 
 * **Bonds**:
 
-    * Model with arbitrage free models  
+    * Model with *arbitrage free models*  
 
     * Should capture historical features of bond markets
     
@@ -484,27 +524,27 @@ Efficient Frontier: $\sigma$ vs $\operatorname{E}[Return]$
 
 * **Equities**:
 
-    * Incorporate correlations with bonds
+    * Incorporate *correlations with bonds*
     
-    * Geometric Brownian motion model with additional volatility is more realistic
+    * Geometric *Brownian motion* model with additional volatility is more realistic
     
         (Allow for more extreme motion or even discontinuities)
 
 * **FX**:
 
-    * First model interest rates of the currencies then model the FX rates
+    * First model *interest rates of the currencies* then model the FX rates
     
     * Changes in actual and anticipated interest rates in two countries lead to changes in the FX rates
     
-    * Interest rate movements across different economies are correlated as well
+    * Interest rate *movements across different economies* are correlated as well
 
-#### Dependencies
+### Dependencies {#era-1-3-dep-risk}
 
 Important to capture dependencies or else the model will be unrealistically stable
 
 ***Sources of Dependencies***:
 
-* Simultaneous impact of macro economic conditions on many risks
+* Simultaneous impact of **macro economic conditions** on many risks
 
     A good ESG should capture the dependence between inflation, interest rates, equity values, etc
     
@@ -514,9 +554,9 @@ Important to capture dependencies or else the model will be unrealistically stab
     
     * Interest rates may influence the underwriting cycle
 
-* U/w cycle, loss trends and reserve development can be correlated across LoB and with each other
+* **U/w cycle**, loss trends and reserve development can be correlated across LoB and with each other
 
-* Cat and other event losses can cross lines
+* Cat and other event losses can impact across lines
 
 * Large man made cat (e.g. 9/11) can have impact on both insurance and market risk
 
@@ -530,32 +570,32 @@ Important to capture dependencies or else the model will be unrealistically stab
 
 * Avoid using just the correlation coefficient to describe and oversimplify dependency
 
-* We are most interested in the tail dependency
+* We are most interested in the **tail dependency**
 
     * e.g. High inflation or large cat that impacts multiple LoB that would typically be uncorrelated
 
-* Use copulas to capture different forms of dependency
+* Use **copulas** to capture different forms of dependency
 
     * See [ERA 3.3](#era3-3-intro) for more details
 
-### Setting Capital Requirements {#setting-cap-era1}
+## Setting Capital Requirements {#setting-cap-era1}
 
-ERM help insurer fin the optimum level of capital that balances efficiency and prudence
+ERM help insurer find the optimum level of capital that balances **efficiency** and **prudence**
 
 * Policyholders (acting through regulators and rating agencies) demand adequate capital
 
 * Shareholders require that capital be used efficiently
 
-Set capital to maximize insurer's value creates a conceptual framework that unifies the competing requirements of prudence and efficiency
+Set capital to **maximize insurer's value** creates a conceptual framework that *unifies* the competing requirements of prudence and efficiency
 
 * See [ERA 2.2](#era2-2-intro) for more detail
 
 Approaches to setting capital requirements:
 
-**1. Default Avoidance**:  
+***1. Default Avoidance***:  
 Focused on the **tail** and protecting **policyholders**
 
-Caveat:
+*Caveat*:
 
 * S/h will be hurt at much lower loss amount
 
@@ -563,19 +603,19 @@ Caveat:
 
 $\hookrightarrow$ More feasible and relevant to focus on thresholds less extreme than default
 
-**2. Other Thresholds** (Lower than probability of ruin):
+***2. Other Thresholds*** (Lower than probability of ruin):
 
-i. Probability of downgrade
+i. **Probability of downgrade**
 
     * Significant loss $\leadsto$ $\downarrow$ financial rating $\leadsto$ $\downarrow$ franchise value > loss itself
     
     * Franchise value: customer base, agency relationships, reputation, infrastructure and expertise
 
-ii. Sufficient capital to service renewals
+ii. Sufficient **capital to service renewals**
 
-iii. Survive and thrive after major cat
+iii. Survive and **thrive after major cat**
 
-#### Convert Probability to Loss
+### Convert Probability to Loss
 
 Associate the selected probability level with amount of financial loss
 
@@ -585,11 +625,11 @@ Associate the selected probability level with amount of financial loss
 
 * 1-in-$x$ years event loss no more than $y \%$ of capital $\Rightarrow$ $\dfrac{100}{y} \times TVaR_{1 - \frac{1}{x}}$
 
-**Important**: Risk measures do not tell us how much capital to hold; They tell us for a given level of capital, what the risk to the company is
+**Important**: Risk measures do not tell us how much capital to hold; They tell us for a given level of capital, what is the risk to the company
 
 * Determination of optimal capital level is not purely a risk measurement exercise
 
-    * Need to balance sufficient financial strength to attract business and the need of shareholders to achieve attractive return
+    * Need to balance sufficient financial strength to **attract business* and the need of shareholders to achieve **attractive return**
 
 * Risk measurement quantifies the risk the company is exposed to in relationship to the capital so established
 
@@ -597,7 +637,7 @@ Associate the selected probability level with amount of financial loss
 
 * Capital is not set by risk measures, but analyzed by them to understand the sources of risk and for further strategic decision making
 
-#### Risk Adjusted Performance
+### Risk Adjusted Performance
 
 Allocate capital to business units $\Rightarrow$ Calculate the rate of return $\dfrac{\text{Profit}}{\text{Capital}}$ for that unit $\Rightarrow$ Compare RoR across BUs
 
@@ -609,13 +649,41 @@ Can also allocate risk capital to investments $\Rightarrow$ Compare riskiness of
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done past exam questions for ERA 1
-```
+**TIA Exercise**
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
+* TIA 1: Failure of DFA and external pressure for ERM
+
+* TIA 2: Action from regulators to advance regulations
+
+* TIA 3: Financial risks and why take on risk
+
+* TIA 4: 5 ways to manage risk and practical examples
+
+* TIA 5: 4 steps of ERM
+
+* TIA 6: Benefits of multi period pricing model
+
+* TIA 7: Describe model parameter risk in example
+
+* TIA 8: How to build a good model
+
+* TIA 9: Dependencies between LoBs
+
+* TIA 10: Capital allocation for various stakeholders (policyholders vs shareholders)
+
+* TIA 11: Characteristics that distinguish model quality
+
+**Past Exam**
+
+* 2011 #18: model underwriting risk, correlation between lines
+
+* $\star$ 2013 #16: Reason for AY correlation in a LoB and how to model it
+
+* $\star$ 2015 #25: definition for u/w risk and liquidity risk, correlation between the two and mitigation
+
+* $\star \star$ 2016 #21: strengh and weakness of a sample ERM program
+
+* $\star$ 2016 #23: Capital requirement setting
 
 ### Question Highlights
 
