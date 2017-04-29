@@ -329,6 +329,28 @@ Bayesian BF calculation:
     
 * [Leveled Incremental Trend](#meyers-lit) (LIT): Use skewed distribution and CY trend $\tau$
 
+## A Framework for Assessing Risk Margins - K. Marshall et al.
+
+$\star$ ***Correlation***
+
+* The 3 main risk sources are independent of each other and therefore can be sum with square root rule \@ref(eq:marshall-source-2)
+
+* **Independent** \@ref(eq:marshall-indep-corr):
+
+    Assume independence across lines, weight by liabilities
+
+* **Internal** \@ref(eq:marshall-int-sys-corr):
+
+    Base on correlation matrix $\Sigma$, again weighted by liabilities
+
+* **External** \@ref(eq:marshall-ext-sys-corr-1) & \@ref(eq:marshall-ext-sys-corr-2):
+
+    Correlation between each valuation group and risk categories $\Rightarrow$ then roll up to the risk categories and assume they are independent of each other
+
+***Risk Margin***: \@ref(eq:risk-margin-marshall)
+
+* $\alpha$-tile \@ref(eq:risk-margin-alpha-marshall)
+
 ## Reinsurance Loss Reserving - Patrik
 
 [Long tail reserving method](#patrik-long-est-methods):

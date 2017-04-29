@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="testing-the-assumptions-of-age-to-age-factors-g-venter-1.html">
-<link rel="next" href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert-1.html">
+<link rel="prev" href="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer-1.html">
+<link rel="next" href="reinsurance-loss-reserving-patrik-1.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -136,48 +136,30 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ldf-curve-fitting-and-stochastic-reserving-a-maximum-likelihood-approach---d.-clark" class="section level2">
-<h2><span class="header-section-number">28.6</span> LDF Curve-Fitting and Stochastic Reserving: A Maximum Likelihood Approach - D. Clark</h2>
-<p><span class="math inline">\(\star\)</span> Paper definition/standards:</p>
+<div id="a-framework-for-assessing-risk-margins---k.-marshall-et-al.-1" class="section level2">
+<h2><span class="header-section-number">28.12</span> A Framework for Assessing Risk Margins - K. Marshall et al.</h2>
+<p><span class="math inline">\(\star\)</span> <strong><em>Correlation</em></strong></p>
 <ul>
-<li>We use the <strong>average age</strong> of the period here (so minus 6 month)</li>
+<li><p>The 3 main risk sources are independent of each other and therefore can be sum with square root rule <a href="#eq:marshall-source-2">(<strong>??</strong>)</a></p></li>
+<li><p><strong>Independent</strong> <a href="#eq:marshall-indep-corr">(<strong>??</strong>)</a>:</p>
+<p>Assume independence across lines, weight by liabilities</p></li>
+<li><p><strong>Internal</strong> <a href="#eq:marshall-int-sys-corr">(<strong>??</strong>)</a>:</p>
+<p>Base on correlation matrix <span class="math inline">\(\Sigma\)</span>, again weighted by liabilities</p></li>
+<li><p><strong>External</strong> <a href="#eq:marshall-ext-sys-corr-1">(<strong>??</strong>)</a> &amp; <a href="#eq:marshall-ext-sys-corr-2">(<strong>??</strong>)</a>:</p>
+<p>Correlation between each valuation group and risk categories <span class="math inline">\(\Rightarrow\)</span> then roll up to the risk categories and assume they are independent of each other</p></li>
 </ul>
-<p><strong>Reserve estimate</strong></p>
+<p><strong><em>Risk Margin</em></strong>: <a href="#eq:risk-margin-marshall">(<strong>??</strong>)</a></p>
 <ul>
-<li><p><span class="math inline">\(\star \star\)</span> Given <span class="math inline">\(G(x)\)</span> distribution</p>
-<ul>
-<li><p><strong>Loglogistic</strong> <a href="#eq:clark-loglogistic">(<strong>??</strong>)</a>, or</p></li>
-<li><p><strong>Weibull</strong> <a href="#eq:clark-weibull">(<strong>??</strong>)</a></p></li>
-<li><p>Might have to estimate parameters</p></li>
-</ul></li>
-<li><p>2 Reserving method</p>
-<ul>
-<li><p><span class="math inline">\(\star\)</span> <a href="#clark-ldf-method">LDF</a> Method</p></li>
-<li><p><span class="math inline">\(\star\)</span> <a href="#clark-cape-cod-method">Cape Cod</a> Method</p></li>
-</ul></li>
-<li><p>Test for truncation by looking at age twice the triangle size</p>
-<ul>
-<li>Different truncation method</li>
-</ul></li>
+<li><span class="math inline">\(\alpha\)</span>-tile <a href="#eq:risk-margin-alpha-marshall">(<strong>??</strong>)</a></li>
 </ul>
-<p><a href="#clark-var-reserve"><strong>Reserve process variance</strong></a></p>
-<ul>
-<li><p><span class="math inline">\(\star \star\)</span> Estimation of <span class="math inline">\(\sigma^2\)</span> <a href="#eq:clark-sigma-est">(<strong>??</strong>)</a></p>
-<ul>
-<li><p>Note the <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> for the 2 methods</p></li>
-<li><p>We’re looking at <strong>incremental</strong> losses</p></li>
-</ul></li>
-</ul>
-<p><span class="math inline">\(\star \star\)</span> Test <span class="math inline">\(iid\)</span> assumpation with <a href="#clark-res-review">residual plots</a> by calculating standardized residual</p>
-<p><a href="#avg-age-claim"><strong>Counting average accident date</strong></a></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="testing-the-assumptions-of-age-to-age-factors-g-venter-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-model-for-reserving-workers-compensation-high-deductibles-j-siewert-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reinsurance-loss-reserving-patrik-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
