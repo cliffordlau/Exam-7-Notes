@@ -380,3 +380,37 @@ Retro formula: \@ref(eq:teng-retro-formula)
     * First adjustment period might cover more than one policy period
 
 Feldblum's adjustment to the empirical $CPDLD_1$ \@ref(eq:feldblum-adj-prem)
+
+## P&C Insurance Company Valuation - R. Goldfarb
+
+**Discount rate** 
+
+* CAPM \@ref(eq:goldfarb-capm) and it's [components](#goldfarb-dis-rate)
+
+$\star$ **Growth rate**
+
+* Table \@ref(tab:goldfard-growth-rate) for each of the 3 method and it's [components](#goldfarb-growth)
+
+[***DDM***](#goldfarb-ddm):
+
+* DDM formula \@ref(eq:goldfarb-ddm-eq)
+
+* Select $g$ by average of $ROE$ (usually $\rho$ is given)
+
+    * If not then select $\rho$ too by average of $\rho = 1 - \dfrac{\mathrm{E}[Div_1]}{NI}$
+
+[***FCFE***](#goldfarb-fcfe):
+
+* FCFE formula \@ref(eq:goldfarb-fcfe-eq)
+
+* Select $g$ by average of $ROE$ and reinvestment rate
+    
+[***AE***](#goldfarb-ae):
+
+* AE formula \@ref(eq:goldfarb-ae-eq) and \@ref(eq:goldfarb-ae-eq-2)
+
+[***Relative multiples***](#goldfarb-relative):
+
+* Price:Earning \@ref(eq:goldfarb-PE)
+
+* Price:Book \@ref(eq:goldfarb-PB)

@@ -2,41 +2,61 @@
 
 # P&C Insurance Company Valuation - R. Goldfarb
 
-Know how to get the discount rate and growth rate (table \@ref(tab:goldfard-growth-rate)) for each of the 3 method
+**Discount rate** 
 
-[**DDM**](#goldfarb-ddm):
+* CAPM \@ref(eq:goldfarb-capm) and it's [components](#goldfarb-dis-rate)
 
-* $V_0 = \dfrac{\mathrm{E}[Div_1]}{k - g}$
+$\star$ **Growth rate**
 
-* Knows how this can transform to the P:E formula
+* Table \@ref(tab:goldfard-growth-rate) for each of the 3 method and it's [components](#goldfarb-growth)
 
-* Remembers the terminal value formula uses CF at 1 but get you to time 0
+[***DDM***](#goldfarb-ddm):
 
-[**FCFE**](#goldfarb-fcfe):
+* DDM formula \@ref(eq:goldfarb-ddm-eq)
 
-* $FCFE = NI + (Non \:Cash\:Charges) - \Delta Working \:Capital - \Delta Capital + \Delta Debt$
+* Terminal value formula uses CF at 1 and gets you to time 0
+
+* Select $g$ by average of $ROE$ (usually $\rho$ is given)
+
+    * If not then select $\rho$ too by average of $\rho = 1 - \dfrac{\mathrm{E}[Div_1]}{NI}$
+
+[***FCFE***](#goldfarb-fcfe):
+
+* FCFE formula \@ref(eq:goldfarb-fcfe-eq)
 
 * Discount all the FCFE for $V_0$
+
+* Select $g$ by average of $ROE$ and reinvestment rate
     
 * Advantages
 
 * FCFE vs FCFF
 
-[**AE**](#goldfarb-ae):
+[***AE***](#goldfarb-ae):
 
-* $\begin{align} V_0 = BV_0 + \sum_{t=1} \frac{\overbrace{(ROE_t - k)BV_{t-1}}^{AE_t}}{(1+k)^t}\end{align}$
+* AE formula \@ref(eq:goldfarb-ae-eq) and \@ref(eq:goldfarb-ae-eq-2)
 
-* Remember to add the $BV_0$
+    * Remember to add the $BV_0$
+    
+    * Clean surplus assumption
 
 * Advantages
 
 * Considerations
 
-[**Relative multiples**](#goldfarb-relative):
+[***Relative multiples***](#goldfarb-relative):
 
-* $\dfrac{P_0}{E_1} = \dfrac{1 - \rho}{k - \rho \times ROE}$; Based on DDM
+* Price:Earning \@ref(eq:goldfarb-PE)
 
-* $\dfrac{P_0}{BV_0} = 1 + \dfrac{ROE - k}{k - g}$; Based on AE
+* Price:Book \@ref(eq:goldfarb-PB)
+
+* Transaction multiple and its weakness
+
+***Option Pricing***
+
+* [Merton](#merton-mthd-goldfarb)
+
+* [Real options](#real-opt-goldfarb)
 
 ## Assumptions
 
@@ -44,7 +64,7 @@ Key assumptions are **cost of captial** $k$ and **growth rate** $g$
 
 It is good to sensitivity test these assumptions on the model output
 
-### Risk Adjusted Discount Rate
+### Risk Adjusted Discount Rate {#goldfarb-dis-rate}
 
 Recognize the risky cashflow by discounting them at a rate higher than the risk-free rate based on CAPM
 
@@ -67,15 +87,15 @@ Recognize the risky cashflow by discounting them at a rate higher than the risk-
 
 * Reflect the risk in the cashflow directly
 
-**Risk free Rate: $r_f$**
+***Risk free Rate***: $r_f$
 
 * 90 days t-bill
 
 * Maturity matched t-notes
 
-* 20 years T-bonds less liquidity & term premium (~1.2%)
+* 20 years T-bonds **less liquidity & term premium** (~1.2%)
 
-**Market Risk Premium: $\mathrm{E}(r_m) - r_f$**
+***Market Risk Premium***: $\mathrm{E}(r_m) - r_f$
 
 * 6-8% historically
 
@@ -85,7 +105,7 @@ Recognize the risky cashflow by discounting them at a rate higher than the risk-
 
 * Need to sensitivity test
 
-**Systematic Market Risk: $\beta$**
+***Systematic Market Risk***: $\beta$
 
 * Based on regression on stock return vs market return
 
@@ -105,7 +125,7 @@ Recognize the risky cashflow by discounting them at a rate higher than the risk-
 
 * Can assume total leverage of insurance companies is similar
 
-### Growth Rate
+### Growth Rate {#goldfarb-growth}
 
 Used for the period after the forecast horizon
 
@@ -170,26 +190,45 @@ Value of stock under DDM
 
 ## Free Cash Flow to Equity (FCFE) {#goldfarb-fcfe}
 
-Discount the stream of free cash flow available to pay shareholders:  
+Discount the stream of free cash flow available to pay *shareholders*:
 
 \begin{equation}
-  FCFE = NI + (Non \:Cash\:Charges) - \Delta Working \:Capital - \Delta Capital + \Delta Debt
+  \begin{array}{l}
+  FCFE =    &  &NI &\cdots \:\: (1) \\
+            &+ &Non \:Cash\:Charges &\cdots \:\: (2) \\
+            &- &\Delta Working \:Capital &\cdots \:\: (3) \\
+            &- &\Delta Capital &\cdots \:\: (4) \\
+            &+ &\Delta Debt &\cdots \:\: (5) \\
+  \end{array}
   (\#eq:goldfarb-fcfe-eq)
 \end{equation}
 
-* FCFE is free cash flow after: paying interest on debt, tax benefits of that interest payment, net borrowings
+* FCFE is free cash flow after:
 
-* $\Delta$ loss reserve reflected in $NI$ only; it gets net out as non-cash charges and capital expenditures
-
-* $\Delta$ Working Capital is negligible for P&C insurer
-
-* $NI$ is net of interest payments to shareholders, after tax
-
-* Growth rate from table \@ref(tab:goldfard-growth-rate), $g = ROE \times \dfrac{\text{Net Income after Tax}}{\text{Beginning Equity}}$
-
-    * Assume portion of FCF not paid out is invested at $k$
+    * Paying interest on debt
     
-    * Similar to DDM, calculate the $ROE$ and reinvestment rate for all years and make a pick
+    * Tax benefits of the interest payment
+    
+    * Net borrowings
+
+1. $NI$ is net of interest payments to *shareholders*, after tax
+
+    * $\Delta$ loss reserve reflected in $NI$ only  
+    (It gets net out as *non-cash charges* and *capital expenditures* assuming changes in reserve does not impact required capital)
+
+3. $\Delta$ Working Capital is *negligible* for P&C insurer
+
+4. This is change in *required* capital
+
+**Growth rate**
+
+* From table \@ref(tab:goldfard-growth-rate)
+  
+$$g = \underbrace{\dfrac{\text{Net Income after Tax}}{\text{Beginning Equity}}}_{ROE} \times \underbrace{\dfrac{\Delta Capital}{NI}}_{\text{Reinv. Rate}}$$
+
+* Assume portion of FCF not paid out is invested at $k$
+    
+* Similar to DDM, calculate the $ROE$ and reinvestment rate for all years and make a pick
 
 **Free Cash Flow**
 
@@ -340,9 +379,9 @@ Plug all the above in and we'll have \@ref(eq:goldfarb-PE)
 ```{remark}
 P:E Ratio
 
-* Forward or leading P/E = consensus forecast earnings for next year
+* *Forward* or leading P/E = consensus forecast earnings for next year
 
-* Trailing P/E = last year's actual; Can be distorted by unusual events
+* *Trailing* P/E = last year's actual; Can be distorted by unusual events
 
 * Price = value of the firm derived from any of the methods
 
@@ -414,7 +453,7 @@ Or compare multiples from diversified insurers
 
     (Additonal source of value the firm has from its ability to engage or disengage in various projects)
     
-### Equity as Call Option
+### Equity as Call Option {#merton-mthd-goldfarb}
 
 **Merton's method**:  
 Owners of the firm have given assets of the firm to the debt holders, but maintain the right to purchase them at price $D$ when the debt is due at time $T$
@@ -447,7 +486,7 @@ $$E_T = \max[V_T - D, 0]$$
 
     * And with policyholder liabilities it is hard to reduce it into a debt with single expiration date
     
-### Real Options Valuation
+### Real Options Valuation {#real-opt-goldfarb}
 
 ```{block, type='rmdcaution'}
 Not super sure how the 'value' of each of the options work
@@ -455,10 +494,11 @@ Not super sure how the 'value' of each of the options work
 
 ```{definition, name="Real Options"}
 Management of a company has flexibility on when to take action on projects
+```
 
 Real options examples:
 
-* Abandonment
+* **Abandonment**
 
     (e.g. Abandoning a project so you cut off the future cash outflow)
     
@@ -466,7 +506,7 @@ Real options examples:
 
     * $K$ = liquidation proceeds
 
-* Expansion
+* **Expansion**
 
     (e.g. similar to the abandonment but with investing)
     
@@ -474,7 +514,7 @@ Real options examples:
     
     * $K$ = additional investment
 
-* Contraction
+* **Contraction**
 
     (Not total abandonment)
     
@@ -484,11 +524,11 @@ Real options examples:
     
     * $K$ = cost savings (reduced investment)
 
-* Defer
+* **Defer**
 
     * Value as an American call (since it's still an investment project\)
 
-* Extend
+* **Extend**
 
     * Value as European call since it would only be exercised at the end of the project
     
@@ -497,9 +537,8 @@ Real options examples:
 Value is added when the firm can purchase assets below their fair value or has exclusive access to opportunities
 
 * e.g. flexibility to purchase assets at market price **doesn't** add value
-```
 
-**Practical Considerations**, difficulty in:
+***Practical Considerations***, difficulty in:
 
 * Identifying a new business where such a real option with value exists
 
@@ -507,7 +546,7 @@ Value is added when the firm can purchase assets below their fair value or has e
 
 * Determine if the firm has the ability to enter this business at a fixed price, or a price that significantly differs from market value
 
-**Valuation considerations**, technical issues to consider:
+***Valuation considerations***, technical issues to consider:
 
 * Valuing the underlying cash flow
 
@@ -517,7 +556,7 @@ Value is added when the firm can purchase assets below their fair value or has e
 
 * Appropriate valuation formula (e.g. Black-Scholes assumes lognormal distribution for asset price)
 
-**Reasonableness of real option values**
+***Reasonableness of real option values***
 
 * Options are more valuable when new information will be available before the expiration
 
@@ -527,45 +566,79 @@ Value is added when the firm can purchase assets below their fair value or has e
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
 **Concepts**
 
 * $\star$ 2011 - #12 a: higher $g$ should be matched with higher $\beta$ for being more risky
+
 * 2011 - #12 c: relationship between $g$ and $k$
+
 * 2015 #17 b-c: $\beta$ discussion
 
 **DDM**
 
-* [2008 #43](#2008-43): DDM calc and convert to P:E
+* 2008 #43 \@ref(fig:2008-43): DDM calc and convert to P:E
+
 * $\star$ 2008 #44: DDM calc and interpretation
+
 * 2008 #45: Comparison on P:E
+
 * 2009 #34
-* 2011 - #12 b: DDM calc (Get $r_f$ as t-bond less liquidity premium)
-* $\star$ [2012 #12](#2012-12): Full calc with DDM
+
+* $\star$ 2011 - #12 b: DDM calc (Get $r_f$ as t-bond less liquidity premium)
+
+    * $\star$ High growth should be more risky and have higher $\beta$
+
+* $\star$ 2012 #12 \@ref(fig:2012-12): Full calc with DDM
+
 * 2014 #16: DDM calc
+
 * 2015 #17 a: DDM calc 
 
 **FCFE**
 
-* $\star$ [2009 #35](#2009-35): Full FCFE calc
-* $\star$ [2013 #11](#2013-11): Full FCFE calc with discussion
-    * [FCFE vs FCFF](#FCFE-v-FCFF)
-* 2014 #17: FCFE Calc; <span style="color:red">Not sure bout the reserve increase impact on required capital</span>
+* $\star$ 2009 #35 \@ref(fig:2009-35): Full FCFE calc
+
+* $\star$ 2013 #11 \@ref(fig:2013-11): Full FCFE calc with discussion
+
+    * Flow to Equity vs to firm
+
+* 2014 #17: FCFE Calc
+
 * $\star$ 2015 #16: Discussion on DCF
+
+* 2016 #19: FCFE
 
 **AE**
 
-* $\star$ [2010 #31](#2010-31): Full AE calc
-* [2011 - #13](#2011-13): Price to Book value calc + discussion on assumption
-* 2013 #12: Full AE Calc + discussion
+* $\star$ 2010 #31 \@ref(fig:2010-31): Full AE calc
+
+* 2013 #12: Full AE Calc + discussion (AE vs DDM)
+
 * 2015 #15: AE Calc + discussion
+
+* TIA 1: AE calc and P:E and interpretation
 
 **Relative Valuation**
 
+* 2011 - #13 \@ref(fig:2011-13): Price to Book value calc + discussion on assumption
+
+    * $\star$ Why and why not the growth should continue
+
 * $\star$ 2014 #15: Price to Book calc using all the ratios given by LoB
+
+* 2016 #20: P:E and P:B ratios
+
+* $\star$ TIA 2: Need to know to use price to book
+
+    * $\star$ Convert P:B to value, know what BV includes
+    
+**Option pricing**
+
+* TIA 3: Black scholes on projects
+
+* TIA 4: How to value firm as call option and why it doesn't work for P&C companies
+
+* TIA 5: Real options
 
 ### Question Highlights
 
