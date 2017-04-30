@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era-3-3-pearson.html">
-<link rel="next" href="motivation-copulas.html">
+<link rel="prev" href="motivation-copulas.html">
+<link rel="next" href="summary-of-copulas.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,54 +152,64 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="era-3-3-kendall" class="section level2">
-<h2><span class="header-section-number">24.3</span> Kendall’s <span class="math inline">\(\tau\)</span></h2>
-<p>Depends on the <strong>order</strong> not the <em>value</em> of the data</p>
-<p><strong>Concordant</strong>:<br />
-When one pair dominates the other given <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span></p>
+<div id="how-to-copula" class="section level2">
+<h2><span class="header-section-number">24.5</span> How to Use a Copula</h2>
+<p>We can fully describe the joint distribution with:</p>
+<p><span class="math display">\[H(x,y) = P(X \leq x \: \&amp; \: Y \leq y)\]</span></p>
+<p>If we know this then we know the entire dist<sup>n</sup> for any pair <span class="math inline">\((x,y)\)</span></p>
+<p>We can also get the <strong>marginal</strong> dist<sup>n</sup>:</p>
+<p><span class="math display">\[F(x) = \lim \limits_{y \rightarrow \infty} H(x,y)\]</span></p>
+<p><span class="math display">\[G(y) = \lim \limits_{x \rightarrow \infty} H(x,y)\]</span></p>
+<p>and the <strong>density</strong>:</p>
+<p><span class="math display">\[h(x,y) = \dfrac{\partial^2 H(x,y)}{\partial x \partial y}\]</span></p>
 <ul>
-<li><p><span class="math inline">\(x_1 &gt; x_2\)</span> and <span class="math inline">\(y_1 &gt; y_2\)</span> or,</p></li>
-<li><p><span class="math inline">\(x_2 &gt; x_1\)</span> and <span class="math inline">\(y_2 &gt; y_1\)</span></p></li>
+<li><p>Describes where the probability lies</p></li>
+<li><p>A bit more intuitive to looks at rather than the CDF</p></li>
 </ul>
-<p><strong>Discordant</strong>:<br />
-When the pair is mixed</p>
-<p><strong><em>Kendall’s <span class="math inline">\(\tau\)</span></em></strong></p>
-<span class="math display" id="eq:era-3-3-ken">\[\begin{equation}
-  \tau = \dfrac{C - D}{\text{# of pairs}}
-  \tag{24.2}
-\end{equation}\]</span>
-<ul>
-<li><p><span class="math inline">\(\tau = \dfrac{C - D}{C + D}\)</span> if there are no ties</p></li>
-<li><p><span class="math inline">\(\tau \in [-1, 1]\)</span> with same interpretation as Pearson’s</p></li>
-</ul>
-<p>Focus on the <strong>rank</strong> <span class="math inline">\(\Rightarrow\)</span> changes in one extreme value won’t change the indication</p>
-<p><strong><em>Continuous</em> Kendall’s <span class="math inline">\(\tau\)</span></strong></p>
-<span class="math display" id="eq:era-3-3-ken-cont">\[\begin{equation}
-  \tau = 4 \mathrm{E}[C(u,v)] - 1
-  \tag{24.3}
-\end{equation}\]</span>
-<span class="math display" id="eq:era-3-3-ken-cont-2">\[\begin{equation}
-  \tau = -1 + 4 \int_0^1 \int_0^1 C(u,v)c(u,v)dudv
-  \tag{24.4}
-\end{equation}\]</span>
+<p>It is easier to work with percentiles, so instead of using <span class="math inline">\(x\)</span> &amp; <span class="math inline">\(y\)</span>, we’ll use the percentiles <span class="math inline">\(u\)</span> &amp; <span class="math inline">\(v\)</span> and we’ll compare them to the percentile of the r.v.</p>
 
-<div class="definition">
-<p><span id="def:corr-dep" class="definition"><strong>Definition 24.1  (Correlation vs Dependency) </strong></span></p>
+<div class="theorem">
+<p><span id="thm:sklar" class="theorem"><strong>Theorem 24.1  (Sklar’s Theorem) </strong></span></p>
 <ul>
-<li><p>Correlation = mathematical calculation, a statistic, and measure of dependency</p></li>
-<li><p>Dependency = interaction between random variables (broader term)</p></li>
-<li>e.g. correlation can be 0 while there are still dependency
-</div>
-<p></p></li>
+<li>For any joint dist<sup>n</sup> <span class="math inline">\(H(x,y)\)</span> <span class="math inline">\(\exists\)</span> a function <span class="math inline">\(C(u,v)\)</span> such that</li>
 </ul>
+<p><span class="math display">\[H(x,y) = C\left(F(x), G(y)\right)\]</span></p>
+<ul>
+<li><p><span class="math inline">\(C(u,v)\)</span> is a copula</p>
+<ul>
+<li>Input is 2 percentiles and output is the joint percentile
+</div>
+</li>
+</ul></li>
+</ul>
+<p><strong><em>Density of a Copula</em></strong></p>
+<p>Graphs of actual copula is difficult to interpret, so focus on the <em>density</em></p>
+<p><span class="math display">\[c(u,v) = \dfrac{\partial^2 C(u,v)}{\partial u \partial v}\]</span></p>
+<p>Relate the density of the copula to the density of the joint dist<sup>n</sup></p>
+<span class="math display" id="eq:copula-density">\[\begin{equation}
+  h(x,y) = \underbrace{c \left( F(x), G(y) \right)}_{\text{Density of copula}} \cdot \underbrace{\left[f(x) \cdot g(y) \right]}_{\text{Joint dist if }\perp\!\!\!\perp}
+  \tag{24.5}
+\end{equation}\]</span>
+<ul>
+<li><p>Think of the <span class="math inline">\(c(u,v)\)</span> as a multiplier</p></li>
+<li><p>Scales up and down the independent distribution</p>
+<ul>
+<li><p><span class="math inline">\(c(u,v) &gt; 1\)</span> <span class="math inline">\(\Rightarrow\)</span> Higher density</p></li>
+<li><p><span class="math inline">\(c(u,v) = 1\)</span> <span class="math inline">\(\Rightarrow\)</span> Independence</p></li>
+<li><p><span class="math inline">\(c(u,v) &lt; 1\)</span> <span class="math inline">\(\Rightarrow\)</span> Lower density</p></li>
+</ul></li>
+</ul>
+<hr />
+<p>Different copulas have different behavior w.r.t. where the dependencies are located</p>
+<p>We’ll use Kendall’s <span class="math inline">\(\tau\)</span> to measure correlation as it won’t be affected by the underlying distribution</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era-3-3-pearson.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="motivation-copulas.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="motivation-copulas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summary-of-copulas.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
