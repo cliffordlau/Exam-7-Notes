@@ -4,15 +4,23 @@ Just know the 4 sections and have an idea of what it covers
 
 1. [Startup: Staffing and Scope](#era-3-1-sec-1)
 
-    * Issues to consider before begin implementing an internal risk model (IRM)
+    * Scope and purpose
+    
+    * Resource commitment and good controls over I/O
 
 2. [IRM Parameter Development](#era-3-1-sec-2)
 
-    * Issues and recommendations when selecting the parameters that are used in the IRM
+    * Data quality, company characteristics, differing risk attitudes
+    
+    * Expert opinion, validation, modeling software
 
 3. [Implementation](#era-3-1-sec-3)
 
+    * Priority setting, communications, pilot program, education
+
 4. [Integration and Mainteneance](#era-3-1-sec-4)
+
+    * Corporate calendar, update frequency and controls
 
 ## Introduction {#era3-1-intro}
 

@@ -415,7 +415,7 @@ $\star$ **Growth rate**
 
 * Price:Book \@ref(eq:goldfarb-PB)
 
-# ERA 2.2 Risk Measures and Capital Allocation - G. Venter
+## ERA 2.2 Risk Measures and Capital Allocation - G. Venter
 
 Risk measures
 
@@ -446,3 +446,33 @@ Allocation method properties:
 * Suitable allocation \@ref(def:marginal-era2-2)
 
 Marginal impact \@ref(eq:marginal-impact-era-2-2)
+
+## ERA 2.5 Measuring Value in Reinsurance - Venter, Gluck, Brehm
+
+Value of reinsurance
+
+1) Provides [stability](#era-2-5-sec-1)
+
+    * [Based on reinsurance premium and expected recoveries](#era-2-5-stability-1)
+    
+        * Metrics \@ref(era-2-5-metrics-1) and \@ref(era-2-5-metrics-3)
+
+    * [Amount of protection](#era-2-5-stability-2)
+    
+        * Metrics \@ref(era-2-5-metrics-3)
+
+    * [Premium - loss](#era-2-5-stability-3)
+    
+        * Metrics \@ref(era-2-5-metrics-4), \@ref(era-2-5-metrics-5), \@ref(era-2-5-metrics-6) and \@ref(era-2-5-metrics-7)
+
+    * [Efficient frontier](#era-2-5-stability-5)
+
+2) Frees up [capital](#era-2-5-sec-2)
+
+    * Cost of capital reduction metrics \@ref(coc-reduct-met-1) and \@ref(coc-reduct-met-2)
+    
+    * Capital can be based on [theoretical](#theo-model-era-2-5) or [practical](#prac-model-era-2-5) model
+    
+    * [Accumulation risk](#era-2-5-acc-risk): as-if reserve \@ref(def:as-if-res-era-2-5)
+    
+    * {Capital consumed}(#era-2-5-cap-consum) and the equation \@ref(eq:cap-con-equa)
