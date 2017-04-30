@@ -113,6 +113,16 @@ knitr::include_graphics('figures/FullSizeRender3.jpg')
     $\hookrightarrow$ Automate and formalizes some of the risk assessment, while risk judgement is still required
 ```
 
+**Benefits of utility function**
+
+* Objective: Once parameterized, does not require subjective opinion
+
+* Consistent: Can be applied to different risk
+
+* Repeatable: Can apply again to get the same results
+
+* Transparent: Easy to document
+
 #### Reason to Move to Step 3
 
 Risk managers and shareholders are both interested in preserving franchise value  

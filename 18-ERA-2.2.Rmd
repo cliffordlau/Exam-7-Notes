@@ -1,6 +1,6 @@
 # ERA 2.2 Risk Measures and Capital Allocation - G. Venter
 
-Risk measures
+$\star$ Risk measures and their pros/cons
 
 * [Moment](#moment-base-era2-2) based
 
@@ -241,6 +241,8 @@ $$\eta(p) = \mathrm{exp} \left \{ - \theta (p-\alpha)^2 \right \}$$
 * Give more weight to losses near $\alpha^{th}$ percentile while still using the whole distribution
 
 * $\theta$ controls how quickly the weight drops of as we get further from $\alpha$
+
+* Takes several results and averages them together
 
 ***
 
