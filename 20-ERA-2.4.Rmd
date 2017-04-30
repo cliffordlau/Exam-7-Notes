@@ -1,24 +1,16 @@
 # ERA 2.4 Asset-Liability Management - Brehm
 
-Asset liability Management:
+Asset liability Management definition \@ref(def:al-mgmt-er)
 
-* Looks at current assets and liabilities + flow from future premiums of a going concern company
-
-* Identify and exploit hedges of any sort (e.g. use equity as inflation hedge)
-
-Optimal portfolio under 4 different scenarios
+[Optimal portfolio](#four-op-ptf-era) under 4 different scenarios
 
 * Going concern is most complicated as it includes cash flow coming in
 
-Additional considerations:
+Additional considerations with [tax](#add-con-1-era-2-4) and [equity](#add-con-2-era-2-4)
 
-* Tax: tax exempt bonds is preferred during profitable times
+* If we are not matching the duration, best to just invest in long bonds
 
-* Equity: risky but useful to hedge inflation
-
-If we are not matching the duration, best to just invest in long bonds
-
-9 steps of asset liability modeling
+[9 steps of asset liability modeling](#era-2-4-ALM-app)
 
 1) Model Asset Classes, Liabilities, and Current Business Operations
 
@@ -38,27 +30,28 @@ If we are not matching the duration, best to just invest in long bonds
 
 9) Review Results
 
-Areas for future research are correlations and reserve models
+Areas for future research are correlations and reserve models that are explanatory model
 
 ## Introduction {#era2-4-intro}
 
 Asset-Liability Management $\neq$ Matching
 
-* **AL Management**:
+* ALMatching: focus on hedging interest rate risk by matching duration or cashflow matching
+
+```{definition, al-mgmt-era, name = "AL Management"}
 
     * Looks at current assets and liabilities + flow from future premiums of a going concern company
 
     * *Identify* and *exploit hedges* of any sort
     
         (e.g. use equity as inflation hedge)
-
-* ALMatching: focus on hedging interest rate risk by matching duration or cashflow matching
+```
 
 Insurance liabilities are *less liquid* than investments $\leadsto$ Focus mostly on investment
 
 * With that said, company can still consider u/w and other hedges like reinsurance (that manages the liability instead)
 
-## Optimal Porfolio Under 4 Scenarios
+## Optimal Porfolio Under 4 Scenarios {#four-op-ptf-era}
 
 From Venter et al. ("Implication of Reinsurance and Reserves on Risk on Investment Asset Allocation")
 
@@ -98,7 +91,7 @@ From Venter et al. ("Implication of Reinsurance and Reserves on Risk on Investme
 
 * Need *enterprise wide model* with *holistic* view to handle the complexity
 
-### Additional Consideration: Tax
+### Additional Consideration: Tax {#add-con-1-era-2-4}
 
 Investment strategy change in responses to u/w cycle
 
@@ -166,7 +159,7 @@ Results were reviewed on **GAAP**, **Stat**, **Economic** B/S basis and several 
 
 * Adding cash flows from continuing operations complicates this analysis
 
-## Asset-Liability Modeling Approach
+## Asset-Liability Modeling Approach {#era-2-4-ALM-app}
 
 9 steps for enterprise-wide model for Asset Liability Management
 

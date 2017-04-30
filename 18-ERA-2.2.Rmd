@@ -22,7 +22,7 @@ Allocation of risk measures
 
 * [Proportional](#proportional-era2-2)
 
-* [Co-measures](#co-measures-era2-2), table \@ref(tab:era2-2-co-measure-tab)
+* [Co-measures](#co-measures-era2-2), table \@ref(tab:era2-2-co-measure-tab) and \@ref(era2-2-co-measure-tab-2)
 
 Allocation method properties:
 
@@ -347,7 +347,7 @@ $\hookrightarrow$ $\rho(Y) = \sum_j r(X_j)$
 
 * This is a marginal allocation that sums to the total risk measure
 
-Table: (\#tab:era2-2-co-measure-tab) Co-Measures
+Table: (\#tab:era2-2-co-measure-tab-2) Co-Measures
 
 | Risk Measure | $h(Y)$ | $L(Y)$ | Condition | Co-Measure |
 |:------------------ |:------ |:------ |:--------- |:--------------- |

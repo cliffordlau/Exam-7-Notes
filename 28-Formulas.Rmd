@@ -414,3 +414,35 @@ $\star$ **Growth rate**
 * Price:Earning \@ref(eq:goldfarb-PE)
 
 * Price:Book \@ref(eq:goldfarb-PB)
+
+# ERA 2.2 Risk Measures and Capital Allocation - G. Venter
+
+Risk measures
+
+* [Moment](#moment-base-era2-2) based
+
+* [Tail](#tail-base-era2-2) based ($VaR$, $TVaR$, $XTVaR$, $EPD$), see table \@ref(tab:era2-2-tail-measure-tab)
+
+* [Probability transform](#prop-trans-era2-2)
+
+    * e.g. Esscher \@ref(eq:esscher-era-2-2)
+
+* [Generalized moments](#gen-mo-era2-2)
+
+Allocation of risk measures
+
+* Definitions \@ref(def:cap-alloc-era-2-2-def)
+
+* [Proportional](#proportional-era2-2)
+
+* [Co-measures](#co-measures-era2-2), table \@ref(tab:era2-2-co-measure-tab) and \@ref(era2-2-co-measure-tab-2)
+
+Allocation method properties:
+
+* Marginal allocation \@ref(def:marginal-era2-2)
+
+    * Scalable risk measures \@ref(def:scalable-era2-2)
+
+* Suitable allocation \@ref(def:marginal-era2-2)
+
+Marginal impact \@ref(eq:marginal-impact-era-2-2)
