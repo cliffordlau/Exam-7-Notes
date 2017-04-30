@@ -1,32 +1,46 @@
 # ERA 2.2 Risk Measures and Capital Allocation - G. Venter
 
-Know the risk measures
+Risk measures
 
-* Moment based
+* [Moment](#moment-base-era2-2) based
 
-* Tail based ($VaR$, $TVaR$, $XTVaR$, $EPD$)
+* [Tail](#tail-base-era2-2) based ($VaR$, $TVaR$, $XTVaR$, $EPD$), see table \@ref(tab:era2-2-tail-measure-tab)
 
-* Probability transform
+* [Probability transform](#prop-trans-era2-2)
 
-* Generalized moments
+    * e.g. Esscher \@ref(eq:esscher-era-2-2)
+
+* [Generalized moments](#gen-mo-era2-2)
 
 Capital a company should hold depends on *practical considerations*, not simply derived from a risk measure
 
+* e.g. Customer reactions, or keepin renewal business
+
 Allocation of risk measures
+
+* Definitions \@ref(def:cap-alloc-era-2-2-def)
 
 * [Proportional](#proportional-era2-2)
 
-* [Co-measures](#co-measures-era2-2)
+* [Co-measures](#co-measures-era2-2), table \@ref(tab:era2-2-co-measure-tab)
 
-Allocation is marginal (\@ref(def:marginal-era2-2)) if the change to the company’s risk measure from a small change in a single BU is attributed to that business unit
+Allocation method properties:
 
-* Scalable risk measures (\@ref(def:scalable-era2-2)) 
+* Marginal allocation \@ref(def:marginal-era2-2)
 
-* Suitable allocation (\@ref(def:marginal-era2-2))
+    * Scalable risk measures \@ref(def:scalable-era2-2)
 
-* A risk measure can have many co-measures but [only 1](#marginal-impact-era-2-2) will be marginal
+* Suitable allocation \@ref(def:marginal-era2-2)
+
+Marginal impact \@ref(eq:marginal-impact-era-2-2)
+
+* A risk measure can have many co-measures but only 1 will be marginal
+
+Allocation works best when the risk measure $\propto$ the market value of risk
 
 Can bypass the above if we can just allocate the cost of capital
+
+* Option pricing or the MV of stop loss that attach at 0 profit
 
 ## Introduction {#era2-2-intro}
 
@@ -154,7 +168,12 @@ To recognize that large losses are worse for the firm in more than a linear way 
 
 Change the loss distribution function by putting more weight (add probability) to the worst losses
 
-* e.g. Esscher transform $f^*(y) = k \cdot e ^{y/c} \: f(y)$
+* e.g. Esscher transform
+
+\begin{equation}
+  f^*(y) = k \cdot e ^{y/c} \: f(y)
+  (\#eq:esscher-era-2-2)
+\end{equation}
 
     * Lower $c$ $\Rightarrow$ Higher losses from the transformed dist^n^
 
@@ -172,7 +191,7 @@ $\therefore$ transformed means are a promising risk measure for determining the 
 
 * Complete market is where any risk can be sold, but we work in incomplete markets
 
-* Theory of pricing in incomplete markets favors:
+* Theory of **pricing in incomplete markets** favors:
 
     * Minimum Martingale Transform (MMT)
     
@@ -189,7 +208,7 @@ $\therefore$ transformed means are a promising risk measure for determining the 
     * EPD on transformed distribution can use to estimate value of default put
 ```
 
-### Generalized Moments
+### Generalized Moments {#gen-mo-era2-2}
 
 Includes more than just $\mathrm{E}[Y^k]$, can include all of the above risk measures (Not just expectations of powers of the variable)
 
@@ -280,7 +299,7 @@ Allocate the total risk measure to each BUs for the following **purposes**:
     
     * EVA = Profit - Cost of Capital
 
-```{definition}
+```{definition, cap-alloc-era-2-2-def}
 
 
 $Y$: Losses of a company with CDF $F(y)$
@@ -385,7 +404,7 @@ $$r(X_j) = \mathrm{E}[X_j \mid F(Y) = \alpha]$$
 
 ```{definition, marginal-era2-2}
 **Marginal Allocation**:  
-Allocation is marginal if the change to the company's risk measure from a small change in a single BU is attributed to that business unit
+Allocation is marginal if the change to the company's risk measure from a small change in a single BU's (volume) is attributed to that business unit
 
 * Consistent with concept that price should be proportional to marginal cost
 
@@ -415,7 +434,7 @@ For many companies and BUs, growth in exposure units can approximate homogeneous
 
 ```{definition, suitable-era2-2}
 **Suitable Allocation**:  
-Growing a unit that have above average profit/risk will increase the profit/risk for the company
+Growing a unit that have above average ratio of profit/risk will increase the overall ratio of profit/risk for the company
 
 Given:
 
@@ -434,7 +453,10 @@ Where: $P_j$ is the profit for the $j$^th^ business unit and $P$ is the profit o
 
 A risk measure can have many co-measures but only 1 (the following form) will be marginal
 
-$$r(X_j) = \lim \limits_{\epsilon \rightarrow 0} \dfrac{\rho(Y + \epsilon X_j) - \rho(Y)}{\epsilon} = \dfrac{\partial \rho(Y)}{\partial X_j}$$
+\begin{equation}
+  r(X_j) = \lim \limits_{\epsilon \rightarrow 0} \dfrac{\rho(Y + \epsilon X_j) - \rho(Y)}{\epsilon} = \dfrac{\partial \rho(Y)}{\partial X_j}
+  (\#eq:marginal-impact-era-2-2)
+\end{equation}
 
 * This is the derivative of the firm risk measure w.r.t. growth in BU $j$
 

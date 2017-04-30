@@ -1,7 +1,7 @@
 # ERA 2.1 Corporate Decision Making Using an Enterprise Risk Model - Don Mango
 
 3 evolutionary steps in [decision analysis](#era2-1-project-analysis):  
-Deterministic $\Rightarrow$ Risk Analysis $\Rightarrow$ Certainty Equivalent
+[Deterministic](#era2-1-project-analysis) $\Rightarrow$ [Risk Analysis](#era2-1-risk-analysis-sec) $\Rightarrow$ [Certainty Equivalent](#era2-1-ce-sec)
 
 * [Argument](#argument-for-5) that 2^nd^ step is sufficient and [reasons](#step3-reason) to move to the 3^rd^ step
 
@@ -15,7 +15,7 @@ Attribute cost back to source of risk for decision making
 
 [Allocating](#era2-1-5b) risk capital
 
-Cost benefit analysis with EVA or capital allocation
+Cost benefit analysis with **EVA** or **capital allocation**
 
 Use a suite of decision metrics that are distinct and independent (to give different perspectives) and are responsive to different dynamics
 
@@ -93,7 +93,7 @@ $\therefore$ Only need to manage systemic risk
 
     * Jump risk is still present as information have a time lag
 
-* Market based information is lack the refinement and discriminatory power (too noisy) for management to be able to do proper cost-benefit analysis and make trade off decisions
+* Market based information lack the refinement and discriminatory power (too noisy) for management to be able to do proper cost-benefit analysis and make trade off decisions
 
 ### Certainty Equivalent {#era2-1-ce-sec}
 
@@ -248,11 +248,11 @@ Risk tolerance level $R$ and utility function tells you where the firm choose to
 
 * $R$ is estimated based on where the decision maker is indifferent from a gamble of 50% of $R$ and 50% of $-R/2$ and not taking it (take the expected value?)
 
-* Expected value is $\dfrac{R}{$}$
+* Expected value is $\dfrac{R}{4}$
 
 **Utility Function**
 
-$U(x) = 1 - e^{ - x / R}$
+$$U(x) = 1 - e^{ - x / R}$$
 
 * Tell us how much risk is the firm willing to tolerate
 
