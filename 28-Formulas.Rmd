@@ -476,3 +476,31 @@ Value of reinsurance
     * [Accumulation risk](#era-2-5-acc-risk): as-if reserve \@ref(def:as-if-res-era-2-5)
     
     * {Capital consumed}(#era-2-5-cap-consum) and the equation \@ref(eq:cap-con-equa)
+    
+## ERA 3.3 Modeling and Dependency: Correlations and Copulas - G. Venter
+
+$\star$ ***Correlation***
+
+[Pearson's](#era-3-3-pearson) correlation:
+
+* Formula \@ref(eq:pearson-era-3-3) 
+
+[Kendall's](#era-3-3-kendall) $\tau$:
+
+* Formula \@ref(eq:era-3-3-ken) for discrete and continuous \@ref(eq:era-3-3-ken-cont) & \@ref(eq:era-3-3-ken-cont-2)
+
+***Copulas***
+
+[Using copula](#how-to-copula) and Sklar's Theorem \@ref(thm:sklar)
+
+* Joint density function express with copula \@ref(eq:copula-density)
+
+Properties of the main copulas in table \@ref(tab:era-3-3-copulas-summary) and the [partial perfect correlation](#era-ppc-sec) copula
+
+* **Simulation** for each of the copula [Frank](#era-3-3-sim-1), [Gumble](#era-3-3-sim-2), HRT is same as Frank, and [Normal](#era-3-3-sim-3)
+
+    * Gumbel's formula \@ref(eq:era-gumbel-s) & \@ref(eq:era-gumbel-s-u-v)
+
+***Tail Concentration Functions***
+
+[Left tail](#left-tail-con-fun) and [right tail](#right-tail-con-fun) concentration function for each copulas \@ref(fig:tail-concentration)

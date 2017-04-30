@@ -2,7 +2,7 @@
 
 [Characteristics](#era-5-uw-cycle) of underwriting cycle
 
-[4 stage](#era-5-4-stage) of insurance business
+[4 stage](#era-5-4-stage) of insurance business and what drives each of them
 
 * First stage is the classic cycle and the next 3 shows how things stabilize and then eventually breakdown
 
@@ -10,23 +10,23 @@ Various [theories](#era-5-cycle-theory) of underwriting cycle
 
 [Approaches](#era-5-cycle-mod-app) to modeling the cycle
 
-* Need to us combined ratio or something as proxy for price
+* Need: Criterion variable, predictor variable, and competitor intelligence
 
-* Calculate and forecast predictor variables
+$\star \star$ Styles of modeling:
 
-* Gather competitor intelligence
+* [Soft](#era-5-4-soft) has 3 methods (Scenarios, Delphi, Formal Competitor Analysis)
 
-Styles of modeling:
+* [Technical](#era-5-4-hard) use different time series models
 
-* Soft, technical and behavioral
+* [Behavioral](#era-5-4-behav) is in between
 
-Look at the different impact on [supply and demand](#era-5-supply-demand) under different scenarios
+Different impact on [supply and demand](#era-5-supply-demand) under different scenarios
 
-[Gron](#era-5-4-gron) supply curve
+* [Gron](#era-5-4-gron) supply curve
 
 Capital flow (fig. \@ref(fig:capital-flow)) under different profitability
 
-How different components interact
+Interaction of the various components \@ref(fig:compoents-uw-cycle)
 
 ## Introduction {#era5-uw-cycle-intro}
 
@@ -328,6 +328,18 @@ Econometric Modeling
 
 * Sit between soft and technical model's concern for **structural insight** (soft) and **statistical validity** (technical)
 
+* Same as soft approach:
+
+    * Where we need large quantity, variety and complexity of data
+    
+    * Recognize human factors
+    
+* Same as technical approach:
+
+    * Require mathematical formalism
+    
+    * Tehcnical $\Rightarrow$ statistical validity
+
 Can be done at an *industry* level or *company* level
 
 * Industry level can be more detailed
@@ -463,13 +475,85 @@ Output of the modeled u/w cycle should feed into the firm's **demand** and **ret
 
 ## Past Exam Questions
 
-```{block, type='rmdcaution'}
-Haven't done past exam questions for ERA 4 and 5
-```
+**TIA Exercise 4.1**
 
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
+* TIA 1: System performance of insurance company
+
+* TIA 2: Manage u/w cycle to improve performance
+
+* TIA 3: Risk of setting apriori LR using historical for long tail LoBs
+
+* TIA 4: Op risk for comp structure for CEO
+
+* TIA 5: How to use KRI
+
+* TIA 6: Op risk to consdier when expanding business
+
+**TIA Exercise 4.2**
+
+* TIA 7: How to react to competitors and avoid operational inertia
+
+* TIA 8: Why scenarios will be less detail than plan
+
+* TIA 9: Best practice of scenario planning
+
+* TIA 10: Advance scenario planning
+
+* TIA 11: Mango's definition of strategic risk vs the OCC version
+
+* TIA 12: Categories of strategic risk
+
+* TIA 13: Essence of Mango's definition of strategic risk
+
+* TIA 14: Categorize strategic and op risk
+
+    * Op risk is mostly implementation and execution
+    
+    * Strategic risk is more decisions
+    
+**TIA Exercise 5.4**
+
+* TIA 15: difficulty with modeling price in insurance
+
+* TIA 16: Stewert's u/w cycle stages
+
+* TIA 17: Definition of u/w cycle and how is it driven by competition and capital
+
+* $\star$ TIA 18: Model underwriting cycle based on lag of information
+
+* TIA 19: VARMAX vs AR model
+
+* TIA 20: supply demand curve for firm vs market
+
+* TIA 21: Gron supply curve features
+
+* TIA 22: Industry capital flow graph features
+
+* TIA 23: Industry capital flow graph features
+
+* TIA 24: Soft vs technical approach of u/w cycle modeling
+
+* TIA 25: Drawback of technical approach
+
+* TIA 26: Delphi method
+
+* TIA 27: Formal Competitor Analysis for u/w cycle review
+
+**Past Exam**
+
+* 2011 #20: Identify and describe op risk presented in sample
+
+* 2012 #22: Describe op-risk and identify op-risk in example
+
+* 2014 #25: Issue with bridging model and u/w cycle management to improve performance
+
+* $\star$ 2015 #28: Op risk vs strategic risk and strategic risk faced by insurance companies
+
+* 2016 #22: ALM strategy to deal with u/w cycle
+
+* 2016 #26: Op risk with planned loss ratio and difficulty in seperating op risk from underwriting risk
+
+* 2016 #27: agency theory and problems when they're not align, 4 actions to manage properly u/w cycle
 
 ### Question Highlights
 

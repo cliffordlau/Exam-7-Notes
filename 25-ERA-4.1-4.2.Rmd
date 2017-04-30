@@ -2,45 +2,57 @@
 
 ***Op risk***
 
-The risk of loss resulting from inadequate or failed internal process, people, and systems or from external events
+$\star$ Basel definition \@ref(def:op-risk-basel) and [7 types](#era-4-1-op-risk-intro) of op risk
 
-[Types](#op-risk-type) of operational risk 
+* Contrast with strategic risk
 
-Underlying cause of insurer failure can be op risk even though if the surface cause is reserving or under pricing
+[Underlying cause](#ins-op-risk) of insurer failure is actually *op-risk* 
 
-Plan loss ratio example hows how optimistic loss ratio propagates forward
+* [Plan loss ratio example](#plan-lr-exp) on how optimistic loss ratio propagates forward and $\star$ [3 different reasons](#three-reasons-why-op) for it
 
-* 3 different reasons why the planned LR didn't work and only 1 of them is truly insurance risk
+[Cycle management](#era-cycle-mgmt) and how to improve performance
 
-[Cycle management](#era-cycle-mgmt)
+* Requirements from a [system performance perspective](sys-perf-era-4-2)
 
-* [IP, u/w incentives, market overreaction, owner education](#era-4-CM)
+* $\star \star$ [IP, u/w incentives, market overreaction, owner education](#era-4-CM)
 
 6 [Additional persepctives](#add-pers-era-4-1)
 
+* $\star$ [Agency theory](#era-4-1-misc-1), [Op-risk](#era-4-1-misc-2) for heavey processes, [control self-assessment](#era-4-1-misc-3), [KRI](#era-4-1-misc-4), [6 $\sigma$](#era-4-1-misc-5), and $\star$ [op-risk modeling](#era-4-1-misc-6)
+
 ***Strategic risk***
 
-Various definition of strategic risk, no one clear definition, some overlaps with op risk
+$\star$ Various definition of strategy \@ref(def:era-4-2-strategy), \@ref(def:era-4-2-strategy-mango), \@ref(def:era-4-2-strategy-giro) and strategic risk \@ref(def:era-4-2-strategic-risk), \@ref(def:era-4-2-strategic-risk-2), \@ref(def:era-4-2-strategic-risk-OCC)
+
+* Contrast with op-risk
 
 Various research to date
 
-* Elements of strategic risk from Baird and Thomas
+* [Miller](#era-4-2-strat-research-1)
 
-* Category of strategic risk from slywotzky and drzik
+* [Baird and Thomas](#era-4-2-strat-research-2)
 
-Scenario planning and the 10 [Steps](#scen-step)
+    * Elements of strategic risk
 
-* Look at the insurance example and the [advantages](#scen-adv) of scenario planning
+* [Slywotzky and Drzik](#era-4-2-strat-research-3)
 
-Advance scenario planning
+    * $\star$ Category of strategic risk \@ref(tab:era-4-2-drizk)
+
+* [Hertz and Thomas](#era-4-2-strat-research-4)
+
+[Scenario planning](#era-4-2-scen-plan) and the 10 [Steps](#era-4-2-scen-plan-process)
+
+* Look at the [insurance example](#ins-example-era-4-2-plan) and the advantages of scenario planning
+
+[Advance scenario planning](#adv-plan-era-4-2)
 
 * Expend to several LoBs with dependencies
 
-* Stochastic
+* 4 requirements for stochastic scenario planning
 
-* Agent based modeling (competitors, customers, regulators)
+* $\star$ [Agent based modeling](#abm-era-4-2) (competitors, customers, regulators)
 
-## ERA 4.1 Operational Risk Intro
+## ERA 4.1 Operational Risk Intro {#era-4-1-op-risk-intro}
 
 Important cause of insurer insolvency $\Rightarrow$ Need to be aware and attempt to measure
 
@@ -118,11 +130,11 @@ The risk of loss resulting from inadequate or failed internal process, people, a
 * Do not lose sight of op risk despite it is soft, difficult, poorly understood and lack historical track record
 ```
 
-## Operational Risk to Insurers
+## Operational Risk to Insurers {#ins-op-risk}
 
 Study show that insurer failure are mostly attributed to under **reserving** and **under pricing**
 
-**Underlying cause** of insurer failure is actually *op-risk*
+**Underlying cause** of insurer failure is actually *op-risk* 
 
 * e.g. Over accumulation of risk exposure (insufficient initial reserving or premature reserve release) given the asset base
 
@@ -132,7 +144,7 @@ Clear that op risk have heavily contributed to insurance impairments and should 
 
 * Currently capital charges for premium, reserve, and growth are *partially* **proxies** for operational risk
 
-## Insurer Op Risk: Plan Loss Ratios
+## Insurer Op Risk: Plan Loss Ratios {#plan-lr-exp}
 
 Mostly impact long tailed LoBs (e.g. 50% reported @ 5yrs, 90% @ 10yrs)
 
@@ -154,7 +166,7 @@ As the older years losses develop higher than expected $\Rightarrow$ increase in
 
 * Eventual runoff
 
-### Three reasons why the planned LR did not work
+### Three reasons why the planned LR did not work {#three-reasons-why-op}
 
 1) Model unable to forecast accurate LR
 
@@ -192,7 +204,7 @@ Prudent management of u/w capacity as market pricing fluctuates in the u/w cycle
 
 3) Are u/w-ers making **decisions that are consistent** with (1) and (2)
 
-### System Performance Perspective
+### System Performance Perspective {#sys-perf-era-4-2}
 
 Assess an insurance company from a system performance perspective, it needs to be:
 
@@ -711,7 +723,7 @@ Attempts to capture the richness of range of possibilities $\Rightarrow$ Lead th
 
     * *Iterative* process of reviewing scenarios with the goal of converging to test scenarios and generate new ideas
 
-### Insurance Example
+### Insurance Example {#ins-example-era-4-2-plan}
 
 Scenarios will be **less detailed** than a typical strategy or plan document
 
@@ -729,8 +741,6 @@ Set planned premium and ELR based on current year base LR, cost trend, price cha
 * e.g. If price decrease, company might want to reduce premium volume instead of the inflexibility of making the planned premium volume
 
 #### Basic Scenario Planning Example
-
-
 
 Must **decide ahead of time**:
 
@@ -750,7 +760,7 @@ Plans must have **enough detail** to give them operational weight
 
 * Operational **inertia is reduced**, flexibility is built into the system
     
-## Advanced Scenario Planning & ERM
+## Advanced Scenario Planning & ERM {#adv-plan-era-4-2}
 
 **Model Expansion**
 
@@ -786,7 +796,7 @@ Generate stochastically simulated scenarios that have responses based on a set o
     
     * Express as mathematical formulas that can be programmed into the simulation
     
-## Agent-Based Modeling
+## Agent-Based Modeling {#abm-era-4-2}
 
 Agents can be: *competitors*, *customers*, *regulators*
 
@@ -797,17 +807,3 @@ Program each agent to respond to the state of the market
 Creates a complex system with emergent properties that describe the behavior of agents
 
 * There emergent properties are often difficult to ascertain without running the simulations
-
-## Past Exam Questions
-
-```{block, type='rmdcaution'}
-Haven't done past exam questions for ERA 4
-```
-
-```{block, type='rmdcaution'}
-Haven't done TIA practice questions
-```
-
-### Question Highlights
-
-n/a

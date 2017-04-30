@@ -804,6 +804,18 @@ Compare the empirical graph of $\chi(z)$ with the theoretical copulas to determi
 
 * $\star$ TIA 22: Using the PP Copula
 
+**Past Exams**:
+
+* $\star$ 2011 #20: Kendall and Pearson calculation and explanation; picking copulas and why use them
+
+* $\star\star$ 2012 #17: Explain, derive and graph RTC
+
+* 2014 #20: Describe tail dependencies and copula
+
+* 2015 #21: Benefits of copula and name a better copula than normal
+
+* $\star$ 2016 #25: Pick copulas based on RTC, limitation of RTC
+
 ### Question Highlights
 
 n/a
