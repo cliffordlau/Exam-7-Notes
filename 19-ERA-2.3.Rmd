@@ -1,25 +1,23 @@
 # ERA 2.3 Regulatory and Rating Agency Capital Adequacy Models - Witcraft
 
-Talks about different ways regulator regulates company's capital adequacy
+Different ways regulator regulates company's capital adequacy
 
-Leverage ratios were used in the early days
+* [Leverage ratio](era2-3-leverage): Premium or reserve over surplus
 
-In the 1990s RBC was introduced that combine
+* [RBC](#era2-3-rbc) (in the 1990s)
 
-* Credit
+    * Factor model combining several risk include asset, credit, premium, reserve
 
-* Reserve
-
-* Accumulation
-
-Scenario testing
+[Scenario testing](#era-2-3-scen-test)
 
 * Against scenarios from regulators
-* Can be stochastic
 
-2 options to meet capital requirements:
+* Can be stochastic or static
+
+[2 options](#era-2-3-eval-cap-stra) to meet capital requirements:
 
 * Purchase reinsurance
+
 * Issue surplus notes
 
 ## Introduction {#era2-3-intro}
@@ -120,7 +118,7 @@ Some models have started to use accumulation risk (but many do not use it yet)
 
 * Focus is on 1-in-100 or 1-in-250 events
 
-## Scenario Testing
+## Scenario Testing {#era-2-3-scen-test}
 
 Some regulators require test of capital against a set of scenarios
 
@@ -142,7 +140,7 @@ Stochastic modeling requires:
 
 * Reflection of Management Responses
 
-## Evaluating Capital Structure Strategies
+## Evaluating Capital Structure Strategies {#era-2-3-eval-cap-stra}
 
 2 options to meet capital requirements:
 
