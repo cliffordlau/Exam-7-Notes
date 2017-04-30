@@ -1,30 +1,39 @@
 # ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck
 
-Parameter risk is more important as the process risk is smaller
+Parameter risk is impact big companies more as their process risk is smaller \@ref(eq:era-3-2-cov-form)
 
-Different ways to model the [severity trend](#projection-risk-era3-2)
+***Projection risk***
 
-* Model the trend independently or adjust the general inflation then model the superimposed inflation
+    * Different ways to model the [severity trend](#projection-risk-era3-2)
 
-* Model with AR(1)
+        * Model the trend independently or adjust the general inflation then model the superimposed inflation
 
-Estimation risk in selecting the parameters and the downstream impact
+        * Model with AR(1) \@ref(eq:ar-1-era-3-2)
 
-* Use MLE working with negative log likelihood
+***Estimation risk*** in selecting the parameters and the downstream impact
+
+* Use MLE working with infomration matrix \@ref(eq:info-matrix-era-3-2) and correlation matrix \@ref(eq:corr-matrix-era-3-2)
 
 * Slope of the negative log likelihood determines our confidence in the selection
 
-Use HQIC to adjust the loglikelihood with a penalty for # of parameters
+
+***Model risk***
+
+* Use HQIC to adjust the loglikelihood with a penalty for # of parameters
 
 * Also use a pool of distribution of reasonable parameters
 
-Form of the model we use to do the modeling e.g. expected parameters vs pool of distribution of parameters
+***Projection models***
 
-Should focus on the spread of potential outcomes instead of best estimate
+* Form of the model we use to do the modeling e.g. expected parameters vs pool of distribution of parameters
+
+* Should focus on the spread of potential outcomes instead of best estimate
 
 * Add flexibility and let the parameters reflect the uncertainty in the assumptions
 
 ## Introduction {#era3-2-intro}
+
+This was first touched on in [ERA 1.3](#era-1-3u-w-risk-3) when discussing the components of underwriting risk
 
 **Parameter risk** is the risk inherent in selecting the wrong loss distribution
 
@@ -42,7 +51,11 @@ Paper has 2 recommendations when using **projection models**
 
 CoV for total losses if the frequency and severity distribution are **known**
 
-$$CV^2(S) = \underbrace{CV^2(N)}_{\text{# of Claims}} + \underbrace{\dfrac{CV^2(X)}{\mu_N}}_{\text{Severity}}$$
+
+\begin{equation}
+  CV^2(S) = \underbrace{CV^2(N)}_{\text{# of Claims}} + \underbrace{\dfrac{CV^2(X)}{\mu_N}}_{\text{Severity}}
+  (\#eq:era-3-2-cov-form)
+\end{equation}
 
 * For large company, $\mu_N$ is large so the 2^nd^ term is small
 
@@ -78,7 +91,10 @@ Forecast one trend using historical average and into the future
 
 Claim severity $\neq$ general inflation
 
-$$[\text{Claim Severity Trend}] \approx [\text{General Inflation}] + [\text{Superimposed Inflation}]$$
+\begin{equation}
+  [\text{Claim Severity Trend}] \approx [\text{General Inflation}] + [\text{Superimposed Inflation}]
+  (\#eq:ar-1-era-3-2)
+\end{equation}
 
 **2 approaches**:
 
@@ -126,11 +142,17 @@ Uncertainty depends on the slop of the likelihood surface
 
 * Negative of the 2^nd^ derivative of the log likelihood = information matrix (easier to work with)
 
-$$I = \dfrac{\partial^2 [\overbrace{ -LL }^{\text{Neg Log Likelihood}}]}{\partial \underbrace{\vec{\alpha}}_{\text{Parameters}}}$$
+\begin{equation}
+  I = \dfrac{\partial^2 [\overbrace{ -LL }^{\text{Neg Log Likelihood}}]}{\partial \underbrace{\vec{\alpha}}_{\text{Parameters}}}
+  (\#eq:info-matrix-era-3-2)
+\end{equation}
 
 * Inverse of the information matrix = co-variance matrix
 
-$$\mathbf{\Sigma} = I^{ -1 }$$
+\begin{equation}
+  \mathbf{\Sigma} = I^{ -1 }
+  (\#eq:corr-matrix-era-3-2)
+\end{equation}
     
 * If slope of $-LL$ is steep near the selection $\Rightarrow$ More confidence in the selection
 
