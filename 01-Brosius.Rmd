@@ -40,7 +40,7 @@
 
 * [Development Formula](#cred-dev): Use the credibility formula
 
-    1. Estimate from data (prop. \@ref(prp:dev-form-1): Same as the LS equation
+    1. Estimate from data (prop. \@ref(prp:dev-form-1)): Same as the LS equation
     
         * Alt form for $Z$ with equation \@ref(eq:brosius-alt-z) that gives you same as LS results
     

@@ -38,7 +38,7 @@ All the different [model](#model-summary-meyers) introduced (fig. \@ref(fig:meye
 
     * Mean \@ref(eq:meyers-csr-mean)
     
-    * $\gamma >0 $ for increase payout speed
+    * $\gamma >0$ for increase payout speed
 
 **Bayesian Models** (*Incremental*):
 
@@ -420,7 +420,7 @@ $\sigma_d$
     
 * Each $\beta_d \sim U(-5,5)$ for $d<10$
 
-* Each $\sigma_d = \sum_{i=d}^{10} \alpha_i$ where $\alpha_i \sim U(0,1)$
+* Each $\sigma_d = \sum_{i=d}^{10} a_i$ where $a_i \sim U(0,1)$
 
 ***Test Results***
 

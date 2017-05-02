@@ -423,7 +423,15 @@ Plug in to the formulas and using the geometric series
 
 ### Transaction Multiples
 
-We can use multiples from transaction, however:
+Pros:
+
+* Based on transaction price of knowledgeable or sophisticated parties, which makes the valuation more meaningful
+
+* Not subject to random market fluctuations, should have been valued by careful analysis
+
+* Transactions done by people/experts involved in the companies – would have best estimate of values
+
+Cons:
 
 * Companies tend to overpay
 

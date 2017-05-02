@@ -597,9 +597,9 @@ This section of the paper just goes through the methods we've discussed and comp
 
 * TIA 2: Using $\gamma$ for unpaid
 
-* \$star$ TIA 3: BF unpaid estimate
+* $\star$ TIA 3: BF unpaid estimate
 
-* \$star$ TIA 6: Calculate $\gamma$ and forecast with both the row and column parameters
+* $\star$ TIA 6: Calculate $\gamma$ and forecast with both the row and column parameters
 
 * $\star$ TIA 7: Calculate $\gamma$
 

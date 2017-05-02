@@ -219,7 +219,7 @@ Potential ***challenges*** on parameters that need to be developed
 
 * Need to develop a systematic way to capture the expert opinion (product expertise) from the following departments:
 
-  * W/w, planning, claims, planning and actuarial
+  * U/w, planning, claims, planning and actuarial
 
 ***Correlations***
 

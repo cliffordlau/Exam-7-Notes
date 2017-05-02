@@ -22,7 +22,7 @@ Allocation of risk measures
 
 * [Proportional](#proportional-era2-2)
 
-* [Co-measures](#co-measures-era2-2), table \@ref(tab:era2-2-co-measure-tab) and \@ref(era2-2-co-measure-tab-2)
+* [Co-measures](#co-measures-era2-2), table \@ref(tab:era2-2-co-measure-tab) and \@ref(tab:era2-2-co-measure-tab-2)
 
 Allocation method properties:
 

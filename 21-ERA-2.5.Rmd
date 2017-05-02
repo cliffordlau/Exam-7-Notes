@@ -6,15 +6,15 @@ Value of reinsurance
 
     * [Based on reinsurance premium and expected recoveries](#era-2-5-stability-1)
     
-        * Metrics \@ref(era-2-5-metrics-1) and \@ref(era-2-5-metrics-3)
+        * Metrics \@ref(def:era-2-5-metrics-1) and \@ref(def:era-2-5-metrics-2)
 
     * [Amount of protection](#era-2-5-stability-2)
     
-        * Metrics \@ref(era-2-5-metrics-3)
+        * Metrics \@ref(def:era-2-5-metrics-3)
 
-    * [Premium - loss](#era-2-5-stability-3)
+    * [Net Premium - Net loss](#era-2-5-stability-3)
     
-        * Metrics \@ref(era-2-5-metrics-4), \@ref(era-2-5-metrics-5), \@ref(era-2-5-metrics-6) and \@ref(era-2-5-metrics-7)
+        * Metrics \@ref(def:era-2-5-metrics-4), \@ref(def:era-2-5-metrics-5), \@ref(def:era-2-5-metrics-6) and \@ref(def:era-2-5-metrics-7)
 
     * [Distributions](#era-2-5-stability-4)
     
@@ -26,21 +26,21 @@ Value of reinsurance
         
         * Combined ratio is bad
 
-    * [Efficient frontier](#era-2-5-stability-5)
+    * $\star$ [Efficient frontier](#era-2-5-stability-5)
 
 2) Frees up [capital](#era-2-5-sec-2)
 
-    * Cost of capital reduction metrics \@ref(coc-reduct-met-1) and \@ref(coc-reduct-met-2)
+    * $\star$ Cost of capital reduction metrics \@ref(def:coc-reduct-met-1) and \@ref(def:coc-reduct-met-2)
     
-    * Capital can be based on [theoretical](#theo-model-era-2-5) or [practical](#prac-model-era-2-5) model
+    * $\star$ Capital can be based on [theoretical](#theo-model-era-2-5) or [practical](#prac-model-era-2-5) model
     
     * [Accumulation risk](#era-2-5-acc-risk): as-if reserve \@ref(def:as-if-res-era-2-5)
     
-    * {Capital consumed}(#era-2-5-cap-consum) and the equation \@ref(eq:cap-con-equa)
+    * [Capital consumed](#era-2-5-cap-consum) and the equation \@ref(eq:cap-con-equa)
 
 3) Adds to the [value](#era-2-5-sec-3) of the firm
 
-* Difficult to do but some recent study results
+    * Difficult to do but some recent study results
 
 ## Introduction {#era2-5-intro}
 
@@ -577,7 +577,7 @@ Value of reinsurance can be measures vs:
 
 * 2011 #16: allocation method and use of transformed probabilities
 
-* $\star$ 2011 #17: reinsurance options
+* $\star \star$ 2011 #17: reinsurance options based on capital cost saving
 
 * 2011 #19: Compare VaR and TVaR, calculate EPD
 

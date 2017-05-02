@@ -1,6 +1,6 @@
 # Measuring the Variability of Chain Ladder Reserve Estimate - T. Mack
 
-$\star$ 3 underlying **assumptions** of [chain ladder](#cl-ass) that makes the [implicit assumptions](#mack-implicit-ass) hold
+$\star$ 3 underlying **assumptions** of [chain ladder](#cl-ass) that makes the [implicit assumptions](#mack-implicit-ass) hold and when they might be [violated](#cl-ass-vio)
 
 1. Expected incremental losses are $\propto$ losses to date, dependent on age (prop. \@ref(prp:cl-ass-1))
 
@@ -532,6 +532,8 @@ Consider the ratio $\dfrac{s.e.(\hat{R}_i)}{\hat{R}_i}$
 
 * Then calculate the total reserve CI
 
+* Total ratio should be greater than the simple sum because the LDFs are positively correlated
+
 ***Allocate CI to each AY***
 
 After calculating the all year CI, we can allocate the upperbound the total CI to each AYs
@@ -581,6 +583,8 @@ Test for assumption 3 (prop. \@ref(prp:cl-ass-3))
 For each age $k$, plot the $c_{i,k}$ with the residuals $\varepsilon_{i,k+1}$
 
 * x-axis is the $c_{i,k}$ and y-axis is $\varepsilon_{i, k+1}$
+
+* These are **weighted** residuals ([Clark](#clark-res-review) is *normalized* residual and [bootstrap](#odp-res) is *pearson* residual)
 
 \begin{equation}
   \varepsilon_{i,k+1} = \dfrac{c_{i,k+1} - c_{i,k} \: \hat{f_k}}{\sqrt{\mathrm{Var}(c_{i,k})}}

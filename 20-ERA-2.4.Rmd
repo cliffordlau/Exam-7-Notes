@@ -1,6 +1,6 @@
 # ERA 2.4 Asset-Liability Management - Brehm
 
-Asset liability Management definition \@ref(def:al-mgmt-er)
+Asset liability Management definition \@ref(def:al-mgmt-era)
 
 [Optimal portfolio](#four-op-ptf-era) under 4 different scenarios
 
@@ -40,11 +40,12 @@ Asset-Liability Management $\neq$ Matching
 
 ```{definition, al-mgmt-era, name = "AL Management"}
 
-    * Looks at current assets and liabilities + flow from future premiums of a going concern company
 
-    * *Identify* and *exploit hedges* of any sort
+* Looks at current assets and liabilities + flow from future premiums of a going concern company
+
+* *Identify* and *exploit hedges* of any sort
     
-        (e.g. use equity as inflation hedge)
+    (e.g. use equity as inflation hedge)
 ```
 
 Insurance liabilities are *less liquid* than investments $\leadsto$ Focus mostly on investment

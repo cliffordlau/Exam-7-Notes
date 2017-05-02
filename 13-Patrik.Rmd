@@ -250,7 +250,7 @@ Benefits of the above definition:
 * We can compute statistics such as the expected value to compare one claim report pattern with another
 ```
 
-```{r gamma-rpt-lag, fig.cap = "Claims report lag based on Gamma distribution", echo = FALSE}
+```{r gamma-rpt-lag, fig.cap = "Claims report lag based on Gamma distribution", echo = FALSE, warning = FALSE}
 library(dplyr)
 library(ggplot2)
 data_frame(x = seq(0,0.999, 0.001)) %>%
@@ -422,6 +422,8 @@ Must **on-level** the historical premium and adjust to be pure premium ($E_k$)
 * **Remove** *commissions* and *brokerage* and *internal expenses* (but might not worth the effort)
 
 * Remove any suspected **rate level differences** (so each year have the same ELR)
+
+* We need to do this because we are using a constant expected LR for all AYs
 
 * Unclear how to adjust ELR to a prior estimate for each year (from 2000 #68)
         

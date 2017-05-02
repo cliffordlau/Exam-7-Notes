@@ -518,6 +518,8 @@ $$p = 2n-1$$
     * One for each row, one for each column minus first column
     
     * $p$ can be less than $2n-1$ if the later incremental values are all 0's and therefore not needed for fitting
+    
+* This calculation is similar to Clark's $\sigma^2$ \@ref(eq:clark-sigma-est)
 
 Alternate method for $\phi$
 
@@ -549,9 +551,7 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
     
         ($r^*_p$ is the realized sample from i.)
     
-    iii. Compile the **sampled cumulative triangle**
-    
-    iv. **Estimate dispersion factor** $\phi$ for Step 3
+    iii. **Estimate dispersion factor** $\phi$ for Step 3
         
         This can vary per [Dispersion Factor](#odp-dispersion) section
         
@@ -930,7 +930,7 @@ Solution is the same as volume weighted Chainladder
 
 * Can include CY trend
 
-* Variance of the incremental losses $\propto $m^z_{wd}$ (where $z=1$ for this paper)
+* Variance of the incremental losses $\propto$ $m^z_{wd}$ (where $z=1$ for this paper)
 
 ## Practical Issues {#odp-prac-issues}
 
@@ -984,6 +984,8 @@ Cell_{w,d} =
 
 ```{remark}
 Doesn't work when the column sum to a negative value
+
+* This is done when setting the design matrix \@ref(eq:odp-sys-eq-matrix)
 ```
 
 **Method 2**: *Subtract* a *negative* constant $\Psi$
@@ -1528,6 +1530,8 @@ Table: (\#tab:odp-output-table) Model output review format
 * Total s.e. should be **greater than** any individual year but less than the straight sum of each AY's s.e.
 
 * Expect s.e. to **increase** going down the column
+
+* This is different from Mack? Where we expect the total s.e. to be greater than the simple sum due to correlation between AYs? (questionable statement here)
 ```
 
 ```{remark}
@@ -1540,7 +1544,7 @@ Table: (\#tab:odp-output-table) Model output review format
     
 * Higher CoV for the most recent AYs due to:
     
-    i. More parameters used to forcase for the most recent AYs $\therefore$ parameter uncertainty $gg$ process variance
+    i. More parameters used to forcase for the most recent AYs $\therefore$ parameter uncertainty $\gg$ process variance
     
     ii. Model maybe overestimating the uncertainty $\Rightarrow$ Use *BF* of Cape Cod
 ```

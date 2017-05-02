@@ -4,18 +4,19 @@ Parameter risk is impact big companies more as their process risk is smaller \@r
 
 ***Projection risk***
 
-    * Different ways to model the [severity trend](#projection-risk-era3-2)
+* Different ways to model the [severity trend](#projection-risk-era3-2)
 
-        * Model the trend independently or adjust the general inflation then model the superimposed inflation
+    * Model the trend independently or adjust the general inflation then model the superimposed inflation
 
-        * Model with AR(1) \@ref(eq:ar-1-era-3-2)
+    * Model with AR(1) \@ref(eq:ar-1-era-3-2)
 
 ***Estimation risk*** in selecting the parameters and the downstream impact
 
-* Use MLE working with infomration matrix \@ref(eq:info-matrix-era-3-2) and correlation matrix \@ref(eq:corr-matrix-era-3-2)
+* Use MLE and negative log liklihood 
 
 * Slope of the negative log likelihood determines our confidence in the selection
 
+* Infomration matrix \@ref(eq:info-matrix-era-3-2) and correlation matrix \@ref(eq:corr-matrix-era-3-2) use with joint lognormal to correlate parameters
 
 ***Model risk***
 

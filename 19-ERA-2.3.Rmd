@@ -2,11 +2,15 @@
 
 Different ways regulator regulates company's capital adequacy
 
-* [Leverage ratio](era2-3-leverage): Premium or reserve over surplus
+* [Leverage ratio](#era2-3-leverage): Premium or reserve over surplus
+
+    * Its shortcomings: Does not distinguish between LoBs and nothing besides u/w risk
 
 * [RBC](#era2-3-rbc) (in the 1990s)
 
     * Factor model combining several risk include asset, credit, premium, reserve
+    
+    * $\star$ Be able to criticize an example factor model
 
 [Scenario testing](#era-2-3-scen-test)
 

@@ -1,5 +1,7 @@
 # Estimating the Premium Asset on Retrospectively Rate Policies - M. Teng and M. Perkins
 
+[Advantages](#intro-teng-perk) of retro rating plan
+
 Retro formula: \@ref(eq:teng-retro-formula)
 
 **Retro rating formula approach**
@@ -28,7 +30,7 @@ Teng Perkins [improvements](#teng-improvements) and [assumptions](#teng-assumpti
 
 Feldblum's adjustment to the empirical $CPDLD_1$ \@ref(eq:feldblum-adj-prem)
 
-## Introduction
+## Introduction {#intro-teng-perk}
 
 ```{definition, prem-ass-teng}
 **Premium Asset** (*3 definitions*)

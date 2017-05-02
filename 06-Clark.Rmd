@@ -231,6 +231,8 @@ Compare variance assumption with Mack and Venter
 
 * $\sigma^2$ for $LDF$ will tend to be higher due to more parameters used
 
+* This calculation is similar to Shapland's [dispersion factor](#odp-dispersion)
+
 ***Assume incremental loss follows ODP Poisson***
 
 \begin{equation}

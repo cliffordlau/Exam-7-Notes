@@ -2,7 +2,7 @@
 
 # ERA 1.1 - 1.3 Introduction - Brehm, et al.
 
-Requirements to promote ERM
+[Requirements](#era1-1-intro) to promote ERM
 
 * External pressure and internal champion
 
@@ -36,7 +36,11 @@ Enterprise risk model process
 
 Model [quality](#model-qual-era1)
 
-* Key elements for good model and factors that impact the quality of model
+* Good vs bad model
+
+* $\star$ 4 Key elements that differentiate (for the model and modelers)
+
+* 3 Factors that impact the suitability and usefulness of the model
 
 4 [key elements](#key-elements-era1) of enterprise risk model:
 
@@ -52,11 +56,11 @@ Model [quality](#model-qual-era1)
 
 * [Dependencies](#era-1-3-dep-risk), its various sources and how to model them
 
-Approach to [setting capital](#setting-cap-era1) based on **default avoidance* or threshold lower than probability of ruin
+$\star$ Approach to [setting capital](#setting-cap-era1) based on **default avoidance* or threshold lower than probability of ruin
 
 Capital allocation
 
-## ERA 1.1 Historical Context
+## ERA 1.1 Historical Context {#era1-1-intro}
 
 **Two similar quantitative initiatives** from the past
 
@@ -164,13 +168,13 @@ ERM is the process of *systematically* and *comprehensively*:
 
     * Financial risk impact our liability as well
     
-**Operational Risk**:
+[**Operational Risk**](#era-4-1-op-risk-intro):
 
 * *Execution* risks of the company (things don't turn out as planned)
 
 * Relates to threats to company value from actions (either the action itself of its consequences departed from plan)
     
-**Strategic Risk**:
+[**Strategic Risk**](#era-4-2-intro):
 
 * Risk about *choices*: making the right/wrong choice, or refusing to choose, or fail to recognize the need to choose
 
@@ -347,9 +351,9 @@ Risks less amenable to detailed representation in enterprise risk model (**Non-q
 
 i. [Loss frequency & severity distribution](#era-1-3u-w-risk-1)
 
-ii. [Pricing risk](#era-1-3u-w-risk-1)
+ii. [Pricing risk](#era-1-3u-w-risk-2)
 
-iii. [Parameter risk](#era-1-3u-w-risk-1)
+iii. [Parameter risk](#era-1-3u-w-risk-3)
 
     * Estimation risk
     
@@ -359,7 +363,7 @@ iii. [Parameter risk](#era-1-3u-w-risk-1)
     
     * Systematic risk
     
-iv. [Cat model uncertainty](#era-1-3u-w-risk-1)
+iv. [Cat model uncertainty](#era-1-3u-w-risk-4)
 
 #### Loss Frequency and Severity Distribution {#era-1-3u-w-risk-1}
 
@@ -440,7 +444,7 @@ Example:
     
 See additional detail in [ERA 3.2](#era3-2-intro)
 
-#### Catastrophe Modeling Uncertainty {#era-1-3u-w-risk-3}
+#### Catastrophe Modeling Uncertainty {#era-1-3u-w-risk-4}
 
 Exposure to natural and man-made cat
 
@@ -615,6 +619,14 @@ ii. Sufficient **capital to service renewals**
 
 iii. Survive and **thrive after major cat**
 
+***3. Other practical method***
+
+* [Leverage ratio](#era2-3-leverage)
+
+* [RBC](#era2-3-rbc) and rating agency capital
+
+* [Scenario testing](#era-2-3-scen-test)
+
 ### Convert Probability to Loss
 
 Associate the selected probability level with amount of financial loss
@@ -629,7 +641,7 @@ Associate the selected probability level with amount of financial loss
 
 * Determination of optimal capital level is not purely a risk measurement exercise
 
-    * Need to balance sufficient financial strength to **attract business* and the need of shareholders to achieve **attractive return**
+    * Need to balance sufficient financial strength to **attract business** and the need of shareholders to achieve **attractive return**
 
 * Risk measurement quantifies the risk the company is exposed to in relationship to the capital so established
 

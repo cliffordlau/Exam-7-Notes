@@ -796,7 +796,7 @@ Generate stochastically simulated scenarios that have responses based on a set o
     
     * Express as mathematical formulas that can be programmed into the simulation
     
-## Agent-Based Modeling {#abm-era-4-2}
+### Agent-Based Modeling {#abm-era-4-2}
 
 Agents can be: *competitors*, *customers*, *regulators*
 

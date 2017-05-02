@@ -7,17 +7,19 @@
 
 Attribute cost back to source of risk for decision making
 
-[Quantify](#quantify-risk-t) corporate risk tolerance and what it is [dependent](#risk-t-dep) on
+Decision Making with an Internal Risk Model (IRM)
 
-* [Spetzler](#spetzler): Benefits of utility curve
+1. [Quantify](#quantify-risk-t) corporate risk tolerance and what it is [dependent](#risk-t-dep) on
 
-* [Walla](#walls): Calculates efficient frontier $\Rightarrow$ Estimate risk tolerance $\Rightarrow$ Where on the frontier to select the best portfolio based on $R$, utility curve and CE
+    * [Spetzler](#spetzler): Benefits of utility curve
 
-[Allocating](#era2-1-5b) risk capital
+    * [Walla](#walls): Calculates efficient frontier $\Rightarrow$ Estimate risk tolerance $\Rightarrow$ Where on the frontier to select the best portfolio based on $R$, utility curve and CE
 
-Cost benefit analysis with **EVA** or **capital allocation**
+2. [Allocating](#era2-1-5b) risk capital
 
-Use a suite of decision metrics that are distinct and independent (to give different perspectives) and are responsive to different dynamics
+3. Cost benefit analysis with **EVA** or **capital allocation**
+
+    * Use a suite of decision metrics that are distinct and independent (to give different perspectives) and are responsive to different dynamics
 
 ## Evoluation of Corporate Decision Making Under Uncertainty
 

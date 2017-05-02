@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="era2-2-intro.html">
-<link rel="next" href="required-capital.html">
+<link rel="prev" href="era-1-1-1-3-introduction-brehm-et-al-.html">
+<link rel="next" href="era-1-2-overview-of-enterprise-risk-management.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -732,199 +732,51 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="risk-measures" class="section level2">
-<h2><span class="header-section-number">18.2</span> Risk Measures</h2>
-<p>3 major class of risk measures</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="risk-measures.html#moment-base-era2-2">Moment-based</a> (<em>e.g. mean, variance</em>)</p></li>
-<li><p><a href="risk-measures.html#tail-base-era2-2">Tail-based</a> (<em>e.g. VaR, TVaR</em>)</p></li>
-<li><p><a href="risk-measures.html#prop-trans-era2-2">Probability Transformation</a> (<em>e.g. WTVaR, Mean of Transformed dist<sup>n</sup></em>)</p></li>
-</ol>
-
-<div class="definition">
-<p><span id="def:loss-risk-measure-era2-2" class="definition"><strong>Definition 18.1 </strong></span>Loss here is not just loss from claims, but “negative profit” after considering income (e.g. premium), expenses etc</p>
+<div id="era1-1-intro" class="section level2">
+<h2><span class="header-section-number">16.1</span> ERA 1.1 Historical Context</h2>
+<p><strong>Two similar quantitative initiatives</strong> from the past</p>
 <ul>
-<li><p><span class="math inline">\(Y =\)</span> Losses</p></li>
-<li><span class="math inline">\(\rho(Y) =\)</span> Risk Measure
-</div>
-<p></p></li>
-</ul>
-<div id="moment-base-era2-2" class="section level3">
-<h3><span class="header-section-number">18.2.1</span> Moment-Based Measures</h3>
-<p><span class="math inline">\(\mathrm{E} \left[ Y^k \right]\)</span> is the k<sup>th</sup> moment of <span class="math inline">\(Y\)</span> which represent losses</p>
+<li><p>Dynamic Financial Analysis</p>
 <ul>
-<li><p>1<sup>st</sup> moment = Mean</p></li>
-<li><p>2<sup>nd</sup> central moment = Variance = <span class="math inline">\(\mathrm{E}\left[ (Y-\mathrm{E}[Y])^2 \right]\)</span></p>
-<ul>
-<li><p>S.d. is preferred as it has the same units as the loss</p></li>
-<li><p>Semi-s.d. only captures unfavorable deviations</p></li>
-<li><p>Quadratic risk measures are not enough to capture market attitudes to risk (they do not capture skewness)</p></li>
+<li><p>RBC (from 1990s) was the precursor to scenario testing and Dynamic Financial Analysis (DFA) but DFA didn’t pan out</p></li>
+<li><p>DFA requires support from many functions and was not widely used due to lack of natural champion</p></li>
 </ul></li>
-<li><p>3<sup>rd</sup> moment = Skewness</p></li>
-</ul>
-<p><strong>Exponential Moments</strong></p>
-<p><span class="math display">\[\mathrm{E}\left[Y e^{cY/\mathrm{E}[Y]}\right]\]</span></p>
+<li><p>Cat Model</p>
 <ul>
-<li><p>Captures all the moment using taylor expansion</p></li>
-<li><p>Scaled to $ but captures the effect of large losses on the risk exponentially</p></li>
-<li><p>Does not exist unless there is a maximum possible loss</p></li>
-</ul>
-</div>
-<div id="tail-base-era2-2" class="section level3">
-<h3><span class="header-section-number">18.2.2</span> Tail-Based Measures at <span class="math inline">\(\alpha\)</span> Percentile</h3>
-<table>
-<caption><span id="tab:era2-2-tail-measure-tab">Table 18.1: </span> Tail-Based Measures</caption>
-<colgroup>
-<col width="18%" />
-<col width="29%" />
-<col width="51%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Risk Measure</th>
-<th align="left">Name</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(VaR\)</span></td>
-<td align="left">Value at Risk</td>
-<td align="left"><span class="math inline">\(\alpha\)</span><sup>th</sup> Percentile</td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(TVaR\)</span></td>
-<td align="left">Tail Value at Risk</td>
-<td align="left">Avg loss above <span class="math inline">\(\alpha\)</span><sup>th</sup> percentile</td>
-</tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(XTVaR\)</span><sup>1</sup></td>
-<td align="left">XS Tail Value at Risk</td>
-<td align="left"><span class="math inline">\(TVaR - Mean\)</span></td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(EPD\)</span><sup>2</sup></td>
-<td align="left">Expected Policyholder Deficit</td>
-<td align="left"><span class="math inline">\((TVaR - VaR) \cdot (1 - \alpha)\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">Value of Default Put Option<sup>3</sup></td>
-<td align="left"></td>
-<td align="left">Market cost of insuring for losses over <span class="math inline">\(VaR_{\alpha}\)</span></td>
-</tr>
-</tbody>
-</table>
-<ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(XTVaR\)</span> focuses on funding losses above the mean</p></li>
-<li><p><span class="math inline">\(EPD\)</span> = unconditional expected value of defaulted losses if capital = <span class="math inline">\(VaR_{\alpha}\)</span></p>
-<ul>
-<li><p>If there was no risk premium required, this is the cost of insuring for losses over <span class="math inline">\(VaR_{\alpha}\)</span></p></li>
-<li><p>First part of the equation is the expected loss given default and the second part is to get to the unconditional value</p></li>
-<li><p>Expected loss of insuring the company for losses excess of their capital amount (here it’s <span class="math inline">\(VaR_{\alpha}\)</span>)</p></li>
-</ul></li>
-<li><p>Value of default put is great than EPD, it includes an additional risk premium (market cost of insuring for losses over <span class="math inline">\(VaR_{\alpha}\)</span>)</p>
-<ul>
-<li><p>Value of insuring against default</p></li>
-<li><p>Estimate using option pricing</p></li>
-</ul></li>
-</ol>
-</div>
-<div id="prop-trans-era2-2" class="section level3">
-<h3><span class="header-section-number">18.2.3</span> Probability Transforms</h3>
-<p>To recognize that large losses are worse for the firm in more than a linear way (e.g. losses twice as big is &gt; twice as worst)</p>
-<p>Change the loss distribution function by putting more weight (add probability) to the worst losses</p>
-<ul>
-<li>e.g. Esscher transform</li>
-</ul>
-<span class="math display" id="eq:esscher-era-2-2">\[\begin{equation}
-  f^*(y) = k \cdot e ^{y/c} \: f(y)
-  \tag{18.1}
-\end{equation}\]</span>
-<ul>
-<li><p>Lower <span class="math inline">\(c\)</span> <span class="math inline">\(\Rightarrow\)</span> Higher losses from the transformed dist<sup>n</sup></p>
-<ul>
-<li>Can get non sensical results for <span class="math inline">\(c\)</span> that’s too low</li>
-</ul></li>
-<li><p><span class="math inline">\(EPD\)</span> on a transformed dist<sup>n</sup> can give us the value of the default put</p>
-<ul>
-<li>The largest losses will have additional weight (to account for the risk premium we discussed above)</li>
+<li><p>Primitive in 1980s</p></li>
+<li><p>Faced external and internal pressure to use cat models after HU Andrew</p></li>
+<li><p>Nowadays it would be considered mismanagement for a company not to use cat models</p></li>
 </ul></li>
 </ul>
-
-<div class="remark">
-<p><span class="remark"><em>Remark. </em></span> </p>
+<p>There is a spectrum of acceptance for both internal and external, and ERM is somewhere between the 2 examples above</p>
+<p><strong><em>External Pressure</em></strong> on ERM as of 2007:</p>
 <ul>
-<li><p>Most asset pricing formulas like CAPM and Black-Scholes can be expressed as transformed means<br />
-<span class="math inline">\(\therefore\)</span> transformed means are a promising risk measure for determining the market value of risk</p></li>
-<li><p>Complete market is where any risk can be sold, but we work in incomplete markets</p></li>
-<li><p>Theory of <strong>pricing in incomplete markets</strong> favors:</p>
-<ul>
-<li><p>Minimum Martingale Transform (MMT)</p></li>
-<li><p>Minimum Entropy Martingale Transform (MET)</p></li>
-<li><p>These give reasonable approximations of reinsurance prices</p></li>
-</ul></li>
-<li><p>Mean under then Wang transform closely approximates market prices for bonds and CAT bonds</p></li>
-<li><p>We can calculate other risk measures (e.g. VaR) on the transformed distribution</p>
-<ul>
-<li><p><span class="math inline">\(WTVaR\)</span> (Weighted TVaR) is <span class="math inline">\(TVaR\)</span> on a transformed distribution</p></li>
-<li>EPD on transformed distribution can use to estimate value of default put
-</div>
-<p></p></li>
-</ul></li>
+<li><p>International Association of Insurance Supervision (IAIS) began development of an approach of rating insurer based on Basel II</p>
+<p>See 2004 IAA document</p></li>
+<li><p>Canada (<em>Dynamic Capital Adequacy Test</em>) and Australia (<em>Internaal Model Based Method</em>) developed and implemented regulatory requirements regarding the construction and use of internal risk models</p></li>
+<li><p>UK (<em>Financial Service Authority</em>) implemented Individual Capital Adequacy Standards (<em>ICAS</em>) in 2004:</p>
+<p>“<em>A firm is required to undertake regular assessments of the amount and quality of capital which in their view is adequate for the size and nature of their business…</em>”</p></li>
+<li><p>NAIC is moving towards a new audit paradigm:</p>
+<p><strong>C</strong>apital adequacy, <strong>A</strong>sset quality, <strong>R</strong>eserves, <strong>R</strong>einsurance, <strong>M</strong>anagement, <strong>E</strong>arnings and <strong>L</strong>iquidity (<strong>CARRMEL</strong>)</p></li>
+<li><p>2005 S&amp;P stated that a firm’s EMR program will become a critical component in its rating methodology</p></li>
 </ul>
-</div>
-<div id="gen-mo-era2-2" class="section level3">
-<h3><span class="header-section-number">18.2.4</span> Generalized Moments</h3>
-<p>Includes more than just <span class="math inline">\(\mathrm{E}[Y^k]\)</span>, can include all of the above risk measures (Not just expectations of powers of the variable)</p>
-<p><strong>TVaR expressed in generalized moments</strong></p>
-<p><span class="math display">\[TVaR_{\alpha} = \mathrm{E} \left[ Y \cdot \left( Y &gt; F^{ -1}_Y(\alpha) \right) \big| Y &gt; F^{ -1}_Y(\alpha) \right]\]</span></p>
+<p><strong><em>Internal Champion</em></strong></p>
 <ul>
-<li><p><span class="math inline">\((Y &gt; b) = \begin{cases} 1 &amp; : Y &gt; b\\ 0 &amp; : \text{otherwise} \end{cases}\)</span></p></li>
-<li><p>Average of <span class="math inline">\(Y\)</span> when <span class="math inline">\(Y\)</span> &gt; than the <span class="math inline">\(\alpha^{th}\)</span> percentile: <span class="math inline">\(F^{ -1}(\alpha)\)</span></p></li>
-</ul>
-<p><strong>Spectral Measures</strong></p>
+<li><p>ERM needs an <strong>internal</strong> champion (e.g. CRO) with:</p>
 <ul>
-<li>This includes many tail measures that can be written in the following form</li>
-</ul>
-<p><span class="math display">\[\rho(Y) = \mathrm{E} \left[ Y \cdot \eta \left( F(Y) \right) \right]\]</span></p>
-<ul>
-<li><p><span class="math inline">\(\eta \geq 0\)</span></p></li>
-<li><p>Multiply the loss by a non-negative scalar <span class="math inline">\(\eta(Y)\)</span> when taking the expectations</p></li>
-<li><p>TVaR is a spectral measures</p></li>
-</ul>
-<p><strong>Blurred VaR</strong></p>
-<ul>
-<li>Takes the distance from the target percentile as the weighting function</li>
-</ul>
-<p><span class="math display">\[\eta(p) = \mathrm{exp} \left \{ - \theta (p-\alpha)^2 \right \}\]</span></p>
-<ul>
-<li><p>Give more weight to losses near <span class="math inline">\(\alpha^{th}\)</span> percentile while still using the whole distribution</p></li>
-<li><p><span class="math inline">\(\theta\)</span> controls how quickly the weight drops of as we get further from <span class="math inline">\(\alpha\)</span></p></li>
-<li><p>Takes several results and averages them together</p></li>
-</ul>
-<hr />
-<p>Which risk measures to use</p>
-<ul>
-<li><p><span class="math inline">\(TVaR\)</span> at a <strong>low percentile</strong> is preferred as it captures all risks above this level</p>
-<p>Set at level where we begin to loss capital</p>
-<ul>
-<li>High percentile is not recommended as it ignores all risk below that percentile</li>
-</ul></li>
-<li><p>Try to get close to <strong>market value</strong> of risk</p>
-<ul>
-<li><p><span class="math inline">\(WTVaR\)</span> with the MET is promising, or</p></li>
-<li><p>Exponential moment <span class="math inline">\(\mathrm{E}[Y e^{cY/\mathrm{E}[Y]}]\)</span></p></li>
+<li><p><strong>Quantitative skills</strong></p></li>
+<li><p><strong>Operational experience</strong></p></li>
+<li><p><strong>Political skills</strong> (executive rank) to work across organizational silos</p></li>
 </ul></li>
 </ul>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="era2-2-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="required-capital.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="era-1-1-1-3-introduction-brehm-et-al-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="era-1-2-overview-of-enterprise-risk-management.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -952,7 +804,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/18-ERA-2.2.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/16-ERA-1.Rmd",
 "text": "Edit"
 },
 "download": null,

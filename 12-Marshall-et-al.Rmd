@@ -26,7 +26,7 @@ $\star$ Different [risk categories](#risk-categories-marshall)
 
 [CoV](#cov-ext-marshall): Use benchmark similar to internal but select CoV directly
 
-$\star$ ***Correlation***
+***Correlation***
 
 * The 3 main risk sources are independent of each other and therefore can be sum with square root rule \@ref(eq:marshall-source-2)
 
@@ -298,6 +298,8 @@ Analysis of past model performance should aid in estimating the potential variab
 
 ```{definition}
 External systemic risk = systemic risk that are not internal
+
+* Risks external to the liability valuation process
 ```
 
 Need to consider systemic risk not in the data set (i.e. Can't only consider actual episodes of systemic risk in the data set)
