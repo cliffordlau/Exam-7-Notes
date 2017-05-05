@@ -12,21 +12,21 @@ Model is defined with ([ODP or ODNB](#odp-nb-verrall)) and stochastic row parame
 
 * Variance of prior and it's impact
 
-Bayesian BF calculation:
+$\star$ Bayesian BF calculation:
 
 * Gamma moments \@ref(eq:verall-gamma-apriori)
 
     * Impact of $\beta_i$ on the Gamma variance
 
-* Credibility formula \@ref(eq:bayesian-bf-verrall) and credibility weight \@ref(eq:verall-bf-cred-fact)
+* $\star$ Credibility formula \@ref(eq:bayesian-bf-verrall) and credibility weight \@ref(eq:verall-bf-cred-fact)
 
     * $\beta_i$ and $\varphi$ impact the credibility weight
 
 [Use](#stoch-col-bf) and [calculate](#verrall-gamma-calc) the stochastic column parameters
 
-* Use the parameters with \@ref(eq:verall-odnb-col-para), see fig. \@ref(fig:verall-stoch-para)
+* $\star$ Use the parameters with \@ref(eq:verall-odnb-col-para), see fig. \@ref(fig:verall-stoch-para)
 
-* Calculate the parameters $\gamma_i$ pictorially, see fig. \@ref(fig:verall-gamma-calc)
+* $\star$ Calculate the parameters $\gamma_i$ pictorially, see fig. \@ref(fig:verall-gamma-calc)
 
 ## Introduction {#Verall-intro}
 

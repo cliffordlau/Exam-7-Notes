@@ -4,11 +4,11 @@ Know the GB method formula (\@ref(prp:GB-method)) and properties
 
 * Benktander recognize actual emergence faster
 
-* Know when we are working with *Ultimate* or *Reserve*
+* Difference between working with *Ultimate* or *Reserve*
 
-* Know when is the $GB$ [$MS$](#mack-2000-gb-mse) lower than $BF$
+* When is the $GB$ [$MS$](#mack-2000-gb-mse) lower than $BF$
 
-* Know the iterative form of BF and GB and it's extension Theorem \@ref(thm:GB-iterate)
+* Iterative form of BF and GB and it's extension Theorem \@ref(thm:GB-iterate) (where GB is the 2^nd^ iteration)
 
 ## Gunnar Benktander Method (GB) {#mack-2000-gb-method}
 

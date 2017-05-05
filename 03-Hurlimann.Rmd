@@ -17,12 +17,16 @@ Know the $Z$ for different methods (Table \@ref(tab:method-tbl-cred))
     * $U_i^{BC} {\perp\!\!\!\!\perp} \: C_i$ and $R_i$
     
     * $\mathrm{Var}(U_i) = \mathrm{Var}(U_i^{BC})$
+    
+* Basis of optimal credibility \@ref(tab:Z-impact)
 
 * [MSE](#hurlimann-mse) for the credibility formula
 
 All the methods can be done using traditional LDFs
 
 * Remember "shortcuts" to calculate the CDFs given incremental triangles
+
+* Also shortcut to calculate the unpaid based on total "unused" premium
 
 ## Loss Ratio Claims Reserve Definition {#lr-claim-res-def}
 

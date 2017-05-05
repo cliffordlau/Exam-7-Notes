@@ -1,5 +1,7 @@
 # Stochastic Loss Reserving Using Bayesian MCMC Models - G. Meyer
 
+[3 reasons](#meyers-intro) model doesn't predict well
+
 **Interpretation** of all the [test](#meyers-test):
 
 * KS-test: \@ref(eq:ks-expected-lower), \@ref(eq:ks-test-meyers-diff), and \@ref(eq:ks-test-meyers-criteria)
@@ -68,7 +70,7 @@ All the different [model](#model-summary-meyers) introduced (fig. \@ref(fig:meye
 
 * [England & Verall ODP](#meyers-odp): See [Shapland](#odp-glm-para), but doesn't have the [residual adjustments](#odp-res)
 
-## Introduction & Synopsis
+## Introduction & Synopsis {#meyers-intro}
 
 Applying different estimate methods to 200 triangles and comparing the actual outcomes to the predicted distribution to see if the models accurately estimates the distribution of outcomes
 

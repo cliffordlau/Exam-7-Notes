@@ -551,9 +551,7 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
     
         ($r^*_p$ is the realized sample from i.)
     
-    iii. **Estimate dispersion factor** $\phi$ for Step 3
-        
-        This can vary per [Dispersion Factor](#odp-dispersion) section
+    iii. **Estimate [dispersion factor](#odp-dispersion)** $\phi$ for Step 3 as this is based on the original triangle
         
 2) **Determine parameters** from $triangle^*$:
 
@@ -571,7 +569,7 @@ Bootstrap simulation procedure, repeat steps 1 - 5 at least 10,000 times
     
         * *Simplified GLM*
         
-            Back out the $c^*(w,d)$ by $\dfrac{Ult_w}{CDF_d}$ then get the $m^*_{wd}$
+            Back out the $c^*(w,d)$ by $\dfrac{Ult_w}{CDF_d}$ then get the $m^*_{wd}$ (Need to back out from ultimate because we need to complete the cells for unpaid too)
     
     * **Variance**: $\phi m_{wd}^{*}$
     
@@ -694,7 +692,7 @@ Below subsections are just examples of the variations discussed above
 
 Use only 1 AY parameter $\alpha_1$
 
-* Similar to Venter Cap Code method \@ref(tab:venter-alt-pattern) with $h(w) = h$
+* Similar to Venter Cap Cod method \@ref(tab:venter-alt-pattern) with $h(w) = h$
 
 * Moves away from the Chainladder assumption that each AY has its own level
 
@@ -738,7 +736,7 @@ Use only 1 AY parameter $\alpha_1$
 
 Use only 1 development year parameter $\beta_2$
 
-* This just assumes the losses decay by $e^{-\beta_2}$ for all ages
+* This just assumes the losses decay by $e^{\beta_2}$ for all ages
 
 * Also note that the residual in cell (1,3) will no longer be zero since it shares the $\beta_2$ with all the other columns
 

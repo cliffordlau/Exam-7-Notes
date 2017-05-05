@@ -5,6 +5,8 @@
 
 * [Argument](#argument-for-5) that 2^nd^ step is sufficient and [reasons](#step3-reason) to move to the 3^rd^ step
 
+* 4 Benefits of a utility function
+
 Attribute cost back to source of risk for decision making
 
 Decision Making with an Internal Risk Model (IRM)

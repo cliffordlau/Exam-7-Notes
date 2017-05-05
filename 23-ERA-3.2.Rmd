@@ -1,6 +1,6 @@
 # ERA 3.2 Modeling Parameter Uncertainty - Venter, Gluck
 
-Parameter risk is impact big companies more as their process risk is smaller \@ref(eq:era-3-2-cov-form)
+Parameter risk impact big companies more as their process risk is smaller \@ref(eq:era-3-2-cov-form)
 
 ***Projection risk***
 

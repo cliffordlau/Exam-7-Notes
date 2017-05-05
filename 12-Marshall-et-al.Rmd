@@ -17,10 +17,12 @@ $\star$ Three components of internal systemic risk \@ref(def:three-int-sys-risk)
 * [Calibrate to CoV](#cali-score-int-marshall) for each component where CoV $\in [5\%, 25\%]$
 
     * 2 Hindsight analysis
+  
+* Check for internal consistency of the CoV
 
 [***Extnernal Systemic Risk***](#ext-sys-risk)
 
-$\star$ Different [risk categories](#risk-categories-marshall)
+$\star$ 7 Different [risk categories](#risk-categories-marshall)
 
 * Certain lines are impacted more than other by a given risk
 
@@ -97,6 +99,10 @@ Coefficient of Variation: $\phi = \dfrac{\sigma}{\mu}$
 Systemic Risk
 
 * Risks that can vary across valuation classes
+```
+
+```{remark}
+
 
 * *Qualitative* approaches is recommended for systemic risk
 

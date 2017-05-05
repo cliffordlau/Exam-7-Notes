@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html">
-<link rel="next" href="clark-ldf-method.html">
+<link rel="prev" href="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html">
+<link rel="next" href="data-set.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -709,35 +709,35 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="clark-key-ass" class="section level2">
-<h2><span class="header-section-number">6.3</span> 3 Key Assumptions of Model</h2>
+<div id="meyers-intro" class="section level2">
+<h2><span class="header-section-number">11.1</span> Introduction &amp; Synopsis</h2>
+<p>Applying different estimate methods to 200 triangles and comparing the actual outcomes to the predicted distribution to see if the models accurately estimates the distribution of outcomes</p>
+<p>Models examined:</p>
+<ul>
+<li><p>Estimate from Mack and ODP do not have enough variability</p></li>
+<li><p>Incurred losses with variable row parameters and AY correlation <span class="math inline">\(\rho\)</span> is sufficient</p></li>
+<li><p>Paid losses requires variable row parameters and change in settlement rate parameter <span class="math inline">\(\gamma\)</span></p></li>
+</ul>
+<p><strong>Three reasons model doesn’t predict well</strong>:</p>
 <ol style="list-style-type: decimal">
-<li><p>Incremental losses <span class="math inline">\(iid\)</span></p>
-<ul>
-<li>Test this using residual analysis</li>
-</ul></li>
-<li><p><span class="math inline">\(\frac{Variance}{Mean}\)</span> scale parameter <span class="math inline">\(\sigma^2\)</span> is fixed and known</p>
-<ul>
-<li>Technically this should be estimated with the other parameters but will makes things intractable</li>
-</ul></li>
-<li><p>Variance estimates are based on the approximation to the Rao-Cramer lower bound</p>
-<ul>
-<li><p>Variance based on information matrix <span class="math inline">\(I\)</span> <a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html#eq:clark-info-matrix">(6.6)</a></p></li>
-<li><p><span class="math inline">\(I\)</span> is exact only when using linear functions</p></li>
-<li><p>In our case this is simply a lower bound</p></li>
-<li><p>We are using approximated parameters</p></li>
-</ul></li>
+<li><p>Insurance loss environment has experienced changes that are not observable at the valuation date</p>
+<p>i.e. There would be different “black swan” events that invalidate any attempt to model loss reserves</p></li>
+<li><p>There could be other models that better fit the existing data</p></li>
+<li><p>Data used to calibrate the model is missing crucial information needed to make a reliable prediction</p>
+<p>e.g. Changes in the way the underlying business is conducted, like changes in claim processes of changes in the direct/ceded/assumed reinsurance composition of the claims triangle</p></li>
 </ol>
-<p>The above temper the volatility in the model, actual results can be more variable</p>
-<p>Model only works for positive expected incremental losses, but a negative loss here or there is fine as well</p>
+<p>If we can find better model and/or better data we can rule out 1)</p>
+<ul>
+<li>If we review many models and none of them validate it gives 1) credence but does not confirm</li>
+</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="distribution-of-actual-loss-emergence-and-maximum-likelihood.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="clark-ldf-method.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="stochastic-loss-reserving-using-bayesian-mcmc-models-g-meyer.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-set.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -765,7 +765,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/06-Clark.Rmd",
+"link": "https://github.com/cliffordlau/Exam-7-2016-Notes/edit/master/11-Meyers.Rmd",
 "text": "Edit"
 },
 "download": null,

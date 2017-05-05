@@ -437,7 +437,7 @@ $$\begin{align}
 For all years $IBNR$ we have
 
 $$\begin{align}
-    IBNR_k &= \sum_k (E_k - p_k E_k) \times ELR \\
+    IBNR &= \sum_k (E_k - p_k E_k) \times ELR \\
     &= \left( \sum_k E_k - \sum_k p_k E_k \right) \times ELR \\
     &= (\text{Total Adj Prem} - \text{Total Used Up Prem}) \times ELR \\
     &= \text{Premium Not Used} \times ELR \\

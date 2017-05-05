@@ -270,7 +270,7 @@ $f(d)h(w)$
 
     Like an a-priori
     
-* The -2 for the BF is due to $f(0)$ and constant
+* The -2 for the BF is due to $f(0)$ and constant (degrees of freedom?)
 
 * If **BF** is better $\Rightarrow$ Loss emergence is more accurately represented as fluctuating around a proportion of expected ultimate losses (rather than proportion of reported losses)
 
@@ -360,7 +360,7 @@ Need to seed one of them and iterate until convergence
 
 Step 1) Start iteration with the $f(d)$ from Chainladder
 
-* For age greater than 0, these are the incremental ATA factors $\div$ ATU factors
+* For age greater than 0, these are the  $\dfrac{ATA - 1}{ATU}$
     
 * For age 0, subtract the sum of the other factors from unity
 

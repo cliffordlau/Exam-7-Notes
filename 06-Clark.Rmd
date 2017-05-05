@@ -46,7 +46,7 @@ $\star$ Paper definition/standards:
     
 * [Parameter variance](#clark-para-var-sec)
 
-* Estimate using MLE
+* Estimate using MLE \@ref(prp:clark-mle-odp)
 
     * Estimate for $ULT_{AY}$ based on [MLE](#clark-mle-2)
 

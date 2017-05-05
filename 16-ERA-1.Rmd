@@ -16,7 +16,7 @@ Enterprise risk model process
 
 1. [Diagnose](#era1-diagnose):
 
-    * Develop threshold for all risk in different categories \@ref(tab:era1-analyze-pillar)
+    * Develop threshold for all risk in the 3 different categories \@ref(tab:era1-analyze-pillar)
 
 2. [Analyze](#era1-analyze):
 
@@ -56,7 +56,7 @@ Model [quality](#model-qual-era1)
 
 * [Dependencies](#era-1-3-dep-risk), its various sources and how to model them
 
-$\star$ Approach to [setting capital](#setting-cap-era1) based on **default avoidance* or threshold lower than probability of ruin
+$\star$ Approach to [setting capital](#setting-cap-era1) based on **default avoidance** or **threshold lower** than probability of ruin
 
 Capital allocation
 
@@ -560,9 +560,9 @@ Important to capture dependencies or else the model will be unrealistically stab
 
 * **U/w cycle**, loss trends and reserve development can be correlated across LoB and with each other
 
-* Cat and other event losses can impact across lines
+* **Cat** and **other event losses** can impact across lines
 
-* Large man made cat (e.g. 9/11) can have impact on both insurance and market risk
+* **Large man made cat** (e.g. 9/11) can have impact on both insurance and market risk
 
 * Difficult to quantify
 
